@@ -20,10 +20,10 @@ download:
   files:
     - file: src/lang/en.json
       locale_code: en
-    - file: src/lang/de.json
-      locale_code: de
     - file: src/lang/fr.json
       locale_code: fr
+    - file: src/lang/es.json
+      locale_code: es
   params:
     export_empty_as: empty
     exclude_tags:

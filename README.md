@@ -1,48 +1,108 @@
-# Next.js i18n Dashboard Starter
+# ISSI Next.js Multilingual Website
 
-![Localizely progress](https://img.shields.io/localizely/progress/314cdb30-1e80-4acf-afbf-6195d164ca77?token=9b2c2727a3334e25952ea204a6cc8708c8465e4ae300425caff926fbc627ada7&languageCode=en) ![Localizely progress](https://img.shields.io/localizely/progress/314cdb30-1e80-4acf-afbf-6195d164ca77?token=9b2c2727a3334e25952ea204a6cc8708c8465e4ae300425caff926fbc627ada7&languageCode=de) ![Localizely progress](https://img.shields.io/localizely/progress/314cdb30-1e80-4acf-afbf-6195d164ca77?token=9b2c2727a3334e25952ea204a6cc8708c8465e4ae300425caff926fbc627ada7&languageCode=fr)
+![Localizely progress](https://img.shields.io/localizely/progress/314cdb30-1e80-4acf-afbf-6195d164ca77?token=9b2c2727a3334e25952ea204a6cc8708c8465e4ae300425caff926fbc627ada7&languageCode=en) ![Localizely progress](https://img.shields.io/localizely/progress/314cdb30-1e80-4acf-afbf-6195d164ca77?token=9b2c2727a3334e25952ea204a6cc8708c8465e4ae300425caff926fbc627ada7&languageCode=es) ![Localizely progress](https://img.shields.io/localizely/progress/314cdb30-1e80-4acf-afbf-6195d164ca77?token=9b2c2727a3334e25952ea204a6cc8708c8465e4ae300425caff926fbc627ada7&languageCode=fr)
 
-A dashboard template built with Next.js, Tailwind CSS, and React Intl. This template not only features internationalized routing but also showcases an array of localization features, making it an ideal starting point for building globally-friendly dashboard applications.
+This repository contains the codebase for the International Software Systems International (ISSI) website. The website is built using Next.js with internationalization (i18n) capabilities, allowing for a multilingual user experience.
 
 ![demo](/public/demo.png)
 
-## Demo
+## About ISSI
 
-View a working [demo](https://nextjs-i18n-dashboard-template.vercel.app/).
+International Software Systems International (ISSI) is a company specializing in software solutions. Located in Greenbelt, Maryland, ISSI provides innovative software services to meet various business needs.
+
+## Project Overview
+
+This Next.js application features:
+
+- **Multilingual Support**: Website content is available in multiple languages including English, Spanish, and French
+- **Modern UI**: Responsive design with interactive components
+- **Dashboard Interface**: Organized presentation of company information and services
+- **App Router**: Utilizes Next.js App Router for efficient routing and navigation
+
+## Technology Stack
+
+- **Framework**: Next.js 14.2+
+- **Styling**: Tailwind CSS
+- **Internationalization**: 
+  - @formatjs/intl
+  - react-intl
+- **State Management**: React context and hooks
+- **Package Manager**: pnpm
 
 ## Getting Started
 
-Run this Next.js app on your local machine by following the instructions below:
+### Prerequisites
 
-```bash
-# Clone the repository from GitHub
-git clone https://github.com/localizely/nextjs-i18n-dashboard-template.git
+- Node.js 18.x or higher
+- pnpm 8.x or higher
 
-# Navigate into the cloned repository
-cd nextjs-i18n-dashboard-template
+### Installation
 
-# Install project dependencies
-npm install
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/issi-next.js-i18n-dashboard.git
+   cd issi-next.js-i18n-dashboard
+   ```
 
-# Start the development server
-npm run dev
+2. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+
+3. Approve necessary build scripts:
+   ```bash
+   # When prompted about "unrs-resolver", you should approve it
+   # This is a dependency related to Next.js URL resolution
+   pnpm approve unrs-resolver
+   ```
+   > Note: pnpm's security feature requires explicit approval to run scripts from dependencies. The `unrs-resolver` is safe to approve as it's related to Next.js functionality.
+
+4. Start the development server:
+   ```bash
+   pnpm dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
+
+## Internationalization
+
+The website supports multiple languages through a custom i18n implementation:
+
+- Language files are stored in `src/lang` directory
+- Language switching is available in the UI
+- Default language detection is handled via browser preferences
+
+To add or modify translations, edit the JSON files in the language directories.
+
+## Project Structure
+
+```
+issi-next.js-i18n-dashboard/
+├── public/           # Static assets
+├── src/
+│   ├── app/          # App Router pages
+│   ├── components/   # Reusable UI components
+│   ├── lang/         # Language/translation files
+│   ├── lib/          # Utility functions
+│   └── middleware.ts # Language detection middleware
+├── i18n-config.ts    # i18n configuration
+├── next.config.js    # Next.js configuration
+└── tailwind.config.js # Tailwind CSS configuration
 ```
 
-## Deploy on Vercel
+## Deployment
 
-Deploy this ready-to-use template on Vercel by clicking the button below.
+The website is configured for deployment on Vercel or similar platforms.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Flzoran%2Fnextjs-i18n-dashboard-template)
+## Contact Information
 
-## Translation
-
-Translating localization files can become increasingly complex, especially as your project expands. [**Localizely**](https://localizely.com/) simplifies the translation process, tracks progress, and seamlessly integrates localization into your workflow. It offers a variety of integrations, including [GitHub](https://localizely.com/github-integration/), [GitLab](https://localizely.com/gitlab-integration/), [Bitbucket](https://localizely.com/bitbucket-integration/), and [Figma](https://localizely.com/figma-integration/), along with powerful features such as [Reports and Statistics](https://localizely.com/reports-and-statistics/), [Machine Translation](https://localizely.com/machine-translation/), [Translation Memory](https://localizely.com/translation-memory/), and a [Glossary](https://localizely.com/project-glossary/).
-
-To simplify the translation process, navigate to [Localizely](https://app.localizely.com/register) and create a new project. Afterwards, update the `localizely.yml` file with the missing data (e.g., project_id) and integrate localization into your workflow in a manner that best suits your needs, whether that's by using the [Localizely CLI](https://localizely.com/cli/) tool or any of the available integrations.
-
-## Contribution
-
-Feel free to share your ideas and report any issues on the template's [GitHub repo](https://github.com/lzoran/nextjs-i18n-dashboard-template/issues).
+**International Software Systems International (ISSI)**
+- **Address**: 7337 Hanover Pkwy, Suite# A, Greenbelt, MD 20770
+- **Phone**: 301-982-9700
+- **Business Development**: 301-982-9700
+- **Products Contact**: 301-982-9700
+- **Fax**: 301-982-0500
+- **Toll Free**: 1-888-810-3661
 
 ## Useful links
 

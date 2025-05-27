@@ -8,10 +8,8 @@ interface Props {
 }
 
 export default async function Sidebar({ locale }: Props) {
-  const intl = await getIntl(locale);
-
-  return (
-    <div className="fixed top-0 left-0 z-50 w-60 h-screen bg-gray-800 hidden lg:block">
+  const intl = await getIntl(locale);  return (
+    <div className="fixed top-0 left-0 z-50 w-60 h-screen bg-gray-800 hidden">
       <div className="flex items-center justify-start h-16 w-[calc(100%-2rem)] mx-4">
         <div className="text-xl text-gray-200">Starter App</div>
       </div>

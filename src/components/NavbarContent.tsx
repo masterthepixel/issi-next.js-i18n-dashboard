@@ -10,6 +10,7 @@ import { usePathname } from "next/navigation";
 
 import useOutsideClick from "@/hooks/useOutsideClick";
 import { User, Locale } from "@/lib/definitions";
+import TopNav from "./TopNav";
 
 interface Props {
   user: User;
@@ -51,13 +52,17 @@ export default function NavbarContent({ user, locale, messages }: Props) {
   const handleLangSwitcherMenuClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setLangSwitcherMenuOpen(!langSwitcherMenuOpen);
   };
-
   return (
     <IntlProvider locale={locale} messages={messages}>
-      <nav className="sticky top-0 left-0 z-50 w-full bg-white border-b border-gray-200">
-        <div className="h-16 flex items-center justify-between">
-          <div className="flex items-center mx-2">
-            <div className="relative mx-1 lg:hidden">
+      <nav className="sticky top-0 left-0 z-50 w-full bg-white border-b border-gray-200 shadow-sm">
+        <div className="h-16 flex items-center justify-between px-4">
+          <div className="flex items-center">
+            <div className="text-xl text-gray-800 font-medium mr-4">ISSI</div>
+
+            {/* Top Navigation for Desktop */}
+            <TopNav locale={locale} />
+
+            <div className="relative ml-1 lg:hidden">
               <button
                 type="button"
                 className="rounded-full p-1 text-gray-500 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-600"
@@ -119,17 +124,16 @@ export default function NavbarContent({ user, locale, messages }: Props) {
                   />
                 </svg>
               </button>
-
               {langSwitcherMenuOpen && (
                 <Menu ref={langSwitcherMenuRef} aria-labelledby="lang-switcher-menu-button">
-                  <MenuItem href={`/de/${pathname.split("/").slice(2).join("/")}`} active={locale === "de"}>
-                    <FormattedMessage id="common.language-switcher" values={{ locale: "de" }} />
-                  </MenuItem>
                   <MenuItem href={`/en/${pathname.split("/").slice(2).join("/")}`} active={locale === "en"}>
                     <FormattedMessage id="common.language-switcher" values={{ locale: "en" }} />
                   </MenuItem>
                   <MenuItem href={`/fr/${pathname.split("/").slice(2).join("/")}`} active={locale === "fr"}>
                     <FormattedMessage id="common.language-switcher" values={{ locale: "fr" }} />
+                  </MenuItem>
+                  <MenuItem href={`/es/${pathname.split("/").slice(2).join("/")}`} active={locale === "es"}>
+                    <FormattedMessage id="common.language-switcher" values={{ locale: "es" }} />
                   </MenuItem>
                 </Menu>
               )}

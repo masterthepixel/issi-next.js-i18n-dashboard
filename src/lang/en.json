@@ -1,5 +1,5 @@
 {
-  "common.language-switcher": "{locale, select, en {English} de {Deutsch} fr {Français} other {Unknown}}",
+  "common.language-switcher": "{locale, select, en {English} fr {Français} es {Español} other {Unknown}}",
   "common.navigation.discover": "Discover",
   "common.navigation.home": "Home",
   "common.navigation.reports": "Reports",
