@@ -17,6 +17,7 @@ import {
   QuestionMarkCircleIcon,
   TicketIcon
 } from '@heroicons/react/24/outline';
+import { Facebook, Youtube, Linkedin } from 'lucide-react';
 
 interface FooterProps {
   locale: Locale;
@@ -25,22 +26,22 @@ interface FooterProps {
 
 export default function Footer({ locale, messages }: FooterProps) {
   const pathname = usePathname();
-  // Social media data with emoji icons
+  // Social media data with Lucide React icons
   const socialLinks = [
     {
       name: 'footer.social.facebook',
       href: 'https://www.facebook.com/issiusa',
-      icon: '📘'
+      icon: Facebook
     },
     {
       name: 'footer.social.youtube',
       href: 'https://www.youtube.com/channel/UC-I7GRxuzcLOZLcGVHV96bQ',
-      icon: '📺'
+      icon: Youtube
     },
     {
       name: 'footer.social.linkedin',
       href: 'https://www.linkedin.com/company/international-software-systems-inc.',
-      icon: '💼'
+      icon: Linkedin
     }
   ];
   const currentYear = new Date().getFullYear();
@@ -53,7 +54,7 @@ export default function Footer({ locale, messages }: FooterProps) {
               {/* Brand Section */}              <div className="lg:col-span-1">
                 <Link
                   href={`/${locale}/home`}
-                  className="inline-block text-2xl font-bold text-slate-800 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-4"
+                  className="inline-block text-lg font-bold text-slate-800 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-4 leading-tight"
                 >
                   International Software Systems, Inc. (ISSI)
                 </Link>
@@ -249,19 +250,22 @@ export default function Footer({ locale, messages }: FooterProps) {
                 />
               </div>
               <div className="flex space-x-4">
-                {socialLinks.map((social) => (
-                  <Link
-                    key={social.name}
-                    href={social.href}
-                    className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                    aria-label={social.name}
-                  >
-                    <span className="text-lg">{social.icon}</span>
-                    <span className="sr-only">
-                      <FormattedMessage id={social.name} />
-                    </span>
-                  </Link>
-                ))}
+                {socialLinks.map((social) => {
+                  const IconComponent = social.icon;
+                  return (
+                    <Link
+                      key={social.name}
+                      href={social.href}
+                      className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                      aria-label={social.name}
+                    >
+                      <IconComponent className="h-4 w-4" />
+                      <span className="sr-only">
+                        <FormattedMessage id={social.name} />
+                      </span>
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>
