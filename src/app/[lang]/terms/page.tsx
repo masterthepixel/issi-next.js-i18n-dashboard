@@ -82,14 +82,14 @@ async function PageContent({ locale }: PageContentProps) {
                   className="inline-flex justify-center rounded-md bg-white dark:bg-slate-800 px-3 py-2 text-sm font-semibold text-slate-900 dark:text-slate-100 shadow-xs ring-1 ring-slate-300 dark:ring-slate-600 ring-inset hover:bg-slate-50 dark:hover:bg-slate-700"
                 >
                   <EnvelopeIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-slate-400" />
-                  <span>Message</span>
+                  <span>{intl.formatMessage({ id: "common.button.message", defaultMessage: "Message" })}</span>
                 </button>
                 <button
                   type="button"
                   className="inline-flex justify-center rounded-md bg-white dark:bg-slate-800 px-3 py-2 text-sm font-semibold text-slate-900 dark:text-slate-100 shadow-xs ring-1 ring-slate-300 dark:ring-slate-600 ring-inset hover:bg-slate-50 dark:hover:bg-slate-700"
                 >
                   <PhoneIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-slate-400" />
-                  <span>Call</span>
+                  <span>{intl.formatMessage({ id: "common.button.call", defaultMessage: "Call" })}</span>
                 </button>
               </div>
             </div>
