@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed background grid pattern bleeding issue by adjusting fade start position to 400px
 - Updated grid background z-index to -1 for proper content layering
 - Improved visual hierarchy in footer with logo, company name, and description
+- TeamGrid: Avatar images now use both `object-cover` and `rounded-full` to ensure all team member portraits are perfectly circular and visually consistent across browsers.
 
 ### Fixed
 

@@ -3,7 +3,7 @@ import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 
 import Spinner from "@/components/Spinner";
-import TeamGrid from "@/components/TeamGrid";
+import TeamGridWrapper from "@/components/TeamGridWrapper";
 
 import { getIntl } from "@/lib/intl";
 import { Locale } from "@/lib/definitions";
@@ -34,6 +34,7 @@ interface PageContentProps {
 
 async function PageContent({ locale }: PageContentProps) {
   const intl = await getIntl(locale);
+  const messages = (await import(`../../../lang/${locale}.json`)).default;
   const profile = {
     name: intl.formatMessage({ id: "page.about.title" }),
     subtitle: intl.formatMessage({ id: "page.about.description" }),
@@ -53,7 +54,7 @@ async function PageContent({ locale }: PageContentProps) {
           className="h-32 w-full object-cover lg:h-48"
         />
       </div>
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
           <div className="flex">
             <Image
@@ -107,7 +108,7 @@ async function PageContent({ locale }: PageContentProps) {
         </div>
       </div>
       {/* Team section */}
-      <TeamGrid />
+      <TeamGridWrapper locale={locale} messages={messages} />
     </div>
   );
 }
