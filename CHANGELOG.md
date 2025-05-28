@@ -7,6 +7,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2025-05-28
+
+### Added
+
+- Implemented comprehensive footer component with glass effect styling
+- Added four-column footer layout (Services, Support, Company, Legal sections)
+- Added social media integration with real ISSI links (Facebook, YouTube, LinkedIn)
+- Added Heroicons throughout footer for consistent iconography
+- Added footer translations to all language files with proper internationalization
+- Added dynamic copyright year display (showing 2025)
+
+### Changed
+
+- Updated footer company name to display full "International Software Systems, Inc. (ISSI)"
+- Updated footer company description to award-winning text in all three languages
+- Updated FooterWrapper to follow server component pattern like Navbar
+- Optimized footer grid layout (1/4 brand, 3/4 navigation) with reduced gaps for multilingual support
+
+## [0.2.0] - 2025-05-28
+
+### Added
+
+- Added new menu items: Services, Products, Government, eLearning, Compliance, About
+- Added contact icon to the navbar for quick access to contact page
+
+### Changed
+
+- Centered navigation menu items in desktop view for better visual balance
+- Reduced desktop navigation menu font size to `text-sm` for better multilingual support
+- Reduced desktop navigation menu icon size from `size-5` to `size-4` for improved proportions
+- Removed Reports link from main menu navigation
+- Removed Discover link from main menu navigation
+- Removed Home link from main menu, using ISSI logo/text as home link instead
+
+## [0.1.1] - 2025-05-28
+
 ### Added
 
 - Implemented dark mode toggle functionality throughout the application
@@ -17,14 +53,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added darkModeScript for preserving user theme preference
 - Added theme-related translations to all language files (en, fr, es)
 - Added glass effect styling to navigation elements with custom backdrop-saturate values
-- Added new menu items: Services, Products, Government, eLearning, Compliance, About
-- Added contact icon to the navbar for quick access to contact page
-- Implemented comprehensive footer component with glass effect styling
-- Added four-column footer layout (Services, Support, Company, Legal sections)
-- Added social media integration with real ISSI links (Facebook, YouTube, LinkedIn)
-- Added Heroicons throughout footer for consistent iconography
-- Added footer translations to all language files with proper internationalization
-- Added dynamic copyright year display (showing 2025)
 
 ### Changed
 
@@ -32,22 +60,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Enhanced NavbarContent component with theme toggle integration
 - Fixed CSS syntax formatting in globals.css for glass effect classes
 - Changed backdrop-saturate-150 to backdrop-saturate-180 for improved glass appearance
-- Removed Reports link from main menu navigation
-- Removed Discover link from main menu navigation
-- Removed Home link from main menu, using ISSI logo/text as home link instead
-- Centered navigation menu items in desktop view for better visual balance
-- Reduced desktop navigation menu font size to `text-sm` for better multilingual support
-- Reduced desktop navigation menu icon size from `size-5` to `size-4` for improved proportions
 - Updated component styling to support dark mode variants including:
   - Hero component
   - TopNav component
   - Card and CardHeader components
   - Content component
   - Menu and MenuItem components
-- Updated footer company name to display full "International Software Systems, Inc. (ISSI)"
-- Updated footer company description to award-winning text in all three languages
-- Updated FooterWrapper to follow server component pattern like Navbar
-- Optimized footer grid layout (1/4 brand, 3/4 navigation) with reduced gaps for multilingual support
 
 ### Fixed
 
