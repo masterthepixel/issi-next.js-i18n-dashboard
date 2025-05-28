@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FormattedMessage, IntlProvider } from "react-intl";
 import { Locale } from "@/lib/definitions";
@@ -50,14 +51,23 @@ export default function Footer({ locale, messages }: FooterProps) {
       <footer className="w-full glass-effect-strong border-t border-white/30 dark:border-slate-700/40 shadow-md shadow-black/10 dark:shadow-black/30 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">          {/* Top Section with Brand and Description */}
           <div className="py-12 border-b border-white/10 dark:border-slate-700/20">
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-              {/* Brand Section */}              <div className="lg:col-span-1">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">              {/* Brand Section */}              <div className="lg:col-span-1">
                 <Link
                   href={`/${locale}/home`}
-                  className="inline-block text-lg font-bold text-slate-800 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-4 leading-tight"
+                  className="inline-block hover:opacity-80 transition-opacity mb-4"
                 >
-                  International Software Systems, Inc. (ISSI)
+                  <Image
+                    src="/images/issi_logo.png"
+                    alt="ISSI - International Software Systems, Inc."
+                    width={180}
+                    height={60}
+                    className="h-10 w-auto"
+                    priority
+                  />
                 </Link>
+                <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">
+                  International Software Systems, Inc.
+                </h2>
                 <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-xs">
                   <FormattedMessage id="footer.company.description" defaultMessage="Leading technology solutions provider specializing in cybersecurity, compliance, and digital transformation for government and enterprise clients." />
                 </p>

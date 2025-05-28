@@ -70,9 +70,17 @@ export default function NavbarContent({ user, locale, messages }: Props) {
         <nav className="sticky top-0 left-0 z-50 w-full glass-effect-strong transition-all duration-300">
           <div className={`flex items-center justify-between px-4 transition-all duration-300 ${
             isScrolled ? 'h-12' : 'h-16'
-          }`}>
-            <div className="flex items-center flex-1">
-              <Link href={`/${locale}/home`} className="text-xl text-slate-800 dark:text-white font-medium min-w-24 drop-shadow-sm tracking-wide hover:text-blue-600 dark:hover:text-blue-400 transition-colors">ISSI</Link>
+          }`}>            <div className="flex items-center flex-1">
+              <Link href={`/${locale}/home`} className="flex items-center hover:opacity-80 transition-opacity">
+                <Image
+                  src="/images/issi_logo.png"
+                  alt="ISSI Logo"
+                  width={120}
+                  height={40}
+                  className="h-8 w-auto"
+                  priority
+                />
+              </Link>
 
               {/* Top Navigation for Desktop */}
               <TopNav locale={locale} />

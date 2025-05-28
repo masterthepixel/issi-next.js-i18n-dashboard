@@ -9,6 +9,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Transformed license page into comprehensive Terms of Use page with professional legal content
+- Implemented advanced Table of Contents component with desktop sidebar and mobile overlay variants
+- Added intersection observer functionality to track active sections in Terms of Use
+- Created comprehensive internationalization for Terms of Use content (100+ translation keys per language)
+- Added smooth scrolling navigation between Terms sections
+- Added ESC key support and click-outside functionality for mobile TOC overlay
+- Integrated ISSI company logo in navbar and footer branding
+- Added useIntersectionObserver custom hook for tracking visible sections
+- Created LicenseContentWrapper for client-side intersection observer functionality
+- Created TermsContent component with comprehensive legal sections structure
+
+### Changed
+
+- Updated license page to display comprehensive Terms of Use while preserving profile-style header
+- Replaced text "ISSI" with actual logo image in navbar branding
+- Enhanced footer to include both ISSI logo and full company name "International Software Systems, Inc."
+- Fixed background grid pattern bleeding issue by adjusting fade start position to 400px
+- Updated grid background z-index to -1 for proper content layering
+- Improved visual hierarchy in footer with logo, company name, and description
+
+### Fixed
+
+- Resolved background grid pattern visibility issues in profile header areas
+- Fixed grid background fade positioning to prevent interference with page headers
+- Corrected z-index layering to ensure content appears properly above background patterns
+
+## [0.4.0] - 2025-05-28
+
+### Added
+
 - Implemented beautiful grid background pattern for the entire application
 - Added `cn` utility function in `src/lib/utils.ts` for class name concatenation using clsx
 - Created grid background CSS classes with light and dark mode variants
