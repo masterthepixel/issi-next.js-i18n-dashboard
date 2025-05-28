@@ -53,22 +53,18 @@ export default function NavbarContent({ user, locale, messages }: Props) {
   const handleLangSwitcherMenuClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setLangSwitcherMenuOpen(!langSwitcherMenuOpen);
   };
-
   return (
     <IntlProvider locale={locale} messages={messages}>
-      <ThemeProvider>
-        <nav className="sticky top-0 left-0 z-50 w-full bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shadow-sm">
-          <div className="h-16 flex items-center justify-between px-4">
-            <div className="flex items-center">
-              <div className="text-xl text-slate-800 dark:text-slate-200 font-medium mr-4">ISSI</div>
+      <ThemeProvider>        <nav className="sticky top-0 left-0 z-50 w-full glass-effect-strong">
+          <div className="h-16 flex items-center justify-between px-4">            <div className="flex items-center flex-1">
+              <Link href={`/${locale}/home`} className="text-xl text-slate-800 dark:text-white font-medium min-w-24 drop-shadow-sm tracking-wide hover:text-blue-600 dark:hover:text-blue-400 transition-colors">ISSI</Link>
 
               {/* Top Navigation for Desktop */}
               <TopNav locale={locale} />
-
               <div className="relative ml-1 lg:hidden">
                 <button
                   type="button"
-                  className="rounded-full p-1 text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-600"
+                  className="rounded-full p-1 text-slate-500 hover:text-slate-600 dark:text-slate-300 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-slate-600/50 transition-all"
                   id="app-menu-button"
                   aria-haspopup="true"
                   aria-expanded={appMenuOpen}
@@ -83,29 +79,56 @@ export default function NavbarContent({ user, locale, messages }: Props) {
                     className="size-6"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                  </svg>
-                </button>
-
-                {appMenuOpen && (
+                  </svg>                </button>                {appMenuOpen && (
                   <Menu ref={appMenuRef} aria-labelledby="app-menu-button" align="left">
-                    <MenuItem href={`/${locale}/home`}>
-                      <FormattedMessage id="common.navigation.home" />
+                    <MenuItem href={`/${locale}/services`}>
+                      <FormattedMessage id="common.navigation.services" />
                     </MenuItem>
-                    <MenuItem href={`/${locale}/reports`}>
-                      <FormattedMessage id="common.navigation.reports" />
+                    <MenuItem href={`/${locale}/products`}>
+                      <FormattedMessage id="common.navigation.products" />
                     </MenuItem>
-                    <MenuItem href={`/${locale}/discover`}>
-                      <FormattedMessage id="common.navigation.discover" />
+                    <MenuItem href={`/${locale}/government`}>
+                      <FormattedMessage id="common.navigation.government" />
+                    </MenuItem>
+                    <MenuItem href={`/${locale}/eLearning`}>
+                      <FormattedMessage id="common.navigation.eLearning" />
+                    </MenuItem>
+                    <MenuItem href={`/${locale}/compliance`}>
+                      <FormattedMessage id="common.navigation.compliance" />
+                    </MenuItem>                    <MenuItem href={`/${locale}/about`}>
+                      <FormattedMessage id="common.navigation.about" />
                     </MenuItem>
                   </Menu>
                 )}
               </div>
             </div>            <div className="flex items-center mx-2">
-              {/* Language Switcher - First */}
+              {/* Contact Icon - First */}
               <div className="relative mx-1">
-                <button
+                <Link
+                  href={`/${locale}/contact`}
+                  className="rounded-full p-1 text-slate-500 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-slate-600/50 transition-all flex items-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+                    />
+                  </svg>
+                </Link>
+              </div>
+
+              {/* Language Switcher - Second */}
+              <div className="relative mx-1"><button
                   type="button"
-                  className="rounded-full p-1 text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-600"
+                  className="rounded-full p-1 text-slate-500 hover:text-slate-600 dark:text-slate-300 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-slate-600/50 transition-all"
                   id="lang-switcher-menu-button"
                   aria-haspopup="true"
                   aria-expanded={langSwitcherMenuOpen}
@@ -165,13 +188,12 @@ interface MenuProps {
   [x: string]: any;
 }
 
-const Menu = forwardRef<HTMLDivElement, MenuProps>(function Menu({ align = "right", children, ...rest }, ref) {
-  return (
+const Menu = forwardRef<HTMLDivElement, MenuProps>(function Menu({ align = "right", children, ...rest }, ref) {  return (
     <div
       ref={ref}
       role="menu"
       className={clsx(
-        "absolute z-10 w-48 mt-2 origin-top-right rounded-md bg-white dark:bg-slate-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none",
+        "absolute z-10 w-48 mt-2 origin-top-right rounded-md glass-effect py-1 focus:outline-none animate-fade-in transform transition-all duration-200 ease-out translate-y-0 opacity-100",
         { "left-0": align === "left", "right-0": align === "right" }
       )}
       aria-orientation="vertical"
@@ -189,15 +211,14 @@ interface MenuItemProps {
   children: React.ReactNode;
 }
 
-function MenuItem({ href, active, children }: MenuItemProps) {
-  return (
+function MenuItem({ href, active, children }: MenuItemProps) {  return (
     <Link
       href={href}
       tabIndex={-1}
       role="menuitem"
       className={clsx(
-        "block px-4 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700",
-        { "bg-slate-200 dark:bg-slate-700": active }
+        "block px-4 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-white/50 dark:hover:bg-slate-700/50 transition-colors",
+        { "bg-white/60 dark:bg-slate-700/60 font-medium": active }
       )}
     >
       {children}

@@ -15,10 +15,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added smooth theme transitions for better user experience
 - Added darkModeScript for preserving user theme preference
 - Added theme-related translations to all language files (en, fr, es)
+- Added glass effect styling to navigation elements with custom backdrop-saturate values
+- Added new menu items: Services, Products, Government, eLearning, Compliance, About
+- Added contact icon to the navbar for quick access to contact page
 
 ### Changed
 - Updated Tailwind configuration to use 'class' for dark mode strategy
 - Enhanced NavbarContent component with theme toggle integration
+- Fixed CSS syntax formatting in globals.css for glass effect classes
+- Changed backdrop-saturate-150 to backdrop-saturate-180 for improved glass appearance
+- Removed Reports link from main menu navigation
+- Removed Discover link from main menu navigation
+- Removed Home link from main menu, using ISSI logo/text as home link instead
+- Centered navigation menu items in desktop view for better visual balance
+- Reduced desktop navigation menu font size to `text-sm` for better multilingual support
+- Reduced desktop navigation menu icon size from `size-5` to `size-4` for improved proportions
 - Updated component styling to support dark mode variants including:
   - Hero component
   - TopNav component

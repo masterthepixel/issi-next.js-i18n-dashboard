@@ -7,13 +7,12 @@ import { useTheme } from '@/contexts/ThemeContext'
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useTheme()
   
-  return (
-    <button
+  return (    <button
       type="button"
       onClick={toggleTheme}
-      className="rounded-full p-1 text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-600"
+      className="rounded-full p-1 text-slate-500 hover:text-slate-600 dark:text-slate-300 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-slate-600/50 transition-all"
       aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-    >      <span className="sr-only">
+    ><span className="sr-only">
         <FormattedMessage id="common.theme-switcher" />
       </span>
       {theme === 'dark' ? (
