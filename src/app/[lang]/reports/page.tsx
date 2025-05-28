@@ -34,7 +34,7 @@ async function PageContent({ locale }: PageContentProps) {
     <div>
       <div>
         {isReportListEmpty && (
-          <p className="text-base text-gray-700 italic">{intl.formatMessage({ id: "page.reports.no-data" })}</p>
+          <p className="text-base text-slate-700 italic">{intl.formatMessage({ id: "page.reports.no-data" })}</p>
         )}
       </div>
     </div>

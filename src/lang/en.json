@@ -1,8 +1,10 @@
-{
-  "common.language-switcher": "{locale, select, en {English} fr {Français} es {Español} other {Unknown}}",
+{  "common.language-switcher": "{locale, select, en {English} fr {Français} es {Español} other {Unknown}}",
   "common.navigation.discover": "Discover",
   "common.navigation.home": "Home",
   "common.navigation.reports": "Reports",
+  "common.theme-switcher": "Toggle dark mode",
+  "common.theme-switcher.dark": "Switch to light mode",
+  "common.theme-switcher.light": "Switch to dark mode",
   "common.user-menu.settings": "Settings",
   "common.user-menu.sign-out": "Sign out",
   "common.user-menu.your-profile": "Your profile",

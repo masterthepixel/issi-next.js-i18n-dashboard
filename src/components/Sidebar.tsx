@@ -7,11 +7,10 @@ interface Props {
   locale: Locale;
 }
 
-export default async function Sidebar({ locale }: Props) {
-  const intl = await getIntl(locale);  return (
-    <div className="fixed top-0 left-0 z-50 w-60 h-screen bg-gray-800 hidden">
+export default async function Sidebar({ locale }: Props) {  const intl = await getIntl(locale);  return (
+    <div className="fixed top-0 left-0 z-50 w-60 h-screen bg-slate-800 dark:bg-slate-900 hidden">
       <div className="flex items-center justify-start h-16 w-[calc(100%-2rem)] mx-4">
-        <div className="text-xl text-gray-200">Starter App</div>
+        <div className="text-xl text-slate-200">Starter App</div>
       </div>
 
       <hr className="h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25" />

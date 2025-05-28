@@ -11,13 +11,12 @@ interface Props {
 
 export default function TopNav({ locale }: Props) {
   const pathname = usePathname();
-  
-  return (
+    return (
     <div className="hidden lg:flex items-center space-x-8">
       <Link 
         href={`/${locale}/home`}
-        className={`flex items-center text-gray-700 hover:text-blue-600 py-5 border-b-2 ${
-          pathname.includes('/home') ? 'border-blue-500 text-blue-600 font-medium' : 'border-transparent'
+        className={`flex items-center text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 ${
+          pathname.includes('/home') ? 'border-blue-500 text-blue-600 dark:text-blue-400 font-medium' : 'border-transparent'
         }`}
       >
         <svg
@@ -36,10 +35,9 @@ export default function TopNav({ locale }: Props) {
         </svg>
         <FormattedMessage id="common.navigation.home" />
       </Link>
-        <Link 
-        href={`/${locale}/reports`}
-        className={`flex items-center text-gray-700 hover:text-blue-600 py-5 border-b-2 ${
-          pathname.includes('/reports') ? 'border-blue-500 text-blue-600 font-medium' : 'border-transparent'
+        <Link        href={`/${locale}/reports`}
+        className={`flex items-center text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 ${
+          pathname.includes('/reports') ? 'border-blue-500 text-blue-600 dark:text-blue-400 font-medium' : 'border-transparent'
         }`}
       >
         <svg
@@ -59,10 +57,9 @@ export default function TopNav({ locale }: Props) {
         <FormattedMessage id="common.navigation.reports" />
       </Link>
       
-      <Link 
-        href={`/${locale}/discover`}
-        className={`flex items-center text-gray-700 hover:text-blue-600 py-5 border-b-2 ${
-          pathname.includes('/discover') ? 'border-blue-500 text-blue-600 font-medium' : 'border-transparent'
+      <Link        href={`/${locale}/discover`}
+        className={`flex items-center text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 ${
+          pathname.includes('/discover') ? 'border-blue-500 text-blue-600 dark:text-blue-400 font-medium' : 'border-transparent'
         }`}
       >
         <svg

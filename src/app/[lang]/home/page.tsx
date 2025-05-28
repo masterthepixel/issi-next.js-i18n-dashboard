@@ -46,10 +46,10 @@ async function PageContent({ locale }: PageContentProps) {
                 <div key={activity.ts} className="mt-3">
                   <div>{intl.formatMessage({ id: "page.home.activity" }, { action: activity.action })}</div>
                   <div className="flex justify-between items-center">
-                    <div className="text-sm text-gray-700">
+                    <div className="text-sm text-slate-700">
                       {activity.firstName} {activity.lastName}
                     </div>
-                    <div className="text-sm text-gray-700">
+                    <div className="text-sm text-slate-700">
                       {intl.formatDate(new Date(activity.ts), {
                         year: "numeric",
                         month: "short",
@@ -85,7 +85,7 @@ async function PageContent({ locale }: PageContentProps) {
                     <p className="text-base">
                       {teamMember.firstName} {teamMember.lastName}
                     </p>
-                    <p className="text-sm text-gray-500">{teamMember.username}</p>
+                    <p className="text-sm text-slate-500">{teamMember.username}</p>
                   </div>
                 </div>
               ))}

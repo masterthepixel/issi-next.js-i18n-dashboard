@@ -1,8 +1,10 @@
-{
-  "common.language-switcher": "{locale, select, en {English} fr {Français} es {Español} other {Unknown}}",
+{  "common.language-switcher": "{locale, select, en {English} fr {Français} es {Español} other {Unknown}}",
   "common.navigation.discover": "Descubrir",
   "common.navigation.home": "Inicio",
   "common.navigation.reports": "Informes",
+  "common.theme-switcher": "Cambiar a modo oscuro",
+  "common.theme-switcher.dark": "Cambiar a modo claro",
+  "common.theme-switcher.light": "Cambiar a modo oscuro",
   "common.user-menu.settings": "Configuración",
   "common.user-menu.sign-out": "Cerrar sesión",
   "common.user-menu.your-profile": "Tu perfil",

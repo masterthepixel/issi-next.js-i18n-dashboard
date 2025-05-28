@@ -3,5 +3,5 @@ interface Props {
 }
 
 export default function Content({ children }: Props) {
-  return <div className="w-full p-5 lg:p-10">{children}</div>;
+  return <div className="w-full p-5 lg:p-10 text-slate-900 dark:text-slate-100">{children}</div>;
 }

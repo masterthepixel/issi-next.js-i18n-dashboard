@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Content from "@/components/Content";
+import Script from "next/script";
 
 import { getUser } from "@/lib/data";
 import { Locale } from "@/lib/definitions";
@@ -19,11 +20,31 @@ interface Props {
 }
 
 export default async function Root({ params, children }: Props) {
-  const user = await getUser();
-
-  return (
-    <html lang={params.lang}>
-      <body className="relative min-h-screen overflow-y-auto bg-gray-50">
+  const user = await getUser();  return (
+    <html lang={params.lang} className="h-full">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var storageTheme = localStorage.getItem('theme');
+                  var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  
+                  if (storageTheme === 'dark' || (!storageTheme && systemPrefersDark)) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {
+                  console.error('Failed to apply dark mode on load:', e);
+                }
+              })();
+            `
+          }}
+        />
+      </head>
+      <body className="relative min-h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900">
         <Navbar locale={params.lang} user={user} />
         <Content>{children}</Content>
       </body>

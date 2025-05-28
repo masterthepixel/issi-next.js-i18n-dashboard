@@ -7,19 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Fixed
-- Fixed build error by adding missing `@formatjs/intl` dependency
-- Successfully configured production build process with static page generation
-- Fixed IntlProvider error in Hero component with proper component wrapping
-
 ### Added
-- Created and integrated Hero component with multilingual support
-- Added HeroWrapper component to provide IntlProvider context
-- Validated production build with Next.js static site generation
-- Confirmed multilingual route generation for all supported languages
-- Updated package.json with required dependencies
-- Created comprehensive INSTRUCTIONS.md for developer guidance
-- Added detailed INTERNATIONALIZATION.md technical documentation
+- Implemented dark mode toggle functionality throughout the application
+- Added ThemeContext to manage dark/light mode state
+- Added ThemeToggle component with Heroicons for toggling themes
+- Added ThemeToggleWrapper to provide proper IntlProvider context
+- Added smooth theme transitions for better user experience
+- Added darkModeScript for preserving user theme preference
+- Added theme-related translations to all language files (en, fr, es)
+
+### Changed
+- Updated Tailwind configuration to use 'class' for dark mode strategy
+- Enhanced NavbarContent component with theme toggle integration
+- Updated component styling to support dark mode variants including:
+  - Hero component
+  - TopNav component
+  - Card and CardHeader components
+  - Content component
+  - Menu and MenuItem components
+
+### Fixed
 
 ## [0.1.0] - 2025-05-27
 

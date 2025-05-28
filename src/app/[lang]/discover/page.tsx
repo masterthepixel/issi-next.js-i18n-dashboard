@@ -42,7 +42,7 @@ async function PageContent({ locale }: PageContentProps) {
           <CardHeader>{intl.formatMessage({ id: "page.discover.deploy-on-vercel.title" })}</CardHeader>
 
           <CardBody>
-            <p className="text-base text-gray-700">
+            <p className="text-base text-slate-700">
               {intl.formatMessage({ id: "page.discover.deploy-on-vercel.subtitle" })}
             </p>
 
