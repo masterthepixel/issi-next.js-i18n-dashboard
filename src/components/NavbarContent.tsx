@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback, useRef, forwardRef } from "react";
+import React, { useState, useCallback, useRef, forwardRef, useEffect } from "react";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import clsx from "clsx";
 
@@ -30,6 +30,7 @@ export default function NavbarContent({ user, locale, messages }: Props) {
   const [appMenuOpen, setAppMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [langSwitcherMenuOpen, setLangSwitcherMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useOutsideClick(appMenuRef, () => {
     setAppMenuOpen(false);
@@ -43,6 +44,16 @@ export default function NavbarContent({ user, locale, messages }: Props) {
     setLangSwitcherMenuOpen(false);
   });
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleAppMenuClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setAppMenuOpen(!appMenuOpen);
   };
@@ -55,8 +66,12 @@ export default function NavbarContent({ user, locale, messages }: Props) {
   };
   return (
     <IntlProvider locale={locale} messages={messages}>
-      <ThemeProvider>        <nav className="sticky top-0 left-0 z-50 w-full glass-effect-strong">
-          <div className="h-16 flex items-center justify-between px-4">            <div className="flex items-center flex-1">
+      <ThemeProvider>
+        <nav className="sticky top-0 left-0 z-50 w-full glass-effect-strong transition-all duration-300">
+          <div className={`flex items-center justify-between px-4 transition-all duration-300 ${
+            isScrolled ? 'h-12' : 'h-16'
+          }`}>
+            <div className="flex items-center flex-1">
               <Link href={`/${locale}/home`} className="text-xl text-slate-800 dark:text-white font-medium min-w-24 drop-shadow-sm tracking-wide hover:text-blue-600 dark:hover:text-blue-400 transition-colors">ISSI</Link>
 
               {/* Top Navigation for Desktop */}

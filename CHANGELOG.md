@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Implemented beautiful grid background pattern for the entire application
+- Added `cn` utility function in `src/lib/utils.ts` for class name concatenation using clsx
+- Created grid background CSS classes with light and dark mode variants
+- Added radial gradient fade effect for enhanced visual appeal
+- Implemented scroll-responsive navbar that reduces height from 64px to 48px when scrolling down
+- Added smooth transitions for navbar height changes with 300ms duration
+
+### Changed
+
+- Replaced solid background color (`bg-slate-50`) with animated grid pattern background
+- Enhanced visual design with subtle grid lines and center fade effect
+- Updated layout to use new grid background class
+- Replaced emoji social media icons with Lucide React icons in Footer component
+- Reduced social media icon size from h-5 w-5 to h-4 w-4 in Footer for better visual balance
+- Reduced navbar icon sizes from size-6 to size-5 for contact and language switcher icons
+- Updated Footer social links to use Facebook, Youtube, and Linkedin components from lucide-react package
+
+### Dependencies
+
+- Added lucide-react package for consistent icon design
+
 ## [0.3.0] - 2025-05-28
 
 ### Added
