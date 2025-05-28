@@ -44,7 +44,7 @@ export default async function Root({ params, children }: Props) {
             `
           }}
         />
-      </head>      <body className="relative min-h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 flex flex-col">
+      </head>      <body className="relative min-h-screen overflow-y-auto grid-background-with-fade flex flex-col">
         <Navbar locale={params.lang} user={user} />
         <Content>{children}</Content>
         <FooterWrapper locale={params.lang} />
