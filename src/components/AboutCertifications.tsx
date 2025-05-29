@@ -1,0 +1,67 @@
+'use client';
+
+import React from "react";
+import { FormattedMessage } from "react-intl";
+import Image from "next/image";
+
+const certifications = [
+  {
+    name: "ISO 27001",
+    src: "/images/certification/1.png",
+    width: 120,
+    height: 48,
+  },
+  {
+    name: "CMMI Level 3",
+    src: "/images/certification/2.png",
+    width: 120,
+    height: 48,
+  },
+  {
+    name: "ISO 9001",
+    src: "/images/certification/3.png",
+    width: 120,
+    height: 48,
+  },
+  {
+    name: "MDOT MBE/DBE/SBE Certified",
+    src: "/images/certification/4.jpg",
+    width: 120,
+    height: 48,
+  },
+];
+
+export default function AboutCertifications() {
+  return (
+    <div className="bg-white dark:bg-slate-900 py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="grid grid-cols-1 items-center gap-x-8 gap-y-16 lg:grid-cols-2">
+          <div className="mx-auto w-full max-w-xl lg:mx-0">
+            <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-slate-100 sm:text-5xl">
+              <FormattedMessage id="about.certifications.title" defaultMessage="Certified Excellence" />
+            </h2>
+            <p className="mt-6 text-lg/8 text-slate-600 dark:text-slate-300">
+              <FormattedMessage 
+                id="about.certifications.description" 
+                defaultMessage="ISSI maintains the highest standards of quality, security, and process excellence through our comprehensive certifications. These certifications demonstrate our commitment to delivering reliable, secure, and compliant solutions that meet the most stringent industry requirements." 
+              />
+            </p>
+          </div>
+          <div className="mx-auto grid w-full max-w-xl grid-cols-2 items-center gap-y-12 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:pl-8">
+            {certifications.map((cert, index) => (
+              <div key={index} className="flex justify-center lg:justify-start">
+                <Image
+                  alt={cert.name}
+                  src={cert.src}
+                  width={cert.width}
+                  height={cert.height}
+                  className="max-h-12 w-full object-contain object-center lg:object-left filter dark:brightness-0 dark:invert"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

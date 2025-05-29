@@ -257,7 +257,10 @@
   "about.stats.experts.name": "Tech Experts",
   "about.stats.experts.value": "130+",
   "about.stats.partners.name": "Trusted Partners",
-  "about.stats.partners.value": "30+",
-  "about.stats.projects.name": "Successful Projects",
-  "about.stats.projects.value": "50+"
+  "about.stats.partners.value": "30+",  "about.stats.projects.name": "Successful Projects",  "about.stats.projects.value": "50+",
+  "about.certifications.title": "Certified Excellence",
+  "about.certifications.description": "ISSI maintains the highest standards of quality, security, and process excellence through our comprehensive certifications. These certifications demonstrate our commitment to delivering reliable, secure, and compliant solutions that meet the most stringent industry requirements.",
+  "about.awards.title": "Our Awards",  "about.awards.description": "ISSI has received a number of awards from trade and government agencies. We adopt new technologies and methods so that we can continue to grow and earn trust and recognition of our clients",
+  "about.partnerNetwork.title": "Trusted by Industry Leaders",
+  "about.partnerNetwork.description": "ISSI collaborates with leading technology partners and industry organizations to deliver comprehensive solutions. Our strategic partnerships enable us to provide cutting-edge technologies, expanded capabilities, and enhanced value to our clients across government and enterprise sectors."
 }

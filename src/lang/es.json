@@ -258,7 +258,11 @@
   "about.stats.experts.name": "Expertos técnicos",
   "about.stats.experts.value": "130+",
   "about.stats.partners.name": "Socios de confianza",
-  "about.stats.partners.value": "30+",
-  "about.stats.projects.name": "Proyectos exitosos",
-  "about.stats.projects.value": "50+"
+  "about.stats.partners.value": "30+",  "about.stats.projects.name": "Proyectos exitosos",
+  "about.stats.projects.value": "50+",
+  "about.certifications.title": "Excelencia certificada",
+  "about.certifications.description": "ISSI mantiene los más altos estándares de calidad, seguridad y excelencia de procesos a través de nuestras certificaciones integrales. Estas certificaciones demuestran nuestro compromiso de entregar soluciones confiables, seguras y compatibles que cumplen con los requisitos industriales más estrictos.",
+  "about.awards.title": "Nuestros premios",  "about.awards.description": "ISSI ha recibido numerosos premios de agencias comerciales y gubernamentales. Adoptamos nuevas tecnologías y métodos para poder seguir creciendo y ganarnos la confianza y el reconocimiento de nuestros clientes",
+  "about.partnerNetwork.title": "Confiado por líderes de la industria",
+  "about.partnerNetwork.description": "ISSI colabora con socios tecnológicos líderes y organizaciones de la industria para entregar soluciones integrales. Nuestras asociaciones estratégicas nos permiten proporcionar tecnologías de vanguardia, capacidades ampliadas y valor mejorado a nuestros clientes en los sectores gubernamentales y empresariales."
 }

@@ -6,6 +6,9 @@ import Spinner from "@/components/Spinner";
 import TeamGridWrapper from "@/components/TeamGridWrapper";
 import AboutHeroWrapper from "@/components/AboutHeroWrapper";
 import AboutStatsWrapper from "@/components/AboutStatsWrapper";
+import AboutCertificationsWrapper from "@/components/AboutCertificationsWrapper";
+import AboutAwardsWrapper from "@/components/AboutAwardsWrapper";
+import AboutPartnerNetworkWrapper from "@/components/AboutPartnerNetworkWrapper";
 
 import { getIntl } from "@/lib/intl";
 import { Locale } from "@/lib/definitions";
@@ -107,10 +110,15 @@ async function PageContent({ locale }: PageContentProps) {
           <p className="text-lg text-slate-600 dark:text-slate-300">
             {profile.subtitle}
           </p>
-        </div>      </div>
-      <AboutHeroWrapper locale={locale} messages={messages} />
+        </div>      </div>      <AboutHeroWrapper locale={locale} messages={messages} />
       {/* Stats section */}
       <AboutStatsWrapper locale={locale} messages={messages} />
+      {/* Certifications section */}
+      <AboutCertificationsWrapper locale={locale} messages={messages} />
+      {/* Awards section */}
+      <AboutAwardsWrapper locale={locale} messages={messages} />
+      {/* Partner Network section */}
+      <AboutPartnerNetworkWrapper locale={locale} messages={messages} />
       {/* Team section */}
       <TeamGridWrapper locale={locale} messages={messages} />
     </div>

@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **AboutPartnerNetwork Component**: Created new partner network section showcasing industry partnerships with two-column responsive layout
+- **Partner Network Images**: Added original color partner network images (pn1.jpg, pn2.jpg, pn3_1.jpg, pn4_1.jpg) without filters
+- **Complete Internationalization**: Added partner network translation keys for English, French, and Spanish languages
+- **AboutPartnerNetworkWrapper**: Created IntlProvider wrapper component for proper i18n context
+- **Awards Translation Completion**: Added missing French and Spanish translation keys for awards section
 - Implemented comprehensive Privacy Policy page with the same layout and functionality as the License - Terms of Use page, including profile-style header and advanced Table of Contents.
 - Added intersection observer functionality and smooth scrolling navigation for Privacy Policy sections.
 - Created full internationalization for Privacy Policy content (all translation keys in English, French, and Spanish).
@@ -26,6 +31,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **AboutPartnerNetwork Integration**: Added partner network section to About page between awards and team sections
+- **Image Display**: Removed all color filters from partner network images to display in original colors
+- **UI Improvements**: Removed action buttons from partner network component for cleaner layout
+- **Font Sizing**: Updated AboutAwards component to use consistent typography matching design system
 - Updated license page to display comprehensive Terms of Use while preserving profile-style header
 - Replaced text "ISSI" with actual logo image in navbar branding
 - Enhanced footer to include both ISSI logo and full company name "International Software Systems, Inc."
