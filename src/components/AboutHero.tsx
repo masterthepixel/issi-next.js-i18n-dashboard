@@ -24,21 +24,20 @@ const features = [
 ];
 
 export default function AboutHero() {  return (
-    <div className="overflow-hidden py-24 sm:py-32">
+    <section className="overflow-hidden py-24 sm:py-32" aria-labelledby="about-hero-heading">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
           <div className="lg:pt-4 lg:pr-8">
             <div className="lg:max-w-lg">
-              <h2 className="text-base/7 font-semibold text-indigo-600 dark:text-indigo-400">
+              <p className="text-base/7 font-semibold text-indigo-600 dark:text-indigo-400">
                 <FormattedMessage id="about.hero.title" defaultMessage="Welcome to ISSI" />
-              </h2>
-              <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-slate-100 sm:text-5xl">
-                <FormattedMessage id="page.about.title" defaultMessage="About Us" />
               </p>
+              <h1 id="about-hero-heading" className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-slate-100 sm:text-5xl">
+                <FormattedMessage id="about.hero.h1" defaultMessage="About International Software Systems, Inc." />
+              </h1>
               <p className="mt-6 text-lg/8 text-slate-600 dark:text-slate-300">
-                <FormattedMessage id="page.about.description" defaultMessage="Learn more about ISSI and our commitment to delivering exceptional software solutions." />
-              </p>
-              <dl className="mt-10 max-w-xl space-y-8 text-base/7 text-slate-600 dark:text-slate-300 lg:max-w-none">
+                <FormattedMessage id="about.hero.subtitle" defaultMessage="Award-Winning Software Development Since 1995" />
+              </p>              <dl className="mt-10 max-w-xl space-y-8 text-base/7 text-slate-600 dark:text-slate-300 lg:max-w-none">
                 {features.map((feature, idx) => (
                   <div key={idx}>
                     <dt className="inline font-semibold text-slate-900 dark:text-slate-100 relative pl-9">
@@ -50,15 +49,20 @@ export default function AboutHero() {  return (
                 ))}
               </dl>
             </div>
-          </div>          <img
-            alt="ISSI Company Overview"
-            src="https://tailwindcss.com/plus-assets/img/component-images/dark-project-app-screenshot.png"
-            width={2432}
-            height={1442}
-            className="w-full max-w-lg h-auto max-h-96 object-cover rounded-xl shadow-xl ring-1 ring-slate-400/10 dark:ring-slate-700/40 lg:max-w-xl lg:max-h-[500px]"
-          />
+          </div>          
+          <div className="flex items-center justify-center lg:justify-end">
+            <Image
+              alt="ISSI headquarters in Greenbelt, Maryland showcasing our modern office environment and commitment to technology excellence since 1995"
+              src="https://tailwindcss.com/plus-assets/img/component-images/dark-project-app-screenshot.png"
+              width={2432}
+              height={1442}
+              priority
+              className="w-full max-w-lg h-auto max-h-96 object-cover rounded-xl shadow-xl ring-1 ring-slate-400/10 dark:ring-slate-700/40 lg:max-w-xl lg:max-h-[500px]"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -262,5 +262,14 @@
   "about.certifications.description": "ISSI maintains the highest standards of quality, security, and process excellence through our comprehensive certifications. These certifications demonstrate our commitment to delivering reliable, secure, and compliant solutions that meet the most stringent industry requirements.",
   "about.awards.title": "Our Awards",  "about.awards.description": "ISSI has received a number of awards from trade and government agencies. We adopt new technologies and methods so that we can continue to grow and earn trust and recognition of our clients",
   "about.partnerNetwork.title": "Trusted by Industry Leaders",
-  "about.partnerNetwork.description": "ISSI collaborates with leading technology partners and industry organizations to deliver comprehensive solutions. Our strategic partnerships enable us to provide cutting-edge technologies, expanded capabilities, and enhanced value to our clients across government and enterprise sectors."
+  "about.partnerNetwork.description": "ISSI collaborates with leading technology partners and industry organizations to deliver comprehensive solutions. Our strategic partnerships enable us to provide cutting-edge technologies, expanded capabilities, and enhanced value to our clients across government and enterprise sectors.",
+  "about.meta.title": "About Us - ISSI | Award-Winning Software Development Since 1995",
+  "about.meta.description": "Learn about International Software Systems, Inc. (ISSI) - 30+ years of award-winning software development and IT support services in Greenbelt, MD since 1995.",
+  "about.meta.keywords": "ISSI, software development, IT support, ISO certified, CMMI Level 3, Maryland, Greenbelt, government contractor",
+  "about.hero.h1": "About International Software Systems, Inc.",
+  "about.hero.subtitle": "Award-Winning Software Development Since 1995",
+  "about.stats.section.title": "Company Statistics and Achievements",
+  "about.certifications.section.title": "Our Professional Certifications",
+  "about.awards.section.title": "Industry Awards and Recognition",
+  "about.partnerNetwork.section.title": "Strategic Technology Partnerships"
 }

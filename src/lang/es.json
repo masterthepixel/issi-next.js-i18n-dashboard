@@ -262,7 +262,15 @@
   "about.stats.projects.value": "50+",
   "about.certifications.title": "Excelencia certificada",
   "about.certifications.description": "ISSI mantiene los más altos estándares de calidad, seguridad y excelencia de procesos a través de nuestras certificaciones integrales. Estas certificaciones demuestran nuestro compromiso de entregar soluciones confiables, seguras y compatibles que cumplen con los requisitos industriales más estrictos.",
-  "about.awards.title": "Nuestros premios",  "about.awards.description": "ISSI ha recibido numerosos premios de agencias comerciales y gubernamentales. Adoptamos nuevas tecnologías y métodos para poder seguir creciendo y ganarnos la confianza y el reconocimiento de nuestros clientes",
-  "about.partnerNetwork.title": "Confiado por líderes de la industria",
-  "about.partnerNetwork.description": "ISSI colabora con socios tecnológicos líderes y organizaciones de la industria para entregar soluciones integrales. Nuestras asociaciones estratégicas nos permiten proporcionar tecnologías de vanguardia, capacidades ampliadas y valor mejorado a nuestros clientes en los sectores gubernamentales y empresariales."
+  "about.awards.title": "Nuestros premios",  "about.awards.description": "ISSI ha recibido numerosos premios de agencias comerciales y gubernamentales. Adoptamos nuevas tecnologías y métodos para poder seguir creciendo y ganarnos la confianza y el reconocimiento de nuestros clientes",  "about.partnerNetwork.title": "Confiado por líderes de la industria",
+  "about.partnerNetwork.description": "ISSI colabora con socios tecnológicos líderes y organizaciones de la industria para entregar soluciones integrales. Nuestras asociaciones estratégicas nos permiten proporcionar tecnologías de vanguardia, capacidades ampliadas y valor mejorado a nuestros clientes en los sectores gubernamentales y empresariales.",
+  "about.meta.title": "Sobre nosotros - ISSI | Desarrollo de software galardonado desde 1995",
+  "about.meta.description": "Conozca International Software Systems, Inc. (ISSI) - Más de 30 años de desarrollo de software galardonado y servicios de soporte de TI en Greenbelt, MD desde 1995.",
+  "about.meta.keywords": "ISSI, desarrollo de software, soporte de TI, certificado ISO, CMMI Nivel 3, Maryland, Greenbelt, contratista gubernamental",
+  "about.hero.h1": "Acerca de International Software Systems, Inc.",
+  "about.hero.subtitle": "Desarrollo de software galardonado desde 1995",
+  "about.stats.section.title": "Estadísticas y logros de la empresa",
+  "about.certifications.section.title": "Nuestras certificaciones profesionales",
+  "about.awards.section.title": "Premios y reconocimientos de la industria",
+  "about.partnerNetwork.section.title": "Asociaciones tecnológicas estratégicas"
 }

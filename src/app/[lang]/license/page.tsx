@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/20/solid';
+import Image from "next/image";
 
 import Card from "@/components/Card";
 import CardHeader from "@/components/CardHeader";
@@ -48,14 +49,26 @@ async function PageContent({ locale }: PageContentProps) {
   return (
     <div className="relative">
       {/* Profile Header */}
-      <div className="relative z-10 bg-white dark:bg-black pb-8">
-        <div>
-          <img alt="" src={profile.backgroundImage} className="h-32 w-full object-cover lg:h-48" />
+      <div className="relative z-10 bg-white dark:bg-black pb-8">        <div>
+          <Image 
+            alt="" 
+            src={profile.backgroundImage} 
+            width={1950}
+            height={400}
+            className="h-32 w-full object-cover lg:h-48"
+            priority
+          />
         </div>
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
             <div className="flex">
-              <img alt="" src={profile.avatar} className="size-24 rounded-full ring-4 ring-white sm:size-32" />
+              <Image 
+                alt="" 
+                src={profile.avatar} 
+                width={128}
+                height={128}
+                className="size-24 rounded-full ring-4 ring-white sm:size-32"
+              />
             </div>
             <div className="mt-6 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
               <div className="mt-6 min-w-0 flex-1 sm:hidden md:block">
