@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run validate:json && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "validate:json": "node scripts/validate-json.js",
+    "pre-commit": "npm run lint && npm run validate:json",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@formatjs/intl": "^3.1.6",

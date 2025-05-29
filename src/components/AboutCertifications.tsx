@@ -38,7 +38,7 @@ const certifications = [
 export default function AboutCertifications() {
   return (
     <section 
-      className="bg-white dark:bg-slate-900 py-24 sm:py-32"
+      className="py-24 sm:py-32"
       aria-labelledby="certifications-heading"
       role="region"
       aria-label="Professional certifications and compliance standards"

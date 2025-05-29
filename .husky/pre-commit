@@ -1,0 +1,12 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run ESLint
+echo "🔍 Running ESLint..."
+npm run lint
+
+# Run JSON validation
+echo "🔍 Running JSON validation..."
+npm run validate:json
+
+echo "✅ Pre-commit checks passed!"

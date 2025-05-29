@@ -28,7 +28,7 @@ const awards = [
 export default function AboutAwards() {
   return (
     <section 
-      className="bg-white dark:bg-slate-900 py-24 sm:py-32"
+      className="py-24 sm:py-32"
       aria-labelledby="awards-heading"
       role="region"
       aria-label="Industry awards and recognition"
