@@ -1,6 +1,5 @@
 # Development files
 .husky/
-scripts/validate-json.js
 
 # Documentation files
 JSON_VALIDATION_GUIDE.md
