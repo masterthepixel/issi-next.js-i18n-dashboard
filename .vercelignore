@@ -1,0 +1,27 @@
+# Development files
+.husky/
+scripts/validate-json.js
+
+# Documentation files
+JSON_VALIDATION_GUIDE.md
+COMPONENT_INTEGRATION_GUIDE.md
+COLOR_PALETTE_INSTRUCTIONS.md
+INSTRUCTIONS.md
+INTERNATIONALIZATION.md
+*.md
+
+# Git files
+.git/
+.gitignore
+
+# VS Code settings
+.vscode/
+
+# Node modules cache
+node_modules/
+
+# Local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

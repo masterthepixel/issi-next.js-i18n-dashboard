@@ -9,7 +9,7 @@
     "lint": "next lint",
     "validate:json": "node scripts/validate-json.js",
     "pre-commit": "npm run lint && npm run validate:json",
-    "prepare": "husky install"
+    "prepare": "node -e \"if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL && !process.env.CI) { try { require('husky').install() } catch (e) { console.log('Husky setup skipped in production/CI environment') } }\""
   },
   "dependencies": {
     "@formatjs/intl": "^3.1.6",
@@ -33,6 +33,7 @@
     "@types/react-dom": "^18.3.0",
     "eslint": "^8.57.1",
     "eslint-config-next": "^14.2.15",
+    "husky": "^9.1.7",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
     "typescript": "^5.6.2"
