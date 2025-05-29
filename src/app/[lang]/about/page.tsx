@@ -4,6 +4,8 @@ import Image from "next/image";
 
 import Spinner from "@/components/Spinner";
 import TeamGridWrapper from "@/components/TeamGridWrapper";
+import AboutHeroWrapper from "@/components/AboutHeroWrapper";
+import AboutStatsWrapper from "@/components/AboutStatsWrapper";
 
 import { getIntl } from "@/lib/intl";
 import { Locale } from "@/lib/definitions";
@@ -105,8 +107,10 @@ async function PageContent({ locale }: PageContentProps) {
           <p className="text-lg text-slate-600 dark:text-slate-300">
             {profile.subtitle}
           </p>
-        </div>
-      </div>
+        </div>      </div>
+      <AboutHeroWrapper locale={locale} messages={messages} />
+      {/* Stats section */}
+      <AboutStatsWrapper locale={locale} messages={messages} />
       {/* Team section */}
       <TeamGridWrapper locale={locale} messages={messages} />
     </div>

@@ -18,10 +18,10 @@ export default function TeamGrid() {
 		<section className="py-16 sm:py-24">
 			<div className="mx-auto max-w-7xl px-2 lg:px-4">
 				<div className="mx-auto max-w-2xl lg:mx-0">
-					<h2 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
+					<h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-white sm:text-5xl">
 						<FormattedMessage id="team.section.title" />
 					</h2>
-					<p className="mt-6 text-lg/8 text-gray-600">
+					<p className="mt-6 text-lg/8 text-slate-700 dark:text-slate-50">
 						<FormattedMessage id="team.section.subtitle" />
 					</p>
 				</div>
@@ -44,7 +44,7 @@ export default function TeamGrid() {
 										className="pl-4 size-16 rounded-full object-cover"
 									/>
 									<div>
-										<h3 className="text-base/7 font-semibold tracking-tight text-gray-900">
+										<h3 className="text-base/7 font-semibold tracking-tight text-slate-900 dark:text-white">
 											<FormattedMessage id={nameId} />
 										</h3>
 										<p className="text-sm/6 font-semibold text-indigo-600 -mt-2">
@@ -52,7 +52,7 @@ export default function TeamGrid() {
 										</p>
 									</div>
 								</div>
-								<div className="mt-4 bg-gray-50 rounded-xl p-4 text-gray-700 text-sm text-justify">
+								<div className="mt-4 bg-slate-50 dark:bg-slate-800 rounded-xl p-4 text-slate-700 dark:text-slate-200 text-sm text-justify">
 									<FormattedMessage id={bioId} />
 								</div>
 							</li>

@@ -243,5 +243,22 @@
   "team.member.7.bio": "Sajan Ahuja es la gerente de desarrollo de negocios en International Software Systems, Inc., donde desempeña un papel clave en el impulso de ventas y la expansión de la cartera de clientes mediante iniciativas estratégicas. Con formación en estudios jurídicos, Sajan aporta experiencia en investigación de mercado, adquisición de clientes, gestión de relaciones con socios y clientes, y crecimiento de ingresos. Es miembro valioso de la familia ISSI desde hace más de cuatro años y tiene una maestría de la Universidad Johns Hopkins, donde su tesis sobre derecho migratorio fue publicada.",
   "team.member.8.name": "Margaret Gates",
   "team.member.8.role": "Gerente de Producto",
-  "team.member.8.bio": "Margaret Gates es gerente de producto en International Software Systems, Inc., donde representa y promueve más de cuarenta productos y aplicaciones de software desarrollados por ISSI. En este rol, Margaret investiga tendencias de mercado, identifica oportunidades de desarrollo de productos y crea estrategias para implementar y lanzar nuevos productos. Trabaja estrechamente con los clientes para comprender sus necesidades y guía al equipo de ingeniería de productos en el desarrollo de soluciones eficaces. Margaret cuenta con una maestría en Gestión Internacional de Negocios."
+  "team.member.8.bio": "Margaret Gates es gerente de producto en International Software Systems, Inc., donde representa y promueve más de cuarenta productos y aplicaciones de software desarrollados por ISSI. En este rol, Margaret investiga tendencias de mercado, identifica oportunidades de desarrollo de productos y crea estrategias para implementar y lanzar nuevos productos. Trabaja estrechamente con los clientes para comprender sus necesidades y guía al equipo de ingeniería de productos en el desarrollo de soluciones eficaces. Margaret cuenta con una maestría en Gestión Internacional de Negocios.",  "about.hero.title": "Bienvenido a ISSI",
+  "about.hero.company": "Acerca de nosotros",
+  "about.hero.about": "Fundada en 1995 y con sede en Greenbelt, Maryland, International Software Systems, Inc. (ISSI) es titular de un contrato GSA IT MAS Schedule que proporciona una amplia gama de soluciones y servicios de tecnología de la información. ISSI aplica metodologías administrativas, de programa y gestión de proyectos estándar de la industria probadas para ofrecer soluciones de TI efectivas. Estas metodologías se revisan regularmente y se implementan de manera consistente en proyectos de diferentes alcances, asegurando la mejora continua, el aseguramiento de la calidad y la ejecución exitosa.",
+  "about.hero.mission.title": "Nuestra misión",
+  "about.hero.mission": "Nuestra misión es ayudar a los clientes a lograr sus objetivos comerciales proporcionando servicios de consultoría y soluciones excepcionales centradas en el cliente. Estamos comprometidos a fomentar una cultura de integridad y equidad mientras establecemos a ISSI como un socio confiable y valorado.",
+  "about.hero.vision.title": "Nuestra visión",
+  "about.hero.vision": "Nuestra visión es convertirnos en un líder de TI reconocido mundialmente por sus soluciones innovadoras, servicio al cliente excepcional y capacidad comprobada para superar las expectativas de los clientes. Nuestro objetivo es empoderar a nuestros clientes aprovechando tecnología de vanguardia para ofrecer soluciones rentables, confiables y seguras. Aspiramos a construir asociaciones a largo plazo que equipen a nuestros clientes con las herramientas y la experiencia necesarias para prosperar en un mundo digital en constante evolución.",
+  "about.stats.title": "Nuestro historial",
+  "about.stats.headline": "Excelencia desde 1995",
+  "about.stats.description": "International Software Systems, Inc. ha estado proporcionando servicios galardonados de desarrollo de software y soporte de TI con un historial comprobado de éxito.",
+  "about.stats.experience.name": "Años de experiencia",
+  "about.stats.experience.value": "30+",
+  "about.stats.experts.name": "Expertos técnicos",
+  "about.stats.experts.value": "130+",
+  "about.stats.partners.name": "Socios de confianza",
+  "about.stats.partners.value": "30+",
+  "about.stats.projects.name": "Proyectos exitosos",
+  "about.stats.projects.value": "50+"
 }
