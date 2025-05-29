@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Animated Meteor Background Effect**: Implemented dynamic meteor animation for dark mode
+  - **Meteors Component**: Created `/src/components/ui/meteors.tsx` with customizable meteor animations using framer-motion
+  - **AnimatedBackground Component**: Built `/src/components/AnimatedBackground.tsx` for dark mode detection and conditional meteor rendering
+  - **Tailwind Animation**: Added `meteor-effect` keyframes to `tailwind.config.ts` for smooth meteor movement across the screen
+  - **Theme Integration**: Updated `ThemeProvider` integration in main layout for site-wide theme context
+  - **Full Viewport Coverage**: Meteors now cover the entire document height and width for immersive effect
+  - **Dark Mode Only**: Grid background removed in dark mode, meteors only appear when dark theme is active
+  - **Performance Optimized**: Uses CSS transforms and GPU acceleration for smooth animations
+  - **Dependencies**: Added framer-motion, clsx, and tailwind-merge for animation and utility functions
+
 - **JSON Validation and Linting System**: Implemented comprehensive validation system to prevent JSON syntax errors
   - **Custom JSON Validation Script**: Created `scripts/validate-json.js` with comprehensive validation for JSON files, structured data schemas, and TypeScript files with JSON operations
   - **Enhanced ESLint Configuration**: Added specialized rules for JSON safety, string handling, and object property validation

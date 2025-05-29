@@ -1,6 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Content from "@/components/Content";
 import FooterWrapper from "@/components/FooterWrapper";
+import { AnimatedBackground } from "@/components/AnimatedBackground";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import Script from "next/script";
 
 import { getUser } from "@/lib/data";
@@ -45,9 +47,12 @@ export default async function Root({ params, children }: Props) {
           }}
         />
       </head>      <body className="relative min-h-screen overflow-y-auto grid-background-with-fade flex flex-col">
-        <Navbar locale={params.lang} user={user} />
-        <Content>{children}</Content>
-        <FooterWrapper locale={params.lang} />
+        <ThemeProvider>
+          <AnimatedBackground />
+          <Navbar locale={params.lang} user={user} />
+          <Content>{children}</Content>
+          <FooterWrapper locale={params.lang} />
+        </ThemeProvider>
       </body>
     </html>
   );

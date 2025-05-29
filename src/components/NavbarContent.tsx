@@ -11,7 +11,6 @@ import { usePathname } from "next/navigation";
 import useOutsideClick from "@/hooks/useOutsideClick";
 import { User, Locale } from "@/lib/definitions";
 import TopNav from "./TopNav";
-import { ThemeProvider } from "@/contexts/ThemeContext";
 import ThemeToggle from "./ThemeToggle";
 
 interface Props {
@@ -63,10 +62,8 @@ export default function NavbarContent({ user, locale, messages }: Props) {
   };
   const handleLangSwitcherMenuClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setLangSwitcherMenuOpen(!langSwitcherMenuOpen);
-  };
-  return (
+  };  return (
     <IntlProvider locale={locale} messages={messages}>
-      <ThemeProvider>
         <nav className="sticky top-0 left-0 z-50 w-full glass-effect-strong transition-all duration-300">
           <div className={`flex items-center justify-between px-4 transition-all duration-300 ${
             isScrolled ? 'h-12' : 'h-16'
@@ -197,10 +194,8 @@ export default function NavbarContent({ user, locale, messages }: Props) {
 
               {/* Profile icon - Hidden */}
               {/* Profile menu removed as requested */}
-            </div>
-          </div>
+            </div>          </div>
         </nav>
-      </ThemeProvider>
     </IntlProvider>
   );
 }

@@ -32,8 +32,7 @@
     background-image: 
       linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent),
       radial-gradient(at top center, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
-  }
-  .grid-background {
+  }  .grid-background {
     position: relative;
     background-color: white;
     background-size: 40px 40px;
@@ -44,11 +43,8 @@
 
   .dark .grid-background {
     background-color: black;
-    background-image: 
-      linear-gradient(to right, #262626 1px, transparent 1px),
-      linear-gradient(to bottom, #262626 1px, transparent 1px);
+    background-image: none; /* Remove grid pattern in dark mode */
   }
-
   .grid-background-with-fade {
     position: relative;
     background-color: white;
@@ -60,10 +56,8 @@
 
   .dark .grid-background-with-fade {
     background-color: black;
-    background-image: 
-      linear-gradient(to right, #262626 1px, transparent 1px),
-      linear-gradient(to bottom, #262626 1px, transparent 1px);
-  }  .grid-background-with-fade::before {
+    background-image: none; /* Remove grid pattern in dark mode */
+  }.grid-background-with-fade::before {
     content: "";
     position: absolute;
     top: 400px; /* Start the fade well after profile header area (increased for safety) */
