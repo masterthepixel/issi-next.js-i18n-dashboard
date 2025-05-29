@@ -189,11 +189,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2025-05-27
 
 ### Added
+
 - Created comprehensive README.md with project documentation
 - Added Spanish language support (replacing German)
 - Created TopNav component for horizontal navigation on desktop
 
 ### Changed
+
 - Restructured navigation to follow conventional top navigation pattern
 - Updated language order in selector to: English, French, Spanish
 - Removed sidebar navigation in favor of top navigation
@@ -202,10 +204,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated Localizely configuration to reflect language changes
 
 ### Removed
+
 - Removed German language support (replaced with Spanish)
 - Disabled sidebar component to prevent display on all screen sizes
 - Removed demo-specific content from README
 
 ### Fixed
+
 - Fixed pnpm build script approval instructions in README
 - Updated metadata and contact information

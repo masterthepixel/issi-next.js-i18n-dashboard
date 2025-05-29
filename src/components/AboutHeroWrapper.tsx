@@ -1,8 +1,8 @@
 "use client";
 
+import { Locale } from "@/lib/definitions";
 import { IntlProvider } from "react-intl";
 import AboutHero from "./AboutHero";
-import { Locale } from "@/lib/definitions";
 
 interface AboutHeroWrapperProps {
   locale: Locale;

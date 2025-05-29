@@ -1,8 +1,7 @@
 'use client';
 
-import React from 'react';
-import TableOfContents from '@/components/TableOfContents';
 import PrivacyContent from '@/components/PrivacyContent';
+import TableOfContents from '@/components/TableOfContents';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
 interface PrivacyContentWrapperProps {

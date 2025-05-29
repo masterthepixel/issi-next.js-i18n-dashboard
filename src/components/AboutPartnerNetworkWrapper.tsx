@@ -1,8 +1,8 @@
 "use client";
 
+import { Locale } from "@/lib/definitions";
 import { IntlProvider } from "react-intl";
 import AboutPartnerNetwork from "./AboutPartnerNetwork";
-import { Locale } from "@/lib/definitions";
 
 interface AboutPartnerNetworkWrapperProps {
   locale: Locale;

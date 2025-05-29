@@ -1,15 +1,12 @@
-import React, { Suspense } from "react";
-import Image from "next/image";
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/20/solid';
+import Image from "next/image";
+import { Suspense } from "react";
 
-import Card from "@/components/Card";
-import CardHeader from "@/components/CardHeader";
-import CardBody from "@/components/CardBody";
-import Spinner from "@/components/Spinner";
 import PrivacyContentWrapper from "@/components/PrivacyContentWrapper";
+import Spinner from "@/components/Spinner";
 
-import { getIntl } from "@/lib/intl";
 import { Locale } from "@/lib/definitions";
+import { getIntl } from "@/lib/intl";
 
 export const metadata = {
   title: "Privacy Policy - ISSI - International Software Systems International",

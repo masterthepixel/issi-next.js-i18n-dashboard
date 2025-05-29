@@ -1,7 +1,6 @@
 'use client';
 
-import React from 'react';
-import { IntlProvider, FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage, IntlProvider, useIntl } from 'react-intl';
 
 interface PrivacyContentProps {
   messages: Record<string, string>;

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { IntlProvider, FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage, IntlProvider, useIntl } from 'react-intl';
 
 interface TermsContentProps {
   messages: Record<string, string>;

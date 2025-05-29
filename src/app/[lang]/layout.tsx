@@ -1,9 +1,8 @@
-import Navbar from "@/components/Navbar";
+import { AnimatedBackground } from "@/components/AnimatedBackground";
 import Content from "@/components/Content";
 import FooterWrapper from "@/components/FooterWrapper";
-import { AnimatedBackground } from "@/components/AnimatedBackground";
+import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import Script from "next/script";
 
 import { getUser } from "@/lib/data";
 import { Locale } from "@/lib/definitions";

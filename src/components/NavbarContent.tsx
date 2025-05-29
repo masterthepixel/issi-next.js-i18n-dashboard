@@ -1,17 +1,17 @@
 "use client";
 
-import React, { useState, useCallback, useRef, forwardRef, useEffect } from "react";
-import { IntlProvider, FormattedMessage } from "react-intl";
 import clsx from "clsx";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
+import { FormattedMessage, IntlProvider } from "react-intl";
 
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import useOutsideClick from "@/hooks/useOutsideClick";
-import { User, Locale } from "@/lib/definitions";
-import TopNav from "./TopNav";
+import { Locale, User } from "@/lib/definitions";
 import ThemeToggle from "./ThemeToggle";
+import TopNav from "./TopNav";
 
 interface Props {
   user: User;

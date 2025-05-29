@@ -1,34 +1,40 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Validate JSON",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceFolder}/scripts/validate-json.js",
-      "console": "integratedTerminal",
-      "env": {
-        "NODE_ENV": "development"
-      }
-    },
-    {
-      "name": "Next.js Debug",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceFolder}/node_modules/.bin/next",
-      "args": ["dev"],
-      "console": "integratedTerminal",
-      "env": {
-        "NODE_ENV": "development"
-      }
-    },
-    {
-      "name": "ESLint Debug",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceFolder}/node_modules/.bin/eslint",
-      "args": ["--ext", ".js,.jsx,.ts,.tsx,.json", "."],
-      "console": "integratedTerminal"
-    }
-  ]
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Validate JSON",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/scripts/validate-json.js",
+            "console": "integratedTerminal",
+            "env": {
+                "NODE_ENV": "development"
+            }
+        },
+        {
+            "name": "Next.js Debug",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/node_modules/.bin/next",
+            "args": [
+                "dev"
+            ],
+            "console": "integratedTerminal",
+            "env": {
+                "NODE_ENV": "development"
+            }
+        },
+        {
+            "name": "ESLint Debug",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/node_modules/.bin/eslint",
+            "args": [
+                "--ext",
+                ".js,.jsx,.ts,.tsx,.json",
+                "."
+            ],
+            "console": "integratedTerminal"
+        }
+    ]
 }

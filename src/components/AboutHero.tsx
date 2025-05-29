@@ -1,9 +1,8 @@
 'use client';
 
-import React from "react";
-import { FormattedMessage } from "react-intl";
-import Image from "next/image";
 import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid';
+import Image from "next/image";
+import { FormattedMessage } from "react-intl";
 
 const features = [
   {

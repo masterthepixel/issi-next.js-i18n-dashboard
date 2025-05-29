@@ -1,8 +1,8 @@
 "use client";
 
+import { Locale } from "@/lib/definitions";
 import { IntlProvider } from "react-intl";
 import AboutStats from "./AboutStats";
-import { Locale } from "@/lib/definitions";
 
 interface AboutStatsWrapperProps {
   locale: Locale;

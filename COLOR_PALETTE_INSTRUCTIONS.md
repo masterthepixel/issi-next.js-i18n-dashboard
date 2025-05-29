@@ -3,11 +3,13 @@
 ## Color Palette
 
 ### Light Mode
+
 - **Primary Text:** #0f172a (`slate-900`)
 - **Secondary Text:** #334155 (`slate-700`)
 - **Muted Text:** #64748b (`slate-500`)
 
 ### Dark Mode
+
 - **Primary Text:** #ffffff (`white`)
 - **Secondary Text:** #f8fafc (`slate-50`)
 - **Muted Text:** #e2e8f0 (`slate-200`)

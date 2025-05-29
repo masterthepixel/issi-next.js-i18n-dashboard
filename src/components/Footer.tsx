@@ -1,24 +1,24 @@
 "use client";
 
-import Link from "next/link";
+import { Locale } from "@/lib/definitions";
+import {
+  AcademicCapIcon,
+  BookOpenIcon,
+  BuildingLibraryIcon,
+  CubeIcon,
+  DocumentTextIcon,
+  InformationCircleIcon,
+  QuestionMarkCircleIcon,
+  ShieldCheckIcon,
+  ShieldExclamationIcon,
+  TicketIcon,
+  WrenchScrewdriverIcon
+} from '@heroicons/react/24/outline';
+import { Facebook, Linkedin, Youtube } from 'lucide-react';
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FormattedMessage, IntlProvider } from "react-intl";
-import { Locale } from "@/lib/definitions";
-import { 
-  WrenchScrewdriverIcon,
-  CubeIcon,
-  BuildingLibraryIcon,
-  AcademicCapIcon,
-  ShieldCheckIcon,
-  InformationCircleIcon,
-  DocumentTextIcon,
-  ShieldExclamationIcon,
-  BookOpenIcon,
-  QuestionMarkCircleIcon,
-  TicketIcon
-} from '@heroicons/react/24/outline';
-import { Facebook, Youtube, Linkedin } from 'lucide-react';
 
 interface FooterProps {
   locale: Locale;

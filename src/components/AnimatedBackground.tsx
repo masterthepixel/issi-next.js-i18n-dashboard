@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
-import { useTheme } from "@/contexts/ThemeContext";
 import { Meteors } from "@/components/ui/meteors";
+import { useTheme } from "@/contexts/ThemeContext";
+import React from "react";
 
 export const AnimatedBackground: React.FC = () => {
   const { theme } = useTheme();

@@ -1,8 +1,8 @@
 "use client";
 
+import { Locale } from "@/lib/definitions";
 import { IntlProvider } from "react-intl";
 import TeamGrid from "./TeamGrid";
-import { Locale } from "@/lib/definitions";
 
 interface TeamGridWrapperProps {
   locale: Locale;

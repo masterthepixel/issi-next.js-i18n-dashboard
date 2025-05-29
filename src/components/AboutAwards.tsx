@@ -1,8 +1,7 @@
 'use client';
 
-import React from "react";
-import { FormattedMessage } from "react-intl";
 import Image from "next/image";
+import { FormattedMessage } from "react-intl";
 
 const awards = [
   { 

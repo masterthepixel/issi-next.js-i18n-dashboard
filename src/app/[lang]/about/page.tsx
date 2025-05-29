@@ -1,15 +1,15 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 
+import AboutAwardsWrapper from "@/components/AboutAwardsWrapper";
+import AboutCertificationsWrapper from "@/components/AboutCertificationsWrapper";
+import AboutHeroWrapper from "@/components/AboutHeroWrapper";
+import AboutPartnerNetworkWrapper from "@/components/AboutPartnerNetworkWrapper";
+import AboutStatsWrapper from "@/components/AboutStatsWrapper";
 import Spinner from "@/components/Spinner";
 import TeamGridWrapper from "@/components/TeamGridWrapper";
-import AboutHeroWrapper from "@/components/AboutHeroWrapper";
-import AboutStatsWrapper from "@/components/AboutStatsWrapper";
-import AboutCertificationsWrapper from "@/components/AboutCertificationsWrapper";
-import AboutAwardsWrapper from "@/components/AboutAwardsWrapper";
-import AboutPartnerNetworkWrapper from "@/components/AboutPartnerNetworkWrapper";
 
-import { getIntl } from "@/lib/intl";
 import { Locale } from "@/lib/definitions";
+import { getIntl } from "@/lib/intl";
 import { Metadata } from "next";
 
 // Organization Schema for SEO

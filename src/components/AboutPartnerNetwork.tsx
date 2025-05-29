@@ -1,7 +1,7 @@
 "use client";
 
-import { useIntl } from "react-intl";
 import Image from "next/image";
+import { useIntl } from "react-intl";
 
 const partners = [
   {

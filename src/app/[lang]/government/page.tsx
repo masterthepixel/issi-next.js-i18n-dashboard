@@ -1,12 +1,12 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 
 import Card from "@/components/Card";
-import CardHeader from "@/components/CardHeader";
 import CardBody from "@/components/CardBody";
+import CardHeader from "@/components/CardHeader";
 import Spinner from "@/components/Spinner";
 
-import { getIntl } from "@/lib/intl";
 import { Locale } from "@/lib/definitions";
+import { getIntl } from "@/lib/intl";
 
 export const metadata = {
   title: "Government Solutions - ISSI - International Software Systems International",

@@ -1,18 +1,18 @@
-'use client'
+"use client";
 
-import ThemeToggle from "@/components/ThemeToggle";
 import { Locale } from "@/lib/definitions";
 import { IntlProvider } from "react-intl";
+import ELearningHeader from "./ELearningHeader";
 
-interface ThemeToggleWrapperProps {
+interface ELearningHeaderWrapperProps {
   locale: Locale;
   messages: Record<string, string>;
 }
 
-export default function ThemeToggleWrapper({ locale, messages }: ThemeToggleWrapperProps) {
+export default function ELearningHeaderWrapper({ locale, messages }: ELearningHeaderWrapperProps) {
   return (
     <IntlProvider locale={locale} messages={messages}>
-        <ThemeToggle />
+      <ELearningHeader />
     </IntlProvider>
   );
 }

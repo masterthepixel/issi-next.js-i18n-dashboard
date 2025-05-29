@@ -6,11 +6,11 @@
   html {
     @apply transition-colors duration-300 ease-in-out;
   }
-  
+
   body {
     @apply transition-colors duration-300 ease-in-out;
   }
-  
+
   * {
     @apply transition-colors duration-200 ease-in-out;
   }
@@ -21,46 +21,55 @@
     @apply bg-white/70 dark:bg-slate-900/80 backdrop-blur-md backdrop-saturate-180;
     @apply border border-white/20 dark:border-slate-700/30;
     @apply shadow-lg shadow-black/5 dark:shadow-black/20;
-    background-image: 
+    background-image:
       linear-gradient(to bottom, rgba(255, 255, 255, 0.05), transparent),
       radial-gradient(at top center, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
   }
-    .glass-effect-strong {
+
+  .glass-effect-strong {
     @apply bg-white/80 dark:bg-slate-900/90 backdrop-blur-lg backdrop-saturate-180;
     @apply border-b border-white/30 dark:border-slate-700/40;
     @apply shadow-md shadow-black/10 dark:shadow-black/30;
-    background-image: 
+    background-image:
       linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent),
       radial-gradient(at top center, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
-  }  .grid-background {
+  }
+
+  .grid-background {
     position: relative;
     background-color: white;
     background-size: 40px 40px;
-    background-image: 
+    background-image:
       linear-gradient(to right, #e4e4e7 1px, transparent 1px),
       linear-gradient(to bottom, #e4e4e7 1px, transparent 1px);
   }
 
   .dark .grid-background {
     background-color: black;
-    background-image: none; /* Remove grid pattern in dark mode */
+    background-image: none;
+    /* Remove grid pattern in dark mode */
   }
+
   .grid-background-with-fade {
     position: relative;
     background-color: white;
     background-size: 40px 40px;
-    background-image: 
+    background-image:
       linear-gradient(to right, #e4e4e7 1px, transparent 1px),
       linear-gradient(to bottom, #e4e4e7 1px, transparent 1px);
   }
 
   .dark .grid-background-with-fade {
     background-color: black;
-    background-image: none; /* Remove grid pattern in dark mode */
-  }.grid-background-with-fade::before {
+    background-image: none;
+    /* Remove grid pattern in dark mode */
+  }
+
+  .grid-background-with-fade::before {
     content: "";
     position: absolute;
-    top: 400px; /* Start the fade well after profile header area (increased for safety) */
+    top: 400px;
+    /* Start the fade well after profile header area (increased for safety) */
     left: 0;
     right: 0;
     bottom: 0;
@@ -68,7 +77,8 @@
     -webkit-mask-image: radial-gradient(ellipse at center top, transparent 0%, black 70%);
     mask-image: radial-gradient(ellipse at center top, transparent 0%, black 70%);
     pointer-events: none;
-    z-index: -1; /* Put it behind content */
+    z-index: -1;
+    /* Put it behind content */
   }
 
   .dark .grid-background-with-fade::before {
@@ -80,12 +90,13 @@
   .animate-fade-in {
     animation: fadeIn 0.2s ease-in-out;
   }
-  
+
   @keyframes fadeIn {
     from {
       opacity: 0;
       transform: translateY(-10px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);

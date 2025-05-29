@@ -14,17 +14,20 @@ We've implemented a comprehensive validation system that includes:
 ## ESLint Rules Added
 
 ### Core JSON Safety Rules
+
 - `no-invalid-regexp`: Prevents invalid regular expressions that could break JSON
 - `no-irregular-whitespace`: Catches problematic whitespace characters
 - `no-useless-escape`: Warns about unnecessary escape characters
 - `no-template-curly-in-string`: Prevents template literal syntax in regular strings
 
 ### Object and String Safety
+
 - `quote-props`: Ensures consistent property quoting in objects
 - `object-curly-spacing`: Maintains consistent spacing in object literals
 - `comma-dangle`: Prevents trailing commas that break JSON
 
 ### Runtime Error Prevention
+
 - `no-unsafe-optional-chaining`: Prevents optional chaining that could cause runtime errors
 - `eqeqeq`: Enforces strict equality to prevent type coercion issues
 
@@ -33,12 +36,14 @@ We've implemented a comprehensive validation system that includes:
 The custom validation script (`scripts/validate-json.js`) performs:
 
 ### Automatic Checks
+
 - **JSON Syntax Validation**: Parses all JSON files to catch syntax errors
 - **Structured Data Schema Validation**: Validates Schema.org structured data
 - **Character Validation**: Detects problematic characters like unescaped `#`, quotes, or whitespace
 - **Trailing Comma Detection**: Finds trailing commas that break JSON parsing
 
 ### Files Validated
+
 - All language files (`src/lang/*.json`)
 - Package configuration files
 - Pages with structured data schemas
@@ -60,12 +65,14 @@ npm run lint
 ## VS Code Integration
 
 ### Settings Applied
+
 - **Format on Save**: Automatically formats JSON and TypeScript files
 - **ESLint Integration**: Real-time linting with auto-fix
 - **JSON Validation**: Built-in JSON syntax checking
 - **Problem Highlighting**: Visual indicators for errors and warnings
 
 ### Recommended Extensions
+
 - ESLint (dbaeumer.vscode-eslint)
 - Prettier (esbenp.prettier-vscode)
 - JSON Tools (eriklynd.json-tools)
@@ -73,30 +80,37 @@ npm run lint
 ## Common Issues Prevented
 
 ### 1. Street Address Characters
+
 **Problem**: `"streetAddress": "7337 Hanover Pkwy, Suite# A"`
 **Solution**: Use `"Suite A"` instead of `"Suite# A"`
 
 ### 2. Unescaped Quotes
+
 **Problem**: `"description": "ISSI's award-winning software"`
 **Solution**: `"description": "ISSI's award-winning software"` or escape properly
 
 ### 3. Trailing Commas
-**Problem**: 
+
+**Problem**:
+
 ```json
 {
   "name": "ISSI",
   "type": "Organization",  // <- Trailing comma
 }
 ```
+
 **Solution**: Remove the trailing comma
 
 ### 4. Template Literals in JSON
+
 **Problem**: Using template literals where JSON strings are expected
 **Solution**: Use proper string concatenation or JSON.stringify
 
 ## Running Validations
 
 ### During Development
+
 ```bash
 # Run JSON validation only
 npm run validate:json
@@ -109,29 +123,35 @@ npm run pre-commit
 ```
 
 ### In CI/CD Pipeline
+
 The build process now includes validation:
+
 ```bash
 npm run build  # Automatically runs validate:json first
 ```
 
 ### Manual Debugging
+
 Use the VS Code debugger with the "Validate JSON" configuration to step through validation logic.
 
 ## Best Practices
 
 ### 1. Structured Data Schemas
+
 - Always include `@context` and `@type` properties
 - Use consistent property naming
 - Validate against Schema.org standards
 - Avoid special characters in address fields
 
 ### 2. JSON Files
+
 - Use double quotes for all strings
 - No trailing commas
 - Proper escaping of special characters
 - Consistent formatting
 
 ### 3. Code Quality
+
 - Use TypeScript for type safety
 - Validate JSON.stringify inputs
 - Handle potential parsing errors
