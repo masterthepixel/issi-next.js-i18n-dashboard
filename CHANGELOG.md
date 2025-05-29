@@ -42,6 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Image Display**: Removed all color filters from partner network images to display in original colors
 - **UI Improvements**: Removed action buttons from partner network component for cleaner layout
 - **Font Sizing**: Updated AboutAwards component to use consistent typography matching design system
+- **Performance Optimization**: Converted img elements to Next.js Image components in license page for better LCP and bandwidth optimization
 - Updated license page to display comprehensive Terms of Use while preserving profile-style header
 - Replaced text "ISSI" with actual logo image in navbar branding
 - Enhanced footer to include both ISSI logo and full company name "International Software Systems, Inc."
