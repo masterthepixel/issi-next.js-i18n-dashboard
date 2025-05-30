@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { ChevronRightIcon, HomeIcon } from '@heroicons/react/20/solid';
 import { Locale } from '@/lib/definitions';
+import { ChevronRightIcon, HomeIcon } from '@heroicons/react/20/solid';
+import Link from 'next/link';
 
 interface BreadcrumbItem {
   name: string;

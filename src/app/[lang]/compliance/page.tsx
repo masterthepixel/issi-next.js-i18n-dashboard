@@ -3,14 +3,16 @@ import { Suspense } from "react";
 import Card from "@/components/Card";
 import CardBody from "@/components/CardBody";
 import CardHeader from "@/components/CardHeader";
+import ComplianceHeroWrapper from "@/components/ComplianceHeroWrapper";
+import ComplianceStatsWrapper from "@/components/ComplianceStatsWrapper";
 import Spinner from "@/components/Spinner";
 
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
 
 export const metadata = {
-  title: "Compliance Solutions - ISSI - International Software Systems International",
-  description: "ISSI's compliance software solutions and regulatory management tools for businesses and organizations.",
+  title: "Compliance Solutions - ISSI | Regulatory Compliance & Risk Management",
+  description: "Comprehensive regulatory compliance solutions and risk management tools for businesses and organizations. Ensure adherence to industry standards and regulations.",
 };
 
 interface Props {
@@ -33,18 +35,28 @@ interface PageContentProps {
 
 async function PageContent({ locale }: PageContentProps) {
   const intl = await getIntl(locale);
+  const messages = (await import(`../../../lang/${locale}.json`)).default;
 
   return (
     <div>
-      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-        <Card>
-          <CardHeader>{intl.formatMessage({ id: "page.compliance.title" })}</CardHeader>
-          <CardBody>
-            <p className="text-base text-slate-700 dark:text-slate-300">
-              {intl.formatMessage({ id: "page.compliance.description" })}
-            </p>
-          </CardBody>
-        </Card>
+      {/* Hero Section */}
+      <ComplianceHeroWrapper locale={locale} messages={messages} />
+      
+      {/* Stats Section */}
+      <ComplianceStatsWrapper locale={locale} messages={messages} />
+      
+      {/* Existing Content */}
+      <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+          <Card>
+            <CardHeader>{intl.formatMessage({ id: "page.compliance.title" })}</CardHeader>
+            <CardBody>
+              <p className="text-base text-slate-700 dark:text-slate-300">
+                {intl.formatMessage({ id: "page.compliance.description" })}
+              </p>
+            </CardBody>
+          </Card>
+        </div>
       </div>
     </div>
   );
