@@ -26,7 +26,7 @@ export default function TeamGrid() {
 				</div>
 				<ul
 					role="list"
-					className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+					className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3"
 				>
 					{people.map((person) => {
 						const nameId = `team.member.${person.id}.name`;
@@ -34,25 +34,27 @@ export default function TeamGrid() {
 						const bioId = `team.member.${person.id}.bio`;
 						return (
 							<li key={person.id}>
-								<div className="flex items-center gap-x-6">
-									<Image
-										alt={nameId}
-										src={person.imageUrl as string}
-										width={64}
-										height={64}
-										className="pl-4 size-16 rounded-full object-cover"
-									/>
-									<div>
-										<h3 className="text-base/7 font-semibold tracking-tight text-slate-900 dark:text-white">
-											<FormattedMessage id={nameId} />
-										</h3>
-										<p className="text-sm/6 font-semibold text-indigo-600 -mt-2">
-											<FormattedMessage id={roleId} />
-										</p>
+								<div className="mt-4 glass-card text-left flex flex-col gap-4 w-full max-w-xl mx-auto">
+									<div className="flex flex-row items-start gap-4 w-full">
+										<Image
+											alt={nameId}
+											src={person.imageUrl as string}
+											width={96}
+											height={96}
+											className="size-20 rounded-full object-cover shadow-md"
+										/>
+										<div className="flex flex-col justify-center">
+											<h3 className="text-xl font-semibold tracking-snug text-slate-900 dark:text-white mt-2">
+												<FormattedMessage id={nameId} />
+											</h3>
+											<p className="text-sm font-semibold dark:text-yellow-300 text-slate-600 -mt-1.5">
+												<FormattedMessage id={roleId} />
+											</p>
+										</div>
 									</div>
-								</div>
-								<div className="mt-4 bg-slate-50 dark:bg-slate-800 rounded-xl p-4 text-slate-700 dark:text-slate-200 text-sm text-justify">
-									<FormattedMessage id={bioId} />
+									<div className="w-full mt-2">
+										<FormattedMessage id={bioId} />
+									</div>
 								</div>
 							</li>
 						);

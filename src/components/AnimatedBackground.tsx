@@ -3,10 +3,11 @@
 import { Meteors } from "@/components/ui/meteors";
 import { useTheme } from "@/contexts/ThemeContext";
 import React from "react";
+import { StarryBackground } from "./StarryBackground";
 
 export const AnimatedBackground: React.FC = () => {
   const { theme } = useTheme();
-  
+
   // Only render meteors in dark mode
   if (theme !== "dark") {
     return null;
@@ -14,7 +15,8 @@ export const AnimatedBackground: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-      <div className="relative h-full w-full bg-transparent">
+      <StarryBackground />
+      <div className="relative h-full w-full">
         <Meteors number={30} />
       </div>
     </div>
