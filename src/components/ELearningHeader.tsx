@@ -15,7 +15,7 @@ export default function ELearningHeader() {
   return (
     <div className="relative">
       {/* Profile Header */}
-      <div className="relative z-10 bg-white dark:bg-black pb-8">
+      <div className="relative z-10 pb-8">
         <div>
           <Image 
             alt="eLearning Platform Header - Digital education and training solutions" 

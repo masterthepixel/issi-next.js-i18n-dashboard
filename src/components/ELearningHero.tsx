@@ -4,7 +4,7 @@ import { FormattedMessage } from "react-intl";
 
 export default function ELearningHero() {
   return (
-    <section className="relative bg-gradient-to-br from-slate-800 via-slate-700 to-slate-600 dark:from-slate-900 dark:via-slate-800 dark:to-slate-700 text-white py-20 sm:py-32 overflow-hidden">
+    <section className="relative  text-white py-20 sm:py-32 overflow-hidden">
       {/* Background Pattern - Simple dots instead of SVG */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent"></div>

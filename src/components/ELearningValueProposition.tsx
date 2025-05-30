@@ -28,7 +28,7 @@ const stats = [
 
 export default function ELearningValueProposition() {
   return (
-    <section className="py-24 sm:py-32 bg-slate-50 dark:bg-slate-800">
+    <section className="py-24 sm:py-32 ">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
           <FormattedMessage id="elearning.value.title" />
@@ -40,7 +40,7 @@ export default function ELearningValueProposition() {
         {/* Value Cards */}
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {valueCards.map((card, index) => (
-            <div key={index} className="bg-white dark:bg-slate-700 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-center">
+            <div key={index} className=" p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-center glass-card">
               <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-slate-600 to-slate-800 text-white text-3xl mb-6">
                 {card.icon}
               </div>

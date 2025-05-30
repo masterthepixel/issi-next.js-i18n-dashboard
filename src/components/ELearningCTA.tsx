@@ -7,7 +7,7 @@ const ELearningCTA: React.FC = () => {
     const intl = useIntl();
 
     return (
-        <section className="relative py-16 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 overflow-hidden">            {/* Background Pattern */}
+        <section className="relative py-16  overflow-hidden">            {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5 dark:opacity-10">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgb(148_163_184)_1px,transparent_0)] bg-[length:20px_20px]"></div>
             </div>

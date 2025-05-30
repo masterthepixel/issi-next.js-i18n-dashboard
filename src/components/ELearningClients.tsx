@@ -19,7 +19,7 @@ const clients = [
 
 export default function ELearningClients() {
   return (
-    <section className="py-24 sm:py-32 bg-slate-50 dark:bg-slate-800">
+    <section className="py-24 sm:py-32 ">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
           <FormattedMessage id="elearning.clients.title" />
