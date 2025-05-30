@@ -16,6 +16,7 @@
     "@formatjs/intl-localematcher": "^0.5.4",
     "@headlessui/react": "^2.2.4",
     "@heroicons/react": "^2.2.0",
+    "@tabler/icons-react": "^3.33.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.15.0",
     "lucide-react": "^0.511.0",
