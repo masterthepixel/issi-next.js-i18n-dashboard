@@ -5,7 +5,7 @@ All notable changes to the ISSI Next.js Multilingual Website will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [Unreleased] - 2025-05-29
 
 ### Added
 
@@ -86,6 +86,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated grid background z-index to -1 for proper content layering
 - Improved visual hierarchy in footer with logo, company name, and description
 - TeamGrid: Avatar images now use both `object-cover` and `rounded-full` to ensure all team member portraits are perfectly circular and visually consistent across browsers.
+- Team member cards are now wider and have improved spacing for better visual balance.
+- Card layout updated: photo, name, and title are in a single row, with the name stacked above the title, and the bio text in its own row below.
+- All card content is left-aligned within the card for improved readability.
+- Updated the grid layout to use a masonry layout for a more dynamic and visually appealing presentation.
+- Increased card padding for better content separation from card edges.
 
 ### Fixed
 

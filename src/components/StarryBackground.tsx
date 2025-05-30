@@ -45,39 +45,20 @@ export const StarryBackground: React.FC = () => (
         </radialGradient>
       </defs>
       <g transform="rotate(-135)">
-        <ellipse
-          className="comet comet-a"
-          fill="url(#comet-gradient)"
-          cx="0"
-          cy="0"
-          rx="150"
-          ry="2"
-        />
+        <ellipse className="comet comet-a" fill="url(#comet-gradient)" cx="0" cy="0" rx="150" ry="2" />
       </g>
       <g transform="rotate(20)">
-        <ellipse
-          className="comet comet-b"
-          fill="url(#comet-gradient)"
-          cx="100%"
-          cy="0"
-          rx="150"
-          ry="2"
-        />
+        <ellipse className="comet comet-b" fill="url(#comet-gradient)" cx="100%" cy="0" rx="150" ry="2" />
       </g>
       <g transform="rotate(300)">
-        <ellipse
-          className="comet comet-c"
-          fill="url(#comet-gradient)"
-          cx="40%"
-          cy="100%"
-          rx="150"
-          ry="2"
-        />
+        <ellipse className="comet comet-c" fill="url(#comet-gradient)" cx="40%" cy="100%" rx="150" ry="2" />
       </g>
     </svg>
     <style jsx global>{`
       @keyframes twinkle {
-        25% { opacity: 0; }
+        25% {
+          opacity: 0;
+        }
       }
       .animate-twinkle {
         animation: twinkle 4s ease-in-out infinite;
@@ -86,12 +67,26 @@ export const StarryBackground: React.FC = () => (
         transform-origin: center center;
         animation: comet 10s linear infinite;
       }
-      .comet-b { animation-delay: -3.3s; }
-      .comet-c { animation-delay: -5s; }
+      .comet-b {
+        animation-delay: -3.3s;
+      }
+      .comet-c {
+        animation-delay: -5s;
+      }
       @keyframes comet {
-        0%, 40% { transform: translateX(0); opacity: 0; }
-        50% { opacity: 1; }
-        60%, 100% { transform: translateX(-100vw); opacity: 0; }
+        0%,
+        40% {
+          transform: translateX(0);
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        60%,
+        100% {
+          transform: translateX(-100vw);
+          opacity: 0;
+        }
       }
     `}</style>
   </div>
