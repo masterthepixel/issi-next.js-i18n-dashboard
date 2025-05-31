@@ -11,7 +11,7 @@ const stats = [
 
 export default function ComplianceStats() {
   return (
-    <section className="bg-slate-50 dark:bg-slate-900 py-24 sm:py-32">
+    <section className=" py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:max-w-none">
           <div className="text-center">

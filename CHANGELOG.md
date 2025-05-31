@@ -5,36 +5,6 @@ All notable changes to the ISSI Next.js Multilingual Website will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - 2025-05-30
-
-### Added
-
-- **Compliance Page Enhancement**: Implemented comprehensive compliance solutions page with modern design
-  - **ComplianceHero Component**: Created hero section with gradient backgrounds, experience badge, and feature icons
-  - **ComplianceStats Component**: Added statistics module showcasing 50+ certifications, 500+ compliant organizations, 25+ regulatory frameworks, and 99.9% system reliability
-  - **Comprehensive Internationalization**: Added complete translation keys for compliance hero and stats content in English, French, and Spanish
-  - **Translation Keys**: Added `page.compliance.hero.title`, `page.compliance.hero.subtitle`, `page.compliance.hero.experience`, and all `compliance.stats.*` keys
-  - **SEO Enhancement**: Updated compliance page metadata with proper titles and descriptions for all languages
-  - **Client-Side Components**: Created IntlProvider wrapper components for proper i18n context in client components
-  - **Modern UI Design**: Implemented glassmorphism effects, Heroicons integration, and responsive grid layouts
-  - **Risk Management Features**: Added feature cards for Risk Management and Regulatory Compliance with descriptive content
-  - **Gradient Design**: Applied modern indigo-to-cyan gradient backgrounds with proper opacity for visual appeal
-
-### Removed
-
-- **BottomNavigation System**: Completely removed mobile bottom navigation implementation
-  - **Component Files**: Deleted `BottomNavigation.tsx` and `BottomNavigationWrapper.tsx` components
-  - **Translation Keys**: Removed all `nav.*` translation keys from English, French, and Spanish language files
-  - **CSS Classes**: Removed `.pb-safe` utility class and safe area CSS from globals.css
-  - **Layout References**: Cleaned up any remaining references to bottom navigation in layout files
-  - **Mobile Navigation**: Removed glassmorphism mobile navigation menu and slide-up panel functionality
-
-### Fixed
-
-- **React Context Errors**: Fixed "createContext only works in Client Components" errors by adding 'use client' directive to IntlProvider wrapper components
-- **JSON Validation**: Ensured all language files maintain valid JSON syntax after translation key modifications
-- **Build Errors**: Resolved TypeScript compilation errors related to removed BottomNavigation components
-
 ## [Unreleased] - 2025-05-29
 
 ### Added
@@ -101,6 +71,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Character Safety Checks**: Detects problematic characters in JSON strings (unescaped quotes, special characters, whitespace)
   - **Build Integration**: Added JSON validation to build process to catch errors before deployment
   - **Documentation**: Created comprehensive JSON_VALIDATION_GUIDE.md with troubleshooting and best practices
+
+- Integrated `ComplianceCarouselWrapper` (Apple Cards Carousel) into the compliance page after the stats section.
+- Cleaned up `ComplianceCarouselWrapper` for production (removed debug output and wrapper div).
+- Internationalized ComplianceCarousel: All card titles, headlines, and body text now use translation keys and are present in English, French, and Spanish language files.
+- Fixed type safety for carousel card data and ensured Card component renders translated titles using FormattedMessage.
+- Carousel UI/UX: Ensured correct sizing, overflow handling, and added autoplay/looping functionality.
 
 ### Changed
 

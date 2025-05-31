@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import Card from "@/components/Card";
 import CardBody from "@/components/CardBody";
 import CardHeader from "@/components/CardHeader";
+import ComplianceCarouselWrapper from "@/components/ComplianceCarouselWrapper";
 import ComplianceHeroWrapper from "@/components/ComplianceHeroWrapper";
 import ComplianceStatsWrapper from "@/components/ComplianceStatsWrapper";
 import Spinner from "@/components/Spinner";
@@ -39,6 +40,11 @@ async function PageContent({ locale }: PageContentProps) {
 
   return (
     <div>
+      {/* Compliance Carousel Section */}
+      <div className="mx-auto max-w-7xl px-6 py-12 sm:py-20 lg:px-8">
+        <ComplianceCarouselWrapper locale={locale} messages={messages} />
+      </div>
+
       {/* Hero Section */}
       <ComplianceHeroWrapper locale={locale} messages={messages} />
       

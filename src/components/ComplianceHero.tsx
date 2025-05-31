@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 
 export default function ComplianceHero() {
   return (
-    <div className="relative isolate overflow-hidden bg-white dark:bg-slate-900">
+    <div className="relative isolate overflow-hidden ">
       {/* Background gradient */}
       <div
         aria-hidden="true"
