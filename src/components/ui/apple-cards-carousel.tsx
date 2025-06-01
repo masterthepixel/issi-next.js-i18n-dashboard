@@ -118,7 +118,7 @@ export const Carousel = ({
     <CarouselContext.Provider value={{ onCardClose: handleCardClose, currentIndex }}>
       <div className="relative w-full">
         <div
-          className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth py-10 [scrollbar-width:none] md:py-20"
+          className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth py-10 [scrollbar-width:none] md:py-20 hide-scrollbar"
           ref={carouselRef}
           onScroll={checkScrollability}
         >
@@ -234,10 +234,16 @@ export const Card = ({ card, index, layout = false }: { card: CardType; index: n
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}
-        className="relative z-10 flex h-80 w-56 flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 md:h-[40rem] md:w-96 dark:bg-neutral-900"
+        className="relative z-10 flex w-96 h-56 md:w-[40rem] md:h-80 flex-row items-center justify-start overflow-hidden rounded-3xl bg-gray-100 dark:bg-neutral-900"
       >
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
-        <div className="relative z-40 p-8">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-30 h-full w-full bg-gradient-to-r from-black/50 via-transparent to-transparent" />
+        <BlurImage
+          src={card.src}
+          alt={card.title}
+          fill
+          className="absolute inset-0 z-10 object-cover"
+        />
+        <div className="relative z-40 p-8 flex flex-col justify-center h-full w-2/3">
           <motion.p
             layoutId={layout ? `category-${card.category}` : undefined}
             className="text-left font-sans text-sm font-medium text-white md:text-base"
@@ -251,12 +257,6 @@ export const Card = ({ card, index, layout = false }: { card: CardType; index: n
             <FormattedMessage id={card.title} defaultMessage={card.title} />
           </motion.p>
         </div>
-        <BlurImage
-          src={card.src}
-          alt={card.title}
-          fill
-          className="absolute inset-0 z-10 object-cover"
-        />
       </motion.button>
     </>
   );
@@ -282,3 +282,9 @@ export const BlurImage = ({ height, width, src, className, alt, ...rest }: any) 
     />
   );
 };
+
+/* Add to the bottom of the file, after all exports */
+// Hide scrollbars cross-browser
+// tailwindcss: add this to your global styles if not present
+// .hide-scrollbar::-webkit-scrollbar { display: none; }
+// .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
