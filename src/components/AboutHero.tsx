@@ -39,8 +39,12 @@ const features = [
 
 export default function AboutHero() {
   return (
-    <section className="overflow-hidden py-24 sm:py-32" aria-labelledby="about-hero-heading">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section
+      className="max-w-7xl overflow-hidden pt-0 -mt-20 pb-4 sm:pt-0 sm:pb-8  mx-auto"
+      aria-labelledby="about-hero-heading"
+    >
+      {/* Increased negative top margin to further pull the hero up and fully eliminate the gap */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-14">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
           <div className="lg:pt-4 lg:pr-8">
             <div className="lg:max-w-lg">
@@ -88,3 +92,7 @@ export default function AboutHero() {
     </section>
   );
 }
+
+// Optionally extract features array or feature item to a separate component for modularity and reuse
+// Example: Move the features array and feature rendering to AboutFeatures.tsx if you want to keep AboutHero.tsx focused on layout only
+// No immediate changes required for AboutHero.tsx as it is fully up to date with theming, i18n, and accessibility standards

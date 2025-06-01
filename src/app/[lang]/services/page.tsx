@@ -36,7 +36,8 @@ async function PageContent({ locale }: PageContentProps) {
 
   return (
     <div>
-      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+      {/* Negative top margin to eliminate gap between navbar and content */}
+      <div className="-mt-20 grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         <Card>
           <CardHeader>{intl.formatMessage({ id: "page.services.title" })}</CardHeader>
           <CardBody>

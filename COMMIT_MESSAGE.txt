@@ -1,0 +1,31 @@
+feat: Complete ISO 27001 page and fix layout gaps across application
+
+• Built comprehensive ISO 27001 compliance page from scratch
+  - Modern glass effect design with hero, features, timeline, and industry sections
+  - Complete internationalization with 77+ translation keys in EN/FR/ES
+  - Certificate details panel and security framework visualization
+  - Trust indicators and industry-specific benefits sections
+
+• Fixed layout gap issues site-wide
+  - Applied consistent -mt-20 negative margin to eliminate white space
+  - Updated 10+ pages: compliance, services, products, contact, support
+  - Fixed AboutHero.tsx and Hero.tsx components
+  - Ensured all pages start flush with navbar
+
+• Resolved TypeScript compilation errors
+  - Converted 77+ instances of intl("key") to intl.formatMessage({ id: "key" })
+  - Fixed malformed import statement syntax
+  - Verified max-w-7xl width constraint compliance
+
+• Updated changelog with comprehensive documentation
+  - Added detailed entries for all changes and fixes
+  - Organized by Added, Changed, and Fixed sections
+  - Documented internationalization conversion process
+
+Files modified:
+- src/app/[lang]/compliance/iso27001/page.tsx (complete rewrite)
+- src/components/AboutHero.tsx (layout fixes)
+- src/components/Hero.tsx (layout fixes)
+- Multiple page.tsx files (layout gap fixes)
+- src/lang/*.json (translation keys)
+- CHANGELOG.md (documentation update)

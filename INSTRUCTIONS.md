@@ -13,22 +13,26 @@ This document provides detailed instructions for developers working on the ISSI 
 ### Initial Setup
 
 1. Clone the repository:
+
    ```powershell
    git clone <repository-url>
    cd issi-next.js-i18n-dashboard
    ```
 
 2. Install dependencies:
+
    ```powershell
    pnpm install
    ```
 
 3. Approve build scripts when prompted:
+
    ```powershell
    pnpm approve unrs-resolver
    ```
 
 4. Start the development server:
+
    ```powershell
    pnpm dev
    ```
@@ -57,6 +61,7 @@ This document provides detailed instructions for developers working on the ISSI 
 ### Supported Languages
 
 The website currently supports three languages:
+
 - English (`en`)
 - French (`fr`)
 - Spanish (`es`)
@@ -75,7 +80,7 @@ Import and use the React Intl components:
 import { FormattedMessage } from "react-intl";
 
 // In your component:
-<FormattedMessage id="your.translation.key" />
+<FormattedMessage id="your.translation.key" />;
 ```
 
 ## Development Workflow
@@ -83,17 +88,20 @@ import { FormattedMessage } from "react-intl";
 ### Making Changes
 
 1. Create a new branch for your feature or fix:
+
    ```powershell
    git checkout -b feature/your-feature-name
    ```
 
 2. Make your changes
 3. Run the development server to test:
+
    ```powershell
    pnpm dev
    ```
 
 4. Build the project to check for errors:
+
    ```powershell
    pnpm build
    ```
@@ -112,6 +120,7 @@ import { FormattedMessage } from "react-intl";
 #### Modifying Navigation
 
 The main navigation is implemented in two components:
+
 - `TopNav.tsx` for desktop navigation
 - Mobile menu in `NavbarContent.tsx`
 
@@ -168,6 +177,47 @@ The project is configured for deployment on Vercel:
 For questions or support, contact:
 
 **International Software Systems International (ISSI)**
+
 - **Address**: 7337 Hanover Pkwy, Suite# A, Greenbelt, MD 20770
 - **Phone**: 301-982-9700
 - **Email**: [Add contact email]
+
+## Advanced UI, Theming, and Compliance Features (May 2025)
+
+### Glassmorphism, Dark Mode, and Animated Backgrounds
+
+- The application uses advanced glassmorphism effects for cards and dashboard backgrounds.
+- Dark mode is fully supported, including:
+  - Starry animated backgrounds and meteor effects (see `AnimatedBackground.tsx`, `StarryBackground.tsx`).
+  - All backgrounds and cards adapt to dark mode using theme variables in `globals.css`.
+- Custom CSS variables are used for color, radius, and gradients. See `globals.css` for details.
+
+### Typography and Color
+
+- All `<h1>` tags use a theme-driven gradient text style:
+  - Light mode: gradient from slate-600 → slate-700 → slate-900, with text-shadow.
+  - Dark mode: gradient from #e67f1a to #f0b959.
+- All `<p>` text is styled as `text-slate-600` in light mode, `text-slate-300` in dark mode.
+- Use the provided utility classes and theme variables for consistent typography.
+
+### Compliance UI and Navigation
+
+- The Compliance page features an Apple Cards-style `ComplianceCarousel` with i18n, accessibility, and a translated subtitle.
+- The top text of the carousel is an `<h1>` styled identically to the home page hero h1.
+- A subtitle is included and translated in all languages.
+- The component below the carousel is hidden on the compliance page.
+- There are blank subpages for each compliance area (ISO 9001, ISO 27001, MDOT, CMMI3) with SEO metadata and placeholder content.
+- A desktop navigation submenu for Compliance is implemented using Headless UI Popover, with:
+  - Solid background (not transparent), dark mode support, icons, and a CTA area at the bottom.
+  - Direct link to the main Compliance & Certifications page as the first submenu item.
+  - Links to all compliance subpages.
+
+### Internationalization (i18n) for Compliance
+
+- All compliance-related translation keys must be present in all language files (`src/lang/en.json`, `fr.json`, `es.json`).
+- When adding new compliance features, update all language files and use `FormattedMessage` for all user-facing text.
+
+### Changelog and Documentation
+
+- All major UI, theming, and navigation changes are documented in `CHANGELOG.md`.
+- For detailed background and color palette usage, see `BACKGROUND_STYLES_REFERENCE.md` and `COLOR_PALETTE_INSTRUCTIONS.md`.

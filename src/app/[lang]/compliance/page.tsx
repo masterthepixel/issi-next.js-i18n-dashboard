@@ -41,7 +41,8 @@ async function PageContent({ locale }: PageContentProps) {
   return (
     <div>
       {/* Compliance Carousel Section */}
-      <div className="mx-auto max-w-7xl px-6 py-12 sm:py-20 lg:px-8">
+      {/* Negative top margin to eliminate gap between navbar and content */}
+      <div className="-mt-20 mx-auto max-w-7xl px-6 py-12 sm:py-20 lg:px-8">
         <ComplianceCarouselWrapper locale={locale} messages={messages} />
       </div>
 

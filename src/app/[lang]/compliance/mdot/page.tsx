@@ -15,7 +15,7 @@ interface Props {
 export default async function Page({ params: { lang } }: Props) {
   const intl = await getIntl(lang);
   return (
-    <main className="mx-auto max-w-3xl px-6 py-24 sm:py-32 lg:px-8">
+    <main className="-mt-20 mx-auto max-w-3xl px-6 py-24 sm:py-32 lg:px-8">
       <h1 className="text-4xl font-semibold tracking-tight text-balance bg-clip-text text-transparent text-center bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)] sm:text-6xl mb-6">
         Maryland DOT MBE/DBE/SBE Certification
       </h1>
