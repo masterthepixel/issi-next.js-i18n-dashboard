@@ -1,19 +1,9 @@
 "use client";
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  createContext,
-  useContext,
-} from "react";
-import {
-  IconArrowNarrowLeft,
-  IconArrowNarrowRight,
-  IconX,
-} from "@tabler/icons-react";
-import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
 import useOutsideClick from "@/hooks/useOutsideClick";
+import { cn } from "@/lib/utils";
+import { IconArrowNarrowLeft, IconArrowNarrowRight, IconX } from "@tabler/icons-react";
+import { AnimatePresence, motion } from "framer-motion";
+import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 interface CarouselProps {
@@ -38,12 +28,7 @@ export const CarouselContext = createContext<{
   currentIndex: 0,
 });
 
-export const Carousel = ({
-  items,
-  initialScroll = 0,
-  autoplay = false,
-  loop = false,
-}: CarouselProps) => {
+export const Carousel = ({ items, initialScroll = 0, autoplay = false, loop = false }: CarouselProps) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -123,12 +108,15 @@ export const Carousel = ({
           onScroll={checkScrollability}
         >
           <div className="absolute right-0 z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l"></div>
-          <div className={cn("flex flex-row justify-start gap-4 pl-4", "mx-auto max-w-7xl")}
-          >
+          <div className={cn("flex flex-row justify-start gap-4 pl-4", "mx-auto max-w-7xl")}>
             {items.map((item, index) => (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.2 * index, ease: "easeOut", once: true } }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.5, delay: 0.2 * index, ease: "easeOut", once: true },
+                }}
                 key={"card" + index}
                 className="rounded-3xl last:pr-[5%] md:last:pr-[33%]"
               >
@@ -237,12 +225,7 @@ export const Card = ({ card, index, layout = false }: { card: CardType; index: n
         className="relative z-10 flex w-96 h-56 md:w-[40rem] md:h-80 flex-row items-center justify-start overflow-hidden rounded-3xl bg-gray-100 dark:bg-neutral-900"
       >
         <div className="pointer-events-none absolute inset-y-0 left-0 z-30 h-full w-full bg-gradient-to-r from-black/50 via-transparent to-transparent" />
-        <BlurImage
-          src={card.src}
-          alt={card.title}
-          fill
-          className="absolute inset-0 z-10 object-cover"
-        />
+        <BlurImage src={card.src} alt={card.title} fill className="absolute inset-0 z-10 object-cover" />
         <div className="relative z-40 p-8 flex flex-col justify-center h-full w-2/3">
           <motion.p
             layoutId={layout ? `category-${card.category}` : undefined}
@@ -266,11 +249,7 @@ export const BlurImage = ({ height, width, src, className, alt, ...rest }: any) 
   const [isLoading, setLoading] = useState(true);
   return (
     <img
-      className={cn(
-        "h-full w-full transition duration-300",
-        isLoading ? "blur-sm" : "blur-0",
-        className,
-      )}
+      className={cn("h-full w-full transition duration-300", isLoading ? "blur-sm" : "blur-0", className)}
       onLoad={() => setLoading(false)}
       src={src as string}
       width={width}

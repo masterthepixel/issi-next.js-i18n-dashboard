@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - **Animated Meteor Background Effect**: Implemented dynamic meteor animation for dark mode
+
   - **Meteors Component**: Created `/src/components/ui/meteors.tsx` with customizable meteor animations using framer-motion
   - **AnimatedBackground Component**: Built `/src/components/AnimatedBackground.tsx` for dark mode detection and conditional meteor rendering
   - **Tailwind Animation**: Added `meteor-effect` keyframes to `tailwind.config.ts` for smooth meteor movement across the screen
@@ -20,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Dependencies**: Added framer-motion, clsx, and tailwind-merge for animation and utility functions
 
 - **Vercel Deployment Fix**: Resolved Husky installation issues in production environments
+
   - **Environment Detection**: Updated `prepare` script to skip Husky installation in production, CI, and Vercel environments
   - **DevDependencies**: Moved Husky to devDependencies for proper development-only installation
   - **Vercel Ignore**: Updated `.vercelignore` to exclude only development files while keeping build-required scripts
@@ -27,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Graceful Handling**: Added error handling for missing Husky in production environments
 
 - **JSON Validation and Linting System**: Implemented comprehensive validation system to prevent JSON syntax errors
+
   - **Custom JSON Validation Script**: Created `scripts/validate-json.js` with comprehensive validation for JSON files, structured data schemas, and TypeScript files with JSON operations
   - **Enhanced ESLint Configuration**: Added specialized rules for JSON safety, string handling, and object property validation
   - **Pre-commit Hooks**: Integrated Husky for automatic validation before code commits
@@ -63,6 +66,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Created LicenseContentWrapper for client-side intersection observer functionality
 - Created TermsContent component with comprehensive legal sections structure
 - **JSON Validation and Linting System**: Implemented comprehensive validation system to prevent JSON syntax errors
+
   - **Custom JSON Validation Script**: Created `scripts/validate-json.js` with comprehensive validation for JSON files, structured data schemas, and TypeScript files with JSON operations
   - **Enhanced ESLint Configuration**: Added specialized rules for JSON safety, string handling, and object property validation
   - **Pre-commit Hooks**: Integrated Husky for automatic validation before code commits
@@ -77,6 +81,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Internationalized ComplianceCarousel: All card titles, headlines, and body text now use translation keys and are present in English, French, and Spanish language files.
 - Fixed type safety for carousel card data and ensured Card component renders translated titles using FormattedMessage.
 - Carousel UI/UX: Ensured correct sizing, overflow handling, and added autoplay/looping functionality.
+
+- **Compliance Subpages**: Added blank subpages for each compliance area in the carousel:
+  - ISO 9001:2015 Certification
+  - ISO 27001:2013 Certification
+  - Maryland DOT MBE/DBE/SBE Certification
+  - CMMI Level 3 Certification
+  - Each page includes SEO metadata and placeholder content.
+  - All pages use the theme-driven h1 gradient and p text styles.
+  - No unique content yet; ready for future expansion.
+
+- Added a dark-mode compatible, non-transparent Compliance submenu to the main navigation, following the Apple Cards Carousel pattern and including a CTA area at the bottom.
+- The Compliance submenu now includes a direct link to the main Compliance & Certifications page, as well as links to all four compliance subpages (ISO 9001, ISO 27001, MDOT, CMMI Level 3).
+- All submenu items use theme-driven colors, icons, and are accessible in both light and dark mode.
+- Created blank subpages for each compliance area with SEO metadata and placeholder content.
+- Updated navigation logic so the main Compliance link opens the submenu, and the submenu provides access to all compliance-related pages.
+- Refined styling and layout for consistency with the rest of the application.
 
 ### Changed
 

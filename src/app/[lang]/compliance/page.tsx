@@ -4,7 +4,6 @@ import Card from "@/components/Card";
 import CardBody from "@/components/CardBody";
 import CardHeader from "@/components/CardHeader";
 import ComplianceCarouselWrapper from "@/components/ComplianceCarouselWrapper";
-import ComplianceHeroWrapper from "@/components/ComplianceHeroWrapper";
 import ComplianceStatsWrapper from "@/components/ComplianceStatsWrapper";
 import Spinner from "@/components/Spinner";
 
@@ -13,7 +12,8 @@ import { getIntl } from "@/lib/intl";
 
 export const metadata = {
   title: "Compliance Solutions - ISSI | Regulatory Compliance & Risk Management",
-  description: "Comprehensive regulatory compliance solutions and risk management tools for businesses and organizations. Ensure adherence to industry standards and regulations.",
+  description:
+    "Comprehensive regulatory compliance solutions and risk management tools for businesses and organizations. Ensure adherence to industry standards and regulations.",
 };
 
 interface Props {
@@ -46,11 +46,11 @@ async function PageContent({ locale }: PageContentProps) {
       </div>
 
       {/* Hero Section */}
-      <ComplianceHeroWrapper locale={locale} messages={messages} />
-      
+      {/* <ComplianceHeroWrapper locale={locale} messages={messages} /> */}
+
       {/* Stats Section */}
       <ComplianceStatsWrapper locale={locale} messages={messages} />
-      
+
       {/* Existing Content */}
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">

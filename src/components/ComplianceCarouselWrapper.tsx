@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { IntlProvider } from "react-intl";
 import ComplianceCarousel from "./ComplianceCarousel";
