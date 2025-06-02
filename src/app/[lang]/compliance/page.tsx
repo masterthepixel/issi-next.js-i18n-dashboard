@@ -1,9 +1,10 @@
 import { Suspense } from "react";
 
-import Card from "@/components/Card";
-import CardBody from "@/components/CardBody";
-import CardHeader from "@/components/CardHeader";
+import AboutAwardsWrapper from "@/components/AboutAwardsWrapper";
+import AboutPartnerNetworkWrapper from "@/components/AboutPartnerNetworkWrapper";
+import ComplianceCertificationsWrapper from "@/components/ComplianceCertificationsWrapper";
 import ComplianceHeroWrapper from "@/components/ComplianceHeroWrapper";
+import ComplianceIndustryCertificationsWrapper from "@/components/ComplianceIndustryCertificationsWrapper";
 import ComplianceStatsWrapper from "@/components/ComplianceStatsWrapper";
 import Spinner from "@/components/Spinner";
 
@@ -11,8 +12,8 @@ import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
 
 export const metadata = {
-  title: "Compliance Solutions - ISSI | Regulatory Compliance & Risk Management",
-  description: "Comprehensive regulatory compliance solutions and risk management tools for businesses and organizations. Ensure adherence to industry standards and regulations.",
+  title: "Compliance Solutions - ISSI - International Software Systems International",
+  description: "ISSI's compliance software solutions and regulatory management tools for businesses and organizations.",
 };
 
 interface Props {
@@ -38,26 +39,24 @@ async function PageContent({ locale }: PageContentProps) {
   const messages = (await import(`../../../lang/${locale}.json`)).default;
 
   return (
-    <div>
-      {/* Hero Section */}
+    <main>      {/* Hero section */}
       <ComplianceHeroWrapper locale={locale} messages={messages} />
       
-      {/* Stats Section */}
-      <ComplianceStatsWrapper locale={locale} messages={messages} />
+      {/* ComplianceCertifications component - modern bento grid layout */}
+      <ComplianceCertificationsWrapper
+        locale={locale}
+        messages={intl.messages}
+      />
       
-      {/* Existing Content */}
-      <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
-        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-          <Card>
-            <CardHeader>{intl.formatMessage({ id: "page.compliance.title" })}</CardHeader>
-            <CardBody>
-              <p className="text-base text-slate-700 dark:text-slate-300">
-                {intl.formatMessage({ id: "page.compliance.description" })}
-              </p>
-            </CardBody>
-          </Card>
-        </div>
-      </div>
-    </div>
+      {/* Stats section */}
+      <ComplianceStatsWrapper locale={locale} messages={messages} />        {/* Partner Network / Logo Clouds section */}
+      <AboutPartnerNetworkWrapper locale={locale} messages={messages} />
+      
+      {/* Industry Certifications section */}
+      <ComplianceIndustryCertificationsWrapper locale={locale} messages={messages} />
+      
+      {/* Awards section - last section before footer */}
+      <AboutAwardsWrapper locale={locale} messages={messages} />
+    </main>
   );
 }

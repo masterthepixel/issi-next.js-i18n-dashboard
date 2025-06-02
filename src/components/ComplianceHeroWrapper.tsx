@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Locale } from "@/lib/definitions";
 import { IntlProvider } from "react-intl";

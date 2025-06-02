@@ -1,13 +1,13 @@
-import { Suspense } from "react";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
-import Spinner from "@/components/Spinner";
-import ELearningHeroWrapper from "@/components/ELearningHeroWrapper";
-import ELearningHeaderWrapper from "@/components/ELearningHeaderWrapper";
-import ELearningServicesWrapper from "@/components/ELearningServicesWrapper";
-import ELearningValuePropositionWrapper from "@/components/ELearningValuePropositionWrapper";
 import ELearningClientsWrapper from "@/components/ELearningClientsWrapper";
 import ELearningCTAWrapper from "@/components/ELearningCTAWrapper";
+import ELearningHeaderWrapper from "@/components/ELearningHeaderWrapper";
+import ELearningHeroWrapper from "@/components/ELearningHeroWrapper";
+import ELearningServicesWrapper from "@/components/ELearningServicesWrapper";
+import ELearningValuePropositionWrapper from "@/components/ELearningValuePropositionWrapper";
+import Spinner from "@/components/Spinner";
 
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
