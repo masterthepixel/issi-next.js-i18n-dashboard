@@ -203,6 +203,14 @@
     "compliance.industry.description": "Nos certifications et normes de conformité complètes démontrent notre engagement envers la sécurité, la qualité et l'excellence opérationnelle dans tous les domaines de service.",
     "compliance.industry.cta.primary": "En savoir plus",
     "compliance.industry.cta.secondary": "Voir les certifications",
+    "page.compliance.meta.title": "Conformité et certifications | ISO 27001, SOC 2, RGPD - ISSI",
+    "page.compliance.meta.description": "Le cadre de conformité complet d'ISSI comprend les certifications ISO 27001, ISO 9001, SOC 2 Type II et RGPD. Solutions de conformité de confiance pour la sécurité d'entreprise.",
+    "compliance.page.h1": "Conformité d'entreprise et certifications de sécurité",
+    "compliance.page.description": "ISSI maintient les plus hauts standards de sécurité et de conformité avec des certifications et cadres de référence de l'industrie.",
+    "compliance.bento.iso27001.imageAlt": "Certification du système de gestion de la sécurité de l'information ISO 27001",
+    "compliance.bento.iso9001.imageAlt": "Certification du système de gestion de la qualité ISO 9001",
+    "compliance.bento.gdpr.imageAlt": "Cadre de conformité pour la protection des données RGPD",
+    "compliance.bento.soc2.imageAlt": "Audit de conformité de sécurité SOC 2 Type II",
     "page.careers.title": "Carrières",
     "page.careers.description": "Rejoignez notre équipe talentueuse et développez votre carrière dans le développement logiciel et la technologie.",
     "page.support.title": "Centre de support",
@@ -442,7 +450,107 @@
     "about.hero.h1": "À propos d'International Software Systems, Inc.",
     "about.hero.subtitle": "Développement logiciel primé depuis 1995",
     "about.stats.section.title": "Statistiques et réalisations de l'entreprise",
-    "about.certifications.section.title": "Nos certifications professionnelles",
-    "about.awards.section.title": "Prix et reconnaissances de l'industrie",
-    "about.partnerNetwork.section.title": "Partenariats technologiques stratégiques"
+    "about.certifications.section.title": "Nos certifications professionnelles",    "about.awards.section.title": "Prix et reconnaissances de l'industrie",    "about.partnerNetwork.section.title": "Partenariats technologiques stratégiques",
+    
+    "iso27001.hero.title": "Gestion de la sécurité de l'information ISO 27001:2022",
+    "iso27001.hero.subtitle": "Démontrer l'excellence en sécurité de l'information avec la certification ISO 27001 d'ISSI. Notre Système de Gestion de la Sécurité de l'Information (SGSI) certifié garantit la protection, la confidentialité et l'intégrité de vos actifs d'information critiques.",
+    "iso27001.hero.badge.certified": "Certifié ISO 27001",
+    "iso27001.hero.badge.audits": "Audits réguliers",
+    "iso27001.hero.badge.monitoring": "Surveillance 24/7",
+    
+    "iso27001.features.title": "Caractéristiques du SGSI",
+    "iso27001.features.subtitle": "Notre Système de Gestion de la Sécurité de l'Information conforme à l'ISO 27001 comprend des contrôles et processus complets",
+    
+    "iso27001.features.risk.title": "Évaluation et gestion des risques",
+    "iso27001.features.risk.description": "Évaluations régulières des risques de sécurité avec des stratégies d'atténuation pour protéger contre les menaces émergentes et maintenir la résilience organisationnelle.",
+    
+    "iso27001.features.access.title": "Contrôle d'accès et gestion des identités",
+    "iso27001.features.access.description": "Mise en œuvre de contrôles d'accès robustes, authentification multi-facteurs et principes d'accès au moindre privilège pour sécuriser l'accès aux systèmes.",
+    
+    "iso27001.features.monitoring.title": "Surveillance et détection continue",
+    "iso27001.features.monitoring.description": "Surveillance en temps réel des événements de sécurité, détection des menaces et réponse automatisée aux incidents pour maintenir l'intégrité du système.",
+    
+    "iso27001.features.incident.title": "Gestion des incidents",
+    "iso27001.features.incident.description": "Procédures structurées de réponse aux incidents avec journalisation détaillée, enquête et mesures correctives pour minimiser l'impact sur l'entreprise.",
+    
+    "iso27001.features.continuity.title": "Continuité des affaires",
+    "iso27001.features.continuity.description": "Plans et procédures de reprise après sinistre complets pour assurer la continuité des opérations et une récupération rapide après perturbation.",
+    
+    "iso27001.features.training.title": "Sensibilisation et formation à la sécurité",
+    "iso27001.features.training.description": "Programmes de formation réguliers pour maintenir la sensibilisation des employés aux meilleures pratiques de sécurité et aux menaces émergentes.",
+    
+    "iso27001.certification.title": "Processus de certification",
+    "iso27001.certification.initial.title": "Audit initial",
+    "iso27001.certification.initial.description": "Évaluation complète de notre SGSI par des auditeurs tiers accrédités pour vérifier la conformité aux exigences ISO 27001.",
+    
+    "iso27001.certification.surveillance.title": "Audits de surveillance",
+    "iso27001.certification.surveillance.description": "Audits annuels réguliers pour maintenir la certification et assurer l'amélioration continue de nos pratiques de sécurité.",
+    
+    "iso27001.certification.renewal.title": "Renouvellement de certification",
+    "iso27001.certification.renewal.description": "Audits de renouvellement triennaux pour confirmer l'efficacité continue et l'évolution de notre système de gestion de la sécurité.",
+    
+    "iso27001.certificate.title": "Détails du certificat",
+    "iso27001.certificate.standard": "Norme",
+    "iso27001.certificate.standard.value": "ISO/IEC 27001:2022",
+    "iso27001.certificate.number": "Numéro de certificat",
+    "iso27001.certificate.number.value": "ISSI-ISO27001-2024",
+    "iso27001.certificate.valid": "Valide jusqu'au",
+    "iso27001.certificate.valid.value": "15 décembre 2027",
+    "iso27001.certificate.scope": "Portée",
+    "iso27001.certificate.scope.value": "Développement et maintenance de logiciels, services de support informatique",
+    "iso27001.certificate.body": "Organisme de certification",
+    "iso27001.certificate.body.value": "Bureau Veritas Certification",
+    
+    "iso27001.process.title": "Processus PDCA",
+    "iso27001.process.subtitle": "Notre approche d'amélioration continue suit le cycle Planifier-Faire-Vérifier-Agir",
+    
+    "iso27001.process.plan.title": "Planifier",
+    "iso27001.process.plan.description": "Établir des objectifs SGSI, évaluer les risques et définir des politiques et procédures de sécurité pour répondre aux exigences organisationnelles.",
+    
+    "iso27001.process.do.title": "Faire",
+    "iso27001.process.do.description": "Mettre en œuvre les contrôles de sécurité, déployer les procédures et exécuter les processus tels que définis dans la phase de planification.",
+    
+    "iso27001.process.check.title": "Vérifier",
+    "iso27001.process.check.description": "Surveiller et mesurer les performances du SGSI par rapport aux objectifs, effectuer des audits internes et examiner l'efficacité des contrôles.",
+    
+    "iso27001.process.act.title": "Agir",
+    "iso27001.process.act.description": "Prendre des mesures correctives, améliorer le SGSI sur la base des résultats d'audit et s'adapter aux menaces et exigences changeantes.",
+    
+    "iso27001.benefits.title": "Avantages par secteur",
+    "iso27001.benefits.subtitle": "La certification ISO 27001 d'ISSI profite aux clients de divers secteurs",
+    
+    "iso27001.benefits.government.title": "Agences gouvernementales",
+    "iso27001.benefits.government.item1": "Conformité aux mandats de sécurité fédéraux et aux exigences FedRAMP",
+    "iso27001.benefits.government.item2": "Protection renforcée des informations sensibles et classifiées",
+    "iso27001.benefits.government.item3": "Processus d'audit simplifiés pour les contrats gouvernementaux",
+    
+    "iso27001.benefits.energy.title": "Secteur de l'énergie",
+    "iso27001.benefits.energy.item1": "Protection des infrastructures critiques et des systèmes de contrôle industriel",
+    "iso27001.benefits.energy.item2": "Conformité aux réglementations NERC CIP et de sécurité énergétique",
+    "iso27001.benefits.energy.item3": "Résilience renforcée contre les cybermenaces sur les réseaux électriques",
+    
+    "iso27001.benefits.commercial.title": "Entreprises commerciales",
+    "iso27001.benefits.commercial.item1": "Protection des données clients et de la propriété intellectuelle",
+    "iso27001.benefits.commercial.item2": "Avantage concurrentiel grâce à la sécurité certifiée",
+    "iso27001.benefits.commercial.item3": "Réduction des risques de violation de données et d'atteinte à la réputation",
+    
+    "iso27001.trust.title": "Métriques de confiance",
+    "iso27001.trust.subtitle": "Notre engagement envers l'excellence en sécurité se reflète dans nos performances",
+    "iso27001.trust.years.value": "29+",
+    "iso27001.trust.years.label": "Années d'exploitation",
+    "iso27001.trust.years.description": "Décennies d'expérience dans la fourniture de solutions sécurisées",
+    "iso27001.trust.breaches.value": "0",
+    "iso27001.trust.breaches.label": "Violations de données",
+    "iso27001.trust.breaches.description": "Aucune violation de données dans notre historique opérationnel",
+    "iso27001.trust.monitoring.value": "24/7",
+    "iso27001.trust.monitoring.label": "Surveillance de sécurité",
+    "iso27001.trust.monitoring.description": "Surveillance continue et réponse aux menaces",
+    "iso27001.trust.uptime.value": "99.9%",
+    "iso27001.trust.uptime.label": "Disponibilité du système",
+    "iso27001.trust.uptime.description": "Fiabilité et performance exceptionnelles du système",
+    
+    "iso27001.contact.title": "Discutez de vos besoins de sécurité",
+    "iso27001.contact.subtitle": "Contactez notre équipe pour en savoir plus sur notre certification ISO 27001 et comment elle peut bénéficier à votre organisation",
+    "iso27001.contact.cta.primary": "Programmer une consultation",
+    "iso27001.contact.cta.secondary": "Télécharger le certificat"
 }
