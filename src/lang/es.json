@@ -570,68 +570,172 @@
   "iso9001.benefits.energy.item1": "Gestión de calidad para proyectos de infraestructura crítica",
   "iso9001.benefits.energy.item2": "Eficiencia operacional mejorada y estándares de seguridad",
   "iso9001.benefits.energy.item3": "Confiabilidad mejorada en sistemas de generación y distribución de energía",
-  
-  "iso9001.benefits.commercial.title": "Sector comercial",
-  "iso9001.benefits.commercial.item1": "Consistencia mejorada en calidad de productos y servicios",
+    "iso9001.benefits.commercial.title": "Sector Comercial",
+  "iso9001.benefits.commercial.item1": "Consistencia mejorada en la calidad de productos y servicios",
   "iso9001.benefits.commercial.item2": "Satisfacción del cliente mejorada y competitividad en el mercado",
   "iso9001.benefits.commercial.item3": "Costos operacionales reducidos a través de optimización de procesos",
-  
-  "iso9001.process.title": "Proceso de Gestión de Calidad",
-  "iso9001.process.subtitle": "Nuestro sistema de gestión de calidad sigue el ciclo Planificar-Hacer-Verificar-Actuar para mejora continua",
-  
+
+  "iso9001.process.title": "Implementación del Ciclo PDCA",
+  "iso9001.process.subtitle": "Nuestra gestión de calidad sigue la metodología Planificar-Hacer-Verificar-Actuar para mejora continua",
   "iso9001.process.plan.title": "Planificar",
-  "iso9001.process.plan.description": "Establecer objetivos de calidad, identificar procesos, asignar recursos y definir procedimientos para lograr objetivos de calidad y satisfacción del cliente.",
-  
+  "iso9001.process.plan.description": "Establecer objetivos de calidad y procesos necesarios para entregar resultados de acuerdo con requisitos del cliente y políticas organizacionales",
   "iso9001.process.do.title": "Hacer",
-  "iso9001.process.do.description": "Implementar procesos de gestión de calidad, proporcionar capacitación, ejecutar procedimientos y entregar productos y servicios según especificaciones.",
-  
+  "iso9001.process.do.description": "Implementar los procesos planificados y monitorear su desempeño para asegurar que cumplan los objetivos de calidad definidos",
   "iso9001.process.check.title": "Verificar",
-  "iso9001.process.check.description": "Monitorear y medir procesos y productos contra políticas, objetivos y requisitos, y reportar los resultados a la gerencia.",
-  
+  "iso9001.process.check.description": "Monitorear y medir procesos y productos contra políticas, objetivos y requisitos e informar los resultados",
   "iso9001.process.act.title": "Actuar",
-  "iso9001.process.act.description": "Tomar acciones para mejorar continuamente el rendimiento del proceso basado en resultados de monitoreo, retroalimentación del cliente y revisión gerencial.",
-  
-  "iso9001.standards.title": "Integración de Estándares de Calidad",
-  "iso9001.standards.subtitle": "Nuestro sistema de gestión de calidad se integra perfectamente con otros sistemas de gestión y estándares industriales",
-  
-  "iso9001.standards.iso27001.title": "Seguridad de la información",
-  "iso9001.standards.iso27001.description": "La integración con ISO 27001 asegura que los procesos de calidad mantengan estándares de seguridad de información y protección de datos.",
-  
-  "iso9001.standards.cmmi.title": "Madurez de procesos",
-  "iso9001.standards.cmmi.description": "La certificación CMMI Level 3 complementa la gestión de calidad con capacidad de proceso avanzada y madurez organizacional.",
-  
-  "iso9001.standards.itil.title": "Gestión de servicios",
-  "iso9001.standards.itil.description": "Las prácticas ITIL mejoran la gestión de calidad en la entrega de servicios de TI y procesos de soporte operacional.",
-  
-  "iso9001.certificate.title": "Detalles del certificado",
+  "iso9001.process.act.description": "Tomar acciones para mejorar continuamente el desempeño del proceso basado en resultados de monitoreo y medición",
+
+  "iso9001.standards.title": "Marco de Estándares Integrados",
+  "iso9001.standards.subtitle": "Nuestra certificación ISO 9001:2015 funciona perfectamente con otros sistemas de gestión y marcos",
+  "iso9001.standards.iso27001.title": "Seguridad de la Información ISO 27001",
+  "iso9001.standards.iso27001.description": "Gestión de calidad y seguridad combinada para excelencia organizacional integral",
+  "iso9001.standards.cmmi.title": "Madurez de Procesos CMMI",
+  "iso9001.standards.cmmi.description": "Gestión de calidad mejorada con madurez de procesos avanzada para resultados de proyecto superiores",
+  "iso9001.standards.itil.title": "Gestión de Servicios ITIL",
+  "iso9001.standards.itil.description": "Gestión de servicios de TI enfocada en calidad alineada con marcos de mejores prácticas",
+
+  "iso9001.certificate.title": "Detalles del Certificado",
+  "iso9001.certificate.subtitle": "Información oficial de certificación y alcance de nuestro Sistema de Gestión de Calidad ISO 9001:2015",
   "iso9001.certificate.standard": "Estándar:",
-  "iso9001.certificate.standard.value": "ISO 9001:2015",
-  "iso9001.certificate.number": "Número de certificado:",
+  "iso9001.certificate.standard.value": "ISO 9001:2015 Sistemas de Gestión de Calidad",
+  "iso9001.certificate.number": "Número de Certificado:",
   "iso9001.certificate.number.value": "ISSI-ISO9001-2024-001",
-  "iso9001.certificate.valid": "Válido hasta:",
-  "iso9001.certificate.valid.value": "Marzo 2027",
+  "iso9001.certificate.validity": "Válido Hasta:",
+  "iso9001.certificate.validity.value": "Marzo 2027",
   "iso9001.certificate.scope": "Alcance:",
-  "iso9001.certificate.scope.value": "Diseño, desarrollo y provisión de soluciones de software y servicios de soporte de TI",
-  "iso9001.certificate.body": "Organismo de certificación:",
-  "iso9001.certificate.body.value": "BSI Group America Inc.",
-  
-  "iso9001.metrics.title": "Métricas de Rendimiento de Calidad",
-  "iso9001.metrics.subtitle": "Nuestro compromiso con la excelencia en calidad se refleja en indicadores de rendimiento medibles",
-  "iso9001.metrics.satisfaction.value": "98%",
-  "iso9001.metrics.satisfaction.label": "Satisfacción del cliente",
-  "iso9001.metrics.satisfaction.description": "Calificación de satisfacción del cliente en todas las áreas de entrega de servicios",
-  "iso9001.metrics.delivery.value": "95%",
-  "iso9001.metrics.delivery.label": "Entrega a tiempo",
-  "iso9001.metrics.delivery.description": "Proyectos entregados a tiempo y dentro del alcance",
-  "iso9001.metrics.defects.value": "<1%",
-  "iso9001.metrics.defects.label": "Tasa de defectos",
-  "iso9001.metrics.defects.description": "Bajas tasas de defectos en desarrollo de software y servicios de TI",
-  "iso9001.metrics.improvement.value": "15%",
-  "iso9001.metrics.improvement.label": "Mejora anual",
-  "iso9001.metrics.improvement.description": "Mejoras de eficiencia de procesos año tras año",
-  
-  "iso9001.contact.title": "Conozca Nuestra Gestión de Calidad",
-  "iso9001.contact.subtitle": "Contacte a nuestro equipo de calidad para aprender cómo nuestra certificación ISO 9001:2015 puede beneficiar los proyectos de su organización",
-  "iso9001.contact.cta.primary": "Contactar equipo de calidad",
-  "iso9001.contact.cta.secondary": "Descargar manual de calidad"
+  "iso9001.certificate.scopeValue": "Desarrollo de software, consultoría de TI y servicios de soporte técnico",
+  "iso9001.certificate.body": "Organismo Certificador:",
+  "iso9001.certificate.bodyValue": "BSI Group America Inc.",
+
+  "iso9001.metrics.title": "Métricas de Desempeño de Calidad",
+  "iso9001.metrics.subtitle": "Resultados medibles que demuestran la efectividad de nuestro sistema de gestión de calidad",
+  "iso9001.metrics.satisfaction.label": "Tasa de Satisfacción del Cliente",
+  "iso9001.metrics.satisfaction.value": "96%",
+  "iso9001.metrics.satisfaction.description": "Satisfacción del cliente basada en encuestas regulares y retroalimentación",
+  "iso9001.metrics.delivery.label": "Entrega a Tiempo",
+  "iso9001.metrics.delivery.value": "94%",
+  "iso9001.metrics.delivery.description": "Proyectos entregados dentro de cronogramas acordados y estándares de calidad",
+  "iso9001.metrics.defects.label": "Tasa de Defectos",
+  "iso9001.metrics.defects.value": "<0.5%",
+  "iso9001.metrics.defects.description": "Defectos de producto identificados post-entrega a través de controles de calidad sistemáticos",
+  "iso9001.metrics.improvement.label": "Mejoras de Proceso",
+  "iso9001.metrics.improvement.value": "25+",
+  "iso9001.metrics.improvement.description": "Mejoras de proceso anuales implementadas a través del programa de mejora continua",
+
+  "iso9001.contact.title": "Aprenda Más Sobre Nuestra Gestión de Calidad",
+  "iso9001.contact.subtitle": "¿Interesado en cómo nuestra certificación ISO 9001:2015 puede beneficiar sus proyectos? Contacte a nuestro equipo de calidad para información detallada",
+  "iso9001.contact.cta.primary": "Contactar Equipo de Calidad",
+  "iso9001.contact.cta.secondary": "Descargar Manual de Calidad",
+
+  "cmmi.hero.title": "CMMI Nivel 3: Madurez de Procesos Definida",
+  "cmmi.hero.subtitle": "La certificación CMMI Nivel 3 de ISSI demuestra nuestra madurez de procesos avanzada y capacidad organizacional en desarrollo de software, asegurando resultados de proyecto predecibles a través de procesos estandarizados y bien caracterizados.",
+  "cmmi.hero.badge.certified": "Certificado CMMI Nivel 3",
+  "cmmi.hero.badge.maturity": "Madurez de Procesos Definida",
+  "cmmi.hero.badge.standardized": "Procesos Estandarizados",
+
+  "cmmi.features.title": "Dominio de Áreas de Proceso",
+  "cmmi.features.subtitle": "Nuestra implementación CMMI Nivel 3 cubre seis áreas de proceso esenciales para la excelencia organizacional",
+
+  "cmmi.features.requirements.title": "Gestión de Requisitos",
+  "cmmi.features.requirements.description": "Enfoque sistemático para gestionar cambios de requisitos y asegurar la alineación entre productos de trabajo y requisitos a lo largo del ciclo de vida del proyecto.",
+
+  "cmmi.features.planning.title": "Planificación de Proyecto",
+  "cmmi.features.planning.description": "Procesos integrales de planificación de proyecto que establecen y mantienen planes que definen actividades, recursos y cronogramas del proyecto.",
+
+  "cmmi.features.monitoring.title": "Monitoreo y Control de Proyecto",
+  "cmmi.features.monitoring.description": "Monitoreo continuo del progreso del proyecto contra el plan y toma de acciones correctivas cuando los resultados reales se desvían significativamente de los resultados planificados.",
+
+  "cmmi.features.measurement.title": "Medición y Análisis",
+  "cmmi.features.measurement.description": "Recopilación, análisis e informes sistemáticos de métricas de proyecto para apoyar la toma de decisiones efectiva y la mejora de procesos.",
+
+  "cmmi.features.assurance.title": "Aseguramiento de Calidad de Procesos y Productos",
+  "cmmi.features.assurance.description": "Evaluación objetiva de procesos y productos de trabajo para asegurar adherencia a estándares y procedimientos definidos.",
+
+  "cmmi.features.configuration.title": "Gestión de Configuración",
+  "cmmi.features.configuration.description": "Control sistemático de cambios a productos de trabajo a lo largo del ciclo de vida del proyecto para mantener la integridad del producto.",
+
+  "cmmi.benefits.title": "Beneficios por Industria",
+  "cmmi.benefits.subtitle": "Nuestra certificación CMMI Nivel 3 entrega excelencia de procesos en todos los sectores que servimos",
+
+  "cmmi.benefits.government.title": "Sector Gubernamental",
+  "cmmi.benefits.government.item1": "Predictibilidad y confiabilidad mejoradas para contratos federales",
+  "cmmi.benefits.government.item2": "Madurez de procesos demostrada para proyectos gubernamentales complejos",
+  "cmmi.benefits.government.item3": "Gestión de riesgos mejorada y tasas de éxito de proyectos",
+
+  "cmmi.benefits.commercial.title": "Empresa Comercial",
+  "cmmi.benefits.commercial.item1": "Entrega consistente de soluciones de software de alta calidad",
+  "cmmi.benefits.commercial.item2": "Riesgos de proyecto reducidos y tiempo de comercialización mejorado",
+  "cmmi.benefits.commercial.item3": "Escalabilidad mejorada para iniciativas a nivel empresarial",
+
+  "cmmi.benefits.energy.title": "Energía e Infraestructura",
+  "cmmi.benefits.energy.item1": "Procesos robustos para software de infraestructura crítica",
+  "cmmi.benefits.energy.item2": "Seguridad y confiabilidad mejoradas en sistemas de energía",
+  "cmmi.benefits.energy.item3": "Resultados predecibles para aplicaciones críticas de misión",
+
+  "cmmi.process.title": "Marco de Madurez de Procesos",
+  "cmmi.process.subtitle": "Nuestro viaje a través de los cinco niveles de madurez de procesos CMMI demuestra mejora organizacional continua",
+
+  "cmmi.process.level1.title": "Inicial",
+  "cmmi.process.level1.description": "Procesos impredecibles, mal controlados y reactivos. El éxito depende del heroísmo individual.",
+
+  "cmmi.process.level2.title": "Gestionado",
+  "cmmi.process.level2.description": "Los proyectos se planifican y ejecutan según política. Se establecen procesos básicos de gestión de proyectos.",
+
+  "cmmi.process.level3.title": "Definido",
+  "cmmi.process.level3.description": "Los procesos están bien caracterizados y entendidos. Se establecen procesos estándar y se mejoran con el tiempo.",
+
+  "cmmi.process.level4.title": "Gestionado Cuantitativamente",
+  "cmmi.process.level4.description": "La organización usa enfoques cuantitativos para entender y controlar el rendimiento de procesos críticos.",
+
+  "cmmi.process.level5.title": "Optimización",
+  "cmmi.process.level5.description": "Enfoque en mejora continua de procesos a través de mejoras tecnológicas tanto incrementales como innovadoras.",
+
+  "cmmi.integration.title": "Integración de Estándares",
+  "cmmi.integration.subtitle": "Nuestra certificación CMMI Nivel 3 se integra perfectamente con otros marcos de calidad y seguridad",
+
+  "cmmi.integration.iso9001.title": "Gestión de Calidad ISO 9001:2015",
+  "cmmi.integration.iso9001.description": "Gestión de calidad y madurez de procesos combinadas para resultados de proyecto superiores y satisfacción del cliente.",
+
+  "cmmi.integration.iso27001.title": "Seguridad de la Información ISO 27001:2022",
+  "cmmi.integration.iso27001.description": "Procesos de desarrollo de software seguros que protegen información sensible mientras mantienen la excelencia de procesos.",
+
+  "cmmi.integration.agile.title": "Metodologías de Desarrollo Ágil",
+  "cmmi.integration.agile.description": "Procesos CMMI mejorados con prácticas ágiles para entrega de software flexible, receptiva y de alta calidad.",
+
+  "cmmi.certificate.title": "Detalles del Certificado",
+  "cmmi.certificate.standard": "Estándar:",
+  "cmmi.certificate.standard.value": "CMMI para Desarrollo, Versión 2.0",
+  "cmmi.certificate.level": "Nivel de Madurez:",
+  "cmmi.certificate.level.value": "Nivel 3 - Definido",
+  "cmmi.certificate.valid": "Válido Hasta:",
+  "cmmi.certificate.valid.value": "Marzo 2027",
+  "cmmi.certificate.scope": "Alcance:",
+  "cmmi.certificate.scope.value": "Servicios de desarrollo e ingeniería de software",
+  "cmmi.certificate.appraiser": "Evaluador Principal:",
+  "cmmi.certificate.appraiser.value": "Evaluador Principal Certificado CMMI Institute",
+
+  "cmmi.metrics.title": "Métricas de Rendimiento de Procesos",
+  "cmmi.metrics.subtitle": "Resultados medibles que demuestran la efectividad de nuestros procesos CMMI Nivel 3",
+
+  "cmmi.metrics.delivery.value": "94%",
+  "cmmi.metrics.delivery.label": "Tasa de Entrega a Tiempo",
+  "cmmi.metrics.delivery.description": "Proyectos entregados dentro del cronograma y presupuesto planificados",
+
+  "cmmi.metrics.quality.value": "98%",
+  "cmmi.metrics.quality.label": "Éxito de Puertas de Calidad",
+  "cmmi.metrics.quality.description": "Productos de trabajo que cumplen criterios de calidad definidos",
+
+  "cmmi.metrics.defects.value": "0,8",
+  "cmmi.metrics.defects.label": "Defectos por KLOC",
+  "cmmi.metrics.defects.description": "Densidad de defectos post-entrega en software entregado",
+
+  "cmmi.metrics.productivity.value": "25%",
+  "cmmi.metrics.productivity.label": "Mejora de Productividad",
+  "cmmi.metrics.productivity.description": "Mejora de productividad año tras año",
+
+  "cmmi.contact.title": "Asociarse con Nuestro Equipo de Excelencia de Procesos",
+  "cmmi.contact.subtitle": "Descubra cómo nuestros procesos certificados CMMI Nivel 3 pueden mejorar sus iniciativas de desarrollo de software y asegurar el éxito predecible de proyectos.",
+  "cmmi.contact.cta.primary": "Contactar Equipo de Procesos",
+  "cmmi.contact.cta.secondary": "Descargar Guía de Procesos"
 }
