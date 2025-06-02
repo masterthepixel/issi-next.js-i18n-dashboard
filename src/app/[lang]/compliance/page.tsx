@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import AboutAwardsWrapper from "@/components/AboutAwardsWrapper";
 import AboutPartnerNetworkWrapper from "@/components/AboutPartnerNetworkWrapper";
 import ComplianceCertificationsWrapper from "@/components/ComplianceCertificationsWrapper";
-import ComplianceHeroWrapper from "@/components/ComplianceHeroWrapper";
 import ComplianceIndustryCertificationsWrapper from "@/components/ComplianceIndustryCertificationsWrapper";
 import ComplianceStatsWrapper from "@/components/ComplianceStatsWrapper";
 import Spinner from "@/components/Spinner";
@@ -39,8 +38,10 @@ async function PageContent({ locale }: PageContentProps) {
   const messages = (await import(`../../../lang/${locale}.json`)).default;
 
   return (
-    <main>      {/* Hero section */}
+    <main>      
+      {/* Hero section 
       <ComplianceHeroWrapper locale={locale} messages={messages} />
+      */}
       
       {/* ComplianceCertifications component - modern bento grid layout */}
       <ComplianceCertificationsWrapper
