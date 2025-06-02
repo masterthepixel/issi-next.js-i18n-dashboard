@@ -424,9 +424,10 @@
     "about.meta.description": "Conozca International Software Systems, Inc. (ISSI) - Más de 30 años de desarrollo de software galardonado y servicios de soporte de TI en Greenbelt, MD desde 1995.",
     "about.meta.keywords": "ISSI, desarrollo de software, soporte de TI, certificado ISO, CMMI Nivel 3, Maryland, Greenbelt, contratista gubernamental",
     "about.hero.h1": "Acerca de International Software Systems, Inc.",
-    "about.hero.subtitle": "Desarrollo de software galardonado desde 1995",
-    "about.stats.section.title": "Estadísticas y logros de la empresa",
-    "about.certifications.section.title": "Nuestras certificaciones profesionales",    "about.awards.section.title": "Premios y reconocimientos de la industria",    "about.partnerNetwork.section.title": "Asociaciones tecnológicas estratégicas",
+    "about.hero.subtitle": "Desarrollo de software galardonado desde 1995",    "about.stats.section.title": "Estadísticas y logros de la empresa",
+    "about.certifications.section.title": "Nuestras certificaciones profesionales",
+    "about.awards.section.title": "Premios y reconocimientos de la industria",
+    "about.partnerNetwork.section.title": "Asociaciones tecnológicas estratégicas",
     
     "iso27001.hero.title": "Gestión de Seguridad de la Información ISO 27001:2022",
     "iso27001.hero.subtitle": "Demuestre la excelencia en seguridad de la información con la certificación ISO 27001 de ISSI. Nuestro Sistema de Gestión de Seguridad de la Información (SGSI) certificado garantiza la protección, confidencialidad e integridad de sus activos de información críticos.",
@@ -527,6 +528,110 @@
     
     "iso27001.contact.title": "Discuta sus necesidades de seguridad",
     "iso27001.contact.subtitle": "Contacte a nuestro equipo para aprender más sobre nuestra certificación ISO 27001 y cómo puede beneficiar a su organización",
-    "iso27001.contact.cta.primary": "Programar consulta",
-    "iso27001.contact.cta.secondary": "Descargar certificado"
+  "iso27001.contact.cta.primary": "Programar consulta",
+  "iso27001.contact.cta.secondary": "Descargar certificado",
+  
+  "iso9001.hero.title": "Sistema de Gestión de Calidad ISO 9001:2015",
+  "iso9001.hero.subtitle": "La certificación ISO 9001:2015 de ISSI demuestra nuestro compromiso de entregar servicios consistentes y de alta calidad que cumplan con las expectativas del cliente y los requisitos regulatorios a través de procesos sistemáticos de gestión de calidad.",
+  "iso9001.hero.badge.certified": "Certificado ISO 9001",
+  "iso9001.hero.badge.continuous": "Mejora continua",
+  "iso9001.hero.badge.customer": "Enfoque al cliente",
+  
+  "iso9001.features.title": "Características del Sistema de Gestión de Calidad",
+  "iso9001.features.subtitle": "Nuestra implementación ISO 9001:2015 asegura gestión sistemática de calidad en todos los procesos empresariales",
+  
+  "iso9001.features.leadership.title": "Liderazgo y compromiso",
+  "iso9001.features.leadership.description": "El liderazgo demuestra compromiso con los sistemas de gestión de calidad a través de participación activa, asignación de recursos y alineación estratégica con objetivos organizacionales.",
+  
+  "iso9001.features.customer.title": "Enfoque al cliente",
+  "iso9001.features.customer.description": "Enfoque sistemático para entender los requisitos del cliente, medir la satisfacción y mejorar la experiencia del cliente a través de mejora continua.",
+  
+  "iso9001.features.process.title": "Enfoque de procesos",
+  "iso9001.features.process.description": "Gestión integrada de procesos interrelacionados para lograr resultados consistentes y predecibles de manera eficiente y efectiva.",
+  
+  "iso9001.features.improvement.title": "Mejora continua",
+  "iso9001.features.improvement.description": "Esfuerzo continuo para mejorar productos, servicios o procesos a través de mejoras incrementales y revolucionarias.",
+  
+  "iso9001.features.evidence.title": "Toma de decisiones basada en evidencia",
+  "iso9001.features.evidence.description": "Las decisiones basadas en análisis y evaluación de datos e información tienen más probabilidades de producir resultados deseados.",
+  
+  "iso9001.features.relationship.title": "Gestión de relaciones",
+  "iso9001.features.relationship.description": "Gestionar relaciones con partes interesadas relevantes, incluyendo proveedores y socios, para el éxito sostenido.",
+  
+  "iso9001.benefits.title": "Beneficios por industria",
+  "iso9001.benefits.subtitle": "Nuestra certificación ISO 9001:2015 entrega ventajas de calidad en todos los sectores que servimos",
+  
+  "iso9001.benefits.government.title": "Sector gubernamental",
+  "iso9001.benefits.government.item1": "Aseguramiento de calidad mejorado para contratos federales y adquisiciones",
+  "iso9001.benefits.government.item2": "Compromiso demostrado con la mejora continua y eficiencia",
+  "iso9001.benefits.government.item3": "Procesos simplificados para requisitos de cumplimiento gubernamental",
+  
+  "iso9001.benefits.energy.title": "Sector energético",
+  "iso9001.benefits.energy.item1": "Gestión de calidad para proyectos de infraestructura crítica",
+  "iso9001.benefits.energy.item2": "Eficiencia operacional mejorada y estándares de seguridad",
+  "iso9001.benefits.energy.item3": "Confiabilidad mejorada en sistemas de generación y distribución de energía",
+  
+  "iso9001.benefits.commercial.title": "Sector comercial",
+  "iso9001.benefits.commercial.item1": "Consistencia mejorada en calidad de productos y servicios",
+  "iso9001.benefits.commercial.item2": "Satisfacción del cliente mejorada y competitividad en el mercado",
+  "iso9001.benefits.commercial.item3": "Costos operacionales reducidos a través de optimización de procesos",
+  
+  "iso9001.process.title": "Proceso de Gestión de Calidad",
+  "iso9001.process.subtitle": "Nuestro sistema de gestión de calidad sigue el ciclo Planificar-Hacer-Verificar-Actuar para mejora continua",
+  
+  "iso9001.process.plan.title": "Planificar",
+  "iso9001.process.plan.description": "Establecer objetivos de calidad, identificar procesos, asignar recursos y definir procedimientos para lograr objetivos de calidad y satisfacción del cliente.",
+  
+  "iso9001.process.do.title": "Hacer",
+  "iso9001.process.do.description": "Implementar procesos de gestión de calidad, proporcionar capacitación, ejecutar procedimientos y entregar productos y servicios según especificaciones.",
+  
+  "iso9001.process.check.title": "Verificar",
+  "iso9001.process.check.description": "Monitorear y medir procesos y productos contra políticas, objetivos y requisitos, y reportar los resultados a la gerencia.",
+  
+  "iso9001.process.act.title": "Actuar",
+  "iso9001.process.act.description": "Tomar acciones para mejorar continuamente el rendimiento del proceso basado en resultados de monitoreo, retroalimentación del cliente y revisión gerencial.",
+  
+  "iso9001.standards.title": "Integración de Estándares de Calidad",
+  "iso9001.standards.subtitle": "Nuestro sistema de gestión de calidad se integra perfectamente con otros sistemas de gestión y estándares industriales",
+  
+  "iso9001.standards.iso27001.title": "Seguridad de la información",
+  "iso9001.standards.iso27001.description": "La integración con ISO 27001 asegura que los procesos de calidad mantengan estándares de seguridad de información y protección de datos.",
+  
+  "iso9001.standards.cmmi.title": "Madurez de procesos",
+  "iso9001.standards.cmmi.description": "La certificación CMMI Level 3 complementa la gestión de calidad con capacidad de proceso avanzada y madurez organizacional.",
+  
+  "iso9001.standards.itil.title": "Gestión de servicios",
+  "iso9001.standards.itil.description": "Las prácticas ITIL mejoran la gestión de calidad en la entrega de servicios de TI y procesos de soporte operacional.",
+  
+  "iso9001.certificate.title": "Detalles del certificado",
+  "iso9001.certificate.standard": "Estándar:",
+  "iso9001.certificate.standard.value": "ISO 9001:2015",
+  "iso9001.certificate.number": "Número de certificado:",
+  "iso9001.certificate.number.value": "ISSI-ISO9001-2024-001",
+  "iso9001.certificate.valid": "Válido hasta:",
+  "iso9001.certificate.valid.value": "Marzo 2027",
+  "iso9001.certificate.scope": "Alcance:",
+  "iso9001.certificate.scope.value": "Diseño, desarrollo y provisión de soluciones de software y servicios de soporte de TI",
+  "iso9001.certificate.body": "Organismo de certificación:",
+  "iso9001.certificate.body.value": "BSI Group America Inc.",
+  
+  "iso9001.metrics.title": "Métricas de Rendimiento de Calidad",
+  "iso9001.metrics.subtitle": "Nuestro compromiso con la excelencia en calidad se refleja en indicadores de rendimiento medibles",
+  "iso9001.metrics.satisfaction.value": "98%",
+  "iso9001.metrics.satisfaction.label": "Satisfacción del cliente",
+  "iso9001.metrics.satisfaction.description": "Calificación de satisfacción del cliente en todas las áreas de entrega de servicios",
+  "iso9001.metrics.delivery.value": "95%",
+  "iso9001.metrics.delivery.label": "Entrega a tiempo",
+  "iso9001.metrics.delivery.description": "Proyectos entregados a tiempo y dentro del alcance",
+  "iso9001.metrics.defects.value": "<1%",
+  "iso9001.metrics.defects.label": "Tasa de defectos",
+  "iso9001.metrics.defects.description": "Bajas tasas de defectos en desarrollo de software y servicios de TI",
+  "iso9001.metrics.improvement.value": "15%",
+  "iso9001.metrics.improvement.label": "Mejora anual",
+  "iso9001.metrics.improvement.description": "Mejoras de eficiencia de procesos año tras año",
+  
+  "iso9001.contact.title": "Conozca Nuestra Gestión de Calidad",
+  "iso9001.contact.subtitle": "Contacte a nuestro equipo de calidad para aprender cómo nuestra certificación ISO 9001:2015 puede beneficiar los proyectos de su organización",
+  "iso9001.contact.cta.primary": "Contactar equipo de calidad",
+  "iso9001.contact.cta.secondary": "Descargar manual de calidad"
 }

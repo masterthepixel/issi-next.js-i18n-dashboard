@@ -280,9 +280,114 @@
     "iso27001.trust.uptime.description": "Maintaining high availability with security controls",
     "iso27001.contact.title": "Learn More About Our Security Practices",
     "iso27001.contact.subtitle": "Interested in learning how our ISO 27001 certification can benefit your organization? Contact our security team for a detailed consultation.",
-    "iso27001.contact.cta.primary": "Contact Security Team",
-    "iso27001.contact.cta.secondary": "Download Security Overview",
-    "page.careers.title": "Careers",
+  "iso27001.contact.cta.primary": "Contact Security Team",
+  "iso27001.contact.cta.secondary": "Download Security Overview",
+  
+  "iso9001.hero.title": "ISO 9001:2015 Quality Management System",
+  "iso9001.hero.subtitle": "ISSI's ISO 9001:2015 Quality Management System certification demonstrates our commitment to delivering consistent, high-quality services that meet customer expectations and regulatory requirements through systematic quality management processes.",
+  "iso9001.hero.badge.certified": "ISO 9001 Certified",
+  "iso9001.hero.badge.continuous": "Continuous Improvement",
+  "iso9001.hero.badge.customer": "Customer Focus",
+  
+  "iso9001.features.title": "Quality Management System Features",
+  "iso9001.features.subtitle": "Our ISO 9001:2015 implementation ensures systematic quality management across all business processes",
+  
+  "iso9001.features.leadership.title": "Leadership and Commitment",
+  "iso9001.features.leadership.description": "Leadership demonstrates commitment to quality management systems through active involvement, resource allocation, and strategic alignment with organizational goals.",
+  
+  "iso9001.features.customer.title": "Customer Focus",
+  "iso9001.features.customer.description": "Systematic approach to understanding customer requirements, measuring satisfaction, and enhancing customer experience through continuous improvement.",
+  
+  "iso9001.features.process.title": "Process Approach",
+  "iso9001.features.process.description": "Integrated management of interrelated processes to achieve consistent and predictable results in an efficient and effective manner.",
+  
+  "iso9001.features.improvement.title": "Continuous Improvement",
+  "iso9001.features.improvement.description": "Ongoing effort to enhance products, services, or processes through incremental and breakthrough improvements.",
+  
+  "iso9001.features.evidence.title": "Evidence-Based Decision Making",
+  "iso9001.features.evidence.description": "Decisions based on analysis and evaluation of data and information are more likely to produce desired results.",
+  
+  "iso9001.features.relationship.title": "Relationship Management",
+  "iso9001.features.relationship.description": "Managing relationships with relevant interested parties, including suppliers and partners, for sustained success.",
+  
+  "iso9001.benefits.title": "Industry Benefits",
+  "iso9001.benefits.subtitle": "Our ISO 9001:2015 certification delivers quality advantages across all sectors we serve",
+  
+  "iso9001.benefits.government.title": "Government Sector",
+  "iso9001.benefits.government.item1": "Enhanced quality assurance for federal contracts and procurement",
+  "iso9001.benefits.government.item2": "Demonstrated commitment to continuous improvement and efficiency",
+  "iso9001.benefits.government.item3": "Streamlined processes for government compliance requirements",
+  
+  "iso9001.benefits.energy.title": "Energy Sector",
+  "iso9001.benefits.energy.item1": "Quality management for critical infrastructure projects",
+  "iso9001.benefits.energy.item2": "Improved operational efficiency and safety standards",
+  "iso9001.benefits.energy.item3": "Enhanced reliability in power generation and distribution systems",
+  
+  "iso9001.benefits.commercial.title": "Commercial Sector",
+  "iso9001.benefits.commercial.item1": "Improved product and service quality consistency",
+  "iso9001.benefits.commercial.item2": "Enhanced customer satisfaction and market competitiveness",
+  "iso9001.benefits.commercial.item3": "Reduced operational costs through process optimization",
+  
+  "iso9001.process.title": "Quality Management Process",
+  "iso9001.process.subtitle": "Our quality management system follows the Plan-Do-Check-Act cycle for continuous improvement",
+  
+  "iso9001.process.plan.title": "Plan",
+  "iso9001.process.plan.description": "Establish quality objectives, identify processes, allocate resources, and define procedures to achieve quality goals and customer satisfaction.",
+  
+  "iso9001.process.do.title": "Do", 
+  "iso9001.process.do.description": "Implement quality management processes, provide training, execute procedures, and deliver products and services according to specifications.",
+  
+  "iso9001.process.check.title": "Check",
+  "iso9001.process.check.description": "Monitor and measure processes and products against policies, objectives, and requirements, and report the results to management.",
+  
+  "iso9001.process.act.title": "Act",
+  "iso9001.process.act.description": "Take actions to continually improve process performance based on monitoring results, customer feedback, and management review.",
+  
+  "iso9001.standards.title": "Quality Standards Integration",
+  "iso9001.standards.subtitle": "Our quality management system integrates seamlessly with other management systems and industry standards",
+  
+  "iso9001.standards.iso27001.title": "Information Security",
+  "iso9001.standards.iso27001.description": "Integration with ISO 27001 ensures quality processes maintain information security and data protection standards.",
+  
+  "iso9001.standards.cmmi.title": "Process Maturity",
+  "iso9001.standards.cmmi.description": "CMMI Level 3 certification complements quality management with advanced process capability and organizational maturity.",
+  
+  "iso9001.standards.itil.title": "Service Management",
+  "iso9001.standards.itil.description": "ITIL practices enhance quality management in IT service delivery and operational support processes.",
+  
+  "iso9001.certificate.title": "Certificate Details",
+  "iso9001.certificate.standard": "Standard:",
+  "iso9001.certificate.standard.value": "ISO 9001:2015",
+  "iso9001.certificate.number": "Certificate Number:",
+  "iso9001.certificate.number.value": "ISSI-ISO9001-2024-001",
+  "iso9001.certificate.valid": "Valid Until:",
+  "iso9001.certificate.valid.value": "March 2027",
+  "iso9001.certificate.scope": "Scope:",
+  "iso9001.certificate.scope.value": "Design, development, and provision of software solutions and IT support services",
+  "iso9001.certificate.body": "Certification Body:",
+  "iso9001.certificate.body.value": "BSI Group America Inc.",
+  
+  "iso9001.metrics.title": "Quality Performance Metrics",
+  "iso9001.metrics.subtitle": "Our commitment to quality excellence is reflected in measurable performance indicators",
+  "iso9001.metrics.satisfaction.value": "98%",
+  "iso9001.metrics.satisfaction.label": "Customer Satisfaction",
+  "iso9001.metrics.satisfaction.description": "Customer satisfaction rating across all service delivery areas",
+  "iso9001.metrics.delivery.value": "95%",
+  "iso9001.metrics.delivery.label": "On-Time Delivery",
+  "iso9001.metrics.delivery.description": "Projects delivered on schedule and within scope",
+  "iso9001.metrics.defects.value": "<1%",
+  "iso9001.metrics.defects.label": "Defect Rate",
+  "iso9001.metrics.defects.description": "Low defect rates across software development and IT services",
+  "iso9001.metrics.improvement.value": "15%",
+  "iso9001.metrics.improvement.label": "Annual Improvement",
+  "iso9001.metrics.improvement.description": "Year-over-year process efficiency improvements",
+  
+  "iso9001.contact.title": "Learn About Our Quality Management",
+  "iso9001.contact.subtitle": "Contact our quality team to learn how our ISO 9001:2015 certification can benefit your organization's projects",
+  "iso9001.contact.cta.primary": "Contact Quality Team",
+  "iso9001.contact.cta.secondary": "Download Quality Manual",
+  
+  "page.careers.title": "Careers",
     "page.careers.description": "Join our talented team and build your career in software development and technology.",
     "page.support.title": "Support Center",
     "page.support.description": "Access technical support, documentation, and resources for our products and services.",

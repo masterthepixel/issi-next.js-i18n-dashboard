@@ -1,84 +1,3 @@
-/*
-  CSS Theme Variables (light & dark mode)
-  --------------------------------------
-  These variables provide a design system foundation for color, radius, and more.
-  They do not override existing classes, but can be referenced in custom CSS and Tailwind config.
-*/
-:root {
-  --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.141 0.005 285.823);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.705 0.213 47.604);
-  --primary-foreground: oklch(0.98 0.016 73.684);
-  --secondary: oklch(0.967 0.001 286.375);
-  --secondary-foreground: oklch(0.21 0.006 285.885);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.21 0.006 285.885);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.705 0.213 47.604);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-primary: oklch(0.705 0.213 47.604);
-  --sidebar-primary-foreground: oklch(0.98 0.016 73.684);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.705 0.213 47.604);
-  /* H1 Gradient Colors */
-  --h1-gradient-from: var(--foreground);
-  --h1-gradient-to: var(--card-foreground);
-}
-
-.dark {
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.646 0.222 41.116);
-  --primary-foreground: oklch(0.98 0.016 73.684);
-  --secondary: oklch(0.274 0.006 286.033);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.646 0.222 41.116);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.646 0.222 41.116);
-  --sidebar-primary-foreground: oklch(0.98 0.016 73.684);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.646 0.222 41.116);
-  /* H1 Gradient Colors */
-  --h1-gradient-from: #e67f1a;
-  --h1-gradient-to: #f0b959;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -86,14 +5,40 @@
 @layer base {
   html {
     @apply transition-colors duration-300 ease-in-out;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem; /* Account for fixed header */
   }
 
   body {
     @apply transition-colors duration-300 ease-in-out;
+    font-feature-settings: "liga" 1, "clig" 1, "kern" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-optical-sizing: auto;
   }
 
   * {
     @apply transition-colors duration-200 ease-in-out;
+  }
+
+  /* Enhanced typography for better legibility */
+  h1, h2, h3, h4, h5, h6 {
+    font-feature-settings: "liga" 1, "clig" 1, "kern" 1, "calt" 1, "swsh" 1, "ss01" 1;
+    font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
+    text-rendering: optimizeLegibility;
+  }
+
+  p, span, div, li, td, th {
+    font-feature-settings: "liga" 1, "clig" 1, "kern" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+  }
+
+  /* Code elements should not use ligatures */
+  code, pre, kbd, samp {
+    font-feature-settings: "liga" 0, "clig" 0;
+    font-variant-ligatures: none;
   }
 }
 
@@ -185,9 +130,11 @@
     text-align: left;
   }
   .dark .glass-card {
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1) inset, 0 2px 8px 0 rgba(80, 180, 255, 0.14),
-      /* blue glow, even smaller */ 0 0 8px 2px rgba(120, 80, 255, 0.1),
-      /* purple glow, even smaller */ 0 0 12px 2px rgba(255, 255, 255, 0.04); /* soft white outer glow, even smaller */
+    box-shadow:
+      0 0 0 2px rgba(255,255,255,0.10) inset,
+      0 2px 8px 0 rgba(80, 180, 255, 0.14), /* blue glow, even smaller */
+      0 0 8px 2px rgba(120, 80, 255, 0.10), /* purple glow, even smaller */
+      0 0 12px 2px rgba(255,255,255,0.04); /* soft white outer glow, even smaller */
     border: 1.5px solid rgba(120, 180, 255, 0.18);
     background: rgba(30, 41, 59, 0.38); /* more translucent in dark mode */
     backdrop-filter: blur(18px) saturate(1.2);
@@ -197,7 +144,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/jess-harding-lqT6NAmTaiY-unsplash.jpg");
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/jess-harding-lqT6NAmTaiY-unsplash.jpg');
     background-size: cover;
     background-position: center;
     clip-path: inset(10em);
@@ -216,7 +163,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0px 20px 10px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0px 20px 10px rgba(0,0,0,0.30));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -229,9 +176,9 @@
     left: 0;
     height: calc(100% - 20em);
     width: calc(100% - 20em);
-    border-top: 2px solid rgba(225, 225, 225, 0.2);
-    border-left: 1px solid rgba(225, 225, 225, 0.1);
-    border-right: 1px solid rgba(225, 225, 225, 0.3);
+    border-top: 2px solid rgba(225,225,225, 0.2);
+    border-left: 1px solid rgba(225,225,225, 0.1);
+    border-right: 1px solid rgba(225,225,225, 0.3);
     z-index: 2;
     pointer-events: none;
   }
@@ -253,50 +200,6 @@
     .frosted-drop-shadow > span {
       font-size: 2em;
     }
-  }
-
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  h1 {
-    /* Slate gradient for text in light mode: from slate-600, via slate-700, to slate-900 */
-    background: linear-gradient(to top, #475569 0%, #334155 50%, #0f172a 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-    text-shadow: rgba(0, 0, 0, 0.5) 1px 2px 3px;
-    border: none;
-    box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    filter: none;
-  }
-  .dark h1 {
-    /* Remove border and box-shadow, keep gradient from theme vars */
-    border: none;
-    box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    filter: none;
-    background: linear-gradient(to bottom, var(--h1-gradient-from), var(--h1-gradient-to));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-    text-shadow: none;
-  }
-
-  p {
-    color: #475569; /* slate-600 */
-  }
-  .dark p {
-    color: unset;
   }
 }
 

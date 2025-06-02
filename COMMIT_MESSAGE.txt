@@ -1,31 +1,30 @@
-feat: Complete ISO 27001 page and fix layout gaps across application
+feat: implement comprehensive ISO 9001:2015 certification page with multilingual support
 
-• Built comprehensive ISO 27001 compliance page from scratch
-  - Modern glass effect design with hero, features, timeline, and industry sections
-  - Complete internationalization with 77+ translation keys in EN/FR/ES
-  - Certificate details panel and security framework visualization
-  - Trust indicators and industry-specific benefits sections
+• Add 80+ translation keys across EN/FR/ES languages for complete ISO 9001 content
+  - Hero section with quality management badges and call-to-actions
+  - Features showcase covering 7 key QMS principles (leadership, customer focus, process approach, etc.)
+  - Industry benefits section for healthcare, manufacturing, technology, finance, and government
+  - Plan-Do-Check-Act (PDCA) process workflow implementation
+  - Standards integration matrix covering ISO 27001, CMMI, SOC 2, GDPR compliance
+  - Certificate details display with standard, version, scope, and validity information
+  - Performance metrics dashboard with satisfaction, efficiency, and reliability stats
+  - Quality team contact section with engagement options
 
-• Fixed layout gap issues site-wide
-  - Applied consistent -mt-20 negative margin to eliminate white space
-  - Updated 10+ pages: compliance, services, products, contact, support
-  - Fixed AboutHero.tsx and Hero.tsx components
-  - Ensured all pages start flush with navbar
+• Transform minimal placeholder page into comprehensive 14-section certification layout
+  - Applied consistent UI styling with glowing stars background and responsive design
+  - Implemented proper component structure following established design patterns
+  - Added smooth navigation between sections with scroll behavior
 
-• Resolved TypeScript compilation errors
-  - Converted 77+ instances of intl("key") to intl.formatMessage({ id: "key" })
-  - Fixed malformed import statement syntax
-  - Verified max-w-7xl width constraint compliance
-
-• Updated changelog with comprehensive documentation
-  - Added detailed entries for all changes and fixes
-  - Organized by Added, Changed, and Fixed sections
-  - Documented internationalization conversion process
+• Technical improvements and bug fixes
+  - Fix translation key mismatches for consistent naming conventions
+  - Resolve JSON syntax errors in French and Spanish translation files (missing commas)
+  - Update Framer Motion imports from deprecated 'motion/react' to 'framer-motion'
+  - Enhance typography with comprehensive font ligature support and optimized text rendering
+  - Add smooth scroll behavior with proper header offset for improved navigation
 
 Files modified:
-- src/app/[lang]/compliance/iso27001/page.tsx (complete rewrite)
-- src/components/AboutHero.tsx (layout fixes)
-- src/components/Hero.tsx (layout fixes)
-- Multiple page.tsx files (layout gap fixes)
-- src/lang/*.json (translation keys)
+- src/lang/en.json, fr.json, es.json (translation system expansion)
+- src/app/[lang]/compliance/iso9001/page.tsx (complete page implementation)
+- src/components/ui/glowing-stars-background.tsx, glowing-stars.tsx (import fixes)
+- src/app/globals.css (typography and scroll enhancements)
 - CHANGELOG.md (documentation update)
