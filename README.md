@@ -23,7 +23,7 @@ This Next.js application features:
 
 - **Framework**: Next.js 14.2+
 - **Styling**: Tailwind CSS
-- **Internationalization**: 
+- **Internationalization**:
   - @formatjs/intl
   - react-intl
 - **State Management**: React context and hooks
@@ -39,25 +39,30 @@ This Next.js application features:
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/your-username/issi-next.js-i18n-dashboard.git
    cd issi-next.js-i18n-dashboard
    ```
 
 2. Install dependencies:
+
    ```bash
    pnpm install
    ```
 
 3. Approve necessary build scripts:
+
    ```bash
    # When prompted about "unrs-resolver", you should approve it
    # This is a dependency related to Next.js URL resolution
    pnpm approve unrs-resolver
    ```
+
    > Note: pnpm's security feature requires explicit approval to run scripts from dependencies. The `unrs-resolver` is safe to approve as it's related to Next.js functionality.
 
 4. Start the development server:
+
    ```bash
    pnpm dev
    ```
@@ -97,6 +102,7 @@ The website is configured for deployment on Vercel or similar platforms.
 ## Contact Information
 
 **International Software Systems International (ISSI)**
+
 - **Address**: 7337 Hanover Pkwy, Suite# A, Greenbelt, MD 20770
 - **Phone**: 301-982-9700
 - **Business Development**: 301-982-9700
@@ -110,3 +116,35 @@ The website is configured for deployment on Vercel or similar platforms.
 - [Next.js deployment documentation](https://nextjs.org/docs/deployment)
 - [Next.js internationalization (i18n) tutorial](https://localizely.com/blog/nextjs-i18n-tutorial/?tab=app-router)
 - [React Intl documentation](https://formatjs.io/docs/react-intl/)
+
+---
+
+## 📚 Documentation Index
+
+This project includes comprehensive instructions and guides for all major development and design areas. Use this section as a quick reference to all available documentation:
+
+### Core Guides
+
+- **INSTRUCTIONS.md** – General developer setup, workflow, project structure, and advanced UI/theming/compliance notes
+- **INTERNATIONALIZATION.md** – Deep-dive into i18n architecture, language files, and data flow
+- **COMPONENT_INTEGRATION_GUIDE.md** – How to build, wrap, and integrate i18n-ready client/server components
+- **JSON_VALIDATION_GUIDE.md** – JSON validation, linting, and best practices
+
+### Design & Theming
+
+- **COLOR_PALETTE_INSTRUCTIONS.md** – Text and background color usage for light/dark mode, Tailwind and CSS variable usage
+- **BACKGROUND_STYLES_REFERENCE.md** – Reference for all background patterns, gradients, and glassmorphism effects
+
+### Changelog
+
+- **CHANGELOG.md** – All major UI, UX, compliance, and navigation changes, with dates and details
+
+### Quick Start
+
+- See `INSTRUCTIONS.md` for setup and workflow
+- Always update the changelog and translation files when adding new features
+- Follow theming and i18n patterns in all new components/pages
+
+---
+
+_Last updated: May 31, 2025_

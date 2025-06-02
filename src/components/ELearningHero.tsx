@@ -9,16 +9,16 @@ export default function ELearningHero() {
       <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent"></div>
       </div>
-      
+
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
-        <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl mb-6">
+        <h1 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent text-center bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)] sm:text-6xl mb-6">
           <FormattedMessage id="page.eLearning.hero.title" />
         </h1>
-        
+
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-200">
           <FormattedMessage id="page.eLearning.hero.subtitle" />
         </p>
-        
+
         <div className="mt-8 inline-block bg-white/20 backdrop-blur-sm px-8 py-4 rounded-full border border-white/30">
           <span className="text-lg font-semibold">
             <FormattedMessage id="page.eLearning.hero.experience" />

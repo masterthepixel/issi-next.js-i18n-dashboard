@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { FormattedMessage, IntlProvider, useIntl } from 'react-intl';
+import React from "react";
+import { FormattedMessage, IntlProvider, useIntl } from "react-intl";
 
 interface TermsContentProps {
   messages: Record<string, string>;
@@ -32,10 +32,10 @@ function TermsContentInner() {
           </p>
           <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4">
             <p className="text-amber-800 dark:text-amber-200 m-0">
-              <FormattedMessage 
-                id="license.sections.introduction.important" 
+              <FormattedMessage
+                id="license.sections.introduction.important"
                 values={{
-                  strong: (chunks: React.ReactNode) => <strong>{chunks}</strong>
+                  strong: (chunks: React.ReactNode) => <strong>{chunks}</strong>,
                 }}
               />
             </p>
@@ -52,7 +52,7 @@ function TermsContentInner() {
           <p className="text-lg text-slate-700 dark:text-slate-300">
             <FormattedMessage id="license.sections.definitions.intro" />
           </p>
-            <dl className="space-y-4">
+          <dl className="space-y-4">
             <div className="border-l-4 border-blue-500 pl-4">
               <dt className="font-semibold text-slate-900 dark:text-slate-100">
                 <FormattedMessage id="license.sections.definitions.client.term" />
@@ -61,7 +61,7 @@ function TermsContentInner() {
                 <FormattedMessage id="license.sections.definitions.client.definition" />
               </dd>
             </div>
-            
+
             <div className="border-l-4 border-blue-500 pl-4">
               <dt className="font-semibold text-slate-900 dark:text-slate-100">
                 <FormattedMessage id="license.sections.definitions.company.term" />
@@ -70,7 +70,7 @@ function TermsContentInner() {
                 <FormattedMessage id="license.sections.definitions.company.definition" />
               </dd>
             </div>
-            
+
             <div className="border-l-4 border-blue-500 pl-4">
               <dt className="font-semibold text-slate-900 dark:text-slate-100">
                 <FormattedMessage id="license.sections.definitions.parties.term" />
@@ -80,7 +80,7 @@ function TermsContentInner() {
               </dd>
             </div>
           </dl>
-          
+
           <p className="text-slate-700 dark:text-slate-300">
             <FormattedMessage id="license.sections.definitions.allTerms" />
           </p>
@@ -107,7 +107,7 @@ function TermsContentInner() {
         <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-6">
           <FormattedMessage id="license.sections.hyperlinking.title" />
         </h2>
-        
+
         {/* Approved Organizations */}
         <div id="approved-organizations" className="mb-8">
           <h3 className="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-4">
@@ -117,11 +117,21 @@ function TermsContentInner() {
             <FormattedMessage id="license.sections.hyperlinking.approved.intro" />
           </p>
           <ul className="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300">
-            <li><FormattedMessage id="license.sections.hyperlinking.approved.government" /></li>
-            <li><FormattedMessage id="license.sections.hyperlinking.approved.searchEngines" /></li>
-            <li><FormattedMessage id="license.sections.hyperlinking.approved.news" /></li>
-            <li><FormattedMessage id="license.sections.hyperlinking.approved.directories" /></li>
-            <li><FormattedMessage id="license.sections.hyperlinking.approved.accredited" /></li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.approved.government" />
+            </li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.approved.searchEngines" />
+            </li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.approved.news" />
+            </li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.approved.directories" />
+            </li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.approved.accredited" />
+            </li>
           </ul>
         </div>
 
@@ -134,12 +144,24 @@ function TermsContentInner() {
             <FormattedMessage id="license.sections.hyperlinking.conditional.intro" />
           </p>
           <ul className="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300">
-            <li><FormattedMessage id="license.sections.hyperlinking.conditional.consumer" /></li>
-            <li><FormattedMessage id="license.sections.hyperlinking.conditional.community" /></li>
-            <li><FormattedMessage id="license.sections.hyperlinking.conditional.charities" /></li>
-            <li><FormattedMessage id="license.sections.hyperlinking.conditional.portals" /></li>
-            <li><FormattedMessage id="license.sections.hyperlinking.conditional.professional" /></li>
-            <li><FormattedMessage id="license.sections.hyperlinking.conditional.educational" /></li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.conditional.consumer" />
+            </li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.conditional.community" />
+            </li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.conditional.charities" />
+            </li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.conditional.portals" />
+            </li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.conditional.professional" />
+            </li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.conditional.educational" />
+            </li>
           </ul>
         </div>
 
@@ -149,17 +171,33 @@ function TermsContentInner() {
             <FormattedMessage id="license.sections.hyperlinking.process.title" />
           </h3>
           <p className="text-slate-700 dark:text-slate-300 mb-4">
-            <FormattedMessage 
+            <FormattedMessage
               id="license.sections.hyperlinking.process.intro"
-              values={{ email: <a href="mailto:info@issi.com" className="text-blue-600 dark:text-blue-400 hover:underline">info@issi.com</a> }}
+              values={{
+                email: (
+                  <a href="mailto:info@issi.com" className="text-blue-600 dark:text-blue-400 hover:underline">
+                    info@issi.com
+                  </a>
+                ),
+              }}
             />
           </p>
           <ul className="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300">
-            <li><FormattedMessage id="license.sections.hyperlinking.process.name" /></li>
-            <li><FormattedMessage id="license.sections.hyperlinking.process.contact" /></li>
-            <li><FormattedMessage id="license.sections.hyperlinking.process.url" /></li>
-            <li><FormattedMessage id="license.sections.hyperlinking.process.linkUrls" /></li>
-            <li><FormattedMessage id="license.sections.hyperlinking.process.targetUrls" /></li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.process.name" />
+            </li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.process.contact" />
+            </li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.process.url" />
+            </li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.process.linkUrls" />
+            </li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.process.targetUrls" />
+            </li>
           </ul>
           <p className="text-slate-700 dark:text-slate-300 mt-4">
             <FormattedMessage id="license.sections.hyperlinking.process.timeline" />
@@ -175,16 +213,22 @@ function TermsContentInner() {
             <FormattedMessage id="license.sections.hyperlinking.standards.intro" />
           </p>
           <ul className="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300">
-            <li><FormattedMessage id="license.sections.hyperlinking.standards.corporateName" /></li>
-            <li><FormattedMessage id="license.sections.hyperlinking.standards.url" /></li>
-            <li><FormattedMessage id="license.sections.hyperlinking.standards.description" /></li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.standards.corporateName" />
+            </li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.standards.url" />
+            </li>
+            <li>
+              <FormattedMessage id="license.sections.hyperlinking.standards.description" />
+            </li>
           </ul>
           <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mt-4">
             <p className="text-blue-800 dark:text-blue-200 m-0">
-              <FormattedMessage 
+              <FormattedMessage
                 id="license.sections.hyperlinking.standards.note"
                 values={{
-                  strong: (chunks: React.ReactNode) => <strong>{chunks}</strong>
+                  strong: (chunks: React.ReactNode) => <strong>{chunks}</strong>,
                 }}
               />
             </p>
@@ -207,7 +251,7 @@ function TermsContentInner() {
         <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-6">
           <FormattedMessage id="license.sections.rights.title" />
         </h2>
-        
+
         {/* Reservation Rights */}
         <div id="reservation-rights" className="mb-8">
           <h3 className="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-4">
@@ -250,10 +294,10 @@ function TermsContentInner() {
           </p>
           <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
             <p className="text-red-800 dark:text-red-200 m-0">
-              <FormattedMessage 
+              <FormattedMessage
                 id="license.sections.liability.prohibited"
                 values={{
-                  strong: (chunks: React.ReactNode) => <strong>{chunks}</strong>
+                  strong: (chunks: React.ReactNode) => <strong>{chunks}</strong>,
                 }}
               />
             </p>
@@ -266,7 +310,7 @@ function TermsContentInner() {
         <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-6">
           <FormattedMessage id="license.sections.disclaimer.title" />
         </h2>
-        
+
         {/* Liability Exclusions */}
         <div id="liability-exclusions" className="mb-8">
           <h3 className="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-4">
@@ -286,10 +330,18 @@ function TermsContentInner() {
             <FormattedMessage id="license.sections.disclaimer.limitations.intro" />
           </p>
           <ul className="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300">
-            <li><FormattedMessage id="license.sections.disclaimer.limitations.negligence" /></li>
-            <li><FormattedMessage id="license.sections.disclaimer.limitations.fraud" /></li>
-            <li><FormattedMessage id="license.sections.disclaimer.limitations.notPermitted" /></li>
-            <li><FormattedMessage id="license.sections.disclaimer.limitations.notExcluded" /></li>
+            <li>
+              <FormattedMessage id="license.sections.disclaimer.limitations.negligence" />
+            </li>
+            <li>
+              <FormattedMessage id="license.sections.disclaimer.limitations.fraud" />
+            </li>
+            <li>
+              <FormattedMessage id="license.sections.disclaimer.limitations.notPermitted" />
+            </li>
+            <li>
+              <FormattedMessage id="license.sections.disclaimer.limitations.notExcluded" />
+            </li>
           </ul>
           <p className="text-slate-700 dark:text-slate-300 mt-4">
             <FormattedMessage id="license.sections.disclaimer.limitations.freeServices" />

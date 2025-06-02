@@ -1,22 +1,105 @@
 "use client";
 
+import { Locale } from "@/lib/definitions";
+import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
+import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
+import {
+  CheckBadgeIcon,
+  ClipboardDocumentCheckIcon,
+  LockClosedIcon,
+  ShieldCheckIcon,
+} from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FormattedMessage } from "react-intl";
-import { Locale } from "@/lib/definitions";
 
 interface Props {
   locale: Locale;
 }
 
 export default function TopNav({ locale }: Props) {
-  const pathname = usePathname();    return (
+  const pathname = usePathname();
+  // Compliance submenu items
+  const complianceLinks = [
+    {
+      name: <FormattedMessage id="common.navigation.compliance" defaultMessage="Compliance & Certifications" />,
+      description: (
+        <FormattedMessage
+          id="compliance.carousel.subtitle"
+          defaultMessage="Certified. Secure. Trusted by industry leaders and government agencies."
+        />
+      ),
+      href: `/${locale}/compliance`,
+      icon: CheckBadgeIcon,
+    },
+    {
+      name: <FormattedMessage id="compliance.carousel.iso9001.title" defaultMessage="ISO 9001:2015 Certified" />,
+      description: (
+        <FormattedMessage
+          id="compliance.carousel.iso9001.headline"
+          defaultMessage="Internationally recognized for quality management systems."
+        />
+      ),
+      href: `/${locale}/compliance/iso9001`,
+      icon: CheckBadgeIcon,
+    },
+    {
+      name: <FormattedMessage id="compliance.carousel.iso27001.title" defaultMessage="ISO 27001:2013 Certified" />,
+      description: (
+        <FormattedMessage
+          id="compliance.carousel.iso27001.headline"
+          defaultMessage="Information Security Management."
+        />
+      ),
+      href: `/${locale}/compliance/iso27001`,
+      icon: LockClosedIcon,
+    },
+    {
+      name: <FormattedMessage id="compliance.carousel.mdot.title" defaultMessage="Maryland DOT MBE/DBE/SBE" />,
+      description: (
+        <FormattedMessage
+          id="compliance.carousel.mdot.headline"
+          defaultMessage="State of Maryland MBE/DBE/SBE Certification."
+        />
+      ),
+      href: `/${locale}/compliance/mdot`,
+      icon: ClipboardDocumentCheckIcon,
+    },
+    {
+      name: <FormattedMessage id="compliance.carousel.cmmi3.title" defaultMessage="CMMI Level 3" />,
+      description: (
+        <FormattedMessage
+          id="compliance.carousel.cmmi3.headline"
+          defaultMessage="Capability Maturity Model Integration (CMMI) Level 3."
+        />
+      ),
+      href: `/${locale}/compliance/cmmi3`,
+      icon: ShieldCheckIcon,
+    },
+  ];
+  const callsToAction = [
+    {
+      name: <FormattedMessage id="compliance.menu.cta.demo" defaultMessage="Watch demo" />,
+      href: "#",
+      icon: PlayCircleIcon,
+    },
+    {
+      name: <FormattedMessage id="compliance.menu.cta.contact" defaultMessage="Contact sales" />,
+      href: "#",
+      icon: PhoneIcon,
+    },
+  ];
+
+  return (
     <div className="hidden lg:flex items-center justify-center flex-1 space-x-8">
-      <Link        
+      <Link
         href={`/${locale}/services`}
         className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
-          pathname.includes('/services') ? 'border-blue-500 text-blue-600 dark:text-blue-400 font-medium' : 'border-transparent'
-        }`}      >
+          pathname.includes("/services")
+            ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
+            : "border-transparent"
+        }`}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -32,11 +115,15 @@ export default function TopNav({ locale }: Props) {
           />
         </svg>
         <FormattedMessage id="common.navigation.services" />
-      </Link>      <Link        
+      </Link>{" "}
+      <Link
         href={`/${locale}/products`}
         className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
-          pathname.includes('/products') ? 'border-blue-500 text-blue-600 dark:text-blue-400 font-medium' : 'border-transparent'
-        }`}      >
+          pathname.includes("/products")
+            ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
+            : "border-transparent"
+        }`}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -52,11 +139,15 @@ export default function TopNav({ locale }: Props) {
           />
         </svg>
         <FormattedMessage id="common.navigation.products" />
-      </Link>      <Link        
+      </Link>{" "}
+      <Link
         href={`/${locale}/government`}
         className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
-          pathname.includes('/government') ? 'border-blue-500 text-blue-600 dark:text-blue-400 font-medium' : 'border-transparent'
-        }`}      >
+          pathname.includes("/government")
+            ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
+            : "border-transparent"
+        }`}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -72,11 +163,15 @@ export default function TopNav({ locale }: Props) {
           />
         </svg>
         <FormattedMessage id="common.navigation.government" />
-      </Link>      <Link        
+      </Link>{" "}
+      <Link
         href={`/${locale}/eLearning`}
         className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
-          pathname.includes('/eLearning') ? 'border-blue-500 text-blue-600 dark:text-blue-400 font-medium' : 'border-transparent'
-        }`}      >
+          pathname.includes("/eLearning")
+            ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
+            : "border-transparent"
+        }`}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -92,37 +187,74 @@ export default function TopNav({ locale }: Props) {
           />
         </svg>
         <FormattedMessage id="common.navigation.eLearning" />
-      </Link>      <Link        
-        href={`/${locale}/compliance`}
-        className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
-          pathname.includes('/compliance') ? 'border-blue-500 text-blue-600 dark:text-blue-400 font-medium' : 'border-transparent'
-        }`}      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="size-4 mr-1"
+      </Link>{" "}
+      {/* Compliance Popover */}
+      <Popover className="relative">
+        <PopoverButton
+          className={`inline-flex items-center gap-x-1 text-sm font-semibold py-5 border-b-2 transition-all ${
+            pathname.includes("/compliance")
+              ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
+              : "border-transparent text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
+          }`}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"
-          />
-        </svg>
-        <FormattedMessage id="common.navigation.compliance" />
-      </Link>      <Link        
+          <span>
+            <FormattedMessage id="common.navigation.compliance" defaultMessage="Compliance" />
+          </span>
+          <ChevronDownIcon aria-hidden="true" className="size-5" />
+        </PopoverButton>
+        <PopoverPanel className="absolute left-1/2 z-20 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4">
+          <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white dark:bg-slate-900 text-sm shadow-lg ring-1 ring-gray-900/5 dark:ring-slate-700/40">
+            <div className="p-4">
+              {complianceLinks.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors"
+                >
+                  <div className="mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
+                    <item.icon
+                      aria-hidden="true"
+                      className="size-6 text-gray-600 dark:text-indigo-400 group-hover:text-indigo-600"
+                    />
+                  </div>
+                  <div>
+                    <a href={item.href} className="font-semibold text-gray-900 dark:text-slate-100">
+                      {item.name}
+                      <span className="absolute inset-0" />
+                    </a>
+                    <p className="mt-1 text-gray-600 dark:text-slate-400">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="grid grid-cols-2 divide-x divide-gray-900/5 dark:divide-slate-700 bg-gray-50 dark:bg-slate-800">
+              {callsToAction.map((item, idx) => (
+                <a
+                  key={idx}
+                  href={item.href}
+                  className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 dark:text-slate-100 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
+                >
+                  <item.icon aria-hidden="true" className="size-5 flex-none text-gray-400 dark:text-indigo-400" />
+                  {item.name}
+                </a>
+              ))}
+            </div>
+          </div>
+        </PopoverPanel>
+      </Popover>{" "}
+      <Link
         href={`/${locale}/about`}
         className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
-          pathname.includes('/about') ? 'border-blue-500 text-blue-600 dark:text-blue-400 font-medium' : 'border-transparent'
+          pathname.includes("/about")
+            ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
+            : "border-transparent"
         }`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth={1.5}          stroke="currentColor"
+          strokeWidth={1.5}
+          stroke="currentColor"
           className="size-4 mr-1"
         >
           <path
