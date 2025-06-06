@@ -820,8 +820,7 @@
   "mdot.contact.info.phone": "(301) 555-0123",
   "mdot.contact.info.address": "Greenbelt, MD",
   "mdot.contact.info.download": "Descargar Capacidades",
-
-  "mdot.footer_cta.title": "¿Listo para Cumplir Sus Objetivos de Diversidad?",
-  "mdot.footer_cta.subtitle": "Discutamos cómo ISSI puede apoyar su próximo proyecto Maryland DOT",
-  "mdot.footer_cta.button": "Programar Consulta"
+  "mdot.contact.info.certifications.title": "Documentos de Certificación",
+  "mdot.contact.info.certifications.description": "Acceda a nuestros documentos de certificación actuales de Maryland DOT e información de cumplimiento.",
+  "mdot.contact.info.certifications.link": "Ver Todas las Certificaciones →"
 }
