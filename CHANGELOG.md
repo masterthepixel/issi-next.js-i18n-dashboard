@@ -35,8 +35,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Pluralization usage examples with JSON structures
     - Date and number formatting components
     - Rich text handling with HTML elements
-    - Dynamic translations with variables
-  - **Documentation Cross-References**: Updated all relevant documentation with cross-references
+    - Dynamic translations with variables  - **Documentation Cross-References**: Updated all relevant documentation with cross-references
+
+### Changed
+
+- **eLearning Page Simplified**: Removed the HeaderWrapper component from the eLearning page
+  - Eliminated redundant profile-style header to streamline user experience
+  - Improved page load performance by reducing component count
+  - Enhanced visual consistency by relying on the main hero section for introductory content
+  - Simplified page structure for better maintainability
+
+- **eLearning Hero Component Redesigned**: Completely revamped the hero section with a new professional layout
+  - Implemented a split-screen design with large image and detailed content side-by-side
+  - Added featured capabilities list with Heroicons for visual enhancement
+  - Included comprehensive content about ISSI's e-learning services and experience
+  - Enhanced experience badge to highlight 22 years of expertise
+  - Added Performance & Talent Management section with detailed description
+  - Fully internationalized all content with proper translation keys
+
+- **eLearning Clients Component Enhanced**: Expanded client organization display
+  - Updated client list with 30+ government and educational organizations
+  - Improved section layout with client counter and modern styling
+  - Optimized grid layout for better display of numerous client organizations
+  - Enhanced visual appeal with subtle background coloring and refined spacing
+  - Updated section title and description to better reflect client partnerships
 
 ### Fixed
 
@@ -51,6 +73,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added subtle border styling with border-t for better visibility in both light and dark modes
   - Removed logo image from footer for more streamlined appearance
   - Improved compatibility with Content component by matching z-index values
+
+- **About Page Component Enhancements**: Improved accessibility and visual presentation
+  - Added proper ARIA attributes to AboutAwards, AboutCertifications, and AboutStats components
+  - Enhanced semantic HTML structure with proper section roles and aria-labelledby attributes
+  - Improved image handling with optimized alt text and loading attributes
+  - Refined grid layouts for better responsiveness across device sizes
+  - Updated typography for improved readability and visual hierarchy
 
 ## [Unreleased] - 2025-06-03
 
