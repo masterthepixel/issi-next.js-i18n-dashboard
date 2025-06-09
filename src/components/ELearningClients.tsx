@@ -37,34 +37,30 @@ const clients = [
 
 export default function ELearningClients() {
   return (
-    <section className="py-24 sm:py-32 bg-slate-50 dark:bg-slate-800/30">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-          <div className="max-w-2xl mb-6 md:mb-0">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-              <FormattedMessage id="elearning.clients.title" />
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600 dark:text-slate-300">
-              <FormattedMessage id="elearning.clients.subtitle" />
-            </p>
-          </div>
-          <div className="bg-white dark:bg-slate-700 rounded-xl shadow-md p-6 text-center">
-            <div className="text-4xl font-bold text-blue-600 dark:text-blue-400">{clients.length}+</div>
-            <div className="text-sm text-slate-600 dark:text-slate-300">Client Organizations</div>
-          </div>
-        </div>
-        
-        <div className="mx-auto mt-8 grid max-w-7xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {clients.map((clientKey, index) => (
-            <div 
-              key={index} 
-              className="bg-white dark:bg-slate-700 p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 text-center border border-slate-200 dark:border-slate-600"
-            >
-              <div className="text-sm font-medium text-slate-700 dark:text-slate-200">
+    <section className="py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4">        <div className="text-left mb-8">
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+            <FormattedMessage id="elearning.clients.title" />
+          </h2>
+          <p className="mt-4 text-lg leading-8 text-slate-600 dark:text-slate-300">
+            <FormattedMessage id="elearning.clients.subtitle" />
+          </p>
+        </div><div className="mx-auto mt-8 max-w-7xl">          <div className="flex flex-wrap gap-3 justify-start">
+            {clients.map((clientKey, index) => (
+              <span 
+                key={index} 
+                className={`inline-flex items-center rounded-full px-3 py-2 text-base font-medium ring-1 ring-inset ${
+                  index % 3 === 0 
+                    ? 'bg-yellow-50 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-200 ring-yellow-600/20 dark:ring-yellow-400/30'
+                    : index % 3 === 1
+                    ? 'bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-200 ring-purple-700/10 dark:ring-purple-400/30'
+                    : 'bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 ring-gray-500/10 dark:ring-gray-400/20'
+                }`}
+              >
                 <FormattedMessage id={clientKey} />
-              </div>
-            </div>
-          ))}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -7,15 +7,52 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - 2025-06-09
 
+### Removed
+
+- **eLearning Page Sections**: Simplified eLearning page by removing unnecessary sections
+  - Removed ELearningCTAWrapper section for cleaner user experience
+  - Removed ELearningValuePropositionWrapper section to reduce redundancy
+  - Removed unused imports (ELearningCTAWrapper, ELearningValuePropositionWrapper)
+  - Streamlined page structure to focus on core content: Hero, Features, Services, and Clients
+
 ### Added
 
-- **eLearning Value Proposition Section**: Fixed internationalization and added complete translation support
+- **Complete Client Organization Translations**: Enhanced internationalization support for all eLearning clients
+  - Added 16 missing French translations for client organizations in `fr.json`
+  - Added all 30 Spanish translations for client organizations in `es.json` (previously none existed)
+  - Added Spanish section title and subtitle translations for clients section
+  - Ensured complete multilingual support across English, French, and Spanish
+
+### Changed
+
+- **eLearning Clients Component**: Complete redesign for improved visual appeal and user experience
+  - Converted from grid layout to flowing badge-style presentation
+  - Implemented three-color alternating badge system (Yellow → Purple → Gray)
+  - Enhanced typography with larger, more readable text (`text-base`)
+  - Removed organizational count badge (40+ organizations) for cleaner design
+  - Changed layout from centered to left-aligned for better content flow
+  - Added dark mode support for all badge color variants
+  - Removed background colors from client cards for transparent design consistency
+
+### Fixed
+
+- **ELearning Component Transparency**: Removed background colors from components for consistent theming
+  - Updated ELearningHero component to use transparent background instead of white/dark slate
+  - Updated ELearningFeatures component to use transparent background instead of gray-900
+  - Updated ELearningClients component to remove card backgrounds and borders
+  - Changed ELearningHero experience badge from blue to red (`bg-red-700`)
+  - Improved text contrast for proper light/dark mode compatibility
+
+- **Server Component Context Error**: Fixed ELearningFeaturesWrapper component rendering issue
+  - Converted ELearningFeaturesWrapper from "use server" to "use client" directive
+  - Resolved IntlProvider context error that was preventing page rendering
+  - Fixed createContext error in React Server Components
+
+- **Internationalization Issues**: Enhanced multilingual support across eLearning components
   - Fixed ELearningValueProposition component to use correct translation key (`elearning.value.title`)
-  - Added missing Spanish translations for value proposition section including:
-    - Title, subtitle, and all three value cards (Complete Ecosystem, Security & Compliance, Performance Tracking)
-    - Statistics section with LMS implementations, courses developed, and users trained
-  - Verified French translations were already present and working correctly
-  - Enhanced multilingual support ensuring all content displays properly in English, French, and Spanish
+  - Added missing Spanish translations for value proposition section
+  - Added complete French and Spanish translation support for ELearningFeatures component
+  - Verified all three languages (EN, FR, ES) display content properly
 
 - **eLearning Features Component**: Added comprehensive features section to showcase ISSI's e-learning capabilities
   - Created new ELearningFeatures component with 6 key feature areas: LMS, Custom Development, Industry Partnerships, Multimedia, SCORM/AICC Compliance, and Performance Management

@@ -2,11 +2,9 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 
 import ELearningClientsWrapper from "@/components/ELearningClientsWrapper";
-import ELearningCTAWrapper from "@/components/ELearningCTAWrapper";
 import ELearningFeaturesWrapper from "@/components/ELearningFeaturesWrapper";
 import ELearningHeroWrapper from "@/components/ELearningHeroWrapper";
 import ELearningServicesWrapper from "@/components/ELearningServicesWrapper";
-import ELearningValuePropositionWrapper from "@/components/ELearningValuePropositionWrapper";
 import Spinner from "@/components/Spinner";
 
 import { Locale } from "@/lib/definitions";
@@ -109,14 +107,8 @@ async function PageContent({ locale }: PageContentProps) {  const intl = await g
       {/* Services section */}
       <ELearningServicesWrapper locale={locale} messages={messages} />
       
-      {/* Value Proposition section */}
-      <ELearningValuePropositionWrapper locale={locale} messages={messages} />
-      
       {/* Clients section */}
       <ELearningClientsWrapper locale={locale} messages={messages} />
-      
-      {/* CTA section */}
-      <ELearningCTAWrapper locale={locale} messages={messages} />
     </main>
   );
 }
