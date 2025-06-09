@@ -32,9 +32,8 @@ const stats = [
 export default function ELearningValueProposition() {
   return (
     <section className="py-24 sm:py-32 ">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <h1 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent text-center bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)]">
-          <FormattedMessage id="page.eLearning.valueProposition.title" />
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">        <h1 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent text-center bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)]">
+          <FormattedMessage id="elearning.value.title" />
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-slate-600 dark:text-slate-300">
           <FormattedMessage id="elearning.value.subtitle" />

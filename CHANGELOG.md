@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **eLearning Value Proposition Section**: Fixed internationalization and added complete translation support
+  - Fixed ELearningValueProposition component to use correct translation key (`elearning.value.title`)
+  - Added missing Spanish translations for value proposition section including:
+    - Title, subtitle, and all three value cards (Complete Ecosystem, Security & Compliance, Performance Tracking)
+    - Statistics section with LMS implementations, courses developed, and users trained
+  - Verified French translations were already present and working correctly
+  - Enhanced multilingual support ensuring all content displays properly in English, French, and Spanish
+
 - **eLearning Features Component**: Added comprehensive features section to showcase ISSI's e-learning capabilities
   - Created new ELearningFeatures component with 6 key feature areas: LMS, Custom Development, Industry Partnerships, Multimedia, SCORM/AICC Compliance, and Performance Management
   - Added ELearningFeaturesWrapper for proper internationalization support
