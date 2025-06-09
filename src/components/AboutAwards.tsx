@@ -32,7 +32,7 @@ export default function AboutAwards() {
       role="region"
       aria-label="Industry awards and recognition"
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">        
+      <div className="mx-auto max-w-7xl px-4">        
         <div className="text-center">
           <h2 id="awards-heading" className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-slate-100 sm:text-5xl">
             <FormattedMessage id="about.awards.title" defaultMessage="Our Awards" />

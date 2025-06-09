@@ -26,7 +26,7 @@ export default function AboutStats() {
         className="absolute inset-0 -z-10 size-full object-cover"
         loading="lazy"
       />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">        <div
+      <div className="relative mx-auto max-w-7xl px-4">        <div
           aria-hidden="true"
           className="absolute -bottom-8 -left-96 -z-10 transform-gpu blur-3xl sm:-bottom-64 sm:-left-40 lg:-bottom-32 lg:left-8 xl:-left-10"
         >
