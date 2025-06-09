@@ -38,6 +38,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Dynamic translations with variables
   - **Documentation Cross-References**: Updated all relevant documentation with cross-references
 
+### Fixed
+
+- **Team Members Display**: Added missing team member translation entries to English language file
+  - Fixed issue where team member names, roles, and bios were displaying as raw translation keys in English version
+  - Added proper translations for all 8 team members with complete information
+  - Ensured consistent team information across all language versions (EN/FR/ES)
+
 ## [Unreleased] - 2025-06-03
 
 ### Added
