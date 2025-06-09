@@ -45,6 +45,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added proper translations for all 8 team members with complete information
   - Ensured consistent team information across all language versions (EN/FR/ES)
 
+- **Footer Component Improvements**: Enhanced footer appearance and simplified design
+  - Removed background color/effects for cleaner visual presentation
+  - Added z-index positioning (z-10) to ensure footer appears above other elements
+  - Added subtle border styling with border-t for better visibility in both light and dark modes
+  - Removed logo image from footer for more streamlined appearance
+  - Improved compatibility with Content component by matching z-index values
+
 ## [Unreleased] - 2025-06-03
 
 ### Added

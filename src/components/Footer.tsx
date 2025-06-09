@@ -15,7 +15,6 @@ import {
   WrenchScrewdriverIcon
 } from '@heroicons/react/24/outline';
 import { Facebook, Linkedin, Youtube } from 'lucide-react';
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FormattedMessage, IntlProvider } from "react-intl";
@@ -44,27 +43,12 @@ export default function Footer({ locale, messages }: FooterProps) {
       href: 'https://www.linkedin.com/company/international-software-systems-inc.',
       icon: Linkedin
     }
-  ];
-  const currentYear = new Date().getFullYear();
+  ];  const currentYear = new Date().getFullYear();
   return (
     <IntlProvider locale={locale} messages={messages}>
-      <footer className="w-full glass-effect-strong border-t border-white/30 dark:border-slate-700/40 shadow-md shadow-black/10 dark:shadow-black/30 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">          {/* Top Section with Brand and Description */}
-          <div className="py-12 border-b border-white/10 dark:border-slate-700/20">
+      <footer className="relative z-10 w-full mt-auto border-t border-slate-200/20 dark:border-slate-700/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">          {/* Top Section with Brand and Description */}          <div className="py-12 border-b border-slate-200/10 dark:border-slate-700/10">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">              {/* Brand Section */}              <div className="lg:col-span-1">
-                <Link
-                  href={`/${locale}/home`}
-                  className="inline-block hover:opacity-80 transition-opacity mb-4"
-                >
-                  <Image
-                    src="/images/issi_logo.png"
-                    alt="ISSI - International Software Systems, Inc."
-                    width={180}
-                    height={60}
-                    className="h-10 w-auto"
-                    priority
-                  />
-                </Link>
                 <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">
                   International Software Systems, Inc.
                 </h2>
