@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **eLearning Features Component**: Added comprehensive features section to showcase ISSI's e-learning capabilities
+  - Created new ELearningFeatures component with 6 key feature areas: LMS, Custom Development, Industry Partnerships, Multimedia, SCORM/AICC Compliance, and Performance Management
+  - Added ELearningFeaturesWrapper for proper internationalization support
+  - Integrated features section into eLearning page layout between hero and services sections
+  - Added complete translation support for English, French, and Spanish languages
+
 - **Enhanced Documentation System**: Comprehensive improvements to the project documentation
   - **New Troubleshooting Guide**: Created `TROUBLESHOOTING.md` with detailed solutions for common i18n issues:
     - Missing translations diagnosis and solutions
@@ -45,13 +51,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Enhanced visual consistency by relying on the main hero section for introductory content
   - Simplified page structure for better maintainability
 
-- **eLearning Hero Component Redesigned**: Completely revamped the hero section with a new professional layout
-  - Implemented a split-screen design with large image and detailed content side-by-side
-  - Added featured capabilities list with Heroicons for visual enhancement
-  - Included comprehensive content about ISSI's e-learning services and experience
+- **eLearning Hero Section Simplified and Redesigned**: Streamlined the hero section for cleaner design and better focus
+  - Removed background colors for transparent design that adapts to any parent background
+  - Changed experience badge from blue to red for better visual contrast
+  - Simplified content to focus on main image and essential introductory text
+  - Removed complex bullet point features list for cleaner layout (moved to dedicated Features component)
+  - Maintained internationalization support with FormattedMessage components
+  - Removed background elements and dot pattern overlay for cleaner appearance
+  - Removed complex bullet point features list for cleaner layout
+  - Maintained internationalization support with FormattedMessage components
+  - Enhanced image overlay with dots pattern for visual interest
   - Enhanced experience badge to highlight 22 years of expertise
   - Added Performance & Talent Management section with detailed description
   - Fully internationalized all content with proper translation keys
+  - Removed background elements and dot pattern overlay for cleaner appearance
 
 - **eLearning Clients Component Enhanced**: Expanded client organization display
   - Updated client list with 30+ government and educational organizations

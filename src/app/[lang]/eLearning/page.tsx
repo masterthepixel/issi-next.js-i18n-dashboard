@@ -3,6 +3,7 @@ import { Suspense } from "react";
 
 import ELearningClientsWrapper from "@/components/ELearningClientsWrapper";
 import ELearningCTAWrapper from "@/components/ELearningCTAWrapper";
+import ELearningFeaturesWrapper from "@/components/ELearningFeaturesWrapper";
 import ELearningHeroWrapper from "@/components/ELearningHeroWrapper";
 import ELearningServicesWrapper from "@/components/ELearningServicesWrapper";
 import ELearningValuePropositionWrapper from "@/components/ELearningValuePropositionWrapper";
@@ -98,10 +99,12 @@ interface PageContentProps {
 
 async function PageContent({ locale }: PageContentProps) {  const intl = await getIntl(locale);
   const messages = (await import(`../../../lang/${locale}.json`)).default;
-  return (
-    <main>
+  return (    <main>
       {/* Hero section */}
       <ELearningHeroWrapper locale={locale} messages={messages} />
+      
+      {/* Features section */}
+      <ELearningFeaturesWrapper locale={locale} messages={messages} />
       
       {/* Services section */}
       <ELearningServicesWrapper locale={locale} messages={messages} />
