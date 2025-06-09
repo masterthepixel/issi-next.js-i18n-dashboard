@@ -5,6 +5,39 @@ All notable changes to the ISSI Next.js Multilingual Website will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2025-06-09
+
+### Added
+
+- **Enhanced Documentation System**: Comprehensive improvements to the project documentation
+  - **New Troubleshooting Guide**: Created `TROUBLESHOOTING.md` with detailed solutions for common i18n issues:
+    - Missing translations diagnosis and solutions
+    - Language detection troubleshooting
+    - Character encoding problems and fixes
+    - Date and number formatting issues
+    - Performance optimization tips
+    - SEO and metadata problems
+    - IntlProvider context troubleshooting
+    - JSON validation failure resolution
+    - Server/client component boundary issues
+  - **Architecture Documentation**: Created `I18N_ARCHITECTURE.md` with visual data flow diagrams:
+    - High-level i18n architecture diagram
+    - Request processing flow diagram
+    - Client-side translation flow diagram
+    - Language detection logic flowchart
+    - Language switching process explanation
+    - Translation file structure guidelines
+    - Server vs. client implementation patterns
+    - i18n configuration details and best practices
+  - **Advanced Code Examples**: Enhanced `COMPONENT_INTEGRATION_GUIDE.md` with practical examples:
+    - Basic component with i18n integration
+    - Server component implementation patterns
+    - Pluralization usage examples with JSON structures
+    - Date and number formatting components
+    - Rich text handling with HTML elements
+    - Dynamic translations with variables
+  - **Documentation Cross-References**: Updated all relevant documentation with cross-references
+
 ## [Unreleased] - 2025-06-03
 
 ### Added

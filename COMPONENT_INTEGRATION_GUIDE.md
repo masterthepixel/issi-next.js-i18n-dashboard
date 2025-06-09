@@ -300,9 +300,197 @@ async function PageContent({ locale }: PageContentProps) {
 }
 ```
 
+## Advanced Code Examples
+
+### Basic Component with i18n
+
+```tsx
+'use client';
+
+import { FormattedMessage } from 'react-intl';
+
+interface FeatureCardProps {
+  icon?: React.ReactNode;
+  title?: string;
+}
+
+export default function FeatureCard({ icon, title }: FeatureCardProps) {
+  return (
+    <div className="feature-card">
+      {icon && <div className="feature-icon">{icon}</div>}
+      <h3>{title || <FormattedMessage id="feature.default_title" />}</h3>
+      <p><FormattedMessage id="feature.description" /></p>
+    </div>
+  );
+}
+```
+
+### Server Component with i18n
+
+```tsx
+import { getIntl } from '@/app/[lang]/i18n';
+
+export default async function WelcomeSection({ lang }: { lang: string }) {
+  const intl = await getIntl(lang);
+  
+  return (
+    <section className="welcome-section">
+      <h1>{intl.formatMessage({ id: 'home.welcome_title' })}</h1>
+      <p>{intl.formatMessage({ id: 'home.welcome_description' })}</p>
+    </section>
+  );
+}
+```
+
+### Using Pluralization
+
+```tsx
+'use client';
+
+import { FormattedMessage } from 'react-intl';
+
+export default function Notification({ count }: { count: number }) {
+  return (
+    <div className="notification">
+      <FormattedMessage 
+        id="notifications.count" 
+        values={{ count }} 
+      />
+    </div>
+  );
+}
+```
+
+This requires the following in your language files:
+
+```json
+// In en.json
+{
+  "notifications.count": "{count, plural, =0 {No notifications} one {# notification} other {# notifications}}"
+}
+
+// In fr.json
+{
+  "notifications.count": "{count, plural, =0 {Aucune notification} one {# notification} other {# notifications}}"
+}
+
+// In es.json
+{
+  "notifications.count": "{count, plural, =0 {Sin notificaciones} one {# notificación} other {# notificaciones}}"
+}
+```
+
+### Formatting Dates and Numbers
+
+```tsx
+'use client';
+
+import { FormattedDate, FormattedNumber, FormattedTime } from 'react-intl';
+
+export default function EventDetails({ 
+  date, 
+  price 
+}: { 
+  date: Date; 
+  price: number 
+}) {
+  return (
+    <div className="event-details">
+      <p>
+        <FormattedDate 
+          value={date} 
+          year="numeric" 
+          month="long" 
+          day="numeric" 
+        />
+        {' at '}
+        <FormattedTime value={date} />
+      </p>
+      <p>
+        <FormattedNumber 
+          value={price} 
+          style="currency" 
+          currency="USD" 
+        />
+      </p>
+    </div>
+  );
+}
+```
+
+### Handling Rich Text with HTML
+
+```tsx
+'use client';
+
+import { FormattedMessage } from 'react-intl';
+
+export default function RichTextExample() {
+  return (
+    <div className="rich-text">
+      <FormattedMessage
+        id="richtext.example"
+        values={{
+          b: (chunks) => <strong>{chunks}</strong>,
+          link: (chunks) => <a href="/terms">{chunks}</a>
+        }}
+      />
+    </div>
+  );
+}
+```
+
+With this translation:
+
+```json
+{
+  "richtext.example": "Please read our <link>terms and conditions</link> and <b>privacy policy</b>."
+}
+```
+
+### Dynamic Translations with Variables
+
+```tsx
+'use client';
+
+import { FormattedMessage } from 'react-intl';
+
+export default function Greeting({ name, role }: { name: string; role: string }) {
+  return (
+    <div className="greeting">
+      <FormattedMessage
+        id="greeting.welcome"
+        values={{ name, role }}
+      />
+    </div>
+  );
+}
+```
+
+With these translations:
+
+```json
+// en.json
+{
+  "greeting.welcome": "Welcome, {name}! You are logged in as {role}."
+}
+
+// fr.json
+{
+  "greeting.welcome": "Bienvenue, {name} ! Vous êtes connecté en tant que {role}."
+}
+
+// es.json
+{
+  "greeting.welcome": "¡Bienvenido, {name}! Has iniciado sesión como {role}."
+}
+```
+
 ## References
 
 - [INTERNATIONALIZATION.md](./INTERNATIONALIZATION.md) - Detailed i18n implementation guide
+- [I18N_ARCHITECTURE.md](./I18N_ARCHITECTURE.md) - Architecture and data flow diagrams
+- [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) - Solutions for common i18n issues
 - [React Intl Documentation](https://formatjs.io/docs/react-intl/)
 - [Next.js Client Components](https://nextjs.org/docs/app/building-your-application/rendering/client-components)
 - [ICU Message Format](https://unicode-org.github.io/icu/userguide/format_parse/messages/)

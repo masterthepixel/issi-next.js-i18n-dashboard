@@ -127,7 +127,9 @@ This project includes comprehensive instructions and guides for all major develo
 
 - **INSTRUCTIONS.md** – General developer setup, workflow, project structure, and advanced UI/theming/compliance notes
 - **INTERNATIONALIZATION.md** – Deep-dive into i18n architecture, language files, and data flow
+- **I18N_ARCHITECTURE.md** – Architecture diagrams and detailed internationalization implementation
 - **COMPONENT_INTEGRATION_GUIDE.md** – How to build, wrap, and integrate i18n-ready client/server components
+- **TROUBLESHOOTING.md** – Solutions for common i18n issues and error resolution
 - **JSON_VALIDATION_GUIDE.md** – JSON validation, linting, and best practices
 
 ### Design & Theming
@@ -147,4 +149,4 @@ This project includes comprehensive instructions and guides for all major develo
 
 ---
 
-_Last updated: May 31, 2025_
+_Last updated: June 9, 2025_
