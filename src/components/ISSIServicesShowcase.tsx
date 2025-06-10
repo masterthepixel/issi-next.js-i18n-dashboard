@@ -120,20 +120,19 @@ export default function ISSIServicesShowcase() {
 
   // Generate an animated background gradient class
   const backgroundGradientClass = 'bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20';
-
   return (
     <section className="py-16 px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="text-center mb-16">
+        <div className="text-left mb-16">
           <h2 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl mb-4">
             <FormattedMessage id="services.showcase.title" />
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-8">
+          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mb-8">
             <FormattedMessage id="services.showcase.subtitle" />
           </p>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
+          <div className="flex flex-wrap justify-start gap-2 mb-8">
             {CATEGORIES.map((category) => (
               <button
                 key={category.id}
@@ -165,10 +164,8 @@ export default function ISSIServicesShowcase() {
               />
             ))}
           </BentoGrid>
-        )}
-
-        {/* View All Services Link */}
-        <div className="text-center mt-12">
+        )}        {/* View All Services Link */}
+        <div className="text-left mt-12">
           <a 
             href="/services" 
             className="inline-flex items-center text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
