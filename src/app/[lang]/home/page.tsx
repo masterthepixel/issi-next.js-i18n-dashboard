@@ -7,6 +7,7 @@ import Card from "@/components/Card";
 import CardBody from "@/components/CardBody";
 import CardHeader from "@/components/CardHeader";
 import HeroWrapper from "@/components/HeroWrapper";
+import ISSIServicesShowcaseWrapper from "@/components/ISSIServicesShowcaseWrapper";
 import Spinner from "@/components/Spinner";
 
 import { getActivities } from "@/lib/data";
@@ -42,6 +43,9 @@ async function PageContent({ locale }: PageContentProps) {
       
       {/* Partner Network - Client Logos */}
       <AboutPartnerNetworkWrapper locale={locale} messages={messages} />
+      
+      {/* Services Showcase - Bento Grid Layout */}
+      <ISSIServicesShowcaseWrapper locale={locale} messages={messages} />
       
       {/* Certifications - Show technology expertise */}
       <AboutCertificationsWrapper locale={locale} messages={messages} />

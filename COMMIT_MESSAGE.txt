@@ -1,19 +1,27 @@
-refactor(ui): Update hero component with full address and enhanced badge layout
+feat(ui): Add ISSIServicesShowcase component to homepage
 
-• Update headquarters information with complete address and phone number
-  - Replace "Greenbelt, MD" with "7337 Hanover Pkwy, Suite# A, Greenbelt, MD 20770"
-  - Add phone number "301-982-9700" to replace subtitle
-  - Update translations in all language files (en, fr, es)
+• Created new interactive service showcase component
+  - Implemented bento grid layout with responsive design
+  - Added service filtering by categories (IT, Government, Cybersecurity, etc.)
+  - Created UI components with modern hover effects and animations
+  - Used Lucide icons for visual consistency
 
-• Improve visual presentation of location information
-  - Add margin below headings for better spacing
-  - Maintain consistent styling across all components
-  - Ensure changes applied to all components: HeroWithGlobe.tsx, Hero.tsx, Hero_backup.tsx
+• Added comprehensive internationalization support
+  - Added translations for all component text in three languages (en, fr, es)
+  - Created wrapper component following project i18n architecture
+  - Ensured consistent naming patterns for translation keys
 
-• Maintain badge placement in globe footer
-  - Keep feature badges in the globe card footer as previously implemented
-  - Ensure consistent display across all viewport sizes
-  - Update capabilities links to use proper language routing (/${lang}/capabilities)
+• Integrated component into homepage
+  - Positioned between Partner Network and Certifications sections
+  - Updated homepage layout for optimal content flow
+  - Maintained responsive behavior across all viewport sizes
+
+• Updated documentation
+  - Added entries to CHANGELOG.md
+  - Created UI utility components for future reuse
+  
+This component enhances the homepage with a modern, interactive display of ISSI's services
+that improves user experience and provides easy access to service information.
   - Ensure consistent language experience throughout the user journey
   - Add new translation keys for certification documents in all languages
 

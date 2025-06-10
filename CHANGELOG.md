@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - 2025-06-10
 
+### Added
+
+- **ISSIServicesShowcase Component**: Added new interactive bento grid component for service display
+  - Implemented responsive bento grid layout with hover effects
+  - Added filtering capability by service categories
+  - Created customized grid items with icons and descriptions for all services
+  - Integrated with the internationalization system for all three languages
+  - Added to the homepage between Partner Network and Certifications sections
+  - Installed required dependencies: @bentogrid/core, motion, clsx, tailwind-merge
+
 ### Changed
 
 - **Hero Component Contact Updates**: Added detailed contact information and enhanced layout
