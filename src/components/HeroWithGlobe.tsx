@@ -7,7 +7,7 @@ import { FormattedMessage } from "react-intl";
 const Globe = dynamic(() => import('./Globe'), {
   ssr: false,
   loading: () => (
-    <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 animate-pulse rounded-lg" />
+    <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 animate-pulse rounded-lg" />
   ),
 });
 
@@ -30,7 +30,7 @@ export default function Hero() {
         {/* Main Hero Content */}
       <div className="mx-auto max-w-7xl py-16 sm:py-18 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content Section */}
+            {/* Content Section */}
           <div className="space-y-8">
             <div className="space-y-6">
               <h1 className="text-5xl font-semibold tracking-tight text-balance text-slate-900 dark:text-slate-100 sm:text-7xl">
@@ -107,20 +107,19 @@ export default function Hero() {
 
           {/* Globe Section */}
           <div className="relative">
-            <div className="relative bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl overflow-hidden shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)]">
-              
-              {/* Globe Header for entire card */}
-              <div className="p-6 pb-0">
-                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">
-                  <FormattedMessage id="hero.globe.title" />
-                </h3>
-                <p className="text-slate-500 dark:text-slate-400 text-sm">
-                  <FormattedMessage id="hero.globe.subtitle" />
-                </p>
-              </div>
-
-              <div className="relative h-80 lg:h-96 bg-slate-50 dark:bg-slate-700/50 rounded-2xl overflow-hidden m-6 mt-4">
+            <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl overflow-hidden shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)]">
+              <div className="relative h-80 lg:h-96">
                 <Globe />
+                
+                {/* Globe Header */}
+                <div className="absolute top-4 left-6 z-10">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">
+                    <FormattedMessage id="hero.globe.title" />
+                  </h3>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm">
+                    <FormattedMessage id="hero.globe.subtitle" />
+                  </p>
+                </div>
                 
                 {/* Legend */}
                 <div className="absolute bottom-4 right-6 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm rounded-xl p-3 z-10 border border-slate-200 dark:border-slate-700 shadow-lg">
@@ -140,9 +139,9 @@ export default function Hero() {
                   </div>
                 </div>
               </div>
-
-              {/* Globe Footer Information */}
-              <div className="p-6 pt-0 pb-6 bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-800 dark:to-slate-700">
+              
+              {/* Globe Footer */}
+              <div className="p-6 bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-800 dark:to-slate-700">
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
                     <p className="font-semibold text-slate-900 dark:text-slate-100">
@@ -170,7 +169,7 @@ export default function Hero() {
             </div>
 
             {/* Floating certification badges */}
-            <div className="absolute -top-6 -right-6 bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-xl border border-slate-200 dark:border-slate-700 z-10">
+            <div className="absolute -top-6 -right-6 bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-xl border border-slate-200 dark:border-slate-700">
               <div className="text-center">
                 <div className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 mb-1">
                   <FormattedMessage id="hero.certifications.title" />
