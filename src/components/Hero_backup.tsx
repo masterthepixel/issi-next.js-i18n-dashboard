@@ -130,10 +130,9 @@ export default function Hero() {
               </div>
 
               {/* Globe Footer Information */}
-              <div className="mt-6 p-6 bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl">
-                <div className="grid grid-cols-2 gap-4 text-sm">
+              <div className="mt-6 p-6 bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl">                <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <p className="font-semibold text-slate-900 dark:text-slate-100">
+                    <p className="font-semibold text-slate-900 dark:text-slate-100 mb-1">
                       <FormattedMessage id="hero.globe.location.headquarters" />
                     </p>
                     <p className="text-slate-500 dark:text-slate-400 text-xs">
@@ -141,14 +140,14 @@ export default function Hero() {
                     </p>
                   </div>
                   <div>
-                    <p className="font-semibold text-slate-900 dark:text-slate-100">
+                    <p className="font-semibold text-slate-900 dark:text-slate-100 mb-1">
                       <FormattedMessage id="hero.globe.location.global" />
                     </p>
                     <p className="text-slate-500 dark:text-slate-400 text-xs">
                       <FormattedMessage id="hero.globe.location.global.subtitle" />
                     </p>
                   </div>
-                </div>                <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-600">
+                </div><div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-600">
                   <div className="flex flex-wrap gap-2 pt-2 justify-center">
                     <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium bg-yellow-50 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-200 ring-1 ring-yellow-600/20 dark:ring-yellow-400/30 transition-transform duration-200 hover:scale-105">
                       <FormattedMessage id="hero.features.gsa" />

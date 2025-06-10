@@ -1,17 +1,18 @@
-refactor(ui): Reorganize hero component badges for improved UI layout
+refactor(ui): Update hero component with full address and enhanced badge layout
 
-• Move feature badges from main hero section to globe card
-  - Replace "Our international development centers..." text with feature badges
-  - Move GSA Schedule, ISO certification, Experience, and SBA badges to globe footer
-  - Remove duplicate badges from hero component for cleaner UI
+• Update headquarters information with complete address and phone number
+  - Replace "Greenbelt, MD" with "7337 Hanover Pkwy, Suite# A, Greenbelt, MD 20770"
+  - Add phone number "301-982-9700" to replace subtitle
+  - Update translations in all language files (en, fr, es)
 
-• Improve hero section visual hierarchy
-  - Decrease badge size in globe card for better proportions
-  - Apply consistent styling across all hero components
+• Improve visual presentation of location information
+  - Add margin below headings for better spacing
+  - Maintain consistent styling across all components
   - Ensure changes applied to all components: HeroWithGlobe.tsx, Hero.tsx, Hero_backup.tsx
 
-• Update project documentation
-  - Update CHANGELOG.md with badge reorganization details
+• Maintain badge placement in globe footer
+  - Keep feature badges in the globe card footer as previously implemented
+  - Ensure consistent display across all viewport sizes
   - Update capabilities links to use proper language routing (/${lang}/capabilities)
   - Ensure consistent language experience throughout the user journey
   - Add new translation keys for certification documents in all languages

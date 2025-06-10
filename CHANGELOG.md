@@ -9,10 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **Hero Component UI Improvements**: Reorganized UI elements and improved badge placement
-  - Moved feature badges (GSA Schedule, ISO, Experience, SBA) from main hero section to the globe card
-  - Removed duplicate badges for a cleaner and more focused user interface
-  - Enhanced visual hierarchy by consolidating certification information
+- **Hero Component Contact Updates**: Added detailed contact information and enhanced layout
+  - Updated headquarters information with complete address and phone number
+  - Added "7337 Hanover Pkwy, Suite# A, Greenbelt, MD 20770" to replace "Greenbelt, MD"
+  - Added phone number "301-982-9700" to replace generic subtitle
+  - Improved visual spacing with consistent margin styling
+  - Maintained feature badges in the globe card footer as previously implemented
 
 ## [Unreleased] - 2025-06-09
 
