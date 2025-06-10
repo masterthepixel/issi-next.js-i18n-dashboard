@@ -1,7 +1,8 @@
 "use client";
 
+import { FlipWords } from '@/components/ui/flip-words';
 import dynamic from 'next/dynamic';
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 // Dynamically import Globe to avoid SSR issues
 const Globe = dynamic(() => import('./Globe'), {
@@ -12,6 +13,15 @@ const Globe = dynamic(() => import('./Globe'), {
 });
 
 export default function Hero() {
+  const intl = useIntl();
+  
+  // Get translated words for FlipWords animation
+  const flipWords = [
+    intl.formatMessage({ id: "hero.flipwords.words.exceptional" }),
+    intl.formatMessage({ id: "hero.flipwords.words.scalable" }),
+    intl.formatMessage({ id: "hero.flipwords.words.secure" }),
+    intl.formatMessage({ id: "hero.flipwords.words.innovative" }),
+  ];
   return (
     <div className="relative isolate px-6 lg:px-8 -mt-20">
       {/* Background decoration */}
@@ -31,12 +41,14 @@ export default function Hero() {
       <div className="mx-auto max-w-7xl py-16 sm:py-18 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content Section */}
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <h1 className="text-5xl font-semibold tracking-tight text-balance text-slate-900 dark:text-slate-100 sm:text-7xl">
-                <span className="bg-gradient-to-r from-indigo-600 to-blue-400 bg-clip-text text-transparent">
-                  <FormattedMessage id="hero.title" />
-                </span>
+          <div className="space-y-8">            <div className="space-y-6">              <h1 className="text-3xl font-semibold tracking-tight text-balance text-slate-900 dark:text-slate-100 sm:text-5xl">
+                <FormattedMessage id="hero.flipwords.prefix" />{" "}
+                <FlipWords 
+                  words={flipWords}
+                  duration={2500}
+                  className="bg-gradient-to-r from-indigo-600 to-blue-400 bg-clip-text text-transparent font-semibold"
+                />
+                {" "}<FormattedMessage id="hero.flipwords.suffix" />
               </h1>
               
               <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
