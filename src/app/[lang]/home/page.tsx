@@ -5,10 +5,13 @@ import CardHeader from "@/components/CardHeader";
 import CardBody from "@/components/CardBody";
 import Spinner from "@/components/Spinner";
 import HeroWrapper from "@/components/HeroWrapper";
+import AboutPartnerNetworkWrapper from "@/components/AboutPartnerNetworkWrapper";
+import AboutCertificationsWrapper from "@/components/AboutCertificationsWrapper";
+import AboutAwardsWrapper from "@/components/AboutAwardsWrapper";
 
 import { getIntl } from "@/lib/intl";
 import { Locale } from "@/lib/definitions";
-import { getActivities, getTeamMembers } from "@/lib/data";
+import { getActivities } from "@/lib/data";
 
 interface Props {
   params: {
@@ -30,14 +33,22 @@ interface PageContentProps {
 
 async function PageContent({ locale }: PageContentProps) {
   const intl = await getIntl(locale);
-  const teamMembers = await getTeamMembers();
   const activities = await getActivities();
   const messages = (await import(`../../../lang/${locale}.json`)).default;
 
   return (
     <>
       <HeroWrapper locale={locale} messages={messages} />
-      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-8">
+      
+      {/* Partner Network - Client Logos */}
+      <AboutPartnerNetworkWrapper locale={locale} messages={messages} />
+      
+      {/* Certifications - Show technology expertise */}
+      <AboutCertificationsWrapper locale={locale} messages={messages} />
+      
+      {/* Awards - Additional credibility and trust */}
+      <AboutAwardsWrapper locale={locale} messages={messages} />
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-8">
         <div>
           <Card>
             <CardHeader>{intl.formatMessage({ id: "page.home.activities" })}</CardHeader>
@@ -58,34 +69,6 @@ async function PageContent({ locale }: PageContentProps) {
                         minute: "numeric",
                       })}
                     </div>
-                  </div>
-                </div>
-              ))}
-            </CardBody>
-          </Card>
-        </div>
-
-        <div>
-          <Card>
-            <CardHeader>{intl.formatMessage({ id: "page.home.team" })}</CardHeader>
-            <CardBody>
-              {teamMembers.map((teamMember) => (
-                <div key={teamMember.username} className="flex items-center flex-nowrap mt-3">
-                  <div>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={teamMember.profileImage}
-                      alt="Profile image"
-                      width={50}
-                      height={50}
-                      className="rounded-full p-1"
-                    />
-                  </div>
-                  <div className="mx-3">
-                    <p className="text-base">
-                      {teamMember.firstName} {teamMember.lastName}
-                    </p>
-                    <p className="text-sm text-slate-500">{teamMember.username}</p>
                   </div>
                 </div>
               ))}
