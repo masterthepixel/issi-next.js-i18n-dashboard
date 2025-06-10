@@ -19,6 +19,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **ISSIServicesShowcase UI Improvements**: Enhanced visual design and interaction
+  - Left-aligned the component title, subtitle, and filter tabs for better content flow
+  - Added interactive Evervault card hover effect with subtle gradient animation
+  - Made the hover effect more transparent and subtle for a refined user experience
+  - Fixed syntax error in bento-grid.tsx component (removed duplicate closing tags)
+  - Improved overall component aesthetics with consistent alignment and interactions
+
 - **Hero Component Contact Updates**: Added detailed contact information and enhanced layout
   - Updated headquarters information with complete address and phone number
   - Added "7337 Hanover Pkwy, Suite# A, Greenbelt, MD 20770" to replace "Greenbelt, MD"
