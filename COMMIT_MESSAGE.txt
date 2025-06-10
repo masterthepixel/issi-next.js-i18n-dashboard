@@ -1,14 +1,17 @@
-feat(i18n): Complete internationalization of Maryland DOT MBE/DBE/SBE certification page
+refactor(ui): Reorganize hero component badges for improved UI layout
 
-• Complete internationalization of all sections in the Maryland DOT certification page
-  - Internationalize "Get Started" section with form fields, labels, and placeholders
-  - Internationalize "Footer CTA" section with title, subtitle, and button text
-  - Add internationalized "Certification Documents" section with translated content
-  - Fix all navigation links to include language parameter (/{lang}/contact)
-  - Add missing translation keys to all language files (en, fr, es)
+• Move feature badges from main hero section to globe card
+  - Replace "Our international development centers..." text with feature badges
+  - Move GSA Schedule, ISO certification, Experience, and SBA badges to globe footer
+  - Remove duplicate badges from hero component for cleaner UI
 
-• Improve multilingual user experience and routing
-  - Update contact links to use proper language routing (/${lang}/contact)
+• Improve hero section visual hierarchy
+  - Decrease badge size in globe card for better proportions
+  - Apply consistent styling across all hero components
+  - Ensure changes applied to all components: HeroWithGlobe.tsx, Hero.tsx, Hero_backup.tsx
+
+• Update project documentation
+  - Update CHANGELOG.md with badge reorganization details
   - Update capabilities links to use proper language routing (/${lang}/capabilities)
   - Ensure consistent language experience throughout the user journey
   - Add new translation keys for certification documents in all languages

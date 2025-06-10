@@ -5,6 +5,15 @@ All notable changes to the ISSI Next.js Multilingual Website will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2025-06-10
+
+### Changed
+
+- **Hero Component UI Improvements**: Reorganized UI elements and improved badge placement
+  - Moved feature badges (GSA Schedule, ISO, Experience, SBA) from main hero section to the globe card
+  - Removed duplicate badges for a cleaner and more focused user interface
+  - Enhanced visual hierarchy by consolidating certification information
+
 ## [Unreleased] - 2025-06-09
 
 ### Removed

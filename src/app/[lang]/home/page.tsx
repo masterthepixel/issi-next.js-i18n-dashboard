@@ -1,17 +1,17 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 
-import Card from "@/components/Card";
-import CardHeader from "@/components/CardHeader";
-import CardBody from "@/components/CardBody";
-import Spinner from "@/components/Spinner";
-import HeroWrapper from "@/components/HeroWrapper";
-import AboutPartnerNetworkWrapper from "@/components/AboutPartnerNetworkWrapper";
-import AboutCertificationsWrapper from "@/components/AboutCertificationsWrapper";
 import AboutAwardsWrapper from "@/components/AboutAwardsWrapper";
+import AboutCertificationsWrapper from "@/components/AboutCertificationsWrapper";
+import AboutPartnerNetworkWrapper from "@/components/AboutPartnerNetworkWrapper";
+import Card from "@/components/Card";
+import CardBody from "@/components/CardBody";
+import CardHeader from "@/components/CardHeader";
+import HeroWrapper from "@/components/HeroWrapper";
+import Spinner from "@/components/Spinner";
 
-import { getIntl } from "@/lib/intl";
-import { Locale } from "@/lib/definitions";
 import { getActivities } from "@/lib/data";
+import { Locale } from "@/lib/definitions";
+import { getIntl } from "@/lib/intl";
 
 interface Props {
   params: {

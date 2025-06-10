@@ -42,13 +42,15 @@ export default function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Content Section */}
           <div className="space-y-8">            <div className="space-y-6">              <h1 className="text-3xl font-semibold tracking-tight text-balance text-slate-900 dark:text-slate-100 sm:text-5xl">
-                <FormattedMessage id="hero.flipwords.prefix" />{" "}
-                <FlipWords 
-                  words={flipWords}
-                  duration={2500}
-                  className="bg-gradient-to-r from-indigo-600 to-blue-400 bg-clip-text text-transparent font-semibold"
-                />
-                {" "}<FormattedMessage id="hero.flipwords.suffix" />
+                <span className="inline-flex flex-wrap">
+                  <FormattedMessage id="hero.flipwords.prefix" />{" "}
+                  <FlipWords 
+                    words={flipWords}
+                    duration={2500}
+                    className="bg-gradient-to-r from-indigo-600 to-blue-400 bg-clip-text text-transparent font-semibold"
+                  />
+                  {" "}<FormattedMessage id="hero.flipwords.suffix" />
+                </span>
               </h1>
               
               <p className="text-xl text-slate-600 dark:text-slate-200 leading-relaxed">
@@ -70,22 +72,6 @@ export default function Hero() {
               >
                 <FormattedMessage id="hero.cta.learn-more" />
               </a>
-            </div>
-
-            {/* Feature Badges */}
-            <div className="flex flex-wrap gap-3 pt-4">
-              <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-yellow-50 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-200 ring-1 ring-yellow-600/20 dark:ring-yellow-400/30 transition-transform duration-200 hover:scale-105">
-                <FormattedMessage id="hero.features.gsa" />
-              </span>
-              <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200 ring-1 ring-green-600/20 dark:ring-green-400/30 transition-transform duration-200 hover:scale-105">
-                <FormattedMessage id="hero.features.iso" />
-              </span>
-              <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 ring-1 ring-blue-600/20 dark:ring-blue-400/30 transition-transform duration-200 hover:scale-105">
-                <FormattedMessage id="hero.features.experience" />
-              </span>
-              <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-purple-50 dark:bg-purple-900/20 text-purple-800 dark:text-purple-200 ring-1 ring-purple-600/20 dark:ring-purple-400/30 transition-transform duration-200 hover:scale-105">
-                <FormattedMessage id="hero.features.sba" />
-              </span>
             </div>
 
             {/* Stats */}
@@ -171,11 +157,21 @@ export default function Hero() {
                       <FormattedMessage id="hero.globe.location.global.subtitle" />
                     </p>
                   </div>
-                </div>
-                <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-600">
-                  <p className="text-slate-600 dark:text-slate-200 text-sm leading-relaxed">
-                    <FormattedMessage id="hero.globe.description" />
-                  </p>
+                </div>                <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-600">
+                  <div className="flex flex-wrap gap-2 pt-2 justify-center">
+                    <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium bg-yellow-50 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-200 ring-1 ring-yellow-600/20 dark:ring-yellow-400/30 transition-transform duration-200 hover:scale-105">
+                      <FormattedMessage id="hero.features.gsa" />
+                    </span>
+                    <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200 ring-1 ring-green-600/20 dark:ring-green-400/30 transition-transform duration-200 hover:scale-105">
+                      <FormattedMessage id="hero.features.iso" />
+                    </span>
+                    <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 ring-1 ring-blue-600/20 dark:ring-blue-400/30 transition-transform duration-200 hover:scale-105">
+                      <FormattedMessage id="hero.features.experience" />
+                    </span>
+                    <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium bg-purple-50 dark:bg-purple-900/20 text-purple-800 dark:text-purple-200 ring-1 ring-purple-600/20 dark:ring-purple-400/30 transition-transform duration-200 hover:scale-105">
+                      <FormattedMessage id="hero.features.sba" />
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
