@@ -39,6 +39,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Enhanced
 
+- **Services Map Responsive Design**: Major improvements to map sizing and responsiveness
+  - Implemented ResizeObserver for automatic map redrawing on container size changes
+  - Added responsive width calculation with maximum width constraint (1000px)
+  - Implemented proper aspect ratio maintenance (width * 0.6) for consistent display
+  - Added responsive scale calculation based on container dimensions
+  - Enhanced SVG configuration with preserveAspectRatio for proper scaling
+  - Added responsive marker sizing that adapts to map scale
+  - Implemented debounced resize events (250ms) for optimal performance
+  - Fixed marker positioning with null checks for projection coordinates
+  - Added proper cleanup of ResizeObserver and timeout events
+  - Enhanced container styling with minimum height and flex centering
+
 - Fixed ReferenceError in liquid-glass-background.tsx by properly reordering class definitions
   - Resolved "Cannot access 'Particle' before initialization" error
   - Improved code structure by defining the Particle class before its usage

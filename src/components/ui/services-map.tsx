@@ -1,16 +1,17 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useEffect, useRef } from 'react';
 
 export function ServicesMap() {
   const mapRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
   const isDark = theme === 'dark';
-
   useEffect(() => {
     if (typeof window === 'undefined' || !mapRef.current) return;
+
+    let resizeObserver: ResizeObserver;
 
     // Load D3 and TopoJSON scripts dynamically
     const loadScripts = async () => {
@@ -34,14 +35,31 @@ export function ServicesMap() {
 
       // Now that scripts are loaded, initialize the map
       initializeMap();
+
+      // Set up resize observer to redraw map on container size change
+      if (mapRef.current) {
+        resizeObserver = new ResizeObserver(() => {
+          // Debounce resize events
+          clearTimeout((window as any).mapResizeTimeout);
+          (window as any).mapResizeTimeout = setTimeout(() => {
+            initializeMap();
+          }, 250);
+        });
+        resizeObserver.observe(mapRef.current);
+      }
     };
 
-    loadScripts();
-
-    function initializeMap() {
+    loadScripts();    function initializeMap() {
       const d3 = (window as any).d3;
       const topojson = (window as any).topojson;
-      if (!d3 || !topojson) return;      // Enhanced state capitals data with comprehensive information
+      if (!d3 || !topojson || !mapRef.current) return;
+      
+      // Get container dimensions for responsive sizing
+      const containerRect = mapRef.current.getBoundingClientRect();
+      const containerWidth = containerRect.width || 800;
+      const containerHeight = containerRect.height || 400;
+      
+      // Enhanced state capitals data with comprehensive information
       const stateCapitals = {
         "California": {
           coordinates: [-121.4694, 38.5556], // Sacramento
@@ -253,25 +271,32 @@ export function ServicesMap() {
           techEmployment: "98K",
           majorIndustries: ["Manufacturing", "Agriculture", "Technology"]
         }
-      };
-
-      const servedStates = Object.keys(stateCapitals);
+      };      const servedStates = Object.keys(stateCapitals);
 
       // Clear any existing SVG
-      d3.select(mapRef.current).selectAll("svg").remove();      // Set up the map
-      const width = 960;
-      const height = 500; // Increased height for better visibility
+      d3.select(mapRef.current).selectAll("svg").remove();
+      
+      // Set up the map with responsive dimensions
+      const width = Math.min(containerWidth, 1000);  // Max width of 1000px
+      const height = Math.min(containerHeight, width * 0.6); // Maintain aspect ratio
+      
+      // Calculate optimal scale based on container size
+      const scale = Math.min(width * 1.2, height * 2.4, 1200);
 
       const svg = d3.select(mapRef.current)
         .append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("width", "100%")
         .attr("height", "100%")
-        .style("background", "transparent");
+        .attr("preserveAspectRatio", "xMidYMid meet")
+        .style("background", "transparent")
+        .style("max-width", "100%")
+        .style("height", "auto");
 
       const projection = d3.geoAlbersUsa()
-        .scale(1100) // Increased scale for better visibility
-        .translate([width / 2, height / 2]);
+        .scale(scale)
+        .translate([width / 2, height / 2])
+        .fitSize([width * 0.95, height * 0.95], {type: "Sphere"});
 
       const path = d3.geoPath()
         .projection(projection);
@@ -302,9 +327,15 @@ export function ServicesMap() {
           .enter()
           .append("circle")
           .attr("class", "state-marker")
-          .attr("cx", function(d: any) { return projection(d[1].coordinates)[0]; })
-          .attr("cy", function(d: any) { return projection(d[1].coordinates)[1]; })
-          .attr("r", 6)
+          .attr("cx", function(d: any) { 
+            const coords = projection(d[1].coordinates);
+            return coords ? coords[0] : 0;
+          })
+          .attr("cy", function(d: any) { 
+            const coords = projection(d[1].coordinates);
+            return coords ? coords[1] : 0;
+          })
+          .attr("r", Math.max(4, Math.min(8, width / 120))) // Responsive marker size
           .on("mouseenter", function(event: any, d: any) {
             const [stateName, stateData] = d;
             const tooltipContent = `
@@ -370,13 +401,14 @@ export function ServicesMap() {
         "53": "Washington", "54": "West Virginia", "55": "Wisconsin", "56": "Wyoming"
       };
       return stateNames[fipsCode.toString().padStart(2, '0')] || "";
-    }
-
-    // Clean up event listeners when component unmounts
+    }    // Clean up event listeners when component unmounts
     return () => {
-      // Any cleanup code here if needed
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      }
+      clearTimeout((window as any).mapResizeTimeout);
     };
-  }, [isDark]);  return (
+  }, [isDark]);return (
     <div className="w-full relative">
       <style jsx>{`
         .state {
@@ -406,7 +438,7 @@ export function ServicesMap() {
           r: 8;
           filter: drop-shadow(0 0 12px ${isDark ? 'rgba(248, 113, 113, 0.6)' : 'rgba(239, 68, 68, 0.6)'});
           transform: translateY(-2px);
-        }        .tooltip {
+        }.tooltip {
           position: absolute;
           background: ${isDark ? 'rgba(15, 23, 42, 0.95)' : 'rgba(30, 41, 59, 0.95)'};
           color: white;
@@ -511,19 +543,16 @@ export function ServicesMap() {
           display: flex;
           flex-wrap: wrap;
           gap: 4px;
-        }
-
-        .industry-tag {
+        }        .industry-tag {
           background: ${isDark ? 'rgba(59, 130, 246, 0.2)' : 'rgba(59, 130, 246, 0.3)'};
           color: ${isDark ? '#93c5fd' : '#dbeafe'};
           padding: 3px 8px;
           border-radius: 6px;
           font-size: 0.75rem;
           font-weight: 500;
-          border: 1px solid ${isDark ? 'rgba(59, 130, 246, 0.3)' : 'rgba(59, 130, 246, 0.4)'};        }
-      `}</style>
-      
-      <div ref={mapRef} className="w-full h-[500px]"></div>
+          border: 1px solid ${isDark ? 'rgba(59, 130, 246, 0.3)' : 'rgba(59, 130, 246, 0.4)'};
+        }      `}</style>      
+      <div ref={mapRef} className="w-full h-[400px] min-h-[300px] flex items-center justify-center"></div>
       <div ref={tooltipRef} className="tooltip"></div>
     </div>
   );
