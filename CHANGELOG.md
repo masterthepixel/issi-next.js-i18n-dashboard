@@ -5,9 +5,25 @@ All notable changes to the ISSI Next.js Multilingual Website will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - 2025-06-10
+## [Unreleased] - 2025-06-11
 
 ### Added
+
+- **Liquid Glass Background Effect**: Added Apple iOS26-inspired fluid background
+  - Implemented canvas-based animated liquid glass effect with interactive particles
+  - Created a smooth, flowing background with subtle mouse interactions
+  - Added frosted glass UI elements with backdrop blur and transparency
+  - Enhanced service cards with glass morphism styling
+  - Optimized animation performance with requestAnimationFrame
+  - Ensured proper theme integration with dark/light mode support
+
+- **ISSIServicesMap Component**: Added interactive US map component to the services page
+  - Implemented D3.js-based interactive map showing ISSI's nationwide service coverage
+  - Added tooltips for state capitals where ISSI has presence
+  - Created responsive design with dark/light mode support using existing ThemeContext
+  - Added six key service areas with icons below the map
+  - Added internationalization support for French
+  - Used dynamic script loading for D3.js and TopoJSON libraries
 
 - **ISSIServicesShowcase Component**: Added new interactive bento grid component for service display
   - Implemented responsive bento grid layout with hover effects

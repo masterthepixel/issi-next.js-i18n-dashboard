@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import Card from "@/components/Card";
 import CardBody from "@/components/CardBody";
 import CardHeader from "@/components/CardHeader";
+import ISSIServicesMapWrapper from "@/components/ISSIServicesMapWrapper";
 import Spinner from "@/components/Spinner";
 
 import { Locale } from "@/lib/definitions";
@@ -33,6 +34,7 @@ interface PageContentProps {
 
 async function PageContent({ locale }: PageContentProps) {
   const intl = await getIntl(locale);
+  const messages = (await import(`../../../lang/${locale}.json`)).default;
 
   return (
     <div>
@@ -47,6 +49,9 @@ async function PageContent({ locale }: PageContentProps) {
           </CardBody>
         </Card>
       </div>
+      
+      {/* Services Map with US coverage */}
+      <ISSIServicesMapWrapper locale={locale} messages={messages} />
     </div>
   );
 }
