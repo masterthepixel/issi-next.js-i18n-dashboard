@@ -39,6 +39,8 @@ const FloatingDockMobile = ({
   items: { title: string; icon: React.ReactNode; href: string }[];
   className?: string;
 }) => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  
   // Create background colors for each item based on their index/title
   const getItemBgColor = (index: number, title: string) => {
     const colors = [
@@ -51,7 +53,8 @@ const FloatingDockMobile = ({
     ];
     return colors[index % colors.length] || "bg-gray-100 dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700";
   };
-    return (
+  
+  return (
     <div className={cn("relative block md:hidden", className)}>
       {/* Always show the horizontal dock - no toggle needed */}
       <motion.div
@@ -60,19 +63,40 @@ const FloatingDockMobile = ({
         className="flex items-center gap-2 px-3 py-2 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-lg rounded-full border border-gray-200 dark:border-neutral-700 shadow-lg"
       >
         {items.map((item, idx) => (
-          <motion.a
-            key={item.title}
-            href={item.href}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: idx * 0.1 }}
-            className={cn(
-              "flex h-10 w-10 items-center justify-center rounded-full transition-all duration-200 hover:scale-110 hover:shadow-md",
-              getItemBgColor(idx, item.title)
-            )}
-          >
-            <div className="h-5 w-5">{item.icon}</div>
-          </motion.a>
+          <div key={item.title} className="relative flex flex-col items-center">
+            {/* Label above icon */}
+            <AnimatePresence>
+              {activeIndex === idx && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.8 }}
+                  className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-2 py-1 rounded-md text-xs whitespace-nowrap font-medium z-10"
+                >
+                  {item.title}
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+            
+            <motion.a
+              href={item.href}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: idx * 0.1 }}
+              onTouchStart={() => setActiveIndex(idx)}
+              onTouchEnd={() => setActiveIndex(null)}
+              onMouseEnter={() => setActiveIndex(idx)}
+              onMouseLeave={() => setActiveIndex(null)}
+              className={cn(
+                "flex h-10 w-10 items-center justify-center rounded-full transition-all duration-200 active:scale-95 touch-manipulation",
+                activeIndex === idx ? "scale-110 shadow-lg" : "hover:scale-105 hover:shadow-md",
+                getItemBgColor(idx, item.title)
+              )}
+            >
+              <div className="h-5 w-5">{item.icon}</div>
+            </motion.a>
+          </div>
         ))}
       </motion.div>
     </div>
