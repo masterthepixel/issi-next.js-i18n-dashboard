@@ -13,9 +13,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Implemented canvas-based animated liquid glass effect with interactive particles
   - Created a smooth, flowing background with subtle mouse interactions
   - Added frosted glass UI elements with backdrop blur and transparency
-  - Enhanced service cards with glass morphism styling
-  - Optimized animation performance with requestAnimationFrame
+  - Enhanced service cards with glass morphism styling  - Optimized animation performance with requestAnimationFrame
   - Ensured proper theme integration with dark/light mode support
+
+### Fixed
+
+- **Liquid Glass Background Particle Class Error**: Resolved "Cannot access 'Particle' before initialization" error
+  - Fixed null checking for canvas and context variables
+  - Updated Particle class constructor to accept canvas dimensions as parameters
+  - Improved method signatures with proper null safety
+  - Added comprehensive error handling for canvas operations
+
+- **Services Map Visibility Issues**: Fixed map display and interaction problems
+  - Increased map height from 400px to 500px for better visibility
+  - Enhanced map projection scale from 1000 to 1100 for improved detail
+  - Added loading spinner with proper state management
+  - Fixed responsive container sizing and background transparency
+
+- **Enhanced State Capital Markers and Tooltips**: Implemented rich interactive tooltips
+  - Added comprehensive state data including population, GDP, IT budget, cybersecurity grades
+  - Created detailed industry information with visual tags
+  - Implemented color-coded cybersecurity grade system (A+ to C-)
+  - Enhanced tooltip design with frosted glass styling and smooth animations
+  - Added proper TypeScript typing for all data structures
+
+### Enhanced
+
+- Fixed ReferenceError in liquid-glass-background.tsx by properly reordering class definitions
+  - Resolved "Cannot access 'Particle' before initialization" error
+  - Improved code structure by defining the Particle class before its usage
 
 - **ISSIServicesMap Component**: Added interactive US map component to the services page
   - Implemented D3.js-based interactive map showing ISSI's nationwide service coverage
