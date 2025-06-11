@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Mobile Floating Menu**: Added Aceternity UI-inspired floating dock navigation for mobile devices
+  - Implemented floating dock component with macOS-style magnification effects
+  - Added mobile-only navigation with smooth animations and gestures
+  - Integrated main navigation items (Services, Products, Government, eLearning, Compliance, About)
+  - Added proper internationalization support with translated menu labels
+  - Positioned at bottom-right corner for thumb-friendly mobile access
+  - Includes hover tooltips and smooth expand/collapse animations
+
 - **Liquid Glass Background Effect**: Added Apple iOS26-inspired fluid background
   - Implemented canvas-based animated liquid glass effect with interactive particles
   - Created a smooth, flowing background with subtle mouse interactions

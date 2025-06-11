@@ -1,9 +1,11 @@
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import Content from "@/components/Content";
 import FooterWrapper from "@/components/FooterWrapper";
+import MobileFloatingMenu from "@/components/MobileFloatingMenu";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 
+import { getIntl } from "@/lib/intl";
 import { getUser } from "@/lib/data";
 import { Locale } from "@/lib/definitions";
 
@@ -22,7 +24,41 @@ interface Props {
 }
 
 export default async function Root({ params, children }: Props) {
-  const user = await getUser();  return (
+  const user = await getUser();
+  const intl = await getIntl(params.lang);
+  
+  const navigationItems = [
+    {
+      title: intl.formatMessage({ id: "common.navigation.services" }),
+      icon: "services",
+      href: `/${params.lang}/services`,
+    },
+    {
+      title: intl.formatMessage({ id: "common.navigation.products" }),
+      icon: "products",
+      href: `/${params.lang}/products`,
+    },
+    {
+      title: intl.formatMessage({ id: "common.navigation.government" }),
+      icon: "government",
+      href: `/${params.lang}/government`,
+    },
+    {
+      title: intl.formatMessage({ id: "common.navigation.eLearning" }),
+      icon: "eLearning",
+      href: `/${params.lang}/eLearning`,
+    },
+    {
+      title: intl.formatMessage({ id: "common.navigation.compliance" }),
+      icon: "compliance",
+      href: `/${params.lang}/compliance`,
+    },
+    {
+      title: intl.formatMessage({ id: "common.navigation.about" }),
+      icon: "about",
+      href: `/${params.lang}/about`,
+    },
+  ];return (
     <html lang={params.lang} className="h-full">
       <head>
         <script
@@ -45,12 +81,12 @@ export default async function Root({ params, children }: Props) {
             `
           }}
         />
-      </head>      <body className="relative min-h-screen overflow-y-auto grid-background-with-fade flex flex-col">
-        <ThemeProvider>
+      </head>      <body className="relative min-h-screen overflow-y-auto grid-background-with-fade flex flex-col">        <ThemeProvider>
           <AnimatedBackground />
           <Navbar locale={params.lang} user={user} />
           <Content>{children}</Content>
           <FooterWrapper locale={params.lang} />
+          <MobileFloatingMenu items={navigationItems} />
         </ThemeProvider>
       </body>
     </html>
