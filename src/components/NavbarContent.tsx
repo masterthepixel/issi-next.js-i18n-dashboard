@@ -77,11 +77,9 @@ export default function NavbarContent({ user, locale, messages }: Props) {
                   className="h-8 w-auto"
                   priority
                 />
-              </Link>
-
-              {/* Top Navigation for Desktop */}
+              </Link>              {/* Top Navigation for Desktop */}
               <TopNav locale={locale} />
-              <div className="relative ml-1 lg:hidden">
+              <div className="relative ml-1 hidden">
                 <button
                   type="button"
                   className="rounded-full p-1 text-slate-500 hover:text-slate-600 dark:text-slate-300 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-slate-600/50 transition-all"
@@ -99,7 +97,7 @@ export default function NavbarContent({ user, locale, messages }: Props) {
                     className="size-6"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                  </svg>                </button>                {appMenuOpen && (
+                  </svg>                </button>{appMenuOpen && (
                   <Menu ref={appMenuRef} aria-labelledby="app-menu-button" align="left">
                     <MenuItem href={`/${locale}/services`}>
                       <FormattedMessage id="common.navigation.services" />

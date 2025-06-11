@@ -2,12 +2,12 @@
 
 import { FloatingDock } from "@/components/ui/floating-dock";
 import {
-  AcademicCapIcon,
-  BuildingLibraryIcon,
-  CubeIcon,
-  InformationCircleIcon,
-  ShieldCheckIcon,
-  WrenchScrewdriverIcon,
+    AcademicCapIcon,
+    BuildingLibraryIcon,
+    CubeIcon,
+    InformationCircleIcon,
+    ShieldCheckIcon,
+    WrenchScrewdriverIcon,
 } from "@heroicons/react/24/outline";
 
 interface NavigationItem {

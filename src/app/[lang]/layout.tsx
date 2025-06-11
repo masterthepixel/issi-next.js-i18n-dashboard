@@ -5,9 +5,9 @@ import MobileFloatingMenu from "@/components/MobileFloatingMenu";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 
-import { getIntl } from "@/lib/intl";
 import { getUser } from "@/lib/data";
 import { Locale } from "@/lib/definitions";
+import { getIntl } from "@/lib/intl";
 
 import { i18n } from "../../../i18n-config";
 
