@@ -4,7 +4,6 @@
  * Mobile navbar is better positioned at bottom right.
  **/
 
-import React from 'react';
 import { cn } from "@/lib/utils";
 import {
     AnimatePresence,
@@ -14,7 +13,7 @@ import {
     useSpring,
     useTransform,
 } from "motion/react";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from 'react';
 
 export const FloatingDock = ({
   items,

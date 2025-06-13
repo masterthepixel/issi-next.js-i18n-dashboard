@@ -1,0 +1,10 @@
+feat(services): Enhanced services page layout and components
+
+- Removed simple services card in favor of the comprehensive ISSIServicesShowcase component
+- Reorganized page layout to showcase services catalog with bento grid layout first
+- Retained the ISSIServicesMap component for geographic service coverage visualization
+- Improved SEO metadata with more detailed title and description
+- Simplified import statements by removing unused Card components
+
+This change provides a more visually appealing and informative services page that
+better showcases ISSI's range of IT services using the existing bento grid component.

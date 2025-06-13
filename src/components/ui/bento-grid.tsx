@@ -1,11 +1,9 @@
 "use client";
 
-import React from 'react';
 import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { EvervaultCard } from "./evervault-card";
 import { useMotionValue } from "motion/react";
-import { useState, useEffect } from "react";
+import Link from "next/link";
+import React, { useEffect, useState } from 'react';
 
 interface BentoGridProps {
   className?: string;

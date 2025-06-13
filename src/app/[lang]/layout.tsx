@@ -1,10 +1,10 @@
-import React from 'react';
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import Content from "@/components/Content";
 import FooterWrapper from "@/components/FooterWrapper";
 import MobileFloatingMenu from "@/components/MobileFloatingMenu";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import React from 'react';
 
 import { getUser } from "@/lib/data";
 import { Locale } from "@/lib/definitions";
