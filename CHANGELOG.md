@@ -7,7 +7,75 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - 2025-06-13
 
+### Added
+
+- **Government Clients Component**: Created comprehensive government clients showcase
+  - Duplicated ELearningClients component to create GovernmentClients with government-specific client list
+  - Implemented red, white, and blue badge color scheme for patriotic government branding
+  - Added 42 government clients including Library of Congress, FDA, National Security Agency, and more
+  - Created GovernmentClientsWrapper for internationalization support
+  - Added responsive badge sizing with smaller fonts and padding on mobile devices
+  - Integrated translation keys in English, French, and Spanish
+
+- **Government Testimonials Carousel**: Implemented infinite scrolling testimonials
+  - Created InfiniteMovingCards UI component with smooth scroll animations
+  - Added CSS keyframe animations for continuous horizontal scrolling
+  - Implemented 12 government-focused testimonials with professional avatars
+  - Added pause-on-hover functionality and customizable scroll direction/speed
+  - Used high-quality Unsplash professional headshots for credible testimonials
+  - Created GovernmentTestimonialsCarouselWrapper for i18n support
+
+- **Government NAICS Codes Table**: Built comprehensive capabilities table
+  - Created detailed NAICS classification table with 12 industry codes
+  - Included SIC codes, descriptions, capabilities summaries, and certifications
+  - Added responsive table design with horizontal scrolling on mobile
+  - Implemented dark mode support with proper color schemes
+  - Added professional information callout section with company contact details
+  - Full internationalization with French and Spanish translations
+
+- **Government Hero Internationalization**: Enhanced bento grid with translation support
+  - Converted hardcoded English text to translation keys using useIntl hook
+  - Created GovernmentHeroWrapper for internationalization context
+  - Added comprehensive translations for all bento grid cards and content
+  - Translated hero section title, subtitle, CTA buttons, and service descriptions
+  - Maintained responsive design and visual consistency across languages
+
 ### Changed
+
+- **Government Page Structure**: Refactored and enhanced government services page
+  - Replaced ELearningClientsWrapper with dedicated GovernmentClientsWrapper
+  - Removed duplicate "Trusted by Government Agencies" testimonial component
+  - Added NAICS table positioned after hero section for better information flow
+  - Integrated new testimonials carousel between clients and statistics sections
+  - Updated government page imports to use new internationalized components
+
+- **GovernmentHero Component**: Refactored to match ISSIServicesShowcase quality
+  - Implemented same responsive BentoGrid/BentoGridItem structure as services page
+  - Removed background styling and top gap for cleaner presentation
+  - Removed "Explore Government Services" link and ISSI address card
+  - Added "ISSI Certifications" card to bottom row matching "Core Services" size
+  - Enhanced font sizing, spacing, and responsive behavior
+
+### Removed
+
+- **NAICS Table Download Button**: Cleaned up table interface
+  - Removed "Download Capability Statement" button from NAICS table header
+  - Simplified header layout to focus on title and subtitle content
+  - Cleaned up unused translation keys across all language files
+  - Improved visual focus on table content and capabilities information
+
+### Fixed
+
+- **Infinite Moving Cards Animation**: Resolved scroll animation issues
+  - Added proper CSS keyframe animations to globals.css for smooth scrolling
+  - Implemented CSS custom properties for configurable animation duration and direction
+  - Fixed avatar display with proper sizing, borders, and responsive behavior
+  - Added accessibility features with descriptive alt text for avatar images
+
+- **Translation Coverage**: Ensured complete internationalization
+  - Added missing translation keys for government hero section in all languages
+  - Implemented comprehensive French translations for all new components
+  - Added complete Spanish translations maintaining consistency across languages  - Fixed translation key conflicts and ensured proper fallback behavior
 
 - **ISSIServicesMap Component**: Updated the US Map services component with a new layout
   - Redesigned the layout to display a centered map with feature cards below
