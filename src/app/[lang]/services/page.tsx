@@ -1,17 +1,17 @@
 import { Suspense } from "react";
 
-import Card from "@/components/Card";
-import CardBody from "@/components/CardBody";
-import CardHeader from "@/components/CardHeader";
+import ContactInfo from "@/components/ContactInfo";
+import ContactSalesForm from "@/components/ContactSalesForm";
 import ISSIServicesMapWrapper from "@/components/ISSIServicesMapWrapper";
+import ISSIServicesShowcaseWrapper from "@/components/ISSIServicesShowcaseWrapper";
 import Spinner from "@/components/Spinner";
 
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
 
 export const metadata = {
-  title: "Services - ISSI - International Software Systems International",
-  description: "Professional software development services by ISSI including custom applications, system integration, and enterprise solutions.",
+  title: "IT Services & Solutions - ISSI - International Software Systems International",
+  description: "Comprehensive IT services including software development, cloud computing, cybersecurity, and government solutions by ISSI.",
 };
 
 interface Props {
@@ -35,23 +35,18 @@ interface PageContentProps {
 async function PageContent({ locale }: PageContentProps) {
   const intl = await getIntl(locale);
   const messages = (await import(`../../../lang/${locale}.json`)).default;
-
   return (
     <div>
-      {/* Negative top margin to eliminate gap between navbar and content */}
-      <div className="-mt-20 grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-        <Card>
-          <CardHeader>{intl.formatMessage({ id: "page.services.title" })}</CardHeader>
-          <CardBody>
-            <p className="text-base text-slate-700 dark:text-slate-300">
-              {intl.formatMessage({ id: "page.services.description" })}
-            </p>
-          </CardBody>
-        </Card>
-      </div>
+      {/* Services Showcase - Bento Grid Layout */}
+      <ISSIServicesShowcaseWrapper locale={locale} messages={messages} />
       
       {/* Services Map with US coverage */}
       <ISSIServicesMapWrapper locale={locale} messages={messages} />
+        {/* Contact Form */}
+      <ContactSalesForm locale={locale} messages={messages} />
+      
+      {/* Contact Information */}
+      <ContactInfo locale={locale} messages={messages} />
     </div>
   );
 }
