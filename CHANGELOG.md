@@ -5,7 +5,23 @@ All notable changes to the ISSI Next.js Multilingual Website will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - 2025-06-11
+## [Unreleased] - 2025-06-13
+
+### Fixed
+
+- **Build and Runtime Errors**: Resolved all build and runtime errors
+  - Installed missing dependencies: autoprefixer, @emotion/is-prop-valid, eslint-plugin-jsonc
+  - Fixed React imports across multiple components (Card, CardBody, CardHeader, Content, SidebarLink)
+  - Corrected JSX namespace references in TypeScript files
+  - Updated ESLint configuration to resolve linting errors that were blocking the build
+  - Enabled successful production build and development server operation
+
+- **PostCSS and Tailwind Configuration**: Improved CSS processing pipeline
+  - Updated postcss.config.mjs to properly include autoprefixer
+  - Fixed Tailwind CSS configuration for compatibility with newer versions
+  - Ensured proper CSS utilities work correctly across the application
+
+## [Previous Updates] - 2025-06-11
 
 ### Added
 

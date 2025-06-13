@@ -1,3 +1,4 @@
+import React from 'react';
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import Content from "@/components/Content";
 import FooterWrapper from "@/components/FooterWrapper";

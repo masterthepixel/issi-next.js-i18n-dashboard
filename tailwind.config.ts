@@ -6,13 +6,15 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],  theme: {
+  ],
+  theme: {
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },      animation: {
+      },
+      animation: {
         "fade-in": "fadeIn 0.2s ease-in-out",
         "meteor-effect": "meteor 5s linear infinite",
       },
@@ -38,4 +40,5 @@ const config: Config = {
   },
   plugins: [],
 };
+
 export default config;

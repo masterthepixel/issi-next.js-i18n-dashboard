@@ -7,7 +7,7 @@ import React, { createContext, useContext, useEffect, useRef, useState } from "r
 import { FormattedMessage } from "react-intl";
 
 interface CarouselProps {
-  items: JSX.Element[];
+  items: React.ReactElement[];
   initialScroll?: number;
   autoplay?: boolean;
   loop?: boolean;

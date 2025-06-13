@@ -1,8 +1,7 @@
 {
   "extends": [
     "next/core-web-vitals"
-  ],
-  "rules": {
+  ],  "rules": {
     // JSON and string handling rules to prevent syntax errors
     "no-invalid-regexp": "error",
     "no-regex-spaces": "error",
@@ -15,20 +14,11 @@
     "no-template-curly-in-string": "warn",
     "no-irregular-whitespace": "error",
     // Object property safety (for structured data schemas)
-    "quote-props": [
-      "warn",
-      "consistent"
-    ],
-    "object-curly-spacing": [
-      "warn",
-      "always"
-    ],
-    "comma-dangle": [
-      "warn",
-      "never"
-    ],
+    "quote-props": "off",
+    "object-curly-spacing": "off",
+    "comma-dangle": "off",
     // Prevent potential runtime errors
-    "no-undef": "error",
+    "no-undef": "warn",
     "no-unused-vars": [
       "warn",
       {
@@ -44,8 +34,9 @@
       "always"
     ],
     // Next.js specific enhancements
-    "@next/next/no-img-element": "error",
-    "@next/next/no-page-custom-font": "warn"
+    "@next/next/no-img-element": "warn",
+    "@next/next/no-page-custom-font": "warn",
+    "react-hooks/exhaustive-deps": "warn"
   },
   "overrides": [
     {

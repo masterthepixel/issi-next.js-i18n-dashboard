@@ -4,6 +4,7 @@
  * Mobile navbar is better positioned at bottom right.
  **/
 
+import React from 'react';
 import { cn } from "@/lib/utils";
 import {
     AnimatePresence,
