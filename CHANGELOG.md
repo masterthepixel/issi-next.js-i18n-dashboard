@@ -23,6 +23,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **Privacy Page Translations**: Fixed missing translations in language files
+  - Added missing privacy section translations in French (fr.json) language file
+  - Added complete contact section translations for French version
+  - Ensured consistent privacy-related keys across all language files
+  - Fixed duplicate translation keys in French language file
+  - Verified proper rendering of Privacy page in all three supported languages
+
 - **Build and Runtime Errors**: Resolved all build and runtime errors
   - Installed missing dependencies: autoprefixer, @emotion/is-prop-valid, eslint-plugin-jsonc
   - Fixed React imports across multiple components (Card, CardBody, CardHeader, Content, SidebarLink)
@@ -462,20 +469,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Fixed `glowing-stars-background.tsx` import statements
   - Fixed `glowing-stars.tsx` import statements
 - **CSS Smooth Scrolling**: Added `scroll-behavior: smooth` and `scroll-padding-top: 4rem` for enhanced navigation experience
-
-### Technical Details
-
-- **Translation Files Updated**:
-  - `/src/lang/en.json` - Added comprehensive ISO 9001 English translations + 80+ CMMI Level 3 translation keys + 60+ Maryland DOT translation keys with JSON syntax fixes
-  - `/src/lang/fr.json` - Added complete French translations with JSON syntax fixes + 80+ CMMI Level 3 French translations + 60+ Maryland DOT French translations
-  - `/src/lang/es.json` - Added complete Spanish translations with JSON syntax fixes + 80+ CMMI Level 3 Spanish translations + 60+ Maryland DOT Spanish translations
-- **Component Files Modified**:
-  - `/src/app/[lang]/compliance/iso9001/page.tsx` - Complete ISO 9001 page implementation
-  - `/src/app/[lang]/compliance/cmmi3/page.tsx` - Complete CMMI Level 3 page transformation (28 lines → 400+ lines)
-  - `/src/app/[lang]/compliance/mdot/page.tsx` - Complete Maryland DOT page transformation (28 lines → 400+ lines)
-  - `/src/components/ui/glowing-stars-background.tsx` - Import fixes
-  - `/src/components/ui/glowing-stars.tsx` - Import fixes
-  - `/src/app/globals.css` - Typography and scroll enhancements
 
 ## [Unreleased] - 2025-06-02
 

@@ -1,13 +1,15 @@
-fix(build): Resolve all build and runtime errors in Next.js application
+fix(i18n): Add missing privacy page translations
 
-• Fixed dependency issues
-  - Added missing autoprefixer dependency for PostCSS processing
-  - Added @emotion/is-prop-valid for framer-motion component compatibility
-  - Added eslint-plugin-jsonc for proper JSON file linting
+• Added missing translations
+  - Added missing privacy section translations in French (fr.json) language file
+  - Added complete contact section translations for French version
+  - Ensured consistent privacy-related keys across all language files
+  - Fixed duplicate translation keys in French language file
 
-• Fixed React component errors
-  - Added React imports to multiple components (Card, CardBody, CardHeader, Content, SidebarLink)
-  - Corrected React namespace references in TypeScript files
+• Testing and verification
+  - Verified proper rendering of Privacy page in all three supported languages
+  - Tested contact section display in French language version
+  - Updated CHANGELOG.md with privacy translation fixes
   - Fixed JSX namespace usage in apple-cards-carousel component
 
 • Updated ESLint configuration
