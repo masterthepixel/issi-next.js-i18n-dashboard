@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 export const InfiniteMovingCards = ({
   items,
@@ -98,13 +99,16 @@ export const InfiniteMovingCards = ({
               ></div>              <span className="relative z-20 text-sm leading-[1.6] font-normal text-neutral-800 dark:text-gray-100">
                 {item.quote}
               </span>
-              <div className="relative z-20 mt-6 flex flex-row items-center">
-                {item.avatar && (
+              <div className="relative z-20 mt-6 flex flex-row items-center">                {item.avatar && (
                   <div className="mr-4 flex-shrink-0">
-                    <img 
+                    <Image 
                       src={item.avatar} 
                       alt={`${item.name} avatar`}
                       className="w-12 h-12 rounded-full object-cover border-2 border-gray-200 dark:border-gray-600"
+                      width={48}
+                      height={48}
+                      loading="lazy"
+                      unoptimized={item.avatar.includes('unsplash.com')}
                     />
                   </div>
                 )}

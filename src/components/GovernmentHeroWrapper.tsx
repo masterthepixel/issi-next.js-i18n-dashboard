@@ -1,8 +1,8 @@
 "use client";
 
-import { IntlProvider } from "react-intl";
 import GovernmentHero from "@/components/GovernmentHero";
 import { Locale } from "@/lib/definitions";
+import { IntlProvider } from "react-intl";
 
 interface GovernmentHeroWrapperProps {
     locale: Locale;

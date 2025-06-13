@@ -1,8 +1,8 @@
 "use client";
 
-import { IntlProvider } from "react-intl";
 import GovernmentTestimonialsCarousel from "@/components/GovernmentTestimonialsCarousel";
 import { Locale } from "@/lib/definitions";
+import { IntlProvider } from "react-intl";
 
 interface GovernmentTestimonialsCarouselWrapperProps {
     locale: Locale;

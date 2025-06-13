@@ -1,6 +1,5 @@
 "use client";
 
-import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 export default function GovernmentNAICSTable() {
@@ -97,9 +96,9 @@ export default function GovernmentNAICSTable() {
     <section className="py-16 sm:py-24">
       <div className="px-4 sm:px-6 lg:px-8">        <div className="max-w-7xl mx-auto">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
               <FormattedMessage id="government.naics.title" />
-            </h1>
+            </h2>
             <p className="mt-4 text-lg leading-8 text-slate-600 dark:text-slate-300">
               <FormattedMessage id="government.naics.subtitle" />
             </p>

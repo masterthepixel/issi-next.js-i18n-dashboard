@@ -1,11 +1,15 @@
 "use client";
 
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid';
-import { ArrowRight, Award, Clock, Shield, Star, Users, CheckCircle } from 'lucide-react';
+import { ArrowRight, Award, CheckCircle, Clock, Shield, Star, Users } from 'lucide-react';
 import { useIntl } from 'react-intl';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 const GovernmentHero = () => {
-  const intl = useIntl();  // Government services/features with proper grid layout
+  const intl = useIntl();
+  const params = useParams();
+  const locale = params.lang as string;// Government services/features with proper grid layout
   const governmentServices = [
     {
       title: intl.formatMessage({ id: "government.hero.services.partner.title" }),
@@ -59,23 +63,23 @@ const GovernmentHero = () => {
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mb-8">
             {intl.formatMessage({ id: "government.hero.subtitle" })}
-          </p>
-
-          {/* Action Buttons */}
+          </p>          {/* Action Buttons */}
           <div className="flex gap-4 mb-8">
-            <button 
+            <Link 
+              href={`/${locale}/services`}
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium flex items-center gap-2 transition-all"
               aria-label={intl.formatMessage({ id: "government.hero.cta.contracts" })}
             >
               {intl.formatMessage({ id: "government.hero.cta.contracts" })}
               <ArrowRight className="h-5 w-5" />
-            </button>
-            <button 
+            </Link>
+            <Link 
+              href={`/${locale}/contact`}
               className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-6 py-3 rounded-lg font-medium transition-all"
               aria-label={intl.formatMessage({ id: "government.hero.cta.contact" })}
             >
               {intl.formatMessage({ id: "government.hero.cta.contact" })}
-            </button>
+            </Link>
           </div>
         </div>        {/* Bento Grid Layout */}
         <BentoGrid className="mx-auto">

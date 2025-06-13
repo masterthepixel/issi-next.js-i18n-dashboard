@@ -1,8 +1,8 @@
 "use client";
 
-import { IntlProvider } from "react-intl";
 import GovernmentNAICSTable from "@/components/GovernmentNAICSTable";
 import { Locale } from "@/lib/definitions";
+import { IntlProvider } from "react-intl";
 
 interface GovernmentNAICSTableWrapperProps {
     locale: Locale;
