@@ -78,13 +78,12 @@
   "page.home.team": "Team",
   "page.reports.no-data": "No reports have been found.",
   "page.about.title": "About Us",
-  "page.about.description": "Learn more about ISSI and our commitment to delivering exceptional software solutions.",  "page.services.title": "Our Services",
+  "page.about.description": "Learn more about ISSI and our commitment to delivering exceptional software solutions.",
+  "page.services.title": "Our Services",
   "page.services.description": "Discover the comprehensive range of software development and IT services we offer.",
-  
   "services.map.subtitle": "Nationwide Coverage",
   "services.map.title": "Trusted IT Partner Across America",
   "services.map.description": "For over 30 years, ISSI has provided award-winning software development and IT support services to clients across the United States.",
-  
   "services.features.cloud.name": "Cloud Computing & Migration",
   "services.features.cloud.description": "AWS-based solutions and infrastructure modernization for scalable, reliable cloud environments.",
   "services.features.security.name": "Secure Infrastructure",
@@ -687,8 +686,7 @@
   "services.items.cloudServices.description": "Expert cloud migration, optimization, and management services for AWS, Azure, and Google Cloud platforms.",
   "services.items.softwareDevelopment.title": "Software Development",
   "services.items.softwareDevelopment.description": "Custom software solutions tailored to your specific business requirements and industry standards.",
-  "services.items.databaseManagement.title": "Database Management",
-  "services.items.databaseManagement.description": "Comprehensive database administration, optimization, and maintenance services for optimal performance.",
+  "services.items.databaseManagement.title": "Database Management",  "services.items.databaseManagement.description": "Comprehensive database administration, optimization, and maintenance services for optimal performance.",
   "services.items.itConsulting.title": "IT Consulting",
   "services.items.itConsulting.description": "Strategic technology guidance to align your IT infrastructure with business goals and maximize ROI.",
   "services.items.governmentServices.title": "Government IT Services",
@@ -700,5 +698,72 @@
   "services.items.itTraining.title": "IT Training",
   "services.items.itTraining.description": "Comprehensive technology training programs customized to enhance your team's skills and productivity.",
   "services.items.infrastructureManagement.title": "Infrastructure Management",
-  "services.items.infrastructureManagement.description": "End-to-end management of IT infrastructure components ensuring reliability, scalability, and performance."
+  "services.items.infrastructureManagement.description": "End-to-end management of IT infrastructure components ensuring reliability, scalability, and performance.",
+  
+  "page.privacy.title": "Privacy Policy",
+  "page.privacy.description": "Learn how we collect, use, and protect your personal information and data.",
+  
+  "privacy.meta.title": "Privacy Policy - International Software Systems, Inc.",
+  "privacy.meta.description": "International Software Systems, Inc. privacy policy - Learn how we collect, use, and protect your information.",
+  "privacy.company.name": "International Software Systems, Inc.",
+  "privacy.nav.home": "Home",
+  "privacy.nav.about": "About",
+  "privacy.nav.services": "Services",
+  "privacy.nav.contact": "Contact",
+  "privacy.page.title": "Privacy Policy",
+  "privacy.page.subtitle": "How We Protect Your Personal Information",
+  
+  "privacy.toc.title": "On this page",
+  "privacy.toc.toggleAriaLabel": "Toggle table of contents",
+  "privacy.toc.closeAriaLabel": "Close table of contents",
+  "privacy.toc.notice": "Privacy Notice",
+  "privacy.toc.overview": "Overview",
+  "privacy.toc.registration": "Registration",
+  "privacy.toc.cookies": "Cookies",
+  "privacy.toc.anonymousData": "Anonymous Data Collection",
+  "privacy.toc.links": "Links to Other Websites",
+  "privacy.toc.deleteDeactivate": "Delete/Deactivate",
+  "privacy.toc.changeModify": "Change/Modify",
+  "privacy.toc.contact": "Contact",
+    "privacy.sections.notice.title": "Privacy Notice",
+  "privacy.sections.notice.commitment": "ISSI is committed to protecting your privacy and ensuring your information is handled securely.",
+  
+  "privacy.sections.overview.title": "Overview",
+  "privacy.sections.overview.anonymous": "When you visit our website, you can browse without submitting any personal information about yourself. We will track the domain name of your internet service provider, but no personal information is collected.",
+  "privacy.sections.overview.ipAddress": "We collect your IP address to help diagnose problems with our server and to administer our website.",
+  
+  "privacy.sections.registration.title": "Registration",
+  "privacy.sections.registration.voluntary": "Registration on our website is completely voluntary. When you register, we may ask for personal information such as your name, email address, and organization.",
+  "privacy.sections.registration.dataUse": "We use this information to personalize your experience and improve our services to you.",
+  "privacy.sections.registration.transfer": "We will not sell, share, or rent your personal information to any third party, except as required by law.",
+  "privacy.sections.registration.storage": "Your information is stored securely in our databases with appropriate security measures in place.",
+  
+  "privacy.sections.cookies.title": "Cookies",
+  "privacy.sections.cookies.definition": "Cookies are small text files stored on your computer that help us improve your experience on our website.",
+  "privacy.sections.cookies.currentUse": "We currently use cookies to track user sessions and preferences. These cookies do not contain personal information.",
+  "privacy.sections.cookies.control": "You can control the use of cookies at the individual browser level. If you reject cookies, you may still use our website, but your ability to use some features may be limited.",
+  
+  "privacy.sections.anonymous.title": "Anonymous Data Collection",
+  "privacy.sections.cookies.anonymousData": "We collect anonymous data about website usage to help us improve our website and services.",
+  "privacy.sections.cookies.dataAnalysis": "This data may include browser type, operating system, pages visited, time spent on pages, and other statistics.",
+  
+  "privacy.sections.links.title": "Links to Other Websites",
+  "privacy.sections.links.disclaimer": "Our website contains links to other websites. We are not responsible for the privacy practices of these other sites. We encourage you to read the privacy statements of each website that collects personal information.",
+  
+  "privacy.sections.deleteDeactivate.title": "Delete/Deactivate",
+  "privacy.sections.deleteDeactivate.options": "You may request to have your account deactivated or your personal information deleted from our systems.",
+  "privacy.sections.deleteDeactivate.process": "To request deletion of your personal information, please contact us at {email}.",
+  
+  "privacy.sections.changeModify.title": "Change/Modify",
+  "privacy.sections.changeModify.options": "You can update or modify your personal information at any time by logging into your account.",
+  "privacy.sections.changeModify.process": "If you have any difficulties updating your information, please contact us at {email}.",
+  "privacy.sections.changeModify.policyUpdates": "We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page.",
+  
+  "privacy.sections.contact.title": "Contact",
+  "privacy.sections.contact.questions": "If you have any questions about this privacy policy, please contact us at:",
+  "privacy.sections.contact.address": "International Software Systems, Inc., 7337 Hanover Pkwy, Suite A, Greenbelt, MD 20770",
+  "privacy.sections.contact.phone": "Phone: 301-982-9700",
+  "privacy.sections.contact.email": "Email: info@issi-software.com",
+  
+  "privacy.email.webinfo": "info@issi-software.com"
 }

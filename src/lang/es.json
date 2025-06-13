@@ -78,13 +78,12 @@
   "page.home.team": "Equipo",
   "page.reports.no-data": "No se encontraron informes.",
   "page.about.title": "Sobre nosotros",
-  "page.about.description": "Aprenda más sobre ISSI y nuestro compromiso de ofrecer soluciones de software excepcionales.",  "page.services.title": "Nuestros servicios",
+  "page.about.description": "Aprenda más sobre ISSI y nuestro compromiso de ofrecer soluciones de software excepcionales.",
+  "page.services.title": "Nuestros servicios",
   "page.services.description": "Descubra la gama completa de servicios de desarrollo de software y TI que ofrecemos.",
-  
   "services.map.subtitle": "Cobertura Nacional",
   "services.map.title": "Socio de TI de Confianza en Todo Estados Unidos",
   "services.map.description": "Durante más de 30 años, ISSI ha proporcionado servicios galardonados de desarrollo de software y soporte de TI a clientes en todo Estados Unidos.",
-  
   "services.features.cloud.name": "Computación en la Nube y Migración",
   "services.features.cloud.description": "Soluciones basadas en AWS y modernización de infraestructura para entornos en la nube escalables y confiables.",
   "services.features.security.name": "Infraestructura Segura",
