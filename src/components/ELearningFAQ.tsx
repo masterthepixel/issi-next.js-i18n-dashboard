@@ -2,9 +2,9 @@
 
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/react/24/outline';
-import { FormattedMessage, useIntl } from 'react-intl';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 export default function ELearningFAQ() {
   const intl = useIntl();

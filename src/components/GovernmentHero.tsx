@@ -2,9 +2,9 @@
 
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid';
 import { ArrowRight, Award, CheckCircle, Clock, Shield, Star, Users } from 'lucide-react';
-import { useIntl } from 'react-intl';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import { useIntl } from 'react-intl';
 
 const GovernmentHero = () => {
   const intl = useIntl();

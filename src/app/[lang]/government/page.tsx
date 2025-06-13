@@ -1,5 +1,5 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 import AboutAwardsWrapper from "@/components/AboutAwardsWrapper";
 import AboutPartnerNetworkWrapper from "@/components/AboutPartnerNetworkWrapper";
@@ -219,10 +219,11 @@ async function PageContent({ locale }: PageContentProps) {
       <GovernmentNAICSTableWrapper locale={locale} messages={messages} />
 
       {/* Government Client Testimonials - Government Clients */}
-      <GovernmentClientsWrapper locale={locale} messages={messages} />
-
-      {/* Government Testimonials Carousel */}
+      <GovernmentClientsWrapper locale={locale} messages={messages} />      {/* Government Testimonials Carousel */}
       <GovernmentTestimonialsCarouselWrapper locale={locale} messages={messages} />
+
+      {/* Government FAQ */}
+      <GovernmentFAQWrapper locale={locale} messages={messages} />
 
       {/* Track Record and Statistics */}
       <AboutStatsWrapper locale={locale} messages={messages} />
@@ -235,9 +236,6 @@ async function PageContent({ locale }: PageContentProps) {
 
       {/* Compliance and Certification Testimonials */}
       <ComplianceCarouselWrapper locale={locale} messages={messages} />
-
-      {/* Government FAQ */}
-      <GovernmentFAQWrapper locale={locale} messages={messages} />
     </div>
   );
 }

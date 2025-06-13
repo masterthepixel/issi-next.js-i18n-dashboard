@@ -1,10 +1,10 @@
 "use client";
 
-import { FormattedMessage, useIntl } from "react-intl";
-import Link from 'next/link';
-import Image from 'next/image';
-import { useParams } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
+import { FormattedMessage, useIntl } from "react-intl";
 
 export default function ELearningHero() {
   const intl = useIntl();
