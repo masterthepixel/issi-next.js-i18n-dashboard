@@ -21,7 +21,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Ensured proper internationalization (i18n) support
   - Fixed privacy link in ContactSalesForm to use correct locale-based privacy page
 
+- **Legal Pages UI**: Removed decorative headers from legal pages for cleaner presentation
+  - Removed profile headers with background images and avatars from Privacy, Terms, and License pages
+  - Eliminated action buttons (Message/Call) that were not relevant to legal content
+  - Streamlined page layout to focus entirely on content
+  - Improved readability and professional appearance of legal documentation
+
 ### Fixed
+
+- **Terms Page Translations**: Fixed missing English translations for Terms of Service page
+  - Added complete English translations for all license/terms-related keys
+  - Added missing page metadata and basic navigation keys
+  - Implemented comprehensive section content translations including:
+    - Introduction, definitions, cookies policy sections
+    - Hyperlinking guidelines and approval processes
+    - Rights, modifications, and liability disclaimers
+    - Legal limitations and exclusions
+  - English Terms page now displays correctly matching French and Spanish versions
 
 - **Privacy Page Translations**: Fixed missing translations in language files
   - Added missing privacy section translations in French (fr.json) language file
