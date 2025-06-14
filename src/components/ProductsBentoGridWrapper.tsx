@@ -7,8 +7,8 @@ interface ProductsBentoGridWrapperProps {
   messages: any;
 }
 
-export default function ProductsBentoGridWrapper({ locale: _locale, messages: _messages }: ProductsBentoGridWrapperProps) {
+export default function ProductsBentoGridWrapper({ locale, messages: _messages }: ProductsBentoGridWrapperProps) {
   return (
-    <ProductsBentoGrid />
+    <ProductsBentoGrid lang={locale} />
   );
 }

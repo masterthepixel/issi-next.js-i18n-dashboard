@@ -129,6 +129,7 @@ This project includes comprehensive instructions and guides for all major develo
 - **INTERNATIONALIZATION.md** – Deep-dive into i18n architecture, language files, and data flow
 - **I18N_ARCHITECTURE.md** – Architecture diagrams and detailed internationalization implementation
 - **COMPONENT_INTEGRATION_GUIDE.md** – How to build, wrap, and integrate i18n-ready client/server components
+- **BENTOGRID_CREATION_GUIDE.md** – Complete guide for creating and localizing BentoGrid components
 - **TROUBLESHOOTING.md** – Solutions for common i18n issues and error resolution
 - **JSON_VALIDATION_GUIDE.md** – JSON validation, linting, and best practices
 

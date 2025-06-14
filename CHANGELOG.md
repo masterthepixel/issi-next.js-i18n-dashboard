@@ -5,6 +5,16 @@ All notable changes to the ISSI Next.js Multilingual Website will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2025-06-14
+
+### Fixed - Build and Deployment Issues
+
+- **ProductsBentoGridWrapper Component Fix**: Resolved TypeScript error causing Vercel deployment failures
+  - Fixed missing `lang` prop in ProductsBentoGridWrapper component
+  - Updated component to properly pass `locale` parameter to ProductsBentoGrid
+  - Ensured successful compilation and deployment readiness
+  - Maintained component internationalization compatibility
+
 ## [Unreleased] - 2025-01-15
 
 ### Changed - Products Page Design Alignment
