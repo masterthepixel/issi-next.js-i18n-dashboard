@@ -5,6 +5,60 @@ All notable changes to the ISSI Next.js Multilingual Website will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2025-06-15
+
+### Added - Internationalization Support
+
+- **ProductsBentoGrid Localization**: Complete translation implementation for all product content
+  - Added translation keys for all 30+ products in English, French, and Spanish
+  - Implemented hybrid rendering system supporting both `titleKey`/`descriptionKey` and fallback text
+  - Updated ProductsBentoGridWrapper with IntlProvider for proper i18n context
+  - Added category filter translations for all supported languages
+
+### Added - Visual Enhancements
+
+- **Alternating Icon Colors**: Enhanced visual appeal with dynamic color system
+  - Implemented 8-color rotation (blue, green, purple, orange, red, indigo, teal, pink)
+  - Colors cycle based on product position with consistent dark/light mode variants
+  - Improved visual distinction between products in the grid
+
+### Added - User Experience Improvements
+
+- **Cursor Pointer Interaction**: Added pointer cursor on card hover for better UX
+- **Left-Aligned Filter Tabs**: Repositioned category filters to left alignment for better layout
+
+### Changed - Products Bento Grid Layout Optimization
+
+- **ProductsBentoGrid Height Consistency**: Updated all product cards to use single row height
+  - Removed all `row-span-2` classes for uniform card heights
+  - Updated all card size objects to use `height: 1` consistently
+  - Improved visual balance and grid uniformity across all product categories
+  - Maintained 4-column desktop layout with 2-column maximum card width
+  - Enhanced grid predictability and responsive behavior
+
+### Changed - Card Sizing Standardization
+
+- **Individual Card Adjustments**: Converted multiple cards to 1x1 standard size for better grid balance
+  - Training Dashboard: 2x1 → 1x1
+  - Audit Reporting: 2x1 → 1x1
+  - Central Data: 2x1 → 1x1
+  - Training Records: 2x1 → 1x1
+  - Complaint Tracking: 2x1 → 1x1
+
+### Fixed - Data Consistency
+
+- **Size Object Alignment**: Fixed inconsistencies between size objects and CSS classes
+  - Updated Membership Database size object to match col-span-2 className
+  - Updated Prudent Agile size object to match col-span-2 className
+  - Updated Task Management size object to match col-span-2 className
+  - Corrected comments to accurately reflect card sizes
+
+### Added - User Experience Enhancement
+
+- **Cursor Pointer**: Added cursor pointer on card hover to indicate clickability
+  - Enhanced user interaction feedback
+  - Improved accessibility and usability
+
 ## [Unreleased] - 2025-06-14
 
 ### Fixed - Build and Deployment Issues
@@ -42,12 +96,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added - SEO Enhancements and Final Implementation
 
 - **JSON-LD Structured Data**: Comprehensive structured data markup for enhanced search engine understanding
+
   - Organization schema with company information, contact details, and social media profiles
   - Service schema detailing government IT services and capabilities
   - WebPage schema with proper language attribution and page relationships
   - BreadcrumbList schema for improved navigation understanding
 
 - **Advanced SEO Features**: Complete search engine optimization implementation
+
   - Breadcrumbs component integration with structured data support
   - Internal linking strategy with hero CTAs linking to services and contact pages
   - FAQ contact section linking to internal contact page instead of external actions
@@ -62,6 +118,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Enhanced - SEO Metadata and Structure
 
 - **Complete Metadata Optimization**: Full search engine optimization coverage
+
   - Enhanced title tags with targeted government IT keywords
   - Comprehensive meta descriptions with compelling calls-to-action
   - Strategic keyword targeting for government contractors and IT services
@@ -78,6 +135,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed - Technical Issues and Validation
 
 - **HTML Validation**: Resolved markup validation errors
+
   - Fixed dl element structure by properly organizing FAQ content
   - Corrected heading hierarchy throughout the government page
   - Ensured proper nesting of semantic HTML elements
@@ -91,6 +149,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added - Previous Government Page Features
 
 - **Government Clients Component**: Created comprehensive government clients showcase
+
   - Duplicated ELearningClients component to create GovernmentClients with government-specific client list
   - Implemented red, white, and blue badge color scheme for patriotic government branding
   - Added 42 government clients including Library of Congress, FDA, National Security Agency, and more
@@ -99,6 +158,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Integrated translation keys in English, French, and Spanish
 
 - **Government Testimonials Carousel**: Implemented infinite scrolling testimonials
+
   - Created InfiniteMovingCards UI component with smooth scroll animations
   - Added CSS keyframe animations for continuous horizontal scrolling
   - Implemented 12 government-focused testimonials with professional avatars
@@ -107,6 +167,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Created GovernmentTestimonialsCarouselWrapper for i18n support
 
 - **Government NAICS Codes Table**: Built comprehensive capabilities table
+
   - Created detailed NAICS classification table with 12 industry codes
   - Included SIC codes, descriptions, capabilities summaries, and certifications
   - Added responsive table design with horizontal scrolling on mobile
@@ -124,6 +185,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **Government Page Structure**: Refactored and enhanced government services page
+
   - Replaced ELearningClientsWrapper with dedicated GovernmentClientsWrapper
   - Removed duplicate "Trusted by Government Agencies" testimonial component
   - Added NAICS table positioned after hero section for better information flow
@@ -148,15 +210,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - **Infinite Moving Cards Animation**: Resolved scroll animation issues
+
   - Added proper CSS keyframe animations to globals.css for smooth scrolling
   - Implemented CSS custom properties for configurable animation duration and direction
   - Fixed avatar display with proper sizing, borders, and responsive behavior
   - Added accessibility features with descriptive alt text for avatar images
 
 - **Translation Coverage**: Ensured complete internationalization
+
   - Added missing translation keys for government hero section in all languages
   - Implemented comprehensive French translations for all new components
-  - Added complete Spanish translations maintaining consistency across languages  - Fixed translation key conflicts and ensured proper fallback behavior
+  - Added complete Spanish translations maintaining consistency across languages - Fixed translation key conflicts and ensured proper fallback behavior
 
 - **ISSIServicesMap Component**: Updated the US Map services component with a new layout
   - Redesigned the layout to display a centered map with feature cards below
@@ -164,8 +228,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Implemented a clean grid of feature cards with Heroicons
   - Ensured all text is properly internationalized with FormattedMessage
   - Enhanced visual appearance with improved shadows and spacing
-  
 - **Contact Components**: Improved ContactSalesForm and ContactInfo components
+
   - Updated visual styling with slate borders for better clarity
   - Ensured proper internationalization (i18n) support
   - Fixed privacy link in ContactSalesForm to use correct locale-based privacy page
@@ -179,6 +243,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - **Terms Page Translations**: Fixed missing English translations for Terms of Service page
+
   - Added complete English translations for all license/terms-related keys
   - Added missing page metadata and basic navigation keys
   - Implemented comprehensive section content translations including:
@@ -189,6 +254,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - English Terms page now displays correctly matching French and Spanish versions
 
 - **Privacy Page Translations**: Fixed missing translations in language files
+
   - Added missing privacy section translations in French (fr.json) language file
   - Added complete contact section translations for French version
   - Ensured consistent privacy-related keys across all language files
@@ -196,6 +262,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Verified proper rendering of Privacy page in all three supported languages
 
 - **Build and Runtime Errors**: Resolved all build and runtime errors
+
   - Installed missing dependencies: autoprefixer, @emotion/is-prop-valid, eslint-plugin-jsonc
   - Fixed React imports across multiple components (Card, CardBody, CardHeader, Content, SidebarLink)
   - Corrected JSX namespace references in TypeScript files
@@ -212,6 +279,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - **Mobile Floating Menu**: Added Aceternity UI-inspired floating dock navigation for mobile devices
+
   - Implemented floating dock component with macOS-style magnification effects
   - Added mobile-only navigation with smooth animations and gestures
   - Integrated main navigation items (Services, Products, Government, eLearning, Compliance, About)
@@ -223,18 +291,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Implemented canvas-based animated liquid glass effect with interactive particles
   - Created a smooth, flowing background with subtle mouse interactions
   - Added frosted glass UI elements with backdrop blur and transparency
-  - Enhanced service cards with glass morphism styling  - Optimized animation performance with requestAnimationFrame
+  - Enhanced service cards with glass morphism styling - Optimized animation performance with requestAnimationFrame
   - Ensured proper theme integration with dark/light mode support
 
 ### Fixed
 
 - **Liquid Glass Background Particle Class Error**: Resolved "Cannot access 'Particle' before initialization" error
+
   - Fixed null checking for canvas and context variables
   - Updated Particle class constructor to accept canvas dimensions as parameters
   - Improved method signatures with proper null safety
   - Added comprehensive error handling for canvas operations
 
 - **Services Map Visibility Issues**: Fixed map display and interaction problems
+
   - Increased map height from 400px to 500px for better visibility
   - Enhanced map projection scale from 1000 to 1100 for improved detail
   - Added loading spinner with proper state management
@@ -250,9 +320,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Enhanced
 
 - **Services Map Responsive Design**: Major improvements to map sizing and responsiveness
+
   - Implemented ResizeObserver for automatic map redrawing on container size changes
   - Added responsive width calculation with maximum width constraint (1000px)
-  - Implemented proper aspect ratio maintenance (width * 0.6) for consistent display
+  - Implemented proper aspect ratio maintenance (width \* 0.6) for consistent display
   - Added responsive scale calculation based on container dimensions
   - Enhanced SVG configuration with preserveAspectRatio for proper scaling
   - Added responsive marker sizing that adapts to map scale
@@ -262,10 +333,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Enhanced container styling with minimum height and flex centering
 
 - Fixed ReferenceError in liquid-glass-background.tsx by properly reordering class definitions
+
   - Resolved "Cannot access 'Particle' before initialization" error
   - Improved code structure by defining the Particle class before its usage
 
 - **ISSIServicesMap Component**: Added interactive US map component to the services page
+
   - Implemented D3.js-based interactive map showing ISSI's nationwide service coverage
   - Added tooltips for state capitals where ISSI has presence
   - Created responsive design with dark/light mode support using existing ThemeContext
@@ -284,6 +357,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **ISSIServicesShowcase UI Improvements**: Enhanced visual design and interaction
+
   - Left-aligned the component title, subtitle, and filter tabs for better content flow
   - Added interactive Evervault card hover effect with subtle gradient animation
   - Made the hover effect more transparent and subtle for a refined user experience
@@ -329,6 +403,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - **ELearning Component Transparency**: Removed background colors from components for consistent theming
+
   - Updated ELearningHero component to use transparent background instead of white/dark slate
   - Updated ELearningFeatures component to use transparent background instead of gray-900
   - Updated ELearningClients component to remove card backgrounds and borders
@@ -336,17 +411,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Improved text contrast for proper light/dark mode compatibility
 
 - **Server Component Context Error**: Fixed ELearningFeaturesWrapper component rendering issue
+
   - Converted ELearningFeaturesWrapper from "use server" to "use client" directive
   - Resolved IntlProvider context error that was preventing page rendering
   - Fixed createContext error in React Server Components
 
 - **Internationalization Issues**: Enhanced multilingual support across eLearning components
+
   - Fixed ELearningValueProposition component to use correct translation key (`elearning.value.title`)
   - Added missing Spanish translations for value proposition section
   - Added complete French and Spanish translation support for ELearningFeatures component
   - Verified all three languages (EN, FR, ES) display content properly
 
 - **eLearning Features Component**: Added comprehensive features section to showcase ISSI's e-learning capabilities
+
   - Created new ELearningFeatures component with 6 key feature areas: LMS, Custom Development, Industry Partnerships, Multimedia, SCORM/AICC Compliance, and Performance Management
   - Added ELearningFeaturesWrapper for proper internationalization support
   - Integrated features section into eLearning page layout between hero and services sections
@@ -378,17 +456,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Pluralization usage examples with JSON structures
     - Date and number formatting components
     - Rich text handling with HTML elements
-    - Dynamic translations with variables  - **Documentation Cross-References**: Updated all relevant documentation with cross-references
+    - Dynamic translations with variables - **Documentation Cross-References**: Updated all relevant documentation with cross-references
 
 ### Changed
 
 - **eLearning Page Simplified**: Removed the HeaderWrapper component from the eLearning page
+
   - Eliminated redundant profile-style header to streamline user experience
   - Improved page load performance by reducing component count
   - Enhanced visual consistency by relying on the main hero section for introductory content
   - Simplified page structure for better maintainability
 
 - **eLearning Hero Section Simplified and Redesigned**: Streamlined the hero section for cleaner design and better focus
+
   - Removed background colors for transparent design that adapts to any parent background
   - Changed experience badge from blue to red for better visual contrast
   - Simplified content to focus on main image and essential introductory text
@@ -413,11 +493,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - **Team Members Display**: Added missing team member translation entries to English language file
+
   - Fixed issue where team member names, roles, and bios were displaying as raw translation keys in English version
   - Added proper translations for all 8 team members with complete information
   - Ensured consistent team information across all language versions (EN/FR/ES)
 
 - **Footer Component Improvements**: Enhanced footer appearance and simplified design
+
   - Removed background color/effects for cleaner visual presentation
   - Added z-index positioning (z-10) to ensure footer appears above other elements
   - Added subtle border styling with border-t for better visibility in both light and dark modes
@@ -436,6 +518,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - **ISO 9001:2015 Certification Page Implementation**: Complete transformation from placeholder to comprehensive quality management system page
+
   - **Translation System Expansion**: Added 80+ comprehensive translation keys across all languages (EN/FR/ES)
     - Hero section with title, subtitle, description, and certification badges
     - Features section covering leadership, customer focus, process approach, performance evaluation, improvement, evidence-based decisions, and relationship management
@@ -457,6 +540,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **UI Component Integration**: Applied consistent styling with glowing stars background, animated elements, and responsive design
 
 - **Maryland DOT MBE/DBE/SBE Certification Page Implementation**: Complete transformation from 28-line placeholder to comprehensive conversion-focused business development page (400+ lines)
+
   - **Translation System Expansion**: Added 60+ comprehensive Maryland DOT translation keys across all languages (EN/FR/ES)
     - Hero section with certification badges (`mdot.hero.*`) - 8 keys for title, subtitle, description, and certification badges:
       - `mdot.hero.title` - "Certified Maryland DOT MBE/DBE/SBE Partner"
@@ -525,7 +609,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Internationalization Improvements**:
     - Fixed routing in all link elements to include language parameter (`/${lang}/contact` instead of `/contact`)
     - Added missing translation keys for certification documents section
-    - Ensured consistent multilingual user experience across all page sections    * Verified complete translation coverage for all user-facing content
+    - Ensured consistent multilingual user experience across all page sections \* Verified complete translation coverage for all user-facing content
     - Completed internationalization of Get Started and Footer CTA sections
     - Fixed all navigation links to include language parameter (`/${lang}/contact` and `/${lang}/capabilities`)
     - Added missing translation keys for certification documents section
@@ -641,6 +725,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - **ISO 9001:2015 Certification Page Implementation**: Complete transformation from placeholder to comprehensive quality management system page
+
   - **Translation System Expansion**: Added 80+ comprehensive translation keys across all languages (EN/FR/ES)
     - Hero section with title, subtitle, description, and certification badges
     - Features section covering leadership, customer focus, process approach, performance evaluation, improvement, evidence-based decisions, and relationship management
@@ -666,6 +751,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Added font variant ligatures for better typography display
 
 - **Complete Compliance Page Restoration**: Restored all missing components and sections to the compliance page
+
   - **ComplianceHero Component**: Created comprehensive hero section with features array, internationalization support
   - **ComplianceHeroWrapper**: Implemented IntlProvider wrapper for proper i18n context
   - **ComplianceStats Component**: Built statistics section displaying 4 key metrics (certifications, audits, uptime, incidents)
@@ -741,6 +827,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - **Animated Meteor Background Effect**: Implemented dynamic meteor animation for dark mode
+
   - **Meteors Component**: Created `/src/components/ui/meteors.tsx` with customizable meteor animations using framer-motion
   - **AnimatedBackground Component**: Built `/src/components/AnimatedBackground.tsx` for dark mode detection and conditional meteor rendering
   - **Tailwind Animation**: Added `meteor-effect` keyframes to `tailwind.config.ts` for smooth meteor movement across the screen
@@ -751,6 +838,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Dependencies**: Added framer-motion, clsx, and tailwind-merge for animation and utility functions
 
 - **Vercel Deployment Fix**: Resolved Husky installation issues in production environments
+
   - **Environment Detection**: Updated `prepare` script to skip Husky installation in production, CI, and Vercel environments
   - **DevDependencies**: Moved Husky to devDependencies for proper development-only installation
   - **Vercel Ignore**: Updated `.vercelignore` to exclude only development files while keeping build-required scripts
@@ -758,6 +846,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Graceful Handling**: Added error handling for missing Husky in production environments
 
 - **JSON Validation and Linting System**: Implemented comprehensive validation system to prevent JSON syntax errors
+
   - **Custom JSON Validation Script**: Created `scripts/validate-json.js` with comprehensive validation for JSON files, structured data schemas, and TypeScript files with JSON operations
   - **Enhanced ESLint Configuration**: Added specialized rules for JSON safety, string handling, and object property validation
   - **Pre-commit Hooks**: Integrated Husky for automatic validation before code commits
@@ -964,12 +1053,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added - SEO Enhancements and Final Implementation
 
 - **JSON-LD Structured Data**: Comprehensive structured data markup for enhanced search engine understanding
+
   - Organization schema with company information, contact details, and social media profiles
   - Service schema detailing government IT services and capabilities
   - WebPage schema with proper language attribution and page relationships
   - BreadcrumbList schema for improved navigation understanding
 
 - **Advanced SEO Features**: Complete search engine optimization implementation
+
   - Breadcrumbs component integration with structured data support
   - Internal linking strategy with hero CTAs linking to services and contact pages
   - FAQ contact section linking to internal contact page instead of external actions
@@ -984,6 +1075,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Enhanced - SEO Metadata and Structure
 
 - **Complete Metadata Optimization**: Full search engine optimization coverage
+
   - Enhanced title tags with targeted government IT keywords
   - Comprehensive meta descriptions with compelling calls-to-action
   - Strategic keyword targeting for government contractors and IT services
@@ -1000,6 +1092,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed - Technical Issues and Validation
 
 - **HTML Validation**: Resolved markup validation errors
+
   - Fixed dl element structure by properly organizing FAQ content
   - Corrected heading hierarchy throughout the government page
   - Ensured proper nesting of semantic HTML elements
@@ -1013,6 +1106,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added - Previous Government Page Features
 
 - **Government Clients Component**: Created comprehensive government clients showcase
+
   - Duplicated ELearningClients component to create GovernmentClients with government-specific client list
   - Implemented red, white, and blue badge color scheme for patriotic government branding
   - Added 42 government clients including Library of Congress, FDA, National Security Agency, and more
@@ -1021,6 +1115,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Integrated translation keys in English, French, and Spanish
 
 - **Government Testimonials Carousel**: Implemented infinite scrolling testimonials
+
   - Created InfiniteMovingCards UI component with smooth scroll animations
   - Added CSS keyframe animations for continuous horizontal scrolling
   - Implemented 12 government-focused testimonials with professional avatars
@@ -1029,6 +1124,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Created GovernmentTestimonialsCarouselWrapper for i18n support
 
 - **Government NAICS Codes Table**: Built comprehensive capabilities table
+
   - Created detailed NAICS classification table with 12 industry codes
   - Included SIC codes, descriptions, capabilities summaries, and certifications
   - Added responsive table design with horizontal scrolling on mobile
@@ -1046,6 +1142,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **Government Page Structure**: Refactored and enhanced government services page
+
   - Replaced ELearningClientsWrapper with dedicated GovernmentClientsWrapper
   - Removed duplicate "Trusted by Government Agencies" testimonial component
   - Added NAICS table positioned after hero section for better information flow
@@ -1070,15 +1167,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - **Infinite Moving Cards Animation**: Resolved scroll animation issues
+
   - Added proper CSS keyframe animations to globals.css for smooth scrolling
   - Implemented CSS custom properties for configurable animation duration and direction
   - Fixed avatar display with proper sizing, borders, and responsive behavior
   - Added accessibility features with descriptive alt text for avatar images
 
 - **Translation Coverage**: Ensured complete internationalization
+
   - Added missing translation keys for government hero section in all languages
   - Implemented comprehensive French translations for all new components
-  - Added complete Spanish translations maintaining consistency across languages  - Fixed translation key conflicts and ensured proper fallback behavior
+  - Added complete Spanish translations maintaining consistency across languages - Fixed translation key conflicts and ensured proper fallback behavior
 
 - **ISSIServicesMap Component**: Updated the US Map services component with a new layout
   - Redesigned the layout to display a centered map with feature cards below
@@ -1086,8 +1185,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Implemented a clean grid of feature cards with Heroicons
   - Ensured all text is properly internationalized with FormattedMessage
   - Enhanced visual appearance with improved shadows and spacing
-  
 - **Contact Components**: Improved ContactSalesForm and ContactInfo components
+
   - Updated visual styling with slate borders for better clarity
   - Ensured proper internationalization (i18n) support
   - Fixed privacy link in ContactSalesForm to use correct locale-based privacy page
@@ -1101,6 +1200,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - **Terms Page Translations**: Fixed missing English translations for Terms of Service page
+
   - Added complete English translations for all license/terms-related keys
   - Added missing page metadata and basic navigation keys
   - Implemented comprehensive section content translations including:
@@ -1111,6 +1211,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - English Terms page now displays correctly matching French and Spanish versions
 
 - **Privacy Page Translations**: Fixed missing translations in language files
+
   - Added missing privacy section translations in French (fr.json) language file
   - Added complete contact section translations for French version
   - Ensured consistent privacy-related keys across all language files
@@ -1118,6 +1219,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Verified proper rendering of Privacy page in all three supported languages
 
 - **Build and Runtime Errors**: Resolved all build and runtime errors
+
   - Installed missing dependencies: autoprefixer, @emotion/is-prop-valid, eslint-plugin-jsonc
   - Fixed React imports across multiple components (Card, CardBody, CardHeader, Content, SidebarLink)
   - Corrected JSX namespace references in TypeScript files
@@ -1134,6 +1236,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - **Mobile Floating Menu**: Added Aceternity UI-inspired floating dock navigation for mobile devices
+
   - Implemented floating dock component with macOS-style magnification effects
   - Added mobile-only navigation with smooth animations and gestures
   - Integrated main navigation items (Services, Products, Government, eLearning, Compliance, About)
@@ -1145,18 +1248,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Implemented canvas-based animated liquid glass effect with interactive particles
   - Created a smooth, flowing background with subtle mouse interactions
   - Added frosted glass UI elements with backdrop blur and transparency
-  - Enhanced service cards with glass morphism styling  - Optimized animation performance with requestAnimationFrame
+  - Enhanced service cards with glass morphism styling - Optimized animation performance with requestAnimationFrame
   - Ensured proper theme integration with dark/light mode support
 
 ### Fixed
 
 - **Liquid Glass Background Particle Class Error**: Resolved "Cannot access 'Particle' before initialization" error
+
   - Fixed null checking for canvas and context variables
   - Updated Particle class constructor to accept canvas dimensions as parameters
   - Improved method signatures with proper null safety
   - Added comprehensive error handling for canvas operations
 
 - **Services Map Visibility Issues**: Fixed map display and interaction problems
+
   - Increased map height from 400px to 500px for better visibility
   - Enhanced map projection scale from 1000 to 1100 for improved detail
   - Added loading spinner with proper state management
@@ -1172,9 +1277,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Enhanced
 
 - **Services Map Responsive Design**: Major improvements to map sizing and responsiveness
+
   - Implemented ResizeObserver for automatic map redrawing on container size changes
   - Added responsive width calculation with maximum width constraint (1000px)
-  - Implemented proper aspect ratio maintenance (width * 0.6) for consistent display
+  - Implemented proper aspect ratio maintenance (width \* 0.6) for consistent display
   - Added responsive scale calculation based on container dimensions
   - Enhanced SVG configuration with preserveAspectRatio for proper scaling
   - Added responsive marker sizing that adapts to map scale
@@ -1184,10 +1290,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Enhanced container styling with minimum height and flex centering
 
 - Fixed ReferenceError in liquid-glass-background.tsx by properly reordering class definitions
+
   - Resolved "Cannot access 'Particle' before initialization" error
   - Improved code structure by defining the Particle class before its usage
 
 - **ISSIServicesMap Component**: Added interactive US map component to the services page
+
   - Implemented D3.js-based interactive map showing ISSI's nationwide service coverage
   - Added tooltips for state capitals where ISSI has presence
   - Created responsive design with dark/light mode support using existing ThemeContext
@@ -1206,6 +1314,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **ISSIServicesShowcase UI Improvements**: Enhanced visual design and interaction
+
   - Left-aligned the component title, subtitle, and filter tabs for better content flow
   - Added interactive Evervault card hover effect with subtle gradient animation
   - Made the hover effect more transparent and subtle for a refined user experience
@@ -1251,6 +1360,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - **ELearning Component Transparency**: Removed background colors from components for consistent theming
+
   - Updated ELearningHero component to use transparent background instead of white/dark slate
   - Updated ELearningFeatures component to use transparent background instead of gray-900
   - Updated ELearningClients component to remove card backgrounds and borders
@@ -1258,17 +1368,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Improved text contrast for proper light/dark mode compatibility
 
 - **Server Component Context Error**: Fixed ELearningFeaturesWrapper component rendering issue
+
   - Converted ELearningFeaturesWrapper from "use server" to "use client" directive
   - Resolved IntlProvider context error that was preventing page rendering
   - Fixed createContext error in React Server Components
 
 - **Internationalization Issues**: Enhanced multilingual support across eLearning components
+
   - Fixed ELearningValueProposition component to use correct translation key (`elearning.value.title`)
   - Added missing Spanish translations for value proposition section
   - Added complete French and Spanish translation support for ELearningFeatures component
   - Verified all three languages (EN, FR, ES) display content properly
 
 - **eLearning Features Component**: Added comprehensive features section to showcase ISSI's e-learning capabilities
+
   - Created new ELearningFeatures component with 6 key feature areas: LMS, Custom Development, Industry Partnerships, Multimedia, SCORM/AICC Compliance, and Performance Management
   - Added ELearningFeaturesWrapper for proper internationalization support
   - Integrated features section into eLearning page layout between hero and services sections
@@ -1300,17 +1413,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Pluralization usage examples with JSON structures
     - Date and number formatting components
     - Rich text handling with HTML elements
-    - Dynamic translations with variables  - **Documentation Cross-References**: Updated all relevant documentation with cross-references
+    - Dynamic translations with variables - **Documentation Cross-References**: Updated all relevant documentation with cross-references
 
 ### Changed
 
 - **eLearning Page Simplified**: Removed the HeaderWrapper component from the eLearning page
+
   - Eliminated redundant profile-style header to streamline user experience
   - Improved page load performance by reducing component count
   - Enhanced visual consistency by relying on the main hero section for introductory content
   - Simplified page structure for better maintainability
 
 - **eLearning Hero Section Simplified and Redesigned**: Streamlined the hero section for cleaner design and better focus
+
   - Removed background colors for transparent design that adapts to any parent background
   - Changed experience badge from blue to red for better visual contrast
   - Simplified content to focus on main image and essential introductory text
@@ -1335,11 +1450,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - **Team Members Display**: Added missing team member translation entries to English language file
+
   - Fixed issue where team member names, roles, and bios were displaying as raw translation keys in English version
   - Added proper translations for all 8 team members with complete information
   - Ensured consistent team information across all language versions (EN/FR/ES)
 
 - **Footer Component Improvements**: Enhanced footer appearance and simplified design
+
   - Removed background color/effects for cleaner visual presentation
   - Added z-index positioning (z-10) to ensure footer appears above other elements
   - Added subtle border styling with border-t for better visibility in both light and dark modes
@@ -1358,6 +1475,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - **ISO 9001:2015 Certification Page Implementation**: Complete transformation from placeholder to comprehensive quality management system page
+
   - **Translation System Expansion**: Added 80+ comprehensive translation keys across all languages (EN/FR/ES)
     - Hero section with title, subtitle, description, and certification badges
     - Features section covering leadership, customer focus, process approach, performance evaluation, improvement, evidence-based decisions, and relationship management
@@ -1379,6 +1497,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **UI Component Integration**: Applied consistent styling with glowing stars background, animated elements, and responsive design
 
 - **Maryland DOT MBE/DBE/SBE Certification Page Implementation**: Complete transformation from 28-line placeholder to comprehensive conversion-focused business development page (400+ lines)
+
   - **Translation System Expansion**: Added 60+ comprehensive Maryland DOT translation keys across all languages (EN/FR/ES)
     - Hero section with certification badges (`mdot.hero.*`) - 8 keys for title, subtitle, description, and certification badges:
       - `mdot.hero.title` - "Certified Maryland DOT MBE/DBE/SBE Partner"
@@ -1447,7 +1566,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Internationalization Improvements**:
     - Fixed routing in all link elements to include language parameter (`/${lang}/contact` instead of `/contact`)
     - Added missing translation keys for certification documents section
-    - Ensured consistent multilingual user experience across all page sections    * Verified complete translation coverage for all user-facing content
+    - Ensured consistent multilingual user experience across all page sections \* Verified complete translation coverage for all user-facing content
     - Completed internationalization of Get Started and Footer CTA sections
     - Fixed all navigation links to include language parameter (`/${lang}/contact` and `/${lang}/capabilities`)
     - Added missing translation keys for certification documents section
@@ -1502,7 +1621,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
       - Organizational maturity evaluation requests
   - **Comprehensive Page Structure**: Implemented following proven ISO 9001 pattern with 8 major sections
     1. Hero section with CMMI Level 3 certification badges (Certified, Defined Process Maturity, Standardized Processes)
-    2. Process areas mastery showcase (6 key CMMI Level 3 domains with  detailed descriptions and benefits)
+    2. Process areas mastery showcase (6 key CMMI Level 3 domains with detailed descriptions and benefits)
     3. Industry-specific benefits (Government: predictability & compliance; Commercial: quality & time-to-market; Energy: safety & reliability)
     4. Process maturity framework progression (5-level CMMI model visualization with capability descriptions)
     5. Standards integration matrix (quality management, information security, agile development methodologies)
