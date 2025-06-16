@@ -380,7 +380,7 @@
   .bento-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .product-card {
     grid-column: span 1 !important;
     grid-row: span 1 !important;

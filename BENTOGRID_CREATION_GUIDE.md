@@ -347,6 +347,7 @@ export async function generateMetadata({ params: { lang } }: PageProps): Promise
    ```
 
 3. **Optimize re-renders**:
+
    ```tsx
    const filteredItems = useMemo(
      () => (activeFilter === "All" ? gridData : gridData.filter((item) => item.category === activeFilter)),
@@ -396,9 +397,11 @@ export async function generateMetadata({ params: { lang } }: PageProps): Promise
    **Solution**: Verify keys exist in all language files
 
 3. **IntlProvider context error**:
+
    ```
    Error: [React Intl] Could not find required 'intl' object
    ```
+
    **Solution**: Ensure component is wrapped with IntlProvider
 
 ### Build Validation
@@ -577,3 +580,278 @@ interface BentoGridItem {
 
 _Last updated: June 15, 2025_
 _Author: ISSI Development Team_
+
+## Advanced Styling and Visual Enhancements
+
+### Category-Based Color Coordination System
+
+Implement consistent color theming across all card elements (icons, borders, titles, filters):
+
+```tsx
+// Define category-specific color mappings
+const categoryColors = {
+  featured: {
+    icon: "text-blue-600 dark:text-blue-400",
+    border: "border-blue-200 dark:border-blue-800",
+    hover: "hover:border-blue-400 dark:hover:border-blue-500"
+  },
+  project: {
+    icon: "text-green-600 dark:text-green-400", 
+    border: "border-green-200 dark:border-green-800",
+    hover: "hover:border-green-400 dark:hover:border-green-500"
+  },
+  hr: {
+    icon: "text-purple-600 dark:text-purple-400",
+    border: "border-purple-200 dark:border-purple-800", 
+    hover: "hover:border-purple-400 dark:hover:border-purple-500"
+  },
+  compliance: {
+    icon: "text-orange-600 dark:text-orange-400",
+    border: "border-orange-200 dark:border-orange-800",
+    hover: "hover:border-orange-400 dark:hover:border-orange-500"
+  },
+  data: {
+    icon: "text-red-600 dark:text-red-400",
+    border: "border-red-200 dark:border-red-800",
+    hover: "hover:border-red-400 dark:hover:border-red-500"
+  },
+  modernization: {
+    icon: "text-indigo-600 dark:text-indigo-400",
+    border: "border-indigo-200 dark:border-indigo-800", 
+    hover: "hover:border-indigo-400 dark:hover:border-indigo-500"
+  },
+  technology: {
+    icon: "text-teal-600 dark:text-teal-400",
+    border: "border-teal-200 dark:border-teal-800",
+    hover: "hover:border-teal-400 dark:hover:border-teal-500"
+  }
+};
+
+// Function to get colors for any category
+const getCategoryColors = (category: string) => {
+  return categoryColors[category as keyof typeof categoryColors] || {
+    icon: "text-gray-600 dark:text-gray-400",
+    border: "border-gray-200 dark:border-gray-700",
+    hover: "hover:border-gray-400 dark:hover:border-gray-500"
+  };
+};
+```
+
+### Enhanced Card Structure with Color Coordination
+
+```tsx
+{filteredProducts.map((product, index) => {
+  const IconComponent = product.icon;
+  const colors = getCategoryColors(product.category);
+  
+  return (
+    <div
+      key={product.id}
+      className={cn(
+        "row-span-1 rounded-xl group/bento hover:shadow-xl transition-all duration-300 shadow-input dark:shadow-none p-1 bg-gradient-to-br from-transparent via-transparent to-transparent relative min-h-[200px] cursor-pointer",
+        // Category-specific glow effects
+        "hover:shadow-2xl hover:scale-[1.02]",
+        product.category === "featured" && "hover:shadow-blue-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(59_130_246_/_0.5)]",
+        product.category === "project" && "hover:shadow-green-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(34_197_94_/_0.5)]",
+        product.category === "hr" && "hover:shadow-purple-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(147_51_234_/_0.5)]",
+        // ... other categories
+        product.className
+      )}
+    >              
+      {/* Card Content with Coordinated Colors */}
+      <div className={cn(
+        "relative flex h-full flex-col justify-between p-4 rounded-lg border-2 transition-all duration-300 bg-white dark:bg-slate-800/80 backdrop-blur-sm",
+        colors.border,
+        colors.hover,
+        "group-hover/bento:border-opacity-60 group-hover/bento:bg-white/90 dark:group-hover/bento:bg-slate-800/90"
+      )}>
+        {/* Icon with category color */}
+        <div className="flex justify-start">
+          <IconComponent className={cn(
+            "text-3xl transition-all duration-300",
+            colors.icon,
+            "group-hover/bento:drop-shadow-lg"
+          )} />
+        </div>
+
+        {/* Title with matching category color */}
+        <div className="mt-auto">
+          <h3 className={cn(
+            "font-semibold tracking-tight text-xl mb-2 transition duration-300",
+            colors.icon, // Use same color as icon
+            "dark:text-slate-100" // Override for dark mode readability
+          )}>
+            {product.titleKey ? intl.formatMessage({ id: product.titleKey }) : product.title}
+          </h3>
+          <p className="text-slate-600 dark:text-slate-300 text-sm">
+            {product.descriptionKey ? intl.formatMessage({ id: product.descriptionKey }) : product.description}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+})}
+```
+
+### WCAG AAA Compliant Filter Buttons
+
+Implement accessible filter buttons with category-coordinated colors:
+
+```tsx
+// WCAG AAA compliant button colors
+const getButtonColors = (category: string, isActive: boolean) => {
+  const colors = {
+    featured: {
+      active: "bg-blue-700 text-white border-blue-700 dark:bg-blue-600 dark:border-blue-600",
+      inactive: "bg-blue-50 dark:bg-blue-950/50 text-blue-800 dark:text-blue-200 border-blue-300 dark:border-blue-700",
+      hover: "hover:border-blue-600 dark:hover:border-blue-500 hover:bg-blue-100 dark:hover:bg-blue-900/50"
+    },
+    // ... other categories with -700 shades for better contrast
+  };
+
+  const categoryColor = colors[category as keyof typeof colors] || colors.All;
+  return isActive ? categoryColor.active : `${categoryColor.inactive} ${categoryColor.hover}`;
+};
+
+// Accessible filter implementation
+<div className="flex flex-wrap justify-start gap-2 mb-12" role="tablist" aria-label="Product category filters">
+  {categories.map((category) => (
+    <button
+      key={category}
+      onClick={() => setActiveFilter(category)}
+      className={cn(
+        "px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500",
+        getButtonColors(category, activeFilter === category)
+      )}
+      role="tab"
+      aria-selected={activeFilter === category ? "true" : "false"}
+      aria-controls={`products-${category.toLowerCase()}`}
+      tabIndex={activeFilter === category ? 0 : -1}
+    >
+      {categoryMap[category as keyof typeof categoryMap] || category}
+    </button>
+  ))}
+</div>
+```
+
+### CSS-Based Glowing Effects
+
+Implement performant glowing effects using pure CSS:
+
+```tsx
+// Category-specific glow classes in component
+className={cn(
+  "hover:shadow-2xl hover:scale-[1.02]",
+  // Category-specific glow effects
+  product.category === "featured" && "hover:shadow-blue-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(59_130_246_/_0.5)]",
+  product.category === "project" && "hover:shadow-green-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(34_197_94_/_0.5)]",
+  product.category === "hr" && "hover:shadow-purple-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(147_51_234_/_0.5)]",
+  product.category === "compliance" && "hover:shadow-orange-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(234_88_12_/_0.5)]",
+  product.category === "data" && "hover:shadow-red-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(220_38_38_/_0.5)]",
+  product.category === "modernization" && "hover:shadow-indigo-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(79_70_229_/_0.5)]",
+  product.category === "technology" && "hover:shadow-teal-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(13_148_136_/_0.5)]"
+)}
+```
+
+### Double Height Cards Configuration
+
+For featured content that needs more visual prominence:
+
+```tsx
+// In your product data array
+{
+  id: "employee-performance",
+  title: "Employee Performance",
+  description: "360-degree feedback system with automated performance reviews and goal tracking.",
+  icon: FaChartLine,
+  category: "hr",
+  tags: ["360 Feedback", "Goal Tracking"],
+  size: { width: 1, height: 2 }, // Double height
+  className: "col-span-1 row-span-2", // CSS Grid classes
+  priority: 11,
+}
+```
+
+**Best Practice**: Use double height sparingly for featured content (max 4 cards per grid) to maintain visual balance.
+
+### Enhanced Visual Effects
+
+```tsx
+// Enhanced hover animations and visual feedback
+className={cn(
+  "transition-all duration-300",
+  "group-hover/bento:scale-[1.02]", // Subtle scale on hover
+  "group-hover/bento:border-opacity-60", // Border fade effect
+  "group-hover/bento:bg-white/90 dark:group-hover/bento:bg-slate-800/90", // Background enhancement
+  "backdrop-blur-sm", // Subtle blur effect
+)}
+
+// Icon enhancements
+<IconComponent className={cn(
+  "text-3xl transition-all duration-300",
+  colors.icon,
+  "group-hover/bento:drop-shadow-lg" // Drop shadow on hover
+)} />
+```
+
+## Accessibility Enhancements (WCAG AAA)
+
+### Color Contrast Standards
+
+- **Active buttons**: Use `-700` color shades for 7:1+ contrast ratio
+- **Inactive buttons**: Use `-800` text on light backgrounds
+- **Dark mode**: Use `-200` text colors for proper contrast
+- **Focus indicators**: Blue focus ring with offset for keyboard navigation
+
+### ARIA Implementation
+
+```tsx
+// Proper ARIA attributes for filter tabs
+role="tablist"
+aria-label="Product category filters"
+role="tab"
+aria-selected={activeFilter === category ? "true" : "false"}
+aria-controls={`products-${category.toLowerCase()}`}
+tabIndex={activeFilter === category ? 0 : -1}
+
+// Focus management
+focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+```
+
+### Keyboard Navigation
+
+- **Tab order**: Only active filter in tab sequence
+- **Focus indicators**: Clear visual feedback
+- **Screen reader support**: Proper labels and descriptions
+
+## Implementation Checklist for New BentoGrids
+
+When creating a new BentoGrid, ensure you implement:
+
+- ✅ **Category-based color coordination** (icons, borders, titles, filters)
+- ✅ **WCAG AAA compliant filter buttons** with proper contrast ratios
+- ✅ **CSS-based glowing effects** for performance
+- ✅ **Accessible ARIA attributes** and keyboard navigation
+- ✅ **Consistent card structure** with coordinated colors
+- ✅ **Double height cards** for featured content (sparingly)
+- ✅ **Enhanced hover effects** with shadows and scaling
+- ✅ **Dark mode support** for all color variants
+- ✅ **Internationalization** with proper translation keys
+- ✅ **TypeScript interfaces** for type safety
+
+## Color Palette Reference
+
+Use these specific color combinations for consistency:
+
+```tsx
+// Primary category colors
+featured: blue-600/700/800    // #2563eb / #1d4ed8 / #1e40af
+project: green-600/700/800    // #16a34a / #15803d / #166534
+hr: purple-600/700/800        // #9333ea / #7c3aed / #6b21d4
+compliance: orange-600/700/800 // #ea580c / #c2410c / #9a3412
+data: red-600/700/800         // #dc2626 / #b91c1c / #991b1b
+modernization: indigo-600/700/800 // #4f46e5 / #4338ca / #3730a3
+technology: teal-600/700/800  // #0d9488 / #0f766e / #115e59
+```
+
+This ensures visual consistency across all BentoGrid implementations while maintaining excellent accessibility standards.

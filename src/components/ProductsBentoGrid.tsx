@@ -178,16 +178,15 @@ const allProducts = [
     size: { width: 1, height: 1 }, // Standard card
     className: "col-span-1",
     priority: 10,
-  },
-  {
+  },  {
     id: "employee-performance",
     title: "Employee Performance",
     description: "360-degree feedback system with automated performance reviews and goal tracking.",
     icon: FaChartLine,
     category: "hr",
     tags: ["360 Feedback", "Goal Tracking"],
-    size: { width: 1, height: 1 }, // Standard card
-    className: "col-span-1",
+    size: { width: 1, height: 2 }, // Double height card
+    className: "col-span-1 row-span-2",
     priority: 11,
   },
   {
@@ -197,8 +196,8 @@ const allProducts = [
     icon: FaClock,
     category: "hr",
     tags: ["Real-time Tracking", "Project Reports"],
-    size: { width: 1, height: 1 }, // Standard card (varied size)
-    className: "col-span-1",
+    size: { width: 1, height: 2 }, // Double height card
+    className: "col-span-1 row-span-2",
     priority: 12,
   },
   {
@@ -208,8 +207,8 @@ const allProducts = [
     icon: FaUserCheck,
     category: "hr",
     tags: ["Talent Tracking", "Skills Database"],
-    size: { width: 1, height: 1 }, // Standard card
-    className: "col-span-1",
+    size: { width: 1, height: 2 }, // Double height card
+    className: "col-span-1 row-span-2",
     priority: 13,
   },
   {
@@ -219,8 +218,8 @@ const allProducts = [
     icon: FaGraduationCap,
     category: "hr",
     tags: ["Skills Tracking", "Team Building"],
-    size: { width: 2, height: 1 }, // Wide (increased from 1x1)
-    className: "col-span-1",
+    size: { width: 1, height: 2 }, // Double height card
+    className: "col-span-1 row-span-2",
     priority: 14,
   },
   {
@@ -413,73 +412,176 @@ export default function ProductsBentoGrid({ lang }: ProductsBentoGridProps) {
     modernization: intl.formatMessage({ id: "products.categories.modernization" }),
     technology: intl.formatMessage({ id: "products.categories.technology" }),
   };
-
   const categories = ["All", ...Array.from(new Set(allProducts.map((product) => product.category)))];
 
   // Filter products based on active filter
   const filteredProducts =
     activeFilter === "All" ? allProducts : allProducts.filter((product) => product.category === activeFilter);
 
-  // Define alternating icon colors
-  const iconColors = [
-    "text-blue-600 dark:text-blue-400",
-    "text-green-600 dark:text-green-400",
-    "text-purple-600 dark:text-purple-400",
-    "text-orange-600 dark:text-orange-400",
-    "text-red-600 dark:text-red-400",
-    "text-indigo-600 dark:text-indigo-400",
-    "text-teal-600 dark:text-teal-400",
-    "text-pink-600 dark:text-pink-400",
-  ];
+  // Define category-specific colors for icons and borders
+  const categoryColors = {
+    featured: {
+      icon: "text-blue-600 dark:text-blue-400",
+      border: "border-blue-200 dark:border-blue-800",
+      hover: "hover:border-blue-400 dark:hover:border-blue-500"
+    },
+    project: {
+      icon: "text-green-600 dark:text-green-400", 
+      border: "border-green-200 dark:border-green-800",
+      hover: "hover:border-green-400 dark:hover:border-green-500"
+    },
+    hr: {
+      icon: "text-purple-600 dark:text-purple-400",
+      border: "border-purple-200 dark:border-purple-800", 
+      hover: "hover:border-purple-400 dark:hover:border-purple-500"
+    },
+    compliance: {
+      icon: "text-orange-600 dark:text-orange-400",
+      border: "border-orange-200 dark:border-orange-800",
+      hover: "hover:border-orange-400 dark:hover:border-orange-500"
+    },
+    data: {
+      icon: "text-red-600 dark:text-red-400",
+      border: "border-red-200 dark:border-red-800",
+      hover: "hover:border-red-400 dark:hover:border-red-500"
+    },
+    modernization: {
+      icon: "text-indigo-600 dark:text-indigo-400",
+      border: "border-indigo-200 dark:border-indigo-800", 
+      hover: "hover:border-indigo-400 dark:hover:border-indigo-500"
+    },
+    technology: {
+      icon: "text-teal-600 dark:text-teal-400",
+      border: "border-teal-200 dark:border-teal-800",
+      hover: "hover:border-teal-400 dark:hover:border-teal-500"
+    }
+  };
+  // Get colors for a specific category
+  const getCategoryColors = (category: string) => {
+    return categoryColors[category as keyof typeof categoryColors] || {
+      icon: "text-gray-600 dark:text-gray-400",
+      border: "border-gray-200 dark:border-gray-700",
+      hover: "hover:border-gray-400 dark:hover:border-gray-500"
+    };
+  };
+  // Get button colors for filter categories (WCAG AAA compliant)
+  const getButtonColors = (category: string, isActive: boolean) => {
+    const colors = {
+      featured: {
+        active: "bg-blue-700 text-white border-blue-700 dark:bg-blue-600 dark:border-blue-600",
+        inactive: "bg-blue-50 dark:bg-blue-950/50 text-blue-800 dark:text-blue-200 border-blue-300 dark:border-blue-700",
+        hover: "hover:border-blue-600 dark:hover:border-blue-500 hover:bg-blue-100 dark:hover:bg-blue-900/50"
+      },
+      project: {
+        active: "bg-green-700 text-white border-green-700 dark:bg-green-600 dark:border-green-600",
+        inactive: "bg-green-50 dark:bg-green-950/50 text-green-800 dark:text-green-200 border-green-300 dark:border-green-700",
+        hover: "hover:border-green-600 dark:hover:border-green-500 hover:bg-green-100 dark:hover:bg-green-900/50"
+      },
+      hr: {
+        active: "bg-purple-700 text-white border-purple-700 dark:bg-purple-600 dark:border-purple-600",
+        inactive: "bg-purple-50 dark:bg-purple-950/50 text-purple-800 dark:text-purple-200 border-purple-300 dark:border-purple-700",
+        hover: "hover:border-purple-600 dark:hover:border-purple-500 hover:bg-purple-100 dark:hover:bg-purple-900/50"
+      },
+      compliance: {
+        active: "bg-orange-700 text-white border-orange-700 dark:bg-orange-600 dark:border-orange-600",
+        inactive: "bg-orange-50 dark:bg-orange-950/50 text-orange-800 dark:text-orange-200 border-orange-300 dark:border-orange-700",
+        hover: "hover:border-orange-600 dark:hover:border-orange-500 hover:bg-orange-100 dark:hover:bg-orange-900/50"
+      },
+      data: {
+        active: "bg-red-700 text-white border-red-700 dark:bg-red-600 dark:border-red-600",
+        inactive: "bg-red-50 dark:bg-red-950/50 text-red-800 dark:text-red-200 border-red-300 dark:border-red-700",
+        hover: "hover:border-red-600 dark:hover:border-red-500 hover:bg-red-100 dark:hover:bg-red-900/50"
+      },
+      modernization: {
+        active: "bg-indigo-700 text-white border-indigo-700 dark:bg-indigo-600 dark:border-indigo-600",
+        inactive: "bg-indigo-50 dark:bg-indigo-950/50 text-indigo-800 dark:text-indigo-200 border-indigo-300 dark:border-indigo-700",
+        hover: "hover:border-indigo-600 dark:hover:border-indigo-500 hover:bg-indigo-100 dark:hover:bg-indigo-900/50"
+      },
+      technology: {
+        active: "bg-teal-700 text-white border-teal-700 dark:bg-teal-600 dark:border-teal-600",
+        inactive: "bg-teal-50 dark:bg-teal-950/50 text-teal-800 dark:text-teal-200 border-teal-300 dark:border-teal-700",
+        hover: "hover:border-teal-600 dark:hover:border-teal-500 hover:bg-teal-100 dark:hover:bg-teal-900/50"
+      },
+      All: {
+        active: "bg-slate-700 text-white border-slate-700 dark:bg-slate-600 dark:border-slate-600",
+        inactive: "bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-300 dark:border-slate-600",
+        hover: "hover:border-slate-600 dark:hover:border-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700"
+      }
+    };
+
+    const categoryColor = colors[category as keyof typeof colors] || colors.All;
+    return isActive ? categoryColor.active : `${categoryColor.inactive} ${categoryColor.hover}`;
+  };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-      {/* Filter Tabs */}
-      <div className="flex flex-wrap justify-start gap-2 mb-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">      {/* Filter Tabs */}
+      <div className="flex flex-wrap justify-start gap-2 mb-12" role="tablist" aria-label="Product category filters">
         {categories.map((category) => (
           <button
             key={category}
             onClick={() => setActiveFilter(category)}
             className={cn(
-              "px-6 py-3 rounded-full text-sm font-medium transition-all duration-300",
-              "border border-gray-200 dark:border-gray-700",
-              "hover:border-blue-500 dark:hover:border-blue-400",
-              activeFilter === category
-                ? "bg-blue-600 text-white border-blue-600 dark:bg-blue-500 dark:border-blue-500"
-                : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300"
+              "px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500",
+              getButtonColors(category, activeFilter === category)
             )}
+            role="tab"
+            aria-selected={activeFilter === category ? "true" : "false"}
+            aria-controls={`products-${category.toLowerCase()}`}
+            tabIndex={activeFilter === category ? 0 : -1}
           >
             {categoryMap[category as keyof typeof categoryMap] || category}
           </button>
         ))}
-      </div>
-
-      {/* Products Grid */}
+      </div>{/* Products Grid */}
       <BentoGrid className="max-w-7xl mx-auto">
         {filteredProducts.map((product, index) => {
           const IconComponent = product.icon;
-          const iconColorClass = iconColors[index % iconColors.length];
+          const colors = getCategoryColors(product.category);
           return (
             <div
               key={product.id}
               className={cn(
-                "row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-300 shadow-input dark:shadow-none p-4 bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 flex flex-col justify-between overflow-hidden relative min-h-[200px] cursor-pointer",
-                product.className
+                "row-span-1 rounded-xl group/bento hover:shadow-xl transition-all duration-300 shadow-input dark:shadow-none p-1 bg-gradient-to-br from-transparent via-transparent to-transparent relative min-h-[200px] cursor-pointer",
+                // Add glowing border on hover using the category colors
+                "hover:shadow-2xl hover:scale-[1.02]",
+                product.className,
+                // Category-specific glow effects
+                product.category === "featured" && "hover:shadow-blue-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(59_130_246_/_0.5)]",
+                product.category === "project" && "hover:shadow-green-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(34_197_94_/_0.5)]",
+                product.category === "hr" && "hover:shadow-purple-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(147_51_234_/_0.5)]",
+                product.category === "compliance" && "hover:shadow-orange-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(234_88_12_/_0.5)]",
+                product.category === "data" && "hover:shadow-red-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(220_38_38_/_0.5)]",
+                product.category === "modernization" && "hover:shadow-indigo-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(79_70_229_/_0.5)]",
+                product.category === "technology" && "hover:shadow-teal-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(13_148_136_/_0.5)]"
               )}
-            >
-              {/* Icon positioned at top-left */}
-              <div className="flex justify-start">
-                <IconComponent className={`text-3xl ${iconColorClass}`} />
-              </div>
-
-              {/* Text content positioned at bottom-left */}
-              <div className="mt-auto">
-                <h3 className="font-semibold text-slate-900 dark:text-slate-100 tracking-tight text-xl mb-2 group-hover/bento:text-indigo-500 transition duration-300">
-                  {product.titleKey ? intl.formatMessage({ id: product.titleKey }) : product.title}
-                </h3>
-                <p className="text-slate-600 dark:text-slate-300 text-sm">
-                  {product.descriptionKey ? intl.formatMessage({ id: product.descriptionKey }) : product.description}
-                </p>
+            >              
+              {/* Card Content */}
+              <div className={cn(
+                "relative flex h-full flex-col justify-between p-4 rounded-lg border-2 transition-all duration-300 bg-white dark:bg-slate-800/80 backdrop-blur-sm",
+                colors.border,
+                colors.hover,
+                // Enhanced hover effects
+                "group-hover/bento:border-opacity-60 group-hover/bento:bg-white/90 dark:group-hover/bento:bg-slate-800/90"
+              )}>                {/* Icon positioned at top-left */}
+                <div className="flex justify-start">
+                  <IconComponent className={cn(
+                    "text-3xl transition-all duration-300",
+                    colors.icon,
+                    "group-hover/bento:drop-shadow-lg"
+                  )} />
+                </div>                {/* Text content positioned at bottom-left */}
+                <div className="mt-auto">
+                  <h3 className={cn(
+                    "font-semibold tracking-tight text-xl mb-2 transition duration-300",
+                    colors.icon, // Use the same color as the icon
+                    "dark:text-slate-100" // Override for dark mode readability
+                  )}>
+                    {product.titleKey ? intl.formatMessage({ id: product.titleKey }) : product.title}
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-300 text-sm">
+                    {product.descriptionKey ? intl.formatMessage({ id: product.descriptionKey }) : product.description}
+                  </p>
+                </div>
               </div>
             </div>
           );

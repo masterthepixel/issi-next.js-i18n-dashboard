@@ -202,15 +202,16 @@ async function PageContent({ locale }: PageContentProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      
-      {/* Breadcrumbs */}
-      <Breadcrumb 
-        items={breadcrumbItems}
-        locale={locale}
-        backgroundImage="/images/government-hero-bg.jpg"
-        title={messages.government?.hero?.title}
-        description={messages.government?.hero?.subtitle}
-      />
+        {/* Breadcrumbs - Hidden for better UX */}
+      <div className="sr-only">
+        <Breadcrumb 
+          items={breadcrumbItems}
+          locale={locale}
+          backgroundImage="/images/government-hero-bg.jpg"
+          title={messages.government?.hero?.title}
+          description={messages.government?.hero?.subtitle}
+        />
+      </div>
       
       {/* Bento Grid Hero Section */}
       <GovernmentHeroWrapper locale={locale} messages={messages} />
