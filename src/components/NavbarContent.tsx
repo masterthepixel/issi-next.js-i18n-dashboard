@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 import useOutsideClick from "@/hooks/useOutsideClick";
 import { Locale, User } from "@/lib/definitions";
 import ThemeToggle from "./ThemeToggle";
-import TopNav from "./TopNav";
+import { FloatingNav } from "./ui/floating-navbar";
 
 interface Props {
   user: User;
@@ -19,7 +19,7 @@ interface Props {
   messages: Record<string, string>;
 }
 
-export default function NavbarContent({ user, locale, messages }: Props) {
+export default function NavbarContent({ user: _user, locale, messages }: Props) {
   const pathname = usePathname();
 
   const appMenuRef = useRef(null);
@@ -52,40 +52,75 @@ export default function NavbarContent({ user, locale, messages }: Props) {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   const handleAppMenuClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     setAppMenuOpen(!appMenuOpen);
   };
 
+  // eslint-disable-next-line no-unused-vars
   const handleUserMenuClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     setUserMenuOpen(!userMenuOpen);
   };
+
   const handleLangSwitcherMenuClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     setLangSwitcherMenuOpen(!langSwitcherMenuOpen);
-  };  return (
+  };
+
+  // Navigation items for FloatingNav
+  const navItems = [
+    {
+      name: <FormattedMessage id="common.navigation.services" />,
+      link: `/${locale}/services`,
+    },
+    {
+      name: <FormattedMessage id="common.navigation.products" />,
+      link: `/${locale}/products`,
+    },
+    {
+      name: <FormattedMessage id="common.navigation.government" />,
+      link: `/${locale}/government`,
+    },
+    {
+      name: <FormattedMessage id="common.navigation.eLearning" />,
+      link: `/${locale}/eLearning`,
+    },
+    {
+      name: "Compliance", // This will trigger dropdown behavior
+      link: `/${locale}/compliance`,
+    },
+    {
+      name: <FormattedMessage id="common.navigation.about" />,
+      link: `/${locale}/about`,
+    },  ];return (
     <IntlProvider locale={locale} messages={messages}>
-        <nav className="sticky top-0 left-0 z-50 w-full glass-effect-strong transition-all duration-300">
+        <nav className="sticky top-0 left-0 z-50 w-full transition-all duration-300">
           <div className={`flex items-center justify-between px-4 transition-all duration-300 ${
             isScrolled ? 'h-12' : 'h-16'
-          }`}>            <div className="flex items-center flex-1">
+          }`}><div className="flex items-center flex-1">
               <Link href={`/${locale}/home`} className="flex items-center hover:opacity-80 transition-opacity">
                 <Image
                   src="/images/issi_logo.png"
                   alt="ISSI Logo"
                   width={120}
                   height={40}
-                  className="h-8 w-auto"
+                  className="h-8 w-auto drop-shadow-md"
                   priority
                 />
-              </Link>              {/* Top Navigation for Desktop */}
-              <TopNav locale={locale} />
-              <div className="relative ml-1 hidden">
-                <button
+              </Link>
+              
+              {/* Floating Navigation for Desktop - Centered */}
+              <div className="flex-1 flex justify-center">
+                <FloatingNav navItems={navItems} locale={locale} />
+              </div>
+              <div className="relative ml-1 hidden">                <button
                   type="button"
                   className="rounded-full p-1 text-slate-500 hover:text-slate-600 dark:text-slate-300 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-slate-600/50 transition-all"
                   id="app-menu-button"
                   aria-haspopup="true"
-                  aria-expanded={appMenuOpen}
+                  aria-expanded={appMenuOpen ? "true" : "false"}
+                  aria-label="Open navigation menu"
                   onClick={handleAppMenuClick}
                 >
                   <svg
@@ -119,12 +154,14 @@ export default function NavbarContent({ user, locale, messages }: Props) {
                   </Menu>
                 )}
               </div>
-            </div>            <div className="flex items-center mx-2">
-              {/* Contact Icon - First */}
-              <div className="relative mx-1">
+            </div>            <div className="flex items-center">
+              {/* Right Side Floating Pill */}
+              <div className="flex items-center border border-transparent dark:border-white/[0.2] rounded-full dark:bg-black bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] px-2 py-1 space-x-1">
+                {/* Contact Icon */}
                 <Link
                   href={`/${locale}/contact`}
-                  className="rounded-full p-1 text-slate-500 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-slate-600/50 transition-all flex items-center"
+                  className="rounded-full p-2 text-slate-500 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-all flex items-center"
+                  aria-label="Contact us"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +169,7 @@ export default function NavbarContent({ user, locale, messages }: Props) {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="size-5"
+                    className="size-4"
                   >
                     <path
                       strokeLinecap="round"
@@ -141,58 +178,53 @@ export default function NavbarContent({ user, locale, messages }: Props) {
                     />
                   </svg>
                 </Link>
-              </div>
 
-              {/* Language Switcher - Second */}
-              <div className="relative mx-1"><button
-                  type="button"
-                  className="rounded-full p-1 text-slate-500 hover:text-slate-600 dark:text-slate-300 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-slate-600/50 transition-all"
-                  id="lang-switcher-menu-button"
-                  aria-haspopup="true"
-                  aria-expanded={langSwitcherMenuOpen}
-                  onClick={handleLangSwitcherMenuClick}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="size-5"
+                {/* Language Switcher */}
+                <div className="relative">
+                  <button
+                    type="button"
+                    className="rounded-full p-2 text-slate-500 hover:text-slate-600 dark:text-slate-300 dark:hover:text-white transition-all"
+                    id="lang-switcher-menu-button"
+                    aria-haspopup="true"
+                    aria-expanded={langSwitcherMenuOpen ? "true" : "false"}
+                    aria-label="Switch language"
+                    onClick={handleLangSwitcherMenuClick}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
-                    />
-                  </svg>
-                </button>
-                {langSwitcherMenuOpen && (
-                  <Menu ref={langSwitcherMenuRef} aria-labelledby="lang-switcher-menu-button" align="right">
-                    <MenuItem href={`/en/${pathname.split("/").slice(2).join("/")}`} active={locale === "en"}>
-                      <FormattedMessage id="common.language-switcher" values={{ locale: "en" }} />
-                    </MenuItem>
-                    <MenuItem href={`/fr/${pathname.split("/").slice(2).join("/")}`} active={locale === "fr"}>
-                      <FormattedMessage id="common.language-switcher" values={{ locale: "fr" }} />
-                    </MenuItem>
-                    <MenuItem href={`/es/${pathname.split("/").slice(2).join("/")}`} active={locale === "es"}>
-                      <FormattedMessage id="common.language-switcher" values={{ locale: "es" }} />
-                    </MenuItem>
-                  </Menu>
-                )}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
+                      />
+                    </svg>
+                  </button>
+                  {langSwitcherMenuOpen && (
+                    <Menu ref={langSwitcherMenuRef} aria-labelledby="lang-switcher-menu-button" align="right">
+                      <MenuItem href={`/en/${pathname.split("/").slice(2).join("/")}`} active={locale === "en"}>
+                        <FormattedMessage id="common.language-switcher" values={{ locale: "en" }} />
+                      </MenuItem>
+                      <MenuItem href={`/fr/${pathname.split("/").slice(2).join("/")}`} active={locale === "fr"}>
+                        <FormattedMessage id="common.language-switcher" values={{ locale: "fr" }} />
+                      </MenuItem>
+                      <MenuItem href={`/es/${pathname.split("/").slice(2).join("/")}`} active={locale === "es"}>
+                        <FormattedMessage id="common.language-switcher" values={{ locale: "es" }} />
+                      </MenuItem>
+                    </Menu>
+                  )}
+                </div>                {/* Theme Toggle */}
+                <div className="flex items-center">
+                  <ThemeToggle />
+                </div>
               </div>
-
-              {/* Theme Toggle - Second */}
-              <div className="relative mx-1">
-                <ThemeToggle />
-              </div>
-
-              {/* Bell icon - Hidden */}
-              {/* Notification bell removed as requested */}
-
-              {/* Profile icon - Hidden */}
-              {/* Profile menu removed as requested */}
-            </div>          </div>
+            </div>
+          </div>
         </nav>
     </IntlProvider>
   );
