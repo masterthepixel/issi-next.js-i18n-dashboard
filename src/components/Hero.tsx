@@ -1,8 +1,8 @@
 "use client";
 
+import { FlipWords } from '@/components/ui/flip-words';
 import dynamic from 'next/dynamic';
 import { FormattedMessage, useIntl } from "react-intl";
-import { FlipWords } from '@/components/ui/flip-words';
 
 // Dynamically import components to avoid SSR issues
 const GlobeDemo = dynamic(() => import('./GlobeDemo'), {

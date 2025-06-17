@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { motion } from "motion/react";
 import dynamic from "next/dynamic";
 
@@ -10,15 +9,15 @@ const World = dynamic(() => import("@/components/ui/globe").then((m) => m.World)
 export default function GlobeDemo() {
   const globeConfig = {
     pointSize: 4,
-    globeColor: "#062056",
+    globeColor: "#1e3a8a", // Darker ocean blue for better contrast
     showAtmosphere: true,
-    atmosphereColor: "#FFFFFF",
+    atmosphereColor: "#87ceeb", // Sky blue atmosphere
     atmosphereAltitude: 0.1,
-    emissive: "#062056",
+    emissive: "#1e3a8a", // Darker ocean blue emission
     emissiveIntensity: 0.1,
     shininess: 0.9,
-    polygonColor: "rgba(255,255,255,0.7)",
-    ambientLight: "#38bdf8",
+    polygonColor: "rgba(255, 255, 255, 0.9)", // Higher opacity white for clear landmasses
+    ambientLight: "#4682b4", // Steel blue ambient light
     directionalLeftLight: "#ffffff",
     directionalTopLight: "#ffffff",
     pointLight: "#ffffff",
@@ -30,7 +29,7 @@ export default function GlobeDemo() {
     autoRotate: true,
     autoRotateSpeed: 0.5,
   };
-  const colors = ["#06b6d4", "#3b82f6", "#6366f1"];
+  const colors = ["#2563eb", "#0ea5e9", "#0369a1"]; // Ocean blues for arcs
   const sampleArcs = [
     {
       order: 1,
@@ -391,34 +390,35 @@ export default function GlobeDemo() {
       endLng: 39.883798,
       arcAlt: 0.3,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-  ];
-  return (
-    <div className="flex flex-row items-center justify-center py-20 h-screen md:h-auto relative w-full">
-      <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:h-[40rem] px-4">
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 1,
-          }}
-          className="div"
-        >
-          <h2 className="text-center text-xl md:text-4xl font-bold text-black dark:text-white">
-            We sell soap worldwide
-          </h2>
-          <p className="text-center text-base md:text-lg font-normal text-neutral-700 dark:text-neutral-200 max-w-md mt-2 mx-auto">
-            This globe is interactive and customizable. Have fun with it, and
-            don&apos;t forget to share it. :)
-          </p>
-        </motion.div>
-        <div className="absolute w-full -bottom-20 h-72 md:h-full z-10">
+    },  ];  return (
+    <div className="flex flex-row items-start justify-start h-auto relative w-full overflow-visible">
+      <div className="max-w-7xl mx-auto w-full relative overflow-visible h-auto min-h-[20rem] px-2">
+        {/* Text content positioned to the left */}
+        <div className="absolute left-4 top-20 z-20 max-w-md">
+          <motion.div
+            initial={{
+              opacity: 0,
+              x: -50,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+            }}
+            transition={{
+              duration: 1,
+            }}
+            className="div"
+          >
+            <h2 className="text-left text-xl md:text-4xl font-bold text-black dark:text-white">
+              We sell soap worldwide
+            </h2>
+            <p className="text-left text-base md:text-lg font-normal text-neutral-700 dark:text-neutral-200 mt-4">
+              This globe is interactive and customizable. Have fun with it, and
+              don&apos;t forget to share it. :)
+            </p>
+          </motion.div>
+        </div>        {/* Globe positioned at the same level as the text */}
+        <div className="absolute w-2/3 top-20 right-0 h-[60vh] md:h-[24rem] z-10">
           <World data={sampleArcs} globeConfig={globeConfig} />
         </div>
       </div>
