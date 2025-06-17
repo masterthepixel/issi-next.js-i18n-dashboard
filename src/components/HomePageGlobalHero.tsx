@@ -249,11 +249,11 @@ export default function HomePageGlobalHero() {
         }
       };
     }
-  }, [allMarkers, dataTransfers, isPaused]);
-  return (
+  }, [allMarkers, dataTransfers, isPaused]);  return (
     <div className="relative isolate px-6 lg:px-8">
       {/* Main Hero Content */}
-      <div className="mx-auto max-w-7xl py-16 sm:py-18 lg:py-24">        <div className="grid lg:grid-cols-2 gap-12 items-center relative">
+      <div className="mx-auto max-w-7xl py-16 sm:py-18 lg:py-24">
+        <div className="grid lg:grid-cols-2 gap-12 items-center relative">
           {/* Content Section - Left */}
           <motion.div 
             className="space-y-8 z-10 order-1"
@@ -343,47 +343,6 @@ export default function HomePageGlobalHero() {
                 </div>
               </div>
             </div>
-          </motion.div>
-
-          {/* Content Section - Right */}
-          <motion.div 
-            className="space-y-8 z-10 order-1 lg:order-2"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="space-y-6">
-              <h1 className="text-3xl font-semibold tracking-tight text-balance text-slate-900 dark:text-slate-100 sm:text-5xl">
-                <span className="inline-flex flex-wrap">
-                  <FormattedMessage id="hero.flipwords.prefix" />{" "}
-                  <FlipWords 
-                    words={flipWords}
-                    duration={2500}
-                    className="bg-gradient-to-r from-indigo-600 to-blue-400 bg-clip-text text-transparent font-semibold"
-                  />
-                  {" "}<FormattedMessage id="hero.flipwords.suffix" />
-                </span>
-              </h1>
-              
-              <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
-                <FormattedMessage id="hero.description" />
-              </p>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="/contact"
-                className="bg-indigo-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-indigo-700 transition-all transform hover:scale-105 shadow-lg text-center"
-              >
-                <FormattedMessage id="hero.cta.get-started" />
-              </a>
-              <a 
-                href="/services" 
-                className="border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 px-8 py-4 rounded-xl font-semibold hover:border-indigo-600 hover:text-indigo-600 dark:hover:border-indigo-400 dark:hover:text-indigo-400 transition-all text-center"
-              >
-                <FormattedMessage id="hero.cta.learn-more" />
-              </a>            </div>
           </motion.div>
         </div>
       </div>
