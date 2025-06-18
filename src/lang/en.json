@@ -1,7 +1,9 @@
 {
   "breadcrumb.home": "Home",
-  "breadcrumb.services": "Services",
+  "breadcrumb.services": "Services", 
   "breadcrumb.back": "Back",
+  "breadcrumb.seo.description": "Navigate through ISSI's website sections",
+  "breadcrumb.seo.keywords": "navigation, breadcrumb, ISSI, software, technology",
   "services.page.title": "IT Services & Solutions",
   "common.language-switcher": "{locale, select, en {English} fr {Français} es {Español} other {Unknown}}",
   "common.navigation.discover": "Discover",

@@ -27,13 +27,14 @@ export default function BreadcrumbWithGlobeWrapper({
   backLabel, 
   backHref 
 }: BreadcrumbWithGlobeWrapperProps) {
-  return (
-    <IntlProvider locale={locale} messages={messages}>
+  return (    <IntlProvider locale={locale} messages={messages}>
       <BreadcrumbWithGlobe 
         items={items}
         title={title}
         backLabel={backLabel}
         backHref={backHref}
+        lang={locale}
+        baseUrl="https://issi.com"
       />
     </IntlProvider>
   );

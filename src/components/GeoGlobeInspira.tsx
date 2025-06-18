@@ -166,11 +166,10 @@ export default function GeoGlobeInspira({ className = "" }: GeoGlobeInspiraProps
     scene.add(directionalLight2);
 
     const pointLight = new THREE.PointLight('#ffffff', 0.4);
-    pointLight.position.set(0, 0, 300);
-    scene.add(pointLight);
+    pointLight.position.set(0, 0, 300);    scene.add(pointLight);
 
     // Auto-rotation
-    let rotationSpeed = 0.005;
+    const rotationSpeed = 0.005;
 
     // Resize handler
     const handleResize = () => {
