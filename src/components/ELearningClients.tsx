@@ -54,7 +54,7 @@ export default function ELearningClients() {
                     ? 'bg-yellow-50 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-200 ring-yellow-600/20 dark:ring-yellow-400/30'
                     : index % 3 === 1
                     ? 'bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-200 ring-purple-700/10 dark:ring-purple-400/30'
-                    : 'bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 ring-gray-500/10 dark:ring-gray-400/20'
+                    : 'bg-gray-50 dark:bg-gray-800 text-slate-600 dark:text-slate-300 ring-gray-500/10 dark:ring-gray-400/20'
                 }`}
               >
                 <FormattedMessage id={clientKey} />

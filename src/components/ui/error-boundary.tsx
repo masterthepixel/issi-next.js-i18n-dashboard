@@ -28,7 +28,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   render() {
     if (this.state.hasError) {
       return this.props.fallback || (
-        <div className="flex items-center justify-center h-full min-h-[400px] text-gray-500">
+        <div className="flex items-center justify-center h-full min-h-[400px] text-slate-500">
           <div className="text-center">
             <div className="text-lg font-medium mb-2">Globe Loading</div>
             <div className="text-sm">Interactive globe is loading...</div>

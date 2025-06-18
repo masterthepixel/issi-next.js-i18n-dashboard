@@ -54,13 +54,13 @@ export default function ComplianceIndustryCertifications() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-x-8 gap-y-16 lg:grid-cols-2">
           <div className="mx-auto w-full max-w-xl lg:mx-0">
-            <h2 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white sm:text-5xl">
+            <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-white sm:text-5xl">
               <FormattedMessage 
                 id="compliance.industry.title" 
                 defaultMessage="Industry-Leading Compliance Standards" 
               />
             </h2>
-            <p className="mt-6 text-lg/8 text-gray-600 dark:text-slate-300">
+            <p className="mt-6 text-lg/8 text-slate-600 dark:text-slate-300">
               <FormattedMessage 
                 id="compliance.industry.description" 
                 defaultMessage="Our comprehensive certifications and compliance standards demonstrate our commitment to security, quality, and operational excellence across all service areas." 
@@ -76,7 +76,7 @@ export default function ComplianceIndustryCertifications() {
                   defaultMessage="Learn More" 
                 />
               </a>
-              <a href="/compliance/iso27001" className="text-sm font-semibold text-gray-900 dark:text-white">
+              <a href="/compliance/iso27001" className="text-sm font-semibold text-slate-900 dark:text-white">
                 <FormattedMessage 
                   id="compliance.industry.cta.secondary" 
                   defaultMessage="View Certifications" 

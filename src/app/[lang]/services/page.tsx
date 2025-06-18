@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 
+import BreadcrumbWithGlobeWrapper from "@/components/BreadcrumbWithGlobeWrapper";
 import ContactInfo from "@/components/ContactInfo";
 import ContactSalesForm from "@/components/ContactSalesForm";
 import ISSIServicesMapWrapper from "@/components/ISSIServicesMapWrapper";
@@ -35,8 +36,26 @@ interface PageContentProps {
 async function PageContent({ locale }: PageContentProps) {
   const intl = await getIntl(locale);
   const messages = (await import(`../../../lang/${locale}.json`)).default;
+  
+  // Define breadcrumb items
+  const breadcrumbItems = [
+    { label: intl.formatMessage({ id: "breadcrumb.home" }), href: `/${locale}` },
+    { label: intl.formatMessage({ id: "breadcrumb.services" }), isActive: true }
+  ];
   return (
     <div>
+      {/* Breadcrumb with GeoGlobe - full width, aligned to left */}
+      <div className="max-w-7xl mx-auto px-2 py-8">
+        <BreadcrumbWithGlobeWrapper
+          locale={locale}
+          messages={messages}
+          items={breadcrumbItems}
+          title={intl.formatMessage({ id: "services.page.title" })}
+          backLabel={intl.formatMessage({ id: "breadcrumb.back" })}
+          backHref={`/${locale}`}
+        />
+      </div>
+      
       {/* Services Showcase - Bento Grid Layout */}
       <ISSIServicesShowcaseWrapper locale={locale} messages={messages} />
       

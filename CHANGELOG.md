@@ -5,7 +5,53 @@ All notable changes to the ISSI Next.js Multilingual Website will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - 2025-06-16
+## [Unreleased] - 2025-01-12
+
+### Added - Inspira UI-Style 3D Globe in Services Breadcrumb
+
+- **GeoGlobeInspira Component**: Created new Inspira UI-inspired 3D globe
+  - Simplified design with animated arcs and no legend or data points
+  - Enhanced lighting system with brightened ambient, directional, and point lights
+  - Optimized for visual impact and clarity across all devices
+  - Seamless integration with breadcrumb layout
+
+- **BreadcrumbWithGlobe Component**: Advanced responsive breadcrumb with 3D globe
+  - Precise positioning: mobile (top-right, 40% off-screen), desktop (25% off-screen, 920x575px)
+  - Globe scrolls naturally with content (absolute positioning)
+  - Proper z-index layering with globe behind text content
+  - Overflow handling for dramatic visual effect
+
+- **Responsive Layout Consistency**: Unified container styling across components
+  - Standardized all main containers to max-w-7xl mx-auto px-2
+  - Applied consistent styling to breadcrumb, bentogrid, and navbar
+  - Ensured perfect alignment across all page sections
+
+### Changed
+
+- **Services Page**: Complete breadcrumb redesign with integrated 3D globe
+  - Replaced standard breadcrumb with GeoGlobeInspira integration
+  - Maintained full internationalization support
+  - Enhanced visual hierarchy with globe as background element
+
+- **Globe Positioning**: Perfected mobile and desktop positioning
+  - Mobile: Globe appears in top-right corner, scrolls out of view naturally
+  - Desktop: Globe positioned under icon dock with optimal visibility
+  - Doubled globe size for increased visual impact
+
+- **Lighting Enhancement**: Significantly improved globe visibility
+  - Increased ambient light intensity to 0.8
+  - Enhanced directional light (1.0 intensity, 0.6 helper)
+  - Boosted point light intensity to 0.4
+  - Result: More vibrant and clearly visible globe
+
+### Fixed
+
+- **Internationalization**: Validated and corrected all translation keys
+  - Fixed missing or incorrect i18n keys in English, French, and Spanish
+  - Ensured consistent translation structure across all language files
+  - Validated JSON syntax and key completeness
+
+## [Previous] - 2025-06-16
 
 ### Added - 3D Interactive Globe Integration
 

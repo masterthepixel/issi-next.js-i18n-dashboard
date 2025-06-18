@@ -43,9 +43,9 @@ export default function ELearningHero() {
             <p className="text-base/7 font-semibold text-blue-600 dark:text-blue-400">
               <FormattedMessage id="page.eLearning.hero.tagline" defaultMessage="Learning Solutions" />
             </p>
-            <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white sm:text-5xl">
+            <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-white sm:text-5xl">
               <FormattedMessage id="page.eLearning.hero.title" defaultMessage="E-Learning" />
-            </h1>            <p className="mt-6 text-xl/8 text-gray-700 dark:text-slate-300">
+            </h1>            <p className="mt-6 text-xl/8 text-slate-700 dark:text-slate-300">
               <FormattedMessage 
                 id="page.eLearning.hero.intro" 
                 defaultMessage="With strong expertise in managing the Instructional Systems Design (ISD) process - including conceptualization of design, e-Learning development, implementation, and evaluation - ISSI's professionals have successfully implemented user and system documentation/training for our clients."
@@ -69,7 +69,7 @@ export default function ELearningHero() {
               >
                 View All Services
               </Link>
-            </div><div className="mt-10 max-w-xl text-base/7 text-gray-700 dark:text-slate-300 lg:max-w-none">
+            </div><div className="mt-10 max-w-xl text-base/7 text-slate-700 dark:text-slate-300 lg:max-w-none">
               <p>
                 <FormattedMessage 
                   id="page.eLearning.hero.tools" 

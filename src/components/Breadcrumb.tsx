@@ -34,7 +34,7 @@ export default function Breadcrumb({
               <ol role="list" className="flex items-center space-x-2">
                 <li className="flex">
                   <div className="flex items-center">
-                    <Link href={`/${locale}`} className="text-gray-400 hover:text-gray-500">
+                    <Link href={`/${locale}`} className="text-slate-400 hover:text-slate-500">
                       <HomeIcon aria-hidden="true" className="size-5 flex-shrink-0" />
                       <span className="sr-only">Home</span>
                     </Link>
@@ -45,19 +45,19 @@ export default function Breadcrumb({
                     <div className="flex items-center">
                       <ChevronRightIcon
                         aria-hidden="true"
-                        className="size-4 flex-shrink-0 text-gray-300 mx-2"
+                        className="size-4 flex-shrink-0 text-slate-300 mx-2"
                       />
                       {item.href ? (
                         <Link
                           href={item.href}
-                          className="text-sm font-medium text-gray-600 hover:text-gray-900"
+                          className="text-sm font-medium text-slate-600 hover:text-slate-900"
                           aria-current={index === items.length - 1 ? 'page' : undefined}
                         >
                           {item.name}
                         </Link>
                       ) : (
                         <span
-                          className="text-sm font-medium text-gray-900"
+                          className="text-sm font-medium text-slate-900"
                           aria-current="page"
                         >
                           {item.name}
@@ -72,7 +72,7 @@ export default function Breadcrumb({
           <div className="mt-6 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
             <div className="mt-6 min-w-0 flex-1 sm:hidden md:block">
               {title && (
-                <h1 className="truncate text-2xl font-bold text-gray-900">{title}</h1>
+                <h1 className="truncate text-2xl font-bold text-slate-900">{title}</h1>
               )}
             </div>
             <div className="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
@@ -82,7 +82,7 @@ export default function Breadcrumb({
         </div>
         <div className="mt-6 hidden min-w-0 flex-1 sm:block md:hidden">
           {title && (
-            <h1 className="truncate text-2xl font-bold text-gray-900">{title}</h1>
+            <h1 className="truncate text-2xl font-bold text-slate-900">{title}</h1>
           )}
         </div>
       </div>

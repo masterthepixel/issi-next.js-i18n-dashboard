@@ -630,7 +630,7 @@ const categoryColors = {
 // Function to get colors for any category
 const getCategoryColors = (category: string) => {
   return categoryColors[category as keyof typeof categoryColors] || {
-    icon: "text-gray-600 dark:text-gray-400",
+    icon: "text-slate-600 dark:text-slate-400",
     border: "border-gray-200 dark:border-gray-700",
     hover: "hover:border-gray-400 dark:hover:border-gray-500"
   };

@@ -31,9 +31,7 @@ export default function HomePageGlobalHero() {
   const globeRef = useRef<any>(null);
   const [isPaused, setIsPaused] = useState(false);
   const [dataTransfers, setDataTransfers] = useState<DataTransfer[]>([]);
-  const intl = useIntl();
-
-  // Get translated words for FlipWords animation
+  const intl = useIntl();  // Get translated words for FlipWords animation
   const flipWords = [
     intl.formatMessage({ id: "hero.flipwords.words.secure" }),
     intl.formatMessage({ id: "hero.flipwords.words.innovative" }),
@@ -177,15 +175,26 @@ export default function HomePageGlobalHero() {
 
     const animationInterval = setInterval(animateTransfers, 50); // 20fps
     return () => clearInterval(animationInterval);
-  }, [isPaused]);
-
-  useEffect(() => {
+  }, [isPaused]);  useEffect(() => {
     let phi = 0;
 
-    if (canvasRef.current) {      globeRef.current = createGlobe(canvasRef.current, {
+    if (canvasRef.current) {
+      // Get container dimensions for responsive sizing
+      const container = canvasRef.current.parentElement;
+      const containerWidth = container?.clientWidth || 400;
+      const containerHeight = container?.clientHeight || 400;
+      
+      // For mobile: use the larger of width or height to fill the container
+      // For desktop: maintain max size of 780
+      const isMobile = window.innerWidth < 1024; // lg breakpoint
+      const globeSize = isMobile 
+        ? Math.max(containerWidth, containerHeight) 
+        : Math.min(containerWidth, containerHeight, 780);
+      
+      globeRef.current = createGlobe(canvasRef.current, {
         devicePixelRatio: 2,
-        width: 780, // Increased by 30% (600 * 1.3)
-        height: 780, // Increased by 30% (600 * 1.3)
+        width: globeSize,
+        height: globeSize,
         phi: 0,
         theta: 0.15,
         dark: 0, // Light theme
@@ -238,21 +247,37 @@ export default function HomePageGlobalHero() {
       const canvas = canvasRef.current;
       const handleClick = () => {
         setIsPaused(prev => !prev);
+      };      // Handle window resize to update globe size
+      const handleResize = () => {
+        if (globeRef.current && canvasRef.current) {
+          const container = canvasRef.current.parentElement;
+          const containerWidth = container?.clientWidth || 400;
+          const containerHeight = container?.clientHeight || 400;
+          const isMobile = window.innerWidth < 1024;
+          const newGlobeSize = isMobile 
+            ? Math.max(containerWidth, containerHeight)
+            : Math.min(containerWidth, containerHeight, 780);
+          
+          // Update globe size
+          globeRef.current.resize();
+        }
       };
 
       canvas.addEventListener('click', handleClick);
+      window.addEventListener('resize', handleResize);
 
       return () => {
         canvas.removeEventListener('click', handleClick);
+        window.removeEventListener('resize', handleResize);
         if (globeRef.current) {
           globeRef.current.destroy();
         }
       };
     }
-  }, [allMarkers, dataTransfers, isPaused]);  return (
-    <div className="relative isolate px-6 lg:px-8">
+  }, [allMarkers, dataTransfers, isPaused]);return (
+    <div className="relative isolate px-2">
       {/* Main Hero Content */}
-      <div className="mx-auto max-w-7xl py-16 sm:py-18 lg:py-24">
+      <div className="mx-auto max-w-7xl pb-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center relative">
           {/* Content Section - Left */}
           <motion.div 
@@ -260,50 +285,95 @@ export default function HomePageGlobalHero() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-          >
-            <div className="space-y-6">
-              <h1 className="text-3xl font-semibold tracking-tight text-balance text-slate-900 dark:text-slate-100 sm:text-5xl">
-                <span className="inline-flex flex-wrap">
-                  <FormattedMessage id="hero.flipwords.prefix" />{" "}
-                  <FlipWords 
-                    words={flipWords}
-                    duration={2500}
-                    className="bg-gradient-to-r from-indigo-600 to-blue-400 bg-clip-text text-transparent font-semibold"
-                  />
-                  {" "}<FormattedMessage id="hero.flipwords.suffix" />
-                </span>
+          >            <div className="space-y-6">
+              <h1 className="text-3xl font-semibold tracking-tight text-balance text-slate-900 dark:text-slate-100 sm:text-4xl">
+                <div className="flex flex-col">
+                  <span><FormattedMessage id="hero.flipwords.prefix" /></span>
+                  <span>
+                    <FlipWords 
+                      words={flipWords}
+                      duration={2500}
+                      className="bg-gradient-to-r from-indigo-600 to-blue-400 bg-clip-text text-transparent font-semibold"
+                    />
+                    {" "}<FormattedMessage id="hero.flipwords.suffix" />
+                  </span>
+                </div>
               </h1>
-              
-              <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
-                <FormattedMessage id="hero.description" />
+                <p className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                <FormattedMessage 
+                  id="hero.description"                  values={{
+                    innovativeTechnology: (chunks) => (
+                      <a 
+                        href="/services" 
+                        className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline decoration-blue-200 hover:decoration-blue-400 transition-colors"
+                        title="Explore our innovative technology services"
+                      >
+                        {chunks}
+                      </a>
+                    ),
+                    government: (chunks) => (
+                      <a 
+                        href="/government" 
+                        className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline decoration-blue-200 hover:decoration-blue-400 transition-colors"
+                        title="Government solutions and services"
+                      >
+                        {chunks}
+                      </a>
+                    ),
+                    enterprise: (chunks) => (
+                      <a 
+                        href="/products" 
+                        className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline decoration-blue-200 hover:decoration-blue-400 transition-colors"
+                        title="Enterprise products and solutions"
+                      >
+                        {chunks}
+                      </a>
+                    ),
+                    eLearning: (chunks) => (
+                      <a 
+                        href="/services/e-learning" 
+                        className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline decoration-blue-200 hover:decoration-blue-400 transition-colors"
+                        title="E-learning platform solutions"
+                      >
+                        {chunks}
+                      </a>
+                    ),
+                    compliance: (chunks) => (
+                      <a 
+                        href="/compliance" 
+                        className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline decoration-blue-200 hover:decoration-blue-400 transition-colors"
+                        title="Compliance management solutions"
+                      >
+                        {chunks}
+                      </a>
+                    ),
+                  }}
+                />
               </p>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            </div>            {/* CTA Buttons */}
+            <div className="flex flex-row gap-3 sm:gap-4">
               <a
                 href="/contact"
-                className="bg-indigo-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-indigo-700 transition-all transform hover:scale-105 shadow-lg text-center"
+                title="Contact ISSI to get started with our solutions"
+                className="bg-indigo-600 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-all transform hover:scale-105 shadow-lg text-center text-sm sm:text-base flex-1 sm:flex-none"
               >
                 <FormattedMessage id="hero.cta.get-started" />
               </a>
               <a 
                 href="/services" 
-                className="border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 px-8 py-4 rounded-xl font-semibold hover:border-indigo-600 hover:text-indigo-600 dark:hover:border-indigo-400 dark:hover:text-indigo-400 transition-all text-center"
+                title="Explore ISSI's software solutions and services"
+                className="border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 px-3 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold hover:border-indigo-600 hover:text-indigo-600 dark:hover:border-indigo-400 dark:hover:text-indigo-400 transition-all text-center text-sm sm:text-base flex-1 sm:flex-none"
               >
                 <FormattedMessage id="hero.cta.learn-more" />
               </a>
             </div>
-          </motion.div>
-
-          {/* Globe Section - Right */}
+          </motion.div>          {/* Globe Section - Right */}
           <motion.div 
-            className="relative lg:w-[780px] lg:h-[520px] overflow-visible order-2"
+            className="relative w-full h-[50vh] min-h-[40vh] max-h-[600px] lg:w-[780px] lg:h-[520px] overflow-visible order-2 flex items-center justify-center"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <canvas
+          >            <canvas
               ref={canvasRef}
               className={`w-full h-full cursor-pointer transition-all duration-300 ${isPaused ? 'opacity-75' : 'opacity-100'}`}
             />
@@ -320,11 +390,29 @@ export default function HomePageGlobalHero() {
               <div className="absolute bottom-4 left-4 bg-yellow-500/20 border border-yellow-500/50 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-full text-sm font-medium">
                 📡 {dataTransfers.length} active transfer{dataTransfers.length !== 1 ? 's' : ''}
               </div>
-            )}
-
-            {/* Small Legend for Globe */}
-            <div className="absolute bottom-4 right-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-2 text-xs">
-              <div className="flex flex-col gap-1">
+            )}            {/* Small Legend for Globe */}
+            <div className="absolute bottom-4 right-4 sm:bottom-4 sm:right-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-2 text-xs">
+              {/* Mobile: Horizontal layout */}
+              <div className="flex sm:hidden gap-3">
+                <div className="flex items-center gap-1">
+                  <div className="w-2 h-2 rounded-full bg-red-500"></div>
+                  <span>HQ</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <div className="w-2 h-2 rounded-full bg-orange-500"></div>
+                  <span>AWS</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                  <span>Azure</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                  <span>GCP</span>
+                </div>
+              </div>
+              {/* Desktop: Vertical layout */}
+              <div className="hidden sm:flex flex-col gap-1">
                 <div className="flex items-center gap-1">
                   <div className="w-2 h-2 rounded-full bg-red-500"></div>
                   <span>HQ</span>

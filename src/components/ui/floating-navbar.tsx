@@ -169,14 +169,14 @@ export const FloatingNav = ({
                               <div className="mt-0.5 flex size-8 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
                                 <item.icon
                                   aria-hidden="true"
-                                  className="size-4 text-gray-600 dark:text-indigo-400 group-hover:text-indigo-600"
+                                  className="size-4 text-slate-600 dark:text-indigo-400 group-hover:text-indigo-600"
                                 />
                               </div>
                               <div>
-                                <div className="font-medium text-sm text-gray-900 dark:text-slate-100">
+                                <div className="font-medium text-sm text-slate-900 dark:text-slate-100">
                                   {item.name}
                                 </div>
-                                <p className="mt-0.5 text-gray-600 dark:text-slate-400 text-xs leading-relaxed">{item.description}</p>
+                                <p className="mt-0.5 text-slate-600 dark:text-slate-400 text-xs leading-relaxed">{item.description}</p>
                               </div>
                           </Link>                        ))}
                       </div>

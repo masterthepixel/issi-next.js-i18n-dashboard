@@ -113,31 +113,31 @@ export default function GovernmentNAICSTable() {
                       <tr>
                         <th
                           scope="col"
-                          className="py-3.5 pr-3 pl-4 text-left text-sm font-semibold text-gray-900 dark:text-gray-100 sm:pl-6"
+                          className="py-3.5 pr-3 pl-4 text-left text-sm font-semibold text-slate-900 dark:text-slate-100 sm:pl-6"
                         >
                           <FormattedMessage id="government.naics.table.sic" />
                         </th>
                         <th
                           scope="col"
-                          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-100"
+                          className="px-3 py-3.5 text-left text-sm font-semibold text-slate-900 dark:text-slate-100"
                         >
                           <FormattedMessage id="government.naics.table.naics" />
                         </th>
                         <th
                           scope="col"
-                          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-100"
+                          className="px-3 py-3.5 text-left text-sm font-semibold text-slate-900 dark:text-slate-100"
                         >
                           <FormattedMessage id="government.naics.table.description" />
                         </th>
                         <th
                           scope="col"
-                          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-100"
+                          className="px-3 py-3.5 text-left text-sm font-semibold text-slate-900 dark:text-slate-100"
                         >
                           <FormattedMessage id="government.naics.table.capabilities" />
                         </th>
                         <th
                           scope="col"
-                          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-100"
+                          className="px-3 py-3.5 text-left text-sm font-semibold text-slate-900 dark:text-slate-100"
                         >
                           <FormattedMessage id="government.naics.table.certifications" />
                         </th>
@@ -146,19 +146,19 @@ export default function GovernmentNAICSTable() {
                     <tbody className="divide-y divide-gray-200 dark:divide-gray-600 bg-white dark:bg-gray-900">
                       {naicsData.map((item, index) => (
                         <tr key={item.naics} className={index % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gray-50 dark:bg-gray-800'}>
-                          <td className="py-4 pr-3 pl-4 text-sm font-medium text-gray-900 dark:text-gray-100 sm:pl-6">
+                          <td className="py-4 pr-3 pl-4 text-sm font-medium text-slate-900 dark:text-slate-100 sm:pl-6">
                             {item.sic}
                           </td>
                           <td className="px-3 py-4 text-sm font-semibold text-blue-600 dark:text-blue-400">
                             {item.naics}
                           </td>
-                          <td className="px-3 py-4 text-sm text-gray-900 dark:text-gray-100 max-w-xs">
+                          <td className="px-3 py-4 text-sm text-slate-900 dark:text-slate-100 max-w-xs">
                             <FormattedMessage id={item.descriptionKey} />
                           </td>
-                          <td className="px-3 py-4 text-sm text-gray-700 dark:text-gray-300 max-w-md">
+                          <td className="px-3 py-4 text-sm text-slate-700 dark:text-slate-300 max-w-md">
                             <FormattedMessage id={item.capabilitiesKey} />
                           </td>
-                          <td className="px-3 py-4 text-sm text-gray-600 dark:text-gray-400 max-w-md">
+                          <td className="px-3 py-4 text-sm text-slate-600 dark:text-slate-400 max-w-md">
                             <FormattedMessage id={item.certificationsKey} />
                           </td>
                         </tr>

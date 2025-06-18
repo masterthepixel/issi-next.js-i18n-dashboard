@@ -4,32 +4,32 @@ import { BentoGrid } from "@/components/ui/bento-grid";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import {
-  FaBookOpen,
-  FaBox,
-  FaBug,
-  FaCalendarAlt,
-  FaChartLine,
-  FaClock,
-  FaCode,
-  FaComments,
-  FaDatabase,
-  FaDollarSign,
-  FaFileAlt,
-  FaFileContract,
-  FaFileInvoice,
-  FaGraduationCap,
-  FaHandHoldingUsd,
-  FaHandshake,
-  FaIdCard,
-  FaListAlt,
-  FaPoll,
-  FaProjectDiagram,
-  FaRocket,
-  FaSearch,
-  FaTasks,
-  FaUserCheck,
-  FaUsers,
-  FaUserTie,
+    FaBookOpen,
+    FaBox,
+    FaBug,
+    FaCalendarAlt,
+    FaChartLine,
+    FaClock,
+    FaCode,
+    FaComments,
+    FaDatabase,
+    FaDollarSign,
+    FaFileAlt,
+    FaFileContract,
+    FaFileInvoice,
+    FaGraduationCap,
+    FaHandHoldingUsd,
+    FaHandshake,
+    FaIdCard,
+    FaListAlt,
+    FaPoll,
+    FaProjectDiagram,
+    FaRocket,
+    FaSearch,
+    FaTasks,
+    FaUserCheck,
+    FaUsers,
+    FaUserTie,
 } from "react-icons/fa";
 import { useIntl } from "react-intl";
 
@@ -459,7 +459,7 @@ export default function ProductsBentoGrid({ lang }: ProductsBentoGridProps) {
   // Get colors for a specific category
   const getCategoryColors = (category: string) => {
     return categoryColors[category as keyof typeof categoryColors] || {
-      icon: "text-gray-600 dark:text-gray-400",
+      icon: "text-slate-600 dark:text-slate-400",
       border: "border-gray-200 dark:border-gray-700",
       hover: "hover:border-gray-400 dark:hover:border-gray-500"
     };

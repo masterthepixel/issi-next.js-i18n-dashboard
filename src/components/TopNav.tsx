@@ -4,10 +4,10 @@ import { Locale } from "@/lib/definitions";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
 import {
-  CheckBadgeIcon,
-  ClipboardDocumentCheckIcon,
-  LockClosedIcon,
-  ShieldCheckIcon,
+    CheckBadgeIcon,
+    ClipboardDocumentCheckIcon,
+    LockClosedIcon,
+    ShieldCheckIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -213,15 +213,15 @@ export default function TopNav({ locale }: Props) {
                   <div className="mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
                     <item.icon
                       aria-hidden="true"
-                      className="size-6 text-gray-600 dark:text-indigo-400 group-hover:text-indigo-600"
+                      className="size-6 text-slate-600 dark:text-indigo-400 group-hover:text-indigo-600"
                     />
                   </div>
                   <div>
-                    <a href={item.href} className="font-semibold text-gray-900 dark:text-slate-100">
+                    <a href={item.href} className="font-semibold text-slate-900 dark:text-slate-100">
                       {item.name}
                       <span className="absolute inset-0" />
                     </a>
-                    <p className="mt-1 text-gray-600 dark:text-slate-400">{item.description}</p>
+                    <p className="mt-1 text-slate-600 dark:text-slate-400">{item.description}</p>
                   </div>
                 </div>
               ))}
@@ -231,9 +231,9 @@ export default function TopNav({ locale }: Props) {
                 <a
                   key={idx}
                   href={item.href}
-                  className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 dark:text-slate-100 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
+                  className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-slate-900 dark:text-slate-100 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
                 >
-                  <item.icon aria-hidden="true" className="size-5 flex-none text-gray-400 dark:text-indigo-400" />
+                  <item.icon aria-hidden="true" className="size-5 flex-none text-slate-400 dark:text-indigo-400" />
                   {item.name}
                 </a>
               ))}

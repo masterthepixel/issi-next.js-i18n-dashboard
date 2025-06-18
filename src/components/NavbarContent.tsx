@@ -93,12 +93,13 @@ export default function NavbarContent({ user: _user, locale, messages }: Props) 
     {
       name: <FormattedMessage id="common.navigation.about" />,
       link: `/${locale}/about`,
-    },  ];return (
+    },  ];  return (
     <IntlProvider locale={locale} messages={messages}>
         <nav className="sticky top-0 left-0 z-50 w-full transition-all duration-300">
-          <div className={`flex items-center justify-between px-4 transition-all duration-300 ${
-            isScrolled ? 'h-12' : 'h-16'
-          }`}><div className="flex items-center flex-1">
+          <div className="max-w-7xl mx-auto">
+            <div className={`flex items-center justify-between px-2 transition-all duration-300 ${
+              isScrolled ? 'h-12' : 'h-16'
+            }`}><div className="flex items-center flex-1">
               <Link href={`/${locale}/home`} className="flex items-center hover:opacity-80 transition-opacity">
                 <Image
                   src="/images/issi_logo.png"
@@ -220,11 +221,11 @@ export default function NavbarContent({ user: _user, locale, messages }: Props) 
                   )}
                 </div>                {/* Theme Toggle */}
                 <div className="flex items-center">
-                  <ThemeToggle />
-                </div>
+                  <ThemeToggle />                </div>
               </div>
             </div>
           </div>
+        </div>
         </nav>
     </IntlProvider>
   );
