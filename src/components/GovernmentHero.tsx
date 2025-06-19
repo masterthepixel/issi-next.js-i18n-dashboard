@@ -7,10 +7,9 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useIntl } from 'react-intl';
 
-const GovernmentHero = () => {
-  const intl = useIntl();
+const GovernmentHero = () => {  const intl = useIntl();
   const params = useParams();
-  const locale = params.lang as string;
+  const locale = (params?.lang as string) || 'en';
 
   // Keyboard navigation handler
   const handleKeyPress = (event: React.KeyboardEvent, serviceId: string) => {

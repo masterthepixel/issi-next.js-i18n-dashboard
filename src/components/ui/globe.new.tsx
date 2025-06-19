@@ -3,7 +3,7 @@ import countries from "@/data/globe.json";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas, extend, useThree } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
-import { Color, Fog, PerspectiveCamera, Scene, Vector3 } from "three";
+import { Color, Fog, Group, PerspectiveCamera, Scene, Vector3 } from "three";
 import ThreeGlobe from "three-globe";
 
 declare module "@react-three/fiber" {
@@ -65,7 +65,7 @@ let numbersOfRings = [0];
 
 export function Globe({ globeConfig, data }: WorldProps) {
   const globeRef = useRef<ThreeGlobe | null>(null);
-  const groupRef = useRef();
+  const groupRef = useRef<Group>(null);
   const [isInitialized, setIsInitialized] = useState(false);
 
   const defaultProps = {

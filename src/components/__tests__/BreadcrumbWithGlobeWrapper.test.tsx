@@ -1,9 +1,8 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { vi, describe, it, expect, beforeEach } from 'vitest';
-import '@testing-library/jest-dom';
-import BreadcrumbWithGlobeWrapper from '../BreadcrumbWithGlobeWrapper';
 import { Locale } from '@/lib/definitions';
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import BreadcrumbWithGlobeWrapper from '../BreadcrumbWithGlobeWrapper';
 
 // Mock the main component
 vi.mock('../BreadcrumbWithGlobe', () => ({

@@ -93,9 +93,8 @@ export default function TopNav({ locale }: Props) {
   return (
     <div className="hidden lg:flex items-center justify-center flex-1 space-x-8">
       <Link
-        href={`/${locale}/services`}
-        className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
-          pathname.includes("/services")
+        href={`/${locale}/services`}        className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
+          pathname?.includes("/services")
             ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
             : "border-transparent"
         }`}
@@ -117,9 +116,8 @@ export default function TopNav({ locale }: Props) {
         <FormattedMessage id="common.navigation.services" />
       </Link>{" "}
       <Link
-        href={`/${locale}/products`}
-        className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
-          pathname.includes("/products")
+        href={`/${locale}/products`}        className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
+          pathname?.includes("/products")
             ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
             : "border-transparent"
         }`}
@@ -141,9 +139,8 @@ export default function TopNav({ locale }: Props) {
         <FormattedMessage id="common.navigation.products" />
       </Link>{" "}
       <Link
-        href={`/${locale}/government`}
-        className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
-          pathname.includes("/government")
+        href={`/${locale}/government`}        className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
+          pathname?.includes("/government")
             ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
             : "border-transparent"
         }`}
@@ -165,9 +162,8 @@ export default function TopNav({ locale }: Props) {
         <FormattedMessage id="common.navigation.government" />
       </Link>{" "}
       <Link
-        href={`/${locale}/eLearning`}
-        className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
-          pathname.includes("/eLearning")
+        href={`/${locale}/eLearning`}        className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
+          pathname?.includes("/eLearning")
             ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
             : "border-transparent"
         }`}
@@ -189,10 +185,9 @@ export default function TopNav({ locale }: Props) {
         <FormattedMessage id="common.navigation.eLearning" />
       </Link>{" "}
       {/* Compliance Popover */}
-      <Popover className="relative">
-        <PopoverButton
+      <Popover className="relative">        <PopoverButton
           className={`inline-flex items-center gap-x-1 text-sm font-semibold py-5 border-b-2 transition-all ${
-            pathname.includes("/compliance")
+            pathname?.includes("/compliance")
               ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
               : "border-transparent text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
           }`}
@@ -242,9 +237,8 @@ export default function TopNav({ locale }: Props) {
         </PopoverPanel>
       </Popover>{" "}
       <Link
-        href={`/${locale}/about`}
-        className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
-          pathname.includes("/about")
+        href={`/${locale}/about`}        className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
+          pathname?.includes("/about")
             ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
             : "border-transparent"
         }`}

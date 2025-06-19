@@ -207,14 +207,13 @@ export default function NavbarContent({ user: _user, locale, messages }: Props) 
                     </svg>
                   </button>
                   {langSwitcherMenuOpen && (
-                    <Menu ref={langSwitcherMenuRef} aria-labelledby="lang-switcher-menu-button" align="right">
-                      <MenuItem href={`/en/${pathname.split("/").slice(2).join("/")}`} active={locale === "en"}>
+                    <Menu ref={langSwitcherMenuRef} aria-labelledby="lang-switcher-menu-button" align="right">                      <MenuItem href={`/en/${pathname ? pathname.split("/").slice(2).join("/") : ""}`} active={locale === "en"}>
                         <FormattedMessage id="common.language-switcher" values={{ locale: "en" }} />
                       </MenuItem>
-                      <MenuItem href={`/fr/${pathname.split("/").slice(2).join("/")}`} active={locale === "fr"}>
+                      <MenuItem href={`/fr/${pathname ? pathname.split("/").slice(2).join("/") : ""}`} active={locale === "fr"}>
                         <FormattedMessage id="common.language-switcher" values={{ locale: "fr" }} />
                       </MenuItem>
-                      <MenuItem href={`/es/${pathname.split("/").slice(2).join("/")}`} active={locale === "es"}>
+                      <MenuItem href={`/es/${pathname ? pathname.split("/").slice(2).join("/") : ""}`} active={locale === "es"}>
                         <FormattedMessage id="common.language-switcher" values={{ locale: "es" }} />
                       </MenuItem>
                     </Menu>

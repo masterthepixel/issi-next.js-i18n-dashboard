@@ -3,6 +3,7 @@ import Content from "@/components/Content";
 import FooterWrapper from "@/components/FooterWrapper";
 import MobileFloatingMenu from "@/components/MobileFloatingMenu";
 import Navbar from "@/components/Navbar";
+import UniversalBreadcrumb from "@/components/UniversalBreadcrumb";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import React from 'react';
 
@@ -27,6 +28,7 @@ interface Props {
 export default async function Root({ params, children }: Props) {
   const user = await getUser();
   const intl = await getIntl(params.lang);
+  const messages = (await import(`../../lang/${params.lang}.json`)).default;
   
   const navigationItems = [
     {
@@ -85,6 +87,14 @@ export default async function Root({ params, children }: Props) {
       </head>      <body className="relative min-h-screen overflow-y-auto grid-background-with-fade flex flex-col">        <ThemeProvider>
           <AnimatedBackground />
           <Navbar locale={params.lang} user={user} />
+          
+          {/* Universal Breadcrumb - automatically handles homepage exclusion */}
+          <UniversalBreadcrumb 
+            lang={params.lang} 
+            messages={messages}
+            className="relative z-10"
+          />
+          
           <Content>{children}</Content>
           <FooterWrapper locale={params.lang} />
           <MobileFloatingMenu items={navigationItems} />

@@ -1,7 +1,13 @@
 "use client";
 
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
-import GeoGlobeInspira from './GeoGlobeInspira';
+import dynamic from 'next/dynamic';
+
+// Dynamic import with SSR disabled to prevent window errors
+const GeoGlobeInspira = dynamic(() => import('./GeoGlobeInspira'), {
+  ssr: false,
+  loading: () => <div className="w-20 h-20 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 animate-pulse" />
+});
 
 interface BreadcrumbItem {
   label: string;

@@ -132,9 +132,8 @@ export const FloatingNav = ({
           className
         )}
         onMouseLeave={handleDropdownClose}
-      >
-        {navItems.map((navItem: any, idx: number) => {
-          const isActive = pathname.includes(navItem.link.split('/').pop());
+      >        {navItems.map((navItem: any, idx: number) => {
+          const isActive = pathname?.includes(navItem.link.split('/').pop()) || false;
           const hasDropdown = navItem.name === "Compliance";
           
           if (hasDropdown) {

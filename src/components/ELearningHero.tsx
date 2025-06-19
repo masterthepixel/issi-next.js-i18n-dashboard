@@ -6,10 +6,9 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { FormattedMessage, useIntl } from "react-intl";
 
-export default function ELearningHero() {
-  const intl = useIntl();
+export default function ELearningHero() {  const intl = useIntl();
   const params = useParams();
-  const locale = params.lang as string;
+  const locale = (params?.lang as string) || 'en';
   return (
     <div className="relative">
       <div className="mx-auto max-w-7xl lg:flex lg:justify-between lg:px-8 xl:justify-end">        <div className="lg:flex lg:w-1/2 lg:shrink lg:grow-0 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">

@@ -1,7 +1,6 @@
-import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { vi, describe, it, expect, beforeEach } from 'vitest';
 import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import BreadcrumbWithGlobe from '../BreadcrumbWithGlobe';
 
 // Mock the GeoGlobeInspira component since it uses Three.js

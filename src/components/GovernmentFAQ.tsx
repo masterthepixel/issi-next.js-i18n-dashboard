@@ -6,10 +6,9 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-export default function GovernmentFAQ() {
-  const intl = useIntl();
+export default function GovernmentFAQ() {  const intl = useIntl();
   const params = useParams();
-  const locale = params.lang as string;
+  const locale = (params?.lang as string) || 'en';
 
   const faqKeys = [
     'government.faq.naics.question',

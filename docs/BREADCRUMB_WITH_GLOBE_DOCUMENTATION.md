@@ -20,18 +20,21 @@ The `BreadcrumbWithGlobe` component is an advanced, SEO-optimized navigation com
 ## Features
 
 ### ✨ **Visual Features**
+
 - **3D Globe Integration**: Inspira UI-style animated globe with enhanced lighting
 - **Responsive Positioning**: Perfect mobile/desktop positioning with natural scrolling
 - **Visual Hierarchy**: Globe positioned behind text for optimal layering
 - **Animated Arcs**: Smooth arc animations without data points or legends
 
 ### 🔍 **SEO Features**
+
 - **JSON-LD Structured Data**: Complete BreadcrumbList schema implementation
 - **Schema.org Microdata**: Enhanced search engine understanding
 - **Multilingual SEO**: Language-specific metadata and structured data
 - **Semantic HTML**: Proper heading hierarchy and navigation markup
 
 ### ♿ **Accessibility Features**
+
 - **ARIA Labels**: Descriptive navigation labels for screen readers
 - **Semantic Navigation**: Proper `<nav>`, `<ol>`, and `<li>` structure
 - **Keyboard Navigation**: Full keyboard accessibility support
@@ -128,6 +131,7 @@ const breadcrumbStructuredData = {
 ## Responsive Design
 
 ### **Mobile Layout (< 640px)**
+
 ```css
 /* Globe positioning */
 .globe-container {
@@ -150,6 +154,7 @@ const breadcrumbStructuredData = {
 ```
 
 ### **Desktop Layout (≥ 640px)**
+
 ```css
 /* Globe positioning */
 .globe-container {
@@ -172,7 +177,9 @@ const breadcrumbStructuredData = {
 ```
 
 ### **Container Consistency**
+
 All major containers use unified styling:
+
 ```css
 .container {
   max-width: 80rem; /* max-w-7xl */
@@ -186,6 +193,7 @@ All major containers use unified styling:
 ### **Language Support**
 
 **English (en.json)**
+
 ```json
 {
   "breadcrumb.home": "Home",
@@ -197,6 +205,7 @@ All major containers use unified styling:
 ```
 
 **French (fr.json)**
+
 ```json
 {
   "breadcrumb.home": "Accueil",
@@ -208,6 +217,7 @@ All major containers use unified styling:
 ```
 
 **Spanish (es.json)**
+
 ```json
 {
   "breadcrumb.home": "Inicio",
@@ -289,24 +299,28 @@ const complexBreadcrumb = [
 ## Testing Strategy
 
 ### **Unit Tests**
+
 - Component rendering with various props
 - Breadcrumb item generation and display
 - Internationalization key resolution
 - Accessibility attribute verification
 
 ### **Integration Tests**
+
 - Globe component integration
 - Responsive behavior across breakpoints
 - SEO structured data validation
 - Multi-language functionality
 
 ### **E2E Tests**
+
 - Navigation flow through breadcrumb links
 - Mobile/desktop layout switching
 - Screen reader interaction testing
 - Search engine crawling simulation
 
 ### **Performance Tests**
+
 - Globe rendering performance
 - Memory leak detection
 - Animation frame rate monitoring
