@@ -1068,5 +1068,11 @@
   "services.items.itTraining.title": "Formation IT",
   "services.items.itTraining.description": "Programmes de formation technologique complets personnalisés pour améliorer les compétences et la productivité de votre équipe.",
   "services.items.infrastructureManagement.title": "Gestion d'Infrastructure",
-  "services.items.infrastructureManagement.description": "Gestion de bout en bout des composants d'infrastructure IT assurant fiabilité, évolutivité et performance."
+  "services.items.infrastructureManagement.description": "Gestion de bout en bout des composants d'infrastructure IT assurant fiabilité, évolutivité et performance.",
+  "newhero.announcement.badge": "Nouveauté",
+  "newhero.announcement.text": "Nous venons de livrer la v2.0",
+  "newhero.title": "Déployez dans le cloud en toute confiance",
+  "newhero.description": "Solutions <innovativeTechnology>technologiques gouvernementales</innovativeTechnology> de pointe avec sécurité <enterprise>de niveau entreprise</enterprise>, conformité et évolutivité. Approuvé par les <government>agences du monde entier</government> pour les applications critiques.",
+  "newhero.cta.get-started": "Commencer",
+  "newhero.cta.learn-more": "En savoir plus"
 }
