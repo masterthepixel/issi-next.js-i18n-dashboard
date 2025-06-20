@@ -4,17 +4,13 @@
 // This file demonstrates how to use the ISSI TypeScript library
 // Copy these patterns to your components for type safety
 
-import { 
-  Language, 
-  BreadcrumbItem, 
-  UniversalBreadcrumbProps,
-  GlobeConfig,
-  BentoGridItem,
-  CardProps,
-  Messages,
-  Product,
-  Service
-} from '@/types';
+import {
+    BentoGridItem,
+    BreadcrumbItem,
+    CardProps,
+    GlobeConfig,
+    UniversalBreadcrumbProps
+} from '@/types/index';
 
 // ==========================================
 // 🧭 Breadcrumb Usage Examples
@@ -240,7 +236,7 @@ const createBreadcrumbItems = (pathSegments: string[], lang: Language): Breadcru
 /**
  * Example: Generic type-safe API response handler
  */
-const handleApiResponse = <T>(response: any): T | null => {
+const handleApiResponse = <T,>(response: any): T | null => {
   try {
     // TypeScript will enforce the return type matches T
     return response.data as T;
@@ -306,17 +302,8 @@ const createTypedComponent = <T extends Record<string, any>>(
 */
 
 export {
-  MyBreadcrumb,
-  TypeSafeBreadcrumb,
-  MyGlobe,
-  ProductCard,
-  TypeSafeTranslation,
-  createGlobeConfig,
-  createBentoItem,
-  createProduct,
-  createService,
-  isValidLanguage,
-  createBreadcrumbItems,
-  handleApiResponse,
-  createTypedComponent
+    createBentoItem, createBreadcrumbItems, createGlobeConfig, createProduct,
+    createService, createTypedComponent, handleApiResponse, isValidLanguage, MyBreadcrumb, MyGlobe,
+    ProductCard, TypeSafeBreadcrumb, TypeSafeTranslation
 };
+

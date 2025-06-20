@@ -1,14 +1,7 @@
 "use client";
 
-import dynamic from 'next/dynamic';
 import { HiHome } from 'react-icons/hi2';
 import { FormattedMessage, useIntl } from 'react-intl';
-
-// Dynamic import with SSR disabled to prevent window errors
-const GeoGlobeInspira = dynamic(() => import('./GeoGlobeInspira'), {
-  ssr: false,
-  loading: () => <div className="w-20 h-20 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 animate-pulse" />
-});
 
 interface BreadcrumbItem {
   label: string;
@@ -30,21 +23,14 @@ export default function BreadcrumbWithGlobe({
   items, 
   title, 
   description = "Explore our comprehensive solutions and services designed to meet your organization's technology needs.",
-  backLabel = "Back", 
-  backHref = "/",
+  _backLabel = "Back", 
+  _backHref = "/",
   lang = "en",
   baseUrl = "https://issi.com"
 }: BreadcrumbWithGlobeProps) {
   
-  // Check if we're in an IntlProvider context
-  let intl;
-  try {
-    intl = useIntl();
-  } catch (error) {
-    // Fallback if no IntlProvider available
-    console.warn('BreadcrumbWithGlobe: No IntlProvider found, using fallback text');
-    intl = null;
-  }
+  // Use useIntl hook safely - always call it
+  const intl = useIntl();
   
   // Generate structured data for breadcrumbs (SEO)
   const breadcrumbStructuredData = {
@@ -174,12 +160,10 @@ export default function BreadcrumbWithGlobe({
                   )} <span aria-hidden="true">→</span>
                 </a>
               </div>
-              </div>
-
-              {/* Globe container - right side */}
+              </div>              {/* Content area - right side */}
               <div className="flex-shrink-0 lg:-mt-36 overflow-visible">
                 <div className="w-304 h-[300px] lg:w-[520px] lg:h-[390px] xl:w-[650px] xl:h-[488px]">
-                  <GeoGlobeInspira className="w-full h-full" />
+                  {/* Empty space where globe content was */}
                 </div>
               </div>
             </div>
