@@ -2,7 +2,7 @@
 import useOutsideClick from "@/hooks/useOutsideClick";
 import { cn } from "@/lib/utils";
 import { IconArrowNarrowLeft, IconArrowNarrowRight, IconX } from "@tabler/icons-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 

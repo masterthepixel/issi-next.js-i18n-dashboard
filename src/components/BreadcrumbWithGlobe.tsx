@@ -45,7 +45,6 @@ export default function BreadcrumbWithGlobe({
       ...(item.href && { "item": `${baseUrl}${item.href}` })
     }))
   };
-
   return (
     <div>
       {/* JSON-LD Structured Data for SEO */}
@@ -56,7 +55,9 @@ export default function BreadcrumbWithGlobe({
         }}
       />
       
-      <div>        {/* Mobile back button */}
+      {/* Main container with max-w-7xl constraint */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Mobile back button */}
         <nav aria-label="Back navigation" className="sm:hidden">
           <a 
             href={backHref} 
@@ -68,9 +69,11 @@ export default function BreadcrumbWithGlobe({
             <span itemProp="name">{backLabel}</span>
           </a>
         </nav>
-          {/* Desktop breadcrumb */}
+        
+        {/* Desktop breadcrumb */}
         <nav aria-label="Breadcrumb navigation" className="hidden sm:flex" itemScope itemType="https://schema.org/BreadcrumbList">
-          <ol role="list" className="flex items-center space-x-2">            {items.map((item, index) => (
+          <ol role="list" className="flex items-center space-x-2">
+            {items.map((item, index) => (
               <li key={index} itemScope itemType="https://schema.org/ListItem" itemProp="itemListElement">
                 <div className={`flex ${index > 0 ? 'items-center' : ''}`}>
                   {index > 0 && (
@@ -101,18 +104,27 @@ export default function BreadcrumbWithGlobe({
               </li>
             ))}
           </ol>
-        </nav>      </div>      <div className="mt-4 relative">
-        <div className="min-w-0 flex-1 pr-2 relative z-10">
-          <h1 className="text-3xl font-semibold tracking-tight text-balance text-slate-900 dark:text-white lg:text-4xl" 
-              itemProp="headline"
-              itemScope 
-              itemType="https://schema.org/WebPage">
-            {title}
-          </h1>
-        </div>{/* GeoGlobe Component - positioned absolute to scroll with content */}
-        <div className="absolute -top-48 right-0 sm:-top-48 z-0 pointer-events-none">
-          <div className="w-[600px] h-[400px] lg:w-[920px] lg:h-[575px] transform translate-x-[40%] sm:translate-x-[25%]">
-            <GeoGlobeInspira className="w-full h-full" />
+        </nav>
+      </div>        {/* Title section with globe */}
+      <div className="mt-4 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            {/* Text content - left side */}
+            <div className="flex-1 min-w-0 max-w-2xl">
+              <h1 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white lg:text-4xl" 
+                  itemProp="headline"
+                  itemScope 
+                  itemType="https://schema.org/WebPage">
+                {title}
+              </h1>
+            </div>
+            
+            {/* Globe container - right side */}
+            <div className="hidden lg:block flex-shrink-0 ml-8">
+              <div className="w-[400px] h-[300px] xl:w-[500px] xl:h-[375px]">
+                <GeoGlobeInspira className="w-full h-full" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
