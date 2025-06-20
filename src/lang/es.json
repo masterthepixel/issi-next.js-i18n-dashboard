@@ -4,6 +4,8 @@
   "breadcrumb.back": "Atrás",
   "breadcrumb.seo.description": "Navega por las secciones del sitio web de ISSI",
   "breadcrumb.seo.keywords": "navegación, migas de pan, ISSI, software, tecnología",
+  "breadcrumb.actions.contact": "Contáctanos",
+  "breadcrumb.actions.learn-more": "Saber más",
   "services.page.title": "Servicios y Soluciones de TI",
   "common.language-switcher": "{locale, select, en {English} fr {Français} es {Español} other {Unknown}}",
   "common.navigation.discover": "Descubrir",

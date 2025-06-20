@@ -4,6 +4,8 @@
   "breadcrumb.back": "Retour",
   "breadcrumb.seo.description": "Naviguez dans les sections du site web d'ISSI",
   "breadcrumb.seo.keywords": "navigation, fil d'ariane, ISSI, logiciel, technologie",
+  "breadcrumb.actions.contact": "Contactez-nous",
+  "breadcrumb.actions.learn-more": "En savoir plus",
   "services.page.title": "Services et Solutions IT",
   "common.language-switcher": "{locale, select, en {English} fr {Français} es {Español} other {Unknown}}",
   "common.navigation.discover": "Découvrir",

@@ -5,6 +5,7 @@ import { isHomepage } from '@/utils/breadcrumbUtils';
 import { SmartBreadcrumbGenerator, type BreadcrumbItem, type BreadcrumbStructuredData, type PageSEOData } from '@/utils/smartBreadcrumbGenerator';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { IntlProvider } from 'react-intl';
 import BreadcrumbWithGlobe from './BreadcrumbWithGlobe';
 
 interface UniversalBreadcrumbProps {
@@ -128,17 +129,16 @@ export const UniversalBreadcrumb = ({
         <meta name="description" content={breadcrumbData.seoData.description} />
         <meta name="keywords" content={breadcrumbData.seoData.keywords} />
         <link rel="canonical" href={breadcrumbData.seoData.canonical} />
-      </div>
-
-      {/* Breadcrumb Component with Globe */}
-      <BreadcrumbWithGlobe
-        items={breadcrumbData.items}
-        title={breadcrumbData.currentPageTitle}
-        backLabel={messages?.nav?.home || 'Home'}
-        backHref={`/${lang}`}
-        lang={lang}
-        baseUrl="https://issi.com"
-      />
+      </div>      {/* Breadcrumb Component with Globe */}
+      <IntlProvider locale={lang} messages={messages}>
+        <BreadcrumbWithGlobe
+          items={breadcrumbData.items}
+          title={breadcrumbData.currentPageTitle}
+          description={breadcrumbData.seoData.description}
+          backLabel={messages?.nav?.home || 'Home'}
+          backHref={`/${lang}`}
+        />
+      </IntlProvider>
     </div>
   );
 };

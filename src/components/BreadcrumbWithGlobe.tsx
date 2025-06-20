@@ -1,7 +1,8 @@
 "use client";
 
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import dynamic from 'next/dynamic';
+import { HiHome } from 'react-icons/hi2';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 // Dynamic import with SSR disabled to prevent window errors
 const GeoGlobeInspira = dynamic(() => import('./GeoGlobeInspira'), {
@@ -18,6 +19,7 @@ interface BreadcrumbItem {
 interface BreadcrumbWithGlobeProps {
   items: BreadcrumbItem[];
   title: string;
+  description?: string;
   backLabel?: string;
   backHref?: string;
   lang?: string;
@@ -27,11 +29,22 @@ interface BreadcrumbWithGlobeProps {
 export default function BreadcrumbWithGlobe({ 
   items, 
   title, 
+  description = "Explore our comprehensive solutions and services designed to meet your organization's technology needs.",
   backLabel = "Back", 
   backHref = "/",
   lang = "en",
   baseUrl = "https://issi.com"
 }: BreadcrumbWithGlobeProps) {
+  
+  // Check if we're in an IntlProvider context
+  let intl;
+  try {
+    intl = useIntl();
+  } catch (error) {
+    // Fallback if no IntlProvider available
+    console.warn('BreadcrumbWithGlobe: No IntlProvider found, using fallback text');
+    intl = null;
+  }
   
   // Generate structured data for breadcrumbs (SEO)
   const breadcrumbStructuredData = {
@@ -44,90 +57,135 @@ export default function BreadcrumbWithGlobe({
       "name": item.label,
       ...(item.href && { "item": `${baseUrl}${item.href}` })
     }))
-  };
-  return (
-    <div>
-      {/* JSON-LD Structured Data for SEO */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbStructuredData),
-        }}
-      />
-      
-      {/* Main container with max-w-7xl constraint */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Mobile back button */}
-        <nav aria-label="Back navigation" className="sm:hidden">
-          <a 
-            href={backHref} 
-            className="flex items-center text-sm font-medium text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"
-            rel="prev"
-            itemProp="url"
-          >
-            <ChevronLeftIcon aria-hidden="true" className="mr-1 -ml-1 size-5 shrink-0 text-slate-400 dark:text-slate-500" />
-            <span itemProp="name">{backLabel}</span>
-          </a>
-        </nav>
-        
-        {/* Desktop breadcrumb */}
-        <nav aria-label="Breadcrumb navigation" className="hidden sm:flex" itemScope itemType="https://schema.org/BreadcrumbList">
-          <ol role="list" className="flex items-center space-x-2">
-            {items.map((item, index) => (
-              <li key={index} itemScope itemType="https://schema.org/ListItem" itemProp="itemListElement">
-                <div className={`flex ${index > 0 ? 'items-center' : ''}`}>
-                  {index > 0 && (
-                    <ChevronRightIcon aria-hidden="true" className="size-4 shrink-0 text-slate-400 dark:text-slate-500" />
-                  )}
-                  {item.href ? (
-                    <a 
-                      href={item.href} 
-                      className={`${index > 0 ? 'ml-2' : ''} text-sm font-medium text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300`}
-                      aria-current={item.isActive ? "page" : undefined}
-                      itemProp="item"
-                      itemScope 
-                      itemType="https://schema.org/WebPage"
-                    >
-                      <span itemProp="name">{item.label}</span>
-                    </a>
-                  ) : (
-                    <span 
-                      className={`${index > 0 ? 'ml-2' : ''} text-sm font-medium text-slate-500 dark:text-slate-400`}
-                      aria-current={item.isActive ? "page" : undefined}
-                      itemProp="name"
-                    >
-                      {item.label}
-                    </span>
-                  )}
-                  <meta itemProp="position" content={String(index + 1)} />
-                </div>
-              </li>
-            ))}
-          </ol>
-        </nav>
-      </div>        {/* Title section with globe */}
-      <div className="mt-4 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            {/* Text content - left side */}
-            <div className="flex-1 min-w-0 max-w-2xl">
-              <h1 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white lg:text-4xl" 
+  };  return (
+    <div className="">
+      <main>
+        {/* JSON-LD Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(breadcrumbStructuredData),
+          }}
+        />        {/* Breadcrumb section */}
+        <div className="relative isolate overflow-visible">
+          <div className="absolute top-10 left-[calc(50%-4rem)] -z-10 transform-gpu blur-3xl sm:left-[calc(50%-18rem)] lg:top-[calc(50%-30rem)] lg:left-48 xl:left-[calc(50%-24rem)]" aria-hidden="true">
+          </div>
+          
+          <div className="mx-auto max-w-7xl px-4 lg:px-8">
+            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between w-full overflow-visible">
+              {/* Left side - Breadcrumb */}              <div className="flex-shrink-0">
+                {/* Breadcrumb navigation - HIDDEN FOR NOW */}
+                <nav aria-label="Breadcrumb" className="hidden flex" itemScope itemType="https://schema.org/BreadcrumbList">
+                  <ol role="list" className="flex space-x-4 rounded-md bg-white px-6 shadow-sm">
+                    {items.map((item, index) => (
+                      <li key={index} className="flex" itemScope itemType="https://schema.org/ListItem" itemProp="itemListElement">
+                        {index === 0 ? (
+                          // First item (Home) - with home icon
+                          <div className="flex items-center">
+                            {item.href ? (
+                              <a 
+                                href={item.href}
+                                className="text-gray-400 hover:text-gray-500"
+                                itemProp="item"
+                                itemScope 
+                                itemType="https://schema.org/WebPage"
+                              >
+                                <HiHome aria-hidden="true" className="size-5 shrink-0" />
+                                <span className="sr-only" itemProp="name">{item.label}</span>
+                              </a>
+                            ) : (
+                              <div className="text-gray-400">
+                                <HiHome aria-hidden="true" className="size-5 shrink-0" />
+                                <span className="sr-only" itemProp="name">{item.label}</span>
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          // Other items - with separator
+                          <div className="flex items-center">
+                            <svg
+                              fill="currentColor"
+                              viewBox="0 0 24 44"
+                              preserveAspectRatio="none"
+                              aria-hidden="true"
+                              className="h-full w-6 shrink-0 text-gray-200"
+                            >
+                              <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
+                            </svg>
+                            {item.href ? (
+                              <a
+                                href={item.href}
+                                aria-current={item.isActive ? 'page' : undefined}
+                                className="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700"
+                                itemProp="item"
+                                itemScope 
+                                itemType="https://schema.org/WebPage"
+                              >
+                                <span itemProp="name">{item.label}</span>
+                              </a>
+                            ) : (
+                              <span 
+                                aria-current={item.isActive ? 'page' : undefined}
+                                className="ml-4 text-sm font-medium text-gray-500"
+                                itemProp="name"
+                              >
+                                {item.label}
+                              </span>
+                            )}
+                          </div>
+                        )}
+                        <meta itemProp="position" content={String(index + 1)} />
+                      </li>
+                    ))}                  </ol>
+                </nav>
+              
+              {/* Page title - HIDDEN */}
+              <h1 className="hidden mt-4 text-xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-white sm:text-2xl"
                   itemProp="headline"
                   itemScope 
                   itemType="https://schema.org/WebPage">
                 {title}
               </h1>
-            </div>
-            
-            {/* Globe container - right side */}
-            <div className="hidden lg:block flex-shrink-0 ml-8">
-              <div className="w-[400px] h-[300px] xl:w-[500px] xl:h-[375px]">
-                <GeoGlobeInspira className="w-full h-full" />
+                {/* Page description - auto-generated SEO content - HIDDEN */}
+              <p className="hidden mt-2 text-lg font-medium text-pretty text-slate-900/80 dark:text-slate-300/80 sm:text-xl/8">
+                {description}
+              </p>              {/* Action buttons - HIDDEN */}
+              <div className="hidden mt-4 flex items-center gap-x-6">
+                <a 
+                  href="#contact" 
+                  className="rounded-md bg-blue-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-green-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400"
+                  title="Contact ISSI for more information"
+                  aria-label="Contact us to learn more about our services"
+                >
+                  {intl ? (
+                    <FormattedMessage id="breadcrumb.actions.contact" defaultMessage="Contact Us" />
+                  ) : (
+                    "Contact Us"
+                  )}
+                </a>
+                <a 
+                  href="#learn-more" 
+                  className="text-sm/6 font-semibold text-slate-900 dark:text-white"
+                  title="Learn more about our services and solutions"                  aria-label="Learn more about ISSI services and solutions"
+                >
+                  {intl ? (
+                    <FormattedMessage id="breadcrumb.actions.learn-more" defaultMessage="Learn more" />
+                  ) : (                    "Learn more"
+                  )} <span aria-hidden="true">→</span>
+                </a>
+              </div>
+              </div>
+
+              {/* Globe container - right side */}
+              <div className="flex-shrink-0 lg:-mt-36 overflow-visible">
+                <div className="w-304 h-[300px] lg:w-[520px] lg:h-[390px] xl:w-[650px] xl:h-[488px]">
+                  <GeoGlobeInspira className="w-full h-full" />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
