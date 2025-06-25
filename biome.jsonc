@@ -1,0 +1,87 @@
+{
+    "$schema": "https://biomejs.dev/schemas/2.0.5/schema.json",
+    "extends": [
+        "ultracite"
+    ],
+    "files": {
+        "ignoreUnknown": true,
+        "includes": [
+            "src/**/*.ts",
+            "src/**/*.tsx",
+            "src/**/*.js",
+            "src/**/*.jsx"
+        ],
+        "ignore": [
+            "src/**/*.d.ts",
+            "**/*.config.*",
+            "**/node_modules/**",
+            "**/.next/**",
+            "**/dist/**",
+            "**/build/**"
+        ]
+    },
+    "organizeImports": {
+        "enabled": true
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            // Critical correctness issues - keep as errors
+            "correctness": {
+                "noUnreachableCode": "error",
+                "noSwitchDeclarations": "error",
+                "noUndeclaredVariables": "error",
+                "noUnusedLabels": "error",
+                "useValidForDirection": "error",
+                // Gradual adoption - warnings for now
+                "noUnusedVariables": "warn",
+                "noUnusedImports": "warn",
+                "noUnusedPrivateClassMembers": "warn"
+            },
+            // Security and suspicious patterns - mostly warnings
+            "suspicious": {
+                "noDebugger": "error",
+                "noConsoleLog": "warn",
+                "noArrayIndexKey": "warn",
+                "noExplicitAny": "warn",
+                "noDuplicateObjectKeys": "error",
+                "noDuplicateParameters": "error"
+            },
+            // Style rules - all warnings for gradual adoption
+            "style": {
+                "noNonNullAssertion": "warn",
+                "useConst": "warn",
+                "useTemplate": "warn",
+                "noVar": "warn",
+                "useArrowFunction": "warn",
+                "noParameterAssign": "warn"
+            },
+            // Performance - warnings
+            "performance": {
+                "noDelete": "warn"
+            },
+            // Complexity - warnings for now
+            "complexity": {
+                "noBannedTypes": "warn",
+                "noUselessConstructor": "warn",
+                "noUselessFragments": "warn"
+            },
+            // Nursery rules - off for now to reduce noise
+            "nursery": {}
+        }
+    },
+    "formatter": {
+        "enabled": true,
+        "indentStyle": "space",
+        "indentWidth": 2,
+        "lineWidth": 100,
+        "lineEnding": "lf"
+    },
+    "javascript": {
+        "formatter": {
+            "quoteStyle": "double",
+            "semicolons": "always",
+            "trailingCommas": "es5"
+        }
+    }
+}

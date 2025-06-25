@@ -186,6 +186,12 @@ This project includes comprehensive instructions and guides for all major develo
 - **BENTOGRID_CREATION_GUIDE.md** – Complete guide for creating and localizing BentoGrid components
 - **TROUBLESHOOTING.md** – Solutions for common i18n issues and error resolution
 - **JSON_VALIDATION_GUIDE.md** – JSON validation, linting, and best practices
+- **FUTURE_FEATURES.md** – Roadmap of planned enhancements and future features
+
+### UI Components
+
+- **MOBILE_FLOATING_MENU_DOCUMENTATION.md** – Implementation details for the mobile bottom navigation dock
+- **UNIVERSAL_BREADCRUMB_DOCUMENTATION.md** – Documentation for the automatic breadcrumb system
 
 ### Design & Theming
 

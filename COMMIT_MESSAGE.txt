@@ -1,22 +1,25 @@
-fix(i18n): Add complete Terms page translations and improve legal page UI
+feat(ui): enhance GovernmentClients with alternating marquee directions
 
-• Added missing Terms/License translations
-  - Added complete English translations for Terms of Service page
-  - Fixed all license.* translation keys that were missing in English
-  - Added comprehensive section content including introduction, definitions, 
-    cookies policy, hyperlinking guidelines, and legal disclaimers
-  - English Terms page now displays correctly in all sections
+• Implemented alternating scroll directions for visual engagement
+  - Modified marquee rows to alternate between left-to-right and right-to-left
+  - First row scrolls left, second row right, third row left, etc.
+  - Adjusted velocity values to create natural, varied animation speeds
+  - Added code comments explaining the velocity-direction relationship
 
-• Improved legal page user interface
-  - Removed decorative headers from Privacy, Terms, and License pages
-  - Eliminated unnecessary profile images, avatars, and action buttons
-  - Streamlined layout to focus entirely on legal content
-  - Enhanced readability and professional appearance
+• Reduced vertical spacing for a more compact presentation
+  - Decreased space-y-2 to space-y-0.5 between marquee rows
+  - Reduced vertical padding in ScrollTextMarquee component from py-3 to py-1.5
+  - Adjusted badge padding from py-1/py-2 to py-0.5/py-1.5 for smaller height
+  - Maintained readable text and visual distinctions between rows
+
+• Preserved accessibility features
+  - Maintained pause/play controls for user preference
+  - Kept reduced motion support for users with vestibular disorders
+  - Retained informational hint text about hover controls
 
 • Updated documentation
-  - Updated CHANGELOG.md with all recent improvements
-  - Documented UI changes and translation fixes
-  - Fixed JSX namespace usage in apple-cards-carousel component
+  - Updated CHANGELOG.md with all UI enhancements
+  - Documented alternating direction implementation and spacing improvements
 
 • Updated ESLint configuration
   - Modified rules to turn build-blocking errors into warnings
