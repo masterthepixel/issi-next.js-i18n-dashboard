@@ -15,6 +15,8 @@ interface BreadcrumbWithGlobeProps {
   description?: string;
   backLabel?: string;
   backHref?: string;
+  _backLabel?: string;
+  _backHref?: string;
   lang?: string;
   baseUrl?: string;
 }

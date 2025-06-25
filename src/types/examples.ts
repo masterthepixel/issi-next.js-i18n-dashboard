@@ -9,12 +9,34 @@ import {
     BreadcrumbItem,
     CardProps,
     GlobeConfig,
-    Language,
-    Messages,
-    Product,
-    Service,
+    ISSILanguage as Language,
+    ISSIMessages as Messages,
     UniversalBreadcrumbProps
 } from './index';
+
+// Temporary type definitions for examples (these should be moved to proper type files)
+interface Product {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  featured?: boolean;
+  size?: string;
+}
+
+interface Service {
+  id: string;
+  title: string;
+  description: string;
+  category?: string;
+  features?: string[];
+  pricing?: {
+    basic?: number;
+    premium?: number;
+    type?: string;
+    description?: string;
+  };
+}
 
 // Note: For React component examples, see the documentation
 // This file focuses on pure TypeScript usage patterns

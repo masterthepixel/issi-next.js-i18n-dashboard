@@ -15,11 +15,14 @@ International Software Systems International (ISSI) is a company specializing in
 This Next.js application features:
 
 - **Multilingual Support**: Website content is available in multiple languages including English, Spanish, and French
-- **Modern UI**: Responsive design with interactive components
+- **Modern UI**: Responsive design with interactive components and BentoGrid layouts
 - **Dashboard Interface**: Organized presentation of company information and services
 - **App Router**: Utilizes Next.js App Router for efficient routing and navigation
 - **Universal Breadcrumb System**: Automatic navigation with 3D globe integration
 - **Enterprise SEO**: Comprehensive structured data and metadata optimization
+- **Product Showcase**: Dedicated ProductDetailsPage component with i18n support
+- **Type Safety**: Full TypeScript integration with comprehensive type definitions
+- **Accessibility**: WCAG-compliant components with ARIA labels and screen reader support
 
 ## ✨ Featured: Universal Breadcrumb System
 
@@ -51,13 +54,24 @@ touch src/app/[lang]/my-feature/page.tsx
 
 ## Technology Stack
 
-- **Framework**: Next.js 14.2+
-- **Styling**: Tailwind CSS
+- **Framework**: Next.js 14.2+ with App Router
+- **Language**: TypeScript with strict type checking
+- **Styling**: Tailwind CSS with custom design system
+- **UI Components**: 
+  - Custom BentoGrid layouts
+  - 3D Globe integration with Three.js
+  - Headless UI for accessible interactions
 - **Internationalization**:
-  - @formatjs/intl
-  - react-intl
+  - @formatjs/intl for message formatting
+  - react-intl for React integration
+  - Custom automatic translation system
+- **3D Graphics**: 
+  - Three.js and React Three Fiber
+  - Cobe for interactive globe rendering
 - **State Management**: React context and hooks
+- **Testing**: Vitest with Testing Library
 - **Package Manager**: pnpm
+- **Code Quality**: ESLint with custom rules and JSON validation
 
 ## Getting Started
 
@@ -111,18 +125,28 @@ To add or modify translations, edit the JSON files in the language directories.
 
 ## Project Structure
 
-```
+```text
 issi-next.js-i18n-dashboard/
-├── public/           # Static assets
+├── public/                    # Static assets and images
 ├── src/
-│   ├── app/          # App Router pages
-│   ├── components/   # Reusable UI components
-│   ├── lang/         # Language/translation files
-│   ├── lib/          # Utility functions
-│   └── middleware.ts # Language detection middleware
-├── i18n-config.ts    # i18n configuration
-├── next.config.js    # Next.js configuration
-└── tailwind.config.js # Tailwind CSS configuration
+│   ├── app/                   # App Router pages and layouts
+│   │   └── [lang]/           # Language-specific routes
+│   ├── components/           # Reusable UI components
+│   │   ├── products/         # Product-specific components
+│   │   │   └── ProductDetailsPage.tsx
+│   │   ├── BreadcrumbWithGlobe.tsx
+│   │   └── ...               # Other components
+│   ├── lang/                 # Translation files (JSON)
+│   ├── lib/                  # Utility functions and helpers
+│   ├── types/                # TypeScript type definitions
+│   ├── utils/                # Utility functions
+│   └── middleware.ts         # Language detection middleware
+├── docs/                     # Documentation files
+├── scripts/                  # Build and validation scripts
+├── i18n-config.ts           # Internationalization configuration
+├── next.config.mjs          # Next.js configuration
+├── tailwind.config.ts       # Tailwind CSS configuration
+└── package.json             # Dependencies and scripts
 ```
 
 ## Deployment

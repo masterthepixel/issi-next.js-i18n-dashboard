@@ -23,18 +23,18 @@ export * as UITypes from './ui';
 
 // Breadcrumb types
 export type {
-    BreadcrumbAutoTranslationConfig, BreadcrumbGeneratorParams, BreadcrumbItem,
+    BreadcrumbAutoTranslationConfig, BreadcrumbItem,
     UniversalBreadcrumbProps
 } from './breadcrumb';
 
 // Globe types
 export type {
-    GlobeAnimationConfig, GlobeComponentProps, GlobeConfig, GlobeSettings
+    GlobeAnimationConfig, GlobeComponentProps, GlobeConfig
 } from './globe';
 
 // UI types
 export type {
-    AnimatedBackgroundProps, BentoGridItem, ButtonProps, CardProps
+    BentoGridItem, ButtonProps, CardProps
 } from './ui';
 
 // I18n types (with prefix to avoid conflicts)
@@ -42,7 +42,7 @@ export type {
     Language as ISSILanguage,
     LanguageInfo as ISSILanguageInfo,
     Messages as ISSIMessages,
-    PageParams as ISSIPageParams
+    I18nPageParams as ISSIPageParams
 } from './i18n';
 
 // ==========================================
