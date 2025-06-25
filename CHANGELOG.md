@@ -5,7 +5,18 @@ All notable changes to the ISSI Next.js Multilingual Website will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Latest] - 2025-01-12
+## [Latest] - 2025-06-25
+
+### Added - Government Clients UI Enhancement
+
+- **ScrollTextMarquee Animation Improvements**:
+  - **Alternating Direction Scrolling**: Implemented alternating scroll directions for marquee rows
+  - **Optimized Row Spacing**: Reduced line height between rows for more compact presentation
+  - **Visual Clarification**: Added comments explaining velocity values and direction relationships
+  - **Responsive Refinements**: Adjusted padding values for better mobile and desktop display
+  - **Accessibility Preserved**: Maintained all accessibility features while improving visual design
+
+## [Previous] - 2025-01-12
 
 ### Added - Project Architecture Review and Component Implementation
 
