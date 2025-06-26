@@ -100,6 +100,7 @@ A detailed guide for addressing these issues is available in `docs/ESLINT_WARNIN
 - Reduced badge padding and made them more compact (px-3 py-1.5 instead of px-4 py-2)
 - Decreased container padding from py-4 to py-2 for tighter row arrangement
 - Changed ring styling from ring-2 to ring-1 for more subtle borders
+- Removed "Hover over a row to pause animation" text (June 29, 2025)
 
 ### Ultracite Removal (Earlier June 2025)
 

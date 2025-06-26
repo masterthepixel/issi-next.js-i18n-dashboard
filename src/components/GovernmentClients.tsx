@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { FormattedMessage } from "react-intl";
 import { InfiniteMovingBadges } from "./ui/infinite-moving-badges";
 
@@ -87,9 +86,6 @@ export default function GovernmentClients() {
           <p className="mt-4 text-lg leading-8 text-slate-600 dark:text-slate-300">
             <FormattedMessage id="government.clients.subtitle" defaultMessage="Trusted by federal, state, and local government agencies for mission-critical technology solutions." />
           </p>
-          <p className="mt-2 text-sm text-slate-500 dark:text-slate-400 italic">
-            <FormattedMessage id="common.scroll.hint" defaultMessage="Hover over a row to pause animation." />
-          </p>
         </div>
 
         <div className="mx-auto mt-8 max-w-7xl">
@@ -101,7 +97,7 @@ export default function GovernmentClients() {
               pauseOnHover={true}
               badgeClassName={getBadgeStyle}
             />
-            
+
             <InfiniteMovingBadges
               items={clientRows[1]}
               direction="left"
@@ -109,7 +105,7 @@ export default function GovernmentClients() {
               pauseOnHover={true}
               badgeClassName={getBadgeStyle}
             />
-            
+
             <InfiniteMovingBadges
               items={clientRows[2]}
               direction="right"
@@ -117,7 +113,7 @@ export default function GovernmentClients() {
               pauseOnHover={true}
               badgeClassName={getBadgeStyle}
             />
-            
+
             <InfiniteMovingBadges
               items={clientRows[3]}
               direction="left"
@@ -125,7 +121,7 @@ export default function GovernmentClients() {
               pauseOnHover={true}
               badgeClassName={getBadgeStyle}
             />
-            
+
             <InfiniteMovingBadges
               items={clientRows[4]}
               direction="right"

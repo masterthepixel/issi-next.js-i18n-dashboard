@@ -56,7 +56,7 @@ export default function ScrollBaseAnimation({
     // Measure container and content width for proper looping
     useEffect(() => {
         if (!containerRef.current || !contentRef.current) return;
-        
+
         const measureWidths = () => {
             if (!containerRef.current || !contentRef.current) return;
             setContainerWidth(containerRef.current.offsetWidth);
@@ -81,7 +81,7 @@ export default function ScrollBaseAnimation({
         }
 
         let newX = baseX.get() + moveBy;
-        
+
         // Improved looping logic - reset position when fully out of view for continuous flow
         if (baseVelocity > 0) { // Right to left
             if (newX <= -contentWidth) {
@@ -94,7 +94,7 @@ export default function ScrollBaseAnimation({
                 newX = 0;
             }
         }
-        
+
         baseX.set(newX);
     });
 
@@ -105,11 +105,11 @@ export default function ScrollBaseAnimation({
     // Calculate transform based on direction with accurate positioning
     const getTransform = (isClone = false) => {
         if (baseVelocity > 0) { // Right to left
-            return isClone 
+            return isClone
                 ? { x: useTransform(baseX, x => `calc(${x}px + ${contentWidth}px)`) }
                 : { x: baseX };
         } else { // Left to right
-            return isClone 
+            return isClone
                 ? { x: useTransform(baseX, x => `calc(${x}px - ${contentWidth}px)`) }
                 : { x: baseX };
         }
@@ -125,7 +125,7 @@ export default function ScrollBaseAnimation({
                 >
                     {children}
                 </motion.div>
-                
+
                 <motion.div
                     className={cn("flex flex-nowrap whitespace-nowrap items-center overflow-visible min-w-max", clasname || className)}
                     style={getTransform(true)}
