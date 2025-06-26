@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 
 interface InfiniteMovingBadgesProps {
-    items: string[];
+    items: string[] | { name: string; icon: React.ElementType }[];
     direction?: "left" | "right";
     speed?: "fast" | "normal" | "slow";
     pauseOnHover?: boolean;
@@ -85,7 +85,7 @@ export const InfiniteMovingBadges = ({
         <div
             ref={containerRef}
             className={cn(
-                "scroller relative z-20 overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]",
+                "scroller relative z-20 overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_5%,white_95%,transparent)]",
                 className
             )}
         >
@@ -98,21 +98,31 @@ export const InfiniteMovingBadges = ({
                     itemClassName
                 )}
             >
-                {items.map((item, idx) => (
-                    <li
-                        className="shrink-0"
-                        key={`${item}-${idx}`}
-                    >
-                        <span
-                            className={cn(
-                                "inline-flex items-center rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-base sm:text-lg font-medium whitespace-nowrap ring-1 ring-inset",
-                                badgeClassName(idx)
-                            )}
+                {items.map((item, idx) => {
+                    // Check if item is a string or an object with name and icon
+                    const isObject = typeof item !== 'string';
+                    const ItemIcon = isObject ? item.icon : null;
+                    const itemText = isObject ? item.name : item;
+
+                    return (
+                        <li
+                            className="shrink-0"
+                            key={`${isObject ? item.name : item}-${idx}`}
                         >
-                            {item}
-                        </span>
-                    </li>
-                ))}
+                            <span
+                                className={cn(
+                                    "inline-flex items-center rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-base sm:text-lg font-medium whitespace-nowrap shadow-sm backdrop-blur-md transition-colors dark:backdrop-blur-md",
+                                    badgeClassName(idx)
+                                )}
+                            >
+                                {isObject && ItemIcon && (
+                                    <ItemIcon className="h-5 w-5 mr-2 flex-shrink-0" aria-hidden="true" />
+                                )}
+                                {itemText}
+                            </span>
+                        </li>
+                    );
+                })}
             </ul>
         </div>
     );

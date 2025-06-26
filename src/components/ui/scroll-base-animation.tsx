@@ -19,7 +19,7 @@ function useGetTransform(baseX: any, contentWidth: number, baseVelocity: number,
     // Create transform value outside conditional logic to comply with React hooks rules
     const rightToLeftTransform = useTransform(baseX, x => `calc(${x}px + ${contentWidth}px)`);
     const leftToRightTransform = useTransform(baseX, x => `calc(${x}px - ${contentWidth}px)`);
-    
+
     if (baseVelocity > 0) { // Right to left
         return isClone
             ? { x: rightToLeftTransform }

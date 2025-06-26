@@ -1,56 +1,72 @@
 "use client";
 
+import {
+  AcademicCapIcon,
+  BeakerIcon,
+  BookOpenIcon,
+  BuildingLibraryIcon,
+  BuildingOfficeIcon,
+  CommandLineIcon,
+  DocumentTextIcon,
+  GlobeAmericasIcon,
+  ScaleIcon,
+  ServerIcon,
+  ShieldCheckIcon,
+  UserGroupIcon,
+  WrenchScrewdriverIcon
+} from "@heroicons/react/24/outline";
 import { FormattedMessage } from "react-intl";
 import { InfiniteMovingBadges } from "./ui/infinite-moving-badges";
 
+// Updated to include icons
 const clients = [
-  "Savannah River Nuclear Solutions",
-  "Professional Services Contract",
-  "Library of Congress",
-  "Leidos ITSSC II Contract",
-  "Food and Drug APES Contract",
-  "Anne Arundel County BPA Contract",
-  "EPTS Modernization",
-  "National LMS BPA",
-  "ECTS Implementation",
-  "DoDEA Contract",
-  "Leidos ITSSC Subcontract",
-  "NRECA Contract",
-  "CMS Contract",
-  "IBTS Contract",
-  "U.S. EPAAS Contract",
-  "SC Inc. Subcontract for CMS",
-  "SC Inc. Subcontract for DoDEA",
-  "Library of Congress LMS Contract",
-  "LMS and Maintenance Contract",
-  "NORAD/NORTHCOM",
-  "National Security Agency",
-  "S4 Inc. Subcontract for NORAD",
-  "USNORTHCOM (N2ITSM) Contract",
-  "Tarrant County Probation Office",
-  "University of Maryland Baltimore",
-  "Food and Drug Administration",
-  "U.S. Army Sam/Calm Division",
-  "U.S. Dept. of Veterans Affairs",
-  "ITS NEDC",
-  "USDA ITS/ARS PWA PBRAU",
-  "Naval Air Warfare Center",
-  "CNCS and Maintenance Contract",
-  "USDA - National IT Center",
-  "USAAC LMS Contract",
-  "U.S. Government Publishing Office",
-  "City of Goodyear Contract",
-  "Federal Communications Commission",
-  "National Security Agency Contract",
-  "Library of Congress Percipio",
-  "Florida Department of Revenue",
-  "Fairstead IT Managed Services",
-  "U.S. Army ITES-2S"
+  { name: "Savannah River Nuclear Solutions", icon: BeakerIcon },
+  { name: "Professional Services Contract", icon: BuildingOfficeIcon },
+  { name: "Library of Congress", icon: BookOpenIcon },
+  { name: "Leidos ITSSC II Contract", icon: ServerIcon },
+  { name: "Food and Drug APES Contract", icon: BeakerIcon },
+  { name: "Anne Arundel County BPA Contract", icon: BuildingOfficeIcon },
+  { name: "EPTS Modernization", icon: CommandLineIcon },
+  { name: "National LMS BPA", icon: AcademicCapIcon },
+  { name: "ECTS Implementation", icon: CommandLineIcon },
+  { name: "DoDEA Contract", icon: ShieldCheckIcon },
+  { name: "Leidos ITSSC Subcontract", icon: ServerIcon },
+  { name: "NRECA Contract", icon: BuildingOfficeIcon },
+  { name: "CMS Contract", icon: BuildingOfficeIcon },
+  { name: "IBTS Contract", icon: BuildingOfficeIcon },
+  { name: "U.S. EPAAS Contract", icon: GlobeAmericasIcon },
+  { name: "SC Inc. Subcontract for CMS", icon: BuildingOfficeIcon },
+  { name: "SC Inc. Subcontract for DoDEA", icon: AcademicCapIcon },
+  { name: "Library of Congress LMS Contract", icon: BookOpenIcon },
+  { name: "LMS and Maintenance Contract", icon: AcademicCapIcon },
+  { name: "NORAD/NORTHCOM", icon: ShieldCheckIcon },
+  { name: "National Security Agency", icon: ShieldCheckIcon },
+  { name: "S4 Inc. Subcontract for NORAD", icon: ShieldCheckIcon },
+  { name: "USNORTHCOM (N2ITSM) Contract", icon: ShieldCheckIcon },
+  { name: "Tarrant County Probation Office", icon: ScaleIcon },
+  { name: "University of Maryland Baltimore", icon: AcademicCapIcon },
+  { name: "Food and Drug Administration", icon: BeakerIcon },
+  { name: "U.S. Army Sam/Calm Division", icon: ShieldCheckIcon },
+  { name: "U.S. Dept. of Veterans Affairs", icon: UserGroupIcon },
+  { name: "ITS NEDC", icon: ServerIcon },
+  { name: "USDA ITS/ARS PWA PBRAU", icon: GlobeAmericasIcon },
+  { name: "Naval Air Warfare Center", icon: ShieldCheckIcon },
+  { name: "CNCS and Maintenance Contract", icon: WrenchScrewdriverIcon },
+  { name: "USDA - National IT Center", icon: GlobeAmericasIcon },
+  { name: "USAAC LMS Contract", icon: AcademicCapIcon },
+  { name: "U.S. Government Publishing Office", icon: DocumentTextIcon },
+  { name: "City of Goodyear Contract", icon: BuildingOfficeIcon },
+  { name: "Federal Communications Commission", icon: CommandLineIcon },
+  { name: "National Security Agency Contract", icon: ShieldCheckIcon },
+  { name: "Library of Congress Percipio", icon: BookOpenIcon },
+  { name: "Florida Department of Revenue", icon: BuildingLibraryIcon },
+  { name: "Fairstead IT Managed Services", icon: ServerIcon },
+  { name: "U.S. Army ITES-2S", icon: ShieldCheckIcon }
 ];
 
 // Split clients into 5 rows
-function splitIntoRows(items: string[], rowCount: number) {
-  const result: string[][] = [];
+function splitIntoRows(items: typeof clients, rowCount: number) {
+  const result: typeof clients[] = [];
   const itemsPerRow = Math.ceil(items.length / rowCount);
 
   for (let i = 0; i < rowCount; i++) {
@@ -65,14 +81,24 @@ function splitIntoRows(items: string[], rowCount: number) {
 export default function GovernmentClients() {
   const clientRows = splitIntoRows(clients, 5);
 
-  // Badge style generator for consistent coloring
+  // Badge style generator for enhanced WCAG AAA contrast
   const getBadgeStyle = (index: number) => {
-    if (index % 3 === 0) {
-      return 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-200 ring-red-600/20 dark:ring-red-400/30';
-    } else if (index % 3 === 1) {
-      return 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-200 ring-blue-700/10 dark:ring-blue-400/30';
-    } else {
-      return 'bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 ring-slate-500/10 dark:ring-slate-400/20';
+    // Alternating colors with high contrast for accessibility (WCAG AAA compliant)
+    const colorIndex = index % 5; // Use 5 different colors for more variety
+
+    switch (colorIndex) {
+      case 0:
+        return 'bg-slate-900 text-white ring-1 ring-slate-700 dark:bg-slate-700/80 dark:text-white dark:ring-slate-600'; // Dark slate
+      case 1:
+        return 'bg-blue-800 text-white ring-1 ring-blue-700 dark:bg-gray-800/80 dark:text-blue-200 dark:ring-gray-700'; // Deep blue
+      case 2:
+        return 'bg-purple-800 text-white ring-1 ring-purple-700 dark:bg-slate-800/80 dark:text-purple-200 dark:ring-slate-700'; // Deep purple
+      case 3:
+        return 'bg-emerald-800 text-white ring-1 ring-emerald-700 dark:bg-gray-900/85 dark:text-emerald-200 dark:ring-gray-800'; // Deep emerald
+      case 4:
+        return 'bg-amber-800 text-white ring-1 ring-amber-700 dark:bg-slate-900/85 dark:text-amber-200 dark:ring-slate-800'; // Deep amber
+      default:
+        return 'bg-slate-900 text-white ring-1 ring-slate-700 dark:bg-slate-700/80 dark:text-white dark:ring-slate-600';
     }
   };
 
