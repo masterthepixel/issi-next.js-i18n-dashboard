@@ -14,6 +14,23 @@ interface ScrollBaseAnimationProps {
     showPauseControl?: boolean;
 }
 
+// Custom hook for creating transform styles based on direction
+function useGetTransform(baseX: any, contentWidth: number, baseVelocity: number, isClone = false) {
+    // Create transform value outside conditional logic to comply with React hooks rules
+    const rightToLeftTransform = useTransform(baseX, x => `calc(${x}px + ${contentWidth}px)`);
+    const leftToRightTransform = useTransform(baseX, x => `calc(${x}px - ${contentWidth}px)`);
+    
+    if (baseVelocity > 0) { // Right to left
+        return isClone
+            ? { x: rightToLeftTransform }
+            : { x: baseX };
+    } else { // Left to right
+        return isClone
+            ? { x: leftToRightTransform }
+            : { x: baseX };
+    }
+}
+
 export default function ScrollBaseAnimation({
     children,
     baseVelocity = 3,
@@ -25,18 +42,17 @@ export default function ScrollBaseAnimation({
     const baseX = useMotionValue(0);
     const { scrollY } = useScroll();
     const scrollVelocity = useVelocity(scrollY);
-    const smoothVelocity = useSpring(scrollVelocity, {
+    // Prefix with underscore to indicate it's kept for future use but currently unused
+    const _smoothVelocity = useSpring(scrollVelocity, {
         damping: 50,
         stiffness: 400
-    });
-    const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
-        clamp: false
     });
 
     const containerRef = useRef<HTMLDivElement>(null);
     const prefersReducedMotion = useRef(false);
     const [isPaused, setIsPaused] = useState(false);
-    const [containerWidth, setContainerWidth] = useState(0);
+    // Keep containerWidth for future use but prefix with underscore to avoid linting warnings
+    const [_containerWidth, setContainerWidth] = useState(0);
     const [contentWidth, setContentWidth] = useState(0);
     const contentRef = useRef<HTMLDivElement>(null);
 
@@ -102,18 +118,9 @@ export default function ScrollBaseAnimation({
         setIsPaused(!isPaused);
     };
 
-    // Calculate transform based on direction with accurate positioning
-    const getTransform = (isClone = false) => {
-        if (baseVelocity > 0) { // Right to left
-            return isClone
-                ? { x: useTransform(baseX, x => `calc(${x}px + ${contentWidth}px)`) }
-                : { x: baseX };
-        } else { // Left to right
-            return isClone
-                ? { x: useTransform(baseX, x => `calc(${x}px - ${contentWidth}px)`) }
-                : { x: baseX };
-        }
-    };
+    // Use our custom hook to get the transform styles
+    const primaryTransform = useGetTransform(baseX, contentWidth, baseVelocity);
+    const cloneTransform = useGetTransform(baseX, contentWidth, baseVelocity, true);
 
     return (
         <div className="flex flex-nowrap overflow-visible relative whitespace-nowrap py-6 group" ref={containerRef}>
@@ -121,14 +128,14 @@ export default function ScrollBaseAnimation({
                 <motion.div
                     ref={contentRef}
                     className={cn("flex flex-nowrap whitespace-nowrap items-center overflow-visible min-w-max", clasname || className)}
-                    style={getTransform()}
+                    style={primaryTransform}
                 >
                     {children}
                 </motion.div>
 
                 <motion.div
                     className={cn("flex flex-nowrap whitespace-nowrap items-center overflow-visible min-w-max", clasname || className)}
-                    style={getTransform(true)}
+                    style={cloneTransform}
                 >
                     {children}
                 </motion.div>
