@@ -2,6 +2,7 @@
 // 🧭 Breadcrumb System Type Library
 // ==========================================
 
+import React from 'react';
 import { Language } from './i18n';
 
 /**
@@ -202,7 +203,7 @@ export interface BreadcrumbCacheEntry {
 /**
  * Breadcrumb error types
  */
-export type BreadcrumbError = 
+export type BreadcrumbError =
   | 'TRANSLATION_MISSING'
   | 'INVALID_PATHNAME'
   | 'SEO_GENERATION_FAILED'
@@ -226,6 +227,6 @@ export interface BreadcrumbErrorInfo {
 export interface BreadcrumbAnalytics {
   pageViews: number;
   clickThroughRate: number;
-  averagePathLength: number;  popularPaths: string[];
+  averagePathLength: number; popularPaths: string[];
   languageDistribution: Record<Language, number>;
 }

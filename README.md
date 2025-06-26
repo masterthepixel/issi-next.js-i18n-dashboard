@@ -57,7 +57,7 @@ touch src/app/[lang]/my-feature/page.tsx
 - **Framework**: Next.js 14.2+ with App Router
 - **Language**: TypeScript with strict type checking
 - **Styling**: Tailwind CSS with custom design system
-- **UI Components**: 
+- **UI Components**:
   - Custom BentoGrid layouts
   - 3D Globe integration with Three.js
   - Headless UI for accessible interactions
@@ -65,7 +65,7 @@ touch src/app/[lang]/my-feature/page.tsx
   - @formatjs/intl for message formatting
   - react-intl for React integration
   - Custom automatic translation system
-- **3D Graphics**: 
+- **3D Graphics**:
   - Three.js and React Three Fiber
   - Cobe for interactive globe rendering
 - **State Management**: React context and hooks

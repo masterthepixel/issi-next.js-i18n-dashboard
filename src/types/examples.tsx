@@ -5,12 +5,14 @@
 // Copy these patterns to your components for type safety
 
 import {
-    BentoGridItem,
-    BreadcrumbItem,
-    CardProps,
-    GlobeConfig,
-    UniversalBreadcrumbProps
+  BentoGridItem,
+  BreadcrumbItem,
+  CardProps,
+  GlobeConfig,
+  UniversalBreadcrumbProps
 } from '@/types/index';
+import React from 'react';
+import { Language } from './i18n';
 
 // ==========================================
 // 🧭 Breadcrumb Usage Examples
@@ -95,12 +97,12 @@ const MyGlobe: React.FC<MyGlobeProps> = ({ config, className }) => {
 /**
  * Example: Type-safe card component
  */
-const ProductCard: React.FC<CardProps> = ({ 
-  title, 
-  description, 
-  href, 
-  category, 
-  featured = false 
+const ProductCard: React.FC<CardProps> = ({
+  title,
+  description,
+  href,
+  category,
+  featured = false
 }) => {
   return (
     <div className={`card ${featured ? 'featured' : ''}`}>
@@ -141,7 +143,7 @@ const getLanguageInfo = (lang: Language) => {
     fr: { name: 'French', nativeName: 'Français', flag: '🇫🇷' },
     es: { name: 'Spanish', nativeName: 'Español', flag: '🇪🇸' }
   };
-  
+
   return languageMap[lang];
 };
 
@@ -158,11 +160,11 @@ const TypeSafeTranslation: React.FC<TypeSafeTranslationProps> = ({ messages, lan
   const getText = (key: string): string => {
     const keys = key.split('.');
     let current: any = messages;
-    
+
     for (const k of keys) {
       current = current?.[k];
     }
-    
+
     return typeof current === 'string' ? current : key;
   };
 
@@ -302,8 +304,8 @@ const createTypedComponent = <T extends Record<string, any>>(
 */
 
 export {
-    createBentoItem, createBreadcrumbItems, createGlobeConfig, createProduct,
-    createService, createTypedComponent, handleApiResponse, isValidLanguage, MyBreadcrumb, MyGlobe,
-    ProductCard, TypeSafeBreadcrumb, TypeSafeTranslation
+  createBentoItem, createBreadcrumbItems, createGlobeConfig, createProduct,
+  createService, createTypedComponent, handleApiResponse, isValidLanguage, MyBreadcrumb, MyGlobe,
+  ProductCard, TypeSafeBreadcrumb, TypeSafeTranslation
 };
 

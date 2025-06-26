@@ -5,13 +5,13 @@
 // Copy these patterns to your components for type safety
 
 import {
-    BentoGridItem,
-    BreadcrumbItem,
-    CardProps,
-    GlobeConfig,
-    ISSILanguage as Language,
-    ISSIMessages as Messages,
-    UniversalBreadcrumbProps
+  BentoGridItem,
+  BreadcrumbItem,
+  CardProps,
+  GlobeConfig,
+  ISSILanguage as Language,
+  ISSIMessages as Messages,
+  UniversalBreadcrumbProps
 } from './index';
 
 // Temporary type definitions for examples (these should be moved to proper type files)
@@ -130,7 +130,7 @@ const getLanguageInfo = (lang: Language) => {
     fr: { name: 'French', nativeName: 'Français', flag: '🇫🇷' },
     es: { name: 'Spanish', nativeName: 'Español', flag: '🇪🇸' }
   };
-  
+
   return languageMap[lang];
 };
 
@@ -140,11 +140,11 @@ const getLanguageInfo = (lang: Language) => {
 const getTranslationText = (messages: Messages, key: string): string => {
   const keys = key.split('.');
   let current: any = messages;
-  
+
   for (const k of keys) {
     current = current?.[k];
   }
-  
+
   return typeof current === 'string' ? current : key;
 };
 
@@ -198,7 +198,7 @@ const isValidLanguage = (lang: string): lang is Language => {
  * Example: Type-safe array filtering
  */
 const filterProductsByCategory = (
-  products: Product[], 
+  products: Product[],
   category: BentoGridItem['category']
 ): Product[] => {
   return products.filter(product => product.category === category);
@@ -296,12 +296,12 @@ const validateRequired = (value: string, fieldName: string): ValidationError | n
 
 // Export all examples for use in documentation
 export {
-    BentoCategories,
-    createAppConfig, createBentoItem, createBreadcrumbItems, createGlobeConfig, createProduct,
-    createService, filterProductsByCategory, getLanguageInfo,
-    getTranslationText, handleApiResponse, isValidLanguage, mergeConfigurations, validateBreadcrumbConfig, validateCardProps, validateGlobeConfig, validateRequired
+  BentoCategories,
+  createAppConfig, createBentoItem, createBreadcrumbItems, createGlobeConfig, createProduct,
+  createService, filterProductsByCategory, getLanguageInfo,
+  getTranslationText, handleApiResponse, isValidLanguage, mergeConfigurations, validateBreadcrumbConfig, validateCardProps, validateGlobeConfig, validateRequired
 };
 
-    export type {
-        AppConfig, BentoCategoryValues, ValidationError
-    };
+export type {
+  AppConfig, BentoCategoryValues, ValidationError
+};

@@ -3,11 +3,11 @@
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { cn } from "@/lib/utils";
 import React from "react";
-import { 
-  FaArrowLeft, 
-  FaCalendarAlt, 
-  FaChartLine, 
-  FaCode, 
+import {
+  FaArrowLeft,
+  FaCalendarAlt,
+  FaChartLine,
+  FaCode,
   FaCog,
   FaDownload,
   FaExternalLinkAlt,
@@ -95,10 +95,10 @@ const getProductFeatures = (productId: string): ProductFeature[] => {
   ];
 };
 
-export default function ProductDetailsPage({ 
-  productId, 
+export default function ProductDetailsPage({
+  productId,
   lang,
-  onBack 
+  onBack
 }: ProductDetailsPageProps) {
   const intl = useIntl();
   const features = getProductFeatures(productId);
@@ -106,7 +106,7 @@ export default function ProductDetailsPage({
   // Icon color rotation system (matching ProductsBentoGrid pattern)
   const iconColors = [
     "text-blue-500",
-    "text-green-500", 
+    "text-green-500",
     "text-purple-500",
     "text-orange-500",
     "text-red-500",
@@ -134,28 +134,28 @@ export default function ProductDetailsPage({
         {/* Product Header */}
         <div className="mb-12 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-            <FormattedMessage 
+            <FormattedMessage
               id={`products.${productId}.title`}
               defaultMessage={`${productId.toUpperCase()} Product`}
             />
           </h1>
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto mb-8">
-            <FormattedMessage 
+            <FormattedMessage
               id={`products.${productId}.description`}
               defaultMessage="Advanced enterprise solution designed to streamline your operations and enhance productivity."
             />
           </p>
-          
+
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button 
+            <button
               className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
               aria-label="Request product demonstration"
             >
               <FaPlay className="w-4 h-4" />
               <FormattedMessage id="products.demo.request" defaultMessage="Request Demo" />
             </button>
-            <button 
+            <button
               className="inline-flex items-center gap-2 px-6 py-3 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-medium rounded-lg transition-colors duration-200"
               aria-label="Download product brochure"
             >
@@ -170,22 +170,22 @@ export default function ProductDetailsPage({
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 text-center">
             <FormattedMessage id="products.features.title" defaultMessage="Key Features" />
           </h2>
-          
+
           <BentoGrid className="max-w-6xl mx-auto">
             {features.map((feature, index) => (
               <BentoGridItem
                 key={feature.id}
-                title={intl.formatMessage({ 
+                title={intl.formatMessage({
                   id: feature.titleKey,
                   defaultMessage: `${feature.id} Feature`
                 })}
-                description={intl.formatMessage({ 
+                description={intl.formatMessage({
                   id: feature.descriptionKey,
                   defaultMessage: "Comprehensive feature description that enhances your workflow."
                 })}
                 header={
                   <div className="flex items-center justify-center h-24 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 rounded-lg">
-                    <feature.icon 
+                    <feature.icon
                       className={cn(
                         "w-8 h-8",
                         iconColors[index % iconColors.length]
@@ -215,7 +215,7 @@ export default function ProductDetailsPage({
               </h3>
             </div>
             <p className="text-slate-600 dark:text-slate-300">
-              <FormattedMessage 
+              <FormattedMessage
                 id={`products.${productId}.implementation`}
                 defaultMessage="2-4 weeks typical deployment with full training and support included."
               />
@@ -249,7 +249,7 @@ export default function ProductDetailsPage({
               </h3>
             </div>
             <p className="text-slate-600 dark:text-slate-300">
-              <FormattedMessage 
+              <FormattedMessage
                 id="products.support.description"
                 defaultMessage="24/7 dedicated support with guaranteed response times."
               />
@@ -263,12 +263,12 @@ export default function ProductDetailsPage({
             <FormattedMessage id="products.contact.title" defaultMessage="Ready to Get Started?" />
           </h2>
           <p className="text-slate-600 dark:text-slate-300 mb-6 max-w-2xl mx-auto">
-            <FormattedMessage 
+            <FormattedMessage
               id="products.contact.description"
               defaultMessage="Contact our sales team to learn more about how this solution can transform your business operations."
             />
           </p>
-          <button 
+          <button
             className="inline-flex items-center gap-2 px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
             aria-label="Contact sales team"
           >

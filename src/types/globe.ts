@@ -1,6 +1,7 @@
 // ==========================================
 // 🌍 3D Globe System Type Library
 // ==========================================
+import React from 'react';
 
 /**
  * Globe component base configuration
@@ -218,7 +219,7 @@ export interface GlobeComponentProps {
 /**
  * Globe error types
  */
-export type GlobeError = 
+export type GlobeError =
   | 'WEBGL_NOT_SUPPORTED'
   | 'CANVAS_CREATION_FAILED'
   | 'DATA_LOADING_FAILED'

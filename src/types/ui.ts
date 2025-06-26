@@ -2,6 +2,7 @@
 // 🎨 UI Components Type Library
 // ==========================================
 
+import React from 'react';
 import { Language } from './i18n';
 
 /**
@@ -22,24 +23,24 @@ export type ComponentSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 /**
  * Component color variants
  */
-export type ComponentColor = 
-  | 'primary' 
-  | 'secondary' 
-  | 'accent' 
-  | 'success' 
-  | 'warning' 
-  | 'error' 
-  | 'info' 
+export type ComponentColor =
+  | 'primary'
+  | 'secondary'
+  | 'accent'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
   | 'neutral';
 
 /**
  * Component variant styles
  */
-export type ComponentVariant = 
-  | 'solid' 
-  | 'outline' 
-  | 'ghost' 
-  | 'soft' 
+export type ComponentVariant =
+  | 'solid'
+  | 'outline'
+  | 'ghost'
+  | 'soft'
   | 'gradient';
 
 /**
@@ -157,9 +158,9 @@ export interface NavigationProps extends BaseComponentProps {
 /**
  * Bento grid categories
  */
-export type BentoCategory = 
+export type BentoCategory =
   | 'featured'
-  | 'project' 
+  | 'project'
   | 'hr'
   | 'compliance'
   | 'data'
@@ -446,7 +447,7 @@ export interface AnimationConfig {
  * Internationalized UI component props
  */
 export interface InternationalizedUIProps {
-  lang: Language;  direction?: 'ltr' | 'rtl';
+  lang: Language; direction?: 'ltr' | 'rtl';
   translations?: Record<string, string>;
 }
 
