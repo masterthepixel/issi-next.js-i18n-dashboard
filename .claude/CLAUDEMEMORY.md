@@ -82,13 +82,24 @@ A detailed guide for addressing these issues is available in `docs/ESLINT_WARNIN
 - Added detailed documentation on resolving ESLint warnings in `docs/ESLINT_WARNINGS_RESOLUTION_GUIDE.md`
 - Provided four key action items for systematically improving code quality
 
-### Marquee Animation Enhancement (June 25, 2025)
+### Marquee Animation Enhancement (June 26, 2025)
 
-- Implemented alternating direction scrolling for GovernmentClients component
-- Reduced vertical spacing between rows for more compact presentation
-- Adjusted badge padding for better visual harmony
-- Added clarifying comments explaining the animation behavior and direction
-- Added accessibility features: pause/play controls, reduced motion support
+- Completely reimplemented the marquee animation using Aceternity UI's InfiniteMovingCards approach
+- Created a new `InfiniteMovingBadges` component based on modern CSS animation techniques
+- Implemented a cleaner, more reliable infinite scrolling mechanism with pure CSS animations
+- Added alternating directions (left/right) for each row with proper animation direction control
+- Set animation durations with fast speed (20s) for smooth continuous motion
+- Added pause-on-hover functionality for better accessibility and user control
+- Simplified the component structure by eliminating dependency on motion/react library
+- Used CSS custom properties for animation direction and duration control
+- Ensured proper looping by duplicating items and using transform animations
+- Added linear gradient masks at the edges for a more polished fade effect
+- Maintained consistent badge styling with color variations based on index position
+- Fixed compilation errors by removing leftover code fragments from the previous implementation
+- Optimized vertical spacing between rows (reduced from space-y-8 to space-y-3)
+- Reduced badge padding and made them more compact (px-3 py-1.5 instead of px-4 py-2)
+- Decreased container padding from py-4 to py-2 for tighter row arrangement
+- Changed ring styling from ring-2 to ring-1 for more subtle borders
 
 ### Ultracite Removal (Earlier June 2025)
 
@@ -111,9 +122,11 @@ A proper long-term solution would be to systematically address all warnings acco
 - `.eslintrc.js` - Custom ESLint configuration
 - `docs/ESLINT_CONFIGURATION.md` - Documentation of ESLint issues and solutions
 - `docs/ESLINT_WARNINGS_RESOLUTION_GUIDE.md` - Detailed step-by-step guide for fixing ESLint warnings
-- `src/components/GovernmentClients.tsx` - Updated with alternating marquee directions
-- `src/components/ui/scroll-text-marquee.tsx` - Marquee component with animation controls
-- `src/utils/wrap.ts` - Utility for infinite scrolling effect
+- `src/components/GovernmentClients.tsx` - Updated with Aceternity-style infinite marquee animation
+- `src/components/ui/infinite-moving-badges.tsx` - New component for badge marquee effect with CSS animations
+- `src/components/ui/scroll-base-animation.tsx` - Previous animation component (deprecated)
+- `src/components/ui/scroll-text-marquee.tsx` - Original component name (deprecated)
+- `src/app/globals.css` - Contains the CSS animation keyframes for the marquee effect
 - Multiple type definition files in `/src/types/`
 - Component files across the codebase
 

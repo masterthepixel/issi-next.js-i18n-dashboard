@@ -6,21 +6,23 @@ import { PauseIcon, PlayIcon } from "@heroicons/react/24/solid";
 import { motion, useAnimationFrame, useMotionValue, useScroll, useSpring, useTransform, useVelocity } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
 
-interface ScrollTextMarqueeProps {
+interface ScrollBaseAnimationProps {
     children: React.ReactNode;
     baseVelocity?: number;
     delay?: number;
+    clasname?: string;
     className?: string;
     showPauseControl?: boolean;
 }
 
-export default function ScrollTextMarquee({
+export default function ScrollBaseAnimation({
     children,
     baseVelocity = 3,
     delay = 0,
+    clasname,
     className,
     showPauseControl = true
-}: ScrollTextMarqueeProps) {
+}: ScrollBaseAnimationProps) {
     const baseX = useMotionValue(0);
     const { scrollY } = useScroll();
     const scrollVelocity = useVelocity(scrollY);
@@ -73,7 +75,7 @@ export default function ScrollTextMarquee({
     return (
         <div className="flex flex-nowrap overflow-hidden relative whitespace-nowrap py-1.5 group" ref={containerRef}>
             <motion.div
-                className={cn("flex flex-nowrap gap-4 whitespace-nowrap", className)}
+                className={cn("flex flex-nowrap gap-4 whitespace-nowrap", clasname || className)}
                 style={{ x }}
             >
                 {children}

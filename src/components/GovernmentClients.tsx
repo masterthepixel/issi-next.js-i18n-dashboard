@@ -1,7 +1,8 @@
 "use client";
 
+import React from "react";
 import { FormattedMessage } from "react-intl";
-import ScrollTextMarquee from "./ui/scroll-text-marquee";
+import { InfiniteMovingBadges } from "./ui/infinite-moving-badges";
 
 const clients = [
   "Savannah River Nuclear Solutions",
@@ -62,25 +63,19 @@ function splitIntoRows(items: string[], rowCount: number) {
   return result;
 }
 
-/**
- * Government Clients component displays a list of government clients in an 
- * animated marquee format with alternating scroll directions.
- * 
- * Negative velocity = left-to-right scrolling
- * Positive velocity = right-to-left scrolling
- */
-
 export default function GovernmentClients() {
   const clientRows = splitIntoRows(clients, 5);
 
-  // Animation parameters for each row - alternating directions
-  const rowParams = [
-    { velocity: -3, delay: 0 },     // First row: left-to-right
-    { velocity: 2.5, delay: 100 },  // Second row: right-to-left
-    { velocity: -4, delay: 200 },   // Third row: left-to-right
-    { velocity: 3, delay: 300 },    // Fourth row: right-to-left
-    { velocity: -2.5, delay: 400 }, // Fifth row: left-to-right
-  ];
+  // Badge style generator for consistent coloring
+  const getBadgeStyle = (index: number) => {
+    if (index % 3 === 0) {
+      return 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-200 ring-red-600/20 dark:ring-red-400/30';
+    } else if (index % 3 === 1) {
+      return 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-200 ring-blue-700/10 dark:ring-blue-400/30';
+    } else {
+      return 'bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 ring-slate-500/10 dark:ring-slate-400/20';
+    }
+  };
 
   return (
     <section className="py-16 sm:py-24">
@@ -93,35 +88,51 @@ export default function GovernmentClients() {
             <FormattedMessage id="government.clients.subtitle" defaultMessage="Trusted by federal, state, and local government agencies for mission-critical technology solutions." />
           </p>
           <p className="mt-2 text-sm text-slate-500 dark:text-slate-400 italic">
-            <FormattedMessage id="common.scroll.hint" defaultMessage="Hover over a row to see controls. Click the pause button to stop animation." />
+            <FormattedMessage id="common.scroll.hint" defaultMessage="Hover over a row to pause animation." />
           </p>
         </div>
 
         <div className="mx-auto mt-8 max-w-7xl">
-          <div className="space-y-0.5 py-2">
-            {clientRows.map((row, rowIndex) => (
-              <ScrollTextMarquee
-                key={rowIndex}
-                baseVelocity={rowParams[rowIndex].velocity}
-                delay={rowParams[rowIndex].delay}
-                className="gap-4"
-                showPauseControl={true}
-              >
-                {row.map((client, index) => (
-                  <span
-                    key={`${rowIndex}-${index}`}
-                    className={`inline-flex items-center rounded-full px-2 py-0.5 sm:px-3 sm:py-1.5 text-sm sm:text-base font-medium ring-1 ring-inset ${index % 3 === 0
-                        ? 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-200 ring-red-600/20 dark:ring-red-400/30'
-                        : index % 3 === 1
-                          ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-200 ring-blue-700/10 dark:ring-blue-400/30'
-                          : 'bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 ring-slate-500/10 dark:ring-slate-400/20'
-                      }`}
-                  >
-                    {client}
-                  </span>
-                ))}
-              </ScrollTextMarquee>
-            ))}
+          <div className="space-y-3 py-2">
+            <InfiniteMovingBadges
+              items={clientRows[0]}
+              direction="right"
+              speed="fast"
+              pauseOnHover={true}
+              badgeClassName={getBadgeStyle}
+            />
+            
+            <InfiniteMovingBadges
+              items={clientRows[1]}
+              direction="left"
+              speed="fast"
+              pauseOnHover={true}
+              badgeClassName={getBadgeStyle}
+            />
+            
+            <InfiniteMovingBadges
+              items={clientRows[2]}
+              direction="right"
+              speed="fast"
+              pauseOnHover={true}
+              badgeClassName={getBadgeStyle}
+            />
+            
+            <InfiniteMovingBadges
+              items={clientRows[3]}
+              direction="left"
+              speed="fast"
+              pauseOnHover={true}
+              badgeClassName={getBadgeStyle}
+            />
+            
+            <InfiniteMovingBadges
+              items={clientRows[4]}
+              direction="right"
+              speed="fast"
+              pauseOnHover={true}
+              badgeClassName={getBadgeStyle}
+            />
           </div>
         </div>
       </div>
