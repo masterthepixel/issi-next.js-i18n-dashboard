@@ -1,6 +1,6 @@
 "use client";
 
-import { BentoGrid } from "@/components/ui/bento-grid";
+import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import {
@@ -35,6 +35,7 @@ import { useIntl } from "react-intl";
 
 interface Product {
   id: string;
+  slug?: string;
   title?: string;
   titleKey?: string;
   description?: string;
@@ -45,6 +46,73 @@ interface Product {
   size: { width: number; height: number };
   className: string;
   priority: number;
+}
+
+// Mapping from product IDs to slugs for routing
+const productSlugMap: Record<string, string> = {
+  "gms": "grant-management-system",
+  "ects": "electronic-correspondence-tracking-system", 
+  "ets": "environmental-tracking-system",
+  "mdsps": "multi-dimensional-system-planning-solution",
+  "project-management": "project-management-suite",
+  "bug-tracking": "bug-tracking-system", 
+  "capture-manager": "capture-manager",
+  "prudent-agile": "prudent-agile-methodology",
+  "task-management": "task-management-system",
+  "requirements-management": "requirements-management-system",
+  "hr-manager": "hr-management-system",
+  "employee-performance": "employee-performance-system",
+  "timesheet-management": "timesheet-management-system",
+  "employee-talent-repository": "employee-talent-repository",
+  "competency-skills-matrix": "competency-skills-matrix",
+  "training-dashboard": "training-dashboard",
+  "i-learn": "i-learn-system",
+  "rsvp": "rsvp-event-management",
+  "audit-reporting": "audit-reporting-system",
+  "expense-tracking": "expense-tracking-system",
+  "meeting-minutes-manager": "meeting-minutes-manager",
+  "training-records": "training-records-system",
+  "central-data": "central-data-platform",
+  "e-survey": "e-survey-platform",
+  "form-management": "form-management-system",
+  "i-code": "i-code-testing-platform",
+  "professional-management": "professional-management-system",
+  "complaint-tracking": "complaint-tracking-system",
+  "inventory-asset-tracking": "inventory-asset-tracking-system",
+  "visitor-log": "visitor-log-system",
+  "payroll-management": "payroll-management-system",
+  "training-management": "training-management-system",
+  "employee-scheduling": "employee-scheduling-system",
+  "benefits-administration": "benefits-administration-system",
+  "applicant-tracking": "applicant-tracking-system",
+  "compliance-management": "compliance-management-system",
+  "audit-management": "audit-management-system",
+  "document-management": "document-management-system",
+  "policy-management": "policy-management-system",
+  "risk-management": "risk-management-system",
+  "quality-assurance": "quality-assurance-system",
+  "incident-management": "incident-management-system",
+  "contract-management": "contract-management-system",
+  "data-warehouse": "data-warehouse-solution",
+  "business-intelligence": "business-intelligence-platform",
+  "data-analytics": "data-analytics-platform",
+  "data-migration": "data-migration-service",
+  "etl-processing": "etl-processing-engine",
+  "reporting-engine": "reporting-engine-platform",
+  "dashboard-creation": "dashboard-creation-tool",
+  "data-visualization": "data-visualization-suite",
+  "legacy-modernization": "legacy-modernization-service",
+  "cloud-migration": "cloud-migration-service",
+  "system-integration": "system-integration-platform",
+  "api-development": "api-development-framework",
+  "microservices": "microservices-architecture",
+  "devops-automation": "devops-automation-platform",
+  "infrastructure-monitoring": "infrastructure-monitoring-system",
+  "performance-optimization": "performance-optimization-service"
+};
+
+function getProductSlug(productId: string): string {
+  return productSlugMap[productId] || productId;
 }
 
 interface ProductsBentoGridProps {
@@ -521,29 +589,39 @@ export default function ProductsBentoGrid({ lang }: ProductsBentoGridProps) {
             key={category}
             onClick={() => setActiveFilter(category)}
             className={cn(
-              "px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500",
+              "px-2 py-1.5 rounded-full text-sm font-medium transition-all duration-300 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500",
               getButtonColors(category, activeFilter === category)
             )}
             role="tab"
-            aria-selected={activeFilter === category ? "true" : "false"}
+            aria-selected={activeFilter === category ? 'true' : 'false'}
             aria-controls={`products-${category.toLowerCase()}`}
             tabIndex={activeFilter === category ? 0 : -1}
           >
             {categoryMap[category as keyof typeof categoryMap] || category}
           </button>
         ))}
-      </div>{/* Products Grid */}
+      </div>      {/* Products Grid */}
       <BentoGrid className="max-w-7xl mx-auto">
         {filteredProducts.map((product, index) => {
           const IconComponent = product.icon;
           const colors = getCategoryColors(product.category);
+          const productSlug = getProductSlug(product.id);
+          const productHref = `/${lang}/products/${productSlug}`;
+          
           return (
-            <div
+            <BentoGridItem
               key={product.id}
+              title={product.titleKey ? intl.formatMessage({ id: product.titleKey }) : product.title || 'Untitled'}
+              description={product.descriptionKey ? intl.formatMessage({ id: product.descriptionKey }) : product.description || 'No description available'}
+              href={productHref}
+              icon={
+                <IconComponent className={cn(
+                  "text-3xl transition-all duration-300",
+                  colors.icon,
+                  "group-hover/bento:drop-shadow-lg"
+                )} />
+              }
               className={cn(
-                "row-span-1 rounded-xl group/bento hover:shadow-xl transition-all duration-300 shadow-input dark:shadow-none p-1 bg-gradient-to-br from-transparent via-transparent to-transparent relative min-h-[200px] cursor-pointer",
-                // Add glowing border on hover using the category colors
-                "hover:shadow-2xl hover:scale-[1.02]",
                 product.className,
                 // Category-specific glow effects
                 product.category === "featured" && "hover:shadow-blue-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(59_130_246_/_0.5)]",
@@ -554,36 +632,7 @@ export default function ProductsBentoGrid({ lang }: ProductsBentoGridProps) {
                 product.category === "modernization" && "hover:shadow-indigo-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(79_70_229_/_0.5)]",
                 product.category === "technology" && "hover:shadow-teal-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(13_148_136_/_0.5)]"
               )}
-            >              
-              {/* Card Content */}
-              <div className={cn(
-                "relative flex h-full flex-col justify-between p-4 rounded-lg border-2 transition-all duration-300 bg-white dark:bg-slate-800/80 backdrop-blur-sm",
-                colors.border,
-                colors.hover,
-                // Enhanced hover effects
-                "group-hover/bento:border-opacity-60 group-hover/bento:bg-white/90 dark:group-hover/bento:bg-slate-800/90"
-              )}>                {/* Icon positioned at top-left */}
-                <div className="flex justify-start">
-                  <IconComponent className={cn(
-                    "text-3xl transition-all duration-300",
-                    colors.icon,
-                    "group-hover/bento:drop-shadow-lg"
-                  )} />
-                </div>                {/* Text content positioned at bottom-left */}
-                <div className="mt-auto">
-                  <h3 className={cn(
-                    "font-semibold tracking-tight text-xl mb-2 transition duration-300",
-                    colors.icon, // Use the same color as the icon
-                    "dark:text-slate-100" // Override for dark mode readability
-                  )}>
-                    {product.titleKey ? intl.formatMessage({ id: product.titleKey }) : product.title}
-                  </h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm">
-                    {product.descriptionKey ? intl.formatMessage({ id: product.descriptionKey }) : product.description}
-                  </p>
-                </div>
-              </div>
-            </div>
+            />
           );
         })}
       </BentoGrid>

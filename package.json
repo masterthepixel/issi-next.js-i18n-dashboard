@@ -12,6 +12,8 @@
     "validate:json": "node scripts/validate-json.js",
     "validate:all": "npm run lint && npm run validate:json",
     "pre-commit": "npm run lint && npm run validate:json",
+    "test:products": "node test-product-urls.js",
+    "test:products:all": "node test-all-product-urls.js",
     "prepare": "node -e \"if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL && !process.env.CI) { try { require('husky').install() } catch (e) { console.log('Husky setup skipped in production/CI environment') } }\""
   },
   "dependencies": {
