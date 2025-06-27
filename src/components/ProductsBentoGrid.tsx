@@ -4,32 +4,32 @@ import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import {
-    FaBookOpen,
-    FaBox,
-    FaBug,
-    FaCalendarAlt,
-    FaChartLine,
-    FaClock,
-    FaCode,
-    FaComments,
-    FaDatabase,
-    FaDollarSign,
-    FaFileAlt,
-    FaFileContract,
-    FaFileInvoice,
-    FaGraduationCap,
-    FaHandHoldingUsd,
-    FaHandshake,
-    FaIdCard,
-    FaListAlt,
-    FaPoll,
-    FaProjectDiagram,
-    FaRocket,
-    FaSearch,
-    FaTasks,
-    FaUserCheck,
-    FaUsers,
-    FaUserTie,
+  FaBookOpen,
+  FaBox,
+  FaBug,
+  FaCalendarAlt,
+  FaChartLine,
+  FaClock,
+  FaCode,
+  FaComments,
+  FaDatabase,
+  FaDollarSign,
+  FaFileAlt,
+  FaFileContract,
+  FaFileInvoice,
+  FaGraduationCap,
+  FaHandHoldingUsd,
+  FaHandshake,
+  FaIdCard,
+  FaListAlt,
+  FaPoll,
+  FaProjectDiagram,
+  FaRocket,
+  FaSearch,
+  FaTasks,
+  FaUserCheck,
+  FaUsers,
+  FaUserTie,
 } from "react-icons/fa";
 import { useIntl } from "react-intl";
 
@@ -51,11 +51,11 @@ interface Product {
 // Mapping from product IDs to slugs for routing
 const productSlugMap: Record<string, string> = {
   "gms": "grant-management-system",
-  "ects": "electronic-correspondence-tracking-system", 
+  "ects": "electronic-correspondence-tracking-system",
   "ets": "environmental-tracking-system",
   "mdsps": "multi-dimensional-system-planning-solution",
   "project-management": "project-management-suite",
-  "bug-tracking": "bug-tracking-system", 
+  "bug-tracking": "bug-tracking-system",
   "capture-manager": "capture-manager",
   "prudent-agile": "prudent-agile-methodology",
   "task-management": "task-management-system",
@@ -246,7 +246,7 @@ const allProducts = [
     size: { width: 1, height: 1 }, // Standard card
     className: "col-span-1",
     priority: 10,
-  },  {
+  }, {
     id: "employee-performance",
     title: "Employee Performance",
     description: "360-degree feedback system with automated performance reviews and goal tracking.",
@@ -494,13 +494,13 @@ export default function ProductsBentoGrid({ lang }: ProductsBentoGridProps) {
       hover: "hover:border-blue-400 dark:hover:border-blue-500"
     },
     project: {
-      icon: "text-green-600 dark:text-green-400", 
+      icon: "text-green-600 dark:text-green-400",
       border: "border-green-200 dark:border-green-800",
       hover: "hover:border-green-400 dark:hover:border-green-500"
     },
     hr: {
       icon: "text-purple-600 dark:text-purple-400",
-      border: "border-purple-200 dark:border-purple-800", 
+      border: "border-purple-200 dark:border-purple-800",
       hover: "hover:border-purple-400 dark:hover:border-purple-500"
     },
     compliance: {
@@ -515,7 +515,7 @@ export default function ProductsBentoGrid({ lang }: ProductsBentoGridProps) {
     },
     modernization: {
       icon: "text-indigo-600 dark:text-indigo-400",
-      border: "border-indigo-200 dark:border-indigo-800", 
+      border: "border-indigo-200 dark:border-indigo-800",
       hover: "hover:border-indigo-400 dark:hover:border-indigo-500"
     },
     technology: {
@@ -607,7 +607,7 @@ export default function ProductsBentoGrid({ lang }: ProductsBentoGridProps) {
           const colors = getCategoryColors(product.category);
           const productSlug = getProductSlug(product.id);
           const productHref = `/${lang}/products/${productSlug}`;
-          
+
           return (
             <BentoGridItem
               key={product.id}

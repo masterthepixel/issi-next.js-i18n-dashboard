@@ -7,7 +7,7 @@ const http = require('http');
 // All product IDs from BentoGrid
 const productIds = [
   "gms",
-  "ects", 
+  "ects",
   "ets",
   "mdsps",
   "project-management",
@@ -41,11 +41,11 @@ const productIds = [
 // Mapping from product IDs to slugs (from ProductsBentoGrid.tsx productSlugMap)
 const productSlugMap = {
   "gms": "grant-management-system",
-  "ects": "electronic-correspondence-tracking-system", 
+  "ects": "electronic-correspondence-tracking-system",
   "ets": "environmental-tracking-system",
   "mdsps": "multi-dimensional-system-planning-solution",
   "project-management": "project-management-suite",
-  "bug-tracking": "bug-tracking-system", 
+  "bug-tracking": "bug-tracking-system",
   "capture-manager": "capture-manager",
   "prudent-agile": "prudent-agile-methodology",
   "task-management": "task-management-system",
@@ -75,7 +75,7 @@ const productSlugMap = {
 function testUrl(url) {
   return new Promise((resolve) => {
     const protocol = url.startsWith('https') ? https : http;
-    
+
     const req = protocol.get(url, (res) => {
       const status = res.statusCode;
       const success = status === 200;
@@ -110,48 +110,48 @@ function testUrl(url) {
 
 async function testAllProductUrls() {
   console.log('🚀 Testing all product URLs...\n');
-  
+
   const baseUrl = 'http://localhost:3000/en/products';
   const results = [];
-  
+
   for (let i = 0; i < productIds.length; i++) {
     const productId = productIds[i];
     const slug = productSlugMap[productId] || productId;
     const url = `${baseUrl}/${slug}`;
-    
+
     console.log(`[${i + 1}/${productIds.length}] Testing: ${productId} -> ${slug}`);
-    
+
     const result = await testUrl(url);
     results.push({
       productId,
       slug,
       ...result
     });
-    
+
     console.log(`   ${result.success ? '✅' : '❌'} ${result.message}`);
   }
-  
+
   console.log('\n📊 SUMMARY:');
-  console.log('=' .repeat(80));
-  
+  console.log('='.repeat(80));
+
   const successful = results.filter(r => r.success);
   const failed = results.filter(r => !r.success);
-  
+
   console.log(`✅ Successful: ${successful.length}/${results.length}`);
   console.log(`❌ Failed: ${failed.length}/${results.length}`);
-  
+
   if (failed.length > 0) {
     console.log('\n❌ FAILED URLs:');
     failed.forEach(result => {
       console.log(`   ${result.productId} -> ${result.url} (${result.message})`);
     });
   }
-  
+
   console.log('\n✅ SUCCESSFUL URLs:');
   successful.forEach(result => {
     console.log(`   ${result.productId} -> ${result.slug}`);
   });
-  
+
   console.log(`\n🎯 Overall Success Rate: ${Math.round((successful.length / results.length) * 100)}%`);
 }
 

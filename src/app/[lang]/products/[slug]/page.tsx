@@ -1,13 +1,13 @@
-import React from 'react';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowLeft, CheckCircle, ExternalLink, Star } from 'lucide-react';
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import React from 'react';
 
-import { getAllProducts, getProductBySlug } from '@/lib/products';
-import type { ProductDetail } from '@/types/product';
 import { Locale } from '@/lib/definitions';
+import { getAllProducts, getProductBySlug } from '@/lib/products';
+import ProductsGrantManagementSystemFeaturesWrapper from '@/components/ProductsGrantManagementSystemFeaturesWrapper';
 
 interface ProductPageProps {
   params: {
@@ -19,20 +19,20 @@ interface ProductPageProps {
 export async function generateStaticParams() {
   const products = await getAllProducts();
   const locales: Locale[] = ['en', 'fr', 'es'];
-  
-  const paths = locales.flatMap(lang => 
+
+  const paths = locales.flatMap(lang =>
     products.map(product => ({
       lang,
       slug: product.slug
     }))
   );
-  
+
   return paths;
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const product = await getProductBySlug(params.slug);
-  
+
   if (!product) {
     return {
       title: 'Product Not Found',
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://issi.com';
-  
+
   return {
     title: `${product.name} | ISSI Enterprise Solutions`,
     description: product.description,
@@ -77,17 +77,28 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
     notFound();
   }
 
+  // Load messages for i18n components
+  const messages = (await import(`../../../../lang/${params.lang}.json`)).default;
+
   const IconComponent = product.icon;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+      {/* Grant Management System Features Section */}
+      {product.slug === 'grant-management-system' && (
+        <ProductsGrantManagementSystemFeaturesWrapper 
+          locale={params.lang} 
+          messages={messages} 
+        />
+      )}
+      
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="mb-8">
           <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
             <li>
-              <Link 
-                href={`/${params.lang}`} 
+              <Link
+                href={`/${params.lang}`}
                 className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 Home
@@ -95,8 +106,8 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
             </li>
             <li className="flex items-center">
               <span className="mx-2">/</span>
-              <Link 
-                href={`/${params.lang}/products`} 
+              <Link
+                href={`/${params.lang}/products`}
                 className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 Products
@@ -141,7 +152,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
                 </div>
               )}
             </div>
-            
+
             {/* Category Badge */}
             {product.category && (
               <div className="absolute top-4 left-4">

@@ -3,7 +3,7 @@
 
 const productIds = [
   "gms",
-  "i-learn", 
+  "i-learn",
   "audit-reporting",
   "expense-tracking",
   "rsvp"
@@ -11,11 +11,11 @@ const productIds = [
 
 const productSlugMap = {
   "gms": "grant-management-system",
-  "ects": "electronic-correspondence-tracking-system", 
+  "ects": "electronic-correspondence-tracking-system",
   "ets": "environmental-tracking-system",
   "mdsps": "multi-dimensional-system-planning-solution",
   "project-management": "project-management-suite",
-  "bug-tracking": "bug-tracking-system", 
+  "bug-tracking": "bug-tracking-system",
   "capture-manager": "capture-manager",
   "prudent-agile": "prudent-agile-methodology",
   "task-management": "task-management-system",
@@ -48,12 +48,12 @@ console.log('===============');
 productIds.forEach(productId => {
   const mappedSlug = productSlugMap[productId];
   const fallbackSlug = productId;
-  
+
   console.log(`\n📦 Product ID: ${productId}`);
   console.log(`   🎯 Should generate: /en/products/${mappedSlug || fallbackSlug}`);
   console.log(`   ❌ Currently generates: /en/products/${fallbackSlug} (if mapping fails)`);
   console.log(`   ✅ Mapping exists: ${mappedSlug ? 'YES' : 'NO'}`);
-  
+
   if (mappedSlug) {
     console.log(`   📍 Correct URL: http://localhost:3000/en/products/${mappedSlug}`);
   }

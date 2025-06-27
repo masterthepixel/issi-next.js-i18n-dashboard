@@ -43,7 +43,7 @@ const products: ProductDetail[] = [
     tags: ['Cloud-Based', 'Workflow Automation', 'Real-time Tracking'],
     features: [
       'Automated application processing',
-      'Real-time tracking dashboard', 
+      'Real-time tracking dashboard',
       'Advanced workflow automation',
       'Compliance monitoring',
       'Multi-user collaboration',
@@ -1054,7 +1054,7 @@ export const getFeaturedProducts = async (): Promise<ProductDetail[]> => {
 
 export const searchProducts = async (query: string): Promise<ProductDetail[]> => {
   const searchQuery = query.toLowerCase();
-  return products.filter(p => 
+  return products.filter(p =>
     p.name.toLowerCase().includes(searchQuery) ||
     p.description.toLowerCase().includes(searchQuery) ||
     p.tags?.some(tag => tag.toLowerCase().includes(searchQuery))
