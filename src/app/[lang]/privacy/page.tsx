@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 
-import PrivacyContentWrapper from "@/components/PrivacyContentWrapper";
+import PrivacyTimelineWrapper from "@/components/PrivacyTimelineWrapper";
 import Spinner from "@/components/Spinner";
 
 import { Locale } from "@/lib/definitions";
@@ -8,7 +8,7 @@ import { getIntl } from "@/lib/intl";
 
 export const metadata = {
   title: "Privacy Policy - ISSI - International Software Systems International",
-  description: "Read ISSI's privacy policy to understand how we collect, use, and protect your personal information and data.",
+  description: "Read ISSI's comprehensive privacy policy in an interactive timeline format to understand how we collect, use, and protect your personal information and data.",
 };
 
 interface Props {
@@ -37,13 +37,10 @@ async function PageContent({ locale }: PageContentProps) {
 
   return (
     <div className="relative">
-      {/* Comprehensive Privacy Content */}
-      <PrivacyContentWrapper
+      {/* Privacy Timeline Content */}
+      <PrivacyTimelineWrapper
         messages={messages}
         locale={locale}
-        tocTitle={intl.formatMessage({ id: "privacy.toc.title" })}
-        toggleAriaLabel={intl.formatMessage({ id: "privacy.toc.toggleAriaLabel" })}
-        closeAriaLabel={intl.formatMessage({ id: "privacy.toc.closeAriaLabel" })}
       />
     </div>
   );

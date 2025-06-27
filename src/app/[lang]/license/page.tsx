@@ -1,14 +1,14 @@
 import { Suspense } from "react";
 
-import LicenseContentWrapper from "@/components/LicenseContentWrapper";
+import LicenseTimelineWrapper from "@/components/LicenseTimelineWrapper";
 import Spinner from "@/components/Spinner";
 
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
 
 export const metadata = {
-  title: "License - Terms of Use - ISSI - International Software Systems International",
-  description: "Information about ISSI software licenses, terms of use, and licensing agreements for our products and services.",
+  title: "License Agreement - ISSI - International Software Systems International",
+  description: "Explore ISSI's software licensing terms and usage agreements in an interactive timeline format for comprehensive understanding.",
 };
 
 interface Props {
@@ -37,13 +37,10 @@ async function PageContent({ locale }: PageContentProps) {
 
   return (
     <div className="relative">
-      {/* Comprehensive Terms Content */}
-      <LicenseContentWrapper
+      {/* Interactive License Timeline */}
+      <LicenseTimelineWrapper
         messages={messages}
         locale={locale}
-        tocTitle={intl.formatMessage({ id: "license.toc.title" })}
-        toggleAriaLabel={intl.formatMessage({ id: "license.toc.toggleAriaLabel" })}
-        closeAriaLabel={intl.formatMessage({ id: "license.toc.closeAriaLabel" })}
       />
     </div>
   );
