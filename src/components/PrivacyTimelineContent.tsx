@@ -1,7 +1,7 @@
 'use client';
 
-import { FormattedMessage, IntlProvider, useIntl } from 'react-intl';
 import { Timeline } from '@/components/ui/Timeline';
+import { FormattedMessage, IntlProvider, useIntl } from 'react-intl';
 
 interface PrivacyTimelineContentProps {
   messages: Record<string, string>;
@@ -122,8 +122,8 @@ function PrivacyTimelineInner() {
               <FormattedMessage id="privacy.sections.deleteDeactivate.options" />
             </p>
             <p className="text-slate-700 dark:text-slate-100">
-              <FormattedMessage 
-                id="privacy.sections.deleteDeactivate.process" 
+              <FormattedMessage
+                id="privacy.sections.deleteDeactivate.process"
                 values={{
                   email: intl.formatMessage({ id: 'privacy.email.webinfo' })
                 }}
@@ -142,8 +142,8 @@ function PrivacyTimelineInner() {
               <FormattedMessage id="privacy.sections.changeModify.options" />
             </p>
             <p className="text-slate-700 dark:text-slate-100">
-              <FormattedMessage 
-                id="privacy.sections.changeModify.process" 
+              <FormattedMessage
+                id="privacy.sections.changeModify.process"
                 values={{
                   email: intl.formatMessage({ id: 'privacy.email.webinfo' })
                 }}
@@ -182,7 +182,7 @@ function PrivacyTimelineInner() {
   ];
 
   return (
-    <Timeline 
+    <Timeline
       data={timelineData}
       title={intl.formatMessage({ id: "privacy.timeline.title" })}
       subtitle={intl.formatMessage({ id: "privacy.timeline.subtitle" })}

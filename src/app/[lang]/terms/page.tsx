@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 
-import TermsTimelineWrapper from "@/components/TermsTimelineWrapper";
 import Spinner from "@/components/Spinner";
+import TermsTimelineWrapper from "@/components/TermsTimelineWrapper";
 
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";

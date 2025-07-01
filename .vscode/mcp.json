@@ -1,0 +1,57 @@
+{
+    // MCP server configuration for ISSI Next.js i18n Dashboard
+    "name": "issi-next.js-i18n-dashboard",
+    "description": "Interactive, multilingual Next.js dashboard with Aceternity UI timelines and Framer Motion integration.",
+    "entry": "src/app/layout.tsx",
+    "language": "typescript",
+    "framework": "nextjs",
+    "features": [
+        "i18n",
+        "framer-motion",
+        "aceternity-ui",
+        "timeline-component",
+        "multilingual-support"
+    ],
+    "docs": [
+        "docs/INTERACTIVE_TIMELINE_DOCUMENTATION.md",
+        "docs/INTELLIGENT_BREADCRUMB_SYSTEM.md",
+        "docs/ESLINT_WARNINGS_RESOLUTION_GUIDE.md",
+        "docs/MOBILE_FLOATING_MENU_DOCUMENTATION.md",
+        "docs/ESLINT_CONFIGURATION.md",
+        "docs/BREADCRUMB_WITH_GLOBE_DOCUMENTATION.md",
+        "docs/BREADCRUMB_TESTING.md",
+        "docs/NEW_HERO_DOCUMENTATION.md",
+        "docs/TYPESCRIPT_QUICK_START.md",
+        "docs/UNIVERSAL_BREADCRUMB_DOCUMENTATION.md",
+        "docs/TYPESCRIPT_LIBRARY_DOCUMENTATION.md",
+        "docs/TODO_NEW_HERO_TOGGLE.md",
+        "docs/TODO_INTELLIGENT_BREADCRUMB.md",
+        "docs/PRODUCT_URL_TESTING.md"
+    ],
+    "changelog": "CHANGELOG.md",
+    "license": "LICENSE",
+    "mcp": {
+        "servers": {
+            "context7": {
+                "type": "http",
+                "url": "https://mcp.context7.com/mcp"
+            },
+            "magic-mcp": {
+                "type": "http",
+                "url": "https://mcpservers.org/servers/21st-dev/magic-mcp"
+            },
+            "json-mcp": {
+                "type": "http",
+                "url": "https://mcpservers.org/servers/VadimNastoyashchy/json-mcp"
+            },
+            "aceternity-ui": {
+                "type": "context7-compatible",
+                "libraryId": "/ui.aceternity.com/llmstxt"
+            },
+            "vercel": {
+                "type": "context7-compatible",
+                "libraryId": "/vercel/sdk"
+            }
+        }
+    }
+}

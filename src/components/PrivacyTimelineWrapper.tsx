@@ -7,15 +7,15 @@ interface PrivacyTimelineWrapperProps {
   locale: string;
 }
 
-export default function PrivacyTimelineWrapper({ 
-  messages, 
+export default function PrivacyTimelineWrapper({
+  messages,
   locale
 }: PrivacyTimelineWrapperProps) {
   return (
     <div className="relative z-10 min-h-screen">
-      <PrivacyTimelineContent 
-        messages={messages} 
-        locale={locale} 
+      <PrivacyTimelineContent
+        messages={messages}
+        locale={locale}
       />
     </div>
   );

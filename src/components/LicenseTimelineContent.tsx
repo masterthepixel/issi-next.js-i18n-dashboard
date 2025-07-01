@@ -1,7 +1,7 @@
 'use client';
 
-import { FormattedMessage, IntlProvider, useIntl } from 'react-intl';
 import { Timeline } from '@/components/ui/Timeline';
+import { FormattedMessage, IntlProvider, useIntl } from 'react-intl';
 
 interface LicenseTimelineContentProps {
   messages: Record<string, string>;
@@ -128,7 +128,7 @@ function LicenseTimelineInner() {
                 </li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-3">
                 <FormattedMessage id="license.sections.hyperlinking.conditional.title" />
@@ -167,7 +167,7 @@ function LicenseTimelineInner() {
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
             <p className="text-slate-700 dark:text-slate-100">
-              <FormattedMessage 
+              <FormattedMessage
                 id="license.sections.hyperlinking.process.intro"
                 values={{
                   email: 'info@issi.com'
@@ -259,7 +259,7 @@ function LicenseTimelineInner() {
                 <FormattedMessage id="license.sections.rights.reservation.amendment" />
               </p>
             </div>
-            
+
             <div>
               <h4 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-3">
                 <FormattedMessage id="license.sections.rights.removal.title" />
@@ -309,7 +309,7 @@ function LicenseTimelineInner() {
                 <FormattedMessage id="license.sections.disclaimer.exclusions.content" />
               </p>
             </div>
-            
+
             <div>
               <h4 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-3">
                 <FormattedMessage id="license.sections.disclaimer.limitations.title" />
@@ -342,7 +342,7 @@ function LicenseTimelineInner() {
   ];
 
   return (
-    <Timeline 
+    <Timeline
       data={timelineData}
       title={intl.formatMessage({ id: "license.timeline.title" })}
       subtitle={intl.formatMessage({ id: "license.timeline.subtitle" })}
