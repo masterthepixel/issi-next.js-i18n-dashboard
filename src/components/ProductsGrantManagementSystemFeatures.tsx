@@ -1,19 +1,19 @@
 'use client'
 
 import {
-  CloudArrowUpIcon,
-  LockClosedIcon,
-  ArrowPathIcon,
-  FingerPrintIcon,
-  Cog6ToothIcon,
-  ServerIcon,
-  DocumentCheckIcon,
-  ClockIcon,
-  ChartBarIcon,
-  EyeIcon,
-  CurrencyDollarIcon,
-  ShieldCheckIcon,
   AdjustmentsHorizontalIcon,
+  ArrowPathIcon,
+  ChartBarIcon,
+  ClockIcon,
+  CloudArrowUpIcon,
+  Cog6ToothIcon,
+  CurrencyDollarIcon,
+  DocumentCheckIcon,
+  EyeIcon,
+  FingerPrintIcon,
+  LockClosedIcon,
+  ServerIcon,
+  ShieldCheckIcon,
 } from '@heroicons/react/20/solid'
 import { FormattedMessage, useIntl } from 'react-intl'
 
@@ -96,22 +96,22 @@ export default function ProductsGrantManagementSystemFeatures() {
           <h2 className="text-base/7 font-semibold text-slate-600 dark:text-slate-400">
             <FormattedMessage id="products.gms.hero.tagline" />
           </h2>
-          <p className="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
+          <p className="mt-2 text-4xl font-bold tracking-tight text-blue-600 dark:text-blue-400 sm:text-5xl">
             <FormattedMessage id="products.gms.hero.title" />
           </p>
-          
+
           {/* Context Description */}
           <p className="mt-6 text-lg/8 text-slate-600 dark:text-slate-300">
             <FormattedMessage id="products.gms.hero.context" />
           </p>
-          
+
           {/* Main Description */}
           <p className="mt-4 text-lg/8 text-slate-600 dark:text-slate-300">
             <FormattedMessage id="products.gms.hero.description" />
           </p>
         </div>
       </div>
-      
+
       {/* Hero Image */}
       <div className="relative overflow-hidden pt-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -129,30 +129,30 @@ export default function ProductsGrantManagementSystemFeatures() {
           </div>
         </div>
       </div>
-      
+
       {/* Key Features Section */}
       <div className="mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center mb-16">
           <h2 className="text-base/7 font-semibold text-slate-600 dark:text-slate-400">
             <FormattedMessage id="products.gms.features.title" />
           </h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+          <p className="mt-2 text-3xl font-bold tracking-tight text-blue-600 dark:text-blue-400 sm:text-4xl">
             <FormattedMessage id="products.gms.features.subtitle" />
           </p>
           <p className="mt-6 text-lg/8 text-slate-600 dark:text-slate-300">
             <FormattedMessage id="products.gms.features.description" />
           </p>
         </div>
-        
+
         {/* Features Grid - All 13 Features */}
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base/7 text-slate-600 dark:text-slate-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:grid-cols-4 lg:gap-x-8 lg:gap-y-16">
           {features.map((feature, index) => (
             <div key={index} className="relative pl-9">
-              <div className="inline font-semibold text-slate-900 dark:text-white">
-                <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-slate-600 dark:text-slate-400" />
+              <div className="font-semibold text-blue-600 dark:text-blue-400">
+                <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-slate-600 dark:text-white" />
                 <FormattedMessage id={feature.nameId} />
-              </div>{' '}
-              <div className="inline">
+              </div>
+              <div className="mt-1">
                 <FormattedMessage id={feature.descriptionId} />
               </div>
             </div>

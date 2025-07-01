@@ -6,7 +6,9 @@ import { notFound } from 'next/navigation';
 import React from 'react';
 
 import ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper from '@/components/ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper';
+import ProductsGrantManagementSystemFeaturesWrapper from '@/components/ProductsGrantManagementSystemFeaturesWrapper';
 import { Locale } from '@/lib/definitions';
+import { getIntl } from '@/lib/intl';
 import { getAllProducts, getProductBySlug } from '@/lib/products';
 
 interface ProductPageProps {
@@ -73,6 +75,11 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   if (params.slug === 'electronic-correspondence-tracking-system') {
     return <ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper />;
+  }
+
+  if (params.slug === 'grant-management-system') {
+    const intl = await getIntl(params.lang);
+    return <ProductsGrantManagementSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
   }
 
   const product = await getProductBySlug(params.slug);

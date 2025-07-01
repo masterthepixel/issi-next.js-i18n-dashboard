@@ -100,14 +100,14 @@ export default function ProductsGrantManagementSystemFeatures() {
   ]
 
   return (
-    <div className="bg-white dark:bg-gray-900 py-24 sm:py-32">
+    <div className="py-4 lg:py-8">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Hero Section */}
-        <div className="mx-auto max-w-4xl text-left">
+        <div className="mx-auto max-w-7xl text-left">
           <h2 className="text-base/7 font-semibold text-slate-600 dark:text-slate-400">
             <FormattedMessage id="products.gms.hero.tagline" />
           </h2>
-          <p className="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
+          <p className="mt-2 text-4xl font-bold tracking-tight text-blue-600 dark:text-blue-400 sm:text-5xl">
             <FormattedMessage id="products.gms.hero.title" />
           </p>
           
@@ -176,17 +176,17 @@ export default function ProductsGrantManagementSystemFeatures() {
 
 **Layout Structure**:
 1. **Hero Section**: Left-aligned text with tagline, title, context, and description (max-w-7xl width)
-2. **Hero Image**: Full-width product screenshot with white background container and object-contain fitting
-3. **Features Section**: Grid layout with icons and descriptions
+2. **Hero Image**: Full-width product screenshot with white background container and object-contain fitting  
+3. **Features Section**: Grid layout with icons and descriptions on separate lines
 4. **Responsive Design**: Mobile-first approach with Tailwind CSS
-5. **Background**: Transparent component background, white background only behind image
+5. **Background**: Transparent component background with compact padding (`py-4 lg:py-8`)
 
 **Key Design Elements**:
-- **Typography**: Consistent heading hierarchy (h2, h3, p)
-- **Spacing**: Standardized padding and margins
+- **Typography**: Blue titles (`text-blue-600 dark:text-blue-400`) with slate supporting text
+- **Spacing**: Compact padding with `mt-1` spacing between feature names and descriptions
 - **Grid Layout**: Responsive 1-4 column grid for features
-- **Icons**: Heroicons for visual consistency
-- **Colors**: Slate color palette with dark mode variants
+- **Icons**: Heroicons with `text-slate-600 dark:text-white` colors
+- **Colors**: Blue brand colors for titles, slate for descriptions
 
 #### 4. Translation Integration
 
