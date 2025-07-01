@@ -5,7 +5,8 @@
       "Bash(grep:*)",
       "Bash(pnpm validate:json:*)",
       "Bash(node:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "WebFetch(domain:www.issi-software.com)"
     ],
     "deny": []
   }

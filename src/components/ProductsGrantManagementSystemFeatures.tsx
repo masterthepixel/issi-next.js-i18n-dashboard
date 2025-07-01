@@ -89,10 +89,10 @@ export default function ProductsGrantManagementSystemFeatures() {
   ]
 
   return (
-    <div className="bg-white dark:bg-gray-900 py-24 sm:py-32">
+    <div className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Hero Section */}
-        <div className="mx-auto max-w-4xl sm:text-center">
+        <div className="mx-auto max-w-7xl text-left">
           <h2 className="text-base/7 font-semibold text-slate-600 dark:text-slate-400">
             <FormattedMessage id="products.gms.hero.tagline" />
           </h2>
@@ -115,13 +115,15 @@ export default function ProductsGrantManagementSystemFeatures() {
       {/* Hero Image */}
       <div className="relative overflow-hidden pt-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <img
-            alt={intl.formatMessage({ id: "products.gms.hero.imageAlt", defaultMessage: "Grant Management System Dashboard" })}
-            src="https://tailwindcss.com/plus-assets/img/component-images/project-app-screenshot.png"
-            width={2432}
-            height={1442}
-            className="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-slate-900/10 dark:ring-slate-700/20"
-          />
+          <div className="bg-white rounded-xl p-4">
+            <img
+              alt={intl.formatMessage({ id: "products.gms.hero.imageAlt", defaultMessage: "Grant Management System Dashboard" })}
+              src="/images/products/gmsproduct.png"
+              width={2432}
+              height={1442}
+              className="w-full h-auto object-contain mb-[-12%] rounded-xl shadow-2xl ring-1 ring-slate-900/10 dark:ring-slate-700/20"
+            />
+          </div>
           <div aria-hidden="true" className="relative">
             <div className="absolute -inset-x-20 bottom-0 bg-gradient-to-t from-white dark:from-gray-900 pt-[7%]" />
           </div>

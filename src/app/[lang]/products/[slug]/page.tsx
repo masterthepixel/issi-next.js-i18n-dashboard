@@ -5,9 +5,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import React from 'react';
 
+import ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper from '@/components/ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper';
 import { Locale } from '@/lib/definitions';
 import { getAllProducts, getProductBySlug } from '@/lib/products';
-import ProductsGrantManagementSystemFeaturesWrapper from '@/components/ProductsGrantManagementSystemFeaturesWrapper';
 
 interface ProductPageProps {
   params: {
@@ -71,27 +71,20 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 }
 
 const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
+  if (params.slug === 'electronic-correspondence-tracking-system') {
+    return <ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper />;
+  }
+
   const product = await getProductBySlug(params.slug);
 
   if (!product) {
     notFound();
   }
 
-  // Load messages for i18n components
-  const messages = (await import(`../../../../lang/${params.lang}.json`)).default;
-
   const IconComponent = product.icon;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
-      {/* Grant Management System Features Section */}
-      {product.slug === 'grant-management-system' && (
-        <ProductsGrantManagementSystemFeaturesWrapper 
-          locale={params.lang} 
-          messages={messages} 
-        />
-      )}
-      
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="mb-8">

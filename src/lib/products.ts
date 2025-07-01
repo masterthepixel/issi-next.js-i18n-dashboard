@@ -36,30 +36,37 @@ const products: ProductDetail[] = [
     slug: 'grant-management-system',
     name: 'Grant Management System',
     titleKey: 'products.gms.title',
-    description: 'Comprehensive cloud-based solution for managing grant applications, approvals, and tracking with advanced workflow automation.',
+    description: 'ISSI\'s GMS solution standardizes, streamlines, and automates the complete grant lifecycle—from application to post-award activities, built on a case management framework with configurable rules.',
     descriptionKey: 'products.gms.description',
     icon: FaHandHoldingUsd,
     category: 'featured',
-    tags: ['Cloud-Based', 'Workflow Automation', 'Real-time Tracking'],
+    tags: ['Cloud-Based', 'Workflow Automation', 'Real-time Tracking', 'Case Management'],
+    image: '/images/products/gmsproduct.png',
     features: [
-      'Automated application processing',
-      'Real-time tracking dashboard',
-      'Advanced workflow automation',
-      'Compliance monitoring',
-      'Multi-user collaboration',
-      'Comprehensive reporting'
+      'Interactive Grant Dashboards with insightful, actionable data',
+      'Powerful WYSIWYG editor for application management',
+      'Configurable application questions and unlimited file size features',
+      'Streamlined application process with automated evaluation',
+      'Applicant history tracking and online submission facilitation',
+      'Defined rules for applicant verification and risk assessment',
+      'Automated data capture and validation',
+      'Comprehensive reporting and analytics'
     ],
     benefits: [
-      'Streamline grant application process',
-      'Reduce administrative overhead',
-      'Improve compliance tracking',
-      'Real-time visibility into grant status'
+      'Eliminate discrepancies in grant processing',
+      'Reduce processing time significantly',
+      'Enhanced operational efficiency',
+      'Centralized grant lifecycle management',
+      'Easy implementation with no server installation',
+      'Reduced operational costs'
     ],
     specifications: {
-      'Deployment': 'Cloud-based SaaS',
-      'Security': 'SOC 2 Type II Compliant',
-      'Integration': 'REST API, SOAP',
-      'Support': '24/7 technical support'
+      'Deployment': 'Cloud-based solution on AWS',
+      'Installation': 'No software/server installation required',
+      'Security': 'Enterprise-grade security and compliance',
+      'File Management': 'Unlimited file size with flexible file type acceptance',
+      'Dashboard': 'High-level overviews and granular data insights',
+      'Workflow': 'Configurable rules and automated processes'
     },
     size: { width: 2, height: 1 },
     className: 'col-span-2',
