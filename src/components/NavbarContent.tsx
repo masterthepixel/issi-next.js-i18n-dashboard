@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 import { FormattedMessage, IntlProvider } from "react-intl";
+import { Home } from "lucide-react";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -70,6 +71,12 @@ export default function NavbarContent({ user: _user, locale, messages }: Props) 
 
   // Navigation items for FloatingNav
   const navItems = [
+    {
+      name: null, // Icon-only home button
+      link: `/${locale}/home`,
+      icon: <Home className="size-4" />,
+      ariaLabel: messages["common.navigation.home"] || "Home"
+    },
     {
       name: <FormattedMessage id="common.navigation.services" />,
       link: `/${locale}/services`,

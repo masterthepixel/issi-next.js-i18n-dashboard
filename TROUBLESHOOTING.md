@@ -8,6 +8,7 @@ This guide addresses common internationalization (i18n) issues you might encount
 ### Symptoms
 - Text appears as translation keys (e.g., `common.welcome_title`)
 - Console errors with messages like "Translation key not found"
+- Timeline pages showing missing titles/subtitles
 
 ### Solutions
 1. Check if the key exists in all language files (`src/lang/*.json`)
@@ -17,6 +18,36 @@ This guide addresses common internationalization (i18n) issues you might encount
    pnpm run validate:json
    ```
 4. Check for typos in the translation key
+
+### Common Timeline Translation Issues
+
+**Issue**: Timeline components displaying missing titles or subtitles (e.g., `license.timeline.title`).
+
+**Root Cause**: Missing timeline-specific translation keys in language files.
+
+**Solution**:
+1. Ensure these keys exist in all language files:
+   ```json
+   {
+     "privacy.timeline.title": "Privacy Policy",
+     "privacy.timeline.subtitle": "Your data privacy and protection",
+     "terms.timeline.title": "Terms of Service",
+     "terms.timeline.subtitle": "Rules and regulations for website usage", 
+     "license.timeline.title": "License Agreement",
+     "license.timeline.subtitle": "Terms and conditions for using our services"
+   }
+   ```
+
+2. Verify timeline content components use correct namespace:
+   - `TermsTimelineContent.tsx` should use `terms.sections.*` 
+   - `LicenseTimelineContent.tsx` should use `license.sections.*`
+   - `PrivacyTimelineContent.tsx` should use `privacy.sections.*`
+
+3. Check component translation key references match exactly:
+   ```typescript
+   title={intl.formatMessage({ id: "terms.timeline.title" })}
+   subtitle={intl.formatMessage({ id: "terms.timeline.subtitle" })}
+   ```
 
 ## Language Detection Issues
 

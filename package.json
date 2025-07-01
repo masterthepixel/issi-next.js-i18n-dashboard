@@ -22,6 +22,7 @@
     "@formatjs/intl-localematcher": "^0.5.4",
     "@headlessui/react": "^2.2.4",
     "@heroicons/react": "^2.2.0",
+    "@hugeicons/core-free-icons": "^1.0.14",
     "@react-three/drei": "9.88.17",
     "@react-three/fiber": "8.15.19",
     "@tabler/icons-react": "^3.33.0",

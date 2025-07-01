@@ -4,7 +4,8 @@
       "Bash(rg:*)",
       "Bash(grep:*)",
       "Bash(pnpm validate:json:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(git add:*)"
     ],
     "deny": []
   }

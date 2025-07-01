@@ -84,6 +84,10 @@ npm run lint
 **Problem**: `"streetAddress": "7337 Hanover Pkwy, Suite# A"`
 **Solution**: Use `"Suite A"` instead of `"Suite# A"`
 
+**Explanation**: The `#` character can cause JSON parsing issues in some environments and should be avoided in address strings. This was resolved across all language files (`en.json`, `fr.json`, `es.json`) by replacing "Suite# A" with "Suite A".
+
+**Status**: ✅ **RESOLVED** - All instances fixed as of 2025-07-01
+
 ### 2. Unescaped Quotes
 
 **Problem**: `"description": "ISSI's award-winning software"`

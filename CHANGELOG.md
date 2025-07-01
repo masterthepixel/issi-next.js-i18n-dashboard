@@ -5,7 +5,104 @@ All notable changes to the ISSI Next.js Multilingual Website will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Latest] - 2025-06-27
+## [Latest] - 2025-07-01
+
+### Added - Home Icon to Main Navigation
+
+#### 🏠 Icon-Only Home Navigation Button
+
+**Feature**: Added a dedicated home icon to the main desktop navigation menu.
+
+**Implementation**:
+- Added Home icon from Lucide React library to FloatingNav component
+- Positioned as the first item in the navigation menu
+- Icon-only display (no text) for clean, minimal design
+- Full accessibility compliance with proper ARIA labeling
+
+**Technical Details**:
+```typescript
+// NavbarContent.tsx - Home navigation item
+{
+  name: null, // Icon-only display
+  link: `/${locale}/home`,
+  icon: <Home className="size-4" />,
+  ariaLabel: messages["common.navigation.home"] || "Home"
+}
+```
+
+**Accessibility Features**:
+- Proper ARIA labels in all supported languages
+- Screen reader compatibility: "Home"/"Accueil"/"Inicio"
+- Keyboard navigation support
+- Focus and hover states maintained
+
+**UI Enhancements**:
+- Reduced padding (`px-2`) for icon-only items vs text items (`px-3`)
+- Consistent styling with existing navigation elements
+- Responsive design for both desktop and mobile
+
+**Files Modified**:
+- `src/components/NavbarContent.tsx` - Added home navigation item
+- `src/components/ui/floating-navbar.tsx` - Enhanced NavItem interface and rendering
+
+**Dependencies**: Uses existing Lucide React library (no new dependencies)
+
+### Fixed - Timeline Translation Keys & JSON Validation
+
+#### 🔧 Critical Timeline Display Issue Resolution
+
+**Issue**: License, Terms, and Privacy pages were displaying missing timeline titles and subtitles due to absent translation keys.
+
+**Root Cause Analysis**:
+- Missing `*.timeline.title` and `*.timeline.subtitle` keys in translation files
+- TermsTimelineContent.tsx incorrectly using `license.sections.*` instead of `terms.sections.*`
+- JSON validation warnings due to "#" character in address strings
+
+**Fixes Applied**:
+
+**Translation Keys Added**:
+```json
+// English (en.json)
+"privacy.timeline.title": "Privacy Policy",
+"privacy.timeline.subtitle": "Your data privacy and protection",
+"terms.timeline.title": "Terms of Service", 
+"terms.timeline.subtitle": "Rules and regulations for website usage",
+"license.timeline.title": "License Agreement",
+"license.timeline.subtitle": "Terms and conditions for using our services"
+
+// French (fr.json)
+"privacy.timeline.title": "Politique de Confidentialité",
+"privacy.timeline.subtitle": "Protection et confidentialité de vos données"
+
+// Spanish (es.json)  
+"privacy.timeline.title": "Política de Privacidad",
+"privacy.timeline.subtitle": "Protección y privacidad de sus datos"
+```
+
+**Component Fixes**:
+- Fixed `TermsTimelineContent.tsx` to use proper `terms.sections.*` translation keys
+- Added complete terms content structure to English translations
+- Updated timeline data structure to match new translation keys
+
+**JSON Improvements**:
+- Replaced "Suite# A" with "Suite A" in all address references across language files
+- Eliminated all JSON validation warnings
+- All language files now pass clean validation
+
+**Files Modified**:
+- `src/lang/en.json` - Added missing timeline keys and terms content
+- `src/lang/fr.json` - Added privacy timeline keys, fixed address format
+- `src/lang/es.json` - Added privacy timeline keys, fixed address format  
+- `src/components/TermsTimelineContent.tsx` - Fixed translation key references
+
+**Validation Results**:
+- ✅ All JSON files pass validation without warnings
+- ✅ Timeline titles and subtitles now display correctly
+- ✅ Consistent address formatting across all languages
+
+**Impact**: Timeline pages now display proper titles and subtitles in all supported languages (EN/FR/ES).
+
+## [Previous] - 2025-06-27
 
 ### Added - Enterprise SEO Metadata System & Interactive Legal Pages Timeline
 

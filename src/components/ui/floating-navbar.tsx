@@ -18,10 +18,11 @@ import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 interface NavItem {
-  name: string | React.ReactNode;
+  name: string | React.ReactNode | null;
   link: string;
   icon?: React.ReactNode;
   dropdown?: DropdownItem[];
+  ariaLabel?: string;
 }
 
 interface DropdownItem {
@@ -190,11 +191,13 @@ export const FloatingNav = ({
               href={navItem.link}
               className={cn(
                 "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500 px-3 py-2 rounded-full transition-all border border-transparent hover:border-neutral-200 dark:hover:border-white/[0.2] group",
-                isActive ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 border-neutral-200 dark:border-white/[0.2]" : ""
+                isActive ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 border-neutral-200 dark:border-white/[0.2]" : "",
+                navItem.name === null ? "px-2" : "px-3" // Adjust padding for icon-only
               )}
+              aria-label={navItem.ariaLabel}
             >
-              <span className="block sm:hidden">{navItem.icon}</span>
-              <span className="text-sm font-medium">{navItem.name}</span>
+              {navItem.icon && <span className="block">{navItem.icon}</span>}
+              {navItem.name && <span className="text-sm font-medium">{navItem.name}</span>}
               <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             </Link>
           );
