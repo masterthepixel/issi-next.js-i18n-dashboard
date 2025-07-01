@@ -6,7 +6,9 @@ import { notFound } from 'next/navigation';
 import React from 'react';
 
 import ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper from '@/components/ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper';
+import ProductsEPermittingSystemFeaturesWrapper from '@/components/ProductsEPermittingSystemFeaturesWrapper';
 import ProductsGrantManagementSystemFeaturesWrapper from '@/components/ProductsGrantManagementSystemFeaturesWrapper';
+import ProductsMembershipDatabaseSubsidyPaymentSystemFeaturesWrapper from '@/components/ProductsMembershipDatabaseSubsidyPaymentSystemFeaturesWrapper';
 import { Locale } from '@/lib/definitions';
 import { getIntl } from '@/lib/intl';
 import { getAllProducts, getProductBySlug } from '@/lib/products';
@@ -74,12 +76,23 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
 const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   if (params.slug === 'electronic-correspondence-tracking-system') {
-    return <ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper />;
+    const intl = await getIntl(params.lang);
+    return <ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'epermitting-system') {
+    const intl = await getIntl(params.lang);
+    return <ProductsEPermittingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
   }
 
   if (params.slug === 'grant-management-system') {
     const intl = await getIntl(params.lang);
     return <ProductsGrantManagementSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'membership-database-subsidy-payment-system') {
+    const intl = await getIntl(params.lang);
+    return <ProductsMembershipDatabaseSubsidyPaymentSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
   }
 
   const product = await getProductBySlug(params.slug);

@@ -142,34 +142,40 @@ const products: ProductDetail[] = [
   },
   {
     id: 'mdsps',
-    slug: 'multi-dimensional-system-planning-solution',
-    name: 'Multi-Dimensional System Planning Solution',
+    slug: 'membership-database-subsidy-payment-system',
+    name: 'Membership Database and Subsidy Payment System',
     titleKey: 'products.mdsps.title',
-    description: 'End-to-end financial management solution with GAAP compliance and comprehensive reporting.',
+    description: 'All-in-one cloud-based solution that simplifies government-assisted payment processing with member enrollment and prescription drug subsidy payments.',
     descriptionKey: 'products.mdsps.description',
     icon: FaDatabase,
     category: 'featured',
-    tags: ['End-to-end Solution', 'GAAP Compliance'],
+    tags: ['Cloud-based Solution', 'Government Assistance', 'Payment Processing'],
 
     features: [
-      'Multi-dimensional planning',
-      'GAAP compliance automation',
-      'Financial forecasting',
-      'Budget management',
-      'Performance analytics',
-      'Integration with ERP systems'
+      'Automated end-to-end solution',
+      'Membership eligibility determination',
+      'Premium subsidy payment management',
+      'Document and letter storage',
+      'Audit log functionality',
+      'CRM and CMS integration',
+      'Mobile responsive design',
+      'Call center support',
+      'Billing and invoices',
+      'Pre-defined and ad-hoc reports'
     ],
     benefits: [
-      'Comprehensive financial planning',
-      'Automated compliance reporting',
-      'Improved budget accuracy',
-      'Real-time financial insights'
+      'Reduced administrative costs',
+      'Eliminate duplicate subsidy payments',
+      'GAAP compliance maintenance',
+      'Streamlined application processing',
+      'Enhanced member experience'
     ],
     specifications: {
-      'Compliance': 'GAAP, GASB standards',
-      'Integration': 'SAP, Oracle, QuickBooks',
-      'Reporting': '100+ standard reports',
-      'Analytics': 'AI-powered forecasting'
+      'Deployment': 'Cloud-based solution',
+      'Compliance': 'GAAP, Agency regulations',
+      'Integration': 'CRM tools, CMS platforms',
+      'Reporting': 'Pre-defined and custom reports',
+      'Support': 'Optional call center functionality'
     },
     size: { width: 2, height: 1 },
     className: 'col-span-2',

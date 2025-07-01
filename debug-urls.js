@@ -13,7 +13,7 @@ const productSlugMap = {
   "gms": "grant-management-system",
   "ects": "electronic-correspondence-tracking-system",
   "ets": "environmental-tracking-system",
-  "mdsps": "multi-dimensional-system-planning-solution",
+  "mdsps": "membership-database-subsidy-payment-system",
   "project-management": "project-management-suite",
   "bug-tracking": "bug-tracking-system",
   "capture-manager": "capture-manager",

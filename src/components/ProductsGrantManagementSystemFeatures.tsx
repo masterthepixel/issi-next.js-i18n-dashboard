@@ -121,11 +121,11 @@ export default function ProductsGrantManagementSystemFeatures() {
               src="/images/products/gmsproduct.png"
               width={2432}
               height={1442}
-              className="w-full h-auto object-contain mb-[-12%] rounded-xl shadow-2xl ring-1 ring-slate-900/10 dark:ring-slate-700/20"
+              className="w-full h-auto object-contain mb-[-1%] rounded-xl shadow-2xl ring-1 ring-slate-900/10 dark:ring-slate-700/20"
             />
           </div>
           <div aria-hidden="true" className="relative">
-            <div className="absolute -inset-x-20 bottom-0 bg-gradient-to-t from-white dark:from-gray-900 pt-[7%]" />
+            <div className="absolute -inset-x-20 bottom-0 bg-gradient-to-t from-white dark:from-gray-900 pt-[1%]" />
           </div>
         </div>
       </div>
