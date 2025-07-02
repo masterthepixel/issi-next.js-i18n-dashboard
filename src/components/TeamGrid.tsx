@@ -10,7 +10,6 @@ const people = [
   { id: 3, imageUrl: "/images/3.jpg" },
   { id: 4, imageUrl: "/images/4.jpg" },
   { id: 5, imageUrl: "/images/5.jpg" },
-  { id: 6, imageUrl: "/images/6.png" },
   { id: 7, imageUrl: "/images/7.jpg" },
   { id: 8, imageUrl: "/images/8.jpg" },
 ];
@@ -28,7 +27,7 @@ export default function TeamGrid() {
           </p>
         </div>
         <Masonry
-          breakpointCols={{ default: 3, 1024: 2, 640: 1 }}
+          breakpointCols={{ default: 2, 1024: 2, 640: 1 }}
           className="flex w-auto -ml-4"
           columnClassName="masonry-column"
         >
@@ -37,7 +36,7 @@ export default function TeamGrid() {
             const roleId = `team.member.${person.id}.role`;
             const bioId = `team.member.${person.id}.bio`;
             return (
-              <li key={person.id} className="mb-0">
+              <div key={person.id} className="mb-0">
                 <div className="mt-4 glass-card text-left flex flex-col gap-4 w-full max-w-xl mx-auto rounded-2xl border-slate-400/50 p-6">
                   <div className="flex flex-row items-start gap-6 w-full mt-2">
                     <Image
@@ -61,7 +60,7 @@ export default function TeamGrid() {
                     <FormattedMessage id={bioId} />
                   </div>
                 </div>
-              </li>
+              </div>
             );
           })}
         </Masonry>

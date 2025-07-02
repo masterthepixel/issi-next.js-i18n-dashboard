@@ -21,6 +21,8 @@
   "common.theme-switcher": "Basculer en mode sombre",
   "common.theme-switcher.dark": "Passer en mode clair",
   "common.theme-switcher.light": "Passer en mode sombre",
+  "common.scroll-to-top": "Retour en haut",
+  "common.scroll-to-top.aria": "Retourner en haut de la page",
   "common.user-menu.settings": "Paramètres",
   "common.user-menu.sign-out": "Déconnexion",
   "common.user-menu.your-profile": "Votre profil",
