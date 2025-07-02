@@ -22,6 +22,7 @@ import ProductsGrantManagementSystemFeaturesWrapper from '@/components/ProductsG
 import ProductsHRManagementSystemFeaturesWrapper from '@/components/ProductsHRManagementSystemFeaturesWrapper';
 import ProductsICodeTestingPlatformFeaturesWrapper from '@/components/ProductsICodeTestingPlatformFeaturesWrapper';
 import ProductsILearnSystemFeaturesWrapper from '@/components/ProductsILearnSystemFeaturesWrapper';
+import ProductsInventoryAssetTrackingSystemFeaturesWrapper from '@/components/ProductsInventoryAssetTrackingSystemFeaturesWrapper';
 import ProductsMeetingMinutesManagerFeaturesWrapper from '@/components/ProductsMeetingMinutesManagerFeaturesWrapper';
 import ProductsMembershipDatabaseSubsidyPaymentSystemFeaturesWrapper from '@/components/ProductsMembershipDatabaseSubsidyPaymentSystemFeaturesWrapper';
 import ProductsProfessionalManagementFeaturesWrapper from '@/components/ProductsProfessionalManagementFeaturesWrapper';
@@ -33,6 +34,7 @@ import ProductsTaskManagementSystemFeaturesWrapper from '@/components/ProductsTa
 import ProductsTimesheetManagementSystemFeaturesWrapper from '@/components/ProductsTimesheetManagementSystemFeaturesWrapper';
 import ProductsTrainingDashboardFeaturesWrapper from '@/components/ProductsTrainingDashboardFeaturesWrapper';
 import ProductsTrainingRecordsSystemFeaturesWrapper from '@/components/ProductsTrainingRecordsSystemFeaturesWrapper';
+import ProductsVisitorLogSystemFeaturesWrapper from '@/components/ProductsVisitorLogSystemFeaturesWrapper';
 import { Locale } from '@/lib/definitions';
 import { getIntl } from '@/lib/intl';
 import { getAllProducts, getProductBySlug } from '@/lib/products';
@@ -237,6 +239,16 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   if (params.slug === 'complaint-tracking-system') {
     const intl = await getIntl(params.lang);
     return <ProductsComplaintTrackingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'inventory-asset-tracking-system') {
+    const intl = await getIntl(params.lang);
+    return <ProductsInventoryAssetTrackingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'visitor-log-system') {
+    const intl = await getIntl(params.lang);
+    return <ProductsVisitorLogSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
   }
 
   const product = await getProductBySlug(params.slug);
