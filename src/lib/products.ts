@@ -186,33 +186,42 @@ const products: ProductDetail[] = [
   {
     id: 'project-management',
     slug: 'project-management-suite',
-    name: 'Project Management Suite',
+    name: 'Project Management Suite (PIMS)',
     titleKey: 'products.project-management.title',
-    description: 'Comprehensive project management solution with client tracking, resource management, and portfolio analysis.',
+    description: 'Centralized project tracking system to effectively plan, organize, prioritize, manage resources, and analyze data for maximum organizational effectiveness.',
     descriptionKey: 'products.project-management.description',
     icon: FaTasks,
     category: 'project',
-    tags: ['Client Tracking', 'Resource Management', 'Portfolio Analysis'],
+    tags: ['Project Tracking', 'Client Management', 'Resource Planning'],
 
     features: [
-      'Project portfolio management',
-      'Resource allocation and tracking',
+      'Centralized project and client data storage',
+      'Detailed project profile management',
+      'Technology and environment tracking',
+      'Team collaboration and visibility',
+      'Resource allocation and planning',
       'Client relationship management',
+      'Project analytics and reporting',
+      'Task and milestone tracking',
+      'Document management system',
       'Time and expense tracking',
-      'Gantt chart visualization',
-      'Risk management tools'
+      'Risk assessment and management',
+      'Performance metrics and KPIs'
     ],
     benefits: [
-      'Improve project delivery rates',
-      'Optimize resource utilization',
-      'Better client communication',
-      'Real-time project visibility'
+      'Increased team productivity',
+      'Reduced project errors',
+      'Better client expectation management',
+      'Enhanced project visibility',
+      'Improved resource utilization',
+      'Streamlined project workflows'
     ],
     specifications: {
-      'Methodology': 'Agile, Waterfall, Hybrid',
-      'Integration': 'Microsoft Project, JIRA',
-      'Reporting': 'Custom dashboards',
-      'Collaboration': 'Real-time team collaboration'
+      'Data Management': 'Centralized project database',
+      'Client Tracking': 'Complete client project history',
+      'Technologies': 'Multi-environment support',
+      'Collaboration': 'Real-time team visibility',
+      'Analytics': 'Project performance analysis'
     },
     size: { width: 1, height: 1 },
     className: 'col-span-1',
@@ -223,31 +232,40 @@ const products: ProductDetail[] = [
     slug: 'bug-tracking-system',
     name: 'Bug Tracking System',
     titleKey: 'products.bug-tracking.title',
-    description: 'Advanced defect management system with auto-detection capabilities and custom workflow support.',
+    description: 'Robust, featureful, and mature defect-tracking system that allows development teams to keep track of outstanding bugs, problems, issues, enhancements, and other change requests effectively.',
     descriptionKey: 'products.bug-tracking.description',
     icon: FaBug,
     category: 'project',
-    tags: ['Auto Detection', 'Custom Workflows'],
+    tags: ['Defect Tracking', 'Issue Management', 'Development Tools'],
 
     features: [
-      'Automated bug detection',
+      'Centralized database for bug tracking',
+      'Seamless workflow process',
+      'Outstanding bugs and issues tracking',
+      'Enhancement request management',
+      'Change request tracking',
+      'Integration with source code management',
+      'Web-based and locally-installed options',
+      'Priority and severity classification',
+      'Automated notifications and alerts',
+      'Comprehensive reporting and analytics',
+      'Team collaboration tools',
       'Custom workflow configuration',
-      'Integration with development tools',
-      'Priority and severity tracking',
-      'Automated notifications',
-      'Comprehensive reporting'
+      'Development lifecycle integration'
     ],
     benefits: [
-      'Faster bug resolution',
-      'Improved software quality',
-      'Streamlined development process',
-      'Better team collaboration'
+      'Centralized tracking in one place for simplicity',
+      'Consistent workflow process for extreme efficiency',
+      'Faster bug resolution and quality improvement',
+      'Enhanced team collaboration and communication',
+      'Streamlined development process'
     ],
     specifications: {
-      'Integration': 'GitHub, GitLab, Bitbucket',
-      'Automation': 'CI/CD pipeline integration',
-      'Notifications': 'Email, Slack, Teams',
-      'Analytics': 'Bug trend analysis'
+      'Database': 'Centralized defect tracking database',
+      'Integration': 'Source code management systems',
+      'Deployment': 'Web-based and local installation',
+      'Workflow': 'Customizable bug tracking processes',
+      'Analytics': 'Bug trend analysis and reporting'
     },
     size: { width: 1, height: 1 },
     className: 'col-span-1',

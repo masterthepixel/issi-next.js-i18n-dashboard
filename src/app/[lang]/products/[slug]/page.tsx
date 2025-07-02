@@ -5,10 +5,14 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import React from 'react';
 
+import ProductsBugTrackingSystemFeaturesWrapper from '@/components/ProductsBugTrackingSystemFeaturesWrapper';
+import ProductsCaptureManagerFeaturesWrapper from '@/components/ProductsCaptureManagerFeaturesWrapper';
 import ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper from '@/components/ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper';
 import ProductsEPermittingSystemFeaturesWrapper from '@/components/ProductsEPermittingSystemFeaturesWrapper';
 import ProductsGrantManagementSystemFeaturesWrapper from '@/components/ProductsGrantManagementSystemFeaturesWrapper';
 import ProductsMembershipDatabaseSubsidyPaymentSystemFeaturesWrapper from '@/components/ProductsMembershipDatabaseSubsidyPaymentSystemFeaturesWrapper';
+import ProductsProjectManagementSuiteFeaturesWrapper from '@/components/ProductsProjectManagementSuiteFeaturesWrapper';
+import ProductsPrudentAgileMethodologyFeaturesWrapper from '@/components/ProductsPrudentAgileMethodologyFeaturesWrapper';
 import { Locale } from '@/lib/definitions';
 import { getIntl } from '@/lib/intl';
 import { getAllProducts, getProductBySlug } from '@/lib/products';
@@ -75,6 +79,16 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 }
 
 const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
+  if (params.slug === 'bug-tracking-system') {
+    const intl = await getIntl(params.lang);
+    return <ProductsBugTrackingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'capture-manager') {
+    const intl = await getIntl(params.lang);
+    return <ProductsCaptureManagerFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
   if (params.slug === 'electronic-correspondence-tracking-system') {
     const intl = await getIntl(params.lang);
     return <ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
@@ -93,6 +107,16 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   if (params.slug === 'membership-database-subsidy-payment-system') {
     const intl = await getIntl(params.lang);
     return <ProductsMembershipDatabaseSubsidyPaymentSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'project-management-suite') {
+    const intl = await getIntl(params.lang);
+    return <ProductsProjectManagementSuiteFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'prudent-agile-methodology') {
+    const intl = await getIntl(params.lang);
+    return <ProductsPrudentAgileMethodologyFeaturesWrapper locale={params.lang} messages={intl.messages} />;
   }
 
   const product = await getProductBySlug(params.slug);
