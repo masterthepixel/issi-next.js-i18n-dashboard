@@ -5,15 +5,25 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import React from 'react';
 
+import ProductsAuditReportingSystemFeaturesWrapper from '@/components/ProductsAuditReportingSystemFeaturesWrapper';
 import ProductsBugTrackingSystemFeaturesWrapper from '@/components/ProductsBugTrackingSystemFeaturesWrapper';
 import ProductsCaptureManagerFeaturesWrapper from '@/components/ProductsCaptureManagerFeaturesWrapper';
+import ProductsCompetencySkillsMatrixFeaturesWrapper from '@/components/ProductsCompetencySkillsMatrixFeaturesWrapper';
 import ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper from '@/components/ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper';
+import ProductsEmployeePerformanceSystemFeaturesWrapper from '@/components/ProductsEmployeePerformanceSystemFeaturesWrapper';
+import ProductsEmployeeTalentRepositoryFeaturesWrapper from '@/components/ProductsEmployeeTalentRepositoryFeaturesWrapper';
 import ProductsEPermittingSystemFeaturesWrapper from '@/components/ProductsEPermittingSystemFeaturesWrapper';
 import ProductsGrantManagementSystemFeaturesWrapper from '@/components/ProductsGrantManagementSystemFeaturesWrapper';
+import ProductsHRManagementSystemFeaturesWrapper from '@/components/ProductsHRManagementSystemFeaturesWrapper';
+import ProductsILearnSystemFeaturesWrapper from '@/components/ProductsILearnSystemFeaturesWrapper';
 import ProductsMembershipDatabaseSubsidyPaymentSystemFeaturesWrapper from '@/components/ProductsMembershipDatabaseSubsidyPaymentSystemFeaturesWrapper';
 import ProductsProjectManagementSuiteFeaturesWrapper from '@/components/ProductsProjectManagementSuiteFeaturesWrapper';
 import ProductsPrudentAgileMethodologyFeaturesWrapper from '@/components/ProductsPrudentAgileMethodologyFeaturesWrapper';
+import ProductsRequirementsManagementSystemFeaturesWrapper from '@/components/ProductsRequirementsManagementSystemFeaturesWrapper';
+import ProductsRSVPEventManagementFeaturesWrapper from '@/components/ProductsRSVPEventManagementFeaturesWrapper';
 import ProductsTaskManagementSystemFeaturesWrapper from '@/components/ProductsTaskManagementSystemFeaturesWrapper';
+import ProductsTimesheetManagementSystemFeaturesWrapper from '@/components/ProductsTimesheetManagementSystemFeaturesWrapper';
+import ProductsTrainingDashboardFeaturesWrapper from '@/components/ProductsTrainingDashboardFeaturesWrapper';
 import { Locale } from '@/lib/definitions';
 import { getIntl } from '@/lib/intl';
 import { getAllProducts, getProductBySlug } from '@/lib/products';
@@ -95,6 +105,11 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
     return <ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
   }
 
+  if (params.slug === 'employee-performance-system') {
+    const intl = await getIntl(params.lang);
+    return <ProductsEmployeePerformanceSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
   if (params.slug === 'epermitting-system') {
     const intl = await getIntl(params.lang);
     return <ProductsEPermittingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
@@ -103,6 +118,11 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   if (params.slug === 'grant-management-system') {
     const intl = await getIntl(params.lang);
     return <ProductsGrantManagementSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'hr-management-system') {
+    const intl = await getIntl(params.lang);
+    return <ProductsHRManagementSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
   }
 
   if (params.slug === 'membership-database-subsidy-payment-system') {
@@ -120,9 +140,49 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
     return <ProductsPrudentAgileMethodologyFeaturesWrapper locale={params.lang} messages={intl.messages} />;
   }
 
+  if (params.slug === 'requirements-management-system') {
+    const intl = await getIntl(params.lang);
+    return <ProductsRequirementsManagementSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
   if (params.slug === 'task-management-system') {
     const intl = await getIntl(params.lang);
     return <ProductsTaskManagementSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'timesheet-management-system') {
+    const intl = await getIntl(params.lang);
+    return <ProductsTimesheetManagementSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'employee-talent-repository') {
+    const intl = await getIntl(params.lang);
+    return <ProductsEmployeeTalentRepositoryFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'competency-skills-matrix') {
+    const intl = await getIntl(params.lang);
+    return <ProductsCompetencySkillsMatrixFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'training-dashboard') {
+    const intl = await getIntl(params.lang);
+    return <ProductsTrainingDashboardFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'i-learn-system') {
+    const intl = await getIntl(params.lang);
+    return <ProductsILearnSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'rsvp-event-management') {
+    const intl = await getIntl(params.lang);
+    return <ProductsRSVPEventManagementFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'audit-reporting-system') {
+    const intl = await getIntl(params.lang);
+    return <ProductsAuditReportingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
   }
 
   const product = await getProductBySlug(params.slug);
