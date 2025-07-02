@@ -13,9 +13,11 @@ import ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper from '@/com
 import ProductsEmployeePerformanceSystemFeaturesWrapper from '@/components/ProductsEmployeePerformanceSystemFeaturesWrapper';
 import ProductsEmployeeTalentRepositoryFeaturesWrapper from '@/components/ProductsEmployeeTalentRepositoryFeaturesWrapper';
 import ProductsEPermittingSystemFeaturesWrapper from '@/components/ProductsEPermittingSystemFeaturesWrapper';
+import ProductsExpenseTrackingSystemFeaturesWrapper from '@/components/ProductsExpenseTrackingSystemFeaturesWrapper';
 import ProductsGrantManagementSystemFeaturesWrapper from '@/components/ProductsGrantManagementSystemFeaturesWrapper';
 import ProductsHRManagementSystemFeaturesWrapper from '@/components/ProductsHRManagementSystemFeaturesWrapper';
 import ProductsILearnSystemFeaturesWrapper from '@/components/ProductsILearnSystemFeaturesWrapper';
+import ProductsMeetingMinutesManagerFeaturesWrapper from '@/components/ProductsMeetingMinutesManagerFeaturesWrapper';
 import ProductsMembershipDatabaseSubsidyPaymentSystemFeaturesWrapper from '@/components/ProductsMembershipDatabaseSubsidyPaymentSystemFeaturesWrapper';
 import ProductsProjectManagementSuiteFeaturesWrapper from '@/components/ProductsProjectManagementSuiteFeaturesWrapper';
 import ProductsPrudentAgileMethodologyFeaturesWrapper from '@/components/ProductsPrudentAgileMethodologyFeaturesWrapper';
@@ -183,6 +185,16 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   if (params.slug === 'audit-reporting-system') {
     const intl = await getIntl(params.lang);
     return <ProductsAuditReportingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'expense-tracking-system') {
+    const intl = await getIntl(params.lang);
+    return <ProductsExpenseTrackingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'meeting-minutes-manager') {
+    const intl = await getIntl(params.lang);
+    return <ProductsMeetingMinutesManagerFeaturesWrapper locale={params.lang} messages={intl.messages} />;
   }
 
   const product = await getProductBySlug(params.slug);

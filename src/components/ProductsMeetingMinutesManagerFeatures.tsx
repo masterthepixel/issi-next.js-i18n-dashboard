@@ -1,75 +1,85 @@
 "use client";
 
 import {
-    ChartBarIcon,
-    ClockIcon,
-    CurrencyDollarIcon,
-    ExclamationCircleIcon,
+    CalendarDaysIcon,
+    ChatBubbleLeftRightIcon,
+    ClipboardDocumentCheckIcon,
+    Cog6ToothIcon,
+    FolderIcon,
+    Squares2X2Icon,
     UsersIcon
-} from '@heroicons/react/20/solid';
-import Image from 'next/image';
-import { FormattedMessage, useIntl } from 'react-intl';
+} from "@heroicons/react/20/solid";
+import Image from "next/image";
+import { FormattedMessage, useIntl } from "react-intl";
 
-export default function ProductsAuditReportingSystemFeatures() {
+const features = [
+    {
+        nameId: "products.meeting-minutes-manager.features.feature1.name",
+        descriptionId: "products.meeting-minutes-manager.features.feature1.description",
+        icon: FolderIcon,
+    },
+    {
+        nameId: "products.meeting-minutes-manager.features.feature2.name",
+        descriptionId: "products.meeting-minutes-manager.features.feature2.description",
+        icon: Cog6ToothIcon,
+    },
+    {
+        nameId: "products.meeting-minutes-manager.features.feature3.name",
+        descriptionId: "products.meeting-minutes-manager.features.feature3.description",
+        icon: CalendarDaysIcon,
+    },
+    {
+        nameId: "products.meeting-minutes-manager.features.feature4.name",
+        descriptionId: "products.meeting-minutes-manager.features.feature4.description",
+        icon: UsersIcon,
+    },
+    {
+        nameId: "products.meeting-minutes-manager.features.feature5.name",
+        descriptionId: "products.meeting-minutes-manager.features.feature5.description",
+        icon: ClipboardDocumentCheckIcon,
+    },
+    {
+        nameId: "products.meeting-minutes-manager.features.feature6.name",
+        descriptionId: "products.meeting-minutes-manager.features.feature6.description",
+        icon: Squares2X2Icon,
+    },
+    {
+        nameId: "products.meeting-minutes-manager.features.feature7.name",
+        descriptionId: "products.meeting-minutes-manager.features.feature7.description",
+        icon: ChatBubbleLeftRightIcon,
+    },
+];
+
+export default function ProductsMeetingMinutesManagerFeatures() {
     const intl = useIntl();
-
-    const features = [
-        {
-            nameId: "products.audit-reporting.features.feature1.name",
-            descriptionId: "products.audit-reporting.features.feature1.description",
-            icon: ClockIcon, // Save Time
-        },
-        {
-            nameId: "products.audit-reporting.features.feature2.name",
-            descriptionId: "products.audit-reporting.features.feature2.description",
-            icon: ExclamationCircleIcon, // Reduce Errors
-        },
-        {
-            nameId: "products.audit-reporting.features.feature3.name",
-            descriptionId: "products.audit-reporting.features.feature3.description",
-            icon: CurrencyDollarIcon, // Save on Resources
-        },
-        {
-            nameId: "products.audit-reporting.features.feature4.name",
-            descriptionId: "products.audit-reporting.features.feature4.description",
-            icon: ChartBarIcon, // Systematic Processes
-        },
-        {
-            nameId: "products.audit-reporting.features.feature5.name",
-            descriptionId: "products.audit-reporting.features.feature5.description",
-            icon: UsersIcon, // Collaboration & Communication
-        },
-    ];
-
     return (
         <div className="py-24 sm:py-32">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 {/* Hero Section */}
                 <div className="mx-auto max-w-7xl text-left">
                     <h2 className="text-base/7 font-semibold text-slate-600 dark:text-slate-400">
-                        <FormattedMessage id="products.audit-reporting.hero.tagline" />
+                        <FormattedMessage id="products.meeting-minutes-manager.hero.tagline" />
                     </h2>
                     <p className="mt-2 text-4xl font-bold tracking-tight text-blue-600 dark:text-blue-400 sm:text-5xl">
-                        <FormattedMessage id="products.audit-reporting.hero.title" />
+                        <FormattedMessage id="products.meeting-minutes-manager.hero.title" />
                     </p>
                     <p className="mt-6 text-lg/8 text-slate-600 dark:text-slate-300">
-                        <FormattedMessage id="products.audit-reporting.hero.context" />
+                        <FormattedMessage id="products.meeting-minutes-manager.hero.context" />
                     </p>
                     <p className="mt-4 text-lg/8 text-slate-600 dark:text-slate-300">
-                        <FormattedMessage id="products.audit-reporting.hero.description" />
+                        <FormattedMessage id="products.meeting-minutes-manager.hero.description" />
                     </p>
                 </div>
             </div>
-
             {/* Hero Image */}
             <div className="relative overflow-hidden pt-16">
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className="bg-white rounded-xl p-4">
                         <Image
-                            alt={intl.formatMessage({ id: "products.audit-reporting.hero.imageAlt", defaultMessage: "Audit Reporting System dashboard interface" })}
-                            src="/images/products/Audit Reporting.png"
-                            width={2432}
-                            height={1442}
+                            alt={intl.formatMessage({ id: "products.meeting-minutes-manager.hero.imageAlt", defaultMessage: "Meeting Minutes Manager Dashboard" })}
+                            src="/images/products/MeetingMinutesManager.png"
+                            width={800}
+                            height={600}
                             className="w-full h-auto object-contain mb-[-1%] rounded-xl shadow-2xl ring-1 ring-slate-900/10 dark:ring-slate-700/20"
                             priority
                         />
@@ -79,18 +89,17 @@ export default function ProductsAuditReportingSystemFeatures() {
                     </div>
                 </div>
             </div>
-
             {/* Key Features Section */}
             <div className="mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8">
                 <div className="mx-auto max-w-2xl lg:text-center mb-16">
                     <h2 className="text-base/7 font-semibold text-slate-600 dark:text-slate-400">
-                        <FormattedMessage id="products.audit-reporting.features.title" />
+                        <FormattedMessage id="products.meeting-minutes-manager.features.title" />
                     </h2>
                     <p className="mt-2 text-3xl font-bold tracking-tight text-blue-600 dark:text-blue-400 sm:text-4xl">
-                        <FormattedMessage id="products.audit-reporting.features.subtitle" />
+                        <FormattedMessage id="products.meeting-minutes-manager.features.subtitle" />
                     </p>
                     <p className="mt-6 text-lg/8 text-slate-600 dark:text-slate-300">
-                        <FormattedMessage id="products.audit-reporting.features.description" />
+                        <FormattedMessage id="products.meeting-minutes-manager.features.description" />
                     </p>
                 </div>
                 {/* Features Grid */}
