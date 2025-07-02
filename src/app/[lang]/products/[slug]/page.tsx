@@ -8,17 +8,22 @@ import React from 'react';
 import ProductsAuditReportingSystemFeaturesWrapper from '@/components/ProductsAuditReportingSystemFeaturesWrapper';
 import ProductsBugTrackingSystemFeaturesWrapper from '@/components/ProductsBugTrackingSystemFeaturesWrapper';
 import ProductsCaptureManagerFeaturesWrapper from '@/components/ProductsCaptureManagerFeaturesWrapper';
+import ProductsCentralDataPlatformFeaturesWrapper from '@/components/ProductsCentralDataPlatformFeaturesWrapper';
 import ProductsCompetencySkillsMatrixFeaturesWrapper from '@/components/ProductsCompetencySkillsMatrixFeaturesWrapper';
 import ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper from '@/components/ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper';
 import ProductsEmployeePerformanceSystemFeaturesWrapper from '@/components/ProductsEmployeePerformanceSystemFeaturesWrapper';
 import ProductsEmployeeTalentRepositoryFeaturesWrapper from '@/components/ProductsEmployeeTalentRepositoryFeaturesWrapper';
 import ProductsEPermittingSystemFeaturesWrapper from '@/components/ProductsEPermittingSystemFeaturesWrapper';
+import ProductsESurveyPlatformFeaturesWrapper from '@/components/ProductsESurveyPlatformFeaturesWrapper';
 import ProductsExpenseTrackingSystemFeaturesWrapper from '@/components/ProductsExpenseTrackingSystemFeaturesWrapper';
+import ProductsFormManagementSystemFeaturesWrapper from '@/components/ProductsFormManagementSystemFeaturesWrapper';
 import ProductsGrantManagementSystemFeaturesWrapper from '@/components/ProductsGrantManagementSystemFeaturesWrapper';
 import ProductsHRManagementSystemFeaturesWrapper from '@/components/ProductsHRManagementSystemFeaturesWrapper';
+import ProductsICodeTestingPlatformFeaturesWrapper from '@/components/ProductsICodeTestingPlatformFeaturesWrapper';
 import ProductsILearnSystemFeaturesWrapper from '@/components/ProductsILearnSystemFeaturesWrapper';
 import ProductsMeetingMinutesManagerFeaturesWrapper from '@/components/ProductsMeetingMinutesManagerFeaturesWrapper';
 import ProductsMembershipDatabaseSubsidyPaymentSystemFeaturesWrapper from '@/components/ProductsMembershipDatabaseSubsidyPaymentSystemFeaturesWrapper';
+import ProductsProfessionalManagementFeaturesWrapper from '@/components/ProductsProfessionalManagementFeaturesWrapper';
 import ProductsProjectManagementSuiteFeaturesWrapper from '@/components/ProductsProjectManagementSuiteFeaturesWrapper';
 import ProductsPrudentAgileMethodologyFeaturesWrapper from '@/components/ProductsPrudentAgileMethodologyFeaturesWrapper';
 import ProductsRequirementsManagementSystemFeaturesWrapper from '@/components/ProductsRequirementsManagementSystemFeaturesWrapper';
@@ -26,6 +31,7 @@ import ProductsRSVPEventManagementFeaturesWrapper from '@/components/ProductsRSV
 import ProductsTaskManagementSystemFeaturesWrapper from '@/components/ProductsTaskManagementSystemFeaturesWrapper';
 import ProductsTimesheetManagementSystemFeaturesWrapper from '@/components/ProductsTimesheetManagementSystemFeaturesWrapper';
 import ProductsTrainingDashboardFeaturesWrapper from '@/components/ProductsTrainingDashboardFeaturesWrapper';
+import ProductsTrainingRecordsSystemFeaturesWrapper from '@/components/ProductsTrainingRecordsSystemFeaturesWrapper';
 import { Locale } from '@/lib/definitions';
 import { getIntl } from '@/lib/intl';
 import { getAllProducts, getProductBySlug } from '@/lib/products';
@@ -195,6 +201,36 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   if (params.slug === 'meeting-minutes-manager') {
     const intl = await getIntl(params.lang);
     return <ProductsMeetingMinutesManagerFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'training-records-system') {
+    const intl = await getIntl(params.lang);
+    return <ProductsTrainingRecordsSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'central-data-platform') {
+    const intl = await getIntl(params.lang);
+    return <ProductsCentralDataPlatformFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'e-survey-platform') {
+    const intl = await getIntl(params.lang);
+    return <ProductsESurveyPlatformFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'form-management-system') {
+    const intl = await getIntl(params.lang);
+    return <ProductsFormManagementSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'i-code-testing-platform') {
+    const intl = await getIntl(params.lang);
+    return <ProductsICodeTestingPlatformFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'professional-management') {
+    const intl = await getIntl(params.lang);
+    return <ProductsProfessionalManagementFeaturesWrapper locale={params.lang} messages={intl.messages} />;
   }
 
   const product = await getProductBySlug(params.slug);
