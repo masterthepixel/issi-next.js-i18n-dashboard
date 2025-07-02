@@ -13,6 +13,7 @@ import ProductsGrantManagementSystemFeaturesWrapper from '@/components/ProductsG
 import ProductsMembershipDatabaseSubsidyPaymentSystemFeaturesWrapper from '@/components/ProductsMembershipDatabaseSubsidyPaymentSystemFeaturesWrapper';
 import ProductsProjectManagementSuiteFeaturesWrapper from '@/components/ProductsProjectManagementSuiteFeaturesWrapper';
 import ProductsPrudentAgileMethodologyFeaturesWrapper from '@/components/ProductsPrudentAgileMethodologyFeaturesWrapper';
+import ProductsTaskManagementSystemFeaturesWrapper from '@/components/ProductsTaskManagementSystemFeaturesWrapper';
 import { Locale } from '@/lib/definitions';
 import { getIntl } from '@/lib/intl';
 import { getAllProducts, getProductBySlug } from '@/lib/products';
@@ -117,6 +118,11 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   if (params.slug === 'prudent-agile-methodology') {
     const intl = await getIntl(params.lang);
     return <ProductsPrudentAgileMethodologyFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'task-management-system') {
+    const intl = await getIntl(params.lang);
+    return <ProductsTaskManagementSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
   }
 
   const product = await getProductBySlug(params.slug);

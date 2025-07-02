@@ -2,21 +2,21 @@
 
 import { IntlProvider } from 'react-intl'
 
-import ProductsBugTrackingSystemFeatures from './ProductsBugTrackingSystemFeatures'
 import { Locale } from '@/lib/definitions'
+import ProductsBugTrackingSystemFeatures from './ProductsBugTrackingSystemFeatures'
 
 interface ProductsBugTrackingSystemFeaturesWrapperProps {
-  locale: Locale
-  messages: Record<string, string> | Record<string, any>
+    locale: Locale
+    messages: Record<string, string> | Record<string, any>
 }
 
 export default function ProductsBugTrackingSystemFeaturesWrapper({
-  locale,
-  messages,
+    locale,
+    messages,
 }: ProductsBugTrackingSystemFeaturesWrapperProps) {
-  return (
-    <IntlProvider locale={locale} messages={messages}>
-      <ProductsBugTrackingSystemFeatures />
-    </IntlProvider>
-  )
+    return (
+        <IntlProvider locale={locale} messages={messages}>
+            <ProductsBugTrackingSystemFeatures />
+        </IntlProvider>
+    )
 }

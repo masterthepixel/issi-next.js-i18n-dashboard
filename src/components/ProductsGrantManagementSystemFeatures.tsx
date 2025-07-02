@@ -15,8 +15,8 @@ import {
   ServerIcon,
   ShieldCheckIcon,
 } from '@heroicons/react/20/solid'
-import { FormattedMessage, useIntl } from 'react-intl'
 import Image from 'next/image'
+import { FormattedMessage, useIntl } from 'react-intl'
 
 export default function ProductsGrantManagementSystemFeatures() {
   const intl = useIntl()
