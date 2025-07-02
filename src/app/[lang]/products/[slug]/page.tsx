@@ -10,6 +10,7 @@ import ProductsBugTrackingSystemFeaturesWrapper from '@/components/ProductsBugTr
 import ProductsCaptureManagerFeaturesWrapper from '@/components/ProductsCaptureManagerFeaturesWrapper';
 import ProductsCentralDataPlatformFeaturesWrapper from '@/components/ProductsCentralDataPlatformFeaturesWrapper';
 import ProductsCompetencySkillsMatrixFeaturesWrapper from '@/components/ProductsCompetencySkillsMatrixFeaturesWrapper';
+import ProductsComplaintTrackingSystemFeaturesWrapper from '@/components/ProductsComplaintTrackingSystemFeaturesWrapper';
 import ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper from '@/components/ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper';
 import ProductsEmployeePerformanceSystemFeaturesWrapper from '@/components/ProductsEmployeePerformanceSystemFeaturesWrapper';
 import ProductsEmployeeTalentRepositoryFeaturesWrapper from '@/components/ProductsEmployeeTalentRepositoryFeaturesWrapper';
@@ -228,9 +229,14 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
     return <ProductsICodeTestingPlatformFeaturesWrapper locale={params.lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'professional-management') {
+  if (params.slug === 'professional-management-system') {
     const intl = await getIntl(params.lang);
     return <ProductsProfessionalManagementFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  }
+
+  if (params.slug === 'complaint-tracking-system') {
+    const intl = await getIntl(params.lang);
+    return <ProductsComplaintTrackingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
   }
 
   const product = await getProductBySlug(params.slug);
