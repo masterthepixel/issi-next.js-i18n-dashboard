@@ -18,10 +18,34 @@ const ScrollToTopButton = () => {
 
     // Scroll to top smoothly
     const scrollToTop = () => {
+        // Try multiple scroll methods to ensure it works
+        // First try the window
         window.scrollTo({
             top: 0,
+            left: 0,
             behavior: 'smooth',
         });
+        
+        // Also try document elements as fallback
+        if (document.documentElement.scrollTop > 0) {
+            document.documentElement.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        if (document.body.scrollTop > 0) {
+            document.body.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Force fallback for immediate effect if smooth doesn't work
+        setTimeout(() => {
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+        }, 100);
     };
 
     useEffect(() => {
