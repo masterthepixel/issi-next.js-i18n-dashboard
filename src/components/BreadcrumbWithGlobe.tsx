@@ -59,12 +59,12 @@ export default function BreadcrumbWithGlobe({
           <div className="absolute top-10 left-[calc(50%-4rem)] -z-10 transform-gpu blur-3xl sm:left-[calc(50%-18rem)] lg:top-[calc(50%-30rem)] lg:left-48 xl:left-[calc(50%-24rem)]" aria-hidden="true">
           </div>
 
-          <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="mx-auto max-w-7xl px-2">
             <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between w-full overflow-visible">
-              {/* Left side - Breadcrumb */}              <div className="flex-shrink-0">
-                {/* Breadcrumb navigation - HIDDEN FOR NOW */}
-                <nav aria-label="Breadcrumb" className="hidden flex" itemScope itemType="https://schema.org/BreadcrumbList">
-                  <ol role="list" className="flex space-x-4 rounded-md bg-white px-6 shadow-sm">
+              {/* Left side - Breadcrumb */}              <div className="flex-shrink-0 w-full">
+                {/* Breadcrumb navigation */}
+                <nav aria-label="Breadcrumb" className="flex" itemScope itemType="https://schema.org/BreadcrumbList">
+                  <ol role="list" className="flex space-x-4 rounded-full bg-white dark:bg-slate-800 px-6 shadow-sm dark:shadow-slate-700/20">
                     {items.map((item, index) => (
                       <li key={index} className="flex" itemScope itemType="https://schema.org/ListItem" itemProp="itemListElement">
                         {index === 0 ? (
@@ -73,7 +73,7 @@ export default function BreadcrumbWithGlobe({
                             {item.href ? (
                               <a
                                 href={item.href}
-                                className="text-gray-400 hover:text-gray-500"
+                                className="text-slate-400 hover:text-slate-500 dark:text-slate-400 dark:hover:text-slate-300"
                                 itemProp="item"
                                 itemScope
                                 itemType="https://schema.org/WebPage"
@@ -82,7 +82,7 @@ export default function BreadcrumbWithGlobe({
                                 <span className="sr-only" itemProp="name">{item.label}</span>
                               </a>
                             ) : (
-                              <div className="text-gray-400">
+                              <div className="text-slate-400 dark:text-slate-400">
                                 <HiHome aria-hidden="true" className="size-5 shrink-0" />
                                 <span className="sr-only" itemProp="name">{item.label}</span>
                               </div>
@@ -96,7 +96,7 @@ export default function BreadcrumbWithGlobe({
                               viewBox="0 0 24 44"
                               preserveAspectRatio="none"
                               aria-hidden="true"
-                              className="h-full w-6 shrink-0 text-gray-200"
+                              className="h-full w-6 shrink-0 text-slate-200 dark:text-slate-600"
                             >
                               <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
                             </svg>
@@ -104,7 +104,7 @@ export default function BreadcrumbWithGlobe({
                               <a
                                 href={item.href}
                                 aria-current={item.isActive ? 'page' : undefined}
-                                className="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700"
+                                className="ml-4 text-sm font-medium text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
                                 itemProp="item"
                                 itemScope
                                 itemType="https://schema.org/WebPage"
@@ -114,7 +114,7 @@ export default function BreadcrumbWithGlobe({
                             ) : (
                               <span
                                 aria-current={item.isActive ? 'page' : undefined}
-                                className="ml-4 text-sm font-medium text-gray-500"
+                                className="ml-4 text-sm font-medium text-slate-500 dark:text-slate-400"
                                 itemProp="name"
                               >
                                 {item.label}
@@ -127,21 +127,21 @@ export default function BreadcrumbWithGlobe({
                     ))}                  </ol>
                 </nav>
 
-                {/* Page title - HIDDEN */}
-                <h1 className="hidden mt-4 text-xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-white sm:text-2xl"
+                {/* Page title */}
+                <h1 className="mt-4 text-xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-white sm:text-2xl"
                   itemProp="headline"
                   itemScope
                   itemType="https://schema.org/WebPage">
                   {title}
                 </h1>
-                {/* Page description - auto-generated SEO content - HIDDEN */}
-                <p className="hidden mt-2 text-lg font-medium text-pretty text-slate-900/80 dark:text-slate-300/80 sm:text-xl/8">
+                {/* Page description - auto-generated SEO content */}
+                <p className="mt-2 text-lg font-medium text-pretty text-slate-900/80 dark:text-slate-300/80 sm:text-xl/8 max-w-3xl">
                   {description}
-                </p>              {/* Action buttons - HIDDEN */}
-                <div className="hidden mt-4 flex items-center gap-x-6">
+                </p>              {/* Action buttons */}
+                <div className="mt-4 flex items-center gap-x-6">
                   <a
                     href="#contact"
-                    className="rounded-md bg-blue-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-green-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400"
+                    className="rounded-md bg-blue-500 dark:bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-green-400 dark:hover:bg-green-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 dark:focus-visible:outline-blue-500"
                     title="Contact ISSI for more information"
                     aria-label="Contact us to learn more about our services"
                   >
@@ -153,7 +153,7 @@ export default function BreadcrumbWithGlobe({
                   </a>
                   <a
                     href="#learn-more"
-                    className="text-sm/6 font-semibold text-slate-900 dark:text-white"
+                    className="text-sm/6 font-semibold text-slate-900 dark:text-slate-200 hover:text-slate-700 dark:hover:text-white"
                     title="Learn more about our services and solutions" aria-label="Learn more about ISSI services and solutions"
                   >
                     {intl ? (
