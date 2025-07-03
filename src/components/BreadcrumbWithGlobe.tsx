@@ -246,7 +246,6 @@ export default function BreadcrumbWithGlobe({
               </div>
           </div>
         </div>
-      </div>
     </>
   );
 }
