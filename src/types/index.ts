@@ -11,7 +11,6 @@
 // All types are defined in their respective modules and re-exported here
 
 // Individual module re-exports (namespace approach to avoid conflicts)
-export * as BreadcrumbTypes from './breadcrumb';
 export * as GlobeTypes from './globe';
 export * as I18nTypes from './i18n';
 export * as UITypes from './ui';
@@ -20,12 +19,6 @@ export * as UITypes from './ui';
 // 🎯 Commonly Used Types (Direct Exports)
 // ==========================================
 // These are the most frequently used types, exported directly for convenience
-
-// Breadcrumb types
-export type {
-    BreadcrumbAutoTranslationConfig, BreadcrumbItem,
-    UniversalBreadcrumbProps
-} from './breadcrumb';
 
 // Globe types
 export type {
@@ -49,18 +42,6 @@ export type {
 // 🎯 Usage Examples
 // ==========================================
 // Import examples for common use cases
-
-/**
- * Example: Using breadcrumb types
- * ```typescript
- * import { BreadcrumbTypes } from '@/types';
- * 
- * const breadcrumb: BreadcrumbTypes.BreadcrumbItem = {
- *   name: 'Services',
- *   href: '/services'
- * };
- * ```
- */
 
 /**
  * Example: Using globe types
@@ -101,9 +82,8 @@ export type {
 /**
  * Example: Direct imports for commonly used types
  * ```typescript
- * import { BreadcrumbItem, GlobeConfig, ISSILanguage } from '@/types';
+ * import { GlobeConfig, ISSILanguage } from '@/types';
  * 
- * const breadcrumb: BreadcrumbItem = { name: 'Home', href: '/' };
  * const globe: GlobeConfig = { width: 200, height: 200 };
  * const lang: ISSILanguage = 'en';
  * ```

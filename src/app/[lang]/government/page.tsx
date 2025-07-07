@@ -17,7 +17,7 @@ import { getIntl } from "@/lib/intl";
 
 export async function generateMetadata({ params }: { params: { lang: Locale } }): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://issi.com';
-  
+
   const seoData = {
     en: {
       title: "Government IT Services | Federal, State & Local Solutions | ISSI",
@@ -107,9 +107,9 @@ interface PageContentProps {
 async function PageContent({ locale }: PageContentProps) {
   const intl = await getIntl(locale);
   const messages = await import(`@/lang/${locale}.json`).then(module => module.default);
-  
+
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://issi.com';
-  
+
   // JSON-LD Structured Data
   const structuredData = {
     "@context": "https://schema.org",
@@ -194,9 +194,9 @@ async function PageContent({ locale }: PageContentProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      
+
       {/* Breadcrumbs are handled by the layout */}
-      
+
       {/* Bento Grid Hero Section */}
       <GovernmentHeroWrapper locale={locale} messages={messages} />
 

@@ -12,7 +12,7 @@ import { Locale } from "@/lib/definitions";
 
 export async function generateMetadata({ params }: { params: { lang: Locale } }): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://issi.com';
-  
+
   const seoData = {
     en: {
       title: "eLearning Solutions | LMS Development & Training Services | ISSI",
@@ -101,9 +101,9 @@ interface PageContentProps {
 
 async function PageContent({ locale }: PageContentProps) {
   const messages = (await import(`../../../lang/${locale}.json`)).default;
-  
+
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://issi.com';
-  
+
   // JSON-LD Structured Data
   const structuredData = {
     "@context": "https://schema.org",
@@ -211,21 +211,21 @@ async function PageContent({ locale }: PageContentProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      
+
       {/* Breadcrumbs are handled by the layout */}
-      
+
       {/* Hero section */}
       <ELearningHeroWrapper locale={locale} messages={messages} />
-      
+
       {/* Features section */}
       <ELearningFeaturesWrapper locale={locale} messages={messages} />
-      
+
       {/* Services section */}
       <ELearningServicesWrapper locale={locale} messages={messages} />
-      
+
       {/* Clients section */}
       <ELearningClientsWrapper locale={locale} messages={messages} />
-      
+
       {/* FAQ section */}
       <ELearningFAQWrapper locale={locale} messages={messages} />
     </main>

@@ -1,5 +1,6 @@
 {
   "breadcrumb.home": "Inicio",
+  "breadcrumb.home.aria": "Ir a la página de inicio",
   "breadcrumb.services": "Servicios",
   "breadcrumb.back": "Atrás",
   "breadcrumb.seo.description": "Navega por las secciones del sitio web de ISSI",
@@ -21,8 +22,6 @@
   "common.theme-switcher": "Cambiar a modo oscuro",
   "common.theme-switcher.dark": "Cambiar a modo claro",
   "common.theme-switcher.light": "Cambiar a modo oscuro",
-  "common.scroll-to-top": "Volver arriba",
-  "common.scroll-to-top.aria": "Volver al inicio de la página",
   "common.user-menu.settings": "Configuración",
   "common.user-menu.sign-out": "Cerrar sesión",
   "common.user-menu.your-profile": "Tu perfil",

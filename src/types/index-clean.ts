@@ -114,12 +114,6 @@ export interface ValidationState {
 // ==========================================
 
 /**
- * All breadcrumb-related types
- * @example BreadcrumbTypes.BreadcrumbItem
- */
-export * as BreadcrumbTypes from './breadcrumb';
-
-/**
  * All 3D globe-related types  
  * @example GlobeTypes.GlobeConfig
  */

@@ -6,12 +6,10 @@
 
 import {
   BentoGridItem,
-  BreadcrumbItem,
   CardProps,
   GlobeConfig,
   ISSILanguage as Language,
-  ISSIMessages as Messages,
-  UniversalBreadcrumbProps
+  ISSIMessages as Messages
 } from './index';
 
 // Temporary type definitions for examples (these should be moved to proper type files)
@@ -40,30 +38,6 @@ interface Service {
 
 // Note: For React component examples, see the documentation
 // This file focuses on pure TypeScript usage patterns
-
-// ==========================================
-// 🧭 Breadcrumb Usage Examples
-// ==========================================
-
-/**
- * Example: Type-safe breadcrumb items
- */
-const createBreadcrumbItems = (pathSegments: string[], lang: Language): BreadcrumbItem[] => {
-  return pathSegments.map((segment, index) => ({
-    name: segment.charAt(0).toUpperCase() + segment.slice(1),
-    href: index < pathSegments.length - 1 ? `/${lang}/${pathSegments.slice(0, index + 1).join('/')}` : undefined,
-    current: index === pathSegments.length - 1,
-    position: index + 1
-  }));
-};
-
-/**
- * Example: Validate breadcrumb configuration
- */
-const validateBreadcrumbConfig = (props: UniversalBreadcrumbProps): boolean => {
-  // TypeScript ensures all required props are present
-  return props.lang !== undefined && props.messages !== undefined;
-};
 
 // ==========================================
 // 🌍 Globe Usage Examples
@@ -297,9 +271,9 @@ const validateRequired = (value: string, fieldName: string): ValidationError | n
 // Export all examples for use in documentation
 export {
   BentoCategories,
-  createAppConfig, createBentoItem, createBreadcrumbItems, createGlobeConfig, createProduct,
+  createAppConfig, createBentoItem, createGlobeConfig, createProduct,
   createService, filterProductsByCategory, getLanguageInfo,
-  getTranslationText, handleApiResponse, isValidLanguage, mergeConfigurations, validateBreadcrumbConfig, validateCardProps, validateGlobeConfig, validateRequired
+  getTranslationText, handleApiResponse, isValidLanguage, mergeConfigurations, validateCardProps, validateGlobeConfig, validateRequired
 };
 
 export type {
