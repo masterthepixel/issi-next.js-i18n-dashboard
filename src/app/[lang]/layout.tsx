@@ -4,7 +4,7 @@ import FooterWrapper from "@/components/FooterWrapper";
 import MobileFloatingMenu from "@/components/MobileFloatingMenu";
 import Navbar from "@/components/Navbar";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
-import UniversalBreadcrumb from "@/components/UniversalBreadcrumb";
+import UniversalIntelligentBreadcrumb from '@/components/UniversalIntelligentBreadcrumb';
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import React from 'react';
 
@@ -89,11 +89,10 @@ export default async function Root({ params, children }: Props) {
         <AnimatedBackground />
         <Navbar locale={params.lang} user={user} />
 
-        {/* Universal Breadcrumb - automatically handles homepage exclusion */}
-        <UniversalBreadcrumb
+        {/* Universal Intelligent Breadcrumb - automatically handles homepage exclusion */}
+        <UniversalIntelligentBreadcrumb 
           lang={params.lang}
-          messages={messages}
-          className="relative z-10"
+          className="relative z-10 px-6 py-4"
         />
 
         <Content>{children}</Content>

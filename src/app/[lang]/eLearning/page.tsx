@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { Suspense } from "react";
 
-import Breadcrumb from "@/components/Breadcrumb";
 import ELearningClientsWrapper from "@/components/ELearningClientsWrapper";
 import ELearningFAQWrapper from "@/components/ELearningFAQWrapper";
 import ELearningFeaturesWrapper from "@/components/ELearningFeaturesWrapper";
@@ -104,13 +103,6 @@ async function PageContent({ locale }: PageContentProps) {
   const messages = (await import(`../../../lang/${locale}.json`)).default;
   
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://issi.com';
-  
-  // Breadcrumb data
-  const breadcrumbItems = [
-    {
-      name: messages['page.eLearning.title'] || 'eLearning Solutions',
-    },
-  ];
   
   // JSON-LD Structured Data
   const structuredData = {
@@ -220,14 +212,7 @@ async function PageContent({ locale }: PageContentProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       
-      {/* Breadcrumbs */}
-      <Breadcrumb 
-        items={breadcrumbItems}
-        locale={locale}
-        backgroundImage="/images/elearning-hero-bg.jpg"
-        title={messages['page.eLearning.title']}
-        description={messages['page.eLearning.hero.subtitle']}
-      />
+      {/* Breadcrumbs are handled by the layout */}
       
       {/* Hero section */}
       <ELearningHeroWrapper locale={locale} messages={messages} />

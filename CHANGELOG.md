@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Added
+
+- **Universal Intelligent Breadcrumb**: New unified breadcrumb system
+  - Single, self-contained breadcrumb component replacing multiple legacy systems
+  - Intelligent path parsing with automatic URL-to-breadcrumb generation
+  - Smart naming: converts "product-details" to "Product Details"
+  - Full internationalization support with language prefix handling
+  - Automatic homepage detection and hiding
+  - Accessibility-first design with ARIA support and screen reader compatibility
+  - Customizable props for advanced use cases
+  - Zero external dependencies - completely self-contained
+
 - **Scroll-to-Top Button**: New floating button component with pulse animation
   - Dark/light mode compatibility with proper contrast ratios
   - Smooth pulse animation effect behind button using dual ring system
@@ -14,6 +25,25 @@ All notable changes to this project will be documented in this file.
   - Integration with shadcn/ui Button component
   - Positioned in bottom-right with responsive design
   - Added to main layout for global availability
+
+### Changed
+
+- **Breadcrumb System**: Consolidated from 8+ components to single intelligent solution
+  - Replaced UniversalBreadcrumb, BreadcrumbWithGlobe, and related components
+  - Simplified API with intuitive prop-based configuration
+  - Improved performance by removing unused utility files and dependencies
+  - Cleaner codebase with unified breadcrumb behavior across all pages
+
+### Removed
+
+- **Legacy Breadcrumb Components**: Cleaned up outdated breadcrumb system
+  - Removed UniversalBreadcrumb.tsx (complex legacy system)
+  - Removed BreadcrumbWithGlobe.tsx and BreadcrumbWithGlobeWrapper.tsx
+  - Removed Breadcrumb.tsx (basic component)
+  - Removed breadcrumbUtils.ts and smartBreadcrumbGenerator.ts utilities
+  - Removed breadcrumbDevHelper.ts and breadcrumb.ts types
+  - Removed all related test files
+  - Preserved documentation files for reference
 
 ### Fixed
 - **UI Components**: Fixed missing displayName for expandable components

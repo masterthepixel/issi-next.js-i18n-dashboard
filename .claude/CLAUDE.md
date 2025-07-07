@@ -1,3 +1,381 @@
+...existing code...
+2. **Plan**: Use `ch ctx for-task "your-task"` to generate focused context, verify with me  
+3. **Implement**: Execute with `/start-feature` workflow and validation checkpoints
+
+**Start EVERY session with:** `chp` (project overview) followed by the specific task context.
+
+When asked to implement any feature, you'll first say: "Let me use `chp` and research the codebase before creating a plan."
+
+For complex architectural decisions, use **"ultrathink"** + `/understand-codebase` for maximum insight.
+
+### USE MULTIPLE AGENTS + TOOLS!
+*Leverage subagents AND shell tools aggressively* for better results:
+
+* Use `ch m read-many` to batch file reading and reduce token usage
+* Spawn agents with specific context: "I'll have an agent use `/explore-module` on the collections while I analyze API structure"
+* Use `chs find-code` for parallel pattern discovery across the codebase
+* Delegate with tools: "Agent 1: `/gather-tech-docs`, Agent 2: `chg status` + implement feature"
+* For complex refactors: One agent uses `/tech-debt-hunt`, another implements fixes
+
+Say: "I'll spawn agents with shell tools to tackle different aspects efficiently" whenever tasks can be parallelized.
+
+### Reality Checkpoints (Enhanced)
+**Stop and validate** at these moments:
+- After implementing a complete feature
+- Before starting a new major component  
+- When something feels wrong
+- Before declaring "done"
+- **WHEN HOOKS FAIL WITH ERRORS** ❌
+
+**Enhanced validation commands:**
+```bash
+# Standard checks
+npm run lint && npm run type-check && npm run test
+
+# Use shell tools for comprehensive validation
+ch cq todos          # Check for TODOs and code quality
+ch env tools         # Verify environment setup
+chg status          # Git status and health
+ch ts build         # TypeScript build verification
+```
+
+> Why: You can lose track of what's actually working. These checkpoints prevent cascading failures.
+
+### 🚨 CRITICAL: Hook Failures Are BLOCKING
+**When hooks report ANY issues (exit code 2), you MUST:**
+1. **STOP IMMEDIATELY** - Do not continue with other tasks
+2. **FIX ALL ISSUES** - Address every ❌ issue until everything is ✅ GREEN
+3. **VERIFY THE FIX** - Re-run the failed command to confirm it's fixed
+4. **CONTINUE ORIGINAL TASK** - Return to what you were doing before the interrupt
+5. **NEVER IGNORE** - There are NO warnings, only requirements
+
+This includes:
+- TypeScript errors (strict mode violations)
+- ESLint violations (coding standards)
+- Prettier formatting issues
+- Forbidden patterns (any types, untyped APIs)
+- PayloadCMS collection validation errors
+- ALL other checks
+
+Your code must be 100% clean. No exceptions.
+
+**Recovery Protocol:**
+- When interrupted by a hook failure, maintain awareness of your original task
+- After fixing all issues and verifying the fix, continue where you left off
+- Use the todo list to track both the fix and your original task
+
+## Working Memory Management
+
+### When context gets long:
+- Re-read this CLAUDE.md file
+- Use `chp` for instant project state refresh
+- Summarize progress in a PROGRESS.md file using `/dev-diary`
+- Document current state before major changes
+
+### Maintain TODO.md (Enhanced):
+```bash
+# Use shell tools to maintain context
+ch cq todos           # Find existing TODOs in codebase
+ch ctx for-task       # Generate context for specific tasks
+
+## Current Task
+- [ ] What we're doing RIGHT NOW
+
+## Completed  
+- [x] What's actually done and tested
+
+## Next Steps
+- [ ] What comes next
+
+## Context Commands Used
+- chp (project overview)
+- chs find-code "pattern" 
+- ch ctx for-task "specific-task"
+```
+
+## TypeScript + Next.js + PayloadCMS Rules
+
+### FORBIDDEN - NEVER DO THESE:
+- **NO `any` types** - use proper TypeScript interfaces!
+- **NO untyped API responses** - always define response types!
+- **NO client-side data fetching in RSCs** - use server components properly!
+- **NO direct database calls from components** - use service layer!
+- **NO keeping old and new code together**
+- **NO migration functions or compatibility layers**
+- **NO versioned function names** (processV2, handleNew)
+- **NO custom error hierarchies without proper typing**
+- **NO TODOs in final code**
+- **NO inline styles** - use Tailwind CSS classes or CSS modules!
+- **NO unstructured PayloadCMS collections** - follow schema patterns!
+
+> **AUTOMATED ENFORCEMENT**: The lint hooks will BLOCK commits that violate these rules.  
+> When you see `❌ FORBIDDEN PATTERN`, you MUST fix it immediately!
+
+### Required Standards:
+- **Delete** old code when replacing it
+- **Meaningful names**: `articleId` not `id`, `newsCategory` not `cat`
+- **Early returns** to reduce nesting
+- **Concrete types** from functions: `async function getArticles(): Promise<Article[]>`
+- **Proper error handling**: Use Next.js error boundaries and proper error types
+- **Service layer abstraction**: All data access through services
+- **PayloadCMS Local API**: Use Local API for server-side operations
+- **Block-based content**: Leverage PayloadCMS blocks for flexible content
+- **Typed collections**: All PayloadCMS collections must have proper TypeScript types
+
+## Block Development Patterns
+
+### Content Block Architecture:
+```typescript
+// Block types must be strongly typed
+interface HeroBlock {
+  blockType: 'hero';
+  headline: string;
+  subheadline?: string;
+  image: Media;
+  cta?: {
+    label: string;
+    url: string;
+  };
+}
+
+interface ArticleListBlock {
+  blockType: 'articleList';
+  title: string;
+  category?: Category;
+  limit: number;
+  featured?: boolean;
+}
+
+type ContentBlock = HeroBlock | ArticleListBlock | ImageGalleryBlock | QuoteBlock;
+```
+
+### Block Component Standards:
+- **One component per block type**
+- **Consistent naming**: `HeroBlock.tsx`, `ArticleListBlock.tsx`
+- **Server-first rendering**: Use RSCs when possible
+- **Proper error boundaries**: Handle missing data gracefully
+- **Responsive design**: Mobile-first approach
+
+### PayloadCMS Collection Patterns:
+```typescript
+// Always use proper field validation
+export const Articles: CollectionConfig = {
+  slug: 'articles',
+  fields: [
+    {
+      name: 'title',
+      type: 'text',
+      required: true,
+      maxLength: 100,
+    },
+    {
+      name: 'content',
+      type: 'blocks',
+      blocks: [HeroBlock, ArticleListBlock, ImageGalleryBlock],
+    },
+  ],
+  hooks: {
+    beforeChange: [
+      ({ data }) => {
+        // Always validate and transform data
+        return validateArticleData(data);
+      },
+    ],
+  },
+};
+```
+
+## News Portal Specific Standards
+
+### Content Management:
+- **Categories**: Use hierarchical structure with proper slugs
+- **Authors**: Rich author profiles with social links
+- **Media**: Optimized images with proper alt text and captions
+- **SEO**: Structured data for articles and authors
+- **Breaking News**: Real-time updates with proper caching
+
+### API Architecture:
+```typescript
+// Service layer abstraction
+export class NewsService extends BaseService {
+  async getArticles(params: GetArticlesParams): Promise<PaginatedArticles> {
+    // Use PayloadCMS Local API for server-side calls
+    const articles = await payload.find({
+      collection: 'articles',
+      where: this.buildWhereClause(params),
+      limit: params.limit || 10,
+      page: params.page || 1,
+    });
+    
+    return this.transformArticleResponse(articles);
+  }
+}
+```
+
+### Migration-Ready Architecture:
+- **Environment switching**: `API_MODE=internal|external`
+- **Service abstraction**: Clean boundaries between internal/external APIs
+- **Docker support**: Multiple deployment configurations
+- **Database agnostic**: Neon PostgreSQL with Drizzle ORM fallback
+
+## Implementation Standards
+
+### Our code is complete when:
+- ✅ All TypeScript errors resolved (strict mode)
+- ✅ All ESLint rules pass
+- ✅ All tests pass  
+- ✅ Feature works end-to-end
+- ✅ Old code is deleted
+- ✅ JSDoc on all exported functions
+- ✅ PayloadCMS collections validate properly
+
+### Testing Strategy
+- Complex business logic → Write tests first
+- Simple CRUD operations → Write tests after
+- API endpoints → Integration tests required
+- PayloadCMS hooks → Unit tests for validation logic
+- Block components → Render tests with sample data
+
+### Project Structure
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── (app)/             # Main site routes
+│   ├── (payload)/         # PayloadCMS admin routes
+│   └── api/               # API endpoints
+├── collections/           # PayloadCMS collections
+├── components/            # React components
+│   ├── blocks/           # Content blocks
+│   ├── ui/               # Reusable UI components
+│   └── forms/            # Form components
+├── lib/                  # Utilities and configurations
+├── services/             # Data access layer
+├── hooks/                # Custom React hooks
+└── types/                # TypeScript type definitions
+```
+
+## Problem-Solving Together (Enhanced with Tools)
+
+When you're stuck or confused:
+1. **Stop** - Don't spiral into complex solutions
+2. **Use tools** - `chp` for context, `chs find-code` for patterns, `/debug-issue` for systematic debugging
+3. **Delegate** - Consider spawning agents with specific shell commands
+4. **Ultrathink** - For complex problems: "I need to ultrathink + `/understand-codebase` for this challenge"
+5. **Step back** - Re-read requirements, use `ch ctx for-task` to refocus
+6. **Simplify** - The simple solution is usually correct
+7. **Ask** - "I see approaches: [A with `chg quick-commit`] vs [B with `/start-feature`]. Which do you prefer?"
+
+**Essential troubleshooting commands:**
+```bash
+chp                    # Project overview and health
+ch env tools          # Environment verification  
+ch cq todos           # Code quality check
+chg status            # Git status
+ch ts build           # Build verification
+```
+
+My insights on better approaches are valued - please ask for them!
+
+## Performance & Security
+
+### **Measure First**:
+- No premature optimization
+- Use Next.js built-in analytics
+- Monitor Core Web Vitals
+- Profile PayloadCMS query performance
+
+### **Security Always**:
+- Validate all inputs (use Zod schemas)
+- Use environment variables for secrets
+- Implement proper CORS policies
+- Sanitize rich text content
+- Use PayloadCMS access control
+
+### **Next.js Optimization**:
+- Use Server Components by default
+- Implement proper caching strategies
+- Optimize images with Next.js Image component
+- Use dynamic imports for client components
+- Implement proper error boundaries
+
+## PayloadCMS Best Practices
+
+### Collection Design:
+- **Rich relationships**: Use proper field relationships
+- **Hooks for validation**: Implement beforeChange hooks
+- **Access control**: Define proper access patterns
+- **Upload optimization**: Configure media handling properly
+
+### Content Strategy:
+- **Block-based content**: Use blocks for flexible layouts
+- **Reusable components**: Create shareable block types
+- **SEO optimization**: Include meta fields in collections
+- **Localization ready**: Design for future i18n support
+
+### Performance:
+- **Local API usage**: Use Local API for server-side operations
+- **Proper indexing**: Configure database indexes
+- **Caching strategy**: Implement proper cache headers
+- **Image optimization**: Use Vercel Blob with optimization
+
+## Communication Protocol
+
+### Progress Updates:
+```
+✅ Implemented article collection (all validations passing)
+✅ Added hero block component with responsive design
+❌ Found issue with image optimization - investigating
+```
+
+### Suggesting Improvements:
+"The current block structure works, but I notice [observation].
+Would you like me to [specific improvement]?"
+
+## Working Together (Enhanced Workflow)
+
+- This is always a feature branch - no backwards compatibility needed
+- When in doubt, we choose clarity over cleverness
+- **Start every session with `chp`** for instant project context
+- **Use `/commit-and-push` workflow** for complete git operations
+- **Leverage `/tdd` for test-driven development** when needed
+- **REMINDER**: If this file + `chp` haven't been referenced in 30+ minutes, RE-READ + RE-RUN!
+
+**Daily workflow enhancement:**
+1. `chp` - Get project overview
+2. `ch cq todos` - Check code quality 
+3. Work with appropriate slash commands (`/start-feature`, `/debug-issue`, etc.)
+4. `/pre-review-check` before committing
+5. `/commit-and-push` for complete git workflow
+
+Avoid complex abstractions or "clever" code. The simple, obvious solution is probably better, and my guidance + these tools help you stay focused on what matters.
+
+**Remember: 50-80% token savings through batched operations and smart tool usage!**
+
+## News Portal Domain Rules
+
+### Content Types:
+- **Articles**: Main news content with blocks
+- **Categories**: Hierarchical news categories
+- **Authors**: Rich author profiles
+- **Media**: Optimized images and videos
+- **Tags**: Flexible tagging system
+
+### Business Logic:
+- **Publishing workflow**: Draft → Review → Published
+- **Breaking news**: Priority flagging system
+- **Featured content**: Homepage highlighting
+- **Related articles**: Smart content suggestions
+- **Search functionality**: Full-text search with filters
+
+### SEO Requirements:
+- **Structured data**: Article schema markup
+- **Open Graph**: Social media optimization  
+- **Sitemaps**: Automatic sitemap generation
+- **Meta tags**: Dynamic meta tag management
+- **Canonical URLs**: Proper URL canonicalization
+
+Remember: We're building a production news portal that can scale from startup to enterprise. Every decision should consider performance, maintainability, and user experience.
+
 ---
 description: Ultracite Rules
 globs: "**/*.{ts,tsx,js,jsx}"
@@ -275,3 +653,6 @@ alwaysApply: true
 - Use the namespace keyword instead of the module keyword to declare TypeScript namespaces.
 - Make sure to use the digits argument with Number#toFixed().
 - Make sure to use the "use strict" directive in script files.
+
+
+

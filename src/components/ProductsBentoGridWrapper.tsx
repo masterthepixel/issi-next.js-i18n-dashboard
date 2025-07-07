@@ -3,7 +3,6 @@
 import { Locale } from "@/lib/definitions";
 import { IntlProvider } from "react-intl";
 import ProductsBentoGrid from "./ProductsBentoGrid";
-// import Breadcrumb from "./Breadcrumb";
 
 interface ProductsBentoGridWrapperProps {
   locale: Locale;

@@ -4,7 +4,6 @@ import { Suspense } from "react";
 import AboutAwardsWrapper from "@/components/AboutAwardsWrapper";
 import AboutPartnerNetworkWrapper from "@/components/AboutPartnerNetworkWrapper";
 import AboutStatsWrapper from "@/components/AboutStatsWrapper";
-import Breadcrumb from "@/components/Breadcrumb";
 import ComplianceCarouselWrapper from "@/components/ComplianceCarouselWrapper";
 import GovernmentClientsWrapper from "@/components/GovernmentClientsWrapper";
 import GovernmentFAQWrapper from "@/components/GovernmentFAQWrapper";
@@ -111,13 +110,6 @@ async function PageContent({ locale }: PageContentProps) {
   
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://issi.com';
   
-  // Breadcrumb data
-  const breadcrumbItems = [
-    {
-      name: messages.government?.hero?.title || 'Government Services',
-    },
-  ];
-  
   // JSON-LD Structured Data
   const structuredData = {
     "@context": "https://schema.org",
@@ -202,16 +194,8 @@ async function PageContent({ locale }: PageContentProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-        {/* Breadcrumbs - Hidden for better UX */}
-      <div className="sr-only">
-        <Breadcrumb 
-          items={breadcrumbItems}
-          locale={locale}
-          backgroundImage="/images/government-hero-bg.jpg"
-          title={messages.government?.hero?.title}
-          description={messages.government?.hero?.subtitle}
-        />
-      </div>
+      
+      {/* Breadcrumbs are handled by the layout */}
       
       {/* Bento Grid Hero Section */}
       <GovernmentHeroWrapper locale={locale} messages={messages} />
