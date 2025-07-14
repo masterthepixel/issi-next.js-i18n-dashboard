@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Navigation Menu Design Restoration**: Restored original floating pill-style navigation design
+  - **Floating Pill Navigation**: Restored elegant centered floating pill navigation with shadcn/ui styling
+  - **Home Icon Integration**: Added Home icon from Lucide React as first navigation item (icon-only display)
+  - **Compliance Dropdown**: Maintained sophisticated dropdown menu with hover states and visual effects
+  - **Responsive Breakpoints**: Preserved xl: breakpoint (1280px+) for desktop navigation visibility
+  - **Right-Side Pill**: Kept matching right-side pill for contact, language switcher, and theme toggle
+  - **Glass Morphism Effects**: Restored subtle border, shadow, and backdrop styling
+  - **Perfect Alignment**: Maintained vertical alignment between main navigation and utility icons
+  - **i18n Integration**: Preserved full internationalization support with FormattedMessage components
+  - **Accessibility**: Maintained proper ARIA labels and keyboard navigation support
+  - **Mobile Compatibility**: Updated mobile hamburger menu to use xl: breakpoint for consistency
+
 ### Added
 
 - **Universal Intelligent Breadcrumb**: New unified breadcrumb system with full i18n

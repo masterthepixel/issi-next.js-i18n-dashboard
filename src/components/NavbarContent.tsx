@@ -3,16 +3,16 @@
 import clsx from "clsx";
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 import { FormattedMessage, IntlProvider } from "react-intl";
-import { Home } from "lucide-react";
 
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Home } from "lucide-react";
 
 import useOutsideClick from "@/hooks/useOutsideClick";
 import { Locale, User } from "@/lib/definitions";
 import ThemeToggle from "./ThemeToggle";
-import { FloatingNav } from "./ui/floating-navbar";
+import { FloatingNav } from "@/components/ui/floating-navbar";
 
 interface Props {
   user: User;
@@ -69,10 +69,29 @@ export default function NavbarContent({ user: _user, locale, messages }: Props) 
     setLangSwitcherMenuOpen(!langSwitcherMenuOpen);
   };
 
-  // Navigation items for FloatingNav
-  const navItems = [
+  const handleClickOutside = () => {
+    setAppMenuOpen(false);
+    setUserMenuOpen(false);
+    setLangSwitcherMenuOpen(false);
+  };
+
+  useOutsideClick(appMenuRef, handleClickOutside);
+  useOutsideClick(userMenuRef, handleClickOutside);
+  useOutsideClick(langSwitcherMenuRef, handleClickOutside);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Original floating pill navigation items
+  const floatingNavItems = [
     {
-      name: null, // Icon-only home button
+      name: null, // Icon-only display
       link: `/${locale}/home`,
       icon: <Home className="size-4" />,
       ariaLabel: messages["common.navigation.home"] || "Home"
@@ -100,29 +119,34 @@ export default function NavbarContent({ user: _user, locale, messages }: Props) 
     {
       name: <FormattedMessage id="common.navigation.about" />,
       link: `/${locale}/about`,
-    },  ];  return (
+    },
+  ];
+
+  return (
     <IntlProvider locale={locale} messages={messages}>
         <nav className="sticky top-0 left-0 z-50 w-full transition-all duration-300">
           <div className="max-w-7xl mx-auto">
             <div className={`flex items-center justify-between px-2 transition-all duration-300 ${
               isScrolled ? 'h-12' : 'h-16'
-            }`}><div className="flex items-center flex-1">
-              <Link href={`/${locale}/home`} className="flex items-center hover:opacity-80 transition-opacity">
-                <Image
-                  src="/images/issi_logo.png"
-                  alt="ISSI Logo"
-                  width={120}
-                  height={40}
-                  className="h-8 w-auto drop-shadow-md"
-                  priority
-                />
-              </Link>
-              
-              {/* Floating Navigation for Desktop - Centered */}
-              <div className="flex-1 flex justify-center">
-                <FloatingNav navItems={navItems} locale={locale} />
-              </div>
-              <div className="relative ml-1 hidden">                <button
+            }`}>
+              <div className="flex items-center flex-1">
+                <Link href={`/${locale}/home`} className="flex items-center hover:opacity-80 transition-opacity">
+                  <Image
+                    src="/images/issi_logo.png"
+                    alt="ISSI Logo"
+                    width={120}
+                    height={40}
+                    className="h-8 w-auto drop-shadow-md"
+                    priority
+                  />
+                </Link>
+                
+                {/* Desktop Floating Pill Navigation - Visible on 1080px+ screens */}
+                <div className="hidden xl:flex flex-1 justify-center">
+                  <FloatingNav navItems={floatingNavItems} locale={locale} />
+                </div>
+              {/* Mobile Hamburger Menu - Hidden on 1080px+ screens */}
+              <div className="relative ml-1 xl:hidden">                <button
                   type="button"
                   className="rounded-full p-1 text-slate-500 hover:text-slate-600 dark:text-slate-300 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-slate-600/50 transition-all"
                   id="app-menu-button"
@@ -252,7 +276,6 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>(function Menu({ align = "righ
         { "left-0": align === "left", "right-0": align === "right" }
       )}
       aria-orientation="vertical"
-      tabIndex={-1}
       {...rest}
     >
       {children}
@@ -269,7 +292,6 @@ interface MenuItemProps {
 function MenuItem({ href, active, children }: MenuItemProps) {  return (
     <Link
       href={href}
-      tabIndex={-1}
       role="menuitem"
       className={clsx(
         "block px-4 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-white/50 dark:hover:bg-slate-700/50 transition-colors",
