@@ -33,19 +33,19 @@ interface PageContentProps {
 }
 
 async function PageContent({ locale }: PageContentProps) {
-  const intl = await getIntl(locale);
+  const _intl = await getIntl(locale);
   const messages = (await import(`../../../lang/${locale}.json`)).default;
-  
+
   return (
     <div>
       {/* Services Showcase - Bento Grid Layout */}
       <ISSIServicesShowcaseWrapper locale={locale} messages={messages} />
-      
+
       {/* Services Map with US coverage */}
       <ISSIServicesMapWrapper locale={locale} messages={messages} />
-        {/* Contact Form */}
+      {/* Contact Form */}
       <ContactSalesForm locale={locale} messages={messages} />
-      
+
       {/* Contact Information */}
       <ContactInfo locale={locale} messages={messages} />
     </div>

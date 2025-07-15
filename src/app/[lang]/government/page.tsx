@@ -105,7 +105,7 @@ interface PageContentProps {
 }
 
 async function PageContent({ locale }: PageContentProps) {
-  const intl = await getIntl(locale);
+  const _intl = await getIntl(locale);
   const messages = await import(`@/lang/${locale}.json`).then(module => module.default);
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://issi.com';

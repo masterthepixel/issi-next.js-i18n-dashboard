@@ -32,7 +32,7 @@ export default function FloatingNavDemo({ locale }: { locale: string }) {
 
   return (
     <div className="relative w-full">
-      <FloatingNav navItems={navItems} locale={locale} />
+      <FloatingNav navItems={navItems} />
     </div>
   );
 }

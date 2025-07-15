@@ -4,15 +4,15 @@ import clsx from "clsx";
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 import { FormattedMessage, IntlProvider } from "react-intl";
 
+import { Home } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home } from "lucide-react";
 
+import { FloatingNav } from "@/components/ui/floating-navbar";
 import useOutsideClick from "@/hooks/useOutsideClick";
 import { Locale, User } from "@/lib/definitions";
 import ThemeToggle from "./ThemeToggle";
-import { FloatingNav } from "@/components/ui/floating-navbar";
 
 interface Props {
   user: User;
@@ -124,47 +124,46 @@ export default function NavbarContent({ user: _user, locale, messages }: Props) 
 
   return (
     <IntlProvider locale={locale} messages={messages}>
-        <nav className="sticky top-0 left-0 z-50 w-full transition-all duration-300">
-          <div className="max-w-7xl mx-auto">
-            <div className={`flex items-center justify-between px-2 transition-all duration-300 ${
-              isScrolled ? 'h-12' : 'h-16'
+      <nav className="sticky top-0 left-0 z-50 w-full transition-all duration-300 backdrop-blur-sm bg-transparent">
+        <div className="max-w-7xl mx-auto">
+          <div className={`flex items-center justify-between px-2 transition-all duration-300 ${isScrolled ? 'h-12 py-8' : 'h-16 py-12'
             }`}>
-              <div className="flex items-center flex-1">
-                <Link href={`/${locale}/home`} className="flex items-center hover:opacity-80 transition-opacity">
-                  <Image
-                    src="/images/issi_logo.png"
-                    alt="ISSI Logo"
-                    width={120}
-                    height={40}
-                    className="h-8 w-auto drop-shadow-md"
-                    priority
-                  />
-                </Link>
-                
-                {/* Desktop Floating Pill Navigation - Visible on 1080px+ screens */}
-                <div className="hidden xl:flex flex-1 justify-center">
-                  <FloatingNav navItems={floatingNavItems} locale={locale} />
-                </div>
+            <div className="flex items-center flex-1">
+              <Link href={`/${locale}/home`} className="flex items-center hover:opacity-80 transition-opacity">
+                <Image
+                  src="/images/issi_logo.png"
+                  alt="ISSI Logo"
+                  width={120}
+                  height={40}
+                  className="h-8 w-auto drop-shadow-md"
+                  priority
+                />
+              </Link>
+
+              {/* Desktop Floating Pill Navigation - Visible on 1080px+ screens */}
+              <div className="hidden xl:flex flex-1 justify-center">
+                <FloatingNav navItems={floatingNavItems} />
+              </div>
               {/* Mobile Hamburger Menu - Hidden on 1080px+ screens */}
               <div className="relative ml-1 xl:hidden">                <button
-                  type="button"
-                  className="rounded-full p-1 text-slate-500 hover:text-slate-600 dark:text-slate-300 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-slate-600/50 transition-all"
-                  id="app-menu-button"
-                  aria-haspopup="true"
-                  aria-expanded={appMenuOpen ? "true" : "false"}
-                  aria-label="Open navigation menu"
-                  onClick={handleAppMenuClick}
+                type="button"
+                className="rounded-full p-1 text-slate-500 hover:text-slate-600 dark:text-slate-300 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-slate-600/50 transition-all"
+                id="app-menu-button"
+                aria-haspopup="true"
+                aria-expanded={appMenuOpen ? "true" : "false"}
+                aria-label="Open navigation menu"
+                onClick={handleAppMenuClick}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="size-6"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                  </svg>                </button>{appMenuOpen && (
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>                </button>{appMenuOpen && (
                   <Menu ref={appMenuRef} aria-labelledby="app-menu-button" align="left">
                     <MenuItem href={`/${locale}/services`}>
                       <FormattedMessage id="common.navigation.services" />
@@ -239,8 +238,8 @@ export default function NavbarContent({ user: _user, locale, messages }: Props) 
                   </button>
                   {langSwitcherMenuOpen && (
                     <Menu ref={langSwitcherMenuRef} aria-labelledby="lang-switcher-menu-button" align="right">                      <MenuItem href={`/en/${pathname ? pathname.split("/").slice(2).join("/") : ""}`} active={locale === "en"}>
-                        <FormattedMessage id="common.language-switcher" values={{ locale: "en" }} />
-                      </MenuItem>
+                      <FormattedMessage id="common.language-switcher" values={{ locale: "en" }} />
+                    </MenuItem>
                       <MenuItem href={`/fr/${pathname ? pathname.split("/").slice(2).join("/") : ""}`} active={locale === "fr"}>
                         <FormattedMessage id="common.language-switcher" values={{ locale: "fr" }} />
                       </MenuItem>
@@ -256,7 +255,7 @@ export default function NavbarContent({ user: _user, locale, messages }: Props) 
             </div>
           </div>
         </div>
-        </nav>
+      </nav>
     </IntlProvider>
   );
 }
@@ -267,7 +266,8 @@ interface MenuProps {
   [x: string]: any;
 }
 
-const Menu = forwardRef<HTMLDivElement, MenuProps>(function Menu({ align = "right", children, ...rest }, ref) {  return (
+const Menu = forwardRef<HTMLDivElement, MenuProps>(function Menu({ align = "right", children, ...rest }, ref) {
+  return (
     <div
       ref={ref}
       role="menu"
@@ -289,7 +289,8 @@ interface MenuItemProps {
   children: React.ReactNode;
 }
 
-function MenuItem({ href, active, children }: MenuItemProps) {  return (
+function MenuItem({ href, active, children }: MenuItemProps) {
+  return (
     <Link
       href={href}
       role="menuitem"

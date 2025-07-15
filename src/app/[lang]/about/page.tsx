@@ -81,7 +81,7 @@ const breadcrumbSchema = {
 };
 
 export async function generateMetadata({ params }: { params: { lang: Locale } }): Promise<Metadata> {
-    const intl = await getIntl(params.lang);
+    const _intl = await getIntl(params.lang);
     const messages = (await import(`../../../lang/${params.lang}.json`)).default;
 
     return {
@@ -130,7 +130,7 @@ interface Props {
 
 export default function Page({ params: { lang: locale } }: Props) {
     const structuredData = [organizationSchema, localBusinessSchema, breadcrumbSchema];
-    
+
     return (
         <Suspense fallback={<Spinner />}>
             <script
@@ -150,24 +150,24 @@ interface PageContentProps {
 
 async function PageContent({ locale }: PageContentProps) {
     const messages = (await import(`../../../lang/${locale}.json`)).default;
-    
+
     return (
         <main>
             {/* Hero section */}
             <AboutHeroWrapper locale={locale} messages={messages} />
-            
+
             {/* Team section */}
             <TeamGridWrapper locale={locale} messages={messages} />
-            
+
             {/* Stats section */}
             <AboutStatsWrapper locale={locale} messages={messages} />
-            
+
             {/* Certifications section */}
             <AboutCertificationsWrapper locale={locale} messages={messages} />
-            
+
             {/* Awards section */}
             <AboutAwardsWrapper locale={locale} messages={messages} />
-            
+
             {/* Partner Network section */}
             <AboutPartnerNetworkWrapper locale={locale} messages={messages} />
         </main>
