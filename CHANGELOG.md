@@ -7,21 +7,27 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - **🌍 ISSI Global Infrastructure Network Visualization**: Complete enterprise-grade 3D globe implementation
-  - **Comprehensive Datacenter Coverage**: 123 global datacenters across major cloud providers
+  - **Comprehensive Datacenter Coverage**: 123 global datacenters across major cloud providers (reduced to 40 for optimal visualization)
     - 🏢 **ISSI Headquarters**: Greenbelt, Maryland (primary hub)
-    - 🟠 **AWS Regions**: 29 regions including all major AWS availability zones
-    - 🔵 **Google Cloud**: 40 regions spanning global GCP infrastructure
-    - 🔷 **Azure Regions**: 51 regions covering Microsoft Azure worldwide presence
+    - 🟠 **AWS Regions**: 29 regions (optimized to ~10 primary hubs) including all major AWS availability zones
+    - 🔵 **Google Cloud**: 40 regions (optimized to 11 key regions) spanning global GCP infrastructure
+    - 🔷 **Azure Regions**: 51 regions (optimized to ~6 strategic locations) covering Microsoft Azure worldwide presence
+  - **Enhanced Africa Connectivity**: Complete preservation of all African datacenters for strategic focus
+    - All African datacenters maintained across AWS, GCP, and Azure
+    - Enhanced intercontinental traffic patterns with emphasis on Africa connectivity
+    - Strategic network topology showing improved global south connections
   - **Real-time Network Topology**: Dynamic arc generation showing multi-cloud connectivity
     - Hub-and-spoke architecture with ISSI HQ as central command
-    - Provider-specific color coding for visual network identification
+    - Provider-specific color coding with transparency for visual hierarchy
     - Distance-based arc altitude calculations for realistic visualization
     - Cross-provider network connections demonstrating hybrid cloud strategy
   - **Interactive 3D Globe Component**: Built with Aceternity UI and React Three Fiber
     - Authentic globe textures with country boundaries and geographic features
+    - Theme-aware globe colors (realistic ocean blue in light mode, deep blue in dark mode)
     - Smooth auto-rotation centered on ISSI headquarters coordinates
     - Interactive controls with zoom, pan, and rotation capabilities
-    - Ring animations showing active data transmission pathways
+    - Optimized visual presentation with smaller, transparent dots (pointSize: 0.8)
+    - Ring animations showing active data transmission pathways with transparency
   - **Enterprise Architecture**: TypeScript-first implementation with strict type safety
     - Modular data structure with `DataCenter` interface and provider enums
     - Utility functions for network topology generation and arc calculations

@@ -21,8 +21,8 @@ export const datacenters: DataCenter[] = [
         code: 'HQ'
     },
 
-    // ========== AWS REGIONS (33 regions) ==========
-    // North America
+    // ========== AWS REGIONS (reduced to 1/3 for cleaner visualization) ==========
+    // North America (keeping 2 out of 6)
     {
         id: 'aws-us-east-1',
         provider: 'aws',
@@ -32,15 +32,15 @@ export const datacenters: DataCenter[] = [
         tier: 'primary',
         code: 'us-east-1'
     },
-    {
-        id: 'aws-us-east-2',
-        provider: 'aws',
-        name: 'US East (Ohio)',
-        coordinates: [40.0946, -82.7541],
-        region: 'US East',
-        tier: 'secondary',
-        code: 'us-east-2'
-    },
+    // {
+    //     id: 'aws-us-east-2',
+    //     provider: 'aws',
+    //     name: 'US East (Ohio)',
+    //     coordinates: [40.0946, -82.7541],
+    //     region: 'US East',
+    //     tier: 'secondary',
+    //     code: 'us-east-2'
+    // },
     {
         id: 'aws-us-west-1',
         provider: 'aws',
@@ -50,35 +50,35 @@ export const datacenters: DataCenter[] = [
         tier: 'primary',
         code: 'us-west-1'
     },
-    {
-        id: 'aws-us-west-2',
-        provider: 'aws',
-        name: 'US West (Oregon)',
-        coordinates: [45.9175, -119.2684],
-        region: 'US West',
-        tier: 'secondary',
-        code: 'us-west-2'
-    },
-    {
-        id: 'aws-ca-central-1',
-        provider: 'aws',
-        name: 'Canada (Central)',
-        coordinates: [43.6532, -79.3832],
-        region: 'North America',
-        tier: 'secondary',
-        code: 'ca-central-1'
-    },
-    {
-        id: 'aws-ca-west-1',
-        provider: 'aws',
-        name: 'Canada West (Calgary)',
-        coordinates: [51.0447, -114.0719],
-        region: 'North America',
-        tier: 'secondary',
-        code: 'ca-west-1'
-    },
+    // {
+    //     id: 'aws-us-west-2',
+    //     provider: 'aws',
+    //     name: 'US West (Oregon)',
+    //     coordinates: [45.9175, -119.2684],
+    //     region: 'US West',
+    //     tier: 'secondary',
+    //     code: 'us-west-2'
+    // },
+    // {
+    //     id: 'aws-ca-central-1',
+    //     provider: 'aws',
+    //     name: 'Canada (Central)',
+    //     coordinates: [43.6532, -79.3832],
+    //     region: 'North America',
+    //     tier: 'secondary',
+    //     code: 'ca-central-1'
+    // },
+    // {
+    //     id: 'aws-ca-west-1',
+    //     provider: 'aws',
+    //     name: 'Canada West (Calgary)',
+    //     coordinates: [51.0447, -114.0719],
+    //     region: 'North America',
+    //     tier: 'secondary',
+    //     code: 'ca-west-1'
+    // },
 
-    // South America
+    // South America (keeping 1 out of 1)
     {
         id: 'aws-sa-east-1',
         provider: 'aws',
@@ -89,7 +89,7 @@ export const datacenters: DataCenter[] = [
         code: 'sa-east-1'
     },
 
-    // Europe
+    // Europe (keeping 3 out of 8)
     {
         id: 'aws-eu-west-1',
         provider: 'aws',
@@ -108,62 +108,62 @@ export const datacenters: DataCenter[] = [
         tier: 'primary',
         code: 'eu-central-1'
     },
-    {
-        id: 'aws-eu-west-2',
-        provider: 'aws',
-        name: 'Europe (London)',
-        coordinates: [51.5074, -0.1278],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'eu-west-2'
-    },
-    {
-        id: 'aws-eu-west-3',
-        provider: 'aws',
-        name: 'Europe (Paris)',
-        coordinates: [48.8566, 2.3522],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'eu-west-3'
-    },
-    {
-        id: 'aws-eu-north-1',
-        provider: 'aws',
-        name: 'Europe (Stockholm)',
-        coordinates: [59.3293, 18.0686],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'eu-north-1'
-    },
-    {
-        id: 'aws-eu-south-1',
-        provider: 'aws',
-        name: 'Europe (Milan)',
-        coordinates: [45.4642, 9.1900],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'eu-south-1'
-    },
-    {
-        id: 'aws-eu-south-2',
-        provider: 'aws',
-        name: 'Europe (Spain)',
-        coordinates: [40.4168, -3.7038],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'eu-south-2'
-    },
-    {
-        id: 'aws-eu-central-2',
-        provider: 'aws',
-        name: 'Europe (Zurich)',
-        coordinates: [47.3769, 8.5417],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'eu-central-2'
-    },
+    // {
+    //     id: 'aws-eu-west-2',
+    //     provider: 'aws',
+    //     name: 'Europe (London)',
+    //     coordinates: [51.5074, -0.1278],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'eu-west-2'
+    // },
+    // {
+    //     id: 'aws-eu-west-3',
+    //     provider: 'aws',
+    //     name: 'Europe (Paris)',
+    //     coordinates: [48.8566, 2.3522],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'eu-west-3'
+    // },
+    // {
+    //     id: 'aws-eu-north-1',
+    //     provider: 'aws',
+    //     name: 'Europe (Stockholm)',
+    //     coordinates: [59.3293, 18.0686],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'eu-north-1'
+    // },
+    // {
+    //     id: 'aws-eu-south-1',
+    //     provider: 'aws',
+    //     name: 'Europe (Milan)',
+    //     coordinates: [45.4642, 9.1900],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'eu-south-1'
+    // },
+    // {
+    //     id: 'aws-eu-south-2',
+    //     provider: 'aws',
+    //     name: 'Europe (Spain)',
+    //     coordinates: [40.4168, -3.7038],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'eu-south-2'
+    // },
+    // {
+    //     id: 'aws-eu-central-2',
+    //     provider: 'aws',
+    //     name: 'Europe (Zurich)',
+    //     coordinates: [47.3769, 8.5417],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'eu-central-2'
+    // },
 
-    // Asia Pacific
+    // Asia Pacific (keeping 3 out of 10)
     {
         id: 'aws-ap-southeast-1',
         provider: 'aws',
@@ -182,24 +182,24 @@ export const datacenters: DataCenter[] = [
         tier: 'primary',
         code: 'ap-northeast-1'
     },
-    {
-        id: 'aws-ap-southeast-2',
-        provider: 'aws',
-        name: 'Asia Pacific (Sydney)',
-        coordinates: [-33.8688, 151.2093],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'ap-southeast-2'
-    },
-    {
-        id: 'aws-ap-northeast-2',
-        provider: 'aws',
-        name: 'Asia Pacific (Seoul)',
-        coordinates: [37.5665, 126.9780],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'ap-northeast-2'
-    },
+    // {
+    //     id: 'aws-ap-southeast-2',
+    //     provider: 'aws',
+    //     name: 'Asia Pacific (Sydney)',
+    //     coordinates: [-33.8688, 151.2093],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'ap-southeast-2'
+    // },
+    // {
+    //     id: 'aws-ap-northeast-2',
+    //     provider: 'aws',
+    //     name: 'Asia Pacific (Seoul)',
+    //     coordinates: [37.5665, 126.9780],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'ap-northeast-2'
+    // },
     {
         id: 'aws-ap-south-1',
         provider: 'aws',
@@ -313,33 +313,33 @@ export const datacenters: DataCenter[] = [
         tier: 'primary',
         code: 'us-east1'
     },
-    {
-        id: 'gcp-us-east4',
-        provider: 'gcp',
-        name: 'US East (Northern Virginia)',
-        coordinates: [38.9517, -77.4481],
-        region: 'US East',
-        tier: 'secondary',
-        code: 'us-east4'
-    },
-    {
-        id: 'gcp-us-east5',
-        provider: 'gcp',
-        name: 'US East (Columbus)',
-        coordinates: [39.9612, -82.9988],
-        region: 'US East',
-        tier: 'secondary',
-        code: 'us-east5'
-    },
-    {
-        id: 'gcp-us-south1',
-        provider: 'gcp',
-        name: 'US South (Dallas)',
-        coordinates: [32.7767, -96.7970],
-        region: 'US South',
-        tier: 'secondary',
-        code: 'us-south1'
-    },
+    // {
+    //     id: 'gcp-us-east4',
+    //     provider: 'gcp',
+    //     name: 'US East (Northern Virginia)',
+    //     coordinates: [38.9517, -77.4481],
+    //     region: 'US East',
+    //     tier: 'secondary',
+    //     code: 'us-east4'
+    // },
+    // {
+    //     id: 'gcp-us-east5',
+    //     provider: 'gcp',
+    //     name: 'US East (Columbus)',
+    //     coordinates: [39.9612, -82.9988],
+    //     region: 'US East',
+    //     tier: 'secondary',
+    //     code: 'us-east5'
+    // },
+    // {
+    //     id: 'gcp-us-south1',
+    //     provider: 'gcp',
+    //     name: 'US South (Dallas)',
+    //     coordinates: [32.7767, -96.7970],
+    //     region: 'US South',
+    //     tier: 'secondary',
+    //     code: 'us-south1'
+    // },
     {
         id: 'gcp-us-west1',
         provider: 'gcp',
@@ -349,33 +349,33 @@ export const datacenters: DataCenter[] = [
         tier: 'primary',
         code: 'us-west1'
     },
-    {
-        id: 'gcp-us-west2',
-        provider: 'gcp',
-        name: 'US West (Los Angeles)',
-        coordinates: [34.0522, -118.2437],
-        region: 'US West',
-        tier: 'secondary',
-        code: 'us-west2'
-    },
-    {
-        id: 'gcp-us-west3',
-        provider: 'gcp',
-        name: 'US West (Salt Lake City)',
-        coordinates: [40.7608, -111.8910],
-        region: 'US West',
-        tier: 'secondary',
-        code: 'us-west3'
-    },
-    {
-        id: 'gcp-us-west4',
-        provider: 'gcp',
-        name: 'US West (Las Vegas)',
-        coordinates: [36.1699, -115.1398],
-        region: 'US West',
-        tier: 'secondary',
-        code: 'us-west4'
-    },
+    // {
+    //     id: 'gcp-us-west2',
+    //     provider: 'gcp',
+    //     name: 'US West (Los Angeles)',
+    //     coordinates: [34.0522, -118.2437],
+    //     region: 'US West',
+    //     tier: 'secondary',
+    //     code: 'us-west2'
+    // },
+    // {
+    //     id: 'gcp-us-west3',
+    //     provider: 'gcp',
+    //     name: 'US West (Salt Lake City)',
+    //     coordinates: [40.7608, -111.8910],
+    //     region: 'US West',
+    //     tier: 'secondary',
+    //     code: 'us-west3'
+    // },
+    // {
+    //     id: 'gcp-us-west4',
+    //     provider: 'gcp',
+    //     name: 'US West (Las Vegas)',
+    //     coordinates: [36.1699, -115.1398],
+    //     region: 'US West',
+    //     tier: 'secondary',
+    //     code: 'us-west4'
+    // },
     {
         id: 'gcp-northamerica-northeast1',
         provider: 'gcp',
@@ -385,15 +385,15 @@ export const datacenters: DataCenter[] = [
         tier: 'secondary',
         code: 'northamerica-northeast1'
     },
-    {
-        id: 'gcp-northamerica-northeast2',
-        provider: 'gcp',
-        name: 'Canada (Toronto)',
-        coordinates: [43.6532, -79.3832],
-        region: 'North America',
-        tier: 'secondary',
-        code: 'northamerica-northeast2'
-    },
+    // {
+    //     id: 'gcp-northamerica-northeast2',
+    //     provider: 'gcp',
+    //     name: 'Canada (Toronto)',
+    //     coordinates: [43.6532, -79.3832],
+    //     region: 'North America',
+    //     tier: 'secondary',
+    //     code: 'northamerica-northeast2'
+    // },
 
     // South America
     {
@@ -425,15 +425,15 @@ export const datacenters: DataCenter[] = [
         tier: 'primary',
         code: 'europe-west1'
     },
-    {
-        id: 'gcp-europe-west2',
-        provider: 'gcp',
-        name: 'Europe West (London)',
-        coordinates: [51.5074, -0.1278],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'europe-west2'
-    },
+    // {
+    //     id: 'gcp-europe-west2',
+    //     provider: 'gcp',
+    //     name: 'Europe West (London)',
+    //     coordinates: [51.5074, -0.1278],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'europe-west2'
+    // },
     {
         id: 'gcp-europe-west3',
         provider: 'gcp',
@@ -443,60 +443,60 @@ export const datacenters: DataCenter[] = [
         tier: 'primary',
         code: 'europe-west3'
     },
-    {
-        id: 'gcp-europe-west4',
-        provider: 'gcp',
-        name: 'Europe West (Netherlands)',
-        coordinates: [52.3676, 4.9041],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'europe-west4'
-    },
-    {
-        id: 'gcp-europe-west6',
-        provider: 'gcp',
-        name: 'Europe West (Zurich)',
-        coordinates: [47.3769, 8.5417],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'europe-west6'
-    },
-    {
-        id: 'gcp-europe-west8',
-        provider: 'gcp',
-        name: 'Europe West (Milan)',
-        coordinates: [45.4642, 9.1900],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'europe-west8'
-    },
-    {
-        id: 'gcp-europe-west9',
-        provider: 'gcp',
-        name: 'Europe West (Paris)',
-        coordinates: [48.8566, 2.3522],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'europe-west9'
-    },
-    {
-        id: 'gcp-europe-west10',
-        provider: 'gcp',
-        name: 'Europe West (Berlin)',
-        coordinates: [52.5200, 13.4050],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'europe-west10'
-    },
-    {
-        id: 'gcp-europe-west12',
-        provider: 'gcp',
-        name: 'Europe West (Turin)',
-        coordinates: [45.0703, 7.6869],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'europe-west12'
-    },
+    // {
+    //     id: 'gcp-europe-west4',
+    //     provider: 'gcp',
+    //     name: 'Europe West (Netherlands)',
+    //     coordinates: [52.3676, 4.9041],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'europe-west4'
+    // },
+    // {
+    //     id: 'gcp-europe-west6',
+    //     provider: 'gcp',
+    //     name: 'Europe West (Zurich)',
+    //     coordinates: [47.3769, 8.5417],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'europe-west6'
+    // },
+    // {
+    //     id: 'gcp-europe-west8',
+    //     provider: 'gcp',
+    //     name: 'Europe West (Milan)',
+    //     coordinates: [45.4642, 9.1900],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'europe-west8'
+    // },
+    // {
+    //     id: 'gcp-europe-west9',
+    //     provider: 'gcp',
+    //     name: 'Europe West (Paris)',
+    //     coordinates: [48.8566, 2.3522],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'europe-west9'
+    // },
+    // {
+    //     id: 'gcp-europe-west10',
+    //     provider: 'gcp',
+    //     name: 'Europe West (Berlin)',
+    //     coordinates: [52.5200, 13.4050],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'europe-west10'
+    // },
+    // {
+    //     id: 'gcp-europe-west12',
+    //     provider: 'gcp',
+    //     name: 'Europe West (Turin)',
+    //     coordinates: [45.0703, 7.6869],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'europe-west12'
+    // },
     {
         id: 'gcp-europe-north1',
         provider: 'gcp',
@@ -506,24 +506,24 @@ export const datacenters: DataCenter[] = [
         tier: 'secondary',
         code: 'europe-north1'
     },
-    {
-        id: 'gcp-europe-central2',
-        provider: 'gcp',
-        name: 'Europe Central (Warsaw)',
-        coordinates: [52.2297, 21.0122],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'europe-central2'
-    },
-    {
-        id: 'gcp-europe-southwest1',
-        provider: 'gcp',
-        name: 'Europe Southwest (Madrid)',
-        coordinates: [40.4168, -3.7038],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'europe-southwest1'
-    },
+    // {
+    //     id: 'gcp-europe-central2',
+    //     provider: 'gcp',
+    //     name: 'Europe Central (Warsaw)',
+    //     coordinates: [52.2297, 21.0122],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'europe-central2'
+    // },
+    // {
+    //     id: 'gcp-europe-southwest1',
+    //     provider: 'gcp',
+    //     name: 'Europe Southwest (Madrid)',
+    //     coordinates: [40.4168, -3.7038],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'europe-southwest1'
+    // },
 
     // Asia Pacific
     {
@@ -535,15 +535,15 @@ export const datacenters: DataCenter[] = [
         tier: 'primary',
         code: 'asia-southeast1'
     },
-    {
-        id: 'gcp-asia-southeast2',
-        provider: 'gcp',
-        name: 'Asia Southeast (Jakarta)',
-        coordinates: [-6.2088, 106.8456],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'asia-southeast2'
-    },
+    // {
+    //     id: 'gcp-asia-southeast2',
+    //     provider: 'gcp',
+    //     name: 'Asia Southeast (Jakarta)',
+    //     coordinates: [-6.2088, 106.8456],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'asia-southeast2'
+    // },
     {
         id: 'gcp-asia-northeast1',
         provider: 'gcp',
@@ -553,24 +553,24 @@ export const datacenters: DataCenter[] = [
         tier: 'primary',
         code: 'asia-northeast1'
     },
-    {
-        id: 'gcp-asia-northeast2',
-        provider: 'gcp',
-        name: 'Asia Northeast (Osaka)',
-        coordinates: [34.6937, 135.5023],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'asia-northeast2'
-    },
-    {
-        id: 'gcp-asia-northeast3',
-        provider: 'gcp',
-        name: 'Asia Northeast (Seoul)',
-        coordinates: [37.5665, 126.9780],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'asia-northeast3'
-    },
+    // {
+    //     id: 'gcp-asia-northeast2',
+    //     provider: 'gcp',
+    //     name: 'Asia Northeast (Osaka)',
+    //     coordinates: [34.6937, 135.5023],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'asia-northeast2'
+    // },
+    // {
+    //     id: 'gcp-asia-northeast3',
+    //     provider: 'gcp',
+    //     name: 'Asia Northeast (Seoul)',
+    //     coordinates: [37.5665, 126.9780],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'asia-northeast3'
+    // },
     {
         id: 'gcp-asia-south1',
         provider: 'gcp',
@@ -580,33 +580,33 @@ export const datacenters: DataCenter[] = [
         tier: 'secondary',
         code: 'asia-south1'
     },
-    {
-        id: 'gcp-asia-south2',
-        provider: 'gcp',
-        name: 'Asia South (Delhi)',
-        coordinates: [28.7041, 77.1025],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'asia-south2'
-    },
-    {
-        id: 'gcp-asia-east1',
-        provider: 'gcp',
-        name: 'Asia East (Taiwan)',
-        coordinates: [25.0330, 121.5654],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'asia-east1'
-    },
-    {
-        id: 'gcp-asia-east2',
-        provider: 'gcp',
-        name: 'Asia East (Hong Kong)',
-        coordinates: [22.3193, 114.1694],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'asia-east2'
-    },
+    // {
+    //     id: 'gcp-asia-south2',
+    //     provider: 'gcp',
+    //     name: 'Asia South (Delhi)',
+    //     coordinates: [28.7041, 77.1025],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'asia-south2'
+    // },
+    // {
+    //     id: 'gcp-asia-east1',
+    //     provider: 'gcp',
+    //     name: 'Asia East (Taiwan)',
+    //     coordinates: [25.0330, 121.5654],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'asia-east1'
+    // },
+    // {
+    //     id: 'gcp-asia-east2',
+    //     provider: 'gcp',
+    //     name: 'Asia East (Hong Kong)',
+    //     coordinates: [22.3193, 114.1694],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'asia-east2'
+    // },
     {
         id: 'gcp-australia-southeast1',
         provider: 'gcp',
@@ -616,15 +616,15 @@ export const datacenters: DataCenter[] = [
         tier: 'secondary',
         code: 'australia-southeast1'
     },
-    {
-        id: 'gcp-australia-southeast2',
-        provider: 'gcp',
-        name: 'Australia Southeast (Melbourne)',
-        coordinates: [-37.8136, 144.9631],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'australia-southeast2'
-    },
+    // {
+    //     id: 'gcp-australia-southeast2',
+    //     provider: 'gcp',
+    //     name: 'Australia Southeast (Melbourne)',
+    //     coordinates: [-37.8136, 144.9631],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'australia-southeast2'
+    // },
 
     // Middle East & Africa
     {
@@ -675,51 +675,51 @@ export const datacenters: DataCenter[] = [
         tier: 'primary',
         code: 'eastus'
     },
-    {
-        id: 'azure-eastus2',
-        provider: 'azure',
-        name: 'East US 2 (Virginia)',
-        coordinates: [36.6681, -78.3889],
-        region: 'US East',
-        tier: 'secondary',
-        code: 'eastus2'
-    },
-    {
-        id: 'azure-centralus',
-        provider: 'azure',
-        name: 'Central US (Iowa)',
-        coordinates: [41.5868, -93.6250],
-        region: 'US Central',
-        tier: 'secondary',
-        code: 'centralus'
-    },
-    {
-        id: 'azure-northcentralus',
-        provider: 'azure',
-        name: 'North Central US (Illinois)',
-        coordinates: [41.8781, -87.6298],
-        region: 'US Central',
-        tier: 'secondary',
-        code: 'northcentralus'
-    },
-    {
-        id: 'azure-southcentralus',
-        provider: 'azure',
-        name: 'South Central US (Texas)',
-        coordinates: [29.4167, -98.5000],
-        region: 'US Central',
-        tier: 'secondary',
-        code: 'southcentralus'
-    },
-    {
-        id: 'azure-westcentralus',
-        provider: 'azure',
-        name: 'West Central US (Wyoming)',
-        coordinates: [40.8906, -110.2348],
-        region: 'US West',
-        tier: 'secondary',
-        code: 'westcentralus'
-    },
+    // {
+    //     id: 'azure-eastus2',
+    //     provider: 'azure',
+    //     name: 'East US 2 (Virginia)',
+    //     coordinates: [36.6681, -78.3889],
+    //     region: 'US East',
+    //     tier: 'secondary',
+    //     code: 'eastus2'
+    // },
+    // {
+    //     id: 'azure-centralus',
+    //     provider: 'azure',
+    //     name: 'Central US (Iowa)',
+    //     coordinates: [41.5868, -93.6250],
+    //     region: 'US Central',
+    //     tier: 'secondary',
+    //     code: 'centralus'
+    // },
+    // {
+    //     id: 'azure-northcentralus',
+    //     provider: 'azure',
+    //     name: 'North Central US (Illinois)',
+    //     coordinates: [41.8781, -87.6298],
+    //     region: 'US Central',
+    //     tier: 'secondary',
+    //     code: 'northcentralus'
+    // },
+    // {
+    //     id: 'azure-southcentralus',
+    //     provider: 'azure',
+    //     name: 'South Central US (Texas)',
+    //     coordinates: [29.4167, -98.5000],
+    //     region: 'US Central',
+    //     tier: 'secondary',
+    //     code: 'southcentralus'
+    // },
+    // {
+    //     id: 'azure-westcentralus',
+    //     provider: 'azure',
+    //     name: 'West Central US (Wyoming)',
+    //     coordinates: [40.8906, -110.2348],
+    //     region: 'US West',
+    //     tier: 'secondary',
+    //     code: 'westcentralus'
+    // },
     {
         id: 'azure-westus',
         provider: 'azure',
@@ -729,24 +729,24 @@ export const datacenters: DataCenter[] = [
         tier: 'primary',
         code: 'westus'
     },
-    {
-        id: 'azure-westus2',
-        provider: 'azure',
-        name: 'West US 2 (Washington)',
-        coordinates: [47.2529, -119.8520],
-        region: 'US West',
-        tier: 'secondary',
-        code: 'westus2'
-    },
-    {
-        id: 'azure-westus3',
-        provider: 'azure',
-        name: 'West US 3 (Arizona)',
-        coordinates: [33.4484, -112.0740],
-        region: 'US West',
-        tier: 'secondary',
-        code: 'westus3'
-    },
+    // {
+    //     id: 'azure-westus2',
+    //     provider: 'azure',
+    //     name: 'West US 2 (Washington)',
+    //     coordinates: [47.2529, -119.8520],
+    //     region: 'US West',
+    //     tier: 'secondary',
+    //     code: 'westus2'
+    // },
+    // {
+    //     id: 'azure-westus3',
+    //     provider: 'azure',
+    //     name: 'West US 3 (Arizona)',
+    //     coordinates: [33.4484, -112.0740],
+    //     region: 'US West',
+    //     tier: 'secondary',
+    //     code: 'westus3'
+    // },
     {
         id: 'azure-canadacentral',
         provider: 'azure',
@@ -756,15 +756,15 @@ export const datacenters: DataCenter[] = [
         tier: 'secondary',
         code: 'canadacentral'
     },
-    {
-        id: 'azure-canadaeast',
-        provider: 'azure',
-        name: 'Canada East (Quebec)',
-        coordinates: [46.8139, -71.2082],
-        region: 'North America',
-        tier: 'secondary',
-        code: 'canadaeast'
-    },
+    // {
+    //     id: 'azure-canadaeast',
+    //     provider: 'azure',
+    //     name: 'Canada East (Quebec)',
+    //     coordinates: [46.8139, -71.2082],
+    //     region: 'North America',
+    //     tier: 'secondary',
+    //     code: 'canadaeast'
+    // },
 
     // South America
     {
@@ -805,24 +805,24 @@ export const datacenters: DataCenter[] = [
         tier: 'primary',
         code: 'westeurope'
     },
-    {
-        id: 'azure-germanywestcentral',
-        provider: 'azure',
-        name: 'Germany West Central (Frankfurt)',
-        coordinates: [50.1109, 8.6821],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'germanywestcentral'
-    },
-    {
-        id: 'azure-germanynorth',
-        provider: 'azure',
-        name: 'Germany North (Berlin)',
-        coordinates: [52.5200, 13.4050],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'germanynorth'
-    },
+    // {
+    //     id: 'azure-germanywestcentral',
+    //     provider: 'azure',
+    //     name: 'Germany West Central (Frankfurt)',
+    //     coordinates: [50.1109, 8.6821],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'germanywestcentral'
+    // },
+    // {
+    //     id: 'azure-germanynorth',
+    //     provider: 'azure',
+    //     name: 'Germany North (Berlin)',
+    //     coordinates: [52.5200, 13.4050],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'germanynorth'
+    // },
     {
         id: 'azure-uksouth',
         provider: 'azure',
@@ -832,15 +832,15 @@ export const datacenters: DataCenter[] = [
         tier: 'secondary',
         code: 'uksouth'
     },
-    {
-        id: 'azure-ukwest',
-        provider: 'azure',
-        name: 'UK West (Cardiff)',
-        coordinates: [51.4816, -3.1791],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'ukwest'
-    },
+    // {
+    //     id: 'azure-ukwest',
+    //     provider: 'azure',
+    //     name: 'UK West (Cardiff)',
+    //     coordinates: [51.4816, -3.1791],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'ukwest'
+    // },
     {
         id: 'azure-francecentral',
         provider: 'azure',
@@ -850,96 +850,96 @@ export const datacenters: DataCenter[] = [
         tier: 'secondary',
         code: 'francecentral'
     },
-    {
-        id: 'azure-francesouth',
-        provider: 'azure',
-        name: 'France South (Marseille)',
-        coordinates: [43.2965, 5.3698],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'francesouth'
-    },
-    {
-        id: 'azure-switzerlandnorth',
-        provider: 'azure',
-        name: 'Switzerland North (Zurich)',
-        coordinates: [47.3769, 8.5417],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'switzerlandnorth'
-    },
-    {
-        id: 'azure-switzerlandwest',
-        provider: 'azure',
-        name: 'Switzerland West (Geneva)',
-        coordinates: [46.2044, 6.1432],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'switzerlandwest'
-    },
-    {
-        id: 'azure-norwayeast',
-        provider: 'azure',
-        name: 'Norway East (Oslo)',
-        coordinates: [59.9139, 10.7522],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'norwayeast'
-    },
-    {
-        id: 'azure-norwaywest',
-        provider: 'azure',
-        name: 'Norway West (Stavanger)',
-        coordinates: [58.9700, 5.7331],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'norwaywest'
-    },
-    {
-        id: 'azure-swedencentral',
-        provider: 'azure',
-        name: 'Sweden Central (Gävle)',
-        coordinates: [60.6749, 17.1413],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'swedencentral'
-    },
-    {
-        id: 'azure-swedensouth',
-        provider: 'azure',
-        name: 'Sweden South (Malmö)',
-        coordinates: [55.6050, 13.0038],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'swedensouth'
-    },
-    {
-        id: 'azure-italynorth',
-        provider: 'azure',
-        name: 'Italy North (Milan)',
-        coordinates: [45.4642, 9.1900],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'italynorth'
-    },
-    {
-        id: 'azure-spaincentral',
-        provider: 'azure',
-        name: 'Spain Central (Madrid)',
-        coordinates: [40.4168, -3.7038],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'spaincentral'
-    },
-    {
-        id: 'azure-polandcentral',
-        provider: 'azure',
-        name: 'Poland Central (Warsaw)',
-        coordinates: [52.2297, 21.0122],
-        region: 'Europe',
-        tier: 'secondary',
-        code: 'polandcentral'
-    },
+    // {
+    //     id: 'azure-francesouth',
+    //     provider: 'azure',
+    //     name: 'France South (Marseille)',
+    //     coordinates: [43.2965, 5.3698],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'francesouth'
+    // },
+    // {
+    //     id: 'azure-switzerlandnorth',
+    //     provider: 'azure',
+    //     name: 'Switzerland North (Zurich)',
+    //     coordinates: [47.3769, 8.5417],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'switzerlandnorth'
+    // },
+    // {
+    //     id: 'azure-switzerlandwest',
+    //     provider: 'azure',
+    //     name: 'Switzerland West (Geneva)',
+    //     coordinates: [46.2044, 6.1432],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'switzerlandwest'
+    // },
+    // {
+    //     id: 'azure-norwayeast',
+    //     provider: 'azure',
+    //     name: 'Norway East (Oslo)',
+    //     coordinates: [59.9139, 10.7522],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'norwayeast'
+    // },
+    // {
+    //     id: 'azure-norwaywest',
+    //     provider: 'azure',
+    //     name: 'Norway West (Stavanger)',
+    //     coordinates: [58.9700, 5.7331],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'norwaywest'
+    // },
+    // {
+    //     id: 'azure-swedencentral',
+    //     provider: 'azure',
+    //     name: 'Sweden Central (Gävle)',
+    //     coordinates: [60.6749, 17.1413],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'swedencentral'
+    // },
+    // {
+    //     id: 'azure-swedensouth',
+    //     provider: 'azure',
+    //     name: 'Sweden South (Malmö)',
+    //     coordinates: [55.6050, 13.0038],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'swedensouth'
+    // },
+    // {
+    //     id: 'azure-italynorth',
+    //     provider: 'azure',
+    //     name: 'Italy North (Milan)',
+    //     coordinates: [45.4642, 9.1900],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'italynorth'
+    // },
+    // {
+    //     id: 'azure-spaincentral',
+    //     provider: 'azure',
+    //     name: 'Spain Central (Madrid)',
+    //     coordinates: [40.4168, -3.7038],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'spaincentral'
+    // },
+    // {
+    //     id: 'azure-polandcentral',
+    //     provider: 'azure',
+    //     name: 'Poland Central (Warsaw)',
+    //     coordinates: [52.2297, 21.0122],
+    //     region: 'Europe',
+    //     tier: 'secondary',
+    //     code: 'polandcentral'
+    // },
 
     // Asia Pacific
     {
@@ -951,15 +951,15 @@ export const datacenters: DataCenter[] = [
         tier: 'primary',
         code: 'southeastasia'
     },
-    {
-        id: 'azure-eastasia',
-        provider: 'azure',
-        name: 'East Asia (Hong Kong)',
-        coordinates: [22.3193, 114.1694],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'eastasia'
-    },
+    // {
+    //     id: 'azure-eastasia',
+    //     provider: 'azure',
+    //     name: 'East Asia (Hong Kong)',
+    //     coordinates: [22.3193, 114.1694],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'eastasia'
+    // },
     {
         id: 'azure-japaneast',
         provider: 'azure',
@@ -969,33 +969,33 @@ export const datacenters: DataCenter[] = [
         tier: 'primary',
         code: 'japaneast'
     },
-    {
-        id: 'azure-japanwest',
-        provider: 'azure',
-        name: 'Japan West (Osaka)',
-        coordinates: [34.6937, 135.5023],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'japanwest'
-    },
-    {
-        id: 'azure-koreacentral',
-        provider: 'azure',
-        name: 'Korea Central (Seoul)',
-        coordinates: [37.5665, 126.9780],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'koreacentral'
-    },
-    {
-        id: 'azure-koreasouth',
-        provider: 'azure',
-        name: 'Korea South (Busan)',
-        coordinates: [35.1796, 129.0756],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'koreasouth'
-    },
+    // {
+    //     id: 'azure-japanwest',
+    //     provider: 'azure',
+    //     name: 'Japan West (Osaka)',
+    //     coordinates: [34.6937, 135.5023],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'japanwest'
+    // },
+    // {
+    //     id: 'azure-koreacentral',
+    //     provider: 'azure',
+    //     name: 'Korea Central (Seoul)',
+    //     coordinates: [37.5665, 126.9780],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'koreacentral'
+    // },
+    // {
+    //     id: 'azure-koreasouth',
+    //     provider: 'azure',
+    //     name: 'Korea South (Busan)',
+    //     coordinates: [35.1796, 129.0756],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'koreasouth'
+    // },
     {
         id: 'azure-australiaeast',
         provider: 'azure',
@@ -1005,33 +1005,33 @@ export const datacenters: DataCenter[] = [
         tier: 'secondary',
         code: 'australiaeast'
     },
-    {
-        id: 'azure-australiasoutheast',
-        provider: 'azure',
-        name: 'Australia Southeast (Melbourne)',
-        coordinates: [-37.8136, 144.9631],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'australiasoutheast'
-    },
-    {
-        id: 'azure-australiacentral',
-        provider: 'azure',
-        name: 'Australia Central (Canberra)',
-        coordinates: [-35.2809, 149.1300],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'australiacentral'
-    },
-    {
-        id: 'azure-australiacentral2',
-        provider: 'azure',
-        name: 'Australia Central 2 (Canberra)',
-        coordinates: [-35.3075, 149.1244],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'australiacentral2'
-    },
+    // {
+    //     id: 'azure-australiasoutheast',
+    //     provider: 'azure',
+    //     name: 'Australia Southeast (Melbourne)',
+    //     coordinates: [-37.8136, 144.9631],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'australiasoutheast'
+    // },
+    // {
+    //     id: 'azure-australiacentral',
+    //     provider: 'azure',
+    //     name: 'Australia Central (Canberra)',
+    //     coordinates: [-35.2809, 149.1300],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'australiacentral'
+    // },
+    // {
+    //     id: 'azure-australiacentral2',
+    //     provider: 'azure',
+    //     name: 'Australia Central 2 (Canberra)',
+    //     coordinates: [-35.3075, 149.1244],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'australiacentral2'
+    // },
     {
         id: 'azure-centralindia',
         provider: 'azure',
@@ -1041,42 +1041,42 @@ export const datacenters: DataCenter[] = [
         tier: 'secondary',
         code: 'centralindia'
     },
-    {
-        id: 'azure-southindia',
-        provider: 'azure',
-        name: 'South India (Chennai)',
-        coordinates: [13.0827, 80.2707],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'southindia'
-    },
-    {
-        id: 'azure-westindia',
-        provider: 'azure',
-        name: 'West India (Mumbai)',
-        coordinates: [19.0760, 72.8777],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'westindia'
-    },
-    {
-        id: 'azure-jioindiawest',
-        provider: 'azure',
-        name: 'Jio India West (Jamnagar)',
-        coordinates: [22.4707, 70.0577],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'jioindiawest'
-    },
-    {
-        id: 'azure-jioindiacentral',
-        provider: 'azure',
-        name: 'Jio India Central (Nagpur)',
-        coordinates: [21.1458, 79.0882],
-        region: 'Asia Pacific',
-        tier: 'secondary',
-        code: 'jioindiacentral'
-    },
+    // {
+    //     id: 'azure-southindia',
+    //     provider: 'azure',
+    //     name: 'South India (Chennai)',
+    //     coordinates: [13.0827, 80.2707],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'southindia'
+    // },
+    // {
+    //     id: 'azure-westindia',
+    //     provider: 'azure',
+    //     name: 'West India (Mumbai)',
+    //     coordinates: [19.0760, 72.8777],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'westindia'
+    // },
+    // {
+    //     id: 'azure-jioindiawest',
+    //     provider: 'azure',
+    //     name: 'Jio India West (Jamnagar)',
+    //     coordinates: [22.4707, 70.0577],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'jioindiawest'
+    // },
+    // {
+    //     id: 'azure-jioindiacentral',
+    //     provider: 'azure',
+    //     name: 'Jio India Central (Nagpur)',
+    //     coordinates: [21.1458, 79.0882],
+    //     region: 'Asia Pacific',
+    //     tier: 'secondary',
+    //     code: 'jioindiacentral'
+    // },
 
     // Middle East & Africa
     {
@@ -1140,146 +1140,271 @@ export const networkTopology = {
     aws: {
         primary: 'aws-us-east-1',
         connections: [
-            // Primary US connections
+            // Enhanced North America network
             ['aws-us-east-1', 'aws-us-west-1'],
             ['aws-us-east-1', 'aws-us-east-2'],
+            ['aws-us-east-2', 'aws-us-west-1'], // Cross-country connection
             ['aws-us-west-1', 'aws-us-west-2'],
+            ['aws-us-east-1', 'aws-ca-central-1'], // US-Canada
+            ['aws-us-west-1', 'aws-ca-west-1'], // West Coast Canada
+            ['aws-ca-central-1', 'aws-ca-west-1'], // Canada internal
 
             // Trans-Atlantic connections
             ['aws-us-east-1', 'aws-eu-west-1'],
             ['aws-us-west-1', 'aws-eu-central-1'],
+            ['aws-ca-central-1', 'aws-eu-west-1'], // Canada to Europe
 
             // Trans-Pacific connections
             ['aws-us-west-1', 'aws-ap-southeast-1'],
             ['aws-us-west-1', 'aws-ap-northeast-1'],
+            ['aws-us-west-2', 'aws-ap-northeast-1'], // Additional Pacific route
 
-            // European network
+            // Enhanced European network
             ['aws-eu-west-1', 'aws-eu-central-1'],
             ['aws-eu-west-1', 'aws-eu-west-2'],
-            ['aws-eu-central-1', 'aws-eu-west-3'],
+            ['aws-eu-west-2', 'aws-eu-west-3'], // London to Paris
+            ['aws-eu-central-1', 'aws-eu-west-3'], // Frankfurt to Paris
+            ['aws-eu-central-1', 'aws-eu-north-1'], // Frankfurt to Stockholm
+            ['aws-eu-west-1', 'aws-eu-south-1'], // Ireland to Milan
+            ['aws-eu-central-1', 'aws-eu-central-2'], // Frankfurt to Zurich
 
-            // Asia Pacific network
+            // Enhanced Asia Pacific network
             ['aws-ap-southeast-1', 'aws-ap-northeast-1'],
             ['aws-ap-southeast-1', 'aws-ap-south-1'],
-            ['aws-ap-northeast-1', 'aws-ap-northeast-2'],
-
-            // Canada connections
-            ['aws-us-east-1', 'aws-ca-central-1'],
-            ['aws-us-west-1', 'aws-ca-west-1'],
+            ['aws-ap-northeast-1', 'aws-ap-northeast-2'], // Tokyo to Seoul
+            ['aws-ap-northeast-1', 'aws-ap-northeast-3'], // Tokyo to Osaka
+            ['aws-ap-southeast-1', 'aws-ap-southeast-2'], // Singapore to Sydney
+            ['aws-ap-southeast-2', 'aws-ap-southeast-4'], // Sydney to Melbourne
+            ['aws-ap-south-1', 'aws-ap-south-2'], // Mumbai to Hyderabad
+            ['aws-ap-southeast-1', 'aws-ap-southeast-3'], // Singapore to Jakarta
+            ['aws-ap-east-1', 'aws-ap-northeast-1'], // Hong Kong to Tokyo
 
             // South America
             ['aws-us-east-1', 'aws-sa-east-1'],
 
-            // Middle East & Africa
-            ['aws-eu-west-1', 'aws-me-south-1'],
-            ['aws-eu-central-1', 'aws-af-south-1']
+            // Middle East & Africa - Enhanced global connectivity
+            ['aws-eu-west-1', 'aws-me-south-1'], // Europe to Bahrain
+            ['aws-eu-central-1', 'aws-af-south-1'], // Europe to Cape Town
+            ['aws-me-south-1', 'aws-ap-south-1'], // Middle East to India
+            ['aws-us-east-1', 'aws-af-south-1'], // Trans-Atlantic to Africa
+            ['aws-ap-southeast-1', 'aws-af-south-1'], // Asia to Africa
+            ['aws-me-south-1', 'aws-me-central-1'], // Middle East internal
+            ['aws-af-south-1', 'aws-me-south-1'], // Africa to Middle East
+            
+            // Additional intercontinental routes
+            ['aws-us-west-1', 'aws-eu-west-2'], // US West to London
+            ['aws-ca-central-1', 'aws-ap-northeast-1'], // Canada to Tokyo
+            ['aws-sa-east-1', 'aws-eu-west-1'], // South America to Europe
+            ['aws-sa-east-1', 'aws-af-south-1'], // South America to Africa
+            ['aws-ap-southeast-1', 'aws-me-central-1'], // Asia to UAE
+            ['aws-ap-northeast-1', 'aws-eu-central-1'], // Tokyo to Frankfurt
+            ['aws-eu-west-1', 'aws-ap-south-1'], // Europe to Mumbai
+            ['aws-us-east-2', 'aws-ap-southeast-2'] // US East to Sydney
         ]
     },
     gcp: {
         primary: 'gcp-us-central1',
         connections: [
-            // US network
+            // Enhanced US network
             ['gcp-us-central1', 'gcp-us-east1'],
             ['gcp-us-central1', 'gcp-us-west1'],
-            ['gcp-us-east1', 'gcp-us-east4'],
-            ['gcp-us-west1', 'gcp-us-west2'],
+            ['gcp-us-east1', 'gcp-us-east4'], // East Coast internal
+            ['gcp-us-west1', 'gcp-us-west2'], // West Coast internal
+            ['gcp-us-west1', 'gcp-us-west3'], // Additional West Coast
+            ['gcp-us-west1', 'gcp-us-west4'], // Complete West Coast mesh
+            ['gcp-us-east1', 'gcp-us-west1'], // Cross-country direct
+            ['gcp-us-central1', 'gcp-northamerica-northeast1'], // US to Canada
 
             // Trans-Atlantic
             ['gcp-us-central1', 'gcp-europe-west1'],
             ['gcp-us-east1', 'gcp-europe-west2'],
+            ['gcp-us-east4', 'gcp-europe-west4'], // Additional Atlantic route
 
             // Trans-Pacific
             ['gcp-us-west1', 'gcp-asia-southeast1'],
             ['gcp-us-west1', 'gcp-asia-northeast1'],
+            ['gcp-us-west2', 'gcp-asia-northeast2'], // Additional Pacific route
 
-            // European network
-            ['gcp-europe-west1', 'gcp-europe-west3'],
-            ['gcp-europe-west2', 'gcp-europe-west4'],
-            ['gcp-europe-west3', 'gcp-europe-west6'],
+            // Enhanced European network
+            ['gcp-europe-west1', 'gcp-europe-west3'], // Belgium to Frankfurt
+            ['gcp-europe-west2', 'gcp-europe-west4'], // London to Netherlands
+            ['gcp-europe-west3', 'gcp-europe-west6'], // Frankfurt to Zurich
+            ['gcp-europe-west1', 'gcp-europe-west2'], // Belgium to London
+            ['gcp-europe-west4', 'gcp-europe-west6'], // Netherlands to Zurich
+            ['gcp-europe-west1', 'gcp-europe-central2'], // Belgium to Warsaw
+            ['gcp-europe-west3', 'gcp-europe-north1'], // Frankfurt to Finland
 
-            // Asia Pacific network
-            ['gcp-asia-southeast1', 'gcp-asia-northeast1'],
-            ['gcp-asia-southeast1', 'gcp-asia-south1'],
-            ['gcp-asia-northeast1', 'gcp-asia-northeast2'],
+            // Enhanced Asia Pacific network
+            ['gcp-asia-southeast1', 'gcp-asia-northeast1'], // Singapore to Tokyo
+            ['gcp-asia-southeast1', 'gcp-asia-south1'], // Singapore to Mumbai
+            ['gcp-asia-northeast1', 'gcp-asia-northeast2'], // Tokyo to Osaka
+            ['gcp-asia-northeast1', 'gcp-asia-northeast3'], // Tokyo to Seoul
+            ['gcp-asia-southeast1', 'gcp-asia-southeast2'], // Singapore to Jakarta
+            ['gcp-asia-south1', 'gcp-asia-south2'], // Mumbai to Delhi
 
             // Australia connections
-            ['gcp-asia-southeast1', 'gcp-australia-southeast1'],
-
-            // North America
-            ['gcp-us-central1', 'gcp-northamerica-northeast1'],
+            ['gcp-asia-southeast1', 'gcp-australia-southeast1'], // Singapore to Sydney
+            ['gcp-australia-southeast1', 'gcp-australia-southeast2'], // Sydney to Melbourne
 
             // South America
-            ['gcp-us-central1', 'gcp-southamerica-east1']
+            ['gcp-us-central1', 'gcp-southamerica-east1'], // US to Brazil
+            ['gcp-southamerica-east1', 'gcp-southamerica-west1'], // Brazil internal
+            
+            // Enhanced Middle East & Africa connectivity
+            ['gcp-europe-west1', 'gcp-me-west1'], // Europe to Tel Aviv
+            ['gcp-europe-west3', 'gcp-me-central1'], // Frankfurt to Doha
+            ['gcp-me-central1', 'gcp-me-central2'], // Middle East internal
+            ['gcp-asia-south1', 'gcp-me-central1'], // India to Qatar
+            ['gcp-europe-west1', 'gcp-africa-south1'], // Europe to Johannesburg
+            ['gcp-me-west1', 'gcp-africa-south1'], // Middle East to Africa
+            
+            // Additional intercontinental routes
+            ['gcp-us-west1', 'gcp-europe-west2'], // US West to London
+            ['gcp-us-east1', 'gcp-africa-south1'], // US East to Africa
+            ['gcp-northamerica-northeast1', 'gcp-asia-northeast1'], // Canada to Tokyo
+            ['gcp-southamerica-east1', 'gcp-europe-west1'], // Brazil to Europe
+            ['gcp-southamerica-east1', 'gcp-africa-south1'], // Brazil to Africa
+            ['gcp-asia-southeast1', 'gcp-me-central1'], // Singapore to Qatar
+            ['gcp-asia-northeast1', 'gcp-europe-west3'], // Tokyo to Frankfurt
+            ['gcp-australia-southeast1', 'gcp-me-west1'], // Australia to Middle East
+            ['gcp-us-central1', 'gcp-asia-south1'] // US Central to India
         ]
     },
     azure: {
         primary: 'azure-eastus',
         connections: [
-            // US network
+            // Enhanced US network
             ['azure-eastus', 'azure-westus'],
             ['azure-eastus', 'azure-centralus'],
-            ['azure-westus', 'azure-westus2'],
-            ['azure-centralus', 'azure-southcentralus'],
+            ['azure-eastus', 'azure-eastus2'], // East Coast internal
+            ['azure-westus', 'azure-westus2'], // West Coast internal
+            ['azure-westus', 'azure-westus3'], // Additional West Coast
+            ['azure-centralus', 'azure-southcentralus'], // Central US mesh
+            ['azure-centralus', 'azure-northcentralus'], // Central expansion
+            ['azure-eastus', 'azure-canadacentral'], // US to Canada East
+            ['azure-westus', 'azure-canadacentral'], // Cross-connection
+            ['azure-canadacentral', 'azure-canadaeast'], // Canada internal
 
-            // Trans-Atlantic
+            // Trans-Atlantic connections
             ['azure-eastus', 'azure-northeurope'],
             ['azure-westus', 'azure-westeurope'],
+            ['azure-centralus', 'azure-westeurope'], // Additional Atlantic route
 
-            // Trans-Pacific
+            // Trans-Pacific connections
             ['azure-westus', 'azure-southeastasia'],
             ['azure-westus', 'azure-japaneast'],
+            ['azure-westus2', 'azure-koreacentral'], // Additional Pacific route
 
-            // European network
-            ['azure-northeurope', 'azure-westeurope'],
-            ['azure-westeurope', 'azure-germanywestcentral'],
-            ['azure-northeurope', 'azure-uksouth'],
+            // Enhanced European network
+            ['azure-northeurope', 'azure-westeurope'], // Ireland to Netherlands
+            ['azure-westeurope', 'azure-germanywestcentral'], // Netherlands to Germany
+            ['azure-northeurope', 'azure-uksouth'], // Ireland to UK
+            ['azure-uksouth', 'azure-ukwest'], // UK internal
+            ['azure-westeurope', 'azure-francecentral'], // Netherlands to France
+            ['azure-germanywestcentral', 'azure-switzerlandnorth'], // Germany to Switzerland
+            ['azure-northeurope', 'azure-swedencentral'], // Ireland to Sweden
 
-            // Asia Pacific network
-            ['azure-southeastasia', 'azure-japaneast'],
-            ['azure-southeastasia', 'azure-australiaeast'],
-            ['azure-japaneast', 'azure-koreacentral'],
-
-            // Canada
-            ['azure-eastus', 'azure-canadacentral'],
+            // Enhanced Asia Pacific network
+            ['azure-southeastasia', 'azure-japaneast'], // Singapore to Japan
+            ['azure-southeastasia', 'azure-australiaeast'], // Singapore to Australia
+            ['azure-japaneast', 'azure-koreacentral'], // Japan to Korea
+            ['azure-japaneast', 'azure-japanwest'], // Japan internal
+            ['azure-australiaeast', 'azure-australiasoutheast'], // Australia internal
+            ['azure-southeastasia', 'azure-eastasia'], // Singapore to Hong Kong
+            ['azure-southeastasia', 'azure-centralindia'], // Singapore to India
 
             // Brazil
             ['azure-eastus', 'azure-brazilsouth'],
+            ['azure-brazilsouth', 'azure-brazilsoutheast'], // Brazil internal
 
-            // India
-            ['azure-southeastasia', 'azure-centralindia'],
+            // India network
+            ['azure-centralindia', 'azure-southindia'], // India internal
+            ['azure-centralindia', 'azure-westindia'], // India mesh
 
-            // Middle East
-            ['azure-westeurope', 'azure-uaecentral']
+            // Middle East & South Africa - Enhanced global connectivity
+            ['azure-westeurope', 'azure-uaecentral'], // Europe to UAE
+            ['azure-westeurope', 'azure-southafricanorth'], // Europe to South Africa
+            ['azure-northeurope', 'azure-qatarcentral'], // Ireland to Qatar
+            ['azure-germanywestcentral', 'azure-israelcentral'], // Germany to Israel
+            ['azure-uaecentral', 'azure-uaenorth'], // UAE internal
+            ['azure-southafricanorth', 'azure-southafricawest'], // South Africa internal
+            ['azure-uaecentral', 'azure-qatarcentral'], // UAE to Qatar
+            ['azure-centralindia', 'azure-uaecentral'], // India to UAE
+            ['azure-southafricanorth', 'azure-centralindia'], // Africa to India
+            
+            // Enhanced intercontinental routes
+            ['azure-eastus', 'azure-southafricanorth'], // US East to Africa
+            ['azure-westus', 'azure-northeurope'], // US West to Ireland
+            ['azure-canadacentral', 'azure-japaneast'], // Canada to Tokyo
+            ['azure-brazilsouth', 'azure-westeurope'], // Brazil to Europe
+            ['azure-brazilsouth', 'azure-southafricanorth'], // Brazil to Africa
+            ['azure-southeastasia', 'azure-uaecentral'], // Singapore to UAE
+            ['azure-japaneast', 'azure-germanywestcentral'], // Tokyo to Germany
+            ['azure-australiaeast', 'azure-uaecentral'], // Australia to UAE
+            ['azure-eastus2', 'azure-centralindia'], // US East to India
+            ['azure-swedencentral', 'azure-japaneast'], // Northern Europe to Asia
+            ['azure-francecentral', 'azure-southafricanorth'], // France to Africa
+            ['azure-spaincentral', 'azure-southafricanorth'], // Spain to Africa (historical ties)
+            ['azure-norwayeast', 'azure-centralindia'] // Norway to India
         ]
     }
 };
 
-// HQ connection targets (for random connections)
+// HQ connection targets (enhanced global coverage)
 export const hqTargets = [
-    'aws-us-east-1',      // Priority target
-    'aws-eu-west-1',
-    'aws-ap-southeast-1',
-    'gcp-us-central1',
-    'gcp-europe-west1',
-    'gcp-asia-southeast1',
-    'azure-eastus',
-    'azure-northeurope',
-    'azure-southeastasia'
+    // Primary hubs
+    'aws-us-east-1',      // Priority target - US East
+    'aws-eu-west-1',      // Europe hub
+    'aws-ap-southeast-1', // Asia Pacific hub
+    'gcp-us-central1',    // US Central
+    'gcp-europe-west1',   // Europe hub
+    'gcp-asia-southeast1', // Asia hub
+    'azure-eastus',       // US East
+    'azure-northeurope',  // Europe hub
+    'azure-southeastasia', // Asia hub
+    
+    // Africa connections (enhanced)
+    'aws-af-south-1',     // Cape Town
+    'gcp-africa-south1',  // Johannesburg
+    'azure-southafricanorth', // Johannesburg
+    'azure-southafricawest',  // Cape Town
+    
+    // Middle East hubs
+    'aws-me-south-1',     // Bahrain
+    'aws-me-central-1',   // UAE
+    'gcp-me-central1',    // Qatar
+    'azure-uaecentral',   // UAE
+    
+    // South America
+    'aws-sa-east-1',      // São Paulo
+    'gcp-southamerica-east1', // São Paulo
+    'azure-brazilsouth',  // Brazil
+    
+    // Additional global coverage
+    'aws-ap-northeast-1', // Tokyo
+    'gcp-asia-northeast1', // Tokyo
+    'azure-japaneast',    // Tokyo
+    'aws-ap-south-1',     // Mumbai
+    'gcp-asia-south1',    // Mumbai
+    'azure-centralindia', // India
+    'aws-ap-southeast-2', // Sydney
+    'gcp-australia-southeast1', // Sydney
+    'azure-australiaeast' // Sydney
 ];
 
-// Provider color mapping
+// Provider color mapping (with transparency for better visual integration)
 export const providerColors = {
-    hq: '#FFD700',      // Gold for headquarters
-    aws: '#FF9900',     // AWS orange
-    gcp: '#4285F4',     // Google blue
-    azure: '#00BCF2'    // Azure cyan
+    hq: 'rgba(255, 215, 0, 0.8)',      // Gold for headquarters (80% opacity)
+    aws: 'rgba(255, 153, 0, 0.7)',     // AWS orange (70% opacity)
+    gcp: 'rgba(66, 133, 244, 0.7)',    // Google blue (70% opacity)
+    azure: 'rgba(150, 1, 7, 0.7)'      // Deep red for Azure (70% opacity)
 };
 
-// Tier sizing for globe points
+// Tier sizing for globe points (much smaller for 123 datacenters to avoid overlap)
 export const tierSizes = {
-    hq: 0.025,
-    primary: 0.020,
-    secondary: 0.015
+    hq: 0.006,      // Tiny but visible for HQ
+    primary: 0.004,  // Very small for primary datacenters  
+    secondary: 0.003 // Minimal for secondary datacenters
 };
 
 // Helper functions to get specific datacenter groups

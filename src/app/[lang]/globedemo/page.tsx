@@ -47,8 +47,8 @@ async function PageContent({ locale }: PageContentProps) {
     const intl = await getIntl(locale);
 
     return (
-        <div className="min-h-screen bg-background">
-            <div className="container mx-auto px-4 py-8">
+        <div className="min-h-screen bg-background overflow-visible">
+            <div className="container mx-auto px-4 py-8 overflow-visible">
                 <div className="text-center mb-8">
                     <h1 className="text-4xl font-bold text-foreground mb-4">
                         {intl.formatMessage({ id: 'globedemo.page.title' })}
@@ -63,7 +63,7 @@ async function PageContent({ locale }: PageContentProps) {
                         {intl.formatMessage({ id: 'globedemo.navigation.back' })}
                     </a>
                 </div>
-                <div className="w-full h-[600px] lg:h-[700px] relative mb-8">
+                <div className="w-full min-h-[600px] lg:min-h-[700px] relative mb-8 overflow-visible">
                     <GlobeDemo />
                 </div>
                 <div className="text-center mt-8">
