@@ -142,6 +142,7 @@ src/types/i18n.ts        # Comprehensive i18n type library
 /[lang]/card-demo          # Component demonstration page
 /[lang]/scroll-demo        # Scroll behavior testing
 /[lang]/glowing-stars-test # Visual effects testing
+/[lang]/globedemo          # Interactive 3D globe demonstration
 ```
 
 ### **🏛️ Compliance Certification Pages**

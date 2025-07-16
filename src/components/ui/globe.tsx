@@ -9,7 +9,7 @@ import ThreeGlobe from "three-globe";
 declare module "@react-three/fiber" {
   interface ThreeElements {
     threeGlobe: ThreeElements["mesh"] & {
-      new (): ThreeGlobe;
+      new(): ThreeGlobe;
     };
   }
 }
@@ -65,7 +65,7 @@ let numbersOfRings = [0];
 
 export function Globe({ globeConfig, data }: WorldProps) {
   const globeRef = useRef<ThreeGlobe | null>(null);
-  const groupRef = useRef<Group>(null);
+  const groupRef = useRef<Group>(null!);
   const [isInitialized, setIsInitialized] = useState(false);
 
   const defaultProps = {
@@ -74,8 +74,8 @@ export function Globe({ globeConfig, data }: WorldProps) {
     showAtmosphere: true,
     atmosphereAltitude: 0.1,
     polygonColor: "rgba(255,255,255,0.7)",
-    globeColor: "#1d072e",
-    emissive: "#000000",
+    globeColor: "#062056",
+    emissive: "#062056",
     emissiveIntensity: 0.1,
     shininess: 0.9,
     arcTime: 2000,
@@ -118,9 +118,13 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
   // Build data when globe is initialized or when data changes
   useEffect(() => {
-    if (!globeRef.current || !isInitialized || !data) return;    const arcs = data;
-    const points = [];    for (let i = 0; i < arcs.length; i++) {
+    if (!globeRef.current || !isInitialized || !data) return;
+
+    const arcs = data;
+    let points = [];
+    for (let i = 0; i < arcs.length; i++) {
       const arc = arcs[i];
+      const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
       points.push({
         size: defaultProps.pointSize,
         order: arc.order,
@@ -233,11 +237,12 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
 export function WebGLRendererConfig() {
   const { gl, size } = useThree();
+
   useEffect(() => {
     gl.setPixelRatio(window.devicePixelRatio);
     gl.setSize(size.width, size.height);
     gl.setClearColor(0xffaaff, 0);
-  }, [gl, size.width, size.height]);
+  }, []);
 
   return null;
 }
@@ -279,18 +284,18 @@ export function World(props: WorldProps) {
 }
 
 export function hexToRgb(hex: string) {
-  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   hex = hex.replace(shorthandRegex, function (m, r, g, b) {
     return r + r + g + g + b + b;
   });
 
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
     ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16),
-      }
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16),
+    }
     : null;
 }
 

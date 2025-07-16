@@ -52,6 +52,38 @@ touch src/app/[lang]/my-feature/page.tsx
 
 👉 **[Read Full Documentation](./docs/UNIVERSAL_BREADCRUMB_DOCUMENTATION.md)**
 
+## 🌍 Global Infrastructure Network Visualization
+
+Experience ISSI's worldwide cloud infrastructure through our **interactive 3D globe** powered by Aceternity UI:
+
+### **Live Demo**
+- **Production**: `https://your-domain.com/en/globedemo`
+- **Development**: `http://localhost:3001/en/globedemo`
+
+### **🎯 Key Features**
+- **📍 123 Global Datacenters**: Complete coverage across AWS, Google Cloud, and Azure
+- **🏢 ISSI HQ Hub**: Greenbelt, Maryland as central command center
+- **🔗 Real-time Network Topology**: Dynamic arcs showing multi-cloud connectivity
+- **🎨 Provider Color Coding**: AWS (Orange), GCP (Blue), Azure (Cyan), HQ (Gold)
+- **⚡ Interactive Controls**: Zoom, pan, rotate with smooth auto-rotation
+- **📱 Responsive Design**: Optimized for mobile and desktop experiences
+
+### **🏗️ Technical Implementation**
+```typescript
+// Datacenter Coverage
+🏢 ISSI HQ: 1 headquarters
+🟠 AWS Regions: 29 global regions
+🔵 Google Cloud: 40 worldwide regions  
+🔷 Azure Regions: 51 global regions
+📊 Total Infrastructure: 123 datacenters
+```
+
+### **🎪 Interactive Experience**
+- **Hub-and-Spoke Topology**: All connections route through ISSI headquarters
+- **Distance-Based Visualization**: Arc altitude calculated from geographic distance
+- **Motion-Enhanced Content**: Smooth animations with professional messaging
+- **Enterprise Branding**: ISSI's multi-cloud strategy demonstration
+
 ## Technology Stack
 
 - **Framework**: Next.js 14.2+ with App Router
