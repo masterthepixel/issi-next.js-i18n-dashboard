@@ -55,7 +55,7 @@
   "globedemo.page.description": "Découvrez notre globe 3D interactif présentant la portée mondiale d'ISSI et les connexions technologiques dans le monde entier.",
   "globedemo.navigation.back": "← Retour à l'accueil",
   "globedemo.features.controls.title": "Contrôles interactifs",
-  "globedemo.features.controls.description": "Cliquez et faites glisser pour faire pivoter le globe. Faites défiler pour zoomer.",
+  "globedemo.features.controls.description": "Cliquez et faites glisser pour faire pivoter le globe. Faites défiler ou pincez pour zoomer et explorer en détail.",
   "globedemo.features.connections.title": "Connexions mondiales",
   "globedemo.features.connections.description": "Regardez les arcs animés montrant la portée technologique mondiale d'ISSI.",
   "globedemo.features.animation.title": "Animation en temps réel",

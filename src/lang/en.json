@@ -57,7 +57,7 @@
   "globedemo.page.description": "Experience our 3D interactive globe showcasing ISSI's global reach and technology connections worldwide.",
   "globedemo.navigation.back": "← Back to Home",
   "globedemo.features.controls.title": "Interactive Controls",
-  "globedemo.features.controls.description": "Click and drag to rotate the globe. Scroll to zoom in and out.",
+  "globedemo.features.controls.description": "Click and drag to rotate the globe. Scroll or pinch to zoom in and out for detailed exploration.",
   "globedemo.features.connections.title": "Global Connections",
   "globedemo.features.connections.description": "Watch animated arcs showing ISSI's worldwide technology reach.",
   "globedemo.features.animation.title": "Real-time Animation",

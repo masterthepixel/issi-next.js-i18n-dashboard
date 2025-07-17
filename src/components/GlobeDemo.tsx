@@ -69,15 +69,38 @@ export default function GlobeDemo() {
   // Prevent rendering until mounted to avoid hydration issues
   if (!mounted) {
     return (
-      <div className="flex flex-row items-start justify-start h-auto relative w-full overflow-visible min-h-screen">
-        <div className="max-w-7xl mx-auto w-full relative overflow-visible h-auto min-h-[40rem] px-2">
-          <div className="absolute left-4 top-20 z-20 max-w-md">
-            <div className="text-left text-xl md:text-4xl font-bold text-black dark:text-white">
+      <div className="relative w-full overflow-visible">
+        <div className="max-w-7xl mx-auto w-full relative overflow-visible px-4 sm:px-6 lg:px-8">
+          
+          {/* Mobile: Loading text above */}
+          <div className="block md:hidden mb-6 text-center">
+            <div className="text-2xl sm:text-3xl font-bold text-black dark:text-white">
               Global Infrastructure Network
             </div>
-            <p className="text-left text-base md:text-lg font-normal text-neutral-700 dark:text-neutral-200 mt-4">
+            <p className="text-base font-normal text-neutral-700 dark:text-neutral-200 mt-4 max-w-lg mx-auto">
               Loading global network visualization...
             </p>
+          </div>
+
+          {/* Loading container */}
+          <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px] overflow-visible">
+            
+            {/* Desktop: Loading text overlay */}
+            <div className="hidden md:block absolute left-4 top-16 lg:top-20 z-20 max-w-sm lg:max-w-md">
+              <div className="text-left text-xl lg:text-4xl font-bold text-black dark:text-white">
+                Global Infrastructure Network
+              </div>
+              <p className="text-left text-base lg:text-lg font-normal text-neutral-700 dark:text-neutral-200 mt-4">
+                Loading global network visualization...
+              </p>
+            </div>
+
+            {/* Loading spinner/placeholder */}
+            <div className="absolute inset-0 w-full h-full overflow-visible z-10">
+              <div className="relative w-full h-full flex items-center justify-center">
+                <div className="w-16 h-16 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -85,36 +108,66 @@ export default function GlobeDemo() {
   }
 
   return (
-    <div className="flex flex-row items-start justify-start h-auto relative w-full overflow-visible min-h-screen">
-      <div className="max-w-7xl mx-auto w-full relative overflow-visible h-auto min-h-[40rem] px-2">
-        {/* Text content positioned to the left */}
-        <div className="absolute left-4 top-20 z-20 max-w-md">
+    <div className="relative w-full overflow-visible">
+      <div className="max-w-7xl mx-auto w-full relative overflow-visible px-4 sm:px-6 lg:px-8">
+        
+        {/* Mobile: Text content above globe */}
+        <div className="block md:hidden mb-6 text-center">
           <motion.div
             initial={{
               opacity: 0,
-              x: -50,
+              y: -20,
             }}
             animate={{
               opacity: 1,
-              x: 0,
+              y: 0,
             }}
             transition={{
               duration: 1,
             }}
-            className="div"
           >
-            <h2 className="text-left text-xl md:text-4xl font-bold text-black dark:text-white">
+            <h2 className="text-2xl sm:text-3xl font-bold text-black dark:text-white">
               Global Infrastructure Network
             </h2>
-            <p className="text-left text-base md:text-lg font-normal text-neutral-700 dark:text-neutral-200 mt-4">
+            <p className="text-base font-normal text-neutral-700 dark:text-neutral-200 mt-4 max-w-lg mx-auto">
               ISSI&apos;s multi-cloud datacenter network spanning AWS, Google Cloud, and Azure regions worldwide.
             </p>
           </motion.div>
-        </div>        {/* Globe positioned with full viewport to prevent arc clipping */}
-        <div className="absolute inset-0 w-full h-full overflow-visible z-10" style={{ minHeight: '100vh' }}>
-          <div className="relative w-full h-full flex items-center justify-end pr-8">
-            <div className="w-[70%] h-[80vh] max-w-none overflow-visible">
-              <World data={networkArcs} globeConfig={globeConfig} />
+        </div>
+
+        {/* Globe container with responsive sizing */}
+        <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px] overflow-visible">
+          
+          {/* Desktop: Text overlay positioned to the left */}
+          <div className="hidden md:block absolute left-4 top-16 lg:top-20 z-20 max-w-sm lg:max-w-md">
+            <motion.div
+              initial={{
+                opacity: 0,
+                x: -50,
+              }}
+              animate={{
+                opacity: 1,
+                x: 0,
+              }}
+              transition={{
+                duration: 1,
+              }}
+            >
+              <h2 className="text-left text-xl lg:text-4xl font-bold text-black dark:text-white">
+                Global Infrastructure Network
+              </h2>
+              <p className="text-left text-base lg:text-lg font-normal text-neutral-700 dark:text-neutral-200 mt-4">
+                ISSI&apos;s multi-cloud datacenter network spanning AWS, Google Cloud, and Azure regions worldwide.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Responsive globe positioning */}
+          <div className="absolute inset-0 w-full h-full overflow-visible z-10">
+            <div className="relative w-full h-full flex items-center justify-center md:justify-end md:pr-4 lg:pr-8">
+              <div className="w-full sm:w-[90%] md:w-[80%] lg:w-[70%] xl:w-[65%] h-full max-w-none overflow-visible">
+                <World data={networkArcs} globeConfig={globeConfig} />
+              </div>
             </div>
           </div>
         </div>

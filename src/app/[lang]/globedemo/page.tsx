@@ -50,10 +50,10 @@ async function PageContent({ locale }: PageContentProps) {
         <div className="min-h-screen bg-background overflow-visible">
             <div className="container mx-auto px-4 py-8 overflow-visible">
                 <div className="text-center mb-8">
-                    <h1 className="text-4xl font-bold text-foreground mb-4">
+                    <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                         {intl.formatMessage({ id: 'globedemo.page.title' })}
                     </h1>
-                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
+                    <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
                         {intl.formatMessage({ id: 'globedemo.page.description' })}
                     </p>
                     <a
@@ -63,11 +63,11 @@ async function PageContent({ locale }: PageContentProps) {
                         {intl.formatMessage({ id: 'globedemo.navigation.back' })}
                     </a>
                 </div>
-                <div className="w-full min-h-[600px] lg:min-h-[700px] relative mb-8 overflow-visible">
+                <div className="w-full mb-8 overflow-visible">
                     <GlobeDemo />
                 </div>
                 <div className="text-center mt-8">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
                         <div className="p-6 rounded-lg border bg-card">
                             <h3 className="text-lg font-semibold mb-2 text-blue-600 dark:text-blue-400">
                                 {intl.formatMessage({ id: 'globedemo.features.controls.title' })}

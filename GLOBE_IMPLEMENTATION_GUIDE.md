@@ -224,6 +224,38 @@ const arcConfig = {
 }
 ```
 
+### Camera Controls & User Interaction
+
+The globe implements optimized camera controls for consistent user experience:
+
+```typescript
+// OrbitControls Configuration
+const cameraConfig = {
+  enablePan: false,               // Disable panning for focused interaction
+  enableZoom: false,              // Zoom disabled for consistent viewing
+  minDistance: 390,               // Fixed camera distance
+  maxDistance: 390,               // Same as min (no zoom range)
+  autoRotate: true,               // Automatic rotation enabled
+  autoRotateSpeed: 1,             // Smooth rotation speed
+  minPolarAngle: Math.PI / 3.5,   // Vertical rotation limits
+  maxPolarAngle: Math.PI - Math.PI / 3
+}
+```
+
+**User Interaction Features**:
+- **Mouse Rotation**: Click and drag to rotate globe manually
+- **Touch Support**: Touch-friendly rotation for mobile devices
+- **Auto-Rotation**: Continuous gentle rotation when not being interacted with
+- **Fixed Perspective**: Consistent 390-unit distance for optimal viewing
+- **Restricted Movement**: Prevents users from zooming too close or far
+- **Vertical Limits**: Constrains rotation to reasonable viewing angles
+
+**Benefits of Fixed Camera**:
+- **Consistent UX**: All users see the same optimal globe perspective
+- **Performance**: No zoom calculations reduce computational overhead
+- **Focus**: Users concentrate on globe content rather than navigation
+- **Accessibility**: Simplified interaction model reduces confusion
+
 ## Dependencies
 
 ```json

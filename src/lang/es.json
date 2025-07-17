@@ -49,7 +49,7 @@
   "globedemo.page.description": "Experimente nuestro globo 3D interactivo que muestra el alcance global de ISSI y las conexiones tecnológicas en todo el mundo.",
   "globedemo.navigation.back": "← Volver al inicio",
   "globedemo.features.controls.title": "Controles interactivos",
-  "globedemo.features.controls.description": "Haga clic y arrastre para rotar el globo. Desplácese para acercar y alejar.",
+  "globedemo.features.controls.description": "Haga clic y arrastre para rotar el globo. Desplácese o pellizque para acercar y alejar para exploración detallada.",
   "globedemo.features.connections.title": "Conexiones globales",
   "globedemo.features.connections.description": "Observe los arcos animados que muestran el alcance tecnológico mundial de ISSI.",
   "globedemo.features.animation.title": "Animación en tiempo real",
