@@ -284,6 +284,12 @@ export function World(props: WorldProps) {
 }
 
 export function hexToRgb(hex: string) {
+  // Safety check for undefined or null hex values
+  if (!hex || typeof hex !== 'string') {
+    console.warn('hexToRgb received invalid hex value:', hex);
+    return { r: 255, g: 215, b: 0 }; // Default to gold color (HQ provider color)
+  }
+
   var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   hex = hex.replace(shorthandRegex, function (m, r, g, b) {
     return r + r + g + g + b + b;
@@ -296,7 +302,7 @@ export function hexToRgb(hex: string) {
       g: parseInt(result[2], 16),
       b: parseInt(result[3], 16),
     }
-    : null;
+    : { r: 255, g: 215, b: 0 }; // Default to gold if parsing fails
 }
 
 export function genRandomNumbers(min: number, max: number, count: number) {

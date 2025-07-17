@@ -57,10 +57,12 @@ touch src/app/[lang]/my-feature/page.tsx
 Experience ISSI's worldwide cloud infrastructure through our **interactive 3D globe** powered by Aceternity UI:
 
 ### **Live Demo**
+
 - **Production**: `https://your-domain.com/en/globedemo`
 - **Development**: `http://localhost:3001/en/globedemo`
 
 ### **🎯 Key Features**
+
 - **📍 123 Global Datacenters**: Complete coverage across AWS, Google Cloud, and Azure
 - **🏢 ISSI HQ Hub**: Greenbelt, Maryland as central command center
 - **🔗 Real-time Network Topology**: Dynamic arcs showing multi-cloud connectivity
@@ -69,16 +71,18 @@ Experience ISSI's worldwide cloud infrastructure through our **interactive 3D gl
 - **📱 Responsive Design**: Optimized for mobile and desktop experiences
 
 ### **🏗️ Technical Implementation**
+
 ```typescript
 // Datacenter Coverage
 🏢 ISSI HQ: 1 headquarters
 🟠 AWS Regions: 29 global regions
-🔵 Google Cloud: 40 worldwide regions  
+🔵 Google Cloud: 40 worldwide regions
 🔷 Azure Regions: 51 global regions
 📊 Total Infrastructure: 123 datacenters
 ```
 
 ### **🎪 Interactive Experience**
+
 - **Hub-and-Spoke Topology**: All connections route through ISSI headquarters
 - **Distance-Based Visualization**: Arc altitude calculated from geographic distance
 - **Motion-Enhanced Content**: Smooth animations with professional messaging
@@ -89,6 +93,10 @@ Experience ISSI's worldwide cloud infrastructure through our **interactive 3D gl
 - **Framework**: Next.js 14.2+ with App Router
 - **Language**: TypeScript with strict type checking
 - **Styling**: Tailwind CSS with custom design system
+- **Development Tools**:
+  - **Debug Screens**: Real-time responsive breakpoint indicator
+  - **Hot Reload**: Instant development feedback
+  - **Type Safety**: Comprehensive TypeScript coverage
 - **UI Components**:
   - Custom BentoGrid layouts
   - 3D Globe integration with Three.js
@@ -144,6 +152,38 @@ Experience ISSI's worldwide cloud infrastructure through our **interactive 3D gl
    ```
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
+
+## 🛠️ Development Tools
+
+### Tailwind CSS Debug Screens
+
+This project includes a **responsive breakpoint indicator** that shows the current Tailwind CSS breakpoint in the bottom-left corner during development.
+
+#### Features
+
+- 📱 **Real-time indicator**: Shows current breakpoint (xs, sm, md, lg, xl, 2xl)
+- 🎯 **Unobtrusive**: Small indicator that doesn't interfere with your layout
+- 🔄 **Live updates**: Changes automatically when you resize the browser window
+
+#### Production Deployment
+
+**⚠️ Important**: The debug indicator is currently always enabled. To disable it in production:
+
+**Option 1: Environment-based (Recommended)**
+
+```tsx
+// In src/app/[lang]/layout.tsx
+<body className={`relative min-h-screen overflow-y-auto grid-background-with-fade flex flex-col ${process.env.NODE_ENV === 'development' ? 'debug-screens' : ''}`}>
+```
+
+**Option 2: Manual removal**
+
+```tsx
+// Remove 'debug-screens' from the className
+<body className="relative min-h-screen overflow-y-auto grid-background-with-fade flex flex-col">
+```
+
+📖 **[Full Debug Screens Documentation](./docs/TAILWIND_DEBUG_SCREENS.md)**
 
 ## Testing
 
@@ -265,6 +305,10 @@ This project includes comprehensive instructions and guides for all major develo
 - **I18N_ARCHITECTURE.md** – Architecture diagrams and detailed internationalization implementation
 - **COMPONENT_INTEGRATION_GUIDE.md** – How to build, wrap, and integrate i18n-ready client/server components
 - **BENTOGRID_CREATION_GUIDE.md** – Complete guide for creating and localizing BentoGrid components
+
+### Development Tools
+
+- **docs/TAILWIND_DEBUG_SCREENS.md** – Responsive breakpoint debugging, production deployment, and customization guide
 - **TROUBLESHOOTING.md** – Solutions for common i18n issues and error resolution
 - **JSON_VALIDATION_GUIDE.md** – JSON validation, linting, and best practices
 - **FUTURE_FEATURES.md** – Roadmap of planned enhancements and future features

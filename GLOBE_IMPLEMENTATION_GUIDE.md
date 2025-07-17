@@ -7,10 +7,11 @@ This document provides a comprehensive overview of the ISSI Global Infrastructur
 The ISSI Global Infrastructure Network Globe is an interactive 3D visualization built with Next.js, TypeScript, and Aceternity UI that displays ISSI's comprehensive worldwide cloud infrastructure presence. The implementation showcases **123 global datacenters** across major cloud providers including AWS, Google Cloud Platform, and Microsoft Azure, all connected through ISSI's headquarters in Greenbelt, Maryland.
 
 ### Key Statistics
+
 - **📍 Total Datacenters**: 123 global locations
 - **🏢 ISSI HQ**: 1 headquarters (Greenbelt, Maryland)
 - **🟠 AWS Regions**: 29 regions across all major AWS availability zones
-- **🔵 Google Cloud**: 40 regions spanning global GCP infrastructure  
+- **🔵 Google Cloud**: 40 regions spanning global GCP infrastructure
 - **🔷 Azure Regions**: 51 regions covering Microsoft Azure worldwide presence
 - **🔗 Network Architecture**: Hub-and-spoke topology with HQ as central command
 
@@ -35,19 +36,21 @@ src/
 ### Data Architecture
 
 **Datacenter Structure**:
+
 ```typescript
 interface DataCenter {
-  id: string;                      // Unique identifier
-  provider: 'aws' | 'gcp' | 'azure' | 'hq';
-  name: string;                    // Human-readable name
-  coordinates: [number, number];   // [latitude, longitude]
-  region: string;                  // Geographic region
-  tier: 'hq' | 'primary' | 'secondary';
-  code: string;                    // Provider-specific region code
+  id: string; // Unique identifier
+  provider: "aws" | "gcp" | "azure" | "hq";
+  name: string; // Human-readable name
+  coordinates: [number, number]; // [latitude, longitude]
+  region: string; // Geographic region
+  tier: "hq" | "primary" | "secondary";
+  code: string; // Provider-specific region code
 }
 ```
 
 **Network Topology**:
+
 - **Hub-and-Spoke Architecture**: All connections route through ISSI HQ
 - **Provider Networks**: Internal connections within each cloud provider
 - **Cross-Provider Links**: Strategic connections between AWS, GCP, and Azure
@@ -60,7 +63,7 @@ interface DataCenter {
 - **Aceternity UI Integration**: Built with authentic Aceternity UI Globe component
 - **React Three Fiber**: High-performance 3D rendering with WebGL acceleration
 - **Authentic Geographic Data**: Real earth textures with country boundaries
-- **Provider Color Coding**: 
+- **Provider Color Coding**:
   - 🏢 **ISSI HQ**: Gold (#FFD700) - Headquarters hub
   - 🟠 **AWS**: Orange (#FF9900) - Amazon Web Services
   - 🔵 **GCP**: Blue (#4285F4) - Google Cloud Platform
@@ -92,11 +95,11 @@ interface DataCenter {
 ```typescript
 interface DatacenterLocation {
   id: string;
-  provider: 'hq' | 'aws' | 'gcp' | 'azure';
+  provider: "hq" | "aws" | "gcp" | "azure";
   name: string;
   coordinates: [number, number]; // [lat, lng]
   region: string;
-  tier: 'hq' | 'primary' | 'secondary';
+  tier: "hq" | "primary" | "secondary";
   code: string;
 }
 ```
@@ -104,15 +107,17 @@ interface DatacenterLocation {
 ### Network Animation Patterns
 
 1. **Priority Connection (Always Visible)**
+
    - HQ (Greenbelt, MD) → AWS Virginia (Red arc, thick, high altitude)
 
 2. **HQ Random Connections (3-second cycles)**
+
    - Purple arcs from HQ to major regional hubs
    - Targets: AWS Virginia, AWS Ireland, GCP Iowa, GCP Belgium, Azure Virginia, Azure Ireland
 
 3. **Provider Internal Networks**
    - AWS: Orange arcs between AWS regions
-   - GCP: Blue arcs between GCP regions  
+   - GCP: Blue arcs between GCP regions
    - Azure: Purple arcs between Azure regions
 
 ### Performance Optimization
@@ -127,25 +132,17 @@ interface DatacenterLocation {
 ### Basic Globe Component
 
 ```tsx
-import DataGlobe from '@/components/Globe/DataGlobe';
+import DataGlobe from "@/components/Globe/DataGlobe";
 
 function InfrastructurePage() {
-  return (
-    <DataGlobe 
-      width={1000}
-      height={700}
-      showControls={true}
-      autoRotate={true}
-      initialProvider="aws"
-    />
-  );
+  return <DataGlobe width={1000} height={700} showControls={true} autoRotate={true} initialProvider="aws" />;
 }
 ```
 
 ### Mini Globe for Breadcrumbs
 
 ```tsx
-import MiniDataGlobe from '@/components/Globe/MiniDataGlobe';
+import MiniDataGlobe from "@/components/Globe/MiniDataGlobe";
 
 function BreadcrumbComponent() {
   return (
@@ -187,41 +184,41 @@ function BreadcrumbComponent() {
 ```typescript
 // Light mode
 const lightTheme = {
-  background: '#e2e8f0',
-  atmosphere: '#3b82f6',
-  borders: '#64748b',
-  hq: '#dc2626',      // Red
-  aws: '#ea580c',     // Orange
-  gcp: '#2563eb',     // Blue
-  azure: '#7c3aed'    // Purple
-}
+  background: "#e2e8f0",
+  atmosphere: "#3b82f6",
+  borders: "#64748b",
+  hq: "#dc2626", // Red
+  aws: "#ea580c", // Orange
+  gcp: "#2563eb", // Blue
+  azure: "#7c3aed", // Purple
+};
 
-// Dark mode  
+// Dark mode
 const darkTheme = {
-  background: '#0f172a',
-  atmosphere: '#1e293b',
-  borders: '#334155',
-  hq: '#ef4444',      // Lighter red
-  aws: '#f97316',     // Lighter orange
-  gcp: '#3b82f6',     // Lighter blue
-  azure: '#8b5cf6'    // Lighter purple
-}
+  background: "#0f172a",
+  atmosphere: "#1e293b",
+  borders: "#334155",
+  hq: "#ef4444", // Lighter red
+  aws: "#f97316", // Lighter orange
+  gcp: "#3b82f6", // Lighter blue
+  azure: "#8b5cf6", // Lighter purple
+};
 ```
 
 ### Animation Settings
 
 ```typescript
 const arcConfig = {
-  maxActiveArcs: 18,              // Total limit
-  maxArcsPerProvider: 3,          // Per provider limit
-  hqPriorityAlways: true,         // Always show HQ → AWS us-east-1
-  hqRandomInterval: 3000,         // 3 seconds between HQ random arcs
-  providerArcInterval: 2000,      // 2 seconds between provider arcs
-  arcDuration: 4000,              // 4 seconds arc lifetime
+  maxActiveArcs: 18, // Total limit
+  maxArcsPerProvider: 3, // Per provider limit
+  hqPriorityAlways: true, // Always show HQ → AWS us-east-1
+  hqRandomInterval: 3000, // 3 seconds between HQ random arcs
+  providerArcInterval: 2000, // 2 seconds between provider arcs
+  arcDuration: 4000, // 4 seconds arc lifetime
   arcDashLength: 0.4,
   arcDashGap: 4,
-  arcDashAnimateTime: 2000
-}
+  arcDashAnimateTime: 2000,
+};
 ```
 
 ### Camera Controls & User Interaction
@@ -231,18 +228,19 @@ The globe implements optimized camera controls for consistent user experience:
 ```typescript
 // OrbitControls Configuration
 const cameraConfig = {
-  enablePan: false,               // Disable panning for focused interaction
-  enableZoom: false,              // Zoom disabled for consistent viewing
-  minDistance: 390,               // Fixed camera distance
-  maxDistance: 390,               // Same as min (no zoom range)
-  autoRotate: true,               // Automatic rotation enabled
-  autoRotateSpeed: 1,             // Smooth rotation speed
-  minPolarAngle: Math.PI / 3.5,   // Vertical rotation limits
-  maxPolarAngle: Math.PI - Math.PI / 3
-}
+  enablePan: false, // Disable panning for focused interaction
+  enableZoom: false, // Zoom disabled for consistent viewing
+  minDistance: 390, // Fixed camera distance
+  maxDistance: 390, // Same as min (no zoom range)
+  autoRotate: true, // Automatic rotation enabled
+  autoRotateSpeed: 1, // Smooth rotation speed
+  minPolarAngle: Math.PI / 3.5, // Vertical rotation limits
+  maxPolarAngle: Math.PI - Math.PI / 3,
+};
 ```
 
 **User Interaction Features**:
+
 - **Mouse Rotation**: Click and drag to rotate globe manually
 - **Touch Support**: Touch-friendly rotation for mobile devices
 - **Auto-Rotation**: Continuous gentle rotation when not being interacted with
@@ -251,6 +249,7 @@ const cameraConfig = {
 - **Vertical Limits**: Constrains rotation to reasonable viewing angles
 
 **Benefits of Fixed Camera**:
+
 - **Consistent UX**: All users see the same optimal globe perspective
 - **Performance**: No zoom calculations reduce computational overhead
 - **Focus**: Users concentrate on globe content rather than navigation
@@ -284,7 +283,7 @@ const cameraConfig = {
 
 - `src/components/BreadcrumbWithGlobe.tsx` - Added MiniDataGlobe integration
 - `src/lang/en.json` - Added infrastructure translations
-- `src/lang/fr.json` - Added French translations  
+- `src/lang/fr.json` - Added French translations
 - `src/lang/es.json` - Added Spanish translations
 
 ## Troubleshooting
@@ -294,7 +293,7 @@ const cameraConfig = {
 - All globe components use dynamic imports with `ssr: false`
 - Loading states provided for hydration
 
-### Performance Issues  
+### Performance Issues
 
 - Arc animations are limited to prevent memory leaks
 - Automatic cleanup removes expired animations
@@ -324,5 +323,5 @@ For questions or issues related to the ISSI Global Data Infrastructure Globe:
 
 ---
 
-*Last updated: June 20, 2025*
-*Implementation by: GitHub Copilot AI Assistant*
+_Last updated: June 20, 2025_
+_Implementation by: GitHub Copilot AI Assistant_

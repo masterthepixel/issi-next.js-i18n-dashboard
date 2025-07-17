@@ -31,6 +31,72 @@ export const datacenters: DataCenter[] = [
         code: 'HQ'
     },
 
+    // Pallada Web Service (Partner location)
+    {
+        id: 'pallada-moscow',
+        provider: 'hq',
+        name: 'Pallada Web Service (Moscow)',
+        coordinates: [55.7558, 37.6176],
+        region: 'Europe',
+        tier: 'secondary',
+        code: 'pallada-msk'
+    },
+
+    // NAVER Chuncheon Data Center (South Korea)
+    {
+        id: 'naver-chuncheon',
+        provider: 'hq',
+        name: 'NAVER Chuncheon Data Center',
+        coordinates: [37.8813, 127.7298],
+        region: 'Asia Pacific',
+        tier: 'primary',
+        code: 'kr-chuncheon'
+    },
+
+    // MainOne Data Center (Lagos, Nigeria)
+    {
+        id: 'mainone-lagos',
+        provider: 'hq',
+        name: 'MainOne Data Center (Lagos)',
+        coordinates: [6.5244, 3.3792],
+        region: 'Africa',
+        tier: 'primary',
+        code: 'ng-lagos'
+    },
+
+    // Telecom Egypt Smart Village DC (Cairo, Egypt)
+    {
+        id: 'telecom-egypt-cairo',
+        provider: 'hq',
+        name: 'Telecom Egypt Smart Village DC',
+        coordinates: [30.0444, 31.2357],
+        region: 'Africa',
+        tier: 'primary',
+        code: 'eg-cairo'
+    },
+
+    // East Africa Data Centre (Nairobi, Kenya)
+    {
+        id: 'east-africa-dc-nairobi',
+        provider: 'hq',
+        name: 'East Africa Data Centre (Nairobi)',
+        coordinates: [-1.2921, 36.8219],
+        region: 'Africa',
+        tier: 'primary',
+        code: 'ke-nairobi'
+    },
+
+    // INWI Data Center (Casablanca, Morocco)
+    {
+        id: 'inwi-casablanca',
+        provider: 'hq',
+        name: 'INWI Data Center (Casablanca)',
+        coordinates: [33.5731, -7.5898],
+        region: 'Africa',
+        tier: 'secondary',
+        code: 'ma-casablanca'
+    },
+
     // ========== AWS REGIONS (reduced to 1/3 for cleaner visualization) ==========
     // North America (keeping 2 out of 6)
     {
@@ -1357,6 +1423,34 @@ export const networkTopology = {
             ['azure-spaincentral', 'azure-southafricanorth'], // Spain to Africa (historical ties)
             ['azure-norwayeast', 'azure-centralindia'] // Norway to India
         ]
+    },
+
+    // African Partner Network - Interconnected African datacenters
+    africa: {
+        primary: 'mainone-lagos', // MainOne Lagos as primary African hub
+        connections: [
+            // West Africa Network (Nigeria as hub)
+            ['mainone-lagos', 'inwi-casablanca'], // Nigeria to Morocco
+
+            // North Africa Network
+            ['telecom-egypt-cairo', 'inwi-casablanca'], // Egypt to Morocco
+            ['telecom-egypt-cairo', 'mainone-lagos'], // Egypt to Nigeria
+
+            // East Africa Network (Kenya as East Africa hub)
+            ['east-africa-dc-nairobi', 'telecom-egypt-cairo'], // Kenya to Egypt
+            ['east-africa-dc-nairobi', 'mainone-lagos'], // Kenya to Nigeria
+            ['east-africa-dc-nairobi', 'inwi-casablanca'], // Kenya to Morocco
+
+            // Pan-African cross-connections
+            ['mainone-lagos', 'telecom-egypt-cairo'], // West to North Africa
+            ['inwi-casablanca', 'east-africa-dc-nairobi'], // North to East Africa
+
+            // Connections to existing African cloud infrastructure
+            ['mainone-lagos', 'aws-af-south-1'], // Nigeria to Cape Town (AWS)
+            ['east-africa-dc-nairobi', 'gcp-africa-south1'], // Kenya to Johannesburg (GCP)
+            ['telecom-egypt-cairo', 'azure-southafricanorth'], // Egypt to Johannesburg (Azure)
+            ['inwi-casablanca', 'azure-southafricawest'] // Morocco to Cape Town (Azure)
+        ]
     }
 };
 
@@ -1399,7 +1493,15 @@ export const hqTargets = [
     'azure-centralindia', // India
     'aws-ap-southeast-2', // Sydney
     'gcp-australia-southeast1', // Sydney
-    'azure-australiaeast' // Sydney
+    'azure-australiaeast', // Sydney
+
+    // Partner locations
+    'pallada-moscow',         // Pallada Web Service Moscow
+    'naver-chuncheon',        // NAVER Chuncheon Data Center
+    'mainone-lagos',          // MainOne Data Center Lagos
+    'telecom-egypt-cairo',    // Telecom Egypt Smart Village DC
+    'east-africa-dc-nairobi', // East Africa Data Centre Nairobi
+    'inwi-casablanca'         // INWI Data Center Casablanca
 ];
 
 // Provider color mapping (with transparency for better visual integration)
@@ -1407,7 +1509,8 @@ export const providerColors = {
     hq: 'rgba(255, 215, 0, 0.8)',      // Gold for headquarters (80% opacity)
     aws: 'rgba(255, 153, 0, 0.7)',     // AWS orange (70% opacity)
     gcp: 'rgba(66, 133, 244, 0.7)',    // Google blue (70% opacity)
-    azure: 'rgba(150, 1, 7, 0.7)'      // Deep red for Azure (70% opacity)
+    azure: 'rgba(150, 1, 7, 0.7)',     // Deep red for Azure (70% opacity)
+    africa: 'rgba(34, 197, 94, 0.8)'   // Green for African partner network (80% opacity)
 };
 
 // Tier sizing for globe points (much smaller for 123 datacenters to avoid overlap)

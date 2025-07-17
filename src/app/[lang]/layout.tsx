@@ -85,7 +85,7 @@ export default async function Root({ params, children }: Props) {
             `
           }}
         />
-      </head>      <body className="relative min-h-screen overflow-y-auto grid-background-with-fade flex flex-col">        <ThemeProvider>
+      </head>      <body className="relative min-h-screen overflow-y-auto grid-background-with-fade flex flex-col debug-screens">        <ThemeProvider>
         <AnimatedBackground />
         <Navbar locale={params.lang} user={user} />
 
