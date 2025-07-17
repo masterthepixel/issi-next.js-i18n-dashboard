@@ -85,18 +85,21 @@ export default async function Root({ params, children }: Props) {
             `
           }}
         />
-      </head>      <body className="relative min-h-screen overflow-y-auto grid-background-with-fade flex flex-col debug-screens">        <ThemeProvider>
+      </head>      <body className="relative min-h-screen overflow-y-auto overflow-x-visible grid-background-with-fade flex flex-col debug-screens">        <ThemeProvider>
         <AnimatedBackground />
         <Navbar locale={params.lang} user={user} />
 
-        {/* Universal Intelligent Breadcrumb - automatically handles homepage exclusion */}
-        <UniversalIntelligentBreadcrumbWrapper
-          locale={params.lang}
-          messages={messages}
-          className="relative z-10 px-6 py-4"
-        />
-
-        <Content>{children}</Content>
+        <Content>
+          {/* Universal Intelligent Breadcrumb - now inside main content container with overflow visible */}
+          <div className="max-w-7xl mx-auto mb-6 overflow-visible">
+            <UniversalIntelligentBreadcrumbWrapper
+              locale={params.lang}
+              messages={messages}
+              className="relative z-10 overflow-visible"
+            />
+          </div>
+          {children}
+        </Content>
         <FooterWrapper locale={params.lang} />
         <MobileFloatingMenu items={navigationItems} />
         <ScrollToTopButton />

@@ -1,11 +1,18 @@
 'use client'
 
+import { useTheme } from "@/contexts/ThemeContext"
 import { AutoTranslationSystem } from '@/utils/autoTranslation'
+import { generateNetworkArcs } from "@/utils/networkTopology"
 import { ChevronRightIcon, HomeIcon } from '@heroicons/react/20/solid'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useIntl } from 'react-intl'
+
+const World = dynamic(() => import("@/components/ui/globe").then((m) => m.World), {
+    ssr: false,
+})
 
 interface BreadcrumbItem {
     name: string
@@ -32,6 +39,61 @@ export default function UniversalIntelligentBreadcrumb({
 }: UniversalIntelligentBreadcrumbProps) {
     const pathname = usePathname()
     const intl = useIntl()
+    const { theme } = useTheme()
+    const [mounted, setMounted] = useState(false)
+
+    // Ensure component is mounted to avoid hydration mismatch
+    useEffect(() => {
+        setMounted(true)
+    }, [])
+
+    // Determine if dark mode
+    const isDark = theme === 'dark'
+
+    // Theme-aware globe configuration - exact copy from GlobeDemo
+    const globeConfig = {
+        pointSize: 0.8,  // Much smaller points (reduced from 1.6 to 0.8)
+
+        // Dark mode configuration
+        ...(isDark ? {
+            globeColor: "#062056",                    // Deep blue globe
+            polygonColor: "rgba(255,255,255,0.7)",   // White country borders
+            ambientLight: "#38bdf8",                  // Blue ambient lighting
+            emissive: "#062056",                      // Dark blue emissive
+            emissiveIntensity: 0.1,
+            atmosphereColor: "#FFFFFF",               // White atmosphere
+        } : {
+            // Light mode configuration
+            globeColor: "#1e40af",                    // Realistic ocean blue like satellite photos
+            polygonColor: "rgba(255,255,255,0.8)",   // Bright white country borders for contrast
+            ambientLight: "#FFFFFF",                  // Bright white lighting
+            emissive: "#1e40af",                      // Ocean blue emissive
+            emissiveIntensity: 0.05,                  // Reduced intensity for light mode
+            atmosphereColor: "#87CEEB",               // Sky blue atmosphere
+        }),
+
+        showAtmosphere: true,
+        atmosphereAltitude: 0.1,
+        shininess: 0.9,
+        directionalLeftLight: "#ffffff",
+        directionalTopLight: "#ffffff",
+        pointLight: "#ffffff",
+        arcTime: 600,    // Faster arc animation (reduced from 1000)
+        arcLength: 0.7,  // Slightly shorter arcs for more frequent traffic
+        initialPosition: { lat: 39.0042, lng: -76.8755 }, // Center on Greenbelt, MD
+        autoRotate: true,
+        autoRotateSpeed: 0.3, // Slower rotation to better see traffic
+
+        // Point transparency and ring settings (much more subtle)
+        pointOpacity: 0.6,      // More transparent points
+        ringOpacity: 0.2,       // Very subtle ring animations
+        ringIntensity: 0.3,     // Much reduced ring animation intensity
+        rings: 1,               // Only 1 ring to reduce visual clutter
+        maxRings: 2,            // Maximum 2 rings instead of 4
+    }
+
+    // Generate network arcs from ISSI datacenter topology
+    const networkArcs = generateNetworkArcs()
 
     const breadcrumbs = useMemo(() => {
         if (customItems) {
@@ -120,55 +182,70 @@ export default function UniversalIntelligentBreadcrumb({
     }
 
     return (
-        <nav aria-label={intl.formatMessage({
-            id: 'breadcrumb.seo.description',
-            defaultMessage: 'Breadcrumb'
-        })} className={`flex ${className}`}>
-            <ol className="flex items-center space-x-4">
-                {breadcrumbs.map((item, index) => (
-                    <li key={item.href}>
-                        <div className="flex items-center">
-                            {index === 0 && showHome ? (
-                                <Link
-                                    href={item.href}
-                                    className="text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 rounded-md p-1"
-                                    aria-label={intl.formatMessage({
-                                        id: 'breadcrumb.home.aria',
-                                        defaultMessage: 'Go to home page'
-                                    })}
-                                >
-                                    <HomeIcon aria-hidden="true" className="size-5 shrink-0" />
-                                    <span className="sr-only">{item.name}</span>
-                                </Link>
-                            ) : (
-                                <>
-                                    {index > 0 && (
-                                        <ChevronRightIcon
-                                            aria-hidden="true"
-                                            className="size-5 shrink-0 text-gray-400 mr-4"
-                                        />
-                                    )}
-                                    {item.current ? (
-                                        <span
-                                            aria-current="page"
-                                            className="text-sm font-medium text-gray-900"
-                                        >
-                                            {item.name}
-                                        </span>
-                                    ) : (
-                                        <Link
-                                            href={item.href}
-                                            className="text-sm font-medium text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 rounded-md px-1 py-0.5"
-                                        >
-                                            {item.name}
-                                        </Link>
-                                    )}
-                                </>
-                            )}
-                        </div>
-                    </li>
-                ))}
-            </ol>
-        </nav>
+        <div className="relative overflow-visible">
+            {/* Globe positioned in top right corner - escape container bounds and higher z-index for mobile */}
+            <div className="absolute -top-[200px] -right-8 md:-top-[160px] md:-right-16 overflow-visible z-50">
+                <div className="w-[35vw] h-[40vh] max-w-none overflow-visible">
+                    {mounted && (
+                        <World
+                            data={networkArcs}
+                            globeConfig={globeConfig}
+                        />
+                    )}
+                </div>
+            </div>
+
+            {/* Breadcrumb navigation */}
+            <nav aria-label={intl.formatMessage({
+                id: 'breadcrumb.seo.description',
+                defaultMessage: 'Breadcrumb'
+            })} className={`flex ${className}`}>
+                <ol className="flex items-center space-x-4">
+                    {breadcrumbs.map((item, index) => (
+                        <li key={item.href}>
+                            <div className="flex items-center">
+                                {index === 0 && showHome ? (
+                                    <Link
+                                        href={item.href}
+                                        className="text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 rounded-md p-1"
+                                        aria-label={intl.formatMessage({
+                                            id: 'breadcrumb.home.aria',
+                                            defaultMessage: 'Go to home page'
+                                        })}
+                                    >
+                                        <HomeIcon aria-hidden="true" className="size-5 shrink-0" />
+                                        <span className="sr-only">{item.name}</span>
+                                    </Link>
+                                ) : (
+                                    <>
+                                        {index > 0 && (
+                                            <ChevronRightIcon
+                                                aria-hidden="true"
+                                                className="size-5 shrink-0 text-gray-400 mr-4"
+                                            />
+                                        )}
+                                        {item.current ? (
+                                            <span
+                                                aria-current="page"
+                                                className="text-sm font-medium text-gray-900"
+                                            >
+                                                {item.name}
+                                            </span>
+                                        ) : (
+                                            <Link
+                                                href={item.href}
+                                                className="text-sm font-medium text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 rounded-md px-1 py-0.5"
+                                            >
+                                                {item.name}
+                                            </Link>
+                                        )}
+                                    </>
+                                )}
+                            </div>
+                        </li>
+                    ))}
+                </ol>
+            </nav>
+        </div>
     )
 }

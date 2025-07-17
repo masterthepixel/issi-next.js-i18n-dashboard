@@ -124,18 +124,18 @@ export default function NavbarContent({ user: _user, locale, messages }: Props) 
 
   return (
     <IntlProvider locale={locale} messages={messages}>
-      <nav className="sticky top-0 left-0 z-50 w-full transition-all duration-300 backdrop-blur-sm bg-transparent">
+      <nav className="sticky top-0 left-0 z-50 w-full transition-all duration-300 bg-transparent">
         <div className="max-w-7xl mx-auto">
           <div className={`flex items-center justify-between px-2 transition-all duration-300 ${isScrolled ? 'h-12 py-8' : 'h-16 py-12'
             }`}>
             <div className="flex items-center flex-1">
-              <Link href={`/${locale}/home`} className="flex items-center hover:opacity-80 transition-opacity">
+              <Link href={`/${locale}/home`} className="flex items-center hover:opacity-80 transition-opacity backdrop-blur-sm">
                 <Image
                   src="/images/issi_logo.png"
                   alt="ISSI Logo"
-                  width={120}
-                  height={40}
-                  className="h-8 w-auto drop-shadow-md"
+                  width={160}
+                  height={60}
+                  className="h-12 w-auto sm:h-14 md:h-16 lg:h-16 xl:h-18 drop-shadow-md"
                   priority
                 />
               </Link>
@@ -187,7 +187,12 @@ export default function NavbarContent({ user: _user, locale, messages }: Props) 
               </div>
             </div>            <div className="flex items-center">
               {/* Right Side Floating Pill */}
-              <div className="flex items-center border border-transparent dark:border-white/[0.2] rounded-full dark:bg-black bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] px-2 py-1 space-x-1">
+              <div
+                className="flex items-center border border-transparent dark:border-white/[0.2] rounded-full dark:bg-black bg-white px-2 py-1 space-x-1"
+                style={{
+                  boxShadow: "0 2px 4px rgba(0,0,0,0.2)"
+                }}
+              >
                 {/* Contact Icon */}
                 <Link
                   href={`/${locale}/contact`}
