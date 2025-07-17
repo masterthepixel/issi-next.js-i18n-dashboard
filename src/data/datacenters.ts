@@ -9,6 +9,16 @@ export interface DataCenter {
     code: string;
 }
 
+export interface Arc {
+    order: number;
+    startLat: number;
+    startLng: number;
+    endLat: number;
+    endLng: number;
+    arcAlt: number;
+    color: string;
+}
+
 export const datacenters: DataCenter[] = [
     // ISSI Headquarters (always visible)
     {
@@ -1190,7 +1200,7 @@ export const networkTopology = {
             ['aws-ap-southeast-1', 'aws-af-south-1'], // Asia to Africa
             ['aws-me-south-1', 'aws-me-central-1'], // Middle East internal
             ['aws-af-south-1', 'aws-me-south-1'], // Africa to Middle East
-            
+
             // Additional intercontinental routes
             ['aws-us-west-1', 'aws-eu-west-2'], // US West to London
             ['aws-ca-central-1', 'aws-ap-northeast-1'], // Canada to Tokyo
@@ -1249,7 +1259,7 @@ export const networkTopology = {
             // South America
             ['gcp-us-central1', 'gcp-southamerica-east1'], // US to Brazil
             ['gcp-southamerica-east1', 'gcp-southamerica-west1'], // Brazil internal
-            
+
             // Enhanced Middle East & Africa connectivity
             ['gcp-europe-west1', 'gcp-me-west1'], // Europe to Tel Aviv
             ['gcp-europe-west3', 'gcp-me-central1'], // Frankfurt to Doha
@@ -1257,7 +1267,7 @@ export const networkTopology = {
             ['gcp-asia-south1', 'gcp-me-central1'], // India to Qatar
             ['gcp-europe-west1', 'gcp-africa-south1'], // Europe to Johannesburg
             ['gcp-me-west1', 'gcp-africa-south1'], // Middle East to Africa
-            
+
             // Additional intercontinental routes
             ['gcp-us-west1', 'gcp-europe-west2'], // US West to London
             ['gcp-us-east1', 'gcp-africa-south1'], // US East to Africa
@@ -1331,7 +1341,7 @@ export const networkTopology = {
             ['azure-uaecentral', 'azure-qatarcentral'], // UAE to Qatar
             ['azure-centralindia', 'azure-uaecentral'], // India to UAE
             ['azure-southafricanorth', 'azure-centralindia'], // Africa to India
-            
+
             // Enhanced intercontinental routes
             ['azure-eastus', 'azure-southafricanorth'], // US East to Africa
             ['azure-westus', 'azure-northeurope'], // US West to Ireland
@@ -1362,24 +1372,24 @@ export const hqTargets = [
     'azure-eastus',       // US East
     'azure-northeurope',  // Europe hub
     'azure-southeastasia', // Asia hub
-    
+
     // Africa connections (enhanced)
     'aws-af-south-1',     // Cape Town
     'gcp-africa-south1',  // Johannesburg
     'azure-southafricanorth', // Johannesburg
     'azure-southafricawest',  // Cape Town
-    
+
     // Middle East hubs
     'aws-me-south-1',     // Bahrain
     'aws-me-central-1',   // UAE
     'gcp-me-central1',    // Qatar
     'azure-uaecentral',   // UAE
-    
+
     // South America
     'aws-sa-east-1',      // São Paulo
     'gcp-southamerica-east1', // São Paulo
     'azure-brazilsouth',  // Brazil
-    
+
     // Additional global coverage
     'aws-ap-northeast-1', // Tokyo
     'gcp-asia-northeast1', // Tokyo
@@ -1437,8 +1447,8 @@ export const convertLatLonToVector3 = (lat: number, lon: number, radius: number 
 };
 
 // Arc data for connections between datacenters
-export const generateArcData = () => {
-    const arcData = [];
+export const generateArcData = (): Arc[] => {
+    const arcData: Arc[] = [];
 
     // Add HQ connections
     const hq = getHQDatacenter();

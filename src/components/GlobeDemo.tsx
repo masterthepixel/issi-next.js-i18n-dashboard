@@ -1,8 +1,8 @@
 "use client";
+import { useTheme } from "@/contexts/ThemeContext";
 import { generateNetworkArcs } from "@/utils/networkTopology";
 import { motion } from "motion/react";
 import dynamic from "next/dynamic";
-import { useTheme } from "@/contexts/ThemeContext";
 import { useEffect, useState } from "react";
 
 const World = dynamic(() => import("@/components/ui/globe").then((m) => m.World), {
@@ -24,7 +24,7 @@ export default function GlobeDemo() {
   // Theme-aware globe configuration
   const globeConfig = {
     pointSize: 0.8,  // Much smaller points (reduced from 1.6 to 0.8)
-    
+
     // Dark mode configuration
     ...(isDark ? {
       globeColor: "#062056",                    // Deep blue globe
@@ -42,7 +42,7 @@ export default function GlobeDemo() {
       emissiveIntensity: 0.05,                  // Reduced intensity for light mode
       atmosphereColor: "#87CEEB",               // Sky blue atmosphere
     }),
-    
+
     showAtmosphere: true,
     atmosphereAltitude: 0.1,
     shininess: 0.9,
@@ -54,7 +54,7 @@ export default function GlobeDemo() {
     initialPosition: { lat: 38.9912, lng: -76.8751 }, // Center on ISSI HQ
     autoRotate: true,
     autoRotateSpeed: 0.3, // Slower rotation to better see traffic
-    
+
     // Point transparency and ring settings (much more subtle)
     pointOpacity: 0.6,      // More transparent points
     ringOpacity: 0.2,       // Very subtle ring animations
