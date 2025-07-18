@@ -11,6 +11,7 @@ interface UniversalIntelligentBreadcrumbWrapperProps {
         name: string
         href: string
         current: boolean
+        icon?: React.ComponentType<{ className?: string }>
     }>
     showHome?: boolean
     className?: string
