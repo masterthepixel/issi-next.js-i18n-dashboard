@@ -13,7 +13,14 @@
       "Bash(docker mcp:*)",
       "Bash(find:*)",
       "Bash(mkdir:*)",
-      "Bash(chmod:*)"
+      "Bash(chmod:*)",
+      "Bash(claude doctor)",
+      "Bash(npm run build:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npx tsc:*)",
+      "Bash(timeout 30s npx tsc --noEmit --incremental false src/components/GeoGlobe.tsx)",
+      "Bash(timeout 60s npm run build -- --debug)",
+      "Bash(timeout 120s npx next build)"
     ],
     "deny": []
   }
