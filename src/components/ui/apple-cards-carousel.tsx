@@ -21,10 +21,10 @@ type CardType = {
 };
 
 export const CarouselContext = createContext<{
-  onCardClose: (index: number) => void;
+  onCardClose: (_: number) => void;
   currentIndex: number;
 }>({
-  onCardClose: () => {},
+  onCardClose: (_) => {},
   currentIndex: 0,
 });
 
