@@ -16,6 +16,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "tsBuildInfoFile": ".next/cache/tsbuildinfo",
     "plugins": [
       {
         "name": "next"
@@ -26,15 +27,37 @@
         "./src/*"
       ]
     },
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "useDefineForClassFields": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "i18n-config.ts",
     ".next/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "test-*.js",
+    "scripts/**/*",
+    "docs/**/*",
+    "tmux-orchestrator/**/*",
+    "*.config.js",
+    "*.config.mjs",
+    "*.config.ts",
+    "vitest.config.ts",
+    "eslint.config.js",
+    "postcss.config.mjs",
+    "tailwind.config.ts",
+    ".next/**/*",
+    "public/**/*",
+    "**/*.md"
   ]
 }

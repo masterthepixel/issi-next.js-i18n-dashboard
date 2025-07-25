@@ -714,3 +714,7 @@ sleep 5
 # Check what the agent said
 tmux capture-pane -t session:0 -p | tail -50
 ```
+
+## Memories and Project-Specific Instructions
+
+- Ignore tmux in this repo
