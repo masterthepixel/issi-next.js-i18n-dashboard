@@ -113,7 +113,8 @@ const nextConfig = {
   },
 
   // Build output optimization
-  output: 'standalone',
+  // Only use standalone output on Vercel to avoid Windows symlink issues
+  ...(process.env.VERCEL ? { output: 'standalone' } : {}),
   
   // Reduce memory usage during build
   swcMinify: true,

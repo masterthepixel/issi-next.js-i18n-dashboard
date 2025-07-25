@@ -6,7 +6,7 @@ import {
 } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface NavItem {
   name: string | React.ReactNode | null;
@@ -23,6 +23,11 @@ export const FloatingNav = ({
   className?: string;
 }) => {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <AnimatePresence mode="wait">
@@ -47,7 +52,7 @@ export const FloatingNav = ({
         }}
       >
         {navItems.map((navItem: any, idx: number) => {
-          const isActive = pathname?.includes(navItem.link.split('/').pop()) || false;
+          const isActive = mounted && pathname ? pathname.includes(navItem.link.split('/').pop()) : false;
 
           return (
             <Link

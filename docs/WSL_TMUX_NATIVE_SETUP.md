@@ -5,6 +5,7 @@
 You're currently in Docker's WSL environment. Let's switch to your native Ubuntu installation:
 
 ### **Step 1: Exit Docker WSL and Enter Native Ubuntu**
+
 ```bash
 # Exit current Docker WSL session
 exit
@@ -17,6 +18,7 @@ wsl
 ```
 
 ### **Step 2: Install Required Tools in Native WSL**
+
 ```bash
 # Update package lists
 sudo apt update
@@ -38,6 +40,7 @@ pnpm --version
 ```
 
 ### **Step 3: Navigate to Your Project**
+
 ```bash
 # Go to your project directory
 cd /mnt/c/Users/kfiagbedzi/Documents/GitHub/issi-next.js-i18n-dashboard
@@ -47,6 +50,7 @@ ls -la | grep package.json
 ```
 
 ### **Step 4: Test Tmux Installation**
+
 ```bash
 # Start a tmux session
 tmux new-session -d -s test-session
@@ -59,6 +63,7 @@ tmux kill-session -t test-session
 ```
 
 ### **Step 5: Launch ISSI Tmux Orchestrator**
+
 ```bash
 # Make scripts executable
 chmod +x ./tmux-orchestrator/scripts/*.sh
@@ -73,6 +78,7 @@ chmod +x ./send-claude-message.sh
 ```
 
 ## 🚀 **Benefits of Native WSL + Tmux**
+
 - ✅ **No Docker overhead** - Direct access to system resources
 - ✅ **Full Linux environment** - All bash scripts work perfectly
 - ✅ **Native file system access** - Direct access to Windows files
@@ -80,9 +86,11 @@ chmod +x ./send-claude-message.sh
 - ✅ **Persistent sessions** - Tmux sessions survive across WSL restarts
 
 ## 🔧 **Troubleshooting**
+
 If you encounter issues:
 
 ### **WSL Not Finding Ubuntu**
+
 ```powershell
 # List available distributions
 wsl --list --verbose
@@ -92,12 +100,14 @@ wsl --set-default Ubuntu
 ```
 
 ### **Permission Issues**
+
 ```bash
 # Fix script permissions
 find ./tmux-orchestrator -name "*.sh" -exec chmod +x {} \;
 ```
 
 ### **Node.js/pnpm Issues**
+
 ```bash
 # Alternative Node.js installation via nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash

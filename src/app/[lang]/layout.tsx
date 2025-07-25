@@ -1,5 +1,7 @@
 import { AnimatedBackground } from "@/components/AnimatedBackground";
+import ClientOnly from "@/components/ClientOnly";
 import Content from "@/components/Content";
+import ErrorBoundary from "@/components/ErrorBoundary";
 import FooterWrapper from "@/components/FooterWrapper";
 import MobileFloatingMenu from "@/components/MobileFloatingMenu";
 import Navbar from "@/components/Navbar";
@@ -11,15 +13,13 @@ import React from 'react';
 import { getUser } from "@/lib/data";
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
+import { defaultMetadata } from "@/lib/metadata";
 
 import { i18n } from "../../../i18n-config";
 
 import "@/app/globals.css";
 
-export const metadata = {
-  title: "ISSI - International Software Systems International",
-  description: "International Software Systems International official website",
-};
+export const metadata = defaultMetadata;
 
 interface Props {
   params: { lang: Locale };
@@ -85,25 +85,34 @@ export default async function Root({ params, children }: Props) {
             `
           }}
         />
-      </head>      <body className="relative min-h-screen overflow-y-auto overflow-x-visible grid-background-with-fade flex flex-col debug-screens">        <ThemeProvider>
-        <AnimatedBackground />
-        <Navbar locale={params.lang} user={user} />
+      </head>      <body className="relative min-h-screen overflow-y-auto overflow-x-visible grid-background-with-fade flex flex-col debug-screens">
+        <ErrorBoundary>
+          <ThemeProvider>
+            <AnimatedBackground />
+            <ClientOnly>
+              <Navbar locale={params.lang} user={user} />
+            </ClientOnly>
 
-        <Content>
-          {/* Universal Intelligent Breadcrumb - now inside main content container with overflow visible */}
-          <div className="max-w-7xl mx-auto mb-6 overflow-visible">
-            <UniversalIntelligentBreadcrumbWrapper
-              locale={params.lang}
-              messages={messages}
-              className="relative z-10 overflow-visible"
-            />
-          </div>
-          {children}
-        </Content>
-        <FooterWrapper locale={params.lang} />
-        <MobileFloatingMenu items={navigationItems} />
-        <ScrollToTopButton />
-      </ThemeProvider>
+            <Content>
+              {/* Universal Intelligent Breadcrumb - now inside main content container with overflow visible */}
+              <div className="max-w-7xl mx-auto mb-6 overflow-visible">
+                <ClientOnly>
+                  <UniversalIntelligentBreadcrumbWrapper
+                    locale={params.lang}
+                    messages={messages}
+                    className="relative z-10 overflow-visible"
+                  />
+                </ClientOnly>
+              </div>
+              {children}
+            </Content>
+            <FooterWrapper locale={params.lang} />
+            <ClientOnly>
+              <MobileFloatingMenu items={navigationItems} />
+              <ScrollToTopButton />
+            </ClientOnly>
+          </ThemeProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );

@@ -7,11 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Fixed - Critical Build Error Resolution (July 25, 2025)
 
 - **🔥 Fixed TypeScript Compilation Error**: Resolved critical duplicate function declarations in `infinite-moving-badges.tsx`
+
   - **Issue**: Build was failing due to duplicate `getDirection` and `getSpeed` function declarations causing TypeScript compilation errors
   - **Root Cause**: Functions were defined as regular functions but used in `useEffect` dependencies, creating unstable references
   - **Solution**: Converted all animation functions to `useCallback` hooks with proper dependency arrays
     - `getDirection` → `useCallback` with `[direction]` dependency
-    - `getSpeed` → `useCallback` with `[speed]` dependency  
+    - `getSpeed` → `useCallback` with `[speed]` dependency
     - `addAnimation` → `useCallback` with `[getDirection, getSpeed]` dependencies
   - **Impact**: Build now compiles successfully, ready for deployment
   - **Code Quality**: Follows React best practices with stable callback functions
@@ -27,10 +28,10 @@ All notable changes to this project will be documented in this file.
   - **Final Count**: Reduced from 80+ warnings to 16 remaining warnings
   - **React Hooks Dependencies Fixed**: Resolved all critical React Hook dependency issues that could cause memory leaks
     - Fixed `GeoGlobe.tsx` (3 warnings) - wrapped pointsData in useMemo, fixed mountRef cleanup
-    - Fixed `GeoGlobeInspira.tsx` (1 warning) - added missing sampleArcs dependency  
+    - Fixed `GeoGlobeInspira.tsx` (1 warning) - added missing sampleArcs dependency
     - Fixed `HomePageGlobalHero.tsx` (3 warnings) - wrapped allMarkers in useMemo, added headquarters dependency
   - **Unused Variables Resolved**: Fixed unused parameters across 20+ UI components and Globe components
-    - Prefixed unused parameters with underscore (_param) in apple-cards-carousel, expandable, floating-dock
+    - Prefixed unused parameters with underscore (\_param) in apple-cards-carousel, expandable, floating-dock
     - Fixed unused variables in infinite-moving-badges, infinite-moving-cards, scroll-text-marquee
     - Cleaned up unused imports and variables in type definition files
   - **Prefer-const Warnings Fixed**: Changed `let` to `const` for non-reassigned variables

@@ -2,14 +2,17 @@ import { Suspense } from "react";
 
 import ContactInfo from "@/components/ContactInfo";
 import ContactSalesForm from "@/components/ContactSalesForm";
+import ErrorBoundary from "@/components/ErrorBoundary";
 import ISSIServicesMapWrapper from "@/components/ISSIServicesMapWrapper";
 import ISSIServicesShowcaseWrapper from "@/components/ISSIServicesShowcaseWrapper";
 import Spinner from "@/components/Spinner";
 
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
+import { metadataBase } from "@/lib/metadata";
 
 export const metadata = {
+  metadataBase,
   title: "IT Services & Solutions - ISSI - International Software Systems International",
   description: "Comprehensive IT services including software development, cloud computing, cybersecurity, and government solutions by ISSI.",
 };
@@ -22,9 +25,11 @@ interface Props {
 
 export default function Page({ params: { lang: locale } }: Props) {
   return (
-    <Suspense fallback={<Spinner />}>
-      <PageContent locale={locale} />
-    </Suspense>
+    <ErrorBoundary>
+      <Suspense fallback={<Spinner />}>
+        <PageContent locale={locale} />
+      </Suspense>
+    </ErrorBoundary>
   );
 }
 

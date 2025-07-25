@@ -22,6 +22,7 @@ interface Props {
 
 export default function NavbarContent({ user: _user, locale, messages }: Props) {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
 
   const appMenuRef = useRef(null);
   const userMenuRef = useRef(null);
@@ -31,6 +32,10 @@ export default function NavbarContent({ user: _user, locale, messages }: Props) 
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [langSwitcherMenuOpen, setLangSwitcherMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useOutsideClick(appMenuRef, () => {
     setAppMenuOpen(false);
@@ -142,7 +147,7 @@ export default function NavbarContent({ user: _user, locale, messages }: Props) 
 
               {/* Desktop Floating Pill Navigation - Visible on 1080px+ screens */}
               <div className="hidden xl:flex flex-1 justify-center">
-                <FloatingNav navItems={floatingNavItems} />
+                {mounted && <FloatingNav navItems={floatingNavItems} />}
               </div>
               {/* Mobile Hamburger Menu - Hidden on 1080px+ screens */}
               <div className="relative ml-1 xl:hidden">                <button

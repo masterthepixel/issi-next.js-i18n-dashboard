@@ -12,7 +12,8 @@ Write-Host "📝 Recent Git Activity:" -ForegroundColor Green
 Write-Host "----------------------" -ForegroundColor Green
 try {
     git log --oneline -5 2>$null
-} catch {
+}
+catch {
     Write-Host "No git history found" -ForegroundColor Red
 }
 Write-Host ""
@@ -23,7 +24,8 @@ Write-Host "---------------" -ForegroundColor Green
 if (Test-Path ".next\build-manifest.json") {
     $buildTime = (Get-Item ".next\build-manifest.json").LastWriteTime
     Write-Host "✅ Build exists - Last modified: $buildTime" -ForegroundColor Green
-} else {
+}
+else {
     Write-Host "❌ No recent build found" -ForegroundColor Red
 }
 Write-Host ""
@@ -36,7 +38,8 @@ if (Test-Path "tmux-orchestrator\registry\agent-status.md") {
     # Extract summary section
     $summary = $agentStatus -split "---" | Select-Object -Last 1
     Write-Host $summary
-} else {
+}
+else {
     Write-Host "No agent status file found" -ForegroundColor Red
 }
 Write-Host ""
@@ -50,7 +53,8 @@ if (Test-Path "tmux-orchestrator\registry\") {
         Write-Host "📄 $($file.Name)" -ForegroundColor Yellow
         Write-Host "   Modified: $($file.LastWriteTime)" -ForegroundColor Gray
     }
-} else {
+}
+else {
     Write-Host "No task registry found" -ForegroundColor Red
 }
 Write-Host ""
@@ -60,19 +64,21 @@ Write-Host "📁 Recent File Changes:" -ForegroundColor Green
 Write-Host "----------------------" -ForegroundColor Green
 try {
     $recentFiles = Get-ChildItem -Path "src\" -Recurse -File | 
-                   Where-Object {$_.LastWriteTime -gt (Get-Date).AddMinutes(-30)} |
-                   Sort-Object LastWriteTime -Descending |
-                   Select-Object -First 5
+    Where-Object { $_.LastWriteTime -gt (Get-Date).AddMinutes(-30) } |
+    Sort-Object LastWriteTime -Descending |
+    Select-Object -First 5
     
     if ($recentFiles) {
         foreach ($file in $recentFiles) {
             Write-Host "📝 $($file.FullName.Replace($PWD, '.'))" -ForegroundColor Yellow
             Write-Host "   Modified: $($file.LastWriteTime)" -ForegroundColor Gray
         }
-    } else {
+    }
+    else {
         Write-Host "No recent file changes in last 30 minutes" -ForegroundColor Gray
     }
-} catch {
+}
+catch {
     Write-Host "Could not check file changes" -ForegroundColor Red
 }
 Write-Host ""
