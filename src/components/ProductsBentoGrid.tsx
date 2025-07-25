@@ -33,7 +33,7 @@ import {
 } from "react-icons/fa";
 import { useIntl } from "react-intl";
 
-interface Product {
+interface _Product {
   id: string;
   slug?: string;
   title?: string;
@@ -602,7 +602,7 @@ export default function ProductsBentoGrid({ lang }: ProductsBentoGridProps) {
         ))}
       </div>      {/* Products Grid */}
       <BentoGrid className="max-w-7xl mx-auto">
-        {filteredProducts.map((product, index) => {
+        {filteredProducts.map((product, _index) => {
           const IconComponent = product.icon;
           const colors = getCategoryColors(product.category);
           const productSlug = getProductSlug(product.id);

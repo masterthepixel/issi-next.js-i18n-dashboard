@@ -200,12 +200,7 @@ const ANIMATION_PRESETS: Record<string, AnimationPreset> = {
     },
 }
 
-// Update type definitions
-type AnimationConfig = {
-    initial: { [key: string]: number | string }
-    animate: { [key: string]: number | string }
-    exit: { [key: string]: number | string }
-}
+// Update type definitions (removed unused AnimationConfig type)
 
 // Props for defining custom animations
 interface AnimationProps {

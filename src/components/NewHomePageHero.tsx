@@ -4,7 +4,7 @@ import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 export default function NewHomePageHero() {
-  const intl = useIntl();
+  const _intl = useIntl();
 
   return (
     <div className="relative isolate overflow-hidden bg-white">

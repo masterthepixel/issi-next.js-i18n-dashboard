@@ -6,7 +6,14 @@
       "Bash(pnpm validate:json:*)",
       "Bash(node:*)",
       "Bash(git add:*)",
-      "WebFetch(domain:www.issi-software.com)"
+      "WebFetch(domain:www.issi-software.com)",
+      "Bash(cat:*)",
+      "Bash(dir \"$env:APPDATA\\Claude\")",
+      "Bash(ls:*)",
+      "Bash(docker mcp:*)",
+      "Bash(find:*)",
+      "Bash(mkdir:*)",
+      "Bash(chmod:*)"
     ],
     "deny": []
   }

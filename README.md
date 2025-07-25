@@ -19,6 +19,7 @@ This Next.js application features:
 - **Dashboard Interface**: Organized presentation of company information and services
 - **App Router**: Utilizes Next.js App Router for efficient routing and navigation
 - **Universal Breadcrumb System**: Automatic navigation with 3D globe integration
+- **AI-Powered Development**: Autonomous tmux orchestrator with 8-agent development team
 - **Enterprise SEO**: Comprehensive structured data and metadata optimization
 - **Product Showcase**: Dedicated ProductDetailsPage component with i18n support
 - **Type Safety**: Full TypeScript integration with comprehensive type definitions
@@ -51,6 +52,51 @@ touch src/app/[lang]/my-feature/page.tsx
 ```
 
 👉 **[Read Full Documentation](./docs/UNIVERSAL_BREADCRUMB_DOCUMENTATION.md)**
+
+## 🤖 Featured: AI-Powered Tmux Orchestrator
+
+Experience **autonomous development** with our **Claude AI team orchestration system** that enables 24/7 continuous development:
+
+### 🎯 **Key Features**
+
+- **🚀 Autonomous Team**: 8-agent development team working around the clock
+- **👥 Specialized Roles**: Frontend, Backend, QA, DevOps, and Project Management agents
+- **📊 Quality Gates**: Mandatory 90-URL testing and git discipline protocols
+- **🔄 Self-Scheduling**: Agents coordinate their own check-ins and task management
+- **📱 ISSI-Optimized**: Tailored workflows for i18n, translation, and product testing
+- **⚡ Zero Downtime**: Continuous development progress without human supervision
+
+### 🛠 **Team Structure**
+
+```bash
+# 8-Window Development Team
+Window 0: Orchestrator (coordination hub)
+Window 1: Frontend Agent (React, i18n, UI/UX)
+Window 2: Backend Agent (APIs, data management)
+Window 3: QA Agent (testing, validation, accessibility)
+Window 4: Dev Server (development environment)
+Window 5: Build Agent (CI/CD, deployments)
+Window 6: Project Manager (quality oversight)
+Window 7: Documentation Agent (docs, knowledge management)
+```
+
+### 🚀 **Quick Start**
+
+```bash
+# Launch autonomous development team
+./tmux-orchestrator/scripts/start-issi-project.sh
+
+# Deploy Claude agents to their specialized roles
+./tmux-orchestrator/scripts/deploy-issi-team.sh
+
+# Result: 24/7 development with:
+# ✅ Automated translation management
+# ✅ Continuous product URL validation
+# ✅ Real-time quality assurance
+# ✅ Self-coordinating team workflows
+```
+
+👉 **[Read Full Documentation](./ISSI_TMUX_ORCHESTRATOR_README.md)**
 
 ## 🌍 Global Infrastructure Network Visualization
 
@@ -97,6 +143,7 @@ Experience ISSI's worldwide cloud infrastructure through our **interactive 3D gl
   - **Debug Screens**: Real-time responsive breakpoint indicator
   - **Hot Reload**: Instant development feedback
   - **Type Safety**: Comprehensive TypeScript coverage
+  - **AI Orchestration**: Tmux-based autonomous development team
 - **UI Components**:
   - Custom BentoGrid layouts
   - 3D Globe integration with Three.js
@@ -112,6 +159,7 @@ Experience ISSI's worldwide cloud infrastructure through our **interactive 3D gl
 - **Testing**: Vitest with Testing Library
 - **Package Manager**: pnpm
 - **Code Quality**: ESLint with custom rules and JSON validation
+- **AI Development**: Claude agents with tmux orchestration
 
 ## Getting Started
 
@@ -305,6 +353,10 @@ This project includes comprehensive instructions and guides for all major develo
 - **I18N_ARCHITECTURE.md** – Architecture diagrams and detailed internationalization implementation
 - **COMPONENT_INTEGRATION_GUIDE.md** – How to build, wrap, and integrate i18n-ready client/server components
 - **BENTOGRID_CREATION_GUIDE.md** – Complete guide for creating and localizing BentoGrid components
+
+### AI Development
+
+- **ISSI_TMUX_ORCHESTRATOR_README.md** – Complete tmux orchestrator setup and autonomous development team management
 
 ### Development Tools
 

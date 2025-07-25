@@ -17,7 +17,7 @@ export default function TermsContent({ messages, locale }: TermsContentProps) {
 }
 
 function TermsContentInner() {
-  const intl = useIntl();
+  const _intl = useIntl();
 
   return (
     <div className="prose prose-slate dark:prose-invert max-w-none">

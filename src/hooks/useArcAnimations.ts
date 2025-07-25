@@ -12,7 +12,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 export const useArcAnimations = (
   enabledProviders: string[],
-  locations: DatacenterLocation[]
+  _locations: DatacenterLocation[]
 ) => {
   const [activeArcs, setActiveArcs] = useState<ActiveArc[]>([]);
   const intervalsRef = useRef<NodeJS.Timeout[]>([]);
@@ -25,7 +25,7 @@ export const useArcAnimations = (
     color: string,
     altitude: number = 0.3,
     thickness: number = 2,
-    isPriority: boolean = false
+    _isPriority: boolean = false
   ): ActiveArc | null => {
     const source = getLocationById(sourceId);
     const target = getLocationById(targetId);

@@ -198,7 +198,7 @@ export default function ISSIServicesShowcase() {
     : services.filter(service => service.categories.includes(selectedCategory));
 
   // Generate an animated background gradient class
-  const backgroundGradientClass = 'bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20';
+  const _backgroundGradientClass = 'bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20';
   return (
     <section className="py-16 px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
@@ -231,7 +231,7 @@ export default function ISSIServicesShowcase() {
         </div>        {/* Bento Grid Layout */}
         {isLoaded && (
           <BentoGrid className="mx-auto">
-            {filteredServices.map((service, index) => {
+            {filteredServices.map((service, _index) => {
               const IconComponent = service.icon;
               const colors = getCategoryColors(service.categories);
               return (

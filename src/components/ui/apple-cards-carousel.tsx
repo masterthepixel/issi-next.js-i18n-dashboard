@@ -149,7 +149,16 @@ export const Carousel = ({ items, initialScroll = 0, autoplay = false, loop = fa
 export const Card = ({ card, index, layout = false }: { card: CardType; index: number; layout?: boolean }) => {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const { onCardClose, currentIndex } = useContext(CarouselContext);
+  const { onCardClose } = useContext(CarouselContext);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    onCardClose(index);
+  };
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -164,18 +173,9 @@ export const Card = ({ card, index, layout = false }: { card: CardType; index: n
     }
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [open]);
+  }, [open, handleClose]);
 
   useOutsideClick(containerRef, () => handleClose());
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-    onCardClose(index);
-  };
 
   return (
     <>

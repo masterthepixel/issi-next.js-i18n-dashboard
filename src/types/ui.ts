@@ -85,7 +85,7 @@ export interface ButtonProps extends BaseComponentProps {
   fullWidth?: boolean;
   leftIcon?: React.ComponentType<any>;
   rightIcon?: React.ComponentType<any>;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (_event: React.MouseEvent<HTMLButtonElement>) => void;
   type?: 'button' | 'submit' | 'reset';
 }
 
@@ -106,9 +106,9 @@ export interface InputProps extends BaseComponentProps {
   size?: ComponentSize;
   leftIcon?: React.ComponentType<any>;
   rightIcon?: React.ComponentType<any>;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
-  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onChange?: (_event: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (_event: React.FocusEvent<HTMLInputElement>) => void;
+  onFocus?: (_event: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 /**
@@ -152,7 +152,7 @@ export interface NavigationProps extends BaseComponentProps {
   showIcons?: boolean;
   collapsible?: boolean;
   defaultCollapsed?: boolean;
-  onItemClick?: (item: NavMenuItem) => void;
+  onItemClick?: (_item: NavMenuItem) => void;
 }
 
 /**
@@ -332,7 +332,7 @@ export interface TabsProps extends BaseComponentProps {
 export interface PaginationProps extends BaseComponentProps {
   currentPage: number;
   totalPages: number;
-  onPageChange: (page: number) => void;
+  onPageChange: (_page: number) => void;
   showFirstLast?: boolean;
   showPrevNext?: boolean;
   showPageNumbers?: boolean;

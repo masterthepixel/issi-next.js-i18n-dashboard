@@ -3,7 +3,7 @@
 
 // Simple globe placeholder for breadcrumb integration
 export default function MiniDataGlobe({ 
-  size = 100, 
+  size: _size = 100, 
   className = '' 
 }: {
   size?: number;

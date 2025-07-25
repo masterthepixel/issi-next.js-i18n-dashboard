@@ -145,7 +145,7 @@ const GovernmentHero = () => {
         </div>
       </div>        {/* Enhanced Bento Grid Layout */}
         <BentoGrid className="mx-auto">
-          {governmentServices.map((service, index) => {
+          {governmentServices.map((service, _index) => {
             const IconComponent = service.icon;
             const colors = getCategoryColors(service.category);
             return (<div

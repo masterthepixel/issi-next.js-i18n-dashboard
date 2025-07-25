@@ -26,13 +26,13 @@ export default function ScrollBaseAnimation({
     const baseX = useMotionValue(0);
     const { scrollY } = useScroll();
     const scrollVelocity = useVelocity(scrollY);
-    const smoothVelocity = useSpring(scrollVelocity, {
-        damping: 50,
-        stiffness: 400
-    });
-    const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
-        clamp: false
-    });
+    // const smoothVelocity = useSpring(scrollVelocity, {
+    //     damping: 50,
+    //     stiffness: 400
+    // }); // Currently unused
+    // const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+    //     clamp: false
+    // }); // Currently unused
 
     const containerRef = useRef<HTMLDivElement>(null);
     const prefersReducedMotion = useRef(false);

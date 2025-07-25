@@ -19,7 +19,7 @@ export function LiquidGlassBackground({ className = "" }: LiquidGlassBackgroundP
     if (!ctx) return;
     
     let animationFrameId: number;
-    let mouse = { x: 0, y: 0 };
+    const mouse = { x: 0, y: 0 };
     
     // Define Particle class with proper null checking
     class Particle {
@@ -101,7 +101,7 @@ export function LiquidGlassBackground({ className = "" }: LiquidGlassBackgroundP
         // Use a more complex shape for the blobs
         const angleDelta = (Math.PI * 2) / 6;
         let angle = 0;
-        let radius = this.size;
+        const radius = this.size;
         
         // Create an irregular blob shape
         for (let i = 0; i < 6; i++) {

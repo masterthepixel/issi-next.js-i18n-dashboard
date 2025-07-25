@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import ThreeGlobe from "three-globe";
 
@@ -44,7 +44,7 @@ export default function GeoGlobe({ className = "" }: GeoGlobeProps) {
   const headquarters = { name: "Headquarters", lat: 39.0458, lng: -76.8756 };
 
   // Real data centers from cloud providers
-  const dataCenters: DataCenter[] = [
+  const dataCenters: DataCenter[] = useMemo(() => [
     // AWS Data Centers
     { name: "AWS N. Virginia", lat: 39.0458, lng: -77.5016, provider: "AWS", city: "Ashburn", country: "United States", region: "us-east-1", status: true },
     { name: "AWS Ohio", lat: 39.9612, lng: -82.9988, provider: "AWS", city: "Columbus", country: "United States", region: "us-east-2", status: true },
@@ -91,7 +91,7 @@ export default function GeoGlobe({ className = "" }: GeoGlobeProps) {
     { name: "GCP Mumbai", lat: 19.0760, lng: 72.8777, provider: "Google Cloud", city: "Mumbai", country: "India", region: "asia-south1", status: true },
     { name: "GCP Singapore", lat: 1.3404, lng: 103.7090, provider: "Google Cloud", city: "Jurong West", country: "Singapore", region: "asia-southeast1", status: true },
     { name: "GCP Sydney", lat: -33.8688, lng: 151.2093, provider: "Google Cloud", city: "Sydney", country: "Australia", region: "australia-southeast1", status: true },
-  ];
+  ], []);
 
   // Create color-coded markers by provider
   const getProviderColor = (provider: string): string => {
@@ -104,7 +104,7 @@ export default function GeoGlobe({ className = "" }: GeoGlobeProps) {
   };
 
   // Generate points data for the globe
-  const pointsData = [
+  const pointsData = useMemo(() => [
     // Headquarters (red marker, larger)
     { 
       lat: headquarters.lat, 
@@ -125,7 +125,7 @@ export default function GeoGlobe({ className = "" }: GeoGlobeProps) {
       city: center.city,
       country: center.country
     }))
-  ];
+  ], [dataCenters, headquarters.lat, headquarters.lng, headquarters.name]);
 
   // Generate random arc between points
   const generateRandomArc = useCallback((): Arc => {
@@ -283,7 +283,7 @@ export default function GeoGlobe({ className = "" }: GeoGlobeProps) {
       
       renderer.dispose();
     };
-  }, []);
+  }, [arcs, pointsData]);
 
   // Update arcs data when arcs change
   useEffect(() => {

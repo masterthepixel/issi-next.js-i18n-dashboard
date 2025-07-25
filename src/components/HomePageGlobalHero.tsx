@@ -2,7 +2,7 @@
 import { FlipWords } from '@/components/ui/flip-words';
 import createGlobe from 'cobe';
 import { motion } from "motion/react";
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { FormattedMessage, useIntl } from "react-intl";
 
 interface DataCenter {
@@ -40,10 +40,10 @@ export default function HomePageGlobalHero() {
   ];
 
   // Headquarters location
-  const headquarters = { name: "Headquarters", lat: 39.0458, lng: -76.8756 };
+  const headquarters = useMemo(() => ({ name: "Headquarters", lat: 39.0458, lng: -76.8756 }), []);
 
   // Real data centers from cloud providers
-  const dataCenters: DataCenter[] = [
+  const dataCenters: DataCenter[] = useMemo(() => [
     // AWS Data Centers
     { name: "AWS N. Virginia", lat: 39.0458, lng: -77.5016, provider: "AWS", city: "Ashburn", country: "United States", region: "us-east-1", status: true },
     { name: "AWS Ohio", lat: 39.9612, lng: -82.9988, provider: "AWS", city: "Columbus", country: "United States", region: "us-east-2", status: true },
@@ -90,7 +90,7 @@ export default function HomePageGlobalHero() {
     { name: "GCP Mumbai", lat: 19.0760, lng: 72.8777, provider: "Google Cloud", city: "Mumbai", country: "India", region: "asia-south1", status: true },
     { name: "GCP Singapore", lat: 1.3404, lng: 103.7090, provider: "Google Cloud", city: "Jurong West", country: "Singapore", region: "asia-southeast1", status: true },
     { name: "GCP Sydney", lat: -33.8688, lng: 151.2093, provider: "Google Cloud", city: "Sydney", country: "Australia", region: "australia-southeast1", status: true },
-  ];
+  ], []);
 
   // Create color-coded markers by provider
   const getProviderColor = (provider: string): [number, number, number] => {
@@ -103,7 +103,7 @@ export default function HomePageGlobalHero() {
   };
 
   // Create all markers (headquarters + data centers)
-  const allMarkers = [
+  const allMarkers = useMemo(() => [
     // Headquarters (red marker, larger)
     { 
       location: [headquarters.lat, headquarters.lng] as [number, number], 
@@ -116,7 +116,7 @@ export default function HomePageGlobalHero() {
       size: 0.04,
       color: getProviderColor(center.provider)
     }))
-  ];
+  ], [dataCenters, headquarters.lat, headquarters.lng]);
 
   // Generate random data transfer
   const generateDataTransfer = useCallback((): DataTransfer => {
@@ -141,7 +141,7 @@ export default function HomePageGlobalHero() {
       progress: 0,
       startTime: Date.now()
     };
-  }, [dataCenters]);
+  }, [dataCenters, headquarters]);
 
   // Start new data transfers randomly
   useEffect(() => {
@@ -254,7 +254,7 @@ export default function HomePageGlobalHero() {
           const containerWidth = container?.clientWidth || 400;
           const containerHeight = container?.clientHeight || 400;
           const isMobile = window.innerWidth < 1024;
-          const newGlobeSize = isMobile 
+          const _newGlobeSize = isMobile 
             ? Math.max(containerWidth, containerHeight)
             : Math.min(containerWidth, containerHeight, 780);
           

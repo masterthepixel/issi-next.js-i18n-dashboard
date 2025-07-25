@@ -3,7 +3,7 @@
 import { FormattedMessage, useIntl } from 'react-intl';
 
 export default function GovernmentNAICSTable() {
-  const intl = useIntl();
+  const _intl = useIntl();
 
   const naicsData = [
     {

@@ -19,7 +19,7 @@ export const InfiniteMovingBadges = ({
     speed = "fast",
     pauseOnHover = true,
     className,
-    badgeClassName = (index) => "", // Default empty function
+    badgeClassName = (_index) => "", // Default empty function
     itemClassName,
 }: InfiniteMovingBadgesProps) => {
     const containerRef = React.useRef<HTMLDivElement>(null);
@@ -29,7 +29,7 @@ export const InfiniteMovingBadges = ({
     // Setup the animation when component mounts
     useEffect(() => {
         addAnimation();
-    }, []);
+    }, [addAnimation]);
 
     // Clone items for a seamless infinite scroll effect
     function addAnimation() {

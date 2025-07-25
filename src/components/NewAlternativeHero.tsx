@@ -7,8 +7,8 @@ interface NewAlternativeHeroProps {
   lang?: string;
 }
 
-export default function NewAlternativeHero({ lang = "en" }: NewAlternativeHeroProps) {
-  const intl = useIntl();  return (
+export default function NewAlternativeHero({ lang: _lang = "en" }: NewAlternativeHeroProps) {
+  const _intl = useIntl();  return (
     <div className="relative isolate overflow-hidden">      <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:shrink-0 lg:max-w-xl">
             {/* Announcement Badge */}

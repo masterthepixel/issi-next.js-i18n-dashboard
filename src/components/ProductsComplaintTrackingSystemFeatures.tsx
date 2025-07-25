@@ -88,7 +88,7 @@ export default function ProductsComplaintTrackingSystemFeatures() {
                 </section>
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                        {features.map((feature, idx) => {
+                        {features.map((feature, _idx) => {
                             const Icon = feature.icon;
                             return (
                                 <div key={feature.nameId} className="relative pl-9 bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md border border-gray-200 dark:border-gray-700 flex flex-col min-h-[180px] justify-start">

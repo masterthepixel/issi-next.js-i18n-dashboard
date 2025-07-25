@@ -190,12 +190,12 @@ export interface InspiraGlobeConfig extends GlobeConfig {
  */
 export interface GlobeEventHandlers {
   onReady?: () => void;
-  onError?: (error: Error) => void;
-  onPointClick?: (point: GlobePoint, event: MouseEvent) => void;
-  onArcClick?: (arc: GlobeArc, event: MouseEvent) => void;
-  onGlobeClick?: (coords: { lat: number; lng: number }, event: MouseEvent) => void;
-  onZoom?: (zoomLevel: number) => void;
-  onRotate?: (rotation: { lat: number; lng: number }) => void;
+  onError?: (_error: Error) => void;
+  onPointClick?: (_point: GlobePoint, _event: MouseEvent) => void;
+  onArcClick?: (_arc: GlobeArc, _event: MouseEvent) => void;
+  onGlobeClick?: (_coords: { lat: number; lng: number }, _event: MouseEvent) => void;
+  onZoom?: (_zoomLevel: number) => void;
+  onRotate?: (_rotation: { lat: number; lng: number }) => void;
 }
 
 /**

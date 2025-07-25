@@ -97,7 +97,7 @@ const getProductFeatures = (productId: string): ProductFeature[] => {
 
 export default function ProductDetailsPage({
   productId,
-  lang,
+  lang: _lang,
   onBack
 }: ProductDetailsPageProps) {
   const intl = useIntl();

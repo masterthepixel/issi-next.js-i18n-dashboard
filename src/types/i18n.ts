@@ -314,11 +314,11 @@ export interface TranslationErrorInfo {
  * Internationalization hooks return types
  */
 export interface UseTranslationReturn {
-  t: (key: string, params?: MessageFormatParams) => string;
-  formatMessage: (descriptor: { id: string; defaultMessage?: string }, values?: MessageFormatParams) => string;
-  formatDate: (date: Date, options?: DateTimeFormatOptions) => string;
-  formatNumber: (number: number, options?: NumberFormatOptions) => string;
-  formatPlural: (count: number, rules: PluralizationRules) => string;
+  t: (_key: string, _params?: MessageFormatParams) => string;
+  formatMessage: (_descriptor: { id: string; defaultMessage?: string }, _values?: MessageFormatParams) => string;
+  formatDate: (_date: Date, _options?: DateTimeFormatOptions) => string;
+  formatNumber: (_number: number, _options?: NumberFormatOptions) => string;
+  formatPlural: (_count: number, _rules: PluralizationRules) => string;
   language: Language;
   direction: TextDirection;
   isLoading: boolean;  error: TranslationErrorInfo | null;

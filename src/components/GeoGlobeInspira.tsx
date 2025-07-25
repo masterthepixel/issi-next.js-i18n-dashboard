@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import ThreeGlobe from "three-globe";
 
@@ -24,7 +24,7 @@ export default function GeoGlobeInspira({ className = "" }: GeoGlobeInspiraProps
   const frameRef = useRef<number>(0);
 
   // Inspira UI color palette
-  const colors = [
+  const colors = useMemo(() => [
     "#eae547",
     "#9347ea", 
     "#d4ea47",
@@ -35,10 +35,10 @@ export default function GeoGlobeInspira({ className = "" }: GeoGlobeInspiraProps
     "#c747ea",
     "#52ea47",
     "#4754ea",
-  ];
+  ], []);
 
   // Sample arcs data (from Inspira UI)
-  const sampleArcs: Arc[] = [
+  const sampleArcs: Arc[] = useMemo(() => [
     {
       order: 1,
       startLat: -19.885592,
@@ -111,7 +111,7 @@ export default function GeoGlobeInspira({ className = "" }: GeoGlobeInspiraProps
       arcAlt: 0.2,
       color: colors[Math.floor(Math.random() * colors.length)],
     }
-  ];
+  ], [colors]);
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -212,7 +212,7 @@ export default function GeoGlobeInspira({ className = "" }: GeoGlobeInspiraProps
       renderer.dispose();
       scene.clear();
     };
-  }, []);
+  }, [sampleArcs]);
 
   return (
     <div className={`relative w-full h-full overflow-hidden ${className}`}>

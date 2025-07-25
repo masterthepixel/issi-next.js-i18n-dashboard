@@ -33,7 +33,7 @@ export default function DataGlobe({
   width = 800,
   theme: initialTheme = 'auto',
   showControls = true,
-  autoRotate = true,
+  autoRotate: _autoRotate = true,
   initialProvider = 'aws'
 }: DataGlobeProps) {
   const { theme, setTheme, isDark } = useTheme(initialTheme);

@@ -27,7 +27,7 @@ interface MyBreadcrumbProps {
   showGlobe?: boolean;
 }
 
-const MyBreadcrumb: React.FC<MyBreadcrumbProps> = ({ items, lang, showGlobe = true }) => {
+const MyBreadcrumb: React.FC<MyBreadcrumbProps> = ({ items, _lang, _showGlobe = true }) => {
   // TypeScript will enforce that 'lang' is only 'en' | 'fr' | 'es'
   // TypeScript will enforce that 'items' have the correct structure
   return (
@@ -50,7 +50,7 @@ const MyBreadcrumb: React.FC<MyBreadcrumbProps> = ({ items, lang, showGlobe = tr
 /**
  * Example: Universal breadcrumb with full type safety
  */
-const TypeSafeBreadcrumb: React.FC<UniversalBreadcrumbProps> = (props) => {
+const TypeSafeBreadcrumb: React.FC<UniversalBreadcrumbProps> = (_props) => {
   // All props are type-checked, you get IntelliSense
   return <div>Breadcrumb implementation here</div>;
 };
@@ -136,16 +136,16 @@ const createBentoItem = (id: string, title: string): BentoGridItem => {
 /**
  * Example: Type-safe language handling
  */
-const getLanguageInfo = (lang: Language) => {
-  // TypeScript ensures 'lang' is only valid language codes
-  const languageMap = {
-    en: { name: 'English', nativeName: 'English', flag: '🇺🇸' },
-    fr: { name: 'French', nativeName: 'Français', flag: '🇫🇷' },
-    es: { name: 'Spanish', nativeName: 'Español', flag: '🇪🇸' }
-  };
+// const getLanguageInfo = (lang: Language) => { // Currently unused
+//   // TypeScript ensures 'lang' is only valid language codes
+//   const languageMap = {
+//     en: { name: 'English', nativeName: 'English', flag: '🇺🇸' },
+//     fr: { name: 'French', nativeName: 'Français', flag: '🇫🇷' },
+//     es: { name: 'Spanish', nativeName: 'Español', flag: '🇪🇸' }
+//   };
 
-  return languageMap[lang];
-};
+//   return languageMap[lang];
+// };
 
 /**
  * Example: Type-safe message handling
@@ -155,7 +155,7 @@ interface TypeSafeTranslationProps {
   lang: Language;
 }
 
-const TypeSafeTranslation: React.FC<TypeSafeTranslationProps> = ({ messages, lang }) => {
+const TypeSafeTranslation: React.FC<TypeSafeTranslationProps> = ({ messages, _lang }) => {
   // TypeScript ensures 'messages' has correct structure
   const getText = (key: string): string => {
     const keys = key.split('.');

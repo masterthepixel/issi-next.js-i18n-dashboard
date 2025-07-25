@@ -4,15 +4,15 @@ import {
   ClockIcon,
   UserGroupIcon,
   ChartBarIcon,
-  ClipboardDocumentCheckIcon,
-  DocumentTextIcon,
+  ClipboardDocumentCheckIcon as _ClipboardDocumentCheckIcon,
+  DocumentTextIcon as _DocumentTextIcon,
   CurrencyDollarIcon,
   Cog6ToothIcon,
-  CalendarDaysIcon,
-  ArrowPathIcon,
-  CheckCircleIcon,
-  EyeIcon,
-  BellAlertIcon,
+  CalendarDaysIcon as _CalendarDaysIcon,
+  ArrowPathIcon as _ArrowPathIcon,
+  CheckCircleIcon as _CheckCircleIcon,
+  EyeIcon as _EyeIcon,
+  BellAlertIcon as _BellAlertIcon,
 } from '@heroicons/react/20/solid'
 import Image from 'next/image'
 import { FormattedMessage, useIntl } from 'react-intl'

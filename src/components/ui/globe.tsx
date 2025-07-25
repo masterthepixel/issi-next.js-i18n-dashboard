@@ -18,7 +18,7 @@ extend({ ThreeGlobe: ThreeGlobe });
 
 const RING_PROPAGATION_SPEED = 3;
 const aspect = 1.2;
-const cameraZ = 300;
+// const cameraZ = 300; // Currently unused
 
 type Position = {
   order: number;
@@ -61,7 +61,7 @@ interface WorldProps {
   data: Position[];
 }
 
-let numbersOfRings = [0];
+// const numbersOfRings = [0]; // Currently unused
 
 export function Globe({ globeConfig, data }: WorldProps) {
   const globeRef = useRef<ThreeGlobe | null>(null);
@@ -121,10 +121,10 @@ export function Globe({ globeConfig, data }: WorldProps) {
     if (!globeRef.current || !isInitialized || !data) return;
 
     const arcs = data;
-    let points = [];
+    const points = [];
     for (let i = 0; i < arcs.length; i++) {
       const arc = arcs[i];
-      const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
+      // const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number }; // Currently unused
       points.push({
         size: defaultProps.pointSize,
         order: arc.order,
@@ -242,7 +242,7 @@ export function WebGLRendererConfig() {
     gl.setPixelRatio(window.devicePixelRatio);
     gl.setSize(size.width, size.height);
     gl.setClearColor(0xffaaff, 0);
-  }, []);
+  }, [gl, size.height, size.width]);
 
   return null;
 }

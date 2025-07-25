@@ -24,7 +24,7 @@ export const GlowingStarsBackground = ({
     high: { stars: 144, columns: 24 }
   };
 
-  const { stars, columns } = densityConfig[starDensity];
+  const { stars } = densityConfig[starDensity];
   const [glowingStars, setGlowingStars] = useState<number[]>([]);
   const highlightedStars = useRef<number[]>([]);
 

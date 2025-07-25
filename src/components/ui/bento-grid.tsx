@@ -29,8 +29,8 @@ interface BentoGridItemProps {
 
 export function BentoGridItem({ title, description, header, icon, className, href }: BentoGridItemProps) {
   const [isHovered, setIsHovered] = useState(false);
-  let mouseX = useMotionValue(0);
-  let mouseY = useMotionValue(0);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
   const [randomString, setRandomString] = useState("");
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export function BentoGridItem({ title, description, header, icon, className, hre
   }, [isHovered]);
 
   function onMouseMove({ currentTarget, clientX, clientY }: any) {
-    let { left, top } = currentTarget.getBoundingClientRect();
+    const { left, top } = currentTarget.getBoundingClientRect();
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
   }
@@ -115,8 +115,8 @@ export function BentoGridItem({ title, description, header, icon, className, hre
 // Simplified version of the Evervault card pattern for the bento grid
 function EvervaultCardContent({ mouseX, mouseY, randomString }: any) {
   const { useMotionTemplate, motion } = require("motion/react");
-  let maskImage = useMotionTemplate`radial-gradient(300px at ${mouseX}px ${mouseY}px, white, transparent)`;
-  let style = { maskImage, WebkitMaskImage: maskImage };
+  const maskImage = useMotionTemplate`radial-gradient(300px at ${mouseX}px ${mouseY}px, white, transparent)`;
+  const style = { maskImage, WebkitMaskImage: maskImage };
 
   return (
     <div className="pointer-events-none">
