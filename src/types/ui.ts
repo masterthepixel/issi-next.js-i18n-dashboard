@@ -197,7 +197,7 @@ export interface BentoGridProps extends BaseComponentProps {
   enableFiltering?: boolean;
   enableSearch?: boolean;
   defaultCategory?: BentoCategory | 'all';
-  onItemClick?: (item: BentoGridItem) => void;
+  onItemClick?: (_item: BentoGridItem) => void;
   loading?: boolean;
   emptyState?: React.ReactNode;
 }
@@ -231,8 +231,8 @@ export interface ValidationState {
  * Form component props
  */
 export interface FormProps extends BaseComponentProps {
-  onSubmit: (data: Record<string, any>) => void | Promise<void>;
-  validation?: Record<string, (value: any) => ValidationState>;
+  onSubmit: (_data: Record<string, any>) => void | Promise<void>;
+  validation?: Record<string, (_value: any) => ValidationState>;
   initialValues?: Record<string, any>;
   enableRealTimeValidation?: boolean;
   disabled?: boolean;
@@ -302,8 +302,8 @@ export interface DropdownProps extends BaseComponentProps {
   clearable?: boolean;
   multiple?: boolean;
   size?: ComponentSize;
-  onSelect?: (value: any) => void;
-  onSearch?: (query: string) => void;
+  onSelect?: (_value: any) => void;
+  onSearch?: (_query: string) => void;
 }
 
 /**
@@ -320,7 +320,7 @@ export interface TabsProps extends BaseComponentProps {
   }>;
   defaultActiveTab?: string;
   activeTab?: string;
-  onTabChange?: (tabId: string) => void;
+  onTabChange?: (_tabId: string) => void;
   variant?: 'line' | 'enclosed' | 'soft-rounded' | 'solid-rounded';
   size?: ComponentSize;
   orientation?: 'horizontal' | 'vertical';
@@ -352,8 +352,8 @@ export interface SearchProps extends BaseComponentProps {
   size?: ComponentSize;
   suggestions?: string[];
   showRecentSearches?: boolean;
-  onSearch?: (query: string) => void;
-  onSuggestionSelect?: (suggestion: string) => void;
+  onSearch?: (_query: string) => void;
+  onSuggestionSelect?: (_suggestion: string) => void;
   onClear?: () => void;
 }
 

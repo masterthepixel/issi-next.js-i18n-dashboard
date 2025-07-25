@@ -718,3 +718,4 @@ tmux capture-pane -t session:0 -p | tail -50
 ## Memories and Project-Specific Instructions
 
 - Ignore tmux in this repo
+- you have permission to run commands like   npm run dev & sleep 10 && pkill -f "next dev" || true  , │   npm run lint --if-present || npm run check-types --if-present || echo "No lint or type check scripts found"

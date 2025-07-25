@@ -3,7 +3,7 @@ import useOutsideClick from "@/hooks/useOutsideClick";
 import { cn } from "@/lib/utils";
 import { IconArrowNarrowLeft, IconArrowNarrowRight, IconX } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "motion/react";
-import React, { createContext, useContext, useEffect, useRef, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 interface CarouselProps {
@@ -21,7 +21,7 @@ type CardType = {
 };
 
 export const CarouselContext = createContext<{
-  onCardClose: (index: number) => void;
+  onCardClose: (_index: number) => void;
   currentIndex: number;
 }>({
   onCardClose: () => {},
@@ -155,10 +155,10 @@ export const Card = ({ card, index, layout = false }: { card: CardType; index: n
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setOpen(false);
     onCardClose(index);
-  };
+  }, [index, onCardClose]);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {

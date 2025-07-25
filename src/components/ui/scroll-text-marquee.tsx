@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import { wrap } from "@/utils/wrap";
 import { PauseIcon, PlayIcon } from "@heroicons/react/24/solid";
-import { motion, useAnimationFrame, useMotionValue, useScroll, useSpring, useTransform, useVelocity } from "motion/react";
+import { motion, useAnimationFrame, useMotionValue, useScroll, useTransform, useVelocity } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
 
 interface ScrollBaseAnimationProps {
@@ -25,7 +25,7 @@ export default function ScrollBaseAnimation({
 }: ScrollBaseAnimationProps) {
     const baseX = useMotionValue(0);
     const { scrollY } = useScroll();
-    const scrollVelocity = useVelocity(scrollY);
+    const _scrollVelocity = useVelocity(scrollY);
     // const smoothVelocity = useSpring(scrollVelocity, {
     //     damping: 50,
     //     stiffness: 400

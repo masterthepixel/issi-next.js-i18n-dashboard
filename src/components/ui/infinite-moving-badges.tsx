@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 interface InfiniteMovingBadgesProps {
     items: string[] | { name: string; icon: React.ElementType }[];
@@ -9,7 +9,7 @@ interface InfiniteMovingBadgesProps {
     speed?: "fast" | "normal" | "slow";
     pauseOnHover?: boolean;
     className?: string;
-    badgeClassName?: (index: number) => string;
+    badgeClassName?: (_index: number) => string;
     itemClassName?: string;
 }
 
@@ -19,20 +19,45 @@ export const InfiniteMovingBadges = ({
     speed = "fast",
     pauseOnHover = true,
     className,
-    badgeClassName = (_index) => "", // Default empty function
+    badgeClassName = () => "", // Default empty function
     itemClassName,
 }: InfiniteMovingBadgesProps) => {
     const containerRef = React.useRef<HTMLDivElement>(null);
     const scrollerRef = React.useRef<HTMLUListElement>(null);
     const [start, setStart] = useState(false);
 
-    // Setup the animation when component mounts
-    useEffect(() => {
-        addAnimation();
-    }, [addAnimation]);
+    // Set the animation direction
+    const getDirection = useCallback(() => {
+        if (containerRef.current) {
+            if (direction === "left") {
+                containerRef.current.style.setProperty(
+                    "--animation-direction",
+                    "forwards"
+                );
+            } else {
+                containerRef.current.style.setProperty(
+                    "--animation-direction",
+                    "reverse"
+                );
+            }
+        }
+    }, [direction]);
+
+    // Set the animation speed
+    const getSpeed = useCallback(() => {
+        if (containerRef.current) {
+            if (speed === "fast") {
+                containerRef.current.style.setProperty("--animation-duration", "20s");
+            } else if (speed === "normal") {
+                containerRef.current.style.setProperty("--animation-duration", "40s");
+            } else {
+                containerRef.current.style.setProperty("--animation-duration", "80s");
+            }
+        }
+    }, [speed]);
 
     // Clone items for a seamless infinite scroll effect
-    function addAnimation() {
+    const addAnimation = useCallback(() => {
         if (containerRef.current && scrollerRef.current) {
             const scrollerContent = Array.from(scrollerRef.current.children);
 
@@ -49,10 +74,16 @@ export const InfiniteMovingBadges = ({
             getSpeed();
             setStart(true);
         }
-    }
+    }, [getDirection, getSpeed]);
+
+    // Setup the animation when component mounts
+    useEffect(() => {
+        addAnimation();
+    }, [addAnimation]);
+
 
     // Set the animation direction
-    const getDirection = () => {
+    const getDirection = useCallback(() => {
         if (containerRef.current) {
             if (direction === "left") {
                 containerRef.current.style.setProperty(
@@ -66,10 +97,10 @@ export const InfiniteMovingBadges = ({
                 );
             }
         }
-    };
+    }, [direction]);
 
     // Set the animation speed
-    const getSpeed = () => {
+    const getSpeed = useCallback(() => {
         if (containerRef.current) {
             if (speed === "fast") {
                 containerRef.current.style.setProperty("--animation-duration", "20s");
@@ -79,7 +110,7 @@ export const InfiniteMovingBadges = ({
                 containerRef.current.style.setProperty("--animation-duration", "80s");
             }
         }
-    };
+    }, [speed]);
 
     return (
         <div

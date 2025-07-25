@@ -50,7 +50,7 @@ const useExpandable = () => useContext(ExpandableContext)
 type ExpandablePropsBase = Omit<HTMLMotionProps<"div">, "children">
 
 interface ExpandableProps extends ExpandablePropsBase {
-    children: ReactNode | ((props: { isExpanded: boolean }) => ReactNode)
+    children: ReactNode | ((_props: { isExpanded: boolean }) => ReactNode)
     expanded?: boolean
     onToggle?: () => void
     transitionDuration?: number
@@ -524,11 +524,11 @@ ExpandableCardContent.displayName = "ExpandableCardContent"
 const ExpandableCardFooter = React.forwardRef<
     HTMLDivElement,
     React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+>(({ className, ..._props }, ref) => (
     <div
         ref={ref}
         className={cn("flex items-center p-4 pt-0", className)}
-        {...props}
+        {..._props}
     />
 ))
 ExpandableCardFooter.displayName = "ExpandableCardFooter"

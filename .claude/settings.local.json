@@ -56,7 +56,9 @@
       "Bash(echo:*)",
       "Bash(fi)",
       "Bash(done)",
-      "Bash(npm uninstall:*)"
+      "Bash(npm uninstall:*)",
+      "Bash(npm run check-types:*)",
+      "Bash(npm run typecheck:*)"
     ],
     "deny": []
   }
