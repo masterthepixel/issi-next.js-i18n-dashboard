@@ -16,6 +16,15 @@
     "pre-commit": "npm run lint && npm run validate:json",
     "test:products": "node test-product-urls.js",
     "test:products:all": "node test-all-product-urls.js",
+    "import:figma-icons": "node scripts/figmaIconImporter.js",
+    "setup:figma-icons": "node scripts/setupFigmaIcons.js",
+    "check:figma-setup": "node scripts/checkFigmaSetup.js",
+    "process:local-figma": "node scripts/localFigmaProcessor.js",
+    "convert:svg-to-react": "node src/components/icons/local-figma/convertSvgToReact.js ./src/components/icons/svg-exports ./src/components/icons/figma-converted",
+    "convert:category": "node src/components/icons/local-figma/convertCategoryToReact.js",
+    "setup:large-collection": "node scripts/largeCollectionProcessor.js",
+    "organize:icons": "node scripts/organizeExportedIcons.js",
+    "import:local-icons": "npm run process:local-figma && npm run convert:svg-to-react",
     "prepare": "node -e \"if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL && !process.env.CI) { try { require('husky').install() } catch (e) { console.log('Husky setup skipped in production/CI environment') } }\""
   },
   "dependencies": {

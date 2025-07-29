@@ -246,27 +246,6 @@ const allProducts = [
     size: { width: 1, height: 1 }, // Standard card
     className: "col-span-1",
     priority: 10,
-  }, {
-    id: "employee-performance",
-    title: "Employee Performance",
-    description: "360-degree feedback system with automated performance reviews and goal tracking.",
-    icon: FaChartLine,
-    category: "hr",
-    tags: ["360 Feedback", "Goal Tracking"],
-    size: { width: 1, height: 2 }, // Double height card
-    className: "col-span-1 row-span-2",
-    priority: 11,
-  },
-  {
-    id: "timesheet-management",
-    title: "Timesheet Management",
-    description: "Track project time, manage resources, and generate accurate invoices with real-time reporting.",
-    icon: FaClock,
-    category: "hr",
-    tags: ["Real-time Tracking", "Project Reports"],
-    size: { width: 1, height: 2 }, // Double height card
-    className: "col-span-1 row-span-2",
-    priority: 12,
   },
   {
     id: "employee-talent-repository",

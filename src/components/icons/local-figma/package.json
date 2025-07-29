@@ -1,0 +1,16 @@
+{
+    "name": "issi-figma-icons-local",
+    "scripts": {
+        "process:local-figma": "node scripts/localFigmaProcessor.js",
+        "convert:svg-to-react": "node src/components/icons/local-figma/convertSvgToReact.js ./src/components/icons/svg-exports ./src/components/icons/figma-converted",
+        "import:local-icons": "npm run process:local-figma && npm run convert:svg-to-react"
+    },
+    "localFigmaInstructions": {
+        "step1": "Save the community file locally (Figma Desktop > File > Save As > .fig file)",
+        "step2": "Run: npm run process:local-figma './path/to/your/file.fig'",
+        "step3": "Follow the generated LOCAL_FILE_GUIDE.md instructions",
+        "step4": "Export SVGs from Figma Desktop to ./src/components/icons/svg-exports/",
+        "step5": "Run: npm run convert:svg-to-react",
+        "result": "All icons converted to React components automatically!"
+    }
+}

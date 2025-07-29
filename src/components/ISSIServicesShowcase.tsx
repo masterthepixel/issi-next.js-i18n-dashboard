@@ -33,13 +33,13 @@ export default function ISSIServicesShowcase() {
       hover: "hover:border-blue-400 dark:hover:border-blue-500"
     },
     gov: {
-      icon: "text-green-600 dark:text-green-400", 
+      icon: "text-green-600 dark:text-green-400",
       border: "border-green-200 dark:border-green-800",
       hover: "hover:border-green-400 dark:hover:border-green-500"
     },
     cyber: {
       icon: "text-purple-600 dark:text-purple-400",
-      border: "border-purple-200 dark:border-purple-800", 
+      border: "border-purple-200 dark:border-purple-800",
       hover: "hover:border-purple-400 dark:hover:border-purple-500"
     },
     cloud: {
@@ -193,8 +193,8 @@ export default function ISSIServicesShowcase() {
   ];
 
   // Filter services by selected category
-  const filteredServices = selectedCategory === 'all' 
-    ? services 
+  const filteredServices = selectedCategory === 'all'
+    ? services
     : services.filter(service => service.categories.includes(selectedCategory));
 
   // Generate an animated background gradient class
@@ -238,7 +238,10 @@ export default function ISSIServicesShowcase() {
                 <div
                   key={service.id}
                   className={cn(
-                    "row-span-1 rounded-xl group/bento hover:shadow-xl transition-all duration-300 shadow-input dark:shadow-none p-1 bg-gradient-to-br from-transparent via-transparent to-transparent relative min-h-[200px] cursor-pointer",
+                    "row-span-1 rounded-xl group/bento hover:shadow-xl transition-all duration-300 shadow-input dark:shadow-none p-4 relative min-h-[200px] cursor-pointer border-2 bg-white dark:bg-slate-800/80 backdrop-blur-sm",
+                    // Category-specific colors and borders
+                    colors.border,
+                    colors.hover,
                     // Category-specific glow effects
                     "hover:shadow-2xl hover:scale-[1.02]",
                     service.categories.includes("it") && "hover:shadow-blue-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(59_130_246_/_0.5)]",
@@ -246,16 +249,12 @@ export default function ISSIServicesShowcase() {
                     service.categories.includes("cyber") && "hover:shadow-purple-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(147_51_234_/_0.5)]",
                     service.categories.includes("cloud") && "hover:shadow-orange-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(234_88_12_/_0.5)]",
                     service.categories.includes("training") && "hover:shadow-red-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(220_38_38_/_0.5)]",
+                    "group-hover/bento:border-opacity-60 group-hover/bento:bg-white/90 dark:group-hover/bento:bg-slate-800/90",
                     service.className
                   )}
-                >              
-                  {/* Card Content with Coordinated Colors */}
-                  <div className={cn(
-                    "relative flex h-full flex-col justify-between p-4 rounded-lg border-2 transition-all duration-300 bg-white dark:bg-slate-800/80 backdrop-blur-sm",
-                    colors.border,
-                    colors.hover,
-                    "group-hover/bento:border-opacity-60 group-hover/bento:bg-white/90 dark:group-hover/bento:bg-slate-800/90"
-                  )}>
+                >
+                  {/* Card Content without borders */}
+                  <div className="relative flex h-full flex-col justify-between">
                     {/* Icon with category color */}
                     <div className="flex justify-start">
                       <IconComponent className={cn(
@@ -285,8 +284,8 @@ export default function ISSIServicesShowcase() {
           </BentoGrid>
         )}        {/* View All Services Link */}
         <div className="text-left mt-12">
-          <a 
-            href="/services" 
+          <a
+            href="/services"
             className="inline-flex items-center text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
             title={intl.formatMessage({ id: "services.showcase.viewAll" })}
           >

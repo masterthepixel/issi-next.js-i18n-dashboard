@@ -35,3 +35,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# figma files (local imports)
+/figma-files/*.fig
+/figma-files/*.sketch
+/src/components/icons/svg-exports/
