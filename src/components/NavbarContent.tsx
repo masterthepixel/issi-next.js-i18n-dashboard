@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { Home } from "lucide-react";
+import { Globe, Home } from "lucide-react";
 
 import { FloatingNav } from "@/components/ui/floating-navbar";
 import useOutsideClick from "@/hooks/useOutsideClick";
@@ -228,21 +228,7 @@ export default function NavbarContent({ user: _user, locale, messages }: Props) 
                     aria-label="Switch language"
                     onClick={handleLangSwitcherMenuClick}
                   >
-                    <svg
-                      className="size-4"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M10 19a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-3a3.987 3.987 0 0 0-1.951 1.512A8.949 8.949 0 0 0 10 19Zm-1.951-1.488A3.987 3.987 0 0 1 10 16h0a3.987 3.987 0 0 1 1.951 1.512M10 1a8.949 8.949 0 0 1 4.951 1.488A3.987 3.987 0 0 1 13 4h-3a3.987 3.987 0 0 1-1.951-1.512A8.949 8.949 0 0 1 10 1Z"
-                      />
-                    </svg>
+                    <Globe className="size-4" />
                   </button>
                   {langSwitcherMenuOpen && (
                     <Menu ref={langSwitcherMenuRef} aria-labelledby="lang-switcher-menu-button" align="right">                      <MenuItem href={`/en/${pathname ? pathname.split("/").slice(2).join("/") : ""}`} active={locale === "en"}>
@@ -304,8 +290,11 @@ function MenuItem({ href, active, icon, children }: MenuItemProps) {
       href={href}
       role="menuitem"
       className={clsx(
-        "flex items-center gap-3 px-4 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-white/50 dark:hover:bg-slate-700/50 transition-colors",
-        { "bg-white/60 dark:bg-slate-700/60 font-medium": active }
+        "flex items-center gap-3 px-4 py-2 text-sm transition-colors",
+        // Match floating nav color scheme
+        active
+          ? "text-neutral-900 dark:text-white font-medium bg-white/60 dark:bg-slate-700/60"
+          : "text-neutral-600 dark:text-neutral-50 hover:bg-white/50 dark:hover:bg-slate-700/50"
       )}
     >
       {icon && <span className="flex-shrink-0">{icon}</span>}

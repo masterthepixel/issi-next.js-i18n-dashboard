@@ -112,6 +112,8 @@
   "page.home.activities": "Actividades",
   "page.home.activity": "{action, select, COMMENT {Tarea comentada} ACTIVATE {Trabajo activado} STOP {Trabajo detenido} other {Actividad desconocida}}",
   "page.home.team": "Equipo",
+  "team.section.title": "Nuestros Expertos",
+  "team.section.subtitle": "Conozca al equipo de liderazgo detrás del éxito e innovación de ISSI.",
   "page.reports.no-data": "No se encontraron informes.",
   "page.about.title": "Sobre nosotros",
   "page.about.description": "Aprenda más sobre ISSI y nuestro compromiso de ofrecer soluciones de software excepcionales.",

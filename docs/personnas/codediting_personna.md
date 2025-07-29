@@ -4,7 +4,7 @@
 
 **Name**: Senior Full-Stack Developer with i18n Expertise  
 **Specialization**: Enterprise Next.js applications with comprehensive internationalization  
-**Focus**: ISSI multilingual dashboard development and maintenance  
+**Focus**: ISSI multilingual dashboard development and maintenance
 
 ## Core Technical Understanding
 
@@ -42,7 +42,7 @@
 ```text
 src/lang/
 ├── en.json    # English (source/default language)
-├── fr.json    # French translations  
+├── fr.json    # French translations
 ├── es.json    # Spanish translations
 └── en-hero-update.json  # Backup/staging file
 ```
@@ -65,13 +65,13 @@ src/types/i18n.ts        # Comprehensive i18n type library
 {
   // Navigation & Breadcrumbs
   "breadcrumb.home": "Home",
-  "breadcrumb.services": "Services", 
+  "breadcrumb.services": "Services",
   "breadcrumb.products": "Products",
   "breadcrumb.government": "Government",
   "breadcrumb.compliance": "Compliance",
   "breadcrumb.about": "About",
   "breadcrumb.contact": "Contact",
-  
+
   // Common Navigation
   "common.navigation.home": "Home",
   "common.navigation.services": "Services",
@@ -81,15 +81,15 @@ src/types/i18n.ts        # Comprehensive i18n type library
   "common.navigation.compliance": "Compliance",
   "common.navigation.about": "About",
   "common.navigation.contact": "Contact",
-  
+
   // Language & Theme Controls
   "common.language-switcher": "{locale, select, en {English} fr {Français} es {Español} other {Unknown}}",
   "common.theme-switcher": "Toggle dark mode",
   "common.theme-switcher.dark": "Switch to light mode",
-  
+
   // Page-specific Content
-  "services.page.title": "IT Services & Solutions",
-  
+  "services.page.title": "IT Services & Solutions"
+
   // Product-specific keys (extensive product catalog)
   // Government-specific keys
   // Compliance-specific keys
@@ -107,7 +107,7 @@ src/types/i18n.ts        # Comprehensive i18n type library
 ```text
 /[lang]/                    # Homepage (redirects from root)
 /[lang]/about              # Company information and team
-/[lang]/services           # IT services and solutions overview  
+/[lang]/services           # IT services and solutions overview
 /[lang]/products           # Product catalog and listings
 /[lang]/government         # Government services and solutions
 /[lang]/eLearning          # E-learning platform and courses
@@ -129,7 +129,7 @@ src/types/i18n.ts        # Comprehensive i18n type library
 
 ```text
 /[lang]/careers            # Job openings and career opportunities
-/[lang]/news               # Company news and announcements  
+/[lang]/news               # Company news and announcements
 /[lang]/reports            # Annual reports and documentation
 /[lang]/guides             # User guides and documentation
 /[lang]/docs               # Technical documentation
@@ -153,7 +153,7 @@ src/types/i18n.ts        # Comprehensive i18n type library
 /[lang]/compliance         # Main compliance overview
 /[lang]/compliance/cmmi3   # CMMI Level 3 certification
 /[lang]/compliance/iso27001 # ISO 27001 information security
-/[lang]/compliance/iso9001  # ISO 9001 quality management  
+/[lang]/compliance/iso9001  # ISO 9001 quality management
 /[lang]/compliance/mdot     # MDOT certification details
 ```
 
@@ -167,7 +167,7 @@ src/types/i18n.ts        # Comprehensive i18n type library
 
 # Dynamic product pages (/[lang]/products/[slug]):
 /[lang]/products/electronic-correspondence-tracking-system
-/[lang]/products/environmental-tracking-system  
+/[lang]/products/environmental-tracking-system
 /[lang]/products/membership-database-subsidy-payment-system
 /[lang]/products/project-management-suite
 /[lang]/products/bug-tracking-system
@@ -202,7 +202,7 @@ src/types/i18n.ts        # Comprehensive i18n type library
 **Product Organization by Category**:
 
 - **Featured Products** (4): GMS, ECTS, ETS, MDSPS
-- **Project Management** (7): PIMS, Bug Tracking, Capture Manager, Prudent Agile, Task Management, Requirements Management  
+- **Project Management** (7): PIMS, Bug Tracking, Capture Manager, Prudent Agile, Task Management, Requirements Management
 - **HR Solutions** (8): HR Manager, Performance System, Timesheet, Talent Repository, Skills Matrix, Training Dashboard, I-Learn, RSVP
 - **Compliance** (4): Audit Reporting, Expense Tracking, Meeting Minutes, Training Records
 - **Data Management** (3): Central Data Platform, E-Survey, Form Management
@@ -215,13 +215,19 @@ src/types/i18n.ts        # Comprehensive i18n type library
 
 ```typescript
 // Product pages with slug-based routing
-/[lang]/products/[slug]/page.tsx
-
-// Alternative product ID routing (legacy)  
-/[lang]/products/[productId]/page.tsx
-
-// Compliance type routing
-/[lang]/compliance/[type]/page.tsx
+/[lang]/cdoprstu /
+  [slug] /
+  page.tsx /
+  // Alternative product ID routing (legacy)
+  [lang] /
+  products /
+  [productId] /
+  page.tsx /
+  // Compliance type routing
+  [lang] /
+  compliance /
+  [type] /
+  page.tsx;
 ```
 
 **Sitemap Generation** (`src/app/sitemap.ts`):
@@ -246,7 +252,7 @@ https://issi-software.com/en/services
 
 ```text
 https://issi-software.com/fr/products/grant-management-system
-https://issi-software.com/fr/compliance/cmmi3  
+https://issi-software.com/fr/compliance/cmmi3
 https://issi-software.com/fr/services
 ```
 
@@ -340,7 +346,7 @@ export async function getIntl(locale: Locale) {
 
 ```text
 /                           → redirects to /en/home
-/[lang]/                    → language-specific homepage  
+/[lang]/                    → language-specific homepage
 /[lang]/products/[slug]     → product detail pages
 /[lang]/compliance/[type]   → compliance pages
 /[lang]/services           → services page
@@ -358,10 +364,10 @@ interface Props {
 
 export default async function Page({ params: { lang } }: Props) {
   const intl = await getIntl(lang);
-  
+
   return (
     <div>
-      <h1>{intl.formatMessage({ id: 'page.title' })}</h1>
+      <h1>{intl.formatMessage({ id: "page.title" })}</h1>
     </div>
   );
 }
@@ -376,8 +382,8 @@ export default async function PageWrapper({ params: { lang } }: Props) {
   return <ClientComponentWrapper locale={lang} messages={intl.messages} />;
 }
 
-// Client Component  
-'use client';
+// Client Component
+("use client");
 export default function ClientComponentWrapper({ locale, messages }: Props) {
   return (
     <IntlProvider locale={locale} messages={messages}>
@@ -484,7 +490,7 @@ src/components/
 src/app/[lang]/
 ├── layout.tsx                  # Root layout with locale parameter
 ├── page.tsx                    # Homepage
-├── products/[slug]/page.tsx    # Dynamic product pages  
+├── products/[slug]/page.tsx    # Dynamic product pages
 ├── compliance/[type]/page.tsx  # Compliance pages
 └── [various]/page.tsx          # All pages follow [lang] pattern
 ```
@@ -495,8 +501,8 @@ src/app/[lang]/
 
 ```typescript
 // Server Component (default)
-import { getIntl } from '@/lib/intl';
-import type { Locale } from '@/lib/definitions';
+import { getIntl } from "@/lib/intl";
+import type { Locale } from "@/lib/definitions";
 
 interface Props {
   params: { lang: Locale };
@@ -504,10 +510,10 @@ interface Props {
 
 export default async function Component({ params: { lang } }: Props) {
   const intl = await getIntl(lang);
-  
+
   return (
     <div>
-      <h1>{intl.formatMessage({ id: 'component.title' })}</h1>
+      <h1>{intl.formatMessage({ id: "component.title" })}</h1>
     </div>
   );
 }
@@ -515,12 +521,12 @@ export default async function Component({ params: { lang } }: Props) {
 
 ```typescript
 // Client Component
-'use client';
-import { useIntl, FormattedMessage } from 'react-intl';
+"use client";
+import { useIntl, FormattedMessage } from "react-intl";
 
 export default function ClientComponent() {
   const intl = useIntl();
-  
+
   return (
     <div>
       <FormattedMessage id="component.message" />
@@ -545,6 +551,96 @@ export default function ClientComponent() {
 - Custom color palette: primary, secondary, accent colors
 - Glass morphism effects: `glass-card` utility
 - Animation: Tailwind animate utilities
+- For rounded corners use this philosphy - Inner radius = Outer radius - Outer thickness/2 - https://blog.designary.com/p/perfect-nested-rounded-corners
+
+### **🎨 Advanced Card Design System & Philosophy**
+
+**Expandable Card Architecture** (Based on cult-ui expandable system):
+
+- **Context-Based State Management**: Uses React Context with `ExpandableContext` for state sharing across card components
+- **Smooth Animations**: Framer Motion integration with spring physics (`stiffness: 200, damping: 20, bounce: 0.2`)
+- **Height Measurement**: `react-use-measure` for accurate dynamic height calculations during expansion
+- **Multi-directional Expansion**: Support for `vertical`, `horizontal`, or `both` expansion directions
+- **Perfect Nested Rounded Corners**: Mathematical formula for consistent radius relationships (`Inner radius = Outer radius - Outer thickness/2`)
+
+**Card Component Structure**:
+
+```typescript
+<Expandable transitionDuration={0.4} expandDirection="vertical">
+  <ExpandableCard collapsedSize={{ height: 140 }} expandedSize={{ height: undefined }}>
+    <ExpandableTrigger>{/* Collapsed view - Avatar, Name, Position, Expand Icon */}</ExpandableTrigger>
+    <ExpandableContent preset="slide-up">{/* Expanded content - Bio information */}</ExpandableContent>
+  </ExpandableCard>
+</Expandable>
+```
+
+**Design Principles**:
+
+1. **Collapsed State Optimization**: Fixed height (140px) with essential information only
+
+   - **Avatar**: 64x64px circular with ring styling and shadows
+   - **Name & Role**: Truncated text with hover states
+   - **Expand Icon**: Dynamic chevron with smooth transitions
+
+2. **Expanded State Enhancement**: Unlimited height with full content
+
+   - **Bio Section**: Full biographical information
+   - **Smooth Transitions**: Spring-based animations (0.4s duration)
+   - **Visual Hierarchy**: Border separator between collapsed/expanded content
+
+3. **Accessibility Standards**:
+   - **Keyboard Navigation**: Enter and Space key support for expansion
+   - **ARIA Compliance**: Proper button semantics and focus management
+   - **Screen Reader Support**: Meaningful alt texts and semantic structure
+
+**Alternative Layout Systems**:
+
+- **CSS Grid Layout**: `grid-cols-1 md:grid-cols-2 xl:grid-cols-3` for responsive grid
+- **Masonry Layout**: Bricks.js integration for dynamic height layouts
+  - **Responsive Breakpoints**: 1→2→3→4 columns with progressive gutters (20px→24px→28px→32px)
+  - **Variable Heights**: Different card heights (`h-44` to `h-64`) for authentic masonry effect
+  - **Dynamic Positioning**: Absolute positioning with JavaScript-calculated layouts
+
+**Hover & Interaction States**:
+
+- **Image Overlays**: Gradient overlays with backdrop blur effects
+- **Scale Transformations**: Subtle `scale-105` on hover for depth
+- **Color Transitions**: Text color changes with `transition-colors`
+- **Shadow Elevation**: Progressive shadow depths (`shadow-sm` → `shadow-md` → `shadow-lg`)
+
+**Dark Mode Implementation**:
+
+```typescript
+// Comprehensive dark mode support
+className="bg-white dark:bg-slate-800
+           border-slate-200 dark:border-slate-700
+           text-slate-900 dark:text-slate-100
+           shadow-sm dark:shadow-slate-900/20"
+```
+
+**Performance Considerations**:
+
+- **Lazy Loading**: `loading="lazy"` for images below the fold
+- **Optimized Images**: Next.js Image component with proper sizing
+- **Smooth Animations**: Hardware-accelerated transforms and opacity changes
+- **Memory Management**: Proper cleanup of event listeners and masonry instances
+
+**Reusable Card Pattern**:
+
+```typescript
+interface CardData {
+  id: number;
+  imageUrl: string;
+  height?: string; // For masonry layouts
+}
+
+// Translation key pattern
+const nameId = `team.member.${person.id}.name`;
+const roleId = `team.member.${person.id}.role`;
+const bioId = `team.member.${person.id}.bio`;
+```
+
+This design system provides a flexible foundation for creating sophisticated card layouts with smooth animations, perfect accessibility, and comprehensive responsive behavior suitable for enterprise applications.
 
 ### **File Organization Understanding**
 

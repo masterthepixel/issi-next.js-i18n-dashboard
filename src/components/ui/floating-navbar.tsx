@@ -68,8 +68,16 @@ export const FloatingNav = ({
               )}
               aria-label={navItem.ariaLabel}
             >
-              <span className="block sm:hidden">{navItem.icon}</span>
-              <span className="text-sm !cursor-pointer">{navItem.name}</span>
+              {/* Show icon if name is null (icon-only) or on small screens */}
+              {(navItem.name === null || navItem.name === undefined) ? (
+                <span className="flex items-center">{navItem.icon}</span>
+              ) : (
+                <span className="block sm:hidden">{navItem.icon}</span>
+              )}
+              {/* Show name if it exists */}
+              {navItem.name && (
+                <span className="text-sm !cursor-pointer">{navItem.name}</span>
+              )}
             </Link>
           );
         })}

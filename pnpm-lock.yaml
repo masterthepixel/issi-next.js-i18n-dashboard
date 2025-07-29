@@ -108,6 +108,9 @@ importers:
       '@testing-library/react':
         specifier: ^16.3.0
         version: 16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@18.3.7(@types/react@18.3.23))(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@types/bricks.js':
+        specifier: ^1.8.5
+        version: 1.8.5
       '@types/negotiator':
         specifier: ^0.6.3
         version: 0.6.4
@@ -1007,6 +1010,9 @@ packages:
 
   '@types/babel__traverse@7.20.7':
     resolution: {integrity: sha512-dkO5fhS7+/oos4ciWxyEyjWe48zmG6wbCheo/G2ZnHx4fs3EU6YC6UM8rk56gAjNJ9P3MTH2jo5jb92/K6wbng==}
+
+  '@types/bricks.js@1.8.5':
+    resolution: {integrity: sha512-aGMad7jPP6DEKzMJUsoeKswE/HVYEjYAjfI76WSHIS8lFR6vl5ADrDJLBSTiHT0871/qpk+yT59p7simle1+3w==}
 
   '@types/chai@5.2.2':
     resolution: {integrity: sha512-8kB30R7Hwqf40JPiKhVzodJs2Qc1ZJ5zuT3uzw5Hq/dhNCl3G3l83jfpdI1e20BP348+fV7VIL/+FxaXkqBmWg==}
@@ -4404,6 +4410,8 @@ snapshots:
   '@types/babel__traverse@7.20.7':
     dependencies:
       '@babel/types': 7.27.6
+
+  '@types/bricks.js@1.8.5': {}
 
   '@types/chai@5.2.2':
     dependencies:

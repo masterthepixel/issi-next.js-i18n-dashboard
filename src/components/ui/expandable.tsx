@@ -413,7 +413,7 @@ const ExpandableCard = React.forwardRef<HTMLDivElement, ExpandableCardProps>(
         return (
             <motion.div
                 ref={ref}
-                className={cn("cursor-pointer overflow-hidden", className)}
+                className={cn("cursor-pointer overflow-visible", className)}
                 style={{
                     // Set width and height based on expansion direction
                     width:
@@ -438,9 +438,11 @@ const ExpandableCard = React.forwardRef<HTMLDivElement, ExpandableCardProps>(
                     )}
                 >
                     {/* Nested divs purely for styling and layout (the shadow ring around the card) */}
-                    <div className="grid grid-cols-1 rounded-lg sm:rounded-xl md:rounded-[1.5rem] p-1 sm:p-1.5 shadow-md shadow-black/5 h-full">
-                        <div className="rounded-md sm:rounded-lg md:rounded-xl bg-white dark:bg-slate-800 p-2 sm:p-3 shadow-xl ring-1 ring-black/5 h-full">
-                            <div className="w-full h-full overflow-hidden">
+                    {/* Level 2: Inner radius = 24px - 6px/2 = 21px for md, 16px - 4px/2 = 14px for sm, 8px - 2px/2 = 7px for base */}
+                    <div className="grid grid-cols-1 rounded-[7px] sm:rounded-[14px] md:rounded-[21px] p-1 sm:p-1.5 shadow-md shadow-black/5 h-full">
+                        {/* Level 3: Inner radius = 21px - 12px/2 = 15px for md, 14px - 8px/2 = 10px for sm, 7px - 4px/2 = 5px for base */}
+                        <div className="rounded-[5px] sm:rounded-[10px] md:rounded-[15px] bg-white dark:bg-slate-800 p-2 sm:p-3 shadow-xl ring-1 ring-black/5 h-full">
+                            <div className="w-full h-full overflow-visible">
                                 {/* Ref for measuring content dimensions (so we can let framer know to animate into the dimensions) */}
                                 <div ref={measureRef} className="flex flex-col h-full">
                                     {children}
