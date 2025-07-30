@@ -16,7 +16,7 @@ This Next.js application features:
 
 - **Multilingual Support**: Website content is available in multiple languages including English, Spanish, and French
 - **Modern UI**: Responsive design with interactive components and BentoGrid layouts
-- **Dashboard Interface**: Organized presentation of company information and services
+- **Expandable Team Cards**: Advanced cult-ui based expandable card system with smooth animations
 - **App Router**: Utilizes Next.js App Router for efficient routing and navigation
 - **Universal Breadcrumb System**: Automatic navigation with 3D globe integration
 - **AI-Powered Development**: Autonomous tmux orchestrator with 8-agent development team
@@ -25,31 +25,38 @@ This Next.js application features:
 - **Type Safety**: Full TypeScript integration with comprehensive type definitions
 - **Accessibility**: WCAG-compliant components with ARIA labels and screen reader support
 
-## ✨ Featured: Universal Breadcrumb System
+## ✨ Featured: Advanced Team Card System
 
-Our **zero-configuration breadcrumb system** automatically provides professional navigation across all pages:
+Our **sophisticated expandable card system** provides professional team member showcase:
 
-### 🎯 **Key Features**
+### � **Design Excellence**
 
-- **🚀 Zero Setup**: Works automatically for any new page - no manual configuration required
-- **🌍 3D Globe Integration**: Stunning Inspira UI-style globe on every breadcrumb
-- **🔍 Enterprise SEO**: Automatic JSON-LD structured data for rich search results
-- **🌐 Smart i18n**: Intelligent translation fallbacks in English, French, Spanish
-- **📱 Fully Responsive**: Perfect positioning on mobile and desktop
-- **⚡ Performance Optimized**: SSR-safe with efficient Three.js rendering
+- **🎭 Cult-UI Architecture**: Context-based expandable cards with React Context state management
+- **⚙️ Smooth Animations**: Framer Motion integration with spring physics (200 stiffness, 20 damping)
+- **� Perfect Rounded Corners**: Mathematical nested corner formula (Inner = Outer - Thickness/2)
+- **� Complete Dark Mode**: Comprehensive theme support with proper contrast ratios
+- **📱 Responsive Grid**: CSS Grid layout (1→2→3 columns) with optimal breakpoints
+- **♿ WCAG Compliant**: Full accessibility with keyboard navigation and screen reader support
 
-### 🛠 **Developer Experience**
+### � **Interactive Features**
 
-```bash
-# Create any new page
-touch src/app/[lang]/my-feature/page.tsx
+```typescript
+// Collapsed State: Clean 140px cards showing essentials
+<ExpandableTrigger>
+  {/* Avatar (64x64px) + Name + Position + Expand Icon */}
+</ExpandableTrigger>
 
-# Result: Automatic breadcrumb appears with:
-# ✅ 3D globe background
-# ✅ Multi-language navigation
-# ✅ SEO structured data
-# ✅ Zero configuration needed
+// Expanded State: Full biographical information
+<ExpandableContent preset="slide-up">
+  {/* Complete bio with smooth 0.4s spring animations */}
+</ExpandableContent>
 ```
+
+### 🌍 **Internationalization Ready**
+
+- **Translation Keys**: `team.member.{id}.name`, `team.member.{id}.role`, `team.member.{id}.bio`
+- **Multi-language**: Complete support for English, French, Spanish
+- **Dynamic Content**: Scalable team member management system
 
 👉 **[Read Full Documentation](./docs/UNIVERSAL_BREADCRUMB_DOCUMENTATION.md)**
 

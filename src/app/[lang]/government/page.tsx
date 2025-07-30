@@ -6,6 +6,7 @@ import AboutPartnerNetworkWrapper from "@/components/AboutPartnerNetworkWrapper"
 import AboutStatsWrapper from "@/components/AboutStatsWrapper";
 import ComplianceCarouselWrapper from "@/components/ComplianceCarouselWrapper";
 import GovernmentClientsWrapper from "@/components/GovernmentClientsWrapper";
+import GovernmentContactCTAWrapper from "@/components/GovernmentContactCTAWrapper";
 import GovernmentFAQWrapper from "@/components/GovernmentFAQWrapper";
 import GovernmentHeroWrapper from "@/components/GovernmentHeroWrapper";
 import GovernmentNAICSTableWrapper from "@/components/GovernmentNAICSTableWrapper";
@@ -209,6 +210,9 @@ async function PageContent({ locale }: PageContentProps) {
 
       {/* Government FAQ */}
       <GovernmentFAQWrapper locale={locale} messages={messages} />
+
+      {/* Government Contact CTA */}
+      <GovernmentContactCTAWrapper locale={locale} messages={messages} />
 
       {/* Track Record and Statistics */}
       <AboutStatsWrapper locale={locale} messages={messages} />
