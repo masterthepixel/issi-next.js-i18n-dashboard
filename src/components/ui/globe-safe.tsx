@@ -67,7 +67,7 @@ const GlobeErrorFallback = () => (
 );
 
 // Safe Globe component that handles errors
-function SafeGlobeComponent({ globeConfig, data }: WorldProps) {
+function SafeGlobeComponent({ globeConfig: _globeConfig, data: _data }: WorldProps) {
   const [hasError, setHasError] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
@@ -88,7 +88,7 @@ function SafeGlobeComponent({ globeConfig, data }: WorldProps) {
     const React = require('react');
     const { Canvas } = require('@react-three/fiber');
     const { OrbitControls } = require('@react-three/drei');
-    
+
     // If Three.js components are not available, show fallback
     if (!Canvas || !OrbitControls) {
       return <GlobeErrorFallback />;

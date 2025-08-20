@@ -77,24 +77,24 @@ export default function IconShowcase() {
                 </h3>
                 <div className="space-y-3 text-sm text-blue-800 dark:text-blue-200">
                     <div className="flex items-start space-x-2">
-                        <span className="font-bold text-blue-600 dark:text-blue-400">1.</span>
-                        <span>Visit: <a href="https://www.figma.com/community/file/1023171235158207826" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-600">Figma Community File</a></span>
-                    </div>
-                    <div className="flex items-start space-x-2">
-                        <span className="font-bold text-blue-600 dark:text-blue-400">2.</span>
-                        <span>Click "Duplicate" to add to your Figma account (free)</span>
+                        <span className="font-bold text-blue-600 dark:text-blue-400">3.</span>
+                        <span>For each icon: Right-click 16 &quot;Copy as SVG&quot;</span>
                     </div>
                     <div className="flex items-start space-x-2">
                         <span className="font-bold text-blue-600 dark:text-blue-400">3.</span>
-                        <span>For each icon: Right-click → "Copy as SVG"</span>
+                        <span>For each icon: Right-click 16 &quot;Copy as SVG&quot;</span>
                     </div>
                     <div className="flex items-start space-x-2">
-                        <span className="font-bold text-blue-600 dark:text-blue-400">4.</span>
-                        <span>Replace the TODO comments in <code className="bg-blue-100 dark:bg-blue-900 px-1 rounded">src/components/icons/figma/</code></span>
+                        <span className="font-bold text-blue-600 dark:text-blue-400">3.</span>
+                        <span>For each icon: Right-click → &quot;Copy as SVG&quot;</span>
+                    </div>
+                    <div className="flex items-start space-x-2">
+                        <span className="font-bold text-blue-600 dark:text-blue-400">3.</span>
+                        <span>For each icon: Right-click \u2192 &quot;Copy as SVG&quot;</span>
                     </div>
                     <div className="flex items-start space-x-2">
                         <span className="font-bold text-blue-600 dark:text-blue-400">5.</span>
-                        <span>Icons automatically become available via <code className="bg-blue-100 dark:bg-blue-900 px-1 rounded">import from '@/components/icons'</code></span>
+                        <span>Icons automatically become available via <code className="bg-blue-100 dark:bg-blue-900 px-1 rounded">import from &apos;@/components/icons&apos;</code></span>
                     </div>
                 </div>
             </div>
@@ -103,9 +103,9 @@ export default function IconShowcase() {
             <div className="mt-8 p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
                 <h3 className="font-semibold mb-2">Usage Examples:</h3>
                 <div className="space-y-2 text-sm text-slate-600 dark:text-slate-400 font-mono">
-                    <div>{'import { HomeIcon, ArrowUpIcon } from "@/components/icons";'}</div>
-                    <div>{'<HomeIcon size={24} className="text-blue-600" />'}</div>
-                    <div>{'<ArrowUpIcon size={32} color="#10B981" strokeWidth={2} />'}</div>
+                    <div>{'import { HomeIcon, ArrowUpIcon } from &quot;@/components/icons&quot;;'}</div>
+                    <div>{'<HomeIcon size={24} className=&quot;text-blue-600&quot; />'}</div>
+                    <div>{'<ArrowUpIcon size={32} color=&quot;#10B981&quot; strokeWidth={2} />'}</div>
                 </div>
             </div>
         </div>

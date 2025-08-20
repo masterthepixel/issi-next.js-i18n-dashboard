@@ -50,7 +50,7 @@ const useExpandable = () => useContext(ExpandableContext)
 type ExpandablePropsBase = Omit<HTMLMotionProps<"div">, "children">
 
 interface ExpandableProps extends ExpandablePropsBase {
-    children: ReactNode | ((props: { isExpanded: boolean }) => ReactNode)
+    children: ReactNode | ((_props: { isExpanded: boolean }) => ReactNode)
     expanded?: boolean
     onToggle?: () => void
     transitionDuration?: number
@@ -79,7 +79,7 @@ const Expandable = React.forwardRef<HTMLDivElement, ExpandableProps>(
             onExpandEnd,
             onCollapseStart,
             onCollapseEnd,
-            ...props
+            ..._props
         },
         ref
     ) => {
@@ -127,7 +127,7 @@ const Expandable = React.forwardRef<HTMLDivElement, ExpandableProps>(
                             delay: initialDelay,
                         },
                     }}
-                    {...props}
+                    {..._props}
                 >
                     {/* Render children as a function if provided, otherwise render as is */}
                     {typeof children === "function" ? children({ isExpanded }) : children}
@@ -252,7 +252,7 @@ const ExpandableContent = React.forwardRef<
             stagger = false,
             staggerChildren = 0.1,
             keepMounted = false,
-            ...props
+            ..._props
         },
         ref
     ) => {
@@ -284,7 +284,7 @@ const ExpandableContent = React.forwardRef<
                     overflow: "hidden",
                 }}
                 transition={{ duration: transitionDuration, ease: easeType }}
-                {...props}
+                {..._props}
             >
                 {/* AnimatePresence handles the entering and exiting of components */}
                 <AnimatePresence initial={false}>

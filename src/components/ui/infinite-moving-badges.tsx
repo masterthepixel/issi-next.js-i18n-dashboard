@@ -9,7 +9,7 @@ interface InfiniteMovingBadgesProps {
     speed?: "fast" | "normal" | "slow";
     pauseOnHover?: boolean;
     className?: string;
-    badgeClassName?: (index: number) => string;
+    badgeClassName?: (_index: number) => string;
     itemClassName?: string;
 }
 
@@ -19,7 +19,7 @@ export const InfiniteMovingBadges = ({
     speed = "fast",
     pauseOnHover = true,
     className,
-    badgeClassName = (_) => "", // Default empty function
+    badgeClassName = (_index) => "", // Default empty function
     itemClassName,
 }: InfiniteMovingBadgesProps) => {
     const containerRef = React.useRef<HTMLDivElement>(null);

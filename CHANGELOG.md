@@ -9,33 +9,38 @@ All notable changes to this project will be documented in this file.
 - **🎯 Enhanced Government FAQ Component**: Modernized FAQ layout and improved component architecture
 
   - **Component Updates**:
+
     - Updated `src/components/GovernmentFAQ.tsx` with new Headless UI layout structure
     - Added centered title and subtitle layout with proper spacing
     - Enhanced dark mode visibility with proper background colors
     - Fixed icon toggle states with correct Headless UI syntax (`group-data-[open]:hidden`, `group-[:not([data-open])]:hidden`)
-  
+
   - **New Component Created**:
+
     - `src/components/GovernmentContactCTA.tsx` - Extracted contact section as standalone component
     - `src/components/GovernmentContactCTAWrapper.tsx` - IntlProvider wrapper for contact CTA
     - Maintains "Ready to Discuss Your Government IT Needs?" functionality with phone/email actions
-  
+
   - **Internationalization Enhancements**:
+
     - Added `government.faq.subtitle` translation key to all language files
     - **English**: "Common questions about ISSI's government IT services, compliance, and contracting processes."
     - **French**: "Questions fréquemment posées sur les services informatiques gouvernementaux, la conformité et les processus de contrat d'ISSI."
     - **Spanish**: "Preguntas comunes sobre los servicios TI gubernamentales, cumplimiento y procesos de contratación de ISSI."
     - Added complete government FAQ translations (22 keys) to French and Spanish files
-  
+
   - **Page Integration**:
+
     - Updated `src/app/[lang]/government/page.tsx` to use both FAQ and Contact CTA components separately
     - Improved component modularity and reusability
-  
+
   - **Technical Improvements**:
+
     - Enhanced typography with `text-4xl sm:text-5xl` for title and `text-lg leading-8` for subtitle
     - Improved spacing with `py-24 sm:py-32 lg:py-40` for better visual hierarchy
     - Maintained ISSI color scheme (slate colors with blue accents)
     - Ensured full accessibility compliance and ARIA support
-  
+
   - **Validation Results**:
     - ✅ All JSON files pass validation without syntax errors
     - ✅ 22 FAQ translation keys verified across all 3 languages (en, fr, es)

@@ -67,7 +67,7 @@ const GlobeErrorFallback = () => (
 );
 
 // Safe Globe component that handles errors
-function SafeGlobeComponent({ globeConfig, data }: WorldProps) {
+function SafeGlobeComponent({ globeConfig: _globeConfig, data: _data }: WorldProps) {
   const [hasError, setHasError] = useState(false);
   const [isClient, setIsClient] = useState(false);
 

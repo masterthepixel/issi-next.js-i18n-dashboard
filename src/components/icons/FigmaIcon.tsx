@@ -9,7 +9,7 @@ interface FigmaIconProps {
 const FigmaIcon: React.FC<FigmaIconProps> = ({
     size = 24,
     className = "",
-    color = "currentColor"
+    color: _color = "currentColor"
 }) => {
     return (
         <svg
@@ -19,6 +19,7 @@ const FigmaIcon: React.FC<FigmaIconProps> = ({
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className={className}
+            style={{ color: _color }}
         >
             {/* Figma logo SVG */}
             <path

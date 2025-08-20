@@ -8,8 +8,6 @@ import {
   FaBox,
   FaBug,
   FaCalendarAlt,
-  FaChartLine,
-  FaClock,
   FaCode,
   FaComments,
   FaDatabase,

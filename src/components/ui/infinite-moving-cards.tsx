@@ -26,25 +26,29 @@ export const InfiniteMovingCards = ({
   const scrollerRef = React.useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    addAnimation();
-  }, [addAnimation]);
-  const [start, setStart] = useState(false);
-  function addAnimation() {
-    if (containerRef.current && scrollerRef.current) {
-      const scrollerContent = Array.from(scrollerRef.current.children);
+    function addAnimation() {
+      if (containerRef.current && scrollerRef.current) {
+        const scrollerContent = Array.from(scrollerRef.current.children);
 
-      scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true);
-        if (scrollerRef.current) {
-          scrollerRef.current.appendChild(duplicatedItem);
-        }
-      });
+        scrollerContent.forEach((item) => {
+          const duplicatedItem = item.cloneNode(true);
+          if (scrollerRef.current) {
+            scrollerRef.current.appendChild(duplicatedItem);
+          }
+        });
 
-      getDirection();
-      getSpeed();
-      setStart(true);
+        getDirection();
+        getSpeed();
+        setStart(true);
+      }
     }
-  }
+
+    addAnimation();
+    // intentionally no external deps - this sets up the duplicated DOM for the scroller once on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const [start, setStart] = useState(false);
+  // addAnimation handled inside the mount effect above
   const getDirection = () => {
     if (containerRef.current) {
       if (direction === "left") {
@@ -100,18 +104,18 @@ export const InfiniteMovingCards = ({
                 {item.quote}
               </span>
               <div className="relative z-20 mt-6 flex flex-row items-center">                {item.avatar && (
-                  <div className="mr-4 flex-shrink-0">
-                    <Image 
-                      src={item.avatar} 
-                      alt={`${item.name} avatar`}
-                      className="w-12 h-12 rounded-full object-cover border-2 border-gray-200 dark:border-gray-600"
-                      width={48}
-                      height={48}
-                      loading="lazy"
-                      unoptimized={item.avatar.includes('unsplash.com')}
-                    />
-                  </div>
-                )}
+                <div className="mr-4 flex-shrink-0">
+                  <Image
+                    src={item.avatar}
+                    alt={`${item.name} avatar`}
+                    className="w-12 h-12 rounded-full object-cover border-2 border-gray-200 dark:border-gray-600"
+                    width={48}
+                    height={48}
+                    loading="lazy"
+                    unoptimized={item.avatar.includes('unsplash.com')}
+                  />
+                </div>
+              )}
                 <span className="flex flex-col gap-1">
                   <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-slate-400">
                     {item.name}

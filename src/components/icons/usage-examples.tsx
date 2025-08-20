@@ -1,15 +1,14 @@
 // Example: Using Figma icons in the services bento grid
 // This shows how to replace existing icons with custom Figma icons
 
-import { CustomProductsIcon, CustomServicesIcon } from '@/components/icons';
-
-// Example of how to update the services array in ISSIServicesShowcase.tsx
-const servicesWithFigmaIcons = [
+// Usage examples for Figma icons. Remove or update these examples as needed.
+// Note: do not import non-existent icons here; replace with real components when available.
+const _servicesWithFigmaIcons = [
     {
         id: "cybersecurity",
-        title: intl.formatMessage({ id: 'services.items.cybersecurity.title' }),
-        description: intl.formatMessage({ id: 'services.items.cybersecurity.description' }),
-        icon: CustomServicesIcon, // Replace with your Figma icon
+        title: "Cybersecurity",
+        description: "Enterprise-grade cybersecurity services and consulting.",
+        icon: null, // Replace with your Figma icon component
         href: '/services/cybersecurity',
         className: 'md:col-span-2',
         categories: ['cyber', 'it'],
@@ -17,13 +16,13 @@ const servicesWithFigmaIcons = [
     // ... more services
 ];
 
-// Example: Using in ProductsBentoGrid.tsx
-const productsWithFigmaIcons = [
+// Example: Using in ProductsBentoGrid.tsx (placeholder example)
+const _productsWithFigmaIcons = [
     {
         id: "gms",
         titleKey: "products.gms.title",
         descriptionKey: "products.gms.description",
-        icon: CustomProductsIcon, // Replace with your Figma icon
+        icon: null, // Replace with your Figma icon component
         category: "featured",
         tags: ["Cloud-Based", "Workflow Automation"],
         size: { width: 2, height: 1 },

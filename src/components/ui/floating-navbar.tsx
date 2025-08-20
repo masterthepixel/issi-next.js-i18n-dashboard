@@ -29,10 +29,6 @@ export const FloatingNav = ({
     setMounted(true);
   }, []);
 
-  if (!mounted) {
-    return null;
-  }
-
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -48,7 +44,7 @@ export const FloatingNav = ({
           duration: 0.2,
         }}
         className={cn(
-          "flex max-w-fit border border-transparent dark:border-white/[0.2] rounded-full dark:bg-black bg-white pr-2 pl-8 py-2 items-center justify-center space-x-4",
+          "flex max-w-fit border border-transparent dark:border-white/[0.2] rounded-full dark:bg-black bg-white pr-2 pl-8 py-2 items-center justify-center space-x-4 lg:flex",
           className
         )}
         style={{
@@ -56,7 +52,7 @@ export const FloatingNav = ({
         }}
       >
         {navItems.map((navItem: any, idx: number) => {
-          const isActive = pathname && pathname.includes(navItem.link.split('/').pop()) || false;
+          const isActive = mounted && pathname ? pathname.includes(navItem.link.split('/').pop()) : false;
 
           return (
             <Link
@@ -66,18 +62,9 @@ export const FloatingNav = ({
                 "relative text-neutral-600 dark:text-neutral-50 items-center flex space-x-1 rounded-full px-4 py-2 transition-all duration-300 hover:bg-neutral-100 dark:hover:bg-neutral-800",
                 isActive ? "text-neutral-900 dark:text-white font-medium" : ""
               )}
-              aria-label={navItem.ariaLabel}
             >
-              {/* Show icon if name is null (icon-only) or on small screens */}
-              {(navItem.name === null || navItem.name === undefined) ? (
-                <span className="flex items-center">{navItem.icon}</span>
-              ) : (
-                <span className="block sm:hidden">{navItem.icon}</span>
-              )}
-              {/* Show name if it exists */}
-              {navItem.name && (
-                <span className="text-sm !cursor-pointer">{navItem.name}</span>
-              )}
+              <span className="block sm:hidden">{navItem.icon}</span>
+              <span className="text-sm !cursor-pointer">{navItem.name}</span>
             </Link>
           );
         })}

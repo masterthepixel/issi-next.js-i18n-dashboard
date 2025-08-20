@@ -9,7 +9,7 @@ interface Props {
     };
 }
 
-export default function Page({ params: { lang } }: Props) {
+export default function Page({ params: { lang: _lang } }: Props) {
     return (
         <Suspense fallback={<Spinner />}>
             <div className="min-h-screen bg-white dark:bg-slate-900">
