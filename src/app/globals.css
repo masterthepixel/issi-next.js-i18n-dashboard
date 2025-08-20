@@ -57,6 +57,7 @@
 }
 
 @layer components {
+
   .glass-effect {
     @apply bg-white/70 dark:bg-slate-900/80 backdrop-blur-md backdrop-saturate-180;
     @apply border border-white/20 dark:border-slate-700/30;
