@@ -119,6 +119,7 @@ This section outlines the critical quality, performance, and experience standard
 ### 5.3. Design Tokens & Theming Alignment
 *   **Token Coverage**: A full audit will ensure all brand design tokens (colors, spacing, typography, radii, motion) are mapped to CSS variables in `globals.css`.
 *   **Theme Verification**: The light/dark mode toggle, `prefers-color-scheme` media query fallbacks, and dynamic theme persistence will be tested across all migrated components.
+*   **Typography**: The theme will be configured to use `Instrument Serif` for all headings (via the `--font-serif` variable) and `Inter Tight` for all body text (via the `--font-sans` variable), ensuring consistent typography across the application.
 
 ### 5.4. Performance & Bundle Size
 *   **Tree-Shaking**: The bundle size impact will be analyzed to ensure `shadcn/ui` primitives are being properly tree-shaken.
@@ -257,3 +258,107 @@ These areas aren’t yet addressed in the above plan but should be factored into
 
 7. Static Asset Handling & Optimization
    - Enforce the use of the Next.js `<Image>` component over standard `<img>` tags within all migrated components to ensure consistent optimization, lazy loading, and layout shift prevention.
+
+---
+
+## 9. Appendix C: Theme Definition
+
+The following CSS variables define the complete color palette, typography, and styling rules for both light and dark modes. This theme will be implemented in `src/styles/globals.css` and used by all components across the application.
+
+```css
+:root {
+  --background: 0 0% 97.6471%;
+  --foreground: 0 0% 12.5490%;
+  --card: 0 0% 98.8235%;
+  --card-foreground: 0 0% 12.5490%;
+  --popover: 0 0% 98.8235%;
+  --popover-foreground: 0 0% 12.5490%;
+  --primary: 259.2000 49.0196% 10%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 268.5714 87.5000% 37.6471%;
+  --secondary-foreground: 0 0% 98.0392%;
+  --muted: 0 0% 93.7255%;
+  --muted-foreground: 0 0% 39.2157%;
+  --accent: 95.6129 97.4843% 31.1765%;
+  --accent-foreground: 0 0% 12.5490%;
+  --destructive: 30.9677 97.4843% 31.1765%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 84.7059%;
+  --input: 0 0% 84.7059%;
+  --ring: 68.1818 21.5686% 20%;
+  --chart-1: 313.5484 97.8947% 18.6275%;
+  --chart-2: 17.5000 97.9592% 19.2157%;
+  --chart-3: 30.9677 97.4843% 31.1765%;
+  --chart-4: 70.8387 97.4843% 31.1765%;
+  --chart-5: 95.6129 97.4843% 31.1765%;
+  --sidebar: 0 0% 98.4314%;
+  --sidebar-foreground: 0 0% 14.5098%;
+  --sidebar-primary: 0 0% 20.3922%;
+  --sidebar-primary-foreground: 0 0% 98.4314%;
+  --sidebar-accent: 0 0% 96.8627%;
+  --sidebar-accent-foreground: 0 0% 20.3922%;
+  --sidebar-border: 0 0% 92.1569%;
+  --sidebar-ring: 0 0% 70.9804%;
+  --font-sans: Inter Tight, ui-sans-serif, sans-serif, system-ui;
+  --font-serif: Instrument Serif, ui-serif, serif;
+  --font-mono: IBM Plex Mono, ui-monospace, monospace;
+  --radius: 0.5rem;
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+.dark {
+  --background: 0 0% 6.6667%;
+  --foreground: 0 0% 93.3333%;
+  --card: 0 0% 9.8039%;
+  --card-foreground: 0 0% 93.3333%;
+  --popover: 0 0% 9.8039%;
+  --popover-foreground: 0 0% 93.3333%;
+  --primary: 80.6167 98.2684% 54.7059%;
+  --primary-foreground: 233.3333 52.9412% 10%;
+  --secondary: 210 50.0000% 0.7843%;
+  --secondary-foreground: 80.6167 98.2684% 54.7059%;
+  --muted: 0 0% 13.3333%;
+  --muted-foreground: 0 0% 70.5882%;
+  --accent: 0 0% 16.4706%;
+  --accent-foreground: 0 0% 93.3333%;
+  --destructive: 60.9231 76.4706% 33.3333%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 56.8627%;
+  --input: 0 0% 28.2353%;
+  --ring: 80.6167 98.2684% 54.7059%;
+  --chart-1: 80.6167 98.2684% 54.7059%;
+  --chart-2: 301.8824 100% 50%;
+  --chart-3: 0 100% 43.9216%;
+  --chart-4: 219.8298 100% 53.9216%;
+  --chart-5: 81.0526 98.2759% 54.5098%;
+  --sidebar: 300 5.8824% 10%;
+  --sidebar-foreground: 293.3333 4.3478% 59.4118%;
+  --sidebar-primary: 275.2632 75% 29.8039%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 300 1.9608% 10%;
+  --sidebar-accent-foreground: 293.3333 4.3478% 59.4118%;
+  --sidebar-border: 300 1.9608% 10%;
+  --sidebar-ring: 290.0000 4.9180% 52.1569%;
+  --font-sans: Inter Tight, ui-sans-serif, sans-serif, system-ui;
+  --font-serif: Instrument Serif, ui-serif, serif;
+  --font-mono: IBM Plex Mono, ui-monospace, monospace;
+  --radius: 0.5rem;
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+}
+```
