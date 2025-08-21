@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 interface GlowingStarsBackgroundProps {
   className?: string;
@@ -27,47 +27,64 @@ export const GlowingStarsBackground = ({
   const { stars } = densityConfig[starDensity];
   const [glowingStars, setGlowingStars] = useState<number[]>([]);
   const highlightedStars = useRef<number[]>([]);
+  const mounted = useRef(true);
 
   useEffect(() => {
+    mounted.current = true;
+
     const interval = setInterval(() => {
-      highlightedStars.current = Array.from({ length: 5 }, () =>
-        Math.floor(Math.random() * stars)
-      );
-      setGlowingStars([...highlightedStars.current]);
+      const next = Array.from({ length: 5 }, () => Math.floor(Math.random() * stars));
+      highlightedStars.current = next;
+      // Avoid state updates after unmount
+      if (mounted.current) setGlowingStars(next);
     }, 3000);
 
-    return () => clearInterval(interval);
+    return () => {
+      mounted.current = false;
+      clearInterval(interval);
+    };
   }, [stars]);
 
-  const glowColorClasses = {
-    blue: 'bg-blue-500 shadow-blue-400',
-    purple: 'bg-purple-500 shadow-purple-400',
-    green: 'bg-green-500 shadow-green-400',
-    pink: 'bg-pink-500 shadow-pink-400',
-    yellow: 'bg-yellow-500 shadow-yellow-400',
-  };
-  const gridClass = `glowing-stars-grid-${starDensity}`;
+  const glowColorClasses = useMemo(() => ({
+    blue: 'bg-primary shadow-primary/50',
+    purple: 'bg-secondary shadow-secondary/50',
+    green: 'bg-success shadow-success/50',
+    pink: 'bg-destructive shadow-destructive/50', // Replaced pink with destructive
+    yellow: 'bg-warning shadow-warning/50',
+  }), []);
+
+  const gridClass = useMemo(() => `glowing-stars-grid-${starDensity}`, [starDensity]);
 
   return (
-    <div className={cn("relative min-h-screen w-full overflow-hidden", className)}>
-      {/* Stars Pattern */}
-      <div className={cn("absolute inset-0 opacity-60 dark:opacity-80", gridClass)}>
+    <div
+      className={cn("relative min-h-screen w-full overflow-hidden", className)}
+      style={
+        {
+          "--star-color": "hsl(var(--muted-foreground))",
+          "--star-glow": "hsl(var(--primary))",
+        } as React.CSSProperties
+      }
+    >
+      {/* Stars Pattern (decorative) */}
+      <div aria-hidden={true} role="presentation" className={cn("absolute inset-0 opacity-60 dark:opacity-80", gridClass)}>
         {[...Array(stars)].map((_, starIdx) => {
           const isGlowing = glowingStars.includes(starIdx);
           const delay = (starIdx % 10) * 0.1;
           return (
             <div
               key={`star-${starIdx}`}
+              data-testid="star-container"
               className="relative flex items-center justify-center"
             >
               <BackgroundStar
                 isGlowing={isGlowing}
                 delay={delay}
+                starIdx={starIdx}
               />
               <AnimatePresence mode="wait">
                 {isGlowing && (
-                  <BackgroundGlow 
-                    delay={delay} 
+                  <BackgroundGlow
+                    delay={delay}
                     colorClass={glowColorClasses[glowColor as keyof typeof glowColorClasses] || glowColorClasses.blue}
                   />
                 )}
@@ -76,7 +93,7 @@ export const GlowingStarsBackground = ({
           );
         })}
       </div>
-      
+
       {/* Content */}
       <div className="relative z-10">
         {children}
@@ -85,23 +102,25 @@ export const GlowingStarsBackground = ({
   );
 };
 
-const BackgroundStar = ({ isGlowing, delay }: { isGlowing: boolean; delay: number }) => {
+const BackgroundStar = ({ isGlowing, delay, starIdx }: { isGlowing: boolean; delay: number; starIdx?: number }) => {
   return (
     <motion.div
-      key={delay}
+      // key is managed by the parent list; keep animation stable by using
+      // a deterministic key when possible
+      key={typeof starIdx === 'number' ? `bg-star-${starIdx}` : String(delay)}
       initial={{
         scale: 1,
       }}
       animate={{
         scale: isGlowing ? [1, 1.5, 3, 2.5, 1.5] : 1,
-        background: isGlowing ? "#ffffff" : "#94a3b8",
+        background: isGlowing ? "var(--star-glow)" : "var(--star-color)",
       }}
       transition={{
         duration: 2,
         ease: "easeInOut",
         delay: delay,
       }}
-      className="bg-slate-400 dark:bg-slate-600 h-[2px] w-[2px] rounded-full relative z-20"
+      className="bg-[var(--star-color)] h-[2px] w-[2px] rounded-full relative z-20"
     />
   );
 };

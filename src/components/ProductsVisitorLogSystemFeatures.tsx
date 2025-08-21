@@ -11,6 +11,7 @@ import {
 } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import { FormattedMessage, useIntl } from "react-intl";
+import ProductTemplate from './products/ProductTemplate';
 
 const features = [
     {
@@ -53,64 +54,67 @@ const features = [
 export default function ProductsVisitorLogSystemFeatures() {
     const intl = useIntl();
     return (
-        <div className="py-4 lg:py-8">
+        <ProductTemplate
+            title={<FormattedMessage id="products.visitor-log-system.hero.title" />}
+            description={<FormattedMessage id="products.visitor-log-system.hero.description" />}
+            actions={null}
+        >
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-7xl text-left">
-                    <div className="text-base/7 font-semibold text-slate-600 dark:text-slate-400">
+                    <h2 className="text-base/7 font-semibold text-muted-foreground">
                         <FormattedMessage id="products.visitor-log-system.hero.tagline" />
-                    </div>
-                    <h1 className="mt-2 text-4xl font-bold tracking-tight text-blue-600 dark:text-blue-400 sm:text-5xl">
-                        <FormattedMessage id="products.visitor-log-system.hero.title" />
-                    </h1>
-                    <div className="mt-6 text-lg/8 text-slate-600 dark:text-slate-300">
+                    </h2>
+                    <p className="mt-6 text-lg/8 text-muted-foreground">
                         <FormattedMessage id="products.visitor-log-system.hero.context" />
-                    </div>
-                    <div className="mt-4 text-lg/8 text-slate-600 dark:text-slate-300">
-                        <FormattedMessage id="products.visitor-log-system.hero.description" />
-                    </div>
+                    </p>
                 </div>
-                <div className="mt-10 flex justify-center">
+            </div>
+            {/* Hero Image */}
+            <div className="relative overflow-hidden pt-16">
+                <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className="bg-white rounded-xl p-4">
                         <Image
+                            alt={intl.formatMessage({ id: "products.visitor-log-system.hero.imageAlt", defaultMessage: "Visitor Log System Dashboard" })}
                             src="/images/products/VisitorLog.png"
-                            alt={intl.formatMessage({ id: "products.visitor-log-system.hero.imageAlt" })}
-                            width={800}
-                            height={400}
-                            className="w-full h-auto object-contain mb-[-12%] rounded-xl shadow-2xl ring-1 ring-slate-900/10 dark:ring-slate-700/20"
-                            priority={true}
+                            width={2432}
+                            height={1442}
+                            className="w-full h-auto object-contain mb-[-1%] rounded-xl shadow-2xl ring-1 ring-border"
+                            priority
                         />
                     </div>
-                </div>
-                <section className="mx-auto max-w-2xl lg:text-center mb-16 mt-16">
-                    <div className="text-base/7 font-semibold text-slate-600 dark:text-slate-400">
-                        <FormattedMessage id="products.visitor-log-system.features.title" />
-                    </div>
-                    <h2 className="mt-2 text-3xl font-bold tracking-tight text-blue-600 dark:text-blue-400 sm:text-4xl">
-                        <FormattedMessage id="products.visitor-log-system.features.subtitle" />
-                    </h2>
-                    <div className="mt-6 text-lg/8 text-slate-600 dark:text-slate-300">
-                        <FormattedMessage id="products.visitor-log-system.features.description" />
-                    </div>
-                </section>
-                <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                        {features.map((feature, _idx) => {
-                            const Icon = feature.icon;
-                            return (
-                                <div key={feature.nameId} className="relative pl-9">
-                                    <Icon className="absolute top-1 left-1 size-5 text-slate-600 dark:text-white" aria-hidden="true" />
-                                    <div className="font-semibold text-blue-600 dark:text-blue-400">
-                                        <FormattedMessage id={feature.nameId} />
-                                    </div>
-                                    <div className="mt-1 text-slate-600 dark:text-slate-300">
-                                        <FormattedMessage id={feature.descriptionId} />
-                                    </div>
-                                </div>
-                            );
-                        })}
+                    <div aria-hidden="true" className="relative">
+                        <div className="absolute -inset-x-20 bottom-0 bg-gradient-to-t from-white dark:from-gray-900 pt-[1%]" />
                     </div>
                 </div>
             </div>
-        </div>
+            {/* Key Features Section */}
+            <div className="mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8">
+                <div className="mx-auto max-w-2xl lg:text-center mb-16">
+                    <h2 className="text-base/7 font-semibold text-muted-foreground">
+                        <FormattedMessage id="products.visitor-log-system.features.title" />
+                    </h2>
+                    <p className="mt-2 text-3xl font-bold tracking-tight text-primary sm:text-4xl">
+                        <FormattedMessage id="products.visitor-log-system.features.subtitle" />
+                    </p>
+                    <p className="mt-6 text-lg/8 text-muted-foreground">
+                        <FormattedMessage id="products.visitor-log-system.features.description" />
+                    </p>
+                </div>
+                {/* Features Grid */}
+                <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base/7 text-muted-foreground sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:grid-cols-4 lg:gap-x-8 lg:gap-y-16">
+                    {features.map((feature, index) => (
+                        <div key={index} className="relative pl-9">
+                            <div className="font-semibold text-primary">
+                                <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-muted-foreground" />
+                                <FormattedMessage id={feature.nameId} />
+                            </div>
+                            <div className="mt-1">
+                                <FormattedMessage id={feature.descriptionId} />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </ProductTemplate>
     );
-} 
+}

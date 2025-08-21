@@ -3,23 +3,23 @@
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid';
 import { cn } from '@/lib/utils';
 import {
-    BarChart3,
-    Bug,
-    Building,
-    CheckSquare,
-    ChevronRight,
-    Clock,
-    Cloud,
-    Code,
-    Database,
-    FileSpreadsheet,
-    FileText,
-    HandCoins,
-    MessageSquare,
-    Shield,
-    TrendingUp,
-    UserCheck,
-    Users
+  BarChart3,
+  Bug,
+  Building,
+  CheckSquare,
+  ChevronRight,
+  Clock,
+  Cloud,
+  Code,
+  Database,
+  FileSpreadsheet,
+  FileText,
+  HandCoins,
+  MessageSquare,
+  Shield,
+  TrendingUp,
+  UserCheck,
+  Users
 } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 
@@ -40,7 +40,6 @@ interface Filter {
 
 const ProductsBentoGrid = () => {
   const [activeFilter, setActiveFilter] = useState('all');
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -204,23 +203,24 @@ const ProductsBentoGrid = () => {
     }
   ], []);
 
-  const filters: Filter[] = [
-    { id: 'all', label: 'All Products' },
-    { id: 'featured', label: 'Featured' },
-    { id: 'enterprise', label: 'Enterprise' },
-    { id: 'compliance', label: 'Compliance' },
-    { id: 'hr', label: 'Human Resources' },
-    { id: 'project', label: 'Project Management' },
-    { id: 'data', label: 'Data Management' },
-    { id: 'modernization', label: 'Modernization' }
-  ];
+  const filters: Filter[] = useMemo(
+    () => [
+      { id: 'all', label: 'All Products' },
+      { id: 'featured', label: 'Featured' },
+      { id: 'enterprise', label: 'Enterprise' },
+      { id: 'compliance', label: 'Compliance' },
+      { id: 'hr', label: 'Human Resources' },
+      { id: 'project', label: 'Project Management' },
+      { id: 'data', label: 'Data Management' },
+      { id: 'modernization', label: 'Modernization' }
+    ],
+    []
+  );
 
-  useEffect(() => {
-    if (activeFilter === 'all') {
-      setFilteredProducts(products);
-    } else {
-      setFilteredProducts(products.filter(product => product.category === activeFilter));
-    }
+  const categories = useMemo(() => ["all", ...Array.from(new Set(products.map((p) => p.category)))], [products]);
+
+  const filteredProducts = useMemo(() => {
+    return activeFilter === 'all' ? products : products.filter((product) => product.category === activeFilter);
   }, [activeFilter, products]);
 
   return (
@@ -230,8 +230,8 @@ const ProductsBentoGrid = () => {
           <h1 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl mb-4">
             Products & Software Solutions
           </h1>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mb-8">
-            Comprehensive suite of enterprise solutions designed to streamline your business operations and drive digital transformation. 
+          <p className="text-lg text-muted-foreground max-w-3xl mb-8">
+            Comprehensive suite of enterprise solutions designed to streamline your business operations and drive digital transformation.
             Trusted by government agencies and enterprises for over 30 years.
           </p>
 
@@ -239,19 +239,19 @@ const ProductsBentoGrid = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
             <div className="text-center">
               <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">30+</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Years Experience</div>
+              <div className="text-sm text-muted-foreground">Years Experience</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">40+</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Software Products</div>
+              <div className="text-sm text-muted-foreground">Software Products</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">CMMI 3</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Level Certified</div>
+              <div className="text-sm text-muted-foreground">Level Certified</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">ISO</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">9001:2015 Certified</div>
+              <div className="text-sm text-muted-foreground">9001:2015 Certified</div>
             </div>
           </div>
 
@@ -292,8 +292,8 @@ const ProductsBentoGrid = () => {
 
         {/* View All Products Link */}
         <div className="text-left mt-12">
-          <a 
-            href="#" 
+          <a
+            href="#"
             className="inline-flex items-center text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
           >
             View all products

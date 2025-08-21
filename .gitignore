@@ -40,3 +40,9 @@ next-env.d.ts
 /figma-files/*.fig
 /figma-files/*.sketch
 /src/components/icons/svg-exports/
+
+# Sentry Config File
+.env.sentry-build-plugin
+
+# Crush
+.crush/

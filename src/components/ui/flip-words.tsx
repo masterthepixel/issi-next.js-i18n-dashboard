@@ -1,6 +1,6 @@
 "use client";
 import { AnimatePresence, motion } from "motion/react";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const FlipWords = ({
   words,
@@ -11,28 +11,26 @@ export const FlipWords = ({
   duration?: number;
   className?: string;
 }) => {
-  const [currentWord, setCurrentWord] = useState(words[0]);
-  const [isAnimating, setIsAnimating] = useState<boolean>(false);
-
-  const startAnimation = useCallback(() => {
-    const word = words[words.indexOf(currentWord) + 1] || words[0];
-    setCurrentWord(word);
-    setIsAnimating(true);
-  }, [currentWord, words]);
+  // Use an index-based interval to rotate words. This avoids creating many
+  // timeouts and ensures proper cleanup when the component unmounts or when
+  // the `words` array changes.
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    if (!isAnimating)
-      setTimeout(() => {
-        startAnimation();
-      }, duration);
-  }, [isAnimating, duration, startAnimation]);
+    if (!words || words.length <= 1) return;
+
+    setIndex(0);
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % words.length);
+    }, duration);
+
+    return () => clearInterval(id);
+  }, [words, duration]);
+
+  const currentWord = words && words.length ? words[index] : "";
 
   return (
-    <AnimatePresence
-      onExitComplete={() => {
-        setIsAnimating(false);
-      }}
-    >
+    <AnimatePresence onExitComplete={() => { /* no-op: interval drives updates */ }}>
       <motion.div
         initial={{
           opacity: 0,
@@ -56,7 +54,7 @@ export const FlipWords = ({
           position: "absolute",
         }}
         className={className}
-        key={currentWord}
+        key={currentWord + index}
       >
         {currentWord}
       </motion.div>

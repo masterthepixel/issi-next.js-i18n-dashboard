@@ -4,9 +4,15 @@ import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  plugins: [react()],  test: {
+  plugins: [react()],
+  test: {
     environment: 'jsdom',
     globals: true,
+    setupFiles: './src/setupTests.ts',
+    alias: {
+      'next/image': path.resolve(__dirname, './src/lib/mocks/next-image.tsx'),
+      'next/link': path.resolve(__dirname, './src/lib/mocks/next-link.tsx'),
+    },
   },
   resolve: {
     alias: {

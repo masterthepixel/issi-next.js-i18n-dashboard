@@ -1,8 +1,8 @@
 'use client'
 
-import { IntlProvider } from "react-intl";
 import Hero from "@/components/Hero";
 import { Locale } from "@/lib/definitions";
+import { IntlProvider } from "react-intl";
 
 interface HeroWrapperProps {
   locale: Locale;
@@ -12,7 +12,7 @@ interface HeroWrapperProps {
 export default function HeroWrapper({ locale, messages }: HeroWrapperProps) {
   return (
     <IntlProvider locale={locale} messages={messages}>
-      <Hero />
+      <Hero lang={locale} />
     </IntlProvider>
   );
 }

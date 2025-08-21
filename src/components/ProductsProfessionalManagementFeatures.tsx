@@ -15,6 +15,8 @@ import {
 import Image from "next/image";
 import { FormattedMessage, useIntl } from "react-intl";
 
+import ProductTemplate from './products/ProductTemplate';
+
 const features = [
     {
         nameId: "products.professional-management.features.feature1.name",
@@ -71,20 +73,18 @@ const features = [
 export default function ProductsProfessionalManagementFeatures() {
     const intl = useIntl();
     return (
-        <div className="py-4 lg:py-8">
+        <ProductTemplate
+            title={<FormattedMessage id="products.professional-management.hero.title" />}
+            description={<FormattedMessage id="products.professional-management.hero.description" />}
+            actions={null}
+        >
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-7xl text-left">
-                    <div className="text-base/7 font-semibold text-slate-600 dark:text-slate-400">
+                    <div className="text-base/7 font-semibold text-muted-foreground">
                         <FormattedMessage id="products.professional-management.hero.tagline" />
                     </div>
-                    <h1 className="mt-2 text-4xl font-bold tracking-tight text-blue-600 dark:text-blue-400 sm:text-5xl">
-                        <FormattedMessage id="products.professional-management.hero.title" />
-                    </h1>
-                    <div className="mt-6 text-lg/8 text-slate-600 dark:text-slate-300">
+                    <div className="mt-6 text-lg/8 text-muted-foreground">
                         <FormattedMessage id="products.professional-management.hero.context" />
-                    </div>
-                    <div className="mt-4 text-lg/8 text-slate-600 dark:text-slate-300">
-                        <FormattedMessage id="products.professional-management.hero.description" />
                     </div>
                 </div>
                 <div className="mt-10 flex justify-center">
@@ -94,33 +94,33 @@ export default function ProductsProfessionalManagementFeatures() {
                             alt={intl.formatMessage({ id: "products.professional-management.hero.imageAlt" })}
                             width={800}
                             height={400}
-                            className="w-full h-auto object-contain mb-[-12%] rounded-xl shadow-2xl ring-1 ring-slate-900/10 dark:ring-slate-700/20"
+                            className="w-full h-auto object-contain rounded-xl shadow-2xl ring-1 ring-border"
                             priority={true}
                         />
                     </div>
                 </div>
                 <section className="mx-auto max-w-2xl lg:text-center mb-16 mt-16">
-                    <div className="text-base/7 font-semibold text-slate-600 dark:text-slate-400">
+                    <div className="text-base/7 font-semibold text-muted-foreground">
                         <FormattedMessage id="products.professional-management.features.title" />
                     </div>
-                    <h2 className="mt-2 text-3xl font-bold tracking-tight text-blue-600 dark:text-blue-400 sm:text-4xl">
+                    <h2 className="mt-2 text-3xl font-bold tracking-tight text-primary sm:text-4xl">
                         <FormattedMessage id="products.professional-management.features.subtitle" />
                     </h2>
-                    <div className="mt-6 text-lg/8 text-slate-600 dark:text-slate-300">
+                    <div className="mt-6 text-lg/8 text-muted-foreground">
                         <FormattedMessage id="products.professional-management.features.description" />
                     </div>
                 </section>
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                        {features.map((feature, _idx) => {
+                        {features.map((feature) => {
                             const Icon = feature.icon;
                             return (
                                 <div key={feature.nameId} className="relative pl-9">
-                                    <Icon className="absolute top-1 left-1 size-5 text-slate-600 dark:text-white" aria-hidden="true" />
-                                    <div className="font-semibold text-blue-600 dark:text-blue-400">
+                                    <Icon className="absolute top-1 left-1 size-5 text-muted-foreground" aria-hidden="true" />
+                                    <div className="font-semibold text-primary">
                                         <FormattedMessage id={feature.nameId} />
                                     </div>
-                                    <div className="mt-1 text-slate-600 dark:text-slate-300">
+                                    <div className="mt-1 text-muted-foreground">
                                         <FormattedMessage id={feature.descriptionId} />
                                     </div>
                                 </div>
@@ -129,6 +129,6 @@ export default function ProductsProfessionalManagementFeatures() {
                     </div>
                 </div>
             </div>
-        </div>
+        </ProductTemplate>
     );
 } 

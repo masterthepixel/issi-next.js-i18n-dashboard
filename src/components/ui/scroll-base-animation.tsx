@@ -9,7 +9,6 @@ interface ScrollBaseAnimationProps {
     children: React.ReactNode;
     baseVelocity?: number;
     delay?: number;
-    clasname?: string;
     className?: string;
     showPauseControl?: boolean;
 }
@@ -35,9 +34,8 @@ export default function ScrollBaseAnimation({
     children,
     baseVelocity = 3,
     delay = 0,
-    clasname,
     className,
-    showPauseControl = true
+    showPauseControl = true,
 }: ScrollBaseAnimationProps) {
     const baseX = useMotionValue(0);
     const { scrollY } = useScroll();
@@ -127,14 +125,20 @@ export default function ScrollBaseAnimation({
             <div className="absolute inset-0 flex w-full overflow-visible">
                 <motion.div
                     ref={contentRef}
-                    className={cn("flex flex-nowrap whitespace-nowrap items-center overflow-visible min-w-max", clasname || className)}
+                    className={cn(
+                        "flex flex-nowrap whitespace-nowrap items-center overflow-visible min-w-max",
+                        className,
+                    )}
                     style={primaryTransform}
                 >
                     {children}
                 </motion.div>
 
                 <motion.div
-                    className={cn("flex flex-nowrap whitespace-nowrap items-center overflow-visible min-w-max", clasname || className)}
+                    className={cn(
+                        "flex flex-nowrap whitespace-nowrap items-center overflow-visible min-w-max",
+                        className,
+                    )}
                     style={cloneTransform}
                 >
                     {children}
@@ -144,14 +148,14 @@ export default function ScrollBaseAnimation({
             {showPauseControl && (
                 <button
                     onClick={togglePause}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-slate-800/80 p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md hover:scale-110 active:scale-95 z-10"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md hover:scale-110 active:scale-95 z-10"
                     aria-label={isPaused ? "Play scrolling animation" : "Pause scrolling animation"}
                     title={isPaused ? "Play" : "Pause"}
                 >
                     {isPaused ? (
-                        <PlayIcon className="h-4 w-4 text-slate-700 dark:text-slate-200" />
+                        <PlayIcon className="h-4 w-4 text-foreground" />
                     ) : (
-                        <PauseIcon className="h-4 w-4 text-slate-700 dark:text-slate-200" />
+                        <PauseIcon className="h-4 w-4 text-foreground" />
                     )}
                 </button>
             )}

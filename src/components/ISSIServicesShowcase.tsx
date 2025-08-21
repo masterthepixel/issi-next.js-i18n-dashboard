@@ -1,6 +1,7 @@
 "use client";
 
-import { BentoGrid } from '@/components/ui/bento-grid';
+import ErrorBoundary from "@/components/ErrorBoundary";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from '@/lib/utils';
 import { Building, ChevronRight, Code, Cpu, Database, GraduationCap, Headset, Search, Server, Shield, Wrench } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -16,7 +17,7 @@ const CATEGORIES = [
   { id: 'training', label: 'services.categories.training' }
 ];
 
-export default function ISSIServicesShowcase() {
+const ISSIServicesShowcaseInternal = () => {
   const intl = useIntl();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [isLoaded, setIsLoaded] = useState(false);
@@ -230,58 +231,47 @@ export default function ISSIServicesShowcase() {
           </div>
         </div>        {/* Bento Grid Layout */}
         {isLoaded && (
-          <BentoGrid className="mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto">
             {filteredServices.map((service, _index) => {
               const IconComponent = service.icon;
               const colors = getCategoryColors(service.categories);
               return (
-                <div
+                <Card
                   key={service.id}
                   className={cn(
-                    "row-span-1 rounded-xl group/bento hover:shadow-xl transition-all duration-300 shadow-input dark:shadow-none p-4 relative min-h-[200px] cursor-pointer border-2 bg-white dark:bg-slate-800/80 backdrop-blur-sm",
-                    // Category-specific colors and borders
-                    colors.border,
-                    colors.hover,
-                    // Category-specific glow effects
+                    "flex flex-col space-y-2 overflow-hidden cursor-pointer",
+                    service.className,
                     "hover:shadow-2xl hover:scale-[1.02]",
                     service.categories.includes("it") && "hover:shadow-blue-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(59_130_246_/_0.5)]",
                     service.categories.includes("gov") && "hover:shadow-green-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(34_197_94_/_0.5)]",
                     service.categories.includes("cyber") && "hover:shadow-purple-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(147_51_234_/_0.5)]",
                     service.categories.includes("cloud") && "hover:shadow-orange-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(234_88_12_/_0.5)]",
-                    service.categories.includes("training") && "hover:shadow-red-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(220_38_38_/_0.5)]",
-                    "group-hover/bento:border-opacity-60 group-hover/bento:bg-white/90 dark:group-hover/bento:bg-slate-800/90",
-                    service.className
+                    service.categories.includes("training") && "hover:shadow-red-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(220_38_38_/_0.5)]"
                   )}
                 >
-                  {/* Card Content without borders */}
-                  <div className="relative flex h-full flex-col justify-between">
-                    {/* Icon with category color */}
-                    <div className="flex justify-start">
-                      <IconComponent className={cn(
-                        "size-8 transition-all duration-300",
-                        colors.icon,
-                        "group-hover/bento:drop-shadow-lg"
-                      )} />
-                    </div>
-
-                    {/* Title and description with matching category color */}
-                    <div className="mt-auto">
-                      <h3 className={cn(
-                        "font-semibold tracking-tight text-xl mb-2 transition duration-300",
-                        colors.icon, // Use same color as icon
-                        "dark:text-slate-100" // Override for dark mode readability
-                      )}>
-                        {service.title}
-                      </h3>
-                      <p className="text-slate-600 dark:text-slate-300 text-sm">
-                        {service.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                  <CardHeader>
+                    <IconComponent className={cn(
+                      "size-8 transition-all duration-300",
+                      colors.icon,
+                      "group-hover/bento:drop-shadow-lg"
+                    )} />
+                  </CardHeader>
+                  <CardContent>
+                    <CardTitle className={cn(
+                      "font-semibold tracking-tight text-xl mb-2 transition duration-300",
+                      colors.icon, // Use same color as icon
+                      "dark:text-slate-100" // Override for dark mode readability
+                    )}>
+                      {service.title}
+                    </CardTitle>
+                    <p className="text-slate-600 dark:text-slate-300 text-sm">
+                      {service.description}
+                    </p>
+                  </CardContent>
+                </Card>
               );
             })}
-          </BentoGrid>
+          </div>
         )}        {/* View All Services Link */}
         <div className="text-left mt-12">
           <a
@@ -295,5 +285,13 @@ export default function ISSIServicesShowcase() {
         </div>
       </div>
     </section>
+  );
+};
+
+export default function ISSIServicesShowcase() {
+  return (
+    <ErrorBoundary>
+      <ISSIServicesShowcaseInternal />
+    </ErrorBoundary>
   );
 }

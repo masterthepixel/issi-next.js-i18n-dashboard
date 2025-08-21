@@ -2,12 +2,13 @@ import { AnimatedBackground } from "@/components/AnimatedBackground";
 import ClientOnly from "@/components/ClientOnly";
 import Content from "@/components/Content";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import FeatureFlagManager from "@/components/FeatureFlagManager";
 import FooterWrapper from "@/components/FooterWrapper";
 import MobileFloatingMenu from "@/components/MobileFloatingMenu";
 import Navbar from "@/components/Navbar";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import UniversalIntelligentBreadcrumbWrapper from '@/components/UniversalIntelligentBreadcrumbWrapper';
-import { ThemeProvider } from "@/contexts/ThemeContext";
+import { ThemeProvider } from "next-themes";
 import React from 'react';
 
 import { getUser } from "@/lib/data";
@@ -64,30 +65,15 @@ export default async function Root({ params, children }: Props) {
     },
   ]; return (
     <html lang={params.lang} className="h-full">
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var storageTheme = localStorage.getItem('theme');
-                  var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  
-                  if (storageTheme === 'dark' || (!storageTheme && systemPrefersDark)) {
-                    document.documentElement.classList.add('dark');
-                  } else {
-                    document.documentElement.classList.remove('dark');
-                  }
-                } catch (e) {
-                  console.error('Failed to apply dark mode on load:', e);
-                }
-              })();
-            `
-          }}
-        />
-      </head>      <body className="relative min-h-screen overflow-y-auto overflow-x-visible grid-background-with-fade flex flex-col debug-screens">
+      <head />
+      <body className="relative min-h-screen overflow-y-auto overflow-x-visible grid-background-with-fade flex flex-col debug-screens">
         <ErrorBoundary>
-          <ThemeProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
             <AnimatedBackground />
             <ClientOnly>
               <Navbar locale={params.lang} user={user} />
@@ -111,6 +97,7 @@ export default async function Root({ params, children }: Props) {
               <MobileFloatingMenu items={navigationItems} />
               <ScrollToTopButton />
             </ClientOnly>
+            {process.env.NODE_ENV === 'development' && <FeatureFlagManager />}
           </ThemeProvider>
         </ErrorBoundary>
       </body>

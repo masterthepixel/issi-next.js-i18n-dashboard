@@ -1,5 +1,22 @@
 # Comprehensive Shadcn/ui Migration Strategy
 
+## Migration Progress
+
+- [x] CLI initialized (`npx shadcn-ui@latest init`, added primitives: button, card, input, select, dialog, skeleton)
+- [x] Legacy `ThemeToggleWrapper.tsx` removed
+- [ ] `tailwind.config.ts` darkMode set to 'class'
+- [ ] CSS variable tokens appended to `src/app/globals.css`
+- [ ] Phase 2 (Replace primitives) in progress
+- [ ] Phase 3 (Rebuild & Refactor) pending
+
+## 0. Migration Progress
+- [✅] **CLI initialized** - confirmed by `git log b2269c0` commit
+- [✅] Shadcn components found in `/src/components/ui/` with proper `cn` utilities
+- [ ] Updated `tailwind.config.ts` to `darkMode: 'class'`
+- [ ] Appended CSS variable tokens to `src/app/globals.css`
+- [ ] Phase 2 (Replace primitives) in progress for components listed in Appendix A
+- [ ] Phase 3 (Rebuild complex components) pending
+
 ## 1. Executive Summary
 
 This document presents a detailed, research-driven strategy for migrating the project's component library to `shadcn/ui`. A thorough analysis of the codebase reveals that a successful migration is highly feasible and will standardize the UI layer. The project's architecture, particularly its use of "Wrapper Components" for i18n and data management, is a significant asset that will simplify the migration process.

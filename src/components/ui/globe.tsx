@@ -68,7 +68,6 @@ const GlobeErrorFallback = () => (
 
 // Safe Globe component that handles errors
 function SafeGlobeComponent({ globeConfig: _globeConfig, data: _data }: WorldProps) {
-  const [hasError, setHasError] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -79,37 +78,29 @@ function SafeGlobeComponent({ globeConfig: _globeConfig, data: _data }: WorldPro
     return <GlobeLoadingFallback />;
   }
 
-  if (hasError) {
-    return <GlobeErrorFallback />;
-  }
-
-  try {
-    // Simple fallback globe representation
-    return (
-      <div className="relative h-full w-full">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="relative">
-            <div className="h-48 w-48 rounded-full bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 shadow-2xl opacity-80 animate-pulse">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-t from-transparent via-white/10 to-white/20"></div>
-              <div className="absolute inset-2 rounded-full border-2 border-white/20"></div>
-              <div className="absolute inset-4 rounded-full border border-white/10"></div>
-            </div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-xs font-medium">
-              Global Network
-            </div>
-            {/* Animated dots around the globe */}
-            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-yellow-400 rounded-full animate-ping"></div>
-            <div className="absolute top-3/4 right-1/4 w-2 h-2 bg-green-400 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
-            <div className="absolute bottom-1/4 left-1/2 w-2 h-2 bg-red-400 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
+  // Render a simple, safe fallback globe that should not throw during render.
+  // Any heavy or error-prone implementations should be placed behind dynamic
+  // imports and proper Error Boundaries at the page level.
+  return (
+    <div className="relative h-full w-full">
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="relative">
+          <div className="h-48 w-48 rounded-full bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 shadow-2xl opacity-80 animate-pulse">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-t from-transparent via-white/10 to-white/20"></div>
+            <div className="absolute inset-2 rounded-full border-2 border-white/20"></div>
+            <div className="absolute inset-4 rounded-full border border-white/10"></div>
           </div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-xs font-medium">
+            Global Network
+          </div>
+          {/* Animated dots around the globe (decorative) */}
+          <div aria-hidden={true} className="absolute top-1/4 left-1/4 w-2 h-2 bg-yellow-400 rounded-full animate-ping"></div>
+          <div aria-hidden={true} className="absolute top-3/4 right-1/4 w-2 h-2 bg-green-400 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
+          <div aria-hidden={true} className="absolute bottom-1/4 left-1/2 w-2 h-2 bg-red-400 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
         </div>
       </div>
-    );
-  } catch (error) {
-    console.error('Globe component error:', error);
-    setHasError(true);
-    return <GlobeErrorFallback />;
-  }
+    </div>
+  );
 }
 
 export function Globe({ globeConfig, data }: WorldProps) {

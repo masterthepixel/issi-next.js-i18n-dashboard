@@ -28,8 +28,11 @@
       "Bash(npm install:*)",
       "Bash(pnpm install:*)",
       "Bash(timeout 30s npm run dev:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(npm run test:*)",
+      "Bash(npx shadcn@latest add:*)"
     ],
-    "deny": []
+    "deny": [],
+    "defaultMode": "acceptEdits"
   }
 }

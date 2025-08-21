@@ -1,44 +1,43 @@
-'use client';
+"use client";
 
-import { Component, ErrorInfo, ReactNode } from 'react';
+import { Component, ErrorInfo, ReactNode } from "react";
+import { FormattedMessage } from "react-intl";
 
 interface Props {
-  children?: ReactNode;
+  children: ReactNode;
   fallback?: ReactNode;
 }
 
 interface State {
   hasError: boolean;
-  error?: Error;
 }
 
-export default class ErrorBoundary extends Component<Props, State> {
+class ErrorBoundary extends Component<Props, State> {
   public state: State = {
-    hasError: false
+    hasError: false,
   };
 
-  public static getDerivedStateFromError(error: Error): State {
-    return { hasError: true, error };
+  public static getDerivedStateFromError(_: Error): State {
+    return { hasError: true };
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('Uncaught error:', error, errorInfo);
+    console.error("Uncaught error:", error, errorInfo);
   }
 
   public render() {
     if (this.state.hasError) {
-      return this.props.fallback || (
-        <div className="flex min-h-screen items-center justify-center">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-red-600 mb-4">Something went wrong</h2>
-            <p className="text-gray-600 mb-4">Please refresh the page to try again.</p>
-            <button
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-              onClick={() => window.location.reload()}
-            >
-              Refresh Page
-            </button>
-          </div>
+      if (this.props.fallback) {
+        return this.props.fallback;
+      }
+      return (
+        <div className="flex flex-col items-center justify-center h-full p-8 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+          <h2 className="text-xl font-bold text-red-800 dark:text-red-200 mb-2">
+            <FormattedMessage id="common.error.boundary.title" defaultMessage="Something went wrong" />
+          </h2>
+          <p className="text-red-600 dark:text-red-300">
+            <FormattedMessage id="common.error.boundary.message" defaultMessage="We're sorry, but this part of the application has encountered an error." />
+          </p>
         </div>
       );
     }
@@ -46,3 +45,5 @@ export default class ErrorBoundary extends Component<Props, State> {
     return this.props.children;
   }
 }
+
+export default ErrorBoundary;

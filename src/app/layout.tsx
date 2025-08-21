@@ -1,4 +1,5 @@
-import React from 'react';
+import { FeatureFlagProvider } from "@/components/providers/FeatureFlagProvider";
+import React from "react";
 
 export default function RootLayout({
   children,
@@ -7,7 +8,9 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>{children}</body>
+      <body>
+        <FeatureFlagProvider>{children}</FeatureFlagProvider>
+      </body>
     </html>
   );
 }

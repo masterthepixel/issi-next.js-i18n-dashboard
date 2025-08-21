@@ -1,9 +1,5 @@
-import React from 'react';
+"use client";
 
-interface Props {
-  children: React.ReactNode;
-}
-
-export default function CardBody({ children }: Props) {
-  return <div className="mt-5">{children}</div>;
-}
+// Compatibility shim for legacy '@/components/CardBody'.
+// Map CardBody to the CardContent primitive.
+export { CardContent as default } from "@/components/ui/card";

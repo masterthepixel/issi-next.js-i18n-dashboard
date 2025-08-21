@@ -6,7 +6,7 @@ import {
   useScroll,
   useTransform
 } from "motion/react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 
 interface TimelineEntry {
   title: string;
@@ -24,11 +24,28 @@ export const Timeline = ({ data, title = "Timeline", subtitle = "A timeline over
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
 
-  useEffect(() => {
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      setHeight(rect.height);
+  // Use useLayoutEffect to measure DOM size synchronously after render.
+  useLayoutEffect(() => {
+    function measure() {
+      if (ref.current) {
+        const rect = ref.current.getBoundingClientRect();
+        setHeight(rect.height || 0);
+      }
     }
+
+    // Measure once after mount
+    measure();
+
+    // Re-measure on window resize as a conservative fallback
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", measure);
+    }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", measure);
+      }
+    };
   }, [ref]);
 
   const { scrollYProgress } = useScroll({
@@ -45,10 +62,10 @@ export const Timeline = ({ data, title = "Timeline", subtitle = "A timeline over
       ref={containerRef}
     >
       <div className="max-w-7xl mx-auto py-12 px-4 md:px-8 lg:px-10">
-        <h2 className="text-lg md:text-4xl mb-4 text-slate-900 dark:text-white max-w-4xl">
+        <h2 className="text-lg md:text-4xl mb-4 text-foreground max-w-4xl">
           {title}
         </h2>
-        <p className="text-slate-700 dark:text-slate-100 text-sm md:text-base max-w-sm mb-8">
+        <p className="text-muted-foreground text-sm md:text-base max-w-sm mb-8">
           {subtitle}
         </p>
       </div>
@@ -63,16 +80,16 @@ export const Timeline = ({ data, title = "Timeline", subtitle = "A timeline over
             )}
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white dark:bg-black flex items-center justify-center">
-                <div className="h-4 w-4 rounded-full bg-slate-600 dark:bg-white border border-slate-700 dark:border-slate-300 p-2" />
+              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-background flex items-center justify-center">
+                <div className="h-4 w-4 rounded-full bg-muted-foreground border border-border p-2" />
               </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-3xl font-bold text-slate-500 dark:text-slate-200">
+              <h3 className="hidden md:block text-xl md:pl-20 md:text-3xl font-bold text-muted-foreground">
                 {item.title}
               </h3>
             </div>
 
             <div className="relative pl-20 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-slate-500 dark:text-slate-200">
+              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-muted-foreground">
                 {item.title}
               </h3>
               {item.content}
@@ -81,7 +98,7 @@ export const Timeline = ({ data, title = "Timeline", subtitle = "A timeline over
         ))}
         {/* eslint-disable react/forbid-dom-props */}
         <div
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-slate-200 dark:via-slate-700 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
+          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-gradient-to-b from-transparent via-border to-transparent"
           style={{ height: `${height}px` }}
         >
           <motion.div
@@ -89,7 +106,7 @@ export const Timeline = ({ data, title = "Timeline", subtitle = "A timeline over
               height: heightTransform,
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-purple-500 via-blue-500 to-transparent from-[0%] via-[10%] rounded-full"
+            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-primary via-primary to-transparent from-[0%] via-[10%] rounded-full"
           />
         </div>
         {/* eslint-enable react/forbid-dom-props */}

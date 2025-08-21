@@ -1,5 +1,6 @@
 'use client';
 
+import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { FormattedMessage } from "react-intl";
 
@@ -27,37 +28,39 @@ const awards = [
 export default function AboutAwards() {
   return (
     <section 
-      className="py-24 sm:py-32"
+      className="relative isolate overflow-hidden bg-background py-24 sm:py-32"
       aria-labelledby="awards-heading"
       role="region"
       aria-label="Industry awards and recognition"
     >
-      <div className="mx-auto max-w-7xl px-4">        
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">        
         <div className="text-center">
-          <h2 id="awards-heading" className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-slate-100 sm:text-5xl">
+          <h2 id="awards-heading" className="text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl">
             <FormattedMessage id="about.awards.title" defaultMessage="Our Awards" />
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg/8 text-slate-600 dark:text-slate-300">
+          <p className="mx-auto mt-6 max-w-2xl text-lg/8 text-muted-foreground">
             <FormattedMessage 
               id="about.awards.description" 
               defaultMessage="ISSI has received a number of awards from trade and government agencies. We adopt new technologies and methods so that we can continue to grow and earn trust and recognition of our clients" 
             />
           </p>
         </div>
-        <div className="mx-auto mt-10 grid max-w-lg grid-cols-3 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-3" role="list">
+        <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 gap-6 sm:max-w-xl sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3" role="list">
           {awards.map((award) => (
-            <div key={award.id} className="flex justify-center" role="listitem">
-              <Image
-                alt={award.alt}
-                src={award.imageUrl}
-                width={158}
-                height={48}
-                className="max-h-12 w-full object-contain filter dark:brightness-0 dark:invert"
-                loading="lazy"
-                sizes="(max-width: 640px) 33vw, 158px"
-                title={award.name}
-              />
-            </div>
+            <Card key={award.id} className="group hover:shadow-lg transition-all duration-300" role="listitem">
+              <CardContent className="flex items-center justify-center p-8">
+                <Image
+                  alt={award.alt}
+                  src={award.imageUrl}
+                  width={158}
+                  height={48}
+                  className="max-h-12 w-full object-contain transition-transform duration-300 group-hover:scale-105 dark:brightness-0 dark:invert"
+                  loading="lazy"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                  title={award.name}
+                />
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

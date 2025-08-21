@@ -6,23 +6,21 @@ import { PauseIcon, PlayIcon } from "@heroicons/react/24/solid";
 import { motion, useAnimationFrame, useMotionValue, useScroll, useTransform, useVelocity } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
 
-interface ScrollBaseAnimationProps {
+interface ScrollTextMarqueeProps {
     children: React.ReactNode;
     baseVelocity?: number;
     delay?: number;
-    clasname?: string;
     className?: string;
     showPauseControl?: boolean;
 }
 
-export default function ScrollBaseAnimation({
+export default function ScrollTextMarquee({
     children,
     baseVelocity = 3,
     delay = 0,
-    clasname,
     className,
-    showPauseControl = true
-}: ScrollBaseAnimationProps) {
+    showPauseControl = true,
+}: ScrollTextMarqueeProps) {
     const baseX = useMotionValue(0);
     const { scrollY } = useScroll();
     const _scrollVelocity = useVelocity(scrollY);
@@ -75,25 +73,30 @@ export default function ScrollBaseAnimation({
     return (
         <div className="flex flex-nowrap overflow-hidden relative whitespace-nowrap py-1.5 group" ref={containerRef}>
             <motion.div
-                className={cn("flex flex-nowrap gap-4 whitespace-nowrap", clasname || className)}
+                className={cn(
+                    "flex flex-nowrap gap-4 whitespace-nowrap",
+                    className,
+                )}
                 style={{ x }}
             >
-                {children}
-                {children}
-                {children}
+                {/* First occurrence is the only one exposed to assistive tech. */}
+                <span>{children}</span>
+                <span aria-hidden="true" tabIndex={-1}>{children}</span>
+                <span aria-hidden="true" tabIndex={-1}>{children}</span>
             </motion.div>
 
             {showPauseControl && (
                 <button
                     onClick={togglePause}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-slate-800/80 p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md hover:scale-110 active:scale-95 z-10"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md hover:scale-110 active:scale-95 z-10"
                     aria-label={isPaused ? "Play scrolling animation" : "Pause scrolling animation"}
+                    aria-pressed={isPaused}
                     title={isPaused ? "Play" : "Pause"}
                 >
                     {isPaused ? (
-                        <PlayIcon className="h-4 w-4 text-slate-700 dark:text-slate-200" />
+                        <PlayIcon className="h-4 w-4 text-foreground" />
                     ) : (
-                        <PauseIcon className="h-4 w-4 text-slate-700 dark:text-slate-200" />
+                        <PauseIcon className="h-4 w-4 text-foreground" />
                     )}
                 </button>
             )}

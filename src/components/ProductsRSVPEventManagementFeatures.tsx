@@ -9,6 +9,7 @@ import {
 } from '@heroicons/react/20/solid';
 import Image from 'next/image';
 import { FormattedMessage, useIntl } from 'react-intl';
+import ProductTemplate from './products/ProductTemplate';
 
 export default function ProductsRSVPEventManagementFeatures() {
     const intl = useIntl();
@@ -42,57 +43,49 @@ export default function ProductsRSVPEventManagementFeatures() {
     ];
 
     return (
-        <div className="py-4 lg:py-8">
+        <ProductTemplate
+            title={<FormattedMessage id="products.rsvp.hero.title" />}
+            description={<FormattedMessage id="products.rsvp.hero.description" />}
+            actions={null}
+        >
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                {/* Hero Section */}
                 <div className="mx-auto max-w-7xl text-left">
-                    <div className="text-base/7 font-semibold text-slate-600 dark:text-slate-400">
+                    <h2 className="text-base/7 font-semibold text-muted-foreground">
                         <FormattedMessage id="products.rsvp.hero.tagline" />
-                    </div>
-                    <h1 className="mt-2 text-4xl font-bold tracking-tight text-blue-600 dark:text-blue-400 sm:text-5xl">
-                        <FormattedMessage id="products.rsvp.hero.title" />
-                    </h1>
-                    <div className="mt-6 text-lg/8 text-slate-600 dark:text-slate-300">
+                    </h2>
+                    <p className="mt-6 text-lg/8 text-muted-foreground">
                         <FormattedMessage id="products.rsvp.hero.context" />
-                    </div>
-                    <div className="mt-4 text-lg/8 text-slate-600 dark:text-slate-300">
-                        <FormattedMessage id="products.rsvp.hero.description" />
-                    </div>
+                    </p>
                 </div>
-                <div className="mt-10 flex justify-center">
+            </div>
+            {/* Hero Image */}
+            <div className="relative overflow-hidden pt-16">
+                <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className="bg-white rounded-xl p-4">
                         <Image
-                            src="/images/products/RSVP.png"
                             alt={intl.formatMessage({ id: "products.rsvp.hero.imageAlt", defaultMessage: "RSVP Event Management dashboard interface" })}
-                            width={1200}
-                            height={630}
-                            className="w-full h-auto object-contain mb-[-12%] rounded-xl shadow-2xl ring-1 ring-slate-900/10 dark:ring-slate-700/20"
-                            priority={true}
+                            src="/images/products/RSVP.png"
+                            width={800}
+                            height={400}
                         />
                     </div>
                 </div>
-                <section className="mx-auto max-w-2xl lg:text-center mb-16 mt-16">
-                    <div className="text-base/7 font-semibold text-slate-600 dark:text-slate-400">
-                        <FormattedMessage id="products.rsvp.features.title" />
-                    </div>
-                    <h2 className="mt-2 text-3xl font-bold tracking-tight text-blue-600 dark:text-blue-400 sm:text-4xl">
-                        <FormattedMessage id="products.rsvp.features.subtitle" />
-                    </h2>
-                    <div className="mt-6 text-lg/8 text-slate-600 dark:text-slate-300">
-                        <FormattedMessage id="products.rsvp.features.description" />
-                    </div>
-                </section>
+            </div>
+            <section className="mt-12">
+                <div className="mb-6 text-lg font-semibold text-foreground">
+                    <FormattedMessage id="products.rsvp.features.description" />
+                </div>
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                        {features.map((feature, _idx) => {
+                        {features.map((feature) => {
                             const Icon = feature.icon;
                             return (
                                 <div key={feature.nameId} className="relative pl-9">
-                                    <Icon className="absolute top-1 left-1 size-5 text-slate-600 dark:text-white" aria-hidden="true" />
-                                    <div className="font-semibold text-blue-600 dark:text-blue-400">
+                                    <Icon className="absolute top-1 left-1 size-5 text-muted-foreground" aria-hidden="true" />
+                                    <div className="font-semibold text-primary">
                                         <FormattedMessage id={feature.nameId} />
                                     </div>
-                                    <div className="mt-1 text-slate-600 dark:text-slate-300">
+                                    <div className="mt-1 text-muted-foreground">
                                         <FormattedMessage id={feature.descriptionId} />
                                     </div>
                                 </div>
@@ -100,7 +93,7 @@ export default function ProductsRSVPEventManagementFeatures() {
                         })}
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
+        </ProductTemplate>
     );
 } 

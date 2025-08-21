@@ -39,16 +39,16 @@ export default function ProductsEmployeeTalentRepositoryFeatures() {
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 {/* Hero Section */}
                 <div className="mx-auto max-w-7xl text-left">
-                    <h2 className="text-base/7 font-semibold text-slate-600 dark:text-slate-400">
+                    <h2 className="text-base/7 font-semibold text-muted-foreground">
                         <FormattedMessage id="products.employee-talent-repository.hero.tagline" />
                     </h2>
-                    <p className="mt-2 text-4xl font-bold tracking-tight text-blue-600 dark:text-blue-400 sm:text-5xl">
+                    <p className="mt-2 text-4xl font-bold tracking-tight text-primary sm:text-5xl">
                         <FormattedMessage id="products.employee-talent-repository.hero.title" />
                     </p>
-                    <p className="mt-6 text-lg/8 text-slate-600 dark:text-slate-300">
+                    <p className="mt-6 text-lg/8 text-muted-foreground">
                         <FormattedMessage id="products.employee-talent-repository.hero.context" />
                     </p>
-                    <p className="mt-4 text-lg/8 text-slate-600 dark:text-slate-300">
+                    <p className="mt-4 text-lg/8 text-muted-foreground">
                         <FormattedMessage id="products.employee-talent-repository.hero.description" />
                     </p>
                 </div>
@@ -62,7 +62,7 @@ export default function ProductsEmployeeTalentRepositoryFeatures() {
                             src="/images/products/Employee Talent Repository.png"
                             width={2432}
                             height={1442}
-                            className="w-full h-auto object-contain mb-[-12%] rounded-xl shadow-2xl ring-1 ring-slate-900/10 dark:ring-slate-700/20"
+                            className="w-full h-auto object-contain mb-[-12%] rounded-xl shadow-2xl ring-1 ring-border"
                             priority
                         />
                     </div>
@@ -71,23 +71,23 @@ export default function ProductsEmployeeTalentRepositoryFeatures() {
             {/* Features Section */}
             <div className="mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8">
                 <div className="mx-auto max-w-2xl lg:text-center mb-16">
-                    <h2 className="text-base/7 font-semibold text-slate-600 dark:text-slate-400">
+                    <h2 className="text-base/7 font-semibold text-muted-foreground">
                         <FormattedMessage id="products.employee-talent-repository.features.title" />
                     </h2>
-                    <p className="mt-2 text-3xl font-bold tracking-tight text-blue-600 dark:text-blue-400 sm:text-4xl">
+                    <p className="mt-2 text-3xl font-bold tracking-tight text-primary sm:text-4xl">
                         <FormattedMessage id="products.employee-talent-repository.features.subtitle" />
                     </p>
-                    <p className="mt-6 text-lg/8 text-slate-600 dark:text-slate-300">
+                    <p className="mt-6 text-lg/8 text-muted-foreground">
                         <FormattedMessage id="products.employee-talent-repository.features.description" />
                     </p>
                 </div>
-                <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base/7 text-slate-600 dark:text-slate-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:grid-cols-4 lg:gap-x-8 lg:gap-y-16">
+                <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base/7 text-muted-foreground sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:grid-cols-4 lg:gap-x-8 lg:gap-y-16">
                     {features.map((feature, index) => {
                         const Icon = feature.icon;
                         return (
                             <div key={index} className="relative pl-9">
-                                <div className="font-semibold text-blue-600 dark:text-blue-400">
-                                    <Icon className="absolute top-1 left-1 size-5 text-slate-600 dark:text-white" aria-hidden="true" />
+                                <div className="font-semibold text-primary">
+                                    <Icon className="absolute top-1 left-1 size-5 text-muted-foreground" aria-hidden="true" />
                                     <FormattedMessage id={feature.nameId} />
                                 </div>
                                 <div className="mt-1">

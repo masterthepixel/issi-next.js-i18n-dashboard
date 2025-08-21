@@ -1,9 +1,6 @@
-import React from 'react';
+"use client";
 
-interface Props {
-  children: React.ReactNode;
-}
-
-export default function Card({ children }: Props) {
-  return <div className="bg-white dark:bg-slate-800 p-5 border border-slate-200 dark:border-slate-700 rounded-lg shadow">{children}</div>;
-}
+// Compatibility shim: legacy imports may reference '@/components/Card'.
+// Re-export the Card component from the migrated ui primitive so older
+// import paths keep working during migration.
+export { Card as default } from "@/components/ui/card";

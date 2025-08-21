@@ -23,32 +23,20 @@ export const InfiniteMovingCards = ({
   className?: string;
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
-  const scrollerRef = React.useRef<HTMLUListElement>(null);
 
+  // Instead of directly cloning DOM nodes (which risks React reconciliation
+  // mismatches), render the list twice via JSX. This keeps the DOM under
+  // React control and is safer during hydration and updates.
+  const [start, setStart] = useState(false);
   useEffect(() => {
-    function addAnimation() {
-      if (containerRef.current && scrollerRef.current) {
-        const scrollerContent = Array.from(scrollerRef.current.children);
-
-        scrollerContent.forEach((item) => {
-          const duplicatedItem = item.cloneNode(true);
-          if (scrollerRef.current) {
-            scrollerRef.current.appendChild(duplicatedItem);
-          }
-        });
-
-        getDirection();
-        getSpeed();
-        setStart(true);
-      }
-    }
-
-    addAnimation();
-    // intentionally no external deps - this sets up the duplicated DOM for the scroller once on mount
+    // Set CSS vars for animation direction and speed on mount
+    getDirection();
+    getSpeed();
+    // Start the CSS animation after mount to avoid initial jump
+    setStart(true);
+    // intentionally run only once on mount
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const [start, setStart] = useState(false);
-  // addAnimation handled inside the mount effect above
   const getDirection = () => {
     if (containerRef.current) {
       if (direction === "left") {
@@ -75,6 +63,9 @@ export const InfiniteMovingCards = ({
       }
     }
   };
+  // Render the items twice in a single list to create the infinite scroll
+  const doubled = [...items, ...items];
+
   return (
     <div
       ref={containerRef}
@@ -84,43 +75,45 @@ export const InfiniteMovingCards = ({
       )}
     >
       <ul
-        ref={scrollerRef}
         className={cn(
           "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]",
         )}
       >
-        {items.map((item, _idx) => (
+        {doubled.map((item, idx) => (
           <li
-            className="relative w-[350px] max-w-full shrink-0 rounded-2xl border border-b-0 border-zinc-200 bg-[linear-gradient(180deg,#fafafa,#f5f5f5)] px-8 py-6 md:w-[450px] dark:border-zinc-700 dark:bg-[linear-gradient(180deg,#27272a,#18181b)]"
-            key={item.name}
+            className="relative w-[350px] max-w-full shrink-0 rounded-2xl border border-b-0 border-border bg-card px-8 py-6 md:w-[450px]"
+            key={`${item.name ?? 'item'}-${idx}`}
+            aria-hidden={idx >= items.length} // mark the duplicated half as presentation for accessibility
           >
             <blockquote>
               <div
                 aria-hidden="true"
                 className="user-select-none pointer-events-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-              ></div>              <span className="relative z-20 text-sm leading-[1.6] font-normal text-neutral-800 dark:text-slate-100">
+              ></div>
+              <span className="relative z-20 text-sm leading-[1.6] font-normal text-foreground">
                 {item.quote}
               </span>
-              <div className="relative z-20 mt-6 flex flex-row items-center">                {item.avatar && (
-                <div className="mr-4 flex-shrink-0">
-                  <Image
-                    src={item.avatar}
-                    alt={`${item.name} avatar`}
-                    className="w-12 h-12 rounded-full object-cover border-2 border-gray-200 dark:border-gray-600"
-                    width={48}
-                    height={48}
-                    loading="lazy"
-                    unoptimized={item.avatar.includes('unsplash.com')}
-                  />
-                </div>
-              )}
+              <div className="relative z-20 mt-6 flex flex-row items-center">
+                {item.avatar && (
+                  <div className="mr-4 flex-shrink-0">
+                    <Image
+                      src={item.avatar}
+                      alt={item.avatar ? `${item.name} avatar` : ''}
+                      className="w-12 h-12 rounded-full object-cover border-2 border-border"
+                      width={48}
+                      height={48}
+                      loading="lazy"
+                      unoptimized={item.avatar.includes('unsplash.com')}
+                    />
+                  </div>
+                )}
                 <span className="flex flex-col gap-1">
-                  <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-slate-400">
+                  <span className="text-sm leading-[1.6] font-normal text-muted-foreground">
                     {item.name}
                   </span>
-                  <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-slate-400">
+                  <span className="text-sm leading-[1.6] font-normal text-muted-foreground">
                     {item.title}
                   </span>
                 </span>

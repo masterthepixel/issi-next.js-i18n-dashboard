@@ -1,12 +1,16 @@
-import { Suspense } from "react";
-
-import Card from "@/components/Card";
-import CardBody from "@/components/CardBody";
-import CardHeader from "@/components/CardHeader";
+import ContactForm from "@/components/ContactForm";
+import ErrorBoundary from "@/components/ErrorBoundary";
 import Spinner from "@/components/Spinner";
-
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Contact - ISSI - International Software Systems International",
@@ -35,17 +39,31 @@ async function PageContent({ locale }: PageContentProps) {
   const intl = await getIntl(locale);
 
   return (
-    <div>
-      {/* Negative top margin to eliminate gap between navbar and content */}
-      <div className="-mt-20 grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-        <Card>
-          <CardHeader>{intl.formatMessage({ id: "page.contact.title" })}</CardHeader>
-          <CardBody>
-            <p className="text-base text-slate-700 dark:text-slate-300">
-              {intl.formatMessage({ id: "page.contact.description" })}
-            </p>
-          </CardBody>
-        </Card>
+    <div className="py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            {intl.formatMessage({ id: "page.contact.title" })}
+          </h2>
+          <p className="mt-2 text-lg leading-8 text-muted-foreground">
+            {intl.formatMessage({ id: "page.contact.description" })}
+          </p>
+        </div>
+        <div className="mx-auto mt-16 max-w-xl sm:mt-20">
+          <Card>
+            <CardHeader>
+              <CardTitle>{intl.formatMessage({ id: "contact.form.title" })}</CardTitle>
+              <CardDescription>
+                {intl.formatMessage({ id: "contact.form.description" })}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ErrorBoundary>
+                <ContactForm />
+              </ErrorBoundary>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
   );
