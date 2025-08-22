@@ -15,7 +15,8 @@ interface Props {
   };
 }
 
-export default function Page({ params: { lang: locale } }: Props) {
+export default async function Page({ params }: Props) {
+  const { lang: locale } = await params;
   return (
     <Suspense fallback={<Spinner />}>
       <PageContent locale={locale} />

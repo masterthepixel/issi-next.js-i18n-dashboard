@@ -52,7 +52,7 @@ const ProductsBentoGrid = () => {
       id: 'gms',
       title: 'Grant Management System',
       description: 'Comprehensive solution to standardize, streamline, and automate the complete grant lifecycle from application to post-award activities.',
-      icon: <HandCoins className="size-8 text-green-500" />,
+      icon: <HandCoins className="size-8 text-primary" />,
       category: 'featured',
       className: 'md:col-span-2',
       href: '#'
@@ -61,7 +61,7 @@ const ProductsBentoGrid = () => {
       id: 'ects',
       title: 'Enterprise Complaint Tracking System',
       description: 'User-friendly platform for processing consumer complaints securely and efficiently with automated workflows.',
-      icon: <MessageSquare className="size-8 text-blue-500" />,
+      icon: <MessageSquare className="size-8 text-primary" />,
       category: 'featured',
       className: 'md:col-span-1',
       href: '#'
@@ -70,7 +70,7 @@ const ProductsBentoGrid = () => {
       id: 'ets',
       title: 'ePermitting System',
       description: 'Streamline environmental tracking, permit issuance, and compliance with federal regulations.',
-      icon: <FileText className="size-8 text-indigo-500" />,
+      icon: <FileText className="size-8 text-secondary" />,
       category: 'featured',
       className: 'md:col-span-1',
       href: '#'
@@ -79,7 +79,7 @@ const ProductsBentoGrid = () => {
       id: 'mdsps',
       title: 'Membership Database and Subsidy Payment System',
       description: 'All-in-one cloud solution for government-assisted payment processing and member enrollment.',
-      icon: <Database className="size-8 text-purple-500" />,
+      icon: <Database className="size-8 text-accent" />,
       category: 'featured',
       className: 'md:col-span-2',
       href: '#'
@@ -88,7 +88,7 @@ const ProductsBentoGrid = () => {
       id: 'enterprise-engineering',
       title: 'Enterprise Software Engineering',
       description: 'Full-stack development services including business analysis, design, development, and mobile applications.',
-      icon: <Building className="size-8 text-slate-500" />,
+      icon: <Building className="size-8 text-muted-foreground" />,
       category: 'enterprise',
       className: 'md:col-span-2',
       href: '#'
@@ -97,7 +97,7 @@ const ProductsBentoGrid = () => {
       id: 'it-modernization',
       title: 'IT Modernization',
       description: 'Modernize legacy systems with cloud computing, data analytics, and business intelligence solutions.',
-      icon: <Cloud className="size-8 text-cyan-500" />,
+      icon: <Cloud className="size-8 text-secondary" />,
       category: 'enterprise',
       className: 'md:col-span-1',
       href: '#'
@@ -106,7 +106,7 @@ const ProductsBentoGrid = () => {
       id: 'hr-manager',
       title: 'Human Resource Manager',
       description: 'Complete HR solution for hiring, compensation, training, and employee management.',
-      icon: <Users className="size-8 text-orange-500" />,
+      icon: <Users className="size-8 text-accent" />,
       category: 'hr',
       className: 'md:col-span-1',
       href: '#'
@@ -115,7 +115,7 @@ const ProductsBentoGrid = () => {
       id: 'employee-performance',
       title: 'Employee Performance Management',
       description: '360-degree feedback system with automated performance reviews and goal tracking.',
-      icon: <TrendingUp className="size-8 text-green-600" />,
+      icon: <TrendingUp className="size-8 text-primary" />,
       category: 'hr',
       className: 'md:col-span-1',
       href: '#'
@@ -124,7 +124,7 @@ const ProductsBentoGrid = () => {
       id: 'timesheet',
       title: 'Timesheet Management',
       description: 'Track project time, manage resources, and generate accurate invoices with real-time reporting.',
-      icon: <Clock className="size-8 text-blue-600" />,
+      icon: <Clock className="size-8 text-primary" />,
       category: 'hr',
       className: 'md:col-span-1',
       href: '#'
@@ -133,7 +133,7 @@ const ProductsBentoGrid = () => {
       id: 'project-suite',
       title: 'Project Management Suite',
       description: 'Complete project lifecycle management with task tracking, resource allocation, and agile methodologies support.',
-      icon: <CheckSquare className="size-8 text-purple-600" />,
+      icon: <CheckSquare className="size-8 text-secondary" />,
       category: 'project',
       className: 'md:col-span-2',
       href: '#'
@@ -142,7 +142,7 @@ const ProductsBentoGrid = () => {
       id: 'bug-tracking',
       title: 'Bug Tracking System',
       description: 'Robust defect tracking system with automated duplicate detection and workflow management.',
-      icon: <Bug className="size-8 text-red-500" />,
+      icon: <Bug className="size-8 text-destructive" />,
       category: 'project',
       className: 'md:col-span-1',
       href: '#'
@@ -151,7 +151,7 @@ const ProductsBentoGrid = () => {
       id: 'compliance-508',
       title: '508 Compliance',
       description: 'Specialized accessibility consulting, assessment, and testing for federal compliance requirements.',
-      icon: <Shield className="size-8 text-emerald-500" />,
+      icon: <Shield className="size-8 text-primary" />,
       category: 'compliance',
       className: 'md:col-span-1',
       href: '#'
@@ -160,7 +160,7 @@ const ProductsBentoGrid = () => {
       id: 'audit-reporting',
       title: 'Audit Reporting',
       description: 'Streamlined audit management with workflow automation and collaborative reporting features.',
-      icon: <FileSpreadsheet className="size-8 text-yellow-500" />,
+      icon: <FileSpreadsheet className="size-8 text-chart-4" />,
       category: 'compliance',
       className: 'md:col-span-1',
       href: '#'
@@ -169,7 +169,7 @@ const ProductsBentoGrid = () => {
       id: 'central-data',
       title: 'Central Data Management',
       description: 'Unified platform for managing clients, projects, and tasks with analytics and reporting capabilities.',
-      icon: <Database className="size-8 text-violet-500" />,
+      icon: <Database className="size-8 text-accent" />,
       category: 'data',
       className: 'md:col-span-1',
       href: '#'
@@ -178,7 +178,7 @@ const ProductsBentoGrid = () => {
       id: 'e-survey',
       title: 'E-Survey Platform',
       description: 'Create, distribute, and analyze surveys with real-time response tracking and reporting.',
-      icon: <BarChart3 className="size-8 text-teal-500" />,
+      icon: <BarChart3 className="size-8 text-chart-2" />,
       category: 'data',
       className: 'md:col-span-1',
       href: '#'
@@ -187,7 +187,7 @@ const ProductsBentoGrid = () => {
       id: 'i-code',
       title: 'I-Code Testing Platform',
       description: 'Web-based testing solution for secure assessment environments with comprehensive reporting.',
-      icon: <Code className="size-8 text-pink-500" />,
+      icon: <Code className="size-8 text-chart-1" />,
       category: 'modernization',
       className: 'md:col-span-1',
       href: '#'
@@ -196,7 +196,7 @@ const ProductsBentoGrid = () => {
       id: 'professional-mgmt',
       title: 'Professional Management',
       description: 'Comprehensive recruitment and staffing solution with resume tracking and onboarding automation.',
-      icon: <UserCheck className="size-8 text-amber-500" />,
+      icon: <UserCheck className="size-8 text-chart-5" />,
       category: 'modernization',
       className: 'md:col-span-1',
       href: '#'
@@ -227,7 +227,7 @@ const ProductsBentoGrid = () => {
     <section className="py-16 px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="text-left mb-16">
-          <h1 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl mb-4">
+          <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl mb-4">
             Products & Software Solutions
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mb-8">
@@ -265,7 +265,7 @@ const ProductsBentoGrid = () => {
                   "px-4 py-2 rounded-full text-sm font-medium transition-all",
                   activeFilter === filter.id
                     ? "bg-indigo-600 text-white"
-                    : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                 )}
               >
                 {filter.label}

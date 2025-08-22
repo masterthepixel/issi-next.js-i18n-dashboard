@@ -30,7 +30,13 @@
       "Bash(timeout 30s npm run dev:*)",
       "Bash(git commit:*)",
       "Bash(npm run test:*)",
-      "Bash(npx shadcn@latest add:*)"
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(npm test:*)",
+      "Bash(timeout 30s npm test)",
+      "Bash(timeout 20s npm test:*)",
+      "Bash(pnpm build:*)",
+      "Bash(NODE_ENV=production pnpm build)",
+      "Bash(pnpm remove:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

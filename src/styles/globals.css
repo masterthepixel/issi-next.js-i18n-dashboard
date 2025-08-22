@@ -90,10 +90,41 @@
 }
 
 @layer base {
+  html {
+    @apply transition-colors duration-300 ease-in-out;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+  }
+
   * {
     @apply border-border;
   }
+  
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "liga" 1, "clig" 1, "kern" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  h1 em,
+  h2 em,
+  h3 em,
+  h4 em,
+  h5 em,
+  h6 em {
+    font-style: italic;
+    font-weight: 400;
   }
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import ErrorBoundary from "@/components/ErrorBoundary";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from '@/lib/utils';
 import { ArrowRight, Award, CheckCircle, Clock, Shield, Star, Users } from 'lucide-react';
@@ -115,34 +116,36 @@ const GovernmentHeroInternal = () => {
     <section className=" px-4">
       <div className="mx-auto max-w-7xl">        <div className="text-left mb-16">
         <div className="flex items-center gap-3 mb-6">
-          <Shield className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-          <span className="text-blue-600 dark:text-blue-400 font-semibold tracking-wide">
+          <Shield className="h-8 w-8 text-primary" />
+          <span className="text-primary font-semibold tracking-wide">
             {intl.formatMessage({ id: "government.hero.badge" })}
           </span>
         </div>
 
-        <h1 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl mb-4">
+        <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl mb-4">
           {intl.formatMessage({ id: "government.hero.title" })}
         </h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mb-8">
+        <p className="text-lg text-muted-foreground max-w-3xl mb-8">
           {intl.formatMessage({ id: "government.hero.subtitle" })}
         </p>          {/* Action Buttons */}
         <div className="flex gap-4 mb-8">
-          <Link
-            href={`/${locale}/services`}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium flex items-center gap-2 transition-all"
-            aria-label={intl.formatMessage({ id: "government.hero.cta.contracts" })}
-          >
-            {intl.formatMessage({ id: "government.hero.cta.contracts" })}
-            <ArrowRight className="h-5 w-5" />
-          </Link>
-          <Link
-            href={`/${locale}/contact`}
-            className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-6 py-3 rounded-lg font-medium transition-all"
-            aria-label={intl.formatMessage({ id: "government.hero.cta.contact" })}
-          >
-            {intl.formatMessage({ id: "government.hero.cta.contact" })}
-          </Link>
+          <Button asChild size="lg">
+            <Link
+              href={`/${locale}/services`}
+              aria-label={intl.formatMessage({ id: "government.hero.cta.contracts" })}
+            >
+              {intl.formatMessage({ id: "government.hero.cta.contracts" })}
+              <ArrowRight className="h-5 w-5 ml-2" />
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link
+              href={`/${locale}/contact`}
+              aria-label={intl.formatMessage({ id: "government.hero.cta.contact" })}
+            >
+              {intl.formatMessage({ id: "government.hero.cta.contact" })}
+            </Link>
+          </Button>
         </div>
       </div>        {/* Enhanced Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto">
@@ -180,14 +183,14 @@ const GovernmentHeroInternal = () => {
                     className={cn(
                       "font-semibold tracking-tight text-xl mb-2 transition duration-300",
                       colors.icon, // Use same color as icon
-                      "dark:text-slate-100" // Override for dark mode readability
+                      "dark:text-foreground" // Override for dark mode readability
                     )}
                   >
                     {service.title}
                   </CardTitle>
                   <p
                     id={`government-service-${service.id}-description`}
-                    className="text-slate-600 dark:text-slate-300 text-sm"
+                    className="text-muted-foreground text-sm"
                   >
                     {service.description}
                   </p>

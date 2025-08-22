@@ -1,9 +1,10 @@
 import "@testing-library/jest-dom/vitest";
-import { vi } from "vitest";
+
+// vi is available globally due to vitest config globals: true
 
 Object.defineProperty(window, 'matchMedia', {
     writable: true,
-    value: vi.fn().mockImplementation(query => ({
+    value: vi.fn().mockImplementation((query: string) => ({
         matches: false,
         media: query,
         onchange: null,

@@ -42,10 +42,10 @@ export default function AboutPartnerNetwork() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-x-8 gap-y-16 lg:grid-cols-2">          
           <div className="mx-auto w-full max-w-xl lg:mx-0">
-            <h2 id="partners-heading" className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-white sm:text-5xl">
+            <h2 id="partners-heading" className="text-4xl font-semibold tracking-tight text-pretty text-foreground sm:text-5xl">
               {intl.formatMessage({ id: "about.partnerNetwork.title" })}
             </h2>
-            <p className="mt-6 text-lg/8 text-slate-600 dark:text-slate-300">
+            <p className="mt-6 text-lg/8 text-muted-foreground">
               {intl.formatMessage({ id: "about.partnerNetwork.description" })}
             </p>
           </div>          

@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Separator } from "@/components/ui/separator";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Locale } from "@/lib/definitions";
 import { cn } from "@/lib/utils";
 import {
   Bell,
@@ -45,7 +46,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { forwardRef, useEffect, useState } from "react";
 import { FormattedMessage, IntlProvider } from "react-intl";
-import { Locale } from "@/lib/definitions";
 import ThemeToggle from "../ThemeToggle";
 import LangSwitcher from "./LangSwitcher";
 
@@ -212,7 +212,7 @@ export default function DashboardNavbar({
               <NavigationMenuList>
                 {/* Home */}
                 <NavigationMenuItem>
-                  <Link href={`/${locale}/home`} legacyBehavior passHref>
+                  <Link href={`/${locale}/home`}>
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                       <Home className="h-4 w-4 mr-2" />
                       <FormattedMessage id="common.navigation.home" defaultMessage="Home" />
@@ -256,7 +256,7 @@ export default function DashboardNavbar({
                 {/* Single Items */}
                 {singleNavItems.map((item) => (
                   <NavigationMenuItem key={item.href}>
-                    <Link href={item.href} legacyBehavior passHref>
+                    <Link href={item.href}>
                       <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                         {item.icon}
                         <span className="ml-2">{item.title}</span>
@@ -418,7 +418,7 @@ export default function DashboardNavbar({
                       />
                     </Link>
                     <Separator />
-                    
+
                     {/* Mobile Navigation Items */}
                     <div className="grid gap-2 py-4">
                       <Link
@@ -428,7 +428,7 @@ export default function DashboardNavbar({
                         <Home className="h-4 w-4" />
                         <FormattedMessage id="common.navigation.home" defaultMessage="Home" />
                       </Link>
-                      
+
                       {navigationItems.map((section) =>
                         section.items.map((item) => (
                           <Link
@@ -441,7 +441,7 @@ export default function DashboardNavbar({
                           </Link>
                         ))
                       )}
-                      
+
                       {singleNavItems.map((item) => (
                         <Link
                           key={item.href}
@@ -478,7 +478,7 @@ const ListItem = forwardRef<
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
-          onClick={() => onClick?.()}
+          onClick={onClick}
           {...props}
         >
           {children}

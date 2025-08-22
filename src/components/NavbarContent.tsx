@@ -35,9 +35,9 @@ export default function NavbarContent({ user, locale, messages }: Props) {
     <DashboardNavbar
       locale={locale}
       messages={messages}
-      userName={user?.name || "ISSI User"}
-      userEmail={user?.email || "user@issi-software.com"}
-      userAvatar={user?.image}
+      userName={`${user.firstName} ${user.lastName}`}
+      userEmail={user.email}
+      userAvatar={user.profileImage}
       notificationCount={3}
       onNavItemClick={handleNavItemClick}
       onInfoItemClick={handleInfoItemClick}

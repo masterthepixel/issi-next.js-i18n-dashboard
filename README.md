@@ -15,7 +15,7 @@ International Software Systems International (ISSI) is a company specializing in
 This Next.js application features:
 
 - **Multilingual Support**: Website content is available in multiple languages including English, Spanish, and French
-- **Modern UI**: Responsive design with interactive components and BentoGrid layouts
+- **Modern UI**: Responsive design with shadcn/ui components and BentoGrid layouts
 - **Expandable Team Cards**: Advanced cult-ui based expandable card system with smooth animations
 - **App Router**: Utilizes Next.js App Router for efficient routing and navigation
 - **Universal Breadcrumb System**: Automatic navigation with 3D globe integration
@@ -368,6 +368,8 @@ This project includes comprehensive instructions and guides for all major develo
 ### Development Tools
 
 - **docs/TAILWIND_DEBUG_SCREENS.md** – Responsive breakpoint debugging, production deployment, and customization guide
+- **docs/COMPONENT_DEVELOPMENT_GUIDE.md** – Enterprise component development standards, shadcn/ui patterns, and anti-patterns to avoid
+- **docs/NEXTJS_15_COMPATIBILITY.md** – Next.js 15 migration guide, async params, and compatibility requirements
 - **TROUBLESHOOTING.md** – Solutions for common i18n issues and error resolution
 - **JSON_VALIDATION_GUIDE.md** – JSON validation, linting, and best practices
 - **FUTURE_FEATURES.md** – Roadmap of planned enhancements and future features
@@ -381,6 +383,10 @@ This project includes comprehensive instructions and guides for all major develo
 
 - **COLOR_PALETTE_INSTRUCTIONS.md** – Text and background color usage for light/dark mode, Tailwind and CSS variable usage
 - **BACKGROUND_STYLES_REFERENCE.md** – Reference for all background patterns, gradients, and glassmorphism effects
+
+### Migration & Architecture
+
+- **docs/SHADCN_MIGRATION_LESSONS.md** – Comprehensive lessons learned from migrating 100+ components to shadcn/ui, anti-patterns eliminated, and performance improvements achieved
 
 ### Changelog
 

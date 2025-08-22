@@ -2,7 +2,6 @@ import { AnimatedBackground } from "@/components/AnimatedBackground";
 import ClientOnly from "@/components/ClientOnly";
 import Content from "@/components/Content";
 import ErrorBoundary from "@/components/ErrorBoundary";
-import FeatureFlagManager from "@/components/FeatureFlagManager";
 import FooterWrapper from "@/components/FooterWrapper";
 import MobileFloatingMenu from "@/components/MobileFloatingMenu";
 import Navbar from "@/components/Navbar";
@@ -18,7 +17,7 @@ import { defaultMetadata } from "@/lib/metadata";
 
 import { i18n } from "../../../i18n-config";
 
-import "@/app/globals.css";
+import "@/styles/globals.css";
 
 export const metadata = defaultMetadata;
 
@@ -28,43 +27,44 @@ interface Props {
 }
 
 export default async function Root({ params, children }: Props) {
+  const { lang } = await params;
   const user = await getUser();
-  const intl = await getIntl(params.lang);
-  const messages = (await import(`../../lang/${params.lang}.json`)).default;
+  const intl = await getIntl(lang);
+  const messages = (await import(`../../lang/${lang}.json`)).default;
 
   const navigationItems = [
     {
       title: intl.formatMessage({ id: "common.navigation.services" }),
       icon: "services",
-      href: `/${params.lang}/services`,
+      href: `/${lang}/services`,
     },
     {
       title: intl.formatMessage({ id: "common.navigation.products" }),
       icon: "products",
-      href: `/${params.lang}/products`,
+      href: `/${lang}/products`,
     },
     {
       title: intl.formatMessage({ id: "common.navigation.government" }),
       icon: "government",
-      href: `/${params.lang}/government`,
+      href: `/${lang}/government`,
     },
     {
       title: intl.formatMessage({ id: "common.navigation.eLearning" }),
       icon: "eLearning",
-      href: `/${params.lang}/eLearning`,
+      href: `/${lang}/eLearning`,
     },
     {
       title: intl.formatMessage({ id: "common.navigation.compliance" }),
       icon: "compliance",
-      href: `/${params.lang}/compliance`,
+      href: `/${lang}/compliance`,
     },
     {
       title: intl.formatMessage({ id: "common.navigation.about" }),
       icon: "about",
-      href: `/${params.lang}/about`,
+      href: `/${lang}/about`,
     },
   ]; return (
-    <html lang={params.lang} className="h-full">
+    <html lang={lang} className="h-full">
       <head />
       <body className="relative min-h-screen overflow-y-auto overflow-x-visible grid-background-with-fade flex flex-col debug-screens">
         <ErrorBoundary>
@@ -76,7 +76,7 @@ export default async function Root({ params, children }: Props) {
           >
             <AnimatedBackground />
             <ClientOnly>
-              <Navbar locale={params.lang} user={user} />
+              <Navbar locale={lang} user={user} />
             </ClientOnly>
 
             <Content>
@@ -84,7 +84,7 @@ export default async function Root({ params, children }: Props) {
               <div className="max-w-7xl mx-auto mb-6 overflow-visible">
                 <ClientOnly>
                   <UniversalIntelligentBreadcrumbWrapper
-                    locale={params.lang}
+                    locale={lang}
                     messages={messages}
                     className="relative z-10 overflow-visible"
                   />
@@ -92,12 +92,11 @@ export default async function Root({ params, children }: Props) {
               </div>
               {children}
             </Content>
-            <FooterWrapper locale={params.lang} />
+            <FooterWrapper locale={lang} />
             <ClientOnly>
               <MobileFloatingMenu items={navigationItems} />
               <ScrollToTopButton />
             </ClientOnly>
-            {process.env.NODE_ENV === 'development' && <FeatureFlagManager />}
           </ThemeProvider>
         </ErrorBoundary>
       </body>

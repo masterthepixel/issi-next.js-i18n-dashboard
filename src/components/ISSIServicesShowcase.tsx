@@ -29,7 +29,7 @@ const ISSIServicesShowcaseInternal = () => {
   // Define category-specific colors for consistency
   const categoryColors = {
     it: {
-      icon: "text-blue-600 dark:text-blue-400",
+      icon: "text-primary",
       border: "border-blue-200 dark:border-blue-800",
       hover: "hover:border-blue-400 dark:hover:border-blue-500"
     },
@@ -65,8 +65,8 @@ const ISSIServicesShowcaseInternal = () => {
   const getButtonColors = (category: string, isActive: boolean) => {
     const colors = {
       all: {
-        active: "bg-slate-700 text-white border-slate-700 dark:bg-slate-600 dark:border-slate-600",
-        inactive: "bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-300 dark:border-slate-600",
+        active: "bg-primary text-primary-foreground border-primary",
+        inactive: "bg-background text-foreground border-border",
         hover: "hover:border-slate-600 dark:hover:border-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700"
       },
       it: {

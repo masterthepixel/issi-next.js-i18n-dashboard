@@ -715,6 +715,113 @@ sleep 5
 tmux capture-pane -t session:0 -p | tail -50
 ```
 
+## 📚 Documentation Index
+
+The project includes comprehensive documentation organized by functional area. All documentation is structured in the `docs/` directory:
+
+### 🧭 1. Breadcrumb Systems (`docs/breadcrumbs/`)
+- **[BREADCRUMB_TESTING.md](./docs/breadcrumbs/BREADCRUMB_TESTING.md)** - Testing procedures for breadcrumb functionality
+- **[BREADCRUMB_UNIFICATION_GUIDE.md](./docs/breadcrumbs/BREADCRUMB_UNIFICATION_GUIDE.md)** - Unifying different breadcrumb implementations
+- **[BREADCRUMB_WITH_GLOBE_DOCUMENTATION.md](./docs/breadcrumbs/BREADCRUMB_WITH_GLOBE_DOCUMENTATION.md)** - 3D globe integration with breadcrumbs
+- **[OVERLAPPING_PILL_BREADCRUMB.md](./docs/breadcrumbs/OVERLAPPING_PILL_BREADCRUMB.md)** - Modern pill-style breadcrumb design
+- **[INTELLIGENT_BREADCRUMB_SYSTEM.md](./docs/breadcrumbs/INTELLIGENT_BREADCRUMB_SYSTEM.md)** - Smart breadcrumb generation system
+- **[UNIVERSAL_BREADCRUMB_DOCUMENTATION.md](./docs/breadcrumbs/UNIVERSAL_BREADCRUMB_DOCUMENTATION.md)** - Universal breadcrumb implementation
+- **[TODO_INTELLIGENT_BREADCRUMB.md](./docs/breadcrumbs/TODO_INTELLIGENT_BREADCRUMB.md)** - Future breadcrumb enhancements
+
+### 📦 2. Product & System Docs (`docs/products/`)
+- **[ProductDetailsPage.md](./docs/products/ProductDetailsPage.md)** - Product detail page implementation
+- **[PRODUCTS_SYSTEM_DOCUMENTATION.md](./docs/products/PRODUCTS_SYSTEM_DOCUMENTATION.md)** - Product system architecture
+- **[PRODUCT_PAGE_IMPLEMENTATION_PROMPTS.md](./docs/products/PRODUCT_PAGE_IMPLEMENTATION_PROMPTS.md)** - Implementation guidelines
+- **[PRODUCT_URL_TESTING.md](./docs/products/PRODUCT_URL_TESTING.md)** - Automated URL validation testing
+
+### 🎨 3. UI/Component Standards (`docs/components/`)
+- **[COMPONENT_DEVELOPMENT_GUIDE.md](./docs/components/COMPONENT_DEVELOPMENT_GUIDE.md)** - Enterprise component development standards
+- **[NEW_HERO_DOCUMENTATION.md](./docs/components/NEW_HERO_DOCUMENTATION.md)** - Hero component implementation
+- **[TODO_NEW_HERO_TOGGLE.md](./docs/components/TODO_NEW_HERO_TOGGLE.md)** - Future hero component features
+
+### 🔄 4. Migration & Compatibility (`docs/shadcn-migration/`, `docs/payloadcms-migration/`)
+- **[COMPONENT_DEVELOPMENT_GUIDE.md](./docs/shadcn-migration/COMPONENT_DEVELOPMENT_GUIDE.md)** - shadcn/ui patterns and anti-patterns
+- **[NEXTJS_15_COMPATIBILITY.md](./docs/shadcn-migration/NEXTJS_15_COMPATIBILITY.md)** - Next.js 15 async params and build changes
+- **[SHADCN_MIGRATION_LESSONS.md](./docs/shadcn-migration/SHADCN_MIGRATION_LESSONS.md)** - 100+ component migration lessons
+- **[DOCUMENTATION_INDEX.md](./docs/shadcn-migration/DOCUMENTATION_INDEX.md)** - Migration documentation hub
+- **[SHADCN_MIGRATION_REPORT.md](./docs/SHADCN_MIGRATION_REPORT.md)** - Original migration planning
+
+### ⚙️ 5. Configuration & Setup (`docs/config/`)
+- **[ESLINT_CONFIGURATION.md](./docs/config/ESLINT_CONFIGURATION.md)** - ESLint setup and rules
+- **[ESLINT_WARNINGS_RESOLUTION_GUIDE.md](./docs/config/ESLINT_WARNINGS_RESOLUTION_GUIDE.md)** - ESLint troubleshooting
+- **[TAILWIND_DEBUG_SCREENS.md](./docs/config/TAILWIND_DEBUG_SCREENS.md)** - Responsive debugging tools
+- **[TYPESCRIPT_LIBRARY_DOCUMENTATION.md](./docs/config/TYPESCRIPT_LIBRARY_DOCUMENTATION.md)** - TypeScript patterns
+- **[TYPESCRIPT_QUICK_START.md](./docs/config/TYPESCRIPT_QUICK_START.md)** - TypeScript setup guide
+- **[VSCODE_MULTI_AGENT_SETUP.md](./docs/config/VSCODE_MULTI_AGENT_SETUP.md)** - Multi-agent development setup
+- **[WSL_TMUX_NATIVE_SETUP.md](./docs/config/WSL_TMUX_NATIVE_SETUP.md)** - WSL development environment
+
+### 🌍 6. Globe & Timeline (`docs/globe/`)
+- **[GLOBE_DATA_STRUCTURE.md](./docs/globe/GLOBE_DATA_STRUCTURE.md)** - 3D globe data architecture
+- **[GMS_IMPLEMENTATION_UPDATES.md](./docs/globe/GMS_IMPLEMENTATION_UPDATES.md)** - Globe management system updates
+- **[INTERACTIVE_TIMELINE_DOCUMENTATION.md](./docs/globe/INTERACTIVE_TIMELINE_DOCUMENTATION.md)** - Timeline component docs
+- **[MOBILE_FLOATING_MENU_DOCUMENTATION.md](./docs/globe/MOBILE_FLOATING_MENU_DOCUMENTATION.md)** - Mobile navigation system
+
+### 📋 7. Master Index
+- **[DOCUMENTATION_INDEX.md](./docs/DOCUMENTATION_INDEX.md)** - Complete documentation directory and quick reference
+
+### Key Development Patterns from Migration
+
+#### ✅ Component Development Standard
+```tsx
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { FormattedMessage } from "react-intl";
+import ErrorBoundary from "./ErrorBoundary";
+
+interface Props {
+  className?: string;
+  variant?: "default" | "secondary";
+}
+
+function ComponentInternal({ className, variant = "default" }: Props) {
+  return (
+    <div className={cn("w-full", className)}>
+      <Button variant={variant === "secondary" ? "outline" : "default"}>
+        <FormattedMessage id="component.action" defaultMessage="Action" />
+      </Button>
+    </div>
+  );
+}
+
+export default function Component(props: Props) {
+  return (
+    <ErrorBoundary>
+      <ComponentInternal {...props} />
+    </ErrorBoundary>
+  );
+}
+```
+
+#### ❌ Anti-Patterns to Avoid
+1. **Feature flags for UI components** - Creates maintenance burden, use variant props instead
+2. **Hardcoded color systems** - Use theme tokens (`text-foreground`, `text-muted-foreground`)
+3. **Client-side libraries without SSR guards** - Wrap in proper client-side checks
+4. **Mixed design system usage** - Stick to shadcn/ui exclusively
+
+#### Next.js 15 Async Params Requirement
+```tsx
+// ✅ Correct pattern for Next.js 15
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return <div>Language: {lang}</div>;
+}
+```
+
+### Migration Results Achieved
+- **100% shadcn/ui component adoption**
+- **17% bundle size reduction**
+- **33% build time improvement**
+- **96% test pass rate** (55 tests total)
+- **Zero feature flag technical debt**
+- **Consistent theme token usage**
+
 ## Memories and Project-Specific Instructions
 
 - Ignore tmux in this repo

@@ -9,6 +9,10 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: './src/setupTests.ts',
+    typecheck: {
+      ignoreSourceErrors: false,
+      include: ['**/*.test.tsx', '**/*.test.ts'],
+    },
     alias: {
       'next/image': path.resolve(__dirname, './src/lib/mocks/next-image.tsx'),
       'next/link': path.resolve(__dirname, './src/lib/mocks/next-link.tsx'),

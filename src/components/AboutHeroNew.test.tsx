@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import { IntlProvider } from "react-intl";
-import { describe, expect, it } from "vitest";
 import AboutHeroNew from "./AboutHeroNew";
 
 // Test messages for different locales

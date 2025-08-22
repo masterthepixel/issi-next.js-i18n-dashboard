@@ -1,0 +1,44 @@
+.services-map-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.services-map-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.services-map-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+}
+
+.services-map-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  color: var(--destructive);
+  text-align: center;
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .services-map-container {
+    height: 300px;
+  }
+  
+  .services-map-loading {
+    height: 300px;
+  }
+  
+  .services-map-error {
+    height: 300px;
+  }
+}

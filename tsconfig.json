@@ -5,6 +5,7 @@
       "dom.iterable",
       "esnext"
     ],
+    "types": ["vitest/globals", "@testing-library/jest-dom"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -31,6 +32,7 @@
     "useDefineForClassFields": true,
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
+    "target": "ES2017"
   },
   "include": [
     "next-env.d.ts",

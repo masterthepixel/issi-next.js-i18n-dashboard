@@ -107,7 +107,7 @@ export default function ProductDetailsPage({
 
   // Icon color rotation system (matching ProductsBentoGrid pattern)
   const iconColors = [
-    "text-blue-500",
+    "text-primary",
     "text-green-500",
     "text-purple-500",
     "text-orange-500",
@@ -148,7 +148,7 @@ export default function ProductDetailsPage({
 
       {/* Product Features Grid */}
       <div className="mb-12">
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 text-center">
+        <h2 className="text-2xl font-bold text-foreground mb-8 text-center">
           <FormattedMessage id="products.features.title" defaultMessage="Key Features" />
         </h2>
 
@@ -170,13 +170,13 @@ export default function ProductDetailsPage({
                 />
               </CardHeader>
               <CardContent className="p-6 flex-grow">
-                <CardTitle className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
+                <CardTitle className="mb-2 text-lg font-semibold text-foreground">
                   {intl.formatMessage({
                     id: feature.titleKey,
                     defaultMessage: `${feature.id} Feature`
                   })}
                 </CardTitle>
-                <p className="text-sm text-slate-600 dark:text-slate-300">
+                <p className="text-sm text-muted-foreground">
                   {intl.formatMessage({
                     id: feature.descriptionKey,
                     defaultMessage: "Comprehensive feature description that enhances your workflow."
@@ -184,7 +184,7 @@ export default function ProductDetailsPage({
                 </p>
               </CardContent>
               <div className="p-6 pt-0">
-                <FaExternalLinkAlt className="w-4 h-4 text-slate-400" />
+                <FaExternalLinkAlt className="w-4 h-4 text-muted-foreground" />
               </div>
             </Card>
           ))}
@@ -193,14 +193,14 @@ export default function ProductDetailsPage({
 
       {/* Product Specifications */}
       <div className="grid md:grid-cols-3 gap-8 mb-12">
-        <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg">
+        <div className="bg-card rounded-xl p-6 shadow-lg">
           <div className="flex items-center gap-3 mb-4">
-            <FaCalendarAlt className="w-6 h-6 text-blue-500" />
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+            <FaCalendarAlt className="w-6 h-6 text-primary" />
+            <h3 className="text-lg font-semibold text-foreground">
               <FormattedMessage id="products.implementation" defaultMessage="Implementation" />
             </h3>
           </div>
-          <p className="text-slate-600 dark:text-slate-300">
+          <p className="text-muted-foreground">
             <FormattedMessage
               id={`products.${productId}.implementation`}
               defaultMessage="2-4 weeks typical deployment with full training and support included."
@@ -208,10 +208,10 @@ export default function ProductDetailsPage({
           </p>
         </div>
 
-        <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg">
+        <div className="bg-card rounded-xl p-6 shadow-lg">
           <div className="flex items-center gap-3 mb-4">
             <FaStar className="w-6 h-6 text-yellow-500" />
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+            <h3 className="text-lg font-semibold text-foreground">
               <FormattedMessage id="products.rating" defaultMessage="Customer Rating" />
             </h3>
           </div>
@@ -221,20 +221,20 @@ export default function ProductDetailsPage({
                 <FaStar key={star} className="w-4 h-4 text-yellow-400" />
               ))}
             </div>
-            <span className="text-sm text-slate-600 dark:text-slate-300">
+            <span className="text-sm text-muted-foreground">
               (4.8/5 from 150+ reviews)
             </span>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg">
+        <div className="bg-card rounded-xl p-6 shadow-lg">
           <div className="flex items-center gap-3 mb-4">
             <FaUsers className="w-6 h-6 text-green-500" />
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+            <h3 className="text-lg font-semibold text-foreground">
               <FormattedMessage id="products.support" defaultMessage="Support" />
             </h3>
           </div>
-          <p className="text-slate-600 dark:text-slate-300">
+          <p className="text-muted-foreground">
             <FormattedMessage
               id="products.support.description"
               defaultMessage="24/7 dedicated support with guaranteed response times."
@@ -245,10 +245,10 @@ export default function ProductDetailsPage({
 
       {/* Contact Section */}
       <div className="text-center bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-8">
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+        <h2 className="text-2xl font-bold text-foreground mb-4">
           <FormattedMessage id="products.contact.title" defaultMessage="Ready to Get Started?" />
         </h2>
-        <p className="text-slate-600 dark:text-slate-300 mb-6 max-w-2xl mx-auto">
+        <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
           <FormattedMessage
             id="products.contact.description"
             defaultMessage="Contact our sales team to learn more about how this solution can transform your business operations."

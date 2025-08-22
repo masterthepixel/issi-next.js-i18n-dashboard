@@ -2,76 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --font-sans: 'Inter Tight', 'Inter', Arial, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, Times, serif;
+}
+
 @layer base {
   html {
-    @apply transition-colors duration-300 ease-in-out;
-    scroll-behavior: smooth;
-    scroll-padding-top: 4rem;
-    /* Account for fixed header */
+    font-family: var(--font-sans);
   }
-
   body {
-    @apply transition-colors duration-300 ease-in-out;
-    font-feature-settings: "liga" 1, "clig" 1, "kern" 1, "calt" 1;
-    font-variant-ligatures: common-ligatures contextual;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-optical-sizing: auto;
+    font-family: var(--font-sans);
   }
-
-  * {
-    @apply transition-colors duration-200 ease-in-out;
-  }
-
-  /* Enhanced typography for better legibility */
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    font-feature-settings: "liga" 1, "clig" 1, "kern" 1, "calt" 1, "swsh" 1, "ss01" 1;
-    font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
-    text-rendering: optimizeLegibility;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-style: normal;
   }
-
-  p,
-  span,
-  div,
-  li,
-  td,
-  th {
-    font-feature-settings: "liga" 1, "clig" 1, "kern" 1, "calt" 1;
-    font-variant-ligatures: common-ligatures contextual;
-  }
-
-  /* Code elements should not use ligatures */
-  code,
-  pre,
-  kbd,
-  samp {
-    font-feature-settings: "liga" 0, "clig" 0;
-    font-variant-ligatures: none;
+  h1 em,
+  h2 em,
+  h3 em,
+  h4 em,
+  h5 em,
+  h6 em {
+    font-style: italic;
+    font-weight: 400;
   }
 }
-
-@layer components {
-
-  .glass-effect {
-    @apply bg-white/70 dark:bg-slate-900/80 backdrop-blur-md backdrop-saturate-180;
-    @apply border border-white/20 dark:border-slate-700/30;
-    @apply shadow-lg shadow-black/5 dark:shadow-black/20;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), transparent),
-      radial-gradient(at top center, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+:root {
+  --font-sans: 'Inter Tight', 'Inter', Arial, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, Times, serif;
+}
+@layer base {
+  html {
+    @apply transition-colors duration-300 ease-in-out;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
   }
 
-  .glass-effect-strong {
-    @apply bg-white/80 dark:bg-slate-900/90 backdrop-blur-lg backdrop-saturate-180;
-    @apply border-b border-white/30 dark:border-slate-700/40;
-    @apply shadow-md shadow-black/10 dark:shadow-black/30;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent),
-      radial-gradient(at top center, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "liga" 1, "clig" 1, "kern" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   .grid-background {
@@ -105,8 +83,6 @@
   .grid-background-with-fade::before {
     content: "";
     position: absolute;
-    top: 400px;
-    /* Start the fade well after profile header area (increased for safety) */
     left: 0;
     right: 0;
     bottom: 0;
@@ -122,43 +98,6 @@
     background: black;
   }
 
-  .glass-card {
-    box-sizing: border-box;
-    transition: 400ms;
-    width: 100%;
-    max-width: 300px;
-    min-height: 400px;
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(2px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-right-color: rgba(255, 255, 255, 0.1);
-    border-bottom-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    overflow: hidden;
-    text-align: left;
-  }
-
-  .dark .glass-card {
-    box-shadow:
-      0 0 0 2px rgba(255, 255, 255, 0.10) inset,
-      0 2px 8px 0 rgba(80, 180, 255, 0.14),
-      /* blue glow, even smaller */
-      0 0 8px 2px rgba(120, 80, 255, 0.10),
-      /* purple glow, even smaller */
-      0 0 12px 2px rgba(255, 255, 255, 0.04);
-    /* soft white outer glow, even smaller */
-    border: 1.5px solid rgba(120, 180, 255, 0.18);
-    background: rgba(30, 41, 59, 0.38);
-    /* more translucent in dark mode */
-    backdrop-filter: blur(18px) saturate(1.2);
-  }
 
   .frosted-glass {
     position: relative;

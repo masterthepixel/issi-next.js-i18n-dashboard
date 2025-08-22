@@ -1,7 +1,23 @@
 {
   "extends": [
-    "next/core-web-vitals"
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended"
   ],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "globals": {
+    "describe": "readonly",
+    "it": "readonly",
+    "expect": "readonly",
+    "beforeEach": "readonly",
+    "afterEach": "readonly",
+    "vi": "readonly",
+    "React": "readonly"
+  },
   "rules": {
     // JSON and string handling rules to prevent syntax errors
     "no-invalid-regexp": "error",
@@ -19,12 +35,14 @@
     "object-curly-spacing": "off",
     "comma-dangle": "off",
     // Prevent potential runtime errors
-    "no-undef": "warn",
-    "no-unused-vars": [
+    "no-undef": "off", // TypeScript handles this
+    "no-unused-vars": "off", // Use TypeScript version
+    "@typescript-eslint/no-unused-vars": [
       "warn",
       {
         "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_"
+        "varsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
       }
     ],
     // Code quality for better maintainability
@@ -42,15 +60,30 @@
   "overrides": [
     {
       "files": [
+        "**/*.test.ts",
+        "**/*.test.tsx"
+      ],
+      "env": {
+        "jest": true
+      },
+      "rules": {
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "argsIgnorePattern": "^_",
+            "varsIgnorePattern": "^_",
+            "ignoreRestSiblings": true
+          }
+        ]
+      }
+    },
+    {
+      "files": [
         "**/*.json"
       ],
-      "extends": [
-        "plugin:jsonc/recommended-with-json"
-      ],
       "rules": {
-        "jsonc/no-comments": "off",
-        "jsonc/trailing-comma": "error",
-        "jsonc/no-trailing-comma": "error"
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "off"
       }
     }
   ]
