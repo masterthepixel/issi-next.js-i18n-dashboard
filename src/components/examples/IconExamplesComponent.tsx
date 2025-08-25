@@ -11,6 +11,7 @@ import {
 
 // Or import from specific styles
 import { Bold, Linear, Outline } from '@/components/icons/figma-converted';
+import { Button } from '@/components/ui/button';
 
 /**
  * Example component showing how to use the imported Figma icons
@@ -120,18 +121,18 @@ const IconExamplesComponent = () => {
                 <div className="bg-gray-50 p-4 rounded-lg space-y-2">
                     <h3 className="font-medium">Navigation Menu</h3>
                     <nav className="flex gap-6">
-                        <button className="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-200">
+                        <Button className="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-200" variant="ghost">
                             <DashboardIcon size={20} />
                             <span>Dashboard</span>
-                        </button>
-                        <button className="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-200">
+                        </Button>
+                        <Button className="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-200" variant="ghost">
                             <Linear.ReportIcon size={20} />
                             <span>Reports</span>
-                        </button>
-                        <button className="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-200">
+                        </Button>
+                        <Button className="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-200" variant="ghost">
                             <SettingsIcon size={20} />
                             <span>Settings</span>
-                        </button>
+                        </Button>
                     </nav>
                 </div>
 

@@ -40,6 +40,9 @@
       "Bash(npx next build:*)"
     ],
     "deny": [],
-    "defaultMode": "acceptEdits"
+    "defaultMode": "acceptEdits",
+    "additionalDirectories": [
+      "C:\\mnt\\c\\Users\\kfiagbedzi\\Documents\\GitHub"
+    ]
   }
 }

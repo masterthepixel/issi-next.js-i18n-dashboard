@@ -1,8 +1,8 @@
 "use client";
 
-import { Locale } from "@/lib/definitions";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Locale } from "@/lib/definitions";
 import {
   AcademicCapIcon,
   BookOpenIcon,
@@ -18,7 +18,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { Facebook, Linkedin, Youtube } from 'lucide-react';
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { FormattedMessage, IntlProvider } from "react-intl";
 
 interface FooterProps {
@@ -28,6 +28,7 @@ interface FooterProps {
 
 export default function Footer({ locale, messages }: FooterProps) {
   const _pathname = usePathname();
+  const router = useRouter();
   // Social media data with Lucide React icons
   const socialLinks = [
     {
@@ -56,18 +57,18 @@ export default function Footer({ locale, messages }: FooterProps) {
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
               {/* Brand Section */}
               <div className="lg:col-span-1">
-            <h2 className="text-lg font-semibold text-foreground mb-4">
-              International Software Systems, Inc.
-            </h2>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              <FormattedMessage id="footer.company.description" defaultMessage="Leading technology solutions provider specializing in cybersecurity, compliance, and digital transformation for government and enterprise clients." />
-            </p>
-          </div>
-
+                <h2 className="text-lg font-semibold text-foreground mb-4">
+                  International Software Systems, Inc.
+                </h2>
+                <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+                  <FormattedMessage id="footer.company.description" defaultMessage="Leading technology solutions provider specializing in cybersecurity, compliance, and digital transformation for government and enterprise clients." />
+                </p>
               </div>
 
-              {/* Navigation Grid */}
-              <div className="lg:col-span-3">
+            </div>
+
+            {/* Navigation Grid */}
+            <div className="lg:col-span-3">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {/* Services */}
                 <div>
@@ -76,58 +77,58 @@ export default function Footer({ locale, messages }: FooterProps) {
                   </h3>
                   <ul className="space-y-3">
                     <li>
-                      <Button variant="ghost" size="sm" asChild className="justify-start p-0 h-auto">
-                        <Link
-                          href={`/${locale}/services`}
-                          className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        onClick={() => router.push(`/${locale}/services`)}
+                      >
                         <WrenchScrewdriverIcon className="h-4 w-4 mr-2" />
-                          <FormattedMessage id="common.navigation.services" />
-                        </Link>
+                        <FormattedMessage id="common.navigation.services" />
                       </Button>
                     </li>
                     <li>
-                      <Button variant="ghost" size="sm" asChild className="justify-start p-0 h-auto">
-                        <Link
-                          href={`/${locale}/products`}
-                          className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        onClick={() => router.push(`/${locale}/products`)}
+                      >
                         <CubeIcon className="h-4 w-4 mr-2" />
-                          <FormattedMessage id="common.navigation.products" />
-                        </Link>
+                        <FormattedMessage id="common.navigation.products" />
                       </Button>
                     </li>
                     <li>
-                      <Button variant="ghost" size="sm" asChild className="justify-start p-0 h-auto">
-                        <Link
-                          href={`/${locale}/government`}
-                          className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        onClick={() => router.push(`/${locale}/government`)}
+                      >
                         <BuildingLibraryIcon className="h-4 w-4 mr-2" />
-                          <FormattedMessage id="common.navigation.government" />
-                        </Link>
+                        <FormattedMessage id="common.navigation.government" />
                       </Button>
                     </li>
                     <li>
-                      <Button variant="ghost" size="sm" asChild className="justify-start p-0 h-auto">
-                        <Link
-                          href={`/${locale}/eLearning`}
-                          className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        onClick={() => router.push(`/${locale}/eLearning`)}
+                      >
                         <AcademicCapIcon className="h-4 w-4 mr-2" />
-                          <FormattedMessage id="common.navigation.eLearning" />
-                        </Link>
+                        <FormattedMessage id="common.navigation.eLearning" />
                       </Button>
                     </li>
                     <li>
-                      <Button variant="ghost" size="sm" asChild className="justify-start p-0 h-auto">
-                        <Link
-                          href={`/${locale}/compliance`}
-                          className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        onClick={() => router.push(`/${locale}/compliance`)}
+                      >
                         <ShieldCheckIcon className="h-4 w-4 mr-2" />
-                          <FormattedMessage id="common.navigation.compliance" />
-                        </Link>
+                        <FormattedMessage id="common.navigation.compliance" />
                       </Button>
                     </li>
                   </ul>
@@ -140,47 +141,47 @@ export default function Footer({ locale, messages }: FooterProps) {
                   </h3>
                   <ul className="space-y-3">
                     <li>
-                      <Button variant="ghost" size="sm" asChild className="justify-start p-0 h-auto">
-                        <Link
-                          href={`/${locale}/docs`}
-                          className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        onClick={() => router.push(`/${locale}/docs`)}
+                      >
                         <DocumentTextIcon className="h-4 w-4 mr-2" />
-                          <FormattedMessage id="footer.support.documentation" />
-                        </Link>
+                        <FormattedMessage id="footer.support.documentation" />
                       </Button>
                     </li>
                     <li>
-                      <Button variant="ghost" size="sm" asChild className="justify-start p-0 h-auto">
-                        <Link
-                          href={`/${locale}/guides`}
-                          className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        onClick={() => router.push(`/${locale}/guides`)}
+                      >
                         <BookOpenIcon className="h-4 w-4 mr-2" />
-                          <FormattedMessage id="footer.support.guides" />
-                        </Link>
+                        <FormattedMessage id="footer.support.guides" />
                       </Button>
                     </li>
                     <li>
-                      <Button variant="ghost" size="sm" asChild className="justify-start p-0 h-auto">
-                        <Link
-                          href={`/${locale}/contact`}
-                          className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        onClick={() => router.push(`/${locale}/contact`)}
+                      >
                         <QuestionMarkCircleIcon className="h-4 w-4 mr-2" />
-                          <FormattedMessage id="common.navigation.contact" />
-                        </Link>
+                        <FormattedMessage id="common.navigation.contact" />
                       </Button>
                     </li>
                     <li>
-                      <Button variant="ghost" size="sm" asChild className="justify-start p-0 h-auto">
-                        <Link
-                          href={`/${locale}/support`}
-                          className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        onClick={() => router.push(`/${locale}/support`)}
+                      >
                         <TicketIcon className="h-4 w-4 mr-2" />
-                          <FormattedMessage id="footer.support.ticket" />
-                        </Link>
+                        <FormattedMessage id="footer.support.ticket" />
                       </Button>
                     </li>
                   </ul>
@@ -193,36 +194,36 @@ export default function Footer({ locale, messages }: FooterProps) {
                   </h3>
                   <ul className="space-y-3">
                     <li>
-                      <Button variant="ghost" size="sm" asChild className="justify-start p-0 h-auto">
-                        <Link
-                          href={`/${locale}/about`}
-                          className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        onClick={() => router.push(`/${locale}/about`)}
+                      >
                         <InformationCircleIcon className="h-4 w-4 mr-2" />
-                          <FormattedMessage id="common.navigation.about" />
-                        </Link>
+                        <FormattedMessage id="common.navigation.about" />
                       </Button>
                     </li>
                     <li>
-                      <Button variant="ghost" size="sm" asChild className="justify-start p-0 h-auto">
-                        <Link
-                          href={`/${locale}/careers`}
-                          className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        onClick={() => router.push(`/${locale}/careers`)}
+                      >
                         <AcademicCapIcon className="h-4 w-4 mr-2" />
-                          <FormattedMessage id="footer.company.careers" />
-                        </Link>
+                        <FormattedMessage id="footer.company.careers" />
                       </Button>
                     </li>
                     <li>
-                      <Button variant="ghost" size="sm" asChild className="justify-start p-0 h-auto">
-                        <Link
-                          href={`/${locale}/news`}
-                          className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        onClick={() => router.push(`/${locale}/news`)}
+                      >
                         <DocumentTextIcon className="h-4 w-4 mr-2" />
-                          <FormattedMessage id="footer.company.news" />
-                        </Link>
+                        <FormattedMessage id="footer.company.news" />
                       </Button>
                     </li>
                   </ul>
@@ -235,36 +236,36 @@ export default function Footer({ locale, messages }: FooterProps) {
                   </h3>
                   <ul className="space-y-3">
                     <li>
-                      <Button variant="ghost" size="sm" asChild className="justify-start p-0 h-auto">
-                        <Link
-                          href={`/${locale}/privacy`}
-                          className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        onClick={() => router.push(`/${locale}/privacy`)}
+                      >
                         <ShieldExclamationIcon className="h-4 w-4 mr-2" />
-                          <FormattedMessage id="footer.legal.privacy" />
-                        </Link>
+                        <FormattedMessage id="footer.legal.privacy" />
                       </Button>
                     </li>
                     <li>
-                      <Button variant="ghost" size="sm" asChild className="justify-start p-0 h-auto">
-                        <Link
-                          href={`/${locale}/terms`}
-                          className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        onClick={() => router.push(`/${locale}/terms`)}
+                      >
                         <DocumentTextIcon className="h-4 w-4 mr-2" />
-                          <FormattedMessage id="footer.legal.terms" />
-                        </Link>
+                        <FormattedMessage id="footer.legal.terms" />
                       </Button>
                     </li>
                     <li>
-                      <Button variant="ghost" size="sm" asChild className="justify-start p-0 h-auto">
-                        <Link
-                          href={`/${locale}/license`}
-                          className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        onClick={() => router.push(`/${locale}/license`)}
+                      >
                         <DocumentTextIcon className="h-4 w-4 mr-2" />
-                          <FormattedMessage id="footer.legal.license" />
-                        </Link>
+                        <FormattedMessage id="footer.legal.license" />
                       </Button>
                     </li>
                   </ul>
@@ -275,10 +276,10 @@ export default function Footer({ locale, messages }: FooterProps) {
         </div>
 
 
-          {/* Copyright Section */}
-          <Separator className="my-6" />
-          <div className="py-6">
-            <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
+        {/* Copyright Section */}
+        <Separator className="my-6" />
+        <div className="py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
             <div className="mb-2 md:mb-0">
               <FormattedMessage
                 id="footer.copyright"

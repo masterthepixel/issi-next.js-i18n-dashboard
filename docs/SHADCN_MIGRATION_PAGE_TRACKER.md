@@ -62,7 +62,7 @@ This document tracks the shadcn/ui compliance status for every page in the ISSI 
 2. ✅ **Unified color strategy** - Using consistent shadcn theme variables
 3. ✅ **Maintained semantic meaning** - Mapped brand colors to theme equivalents:
    - `text-green-500` → `text-primary` (featured products)
-   - `text-indigo-500` → `text-secondary` (ePermitting)
+   - `text-blue-500` → `text-secondary` (ePermitting)
    - `text-purple-500` → `text-accent` (database products)
    - `text-red-500` → `text-destructive` (bug tracking)
    - `text-yellow-500` → `text-chart-4` (audit products)

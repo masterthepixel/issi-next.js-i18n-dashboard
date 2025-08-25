@@ -80,23 +80,25 @@ const ComplianceCarousel = () => {
               <Dialog>
                 <DialogTrigger asChild>
                   <button type="button" className="p-1 text-left w-full">
-                    <div className="relative aspect-video overflow-hidden rounded-lg">
-                      <Image
-                        src={item.src}
-                        alt={item.imgAlt}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      />
-                    </div>
-                    <div className="p-4">
-                      <p className="text-sm font-medium text-muted-foreground">
-                        {item.category}
-                      </p>
-                      <p className="text-lg font-semibold">
-                        <FormattedMessage id={item.title} />
-                      </p>
-                    </div>
+                    <span className="inline-flex flex-col items-start w-full">
+                      <div className="relative aspect-video overflow-hidden rounded-lg w-full">
+                        <Image
+                          src={item.src}
+                          alt={item.imgAlt}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
+                      </div>
+                      <div className="p-4 w-full">
+                        <p className="text-sm font-medium text-muted-foreground">
+                          {item.category}
+                        </p>
+                        <p className="text-lg font-semibold">
+                          <FormattedMessage id={item.title} />
+                        </p>
+                      </div>
+                    </span>
                   </button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[600px]">

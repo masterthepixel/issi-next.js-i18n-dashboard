@@ -12,7 +12,7 @@ Complete refactoring and enhancement of the ProductsBentoGrid component with int
 - **Category Filter Localization**: Translated all filter categories across supported languages
 
 ### 🎨 Visual & UX Enhancements
-- **Alternating Icon Colors**: Implemented 8-color rotation system (blue, green, purple, orange, red, indigo, teal, pink) for improved visual distinction
+- **Alternating Icon Colors**: Implemented 8-color rotation system (blue, green, purple, orange, red, blue, teal, pink) for improved visual distinction
 - **Consistent Grid Layout**: Standardized all cards to 1x1 sizing unless intentionally wide (2x1)
 - **Layout Alignment**: Left-aligned filter tabs for better visual hierarchy
 - **Interactive Feedback**: Added pointer cursor on card hover for better usability

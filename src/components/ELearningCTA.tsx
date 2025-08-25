@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from '@/components/ui/button';
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -16,22 +17,21 @@ const ELearningCTA: React.FC = () => {
                 <div className="max-w-4xl mx-auto text-center">
                     {/* Main CTA Content */}
                     <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-xl border border-border/50">                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                            {intl.formatMessage({ id: 'page.eLearning.cta.title' })}
-                        </h2>
-                        
+                        {intl.formatMessage({ id: 'page.eLearning.cta.title' })}
+                    </h2>
+
                         <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
                             {intl.formatMessage({ id: 'page.eLearning.cta.subtitle' })}
                         </p>
 
                         {/* Action Buttons */}
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-                            <button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full sm:w-auto">
+                            <Button size="lg" variant="default" className="shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full sm:w-auto">
                                 {intl.formatMessage({ id: 'page.eLearning.cta.primary' })}
-                            </button>
-                            
-                            <button className="bg-transparent hover:bg-muted/50 text-muted-foreground px-8 py-4 rounded-lg font-semibold border-2 border-border transition-all duration-200 w-full sm:w-auto">
+                            </Button>
+                            <Button size="lg" variant="outline" className="w-full sm:w-auto">
                                 {intl.formatMessage({ id: 'page.eLearning.cta.secondary' })}
-                            </button>
+                            </Button>
                         </div>                        {/* Contact Information */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                             <div className="flex flex-col items-center">

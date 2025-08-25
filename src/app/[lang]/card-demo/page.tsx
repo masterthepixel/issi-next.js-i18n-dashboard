@@ -19,7 +19,7 @@ export default function CardEffectDemo() {
     {
       title: "Cloud Services",
       description: "Expert cloud migration, optimization, and management services for AWS, Azure, and Google Cloud platforms.",
-      icon: <Server className="size-8 text-indigo-500" />,
+      icon: <Server className="size-8 text-blue-500" />,
       href: '#',
       className: 'md:col-span-1',
     },

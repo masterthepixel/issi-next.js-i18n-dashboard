@@ -6,7 +6,7 @@ import FooterWrapper from "@/components/FooterWrapper";
 import MobileFloatingMenu from "@/components/MobileFloatingMenu";
 import Navbar from "@/components/Navbar";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
-import UniversalIntelligentBreadcrumbWrapper from '@/components/UniversalIntelligentBreadcrumbWrapper';
+// UniversalIntelligentBreadcrumbWrapper removed
 import { ThemeProvider } from "next-themes";
 import React from 'react';
 
@@ -80,16 +80,7 @@ export default async function Root({ params, children }: Props) {
             </ClientOnly>
 
             <Content>
-              {/* Universal Intelligent Breadcrumb - now inside main content container with overflow visible */}
-              <div className="max-w-7xl mx-auto mb-6 overflow-visible">
-                <ClientOnly>
-                  <UniversalIntelligentBreadcrumbWrapper
-                    locale={lang}
-                    messages={messages}
-                    className="relative z-10 overflow-visible"
-                  />
-                </ClientOnly>
-              </div>
+              {/* Universal Intelligent Breadcrumb removed */}
               {children}
             </Content>
             <FooterWrapper locale={lang} />

@@ -21,8 +21,10 @@ export default async function Sidebar({ locale }: Props) {
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="ghost" size="icon" className="md:hidden">
-          <Menu className="h-6 w-6" />
-          <span className="sr-only">Toggle Menu</span>
+          <span className="inline-flex items-center">
+            <Menu className="h-6 w-6" />
+            <span className="sr-only">Toggle Menu</span>
+          </span>
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="w-60 bg-sidebar text-sidebar-foreground">

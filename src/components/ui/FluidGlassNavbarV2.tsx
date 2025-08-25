@@ -136,7 +136,7 @@ export default function FluidGlassNavbar({ navItems, locale, className }: FluidG
         {navItems.map((navItem: any, idx: number) => {
           const isActive = pathname?.includes(navItem.link.split('/').pop()) || false;
           const hasDropdown = navItem.name === "Compliance";
-          
+
           if (hasDropdown) {
             return (
               <div key={`dropdown-${idx}`} className="relative">
@@ -173,7 +173,7 @@ export default function FluidGlassNavbar({ navItems, locale, className }: FluidG
                               <div className="mt-0.5 flex size-8 flex-none items-center justify-center rounded-lg bg-gray-50/20 dark:bg-slate-800/20 group-hover:bg-white/30 dark:group-hover:bg-slate-700/30">
                                 <item.icon
                                   aria-hidden="true"
-                                  className="size-4 text-slate-600 dark:text-indigo-400 group-hover:text-indigo-600"
+                                  className="size-4 text-slate-600 dark:text-blue-400 group-hover:text-blue-600"
                                 />
                               </div>
                               <div>

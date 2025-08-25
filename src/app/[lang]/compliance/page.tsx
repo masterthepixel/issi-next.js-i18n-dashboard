@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
     description: messages["page.compliance.meta.description"] || "ISSI's comprehensive compliance framework includes ISO 27001, ISO 9001, SOC 2 Type II, and GDPR certifications. Trusted compliance solutions for enterprise security.",
     keywords: [
       "ISO 27001 certification",
-      "SOC 2 compliance", 
+      "SOC 2 compliance",
       "GDPR compliance",
       "ISO 9001 quality management",
       "compliance software solutions",
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
       canonical: `https://issi-software.com/${params.lang}/compliance`,
       languages: {
         'en': 'https://issi-software.com/en/compliance',
-        'fr': 'https://issi-software.com/fr/compliance', 
+        'fr': 'https://issi-software.com/fr/compliance',
         'es': 'https://issi-software.com/es/compliance'
       }
     },
@@ -76,7 +76,8 @@ interface Props {
   };
 }
 
-export default function Page({ params: { lang: locale } }: Props) {
+export default async function Page({ params }: Props) {
+  const { lang: locale } = await params;
   return (
     <Suspense fallback={<Spinner />}>
       <PageContent locale={locale} />
@@ -104,13 +105,13 @@ async function PageContent({ locale }: PageContentProps) {
         "credentialCategory": "certification",
         "name": "ISO/IEC 27001:2022 Information Security Management",
         "recognizedBy": {
-          "@type": "Organization", 
+          "@type": "Organization",
           "name": "International Organization for Standardization"
         }
       },
       {
         "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "certification", 
+        "credentialCategory": "certification",
         "name": "SOC 2 Type II",
         "recognizedBy": {
           "@type": "Organization",
@@ -144,20 +145,20 @@ async function PageContent({ locale }: PageContentProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(complianceSchema) }}
       />
-      
+
       {/* ComplianceCertifications component - modern bento grid layout */}
       <ComplianceCertificationsWrapper
         locale={locale}
         messages={intl.messages}
       />
-      
+
       {/* Stats section */}
       <ComplianceStatsWrapper locale={locale} messages={messages} />        {/* Partner Network / Logo Clouds section */}
       <AboutPartnerNetworkWrapper locale={locale} messages={messages} />
-      
+
       {/* Industry Certifications section */}
       <ComplianceIndustryCertificationsWrapper locale={locale} messages={messages} />
-      
+
       {/* Awards section - last section before footer */}
       <AboutAwardsWrapper locale={locale} messages={messages} />
     </main>

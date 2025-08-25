@@ -1,12 +1,13 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader
 } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -49,6 +50,7 @@ export default function Hero({ lang: _lang = "en" }: HeroProps) {
                         href="/services"
                         className="text-primary hover:underline"
                         title="Explore our innovative technology services"
+                        key="innovativeTechnology-link"
                       >
                         {chunks}
                       </Link>
@@ -58,6 +60,7 @@ export default function Hero({ lang: _lang = "en" }: HeroProps) {
                         href="/government"
                         className="text-primary hover:underline"
                         title="Government solutions and services"
+                        key="government-link"
                       >
                         {chunks}
                       </Link>
@@ -67,6 +70,7 @@ export default function Hero({ lang: _lang = "en" }: HeroProps) {
                         href="/products"
                         className="text-primary hover:underline"
                         title="Enterprise products and solutions"
+                        key="enterprise-link"
                       >
                         {chunks}
                       </Link>
@@ -77,16 +81,23 @@ export default function Hero({ lang: _lang = "en" }: HeroProps) {
             </CardHeader>
             <CardContent>
               <div className="mt-6 flex items-center gap-x-6">
-                <Button asChild size="lg">
-                  <Link href="/contact" title="Contact ISSI to get started with our solutions">
-                    <FormattedMessage id="newhero.cta.get-started" />
-                  </Link>
-                </Button>
-                <Button asChild variant="link" className="text-sm/6 font-semibold text-foreground">
-                  <Link href="/services" title="Explore ISSI's software solutions and services">
-                    <FormattedMessage id="newhero.cta.learn-more" /> <span aria-hidden="true">→</span>
-                  </Link>
-                </Button>
+                <Link
+                  href="/contact"
+                  title="Contact ISSI to get started with our solutions"
+                  className={cn(buttonVariants({ variant: "default", size: "lg" }))}
+                >
+                  <FormattedMessage id="newhero.cta.get-started" />
+                </Link>
+                <Link
+                  href="/services"
+                  title="Explore ISSI's software solutions and services"
+                  className={cn(buttonVariants({ variant: "link", size: "sm" }))}
+                >
+                  <span className="inline-flex items-center">
+                    <FormattedMessage id="newhero.cta.learn-more" />
+                    <ChevronRightIcon className="h-4 w-4 ml-1" />
+                  </span>
+                </Link>
               </div>
             </CardContent>
           </Card>

@@ -765,8 +765,20 @@ The project includes comprehensive documentation organized by functional area. A
 - **[DOCUMENTATION_INDEX.md](./docs/DOCUMENTATION_INDEX.md)** - Complete documentation directory and quick reference
 
 ### Key Development Patterns from Migration
+## Key Development Patterns from Migration
+...existing code...
 
-#### ✅ Component Development Standard
+### Enhanced Button Component (shadcn/ui)
+ The default Button (`@/components/ui/button`) is now the enhanced-button version.
+ Supports effects (expandIcon, gooeyRight, shineHover) and icon placement.
+ Example usage:
+  ```tsx
+  <Button effect="expandIcon" icon={<ArrowRightIcon />} iconPlacement="right">Icon right</Button>
+  <Button effect="gooeyRight">Gooey right</Button>
+  <Button variant="outline" effect="shineHover">Outline with shine hover</Button>
+  ```
+ All theme variables are respected via Tailwind config.
+ See COMPONENT_INTEGRATION_GUIDE.md for full details.
 ```tsx
 "use client";
 
@@ -799,29 +811,16 @@ export default function Component(props: Props) {
 }
 ```
 
-#### ❌ Anti-Patterns to Avoid
-1. **Feature flags for UI components** - Creates maintenance burden, use variant props instead
-2. **Hardcoded color systems** - Use theme tokens (`text-foreground`, `text-muted-foreground`)
-3. **Client-side libraries without SSR guards** - Wrap in proper client-side checks
-4. **Mixed design system usage** - Stick to shadcn/ui exclusively
 
-#### Next.js 15 Async Params Requirement
-```tsx
-// ✅ Correct pattern for Next.js 15
-export default async function Page({ params }: Props) {
-  const { lang } = await params;
-  return <div>Language: {lang}</div>;
-}
-```
+---
 
-### Migration Results Achieved
-- **100% shadcn/ui component adoption**
-- **17% bundle size reduction**
-- **33% build time improvement**
-- **96% test pass rate** (55 tests total)
-- **Zero feature flag technical debt**
-- **Consistent theme token usage**
+## UI Component Migration & Standards
 
-## Memories and Project-Specific Instructions
+- All form elements (Button, Input, Select, etc.) use shadcn/ui primitives. See [COMPONENT_INTEGRATION_GUIDE.md](docs/COMPONENT_INTEGRATION_GUIDE.md).
+- Button uses [enhanced-button](https://github.com/jakobhoeg/enhanced-button) for accessibility (focus, ARIA, keyboard, WCAG). See [AI_PERSONA_ENHANCED_BUTTON.md](docs/AI_PERSONA_ENHANCED_BUTTON.md).
+- Use lucide-react or shadcn/ui Icon for icons. See [CRUSH.md](docs/CRUSH.md).
+- Use theme variables for colors/radii/effects. No hardcoded values.
+- Accessibility and i18n linting are enforced in CI/CD.
+- Fix all lint errors before merge.
 
-- Ignore tmux in this repo
+---

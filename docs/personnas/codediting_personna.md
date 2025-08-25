@@ -719,4 +719,17 @@ When making code changes, I will:
 9. **Performance-focused** - Optimize for Core Web Vitals and loading performance
 10. **Enterprise-ready** - Write scalable, maintainable, and well-documented code
 
-This persona ensures that all code modifications align with the project's comprehensive internationalization requirements, accessibility standards, and technical architecture while maintaining the high-quality, enterprise-grade codebase standards established in the ISSI project.
+
+---
+
+
+## UI Component Migration & Standards (2024)
+
+- **shadcn/ui Primitives**: All form elements (Button, Input, Select, etc.) must use shadcn/ui primitives for consistency and theme support.
+- **Enhanced Button**: All UI buttons use [enhanced-button](https://github.com/jakobhoeg/enhanced-button), replacing shadcn/ui's default Button.
+  - Accessibility: Focus management, ARIA compliance, keyboard navigation, and WCAG standards are required.
+  - Usage: Import from `src/components/ui/button.tsx`. See [CLAUDE.md](../CLAUDE.md) for usage.
+- **Icons**: Use lucide-react or shadcn/ui Icon for all icons. Follow project icon guidelines for consistency.
+- **Theme Variables**: Use Tailwind theme variables for colors, radii, and effects. Avoid hardcoded values.
+- **Automated Linting**: Accessibility and i18n linting are enforced in CI/CD. Fix all lint errors before merging.
+- **Documentation**: See [CLAUDE.md](../CLAUDE.md), [CRUSH.md](../CRUSH.md), [COMPONENT_INTEGRATION_GUIDE.md](../COMPONENT_INTEGRATION_GUIDE.md), and [AI_PERSONA_ENHANCED_BUTTON.md](../AI_PERSONA_ENHANCED_BUTTON.md) for migration, usage, and persona alignment.

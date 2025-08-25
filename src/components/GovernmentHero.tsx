@@ -6,17 +6,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from '@/lib/utils';
 import { ArrowRight, Award, CheckCircle, Clock, Shield, Star, Users } from 'lucide-react';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import React from 'react';
 import { useIntl } from 'react-intl';
 
 const GovernmentHeroInternal = () => {
   const intl = useIntl();
   const params = useParams();
+  const router = useRouter();
   const locale = (params?.lang as string) || 'en';
 
   // Keyboard navigation handler
-  const handleKeyPress = (event: React.KeyboardEvent, serviceId: string) => {
+  const _handleKeyPress = (event: React.KeyboardEvent, serviceId: string) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       // Could add navigation or modal opening logic here if needed
@@ -129,22 +130,21 @@ const GovernmentHeroInternal = () => {
           {intl.formatMessage({ id: "government.hero.subtitle" })}
         </p>          {/* Action Buttons */}
         <div className="flex gap-4 mb-8">
-          <Button asChild size="lg">
-            <Link
-              href={`/${locale}/services`}
-              aria-label={intl.formatMessage({ id: "government.hero.cta.contracts" })}
-            >
-              {intl.formatMessage({ id: "government.hero.cta.contracts" })}
-              <ArrowRight className="h-5 w-5 ml-2" />
-            </Link>
+          <Button 
+            size="lg" 
+            rightIcon={<ArrowRight className="h-5 w-5 ml-2" />}
+            onClick={() => router.push(`/${locale}/services`)}
+            aria-label={intl.formatMessage({ id: "government.hero.cta.contracts" })}
+          >
+            {intl.formatMessage({ id: "government.hero.cta.contracts" })}
           </Button>
-          <Button asChild variant="outline" size="lg">
-            <Link
-              href={`/${locale}/contact`}
-              aria-label={intl.formatMessage({ id: "government.hero.cta.contact" })}
-            >
-              {intl.formatMessage({ id: "government.hero.cta.contact" })}
-            </Link>
+          <Button 
+            variant="outline" 
+            size="lg"
+            onClick={() => router.push(`/${locale}/contact`)}
+            aria-label={intl.formatMessage({ id: "government.hero.cta.contact" })}
+          >
+            {intl.formatMessage({ id: "government.hero.cta.contact" })}
           </Button>
         </div>
       </div>        {/* Enhanced Bento Grid Layout */}

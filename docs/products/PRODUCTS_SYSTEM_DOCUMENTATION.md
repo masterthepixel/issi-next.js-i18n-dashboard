@@ -624,7 +624,7 @@ export default function Products[ProductName]Features() {
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-base/7 font-semibold text-indigo-600">
+          <h2 className="text-base/7 font-semibold text-blue-600">
             <FormattedMessage id="products.[productId].hero.tagline" />
           </h2>
           <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl sm:text-balance">
@@ -654,7 +654,7 @@ export default function Products[ProductName]Features() {
           {features.map((feature) => (
             <div key={feature.nameId} className="relative pl-9">
               <dt className="inline font-semibold text-gray-900">
-                <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-indigo-600" />
+                <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-blue-600" />
                 <FormattedMessage id={feature.nameId} />
               </dt>{' '}
               <dd className="inline">

@@ -71,7 +71,7 @@ export default function IconShowcase() {
             </div>
 
             {/* Instructions */}
-            <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50 rounded-lg border border-blue-200 dark:border-blue-800">
+            <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-blue-50 dark:from-blue-950/50 dark:to-blue-950/50 rounded-lg border border-blue-200 dark:border-blue-800">
                 <h3 className="font-semibold mb-4 text-blue-900 dark:text-blue-100">
                     🚀 How to Complete the Icon Import
                 </h3>

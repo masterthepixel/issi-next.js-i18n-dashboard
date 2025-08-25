@@ -76,7 +76,7 @@ The following translation keys have been added to all language files:
 
 - **Text Sizes**: Matches current hero text sizing (text-3xl sm:text-4xl for h1, text-sm sm:text-base lg:text-lg for description)
 - **Font Colors**: Uses slate color palette consistent with current design
-- **Button Styles**: Primary button matches current indigo theme with hover effects
+- **Button Styles**: Primary button matches current blue theme with hover effects
 - **Dark Mode**: Full dark mode support with proper color variants
 - **Spacing**: Consistent with current layout spacing
 

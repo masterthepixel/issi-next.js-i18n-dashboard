@@ -1,7 +1,7 @@
-import * as React from "react"
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
 import { cva } from "class-variance-authority"
 import { ChevronDown } from "lucide-react"
+import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -47,19 +47,38 @@ const navigationMenuTriggerStyle = cva(
 const NavigationMenuTrigger = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-  <NavigationMenuPrimitive.Trigger
-    ref={ref}
-    className={cn(navigationMenuTriggerStyle(), "group", className)}
-    {...props}
-  >
-    {children}{" "}
-    <ChevronDown
-      className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
-      aria-hidden="true"
-    />
-  </NavigationMenuPrimitive.Trigger>
-))
+>(({ className, children, ...props }, ref) => {
+  // If the consumer uses `asChild` on the trigger we must not inject any
+  // additional sibling nodes (whitespace or the chevron) because Radix will
+  // call React.Children.only on the child when asChild is true. Guard those
+  // extra nodes so the trigger is safe to use with asChild.
+  // props is ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger>
+  // which may include an `asChild` boolean when used via consumer patterns.
+  // Narrowly inspect it without using `any` to satisfy lint rules.
+  const isAsChild = Boolean((props as unknown as { asChild?: boolean }).asChild)
+
+  const safeChildren = isAsChild
+    ? (React.Children.count(children) === 1 && React.isValidElement(React.Children.only(children))
+      ? children
+      : <span className="inline-flex items-center">{children}</span>)
+    : children
+
+  return (
+    <NavigationMenuPrimitive.Trigger
+      ref={ref}
+      className={cn(navigationMenuTriggerStyle(), "group", className)}
+      {...props}
+    >
+      {safeChildren}
+      {!isAsChild && (
+        <ChevronDown
+          className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
+          aria-hidden="true"
+        />
+      )}
+    </NavigationMenuPrimitive.Trigger>
+  )
+})
 NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName
 
 const NavigationMenuContent = React.forwardRef<
@@ -77,7 +96,24 @@ const NavigationMenuContent = React.forwardRef<
 ))
 NavigationMenuContent.displayName = NavigationMenuPrimitive.Content.displayName
 
-const NavigationMenuLink = NavigationMenuPrimitive.Link
+const NavigationMenuLink = React.forwardRef<
+  React.ElementRef<typeof NavigationMenuPrimitive.Link>,
+  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Link>
+>(({ children, ...props }, ref) => {
+  const isAsChild = Boolean((props as unknown as { asChild?: boolean }).asChild)
+  const safeChildren = isAsChild
+    ? (React.Children.count(children) === 1 && React.isValidElement(React.Children.only(children))
+      ? children
+      : <span className="inline-flex items-center">{children}</span>)
+    : children
+
+  return (
+    <NavigationMenuPrimitive.Link ref={ref} {...props}>
+      {safeChildren}
+    </NavigationMenuPrimitive.Link>
+  )
+})
+NavigationMenuLink.displayName = NavigationMenuPrimitive.Link.displayName
 
 const NavigationMenuViewport = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
@@ -116,13 +152,6 @@ NavigationMenuIndicator.displayName =
   NavigationMenuPrimitive.Indicator.displayName
 
 export {
-  navigationMenuTriggerStyle,
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuContent,
-  NavigationMenuTrigger,
-  NavigationMenuLink,
-  NavigationMenuIndicator,
-  NavigationMenuViewport,
+  NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle, NavigationMenuViewport
 }
+

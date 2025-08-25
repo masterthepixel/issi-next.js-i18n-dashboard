@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from '@/components/ui/button';
 import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import { FormattedMessage } from "react-intl";
@@ -45,26 +46,18 @@ export default function ELearningHeader() {
                 </h1>
               </div>{" "}
               <div className="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
-                <button
-                  type="button"
-                  aria-label="Send a message"
-                  className="inline-flex justify-center rounded-md bg-background px-3 py-2 text-sm font-semibold text-foreground shadow-xs ring-1 ring-border ring-inset hover:bg-muted/50"
-                >
+                <Button type="button" aria-label="Send a message" className="inline-flex justify-center rounded-md bg-background px-3 py-2 text-sm font-semibold text-foreground shadow-xs ring-1 ring-border ring-inset hover:bg-muted/50">
                   <EnvelopeIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-muted-foreground" />
                   <span>
                     <FormattedMessage id="common.action.message" defaultMessage="Message" />
                   </span>
-                </button>
-                <button
-                  type="button"
-                  aria-label="Make a phone call"
-                  className="inline-flex justify-center rounded-md bg-background px-3 py-2 text-sm font-semibold text-foreground shadow-xs ring-1 ring-border ring-inset hover:bg-muted/50"
-                >
+                </Button>
+                <Button type="button" aria-label="Make a phone call" className="inline-flex justify-center rounded-md bg-background px-3 py-2 text-sm font-semibold text-foreground shadow-xs ring-1 ring-border ring-inset hover:bg-muted/50">
                   <PhoneIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-muted-foreground" />
                   <span>
                     <FormattedMessage id="common.action.call" defaultMessage="Call" />
                   </span>
-                </button>
+                </Button>
               </div>
             </div>
           </div>

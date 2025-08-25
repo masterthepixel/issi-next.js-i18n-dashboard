@@ -1,7 +1,7 @@
 'use client';
 
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid';
-import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 import {
   BarChart3,
   Bug,
@@ -217,7 +217,7 @@ const ProductsBentoGrid = () => {
     []
   );
 
-  const categories = useMemo(() => ["all", ...Array.from(new Set(products.map((p) => p.category)))], [products]);
+  const _categories = useMemo(() => ["all", ...Array.from(new Set(products.map((p) => p.category)))], [products]);
 
   const filteredProducts = useMemo(() => {
     return activeFilter === 'all' ? products : products.filter((product) => product.category === activeFilter);
@@ -258,18 +258,16 @@ const ProductsBentoGrid = () => {
           {/* Category Filter */}
           <div className="flex flex-wrap justify-start gap-2 mb-8">
             {filters.map((filter) => (
-              <button
+              <Button
                 key={filter.id}
+                type="button"
                 onClick={() => setActiveFilter(filter.id)}
-                className={cn(
-                  "px-4 py-2 rounded-full text-sm font-medium transition-all",
-                  activeFilter === filter.id
-                    ? "bg-indigo-600 text-white"
-                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                )}
+                variant={activeFilter === filter.id ? "default" : "secondary"}
+                size="sm"
+                className="rounded-full"
               >
                 {filter.label}
-              </button>
+              </Button>
             ))}
           </div>
         </div>
@@ -292,13 +290,13 @@ const ProductsBentoGrid = () => {
 
         {/* View All Products Link */}
         <div className="text-left mt-12">
-          <a
-            href="#"
-            className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors"
+          <Button
+            variant="link"
+            rightIcon={<ChevronRight className="h-4 w-4" />}
+            className="p-0 h-auto font-medium"
           >
             View all products
-            <ChevronRight className="ml-1 h-4 w-4" />
-          </a>
+          </Button>
         </div>
       </div>
     </section>

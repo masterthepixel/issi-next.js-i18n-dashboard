@@ -53,7 +53,7 @@ export default async function Page({ params: { lang } }: Props) {
               {intl.formatMessage({ id: "iso27001.features.subtitle" })}
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="glass-card p-8 rounded-xl transition-all duration-300 hover:scale-105">
               <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-6">
@@ -116,7 +116,7 @@ export default async function Page({ params: { lang } }: Props) {
             </div>
 
             <div className="glass-card p-8 rounded-xl transition-all duration-300 hover:scale-105">
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center mb-6">
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-6">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
@@ -152,7 +152,7 @@ export default async function Page({ params: { lang } }: Props) {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-4">
                   <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0 mt-1">
                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -166,7 +166,7 @@ export default async function Page({ params: { lang } }: Props) {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-4">
                   <div className="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center flex-shrink-0 mt-1">
                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -182,7 +182,7 @@ export default async function Page({ params: { lang } }: Props) {
                 </div>
               </div>
             </div>
-            
+
             <div className="glass-effect-strong p-8 rounded-2xl">
               <div className="text-center">
                 <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
@@ -230,7 +230,7 @@ export default async function Page({ params: { lang } }: Props) {
               {intl.formatMessage({ id: "iso27001.process.subtitle" })}
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
@@ -241,7 +241,7 @@ export default async function Page({ params: { lang } }: Props) {
                 {intl.formatMessage({ id: "iso27001.process.plan.description" })}
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
                 <span className="text-2xl font-bold text-white">2</span>
@@ -251,7 +251,7 @@ export default async function Page({ params: { lang } }: Props) {
                 {intl.formatMessage({ id: "iso27001.process.do.description" })}
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
                 <span className="text-2xl font-bold text-white">3</span>
@@ -261,7 +261,7 @@ export default async function Page({ params: { lang } }: Props) {
                 {intl.formatMessage({ id: "iso27001.process.check.description" })}
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
                 <span className="text-2xl font-bold text-white">4</span>
@@ -286,7 +286,7 @@ export default async function Page({ params: { lang } }: Props) {
               {intl.formatMessage({ id: "iso27001.benefits.subtitle" })}
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="glass-card p-8 rounded-xl">
               <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center mb-6">
@@ -316,7 +316,7 @@ export default async function Page({ params: { lang } }: Props) {
                 </li>
               </ul>
             </div>
-            
+
             <div className="glass-card p-8 rounded-xl">
               <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-6">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -345,7 +345,7 @@ export default async function Page({ params: { lang } }: Props) {
                 </li>
               </ul>
             </div>
-            
+
             <div className="glass-card p-8 rounded-xl">
               <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center mb-6">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -389,26 +389,26 @@ export default async function Page({ params: { lang } }: Props) {
               {intl.formatMessage({ id: "iso27001.trust.subtitle" })}
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">{intl.formatMessage({ id: "iso27001.trust.years.value" })}</div>
               <div className="text-slate-900 dark:text-white font-semibold mb-1">{intl.formatMessage({ id: "iso27001.trust.years.label" })}</div>
               <div className="text-sm text-slate-600 dark:text-slate-400">{intl.formatMessage({ id: "iso27001.trust.years.description" })}</div>
             </div>
-            
+
             <div className="text-center">
               <div className="text-4xl font-bold text-green-600 dark:text-green-400 mb-2">{intl.formatMessage({ id: "iso27001.trust.breaches.value" })}</div>
               <div className="text-slate-900 dark:text-white font-semibold mb-1">{intl.formatMessage({ id: "iso27001.trust.breaches.label" })}</div>
               <div className="text-sm text-slate-600 dark:text-slate-400">{intl.formatMessage({ id: "iso27001.trust.breaches.description" })}</div>
             </div>
-            
+
             <div className="text-center">
               <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">{intl.formatMessage({ id: "iso27001.trust.monitoring.value" })}</div>
               <div className="text-slate-900 dark:text-white font-semibold mb-1">{intl.formatMessage({ id: "iso27001.trust.monitoring.label" })}</div>
               <div className="text-sm text-slate-600 dark:text-slate-400">{intl.formatMessage({ id: "iso27001.trust.monitoring.description" })}</div>
             </div>
-            
+
             <div className="text-center">
               <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">{intl.formatMessage({ id: "iso27001.trust.uptime.value" })}</div>
               <div className="text-slate-900 dark:text-white font-semibold mb-1">{intl.formatMessage({ id: "iso27001.trust.uptime.label" })}</div>
@@ -419,7 +419,7 @@ export default async function Page({ params: { lang } }: Props) {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 sm:py-24 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20">
+      <section className="py-16 sm:py-24 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-900/20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl mb-4">

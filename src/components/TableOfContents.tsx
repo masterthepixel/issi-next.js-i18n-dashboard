@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useEffect, useState } from 'react';
 
@@ -17,12 +18,12 @@ interface TableOfContentsProps {
   closeAriaLabel: string;
 }
 
-export default function TableOfContents({ 
-  items, 
-  activeId, 
-  title, 
-  toggleAriaLabel, 
-  closeAriaLabel 
+export default function TableOfContents({
+  items,
+  activeId,
+  title,
+  toggleAriaLabel,
+  closeAriaLabel
 }: TableOfContentsProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -79,13 +80,13 @@ export default function TableOfContents({
     <>
       {/* Mobile TOC Button */}
       <div className="xl:hidden">
-        <button
+        <Button
           onClick={() => setIsOpen(true)}
           className="fixed bottom-4 right-4 z-40 rounded-full bg-background p-3 shadow-lg ring-1 ring-border hover:bg-accent"
           aria-label={toggleAriaLabel}
         >
           <Bars3Icon className="h-6 w-6 text-muted-foreground" />
-        </button>
+        </Button>
       </div>
 
       {/* Mobile Overlay */}
@@ -97,31 +98,32 @@ export default function TableOfContents({
               <div className="flex h-full flex-col bg-background shadow-xl">
                 <div className="flex items-center justify-between px-4 py-6 sm:px-6">
                   <h2 className="text-lg font-medium text-foreground">{title}</h2>
-                  <button
+                  <Button
                     onClick={() => setIsOpen(false)}
                     className="rounded-md text-muted-foreground hover:text-foreground"
                     aria-label={closeAriaLabel}
+                    variant="ghost"
                   >
                     <XMarkIcon className="h-6 w-6" />
-                  </button>
+                  </Button>
                 </div>
                 <div className="flex-1 overflow-y-auto px-4 sm:px-6">
                   <nav className="space-y-1">
                     {items.map((item) => (
-                      <button
+                      <Button
                         key={item.id}
                         onClick={() => {
                           scrollToSection(item.id);
                           handleLinkClick();
                         }}
-                        className={`block w-full text-left rounded-md px-3 py-2 text-sm ${getLevelClass(item.level)} ${
-                          activeId === item.id
-                            ? 'bg-primary/10 text-primary font-medium'
-                            : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
-                        }`}
+                        className={`block w-full text-left rounded-md px-3 py-2 text-sm ${getLevelClass(item.level)} ${activeId === item.id
+                          ? 'bg-primary/10 text-primary font-medium'
+                          : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+                          }`}
+                        variant="ghost"
                       >
                         {item.title}
-                      </button>
+                      </Button>
                     ))}
                   </nav>
                 </div>
@@ -138,17 +140,17 @@ export default function TableOfContents({
             <h2 className="text-lg font-medium text-foreground mb-4">{title}</h2>
             <nav className="space-y-1">
               {items.map((item) => (
-                <button
+                <Button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`block w-full text-left rounded-md px-3 py-2 text-sm ${getLevelClass(item.level)} ${
-                    activeId === item.id
-                      ? 'bg-primary/10 text-primary font-medium'
-                      : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
-                  }`}
+                  className={`block w-full text-left rounded-md px-3 py-2 text-sm ${getLevelClass(item.level)} ${activeId === item.id
+                    ? 'bg-primary/10 text-primary font-medium'
+                    : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+                    }`}
+                  variant="ghost"
                 >
                   {item.title}
-                </button>
+                </Button>
               ))}
             </nav>
           </div>

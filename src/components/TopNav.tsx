@@ -4,10 +4,10 @@ import { Locale } from "@/lib/definitions";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
 import {
-    CheckBadgeIcon,
-    ClipboardDocumentCheckIcon,
-    LockClosedIcon,
-    ShieldCheckIcon,
+  CheckBadgeIcon,
+  ClipboardDocumentCheckIcon,
+  LockClosedIcon,
+  ShieldCheckIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -93,11 +93,10 @@ export default function TopNav({ locale }: Props) {
   return (
     <div className="hidden lg:flex items-center justify-center flex-1 space-x-8">
       <Link
-        href={`/${locale}/services`}        className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
-          pathname?.includes("/services")
+        href={`/${locale}/services`} className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${pathname?.includes("/services")
             ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
             : "border-transparent"
-        }`}
+          }`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -116,11 +115,10 @@ export default function TopNav({ locale }: Props) {
         <FormattedMessage id="common.navigation.services" />
       </Link>{" "}
       <Link
-        href={`/${locale}/products`}        className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
-          pathname?.includes("/products")
+        href={`/${locale}/products`} className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${pathname?.includes("/products")
             ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
             : "border-transparent"
-        }`}
+          }`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -139,11 +137,10 @@ export default function TopNav({ locale }: Props) {
         <FormattedMessage id="common.navigation.products" />
       </Link>{" "}
       <Link
-        href={`/${locale}/government`}        className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
-          pathname?.includes("/government")
+        href={`/${locale}/government`} className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${pathname?.includes("/government")
             ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
             : "border-transparent"
-        }`}
+          }`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -162,11 +159,10 @@ export default function TopNav({ locale }: Props) {
         <FormattedMessage id="common.navigation.government" />
       </Link>{" "}
       <Link
-        href={`/${locale}/eLearning`}        className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
-          pathname?.includes("/eLearning")
+        href={`/${locale}/eLearning`} className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${pathname?.includes("/eLearning")
             ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
             : "border-transparent"
-        }`}
+          }`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -186,17 +182,16 @@ export default function TopNav({ locale }: Props) {
       </Link>{" "}
       {/* Compliance Popover */}
       <Popover className="relative">        <PopoverButton
-          className={`inline-flex items-center gap-x-1 text-sm font-semibold py-5 border-b-2 transition-all ${
-            pathname?.includes("/compliance")
-              ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
-              : "border-transparent text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
+        className={`inline-flex items-center gap-x-1 text-sm font-semibold py-5 border-b-2 transition-all ${pathname?.includes("/compliance")
+            ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
+            : "border-transparent text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
           }`}
-        >
-          <span>
-            <FormattedMessage id="common.navigation.compliance" defaultMessage="Compliance" />
-          </span>
-          <ChevronDownIcon aria-hidden="true" className="size-5" />
-        </PopoverButton>
+      >
+        <span>
+          <FormattedMessage id="common.navigation.compliance" defaultMessage="Compliance" />
+        </span>
+        <ChevronDownIcon aria-hidden="true" className="size-5" />
+      </PopoverButton>
         <PopoverPanel className="absolute left-1/2 z-20 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4">
           <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white dark:bg-slate-900 text-sm shadow-lg ring-1 ring-gray-900/5 dark:ring-slate-700/40">
             <div className="p-4">
@@ -208,7 +203,7 @@ export default function TopNav({ locale }: Props) {
                   <div className="mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
                     <item.icon
                       aria-hidden="true"
-                      className="size-6 text-slate-600 dark:text-indigo-400 group-hover:text-indigo-600"
+                      className="size-6 text-slate-600 dark:text-blue-400 group-hover:text-blue-600"
                     />
                   </div>
                   <div>
@@ -228,7 +223,7 @@ export default function TopNav({ locale }: Props) {
                   href={item.href}
                   className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-slate-900 dark:text-slate-100 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
                 >
-                  <item.icon aria-hidden="true" className="size-5 flex-none text-slate-400 dark:text-indigo-400" />
+                  <item.icon aria-hidden="true" className="size-5 flex-none text-slate-400 dark:text-blue-400" />
                   {item.name}
                 </a>
               ))}
@@ -237,11 +232,10 @@ export default function TopNav({ locale }: Props) {
         </PopoverPanel>
       </Popover>{" "}
       <Link
-        href={`/${locale}/about`}        className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${
-          pathname?.includes("/about")
+        href={`/${locale}/about`} className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${pathname?.includes("/about")
             ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
             : "border-transparent"
-        }`}
+          }`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

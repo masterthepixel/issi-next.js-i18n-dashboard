@@ -40,7 +40,7 @@ export default function ScrollDemoPage() {
                                 <span className="px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200">Item One</span>
                                 <span className="px-3 py-1 rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-200">Item Two</span>
                                 <span className="px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-200">Item Three</span>
-                                <span className="px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-200">Item Four</span>
+                                <span className="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200">Item Four</span>
                             </ScrollTextMarquee>
                         </div>
                     </div>

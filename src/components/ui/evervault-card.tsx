@@ -1,8 +1,7 @@
 "use client";
-import { useMotionValue } from "motion/react";
-import React, { useState, useEffect } from "react";
-import { useMotionTemplate, motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import { motion, useMotionTemplate, useMotionValue } from "motion/react";
+import { useEffect, useState } from "react";
 
 export const EvervaultCard = ({
   text,
@@ -65,7 +64,7 @@ export function CardPattern({ mouseX, mouseY, randomString }: any) {
     <div className="pointer-events-none">
       <div className="absolute inset-0 rounded-2xl [mask-image:linear-gradient(white,transparent)] group-hover/card:opacity-30"></div>
       <motion.div
-        className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-600/40 to-blue-600/40 opacity-0 group-hover/card:opacity-60 backdrop-blur-sm transition duration-300"
+        className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-600/40 to-blue-600/40 opacity-0 group-hover/card:opacity-60 backdrop-blur-sm transition duration-300"
         style={style}
       />
       <motion.div

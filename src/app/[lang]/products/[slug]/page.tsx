@@ -304,7 +304,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Product Image */}
           <div className="relative">
-            <div className="aspect-square relative rounded-2xl overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800">
+            <div className="aspect-square relative rounded-2xl overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-900/20 border border-blue-200 dark:border-blue-800">
               {product.image ? (
                 <Image
                   src={product.image}
@@ -361,7 +361,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
             <div className="space-y-4 pt-6">
               <Link
                 href={`/${params.lang}/contact?product=${product.slug}`}
-                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
               >
                 <ExternalLink className="w-5 h-5 mr-2" />
                 Request Demo
@@ -422,7 +422,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
         {/* Benefits Section */}
         {product.benefits && product.benefits.length > 0 && (
           <div className="mt-12">
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10 rounded-2xl p-8 border border-blue-200 dark:border-blue-800">
+            <div className="bg-gradient-to-r from-blue-50 to-blue-50 dark:from-blue-900/10 dark:to-blue-900/10 rounded-2xl p-8 border border-blue-200 dark:border-blue-800">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
                 Key Benefits
               </h2>
@@ -454,7 +454,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href={`/${params.lang}/contact?product=${product.slug}`}
-                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
               >
                 Contact Sales Team
               </Link>

@@ -50,7 +50,7 @@ export default function ProductsElectronicCorrespondenceTrackingSystemFeatures()
         <div className="bg-white py-24 sm:py-32">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-2xl sm:text-center">
-                    <h2 className="text-base/7 font-semibold text-indigo-600">
+                    <h2 className="text-base/7 font-semibold text-blue-600">
                         <FormattedMessage id="products.ects.hero.tagline" />
                     </h2>
                     <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl sm:text-balance">
@@ -79,7 +79,7 @@ export default function ProductsElectronicCorrespondenceTrackingSystemFeatures()
                 <dl className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base/7 text-gray-600 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
                     {features.map((feature, _index) => [
                         <dt key={feature.nameId + '-dt'} className="relative pl-9 inline font-semibold text-gray-900">
-                            <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-indigo-600" />
+                            <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-blue-600" />
                             <FormattedMessage id={feature.nameId} />
                         </dt>,
                         <dd key={feature.nameId + '-dd'} className="inline">

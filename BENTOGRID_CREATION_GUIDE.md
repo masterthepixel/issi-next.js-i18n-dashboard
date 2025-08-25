@@ -458,7 +458,7 @@ export default function YourBentoGrid({ lang }: YourBentoGridProps) {
     "text-purple-600 dark:text-purple-400",
     "text-orange-600 dark:text-orange-400",
     "text-red-600 dark:text-red-400",
-    "text-indigo-600 dark:text-indigo-400",
+    "text-blue-600 dark:text-blue-400",
     "text-teal-600 dark:text-teal-400",
     "text-pink-600 dark:text-pink-400",
   ];
@@ -616,9 +616,9 @@ const categoryColors = {
     hover: "hover:border-red-400 dark:hover:border-red-500"
   },
   modernization: {
-    icon: "text-indigo-600 dark:text-indigo-400",
-    border: "border-indigo-200 dark:border-indigo-800", 
-    hover: "hover:border-indigo-400 dark:hover:border-indigo-500"
+    icon: "text-blue-600 dark:text-blue-400",
+    border: "border-blue-200 dark:border-blue-800", 
+    hover: "hover:border-blue-400 dark:hover:border-blue-500"
   },
   technology: {
     icon: "text-teal-600 dark:text-teal-400",
@@ -748,7 +748,7 @@ className={cn(
   product.category === "hr" && "hover:shadow-purple-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(147_51_234_/_0.5)]",
   product.category === "compliance" && "hover:shadow-orange-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(234_88_12_/_0.5)]",
   product.category === "data" && "hover:shadow-red-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(220_38_38_/_0.5)]",
-  product.category === "modernization" && "hover:shadow-indigo-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(79_70_229_/_0.5)]",
+  product.category === "modernization" && "hover:shadow-blue-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(79_70_229_/_0.5)]",
   product.category === "technology" && "hover:shadow-teal-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(13_148_136_/_0.5)]"
 )}
 ```
@@ -850,7 +850,7 @@ project: green-600/700/800    // #16a34a / #15803d / #166534
 hr: purple-600/700/800        // #9333ea / #7c3aed / #6b21d4
 compliance: orange-600/700/800 // #ea580c / #c2410c / #9a3412
 data: red-600/700/800         // #dc2626 / #b91c1c / #991b1b
-modernization: indigo-600/700/800 // #4f46e5 / #4338ca / #3730a3
+modernization: blue-600/700/800 // #4f46e5 / #4338ca / #3730a3
 technology: teal-600/700/800  // #0d9488 / #0f766e / #115e59
 ```
 

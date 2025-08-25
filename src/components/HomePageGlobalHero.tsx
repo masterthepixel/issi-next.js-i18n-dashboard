@@ -63,7 +63,7 @@ export default function HomePageGlobalHero() {
     { name: "AWS Tokyo", lat: 35.6762, lng: 139.6503, provider: "AWS", city: "Tokyo", country: "Japan", region: "ap-northeast-1", status: true },
     { name: "AWS Seoul", lat: 37.5665, lng: 126.9780, provider: "AWS", city: "Seoul", country: "South Korea", region: "ap-northeast-2", status: true },
     { name: "AWS Hong Kong", lat: 22.3193, lng: 114.1694, provider: "AWS", city: "Hong Kong", country: "Hong Kong SAR", region: "ap-east-1", status: true },
-    
+
     // Azure Data Centers
     { name: "Azure East US", lat: 37.3719, lng: -79.8164, provider: "Azure", city: "Virginia", country: "United States", region: "eastus", status: true },
     { name: "Azure West US", lat: 37.7833, lng: -122.4167, provider: "Azure", city: "California", country: "United States", region: "westus", status: true },
@@ -74,7 +74,7 @@ export default function HomePageGlobalHero() {
     { name: "Azure Canada Central", lat: 43.6532, lng: -79.3832, provider: "Azure", city: "Toronto", country: "Canada", region: "canadacentral", status: true },
     { name: "Azure UK South", lat: 51.5074, lng: -0.1278, provider: "Azure", city: "London", country: "United Kingdom", region: "uksouth", status: true },
     { name: "Azure Japan East", lat: 35.6762, lng: 139.6503, provider: "Azure", city: "Tokyo", country: "Japan", region: "japaneast", status: true },
-    
+
     // Google Cloud Data Centers
     { name: "GCP Iowa", lat: 41.2619, lng: -95.8608, provider: "Google Cloud", city: "Council Bluffs", country: "United States", region: "us-central1", status: true },
     { name: "GCP Oregon", lat: 45.5946, lng: -121.1787, provider: "Google Cloud", city: "The Dalles", country: "United States", region: "us-west1", status: true },
@@ -105,9 +105,9 @@ export default function HomePageGlobalHero() {
   // Create all markers (headquarters + data centers)
   const allMarkers = useMemo(() => [
     // Headquarters (red marker, larger)
-    { 
-      location: [headquarters.lat, headquarters.lng] as [number, number], 
-      size: 0.08, 
+    {
+      location: [headquarters.lat, headquarters.lng] as [number, number],
+      size: 0.08,
       color: [1, 0.2, 0.2] as [number, number, number] // Red
     },
     // Data centers (color-coded by provider)
@@ -123,7 +123,7 @@ export default function HomePageGlobalHero() {
     const allLocations = [headquarters, ...dataCenters];
     const fromIndex = Math.floor(Math.random() * allLocations.length);
     let toIndex = Math.floor(Math.random() * allLocations.length);
-    
+
     // Ensure from and to are different
     while (toIndex === fromIndex) {
       toIndex = Math.floor(Math.random() * allLocations.length);
@@ -175,7 +175,7 @@ export default function HomePageGlobalHero() {
 
     const animationInterval = setInterval(animateTransfers, 50); // 20fps
     return () => clearInterval(animationInterval);
-  }, [isPaused]);  useEffect(() => {
+  }, [isPaused]); useEffect(() => {
     let phi = 0;
 
     if (canvasRef.current) {
@@ -183,14 +183,14 @@ export default function HomePageGlobalHero() {
       const container = canvasRef.current.parentElement;
       const containerWidth = container?.clientWidth || 400;
       const containerHeight = container?.clientHeight || 400;
-      
+
       // For mobile: use the larger of width or height to fill the container
       // For desktop: maintain max size of 780
       const isMobile = window.innerWidth < 1024; // lg breakpoint
-      const globeSize = isMobile 
-        ? Math.max(containerWidth, containerHeight) 
+      const globeSize = isMobile
+        ? Math.max(containerWidth, containerHeight)
         : Math.min(containerWidth, containerHeight, 780);
-      
+
       globeRef.current = createGlobe(canvasRef.current, {
         devicePixelRatio: 2,
         width: globeSize,
@@ -254,10 +254,10 @@ export default function HomePageGlobalHero() {
           const containerWidth = container?.clientWidth || 400;
           const containerHeight = container?.clientHeight || 400;
           const isMobile = window.innerWidth < 1024;
-          const _newGlobeSize = isMobile 
+          const _newGlobeSize = isMobile
             ? Math.max(containerWidth, containerHeight)
             : Math.min(containerWidth, containerHeight, 780);
-          
+
           // Update globe size
           globeRef.current.resize();
         }
@@ -274,13 +274,13 @@ export default function HomePageGlobalHero() {
         }
       };
     }
-  }, [allMarkers, dataTransfers, isPaused]);return (
+  }, [allMarkers, dataTransfers, isPaused]); return (
     <div className="relative isolate px-2">
       {/* Main Hero Content */}
       <div className="mx-auto max-w-7xl pb-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center relative">
           {/* Content Section - Left */}
-          <motion.div 
+          <motion.div
             className="space-y-8 z-10 order-1"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -290,21 +290,21 @@ export default function HomePageGlobalHero() {
                 <div className="flex flex-col">
                   <span><FormattedMessage id="hero.flipwords.prefix" /></span>
                   <span>
-                    <FlipWords 
+                    <FlipWords
                       words={flipWords}
                       duration={2500}
-                      className="bg-gradient-to-r from-indigo-600 to-blue-400 bg-clip-text text-transparent font-semibold"
+                      className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent font-semibold"
                     />
                     {" "}<FormattedMessage id="hero.flipwords.suffix" />
                   </span>
                 </div>
               </h1>
-                <p className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-                <FormattedMessage 
-                  id="hero.description"                  values={{
+              <p className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                <FormattedMessage
+                  id="hero.description" values={{
                     innovativeTechnology: (chunks) => (
-                      <a 
-                        href="/services" 
+                      <a
+                        href="/services"
                         className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline decoration-blue-200 hover:decoration-blue-400 transition-colors"
                         title="Explore our innovative technology services"
                       >
@@ -312,8 +312,8 @@ export default function HomePageGlobalHero() {
                       </a>
                     ),
                     government: (chunks) => (
-                      <a 
-                        href="/government" 
+                      <a
+                        href="/government"
                         className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline decoration-blue-200 hover:decoration-blue-400 transition-colors"
                         title="Government solutions and services"
                       >
@@ -321,8 +321,8 @@ export default function HomePageGlobalHero() {
                       </a>
                     ),
                     enterprise: (chunks) => (
-                      <a 
-                        href="/products" 
+                      <a
+                        href="/products"
                         className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline decoration-blue-200 hover:decoration-blue-400 transition-colors"
                         title="Enterprise products and solutions"
                       >
@@ -330,8 +330,8 @@ export default function HomePageGlobalHero() {
                       </a>
                     ),
                     eLearning: (chunks) => (
-                      <a 
-                        href="/services/e-learning" 
+                      <a
+                        href="/services/e-learning"
                         className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline decoration-blue-200 hover:decoration-blue-400 transition-colors"
                         title="E-learning platform solutions"
                       >
@@ -339,8 +339,8 @@ export default function HomePageGlobalHero() {
                       </a>
                     ),
                     compliance: (chunks) => (
-                      <a 
-                        href="/compliance" 
+                      <a
+                        href="/compliance"
                         className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline decoration-blue-200 hover:decoration-blue-400 transition-colors"
                         title="Compliance management solutions"
                       >
@@ -355,20 +355,20 @@ export default function HomePageGlobalHero() {
               <a
                 href="/contact"
                 title="Contact ISSI to get started with our solutions"
-                className="bg-indigo-600 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-all transform hover:scale-105 shadow-lg text-center text-sm sm:text-base flex-1 sm:flex-none"
+                className="bg-blue-600 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg text-center text-sm sm:text-base flex-1 sm:flex-none"
               >
                 <FormattedMessage id="hero.cta.get-started" />
               </a>
-              <a 
-                href="/services" 
+              <a
+                href="/services"
                 title="Explore ISSI's software solutions and services"
-                className="border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 px-3 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold hover:border-indigo-600 hover:text-indigo-600 dark:hover:border-indigo-400 dark:hover:text-indigo-400 transition-all text-center text-sm sm:text-base flex-1 sm:flex-none"
+                className="border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 px-3 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all text-center text-sm sm:text-base flex-1 sm:flex-none"
               >
                 <FormattedMessage id="hero.cta.learn-more" />
               </a>
             </div>
           </motion.div>          {/* Globe Section - Right */}
-          <motion.div 
+          <motion.div
             className="relative w-full h-[50vh] min-h-[40vh] max-h-[600px] lg:w-[780px] lg:h-[520px] overflow-visible order-2 flex items-center justify-center"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -377,14 +377,14 @@ export default function HomePageGlobalHero() {
               ref={canvasRef}
               className={`w-full h-full cursor-pointer transition-all duration-300 ${isPaused ? 'opacity-75' : 'opacity-100'}`}
             />
-            
+
             {/* Pause Indicator */}
             {isPaused && (
               <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm font-medium">
                 ⏸️ Paused - Click to resume
               </div>
             )}
-            
+
             {/* Active Transfers Indicator */}
             {dataTransfers.length > 0 && !isPaused && (
               <div className="absolute bottom-4 left-4 bg-yellow-500/20 border border-yellow-500/50 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-full text-sm font-medium">

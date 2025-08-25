@@ -1,6 +1,7 @@
 "use client";
 
 import ErrorBoundary from "@/components/ErrorBoundary";
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from '@/lib/utils';
 import { Building, ChevronRight, Code, Cpu, Database, GraduationCap, Headset, Search, Server, Shield, Wrench } from 'lucide-react';
@@ -179,8 +180,9 @@ const ISSIServicesShowcaseInternal = () => {
           </p>          {/* Category Filter */}
           <div className="flex flex-wrap justify-start gap-2 mb-8" role="tablist" aria-label="Service category filters">
             {CATEGORIES.map((category) => (
-              <button
+              <Button
                 key={category.id}
+                type="button"
                 onClick={() => setSelectedCategory(category.id)}
                 className={cn(
                   "px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary",
@@ -193,7 +195,7 @@ const ISSIServicesShowcaseInternal = () => {
                 title={intl.formatMessage({ id: category.label })}
               >
                 <FormattedMessage id={category.label} />
-              </button>
+              </Button>
             ))}
           </div>
         </div>        {/* Bento Grid Layout */}

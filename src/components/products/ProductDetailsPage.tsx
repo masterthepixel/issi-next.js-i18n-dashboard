@@ -112,7 +112,7 @@ export default function ProductDetailsPage({
     "text-purple-500",
     "text-orange-500",
     "text-red-500",
-    "text-indigo-500",
+    "text-blue-500",
     "text-teal-500",
     "text-pink-500"
   ];
@@ -244,7 +244,7 @@ export default function ProductDetailsPage({
       </div>
 
       {/* Contact Section */}
-      <div className="text-center bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-8">
+      <div className="text-center bg-gradient-to-r from-blue-50 to-blue-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-8">
         <h2 className="text-2xl font-bold text-foreground mb-4">
           <FormattedMessage id="products.contact.title" defaultMessage="Ready to Get Started?" />
         </h2>
