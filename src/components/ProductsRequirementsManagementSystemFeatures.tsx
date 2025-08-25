@@ -104,7 +104,7 @@ export default function ProductsRequirementsManagementSystemFeatures() {
       {/* Hero Image */}
       <div className="relative overflow-hidden pt-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="bg-white rounded-xl p-4">
+          <div className="bg-background rounded-xl p-4">
             <Image
               alt={intl.formatMessage({ id: "products.requirements-management.hero.imageAlt", defaultMessage: "Requirements Management System Dashboard" })}
               src="/images/products/RequirementsManagement.png"

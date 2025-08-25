@@ -88,17 +88,17 @@ export default function GovernmentClients() {
 
     switch (colorIndex) {
       case 0:
-        return 'bg-slate-900 text-white ring-1 ring-slate-700 dark:bg-slate-700/80 dark:text-white dark:ring-slate-600'; // Dark slate
+        return 'bg-slate-900 text-primary-foreground ring-1 ring-slate-700'; // Dark slate
       case 1:
-        return 'bg-blue-800 text-white ring-1 ring-blue-700 dark:bg-gray-800/80 dark:text-blue-200 dark:ring-gray-700'; // Deep blue
+        return 'bg-blue-800 text-primary-foreground ring-1 ring-blue-700'; // Deep blue
       case 2:
-        return 'bg-purple-800 text-white ring-1 ring-purple-700 dark:bg-slate-800/80 dark:text-purple-200 dark:ring-slate-700'; // Deep purple
+        return 'bg-purple-800 text-primary-foreground ring-1 ring-purple-700'; // Deep purple
       case 3:
-        return 'bg-emerald-800 text-white ring-1 ring-emerald-700 dark:bg-gray-900/85 dark:text-emerald-200 dark:ring-gray-800'; // Deep emerald
+        return 'bg-emerald-800 text-primary-foreground ring-1 ring-emerald-700'; // Deep emerald
       case 4:
-        return 'bg-amber-800 text-white ring-1 ring-amber-700 dark:bg-slate-900/85 dark:text-amber-200 dark:ring-slate-800'; // Deep amber
+        return 'bg-amber-800 text-primary-foreground ring-1 ring-amber-700'; // Deep amber
       default:
-        return 'bg-slate-900 text-white ring-1 ring-slate-700 dark:bg-slate-700/80 dark:text-white dark:ring-slate-600';
+        return 'bg-slate-900 text-primary-foreground ring-1 ring-slate-700';
     }
   };
 
@@ -106,10 +106,10 @@ export default function GovernmentClients() {
     <section className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4">
         <div className="text-left mb-8">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             <FormattedMessage id="government.clients.title" defaultMessage="Our Government Clients & Partners" />
           </h2>
-          <p className="mt-4 text-lg leading-8 text-slate-600 dark:text-slate-300">
+          <p className="mt-4 text-lg leading-8 text-muted-foreground">
             <FormattedMessage id="government.clients.subtitle" defaultMessage="Trusted by federal, state, and local government agencies for mission-critical technology solutions." />
           </p>
         </div>

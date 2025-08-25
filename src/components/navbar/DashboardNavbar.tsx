@@ -212,12 +212,12 @@ export default function DashboardNavbar({
               <NavigationMenuList>
                 {/* Home */}
                 <NavigationMenuItem>
-                  <Link href={`/${locale}/home`}>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <NavigationMenuLink asChild>
+                    <Link href={`/${locale}/home`} className={navigationMenuTriggerStyle()}>
                       <Home className="h-4 w-4 mr-2" />
                       <FormattedMessage id="common.navigation.home" defaultMessage="Home" />
-                    </NavigationMenuLink>
-                  </Link>
+                    </Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
 
                 {/* Dropdown Sections */}
@@ -256,12 +256,12 @@ export default function DashboardNavbar({
                 {/* Single Items */}
                 {singleNavItems.map((item) => (
                   <NavigationMenuItem key={item.href}>
-                    <Link href={item.href}>
-                      <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <NavigationMenuLink asChild>
+                      <Link href={item.href} className={navigationMenuTriggerStyle()}>
                         {item.icon}
                         <span className="ml-2">{item.title}</span>
-                      </NavigationMenuLink>
-                    </Link>
+                      </Link>
+                    </NavigationMenuLink>
                   </NavigationMenuItem>
                 ))}
               </NavigationMenuList>

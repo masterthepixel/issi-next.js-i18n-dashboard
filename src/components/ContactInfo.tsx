@@ -13,21 +13,21 @@ export default function ContactInfo({ locale: _locale, messages }: ContactInfoPr
   return (
     <div className="py-8 sm:py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl divide-y divide-slate-100 dark:divide-slate-800 lg:mx-0 lg:max-w-none">
+        <div className="mx-auto max-w-2xl divide-y divide-border lg:mx-0 lg:max-w-none">
           <div className="grid grid-cols-1 gap-10 py-16 lg:grid-cols-3">
             <div>
-              <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-white">{t('contactInfo.getInTouch')}</h2>
-              <p className="mt-4 text-base/7 text-slate-600 dark:text-slate-400">
+              <h2 className="text-4xl font-semibold tracking-tight text-pretty text-foreground">{t('contactInfo.getInTouch')}</h2>
+              <p className="mt-4 text-base/7 text-muted-foreground">
                 {t('contactInfo.getInTouchSubtitle')}
               </p>
             </div>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2 lg:gap-8">              <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 p-10 border border-slate-300 dark:border-slate-600">
-              <h3 className="text-base/7 font-semibold text-slate-900 dark:text-white">{t('contactInfo.businessDevelopment')}</h3>
-              <dl className="mt-3 space-y-1 text-sm/6 text-slate-600 dark:text-slate-400">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2 lg:gap-8">              <div className="rounded-2xl bg-card p-10 border border-border">
+              <h3 className="text-base/7 font-semibold text-foreground">{t('contactInfo.businessDevelopment')}</h3>
+              <dl className="mt-3 space-y-1 text-sm/6 text-muted-foreground">
                 <div>
                   <dt className="sr-only">Email</dt>
                   <dd>
-                    <a href="mailto:sales@issi.com" className="font-semibold text-blue-600 dark:text-blue-400">
+                    <a href="mailto:sales@issi.com" className="font-semibold text-primary">
                       sales@issi.com
                     </a>
                   </dd>
@@ -37,13 +37,13 @@ export default function ContactInfo({ locale: _locale, messages }: ContactInfoPr
                   <dd>301-982-9700</dd>
                 </div>
               </dl>
-            </div>              <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 p-10 border border-slate-300 dark:border-slate-600">
-                <h3 className="text-base/7 font-semibold text-slate-900 dark:text-white">{t('contactInfo.mediaInquiries')}</h3>
-                <dl className="mt-3 space-y-1 text-sm/6 text-slate-600 dark:text-slate-400">
+            </div>              <div className="rounded-2xl bg-card p-10 border border-border">
+                <h3 className="text-base/7 font-semibold text-foreground">{t('contactInfo.mediaInquiries')}</h3>
+                <dl className="mt-3 space-y-1 text-sm/6 text-muted-foreground">
                   <div>
                     <dt className="sr-only">Email</dt>
                     <dd>
-                      <a href="mailto:press@issi.com" className="font-semibold text-blue-600 dark:text-blue-400">
+                      <a href="mailto:press@issi.com" className="font-semibold text-primary">
                         press@issi.com
                       </a>
                     </dd>
@@ -53,13 +53,13 @@ export default function ContactInfo({ locale: _locale, messages }: ContactInfoPr
                     <dd>301-982-9700</dd>
                   </div>
                 </dl>
-              </div>              <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 p-10 border border-slate-300 dark:border-slate-600">
-                <h3 className="text-base/7 font-semibold text-slate-900 dark:text-white">{t('contactInfo.careers')}</h3>
-                <dl className="mt-3 space-y-1 text-sm/6 text-slate-600 dark:text-slate-400">
+              </div>              <div className="rounded-2xl bg-card p-10 border border-border">
+                <h3 className="text-base/7 font-semibold text-foreground">{t('contactInfo.careers')}</h3>
+                <dl className="mt-3 space-y-1 text-sm/6 text-muted-foreground">
                   <div>
                     <dt className="sr-only">Email</dt>
                     <dd>
-                      <a href="mailto:careers@issi.com" className="font-semibold text-blue-600 dark:text-blue-400">
+                      <a href="mailto:careers@issi.com" className="font-semibold text-primary">
                         careers@issi.com
                       </a>
                     </dd>
@@ -69,13 +69,13 @@ export default function ContactInfo({ locale: _locale, messages }: ContactInfoPr
                     <dd>301-982-9700</dd>
                   </div>
                 </dl>
-              </div>              <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 p-10 border border-slate-300 dark:border-slate-600">
-                <h3 className="text-base/7 font-semibold text-slate-900 dark:text-white">{t('contactInfo.support')}</h3>
-                <dl className="mt-3 space-y-1 text-sm/6 text-slate-600 dark:text-slate-400">
+              </div>              <div className="rounded-2xl bg-card p-10 border border-border">
+                <h3 className="text-base/7 font-semibold text-foreground">{t('contactInfo.support')}</h3>
+                <dl className="mt-3 space-y-1 text-sm/6 text-muted-foreground">
                   <div>
                     <dt className="sr-only">Email</dt>
                     <dd>
-                      <a href="mailto:support@issi.com" className="font-semibold text-blue-600 dark:text-blue-400">
+                      <a href="mailto:support@issi.com" className="font-semibold text-primary">
                         support@issi.com
                       </a>
                     </dd>
@@ -89,32 +89,32 @@ export default function ContactInfo({ locale: _locale, messages }: ContactInfoPr
             </div>
           </div>
           <div className="grid grid-cols-1 gap-10 py-16 lg:grid-cols-3">
-            <div>              <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-white">{t('contactInfo.locations')}</h2>
-              <p className="mt-4 text-base/7 text-slate-600 dark:text-slate-400">
+            <div>              <h2 className="text-4xl font-semibold tracking-tight text-pretty text-foreground">{t('contactInfo.locations')}</h2>
+              <p className="mt-4 text-base/7 text-muted-foreground">
                 {t('contactInfo.locationsSubtitle')}
               </p>
             </div>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2 lg:gap-8">              <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 p-10 border border-slate-300 dark:border-slate-600">
-              <h3 className="text-base/7 font-semibold text-slate-900 dark:text-white">{t('contactInfo.headquarters')}</h3>
-              <address className="mt-3 space-y-1 text-sm/6 text-slate-600 dark:text-slate-400 not-italic">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2 lg:gap-8">              <div className="rounded-2xl bg-card p-10 border border-border">
+              <h3 className="text-base/7 font-semibold text-foreground">{t('contactInfo.headquarters')}</h3>
+              <address className="mt-3 space-y-1 text-sm/6 text-muted-foreground not-italic">
                 <p>7337 Hanover Pkwy, Suite A</p>
                 <p>Greenbelt, MD 20770</p>
               </address>
-            </div>              <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 p-10 border border-slate-300 dark:border-slate-600">
-                <h3 className="text-base/7 font-semibold text-slate-900 dark:text-white">{t('contactInfo.virginiaOffice')}</h3>
-                <address className="mt-3 space-y-1 text-sm/6 text-slate-600 dark:text-slate-400 not-italic">
+            </div>              <div className="rounded-2xl bg-card p-10 border border-border">
+                <h3 className="text-base/7 font-semibold text-foreground">{t('contactInfo.virginiaOffice')}</h3>
+                <address className="mt-3 space-y-1 text-sm/6 text-muted-foreground not-italic">
                   <p>1800 Diagonal Road</p>
                   <p>Alexandria, VA 22314</p>
                 </address>
-              </div>              <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 p-10 border border-slate-300 dark:border-slate-600">
-                <h3 className="text-base/7 font-semibold text-slate-900 dark:text-white">{t('contactInfo.westCoast')}</h3>
-                <address className="mt-3 space-y-1 text-sm/6 text-slate-600 dark:text-slate-400 not-italic">
+              </div>              <div className="rounded-2xl bg-card p-10 border border-border">
+                <h3 className="text-base/7 font-semibold text-foreground">{t('contactInfo.westCoast')}</h3>
+                <address className="mt-3 space-y-1 text-sm/6 text-muted-foreground not-italic">
                   <p>Suite 1200</p>
                   <p>San Francisco, CA 94105</p>
                 </address>
-              </div>              <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 p-10 border border-slate-300 dark:border-slate-600">
-                <h3 className="text-base/7 font-semibold text-slate-900 dark:text-white">{t('contactInfo.midwest')}</h3>
-                <address className="mt-3 space-y-1 text-sm/6 text-slate-600 dark:text-slate-400 not-italic">
+              </div>              <div className="rounded-2xl bg-card p-10 border border-border">
+                <h3 className="text-base/7 font-semibold text-foreground">{t('contactInfo.midwest')}</h3>
+                <address className="mt-3 space-y-1 text-sm/6 text-muted-foreground not-italic">
                   <p>233 S Wacker Dr</p>
                   <p>Chicago, IL 60606</p>
                 </address>

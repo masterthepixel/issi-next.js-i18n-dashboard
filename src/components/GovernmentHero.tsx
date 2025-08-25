@@ -158,13 +158,7 @@ const GovernmentHeroInternal = () => {
                 className={cn(
                   "flex flex-col space-y-2 overflow-hidden cursor-pointer",
                   service.className,
-                  "hover:shadow-2xl hover:scale-[1.02] focus:shadow-2xl focus:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2",
-                  service.category === "security" && "hover:shadow-blue-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(59_130_246_/_0.5)] focus:ring-blue-500",
-                  service.category === "experience" && "hover:shadow-green-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(34_197_94_/_0.5)] focus:ring-green-500",
-                  service.category === "contracts" && "hover:shadow-purple-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(147_51_234_/_0.5)] focus:ring-purple-500",
-                  service.category === "clients" && "hover:shadow-orange-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(234_88_12_/_0.5)] focus:ring-orange-500",
-                  service.category === "core" && "hover:shadow-red-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(220_38_38_/_0.5)] focus:ring-red-500",
-                  service.category === "certifications" && "hover:shadow-indigo-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(79_70_229_/_0.5)] focus:ring-indigo-500"
+                  "hover:shadow-2xl hover:scale-[1.02] focus:shadow-2xl focus:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-300"
                 )}
               >
                 <CardHeader>
@@ -183,7 +177,7 @@ const GovernmentHeroInternal = () => {
                     className={cn(
                       "font-semibold tracking-tight text-xl mb-2 transition duration-300",
                       colors.icon, // Use same color as icon
-                      "dark:text-foreground" // Override for dark mode readability
+                      "text-foreground"
                     )}
                   >
                     {service.title}

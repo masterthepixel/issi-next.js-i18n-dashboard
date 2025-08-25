@@ -31,11 +31,11 @@ class ErrorBoundary extends Component<Props, State> {
         return this.props.fallback;
       }
       return (
-        <div className="flex flex-col items-center justify-center h-full p-8 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-          <h2 className="text-xl font-bold text-red-800 dark:text-red-200 mb-2">
+        <div className="flex flex-col items-center justify-center h-full p-8 bg-destructive/10 border border-destructive/20 rounded-lg">
+          <h2 className="text-xl font-bold text-destructive mb-2">
             <FormattedMessage id="common.error.boundary.title" defaultMessage="Something went wrong" />
           </h2>
-          <p className="text-red-600 dark:text-red-300">
+          <p className="text-destructive/80">
             <FormattedMessage id="common.error.boundary.message" defaultMessage="We're sorry, but this part of the application has encountered an error." />
           </p>
         </div>

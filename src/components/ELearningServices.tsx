@@ -75,33 +75,33 @@ export default function ELearningServices() {
   return (
     <section className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+        <h2 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           <FormattedMessage id="elearning.services.title" />
         </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-slate-600 dark:text-slate-300">
+        <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-muted-foreground">
           <FormattedMessage id="elearning.services.subtitle" />
         </p>
         
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
           {services.map((service, index) => (
-            <div key={index} className="rounded-2xl border-2 border-slate-200 dark:border-slate-600 p-8 transition-all duration-300 hover:border-slate-600 dark:hover:border-slate-400 hover:shadow-xl hover:-translate-y-1 bg-white dark:bg-slate-800">
+            <div key={index} className="rounded-2xl border-2 border-border p-8 transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1 bg-card">
               <div className="flex items-center gap-4 mb-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-slate-600 to-slate-800 text-white text-xl">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-primary-foreground text-xl">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
+                <h3 className="text-xl font-semibold text-foreground">
                   <FormattedMessage id={service.titleKey} />
                 </h3>
               </div>
               
-              <p className="text-slate-600 dark:text-slate-300 mb-4">
+              <p className="text-muted-foreground mb-4">
                 <FormattedMessage id={service.descriptionKey} />
               </p>
               
               <ul className="space-y-2">
                 {service.features.map((featureKey, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
-                    <span className="text-slate-400 mt-1">•</span>
+                  <li key={featureIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <span className="text-muted-foreground mt-1">•</span>
                     <FormattedMessage id={featureKey} />
                   </li>
                 ))}

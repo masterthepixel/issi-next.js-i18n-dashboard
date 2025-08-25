@@ -35,7 +35,7 @@ export default function ELearningValueProposition() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">        <h1 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent text-center bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)]">
           <FormattedMessage id="elearning.value.title" />
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-slate-600 dark:text-slate-300">
+        <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-muted-foreground">
           <FormattedMessage id="elearning.value.subtitle" />
         </p>
 
@@ -46,13 +46,13 @@ export default function ELearningValueProposition() {
               key={index}
               className=" p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-center glass-card"
             >
-              <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-slate-600 to-slate-800 text-white text-3xl mb-6">
+              <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-primary text-primary-foreground text-3xl mb-6">
                 {card.icon}
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">
+              <h3 className="text-xl font-semibold text-foreground mb-4">
                 <FormattedMessage id={card.titleKey} />
               </h3>
-              <p className="text-slate-600 dark:text-slate-300">
+              <p className="text-muted-foreground">
                 <FormattedMessage id={card.descriptionKey} />
               </p>
             </div>
@@ -63,10 +63,10 @@ export default function ELearningValueProposition() {
         <div className="mx-auto mt-16 flex flex-wrap justify-center gap-12 sm:gap-16">
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-4xl font-bold text-slate-600 dark:text-slate-400 sm:text-5xl">
+              <div className="text-4xl font-bold text-muted-foreground sm:text-5xl">
                 <FormattedMessage id={stat.numberKey} />
               </div>
-              <div className="mt-2 text-sm font-medium text-slate-500 dark:text-slate-400">
+              <div className="mt-2 text-sm font-medium text-muted-foreground">
                 <FormattedMessage id={stat.labelKey} />
               </div>
             </div>

@@ -26,32 +26,32 @@ const ISSIServicesShowcaseInternal = () => {
     setIsLoaded(true);
   }, []);
 
-  // Define category-specific colors for consistency
+  // Define category-specific colors for consistency using semantic theme variables
   const categoryColors = {
     it: {
       icon: "text-primary",
-      border: "border-blue-200 dark:border-blue-800",
-      hover: "hover:border-blue-400 dark:hover:border-blue-500"
+      border: "border-border",
+      hover: "hover:border-primary/50"
     },
     gov: {
-      icon: "text-green-600 dark:text-green-400",
-      border: "border-green-200 dark:border-green-800",
-      hover: "hover:border-green-400 dark:hover:border-green-500"
+      icon: "text-primary",
+      border: "border-border",
+      hover: "hover:border-primary/50"
     },
     cyber: {
-      icon: "text-purple-600 dark:text-purple-400",
-      border: "border-purple-200 dark:border-purple-800",
-      hover: "hover:border-purple-400 dark:hover:border-purple-500"
+      icon: "text-primary",
+      border: "border-border",
+      hover: "hover:border-primary/50"
     },
     cloud: {
-      icon: "text-orange-600 dark:text-orange-400",
-      border: "border-orange-200 dark:border-orange-800",
-      hover: "hover:border-orange-400 dark:hover:border-orange-500"
+      icon: "text-primary",
+      border: "border-border",
+      hover: "hover:border-primary/50"
     },
     training: {
-      icon: "text-red-600 dark:text-red-400",
-      border: "border-red-200 dark:border-red-800",
-      hover: "hover:border-red-400 dark:hover:border-red-500"
+      icon: "text-primary",
+      border: "border-border",
+      hover: "hover:border-primary/50"
     }
   };
 
@@ -61,43 +61,12 @@ const ISSIServicesShowcaseInternal = () => {
     return categoryColors[primaryCategory as keyof typeof categoryColors] || categoryColors.it;
   };
 
-  // WCAG AAA compliant button colors
+  // WCAG AAA compliant button colors using semantic theme variables
   const getButtonColors = (category: string, isActive: boolean) => {
-    const colors = {
-      all: {
-        active: "bg-primary text-primary-foreground border-primary",
-        inactive: "bg-background text-foreground border-border",
-        hover: "hover:border-slate-600 dark:hover:border-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700"
-      },
-      it: {
-        active: "bg-blue-700 text-white border-blue-700 dark:bg-blue-600 dark:border-blue-600",
-        inactive: "bg-blue-50 dark:bg-blue-950/50 text-blue-800 dark:text-blue-200 border-blue-300 dark:border-blue-700",
-        hover: "hover:border-blue-600 dark:hover:border-blue-500 hover:bg-blue-100 dark:hover:bg-blue-900/50"
-      },
-      gov: {
-        active: "bg-green-700 text-white border-green-700 dark:bg-green-600 dark:border-green-600",
-        inactive: "bg-green-50 dark:bg-green-950/50 text-green-800 dark:text-green-200 border-green-300 dark:border-green-700",
-        hover: "hover:border-green-600 dark:hover:border-green-500 hover:bg-green-100 dark:hover:bg-green-900/50"
-      },
-      cyber: {
-        active: "bg-purple-700 text-white border-purple-700 dark:bg-purple-600 dark:border-purple-600",
-        inactive: "bg-purple-50 dark:bg-purple-950/50 text-purple-800 dark:text-purple-200 border-purple-300 dark:border-purple-700",
-        hover: "hover:border-purple-600 dark:hover:border-purple-500 hover:bg-purple-100 dark:hover:bg-purple-900/50"
-      },
-      cloud: {
-        active: "bg-orange-700 text-white border-orange-700 dark:bg-orange-600 dark:border-orange-600",
-        inactive: "bg-orange-50 dark:bg-orange-950/50 text-orange-800 dark:text-orange-200 border-orange-300 dark:border-orange-700",
-        hover: "hover:border-orange-600 dark:hover:border-orange-500 hover:bg-orange-100 dark:hover:bg-orange-900/50"
-      },
-      training: {
-        active: "bg-red-700 text-white border-red-700 dark:bg-red-600 dark:border-red-600",
-        inactive: "bg-red-50 dark:bg-red-950/50 text-red-800 dark:text-red-200 border-red-300 dark:border-red-700",
-        hover: "hover:border-red-600 dark:hover:border-red-500 hover:bg-red-100 dark:hover:bg-red-900/50"
-      }
-    };
-
-    const categoryColor = colors[category as keyof typeof colors] || colors.all;
-    return isActive ? categoryColor.active : `${categoryColor.inactive} ${categoryColor.hover}`;
+    if (isActive) {
+      return "bg-primary text-primary-foreground border-primary";
+    }
+    return "bg-card text-card-foreground border-border hover:bg-accent hover:text-accent-foreground";
   };
   // Service items with icons, titles, descriptions, and categories
   const services = [
@@ -198,16 +167,14 @@ const ISSIServicesShowcaseInternal = () => {
     ? services
     : services.filter(service => service.categories.includes(selectedCategory));
 
-  // Generate an animated background gradient class
-  const _backgroundGradientClass = 'bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20';
   return (
     <section className="py-16 px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="text-left mb-16">
-          <h2 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl mb-4">
+          <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl mb-4">
             <FormattedMessage id="services.showcase.title" />
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mb-8">
+          <p className="text-lg text-muted-foreground max-w-3xl mb-8">
             <FormattedMessage id="services.showcase.subtitle" />
           </p>          {/* Category Filter */}
           <div className="flex flex-wrap justify-start gap-2 mb-8" role="tablist" aria-label="Service category filters">
@@ -216,7 +183,7 @@ const ISSIServicesShowcaseInternal = () => {
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
                 className={cn(
-                  "px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500",
+                  "px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary",
                   getButtonColors(category.id, selectedCategory === category.id)
                 )}
                 role="tab"
@@ -241,12 +208,7 @@ const ISSIServicesShowcaseInternal = () => {
                   className={cn(
                     "flex flex-col space-y-2 overflow-hidden cursor-pointer",
                     service.className,
-                    "hover:shadow-2xl hover:scale-[1.02]",
-                    service.categories.includes("it") && "hover:shadow-blue-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(59_130_246_/_0.5)]",
-                    service.categories.includes("gov") && "hover:shadow-green-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(34_197_94_/_0.5)]",
-                    service.categories.includes("cyber") && "hover:shadow-purple-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(147_51_234_/_0.5)]",
-                    service.categories.includes("cloud") && "hover:shadow-orange-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(234_88_12_/_0.5)]",
-                    service.categories.includes("training") && "hover:shadow-red-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(220_38_38_/_0.5)]"
+                    "hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
                   )}
                 >
                   <CardHeader>
@@ -259,12 +221,11 @@ const ISSIServicesShowcaseInternal = () => {
                   <CardContent>
                     <CardTitle className={cn(
                       "font-semibold tracking-tight text-xl mb-2 transition duration-300",
-                      colors.icon, // Use same color as icon
-                      "dark:text-slate-100" // Override for dark mode readability
+                      "text-foreground"
                     )}>
                       {service.title}
                     </CardTitle>
-                    <p className="text-slate-600 dark:text-slate-300 text-sm">
+                    <p className="text-muted-foreground text-sm">
                       {service.description}
                     </p>
                   </CardContent>
@@ -276,7 +237,7 @@ const ISSIServicesShowcaseInternal = () => {
         <div className="text-left mt-12">
           <a
             href="/services"
-            className="inline-flex items-center text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
+            className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors"
             title={intl.formatMessage({ id: "services.showcase.viewAll" })}
           >
             <FormattedMessage id="services.showcase.viewAll" />

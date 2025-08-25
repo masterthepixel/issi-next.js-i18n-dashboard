@@ -36,7 +36,8 @@
       "Bash(timeout 20s npm test:*)",
       "Bash(pnpm build:*)",
       "Bash(NODE_ENV=production pnpm build)",
-      "Bash(pnpm remove:*)"
+      "Bash(pnpm remove:*)",
+      "Bash(npx next build:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

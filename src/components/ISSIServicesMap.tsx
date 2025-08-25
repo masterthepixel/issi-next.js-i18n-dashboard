@@ -61,13 +61,13 @@ export default function ISSIServicesMap() {
     <div className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-base/7 font-semibold text-indigo-600 dark:text-indigo-400">
+          <h2 className="text-base/7 font-semibold text-primary">
             <FormattedMessage id="services.map.subtitle" defaultMessage="Nationwide Coverage" />
           </h2>
-          <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-white sm:text-5xl sm:text-balance">
+          <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-foreground sm:text-5xl sm:text-balance">
             <FormattedMessage id="services.map.title" defaultMessage="Trusted IT Partner Across America" />
           </p>
-          <p className="mt-6 text-lg/8 text-slate-600 dark:text-slate-400">
+          <p className="mt-6 text-lg/8 text-muted-foreground">
             <FormattedMessage 
               id="services.map.description" 
               defaultMessage="For over 30 years, ISSI has provided award-winning software development and IT support services to clients across the United States." 
@@ -77,18 +77,18 @@ export default function ISSIServicesMap() {
       </div>
       <div className="relative overflow-hidden pt-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="w-full rounded-xl shadow-2xl ring-1 ring-slate-400/10 dark:ring-slate-100/10 overflow-hidden">
+          <div className="w-full rounded-xl shadow-2xl ring-1 ring-border/10 overflow-hidden">
             <ServicesMap />
           </div>
         </div>
       </div>
       <div className="mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8">
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base/7 text-slate-600 dark:text-slate-400 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
+        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base/7 text-muted-foreground sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
           {features.map((feature) => (
             <div key={feature.name} className="relative pl-9">
               <p className="inline">
-                <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-indigo-600 dark:text-indigo-400" />
-                <span className="inline font-semibold text-slate-900 dark:text-white">
+                <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-primary" />
+                <span className="inline font-semibold text-foreground">
                   <FormattedMessage id={feature.nameId} defaultMessage={feature.name} />
                 </span>{' '}
                 <FormattedMessage id={feature.descriptionId} defaultMessage={feature.description} />

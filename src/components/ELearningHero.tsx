@@ -16,7 +16,7 @@ export default function ELearningHero() {  const intl = useIntl();
             <Image
               alt="eLearning Solutions - Students using modern educational technology"
               src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
-              className="absolute inset-0 size-full bg-gray-50 object-cover"
+              className="absolute inset-0 size-full bg-muted object-cover"
               fill
               loading="lazy"
               unoptimized
@@ -24,7 +24,7 @@ export default function ELearningHero() {  const intl = useIntl();
             {/* Dots overlay */}
             <div className="absolute right-0 top-0 w-32 h-32 opacity-30 bg-dots" />
             {/* Experience badge */}
-            <div className="absolute bottom-0 right-0 bg-red-700 text-white p-6 m-4">
+            <div className="absolute bottom-0 right-0 bg-primary text-primary-foreground p-6 m-4">
               <div className="text-center">
                 <div className="text-4xl font-bold">30+</div>
                 <div className="text-lg">
@@ -39,12 +39,12 @@ export default function ELearningHero() {  const intl = useIntl();
         </div>
         <div className="px-6 lg:contents">
           <div className="mx-auto max-w-2xl pt-16 pb-24 sm:pt-20 sm:pb-32 lg:mr-0 lg:ml-8 lg:w-full lg:max-w-lg lg:flex-none lg:pt-32 xl:w-1/2">
-            <p className="text-base/7 font-semibold text-blue-600 dark:text-blue-400">
+            <p className="text-base/7 font-semibold text-primary">
               <FormattedMessage id="page.eLearning.hero.tagline" defaultMessage="Learning Solutions" />
             </p>
-            <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-white sm:text-5xl">
+            <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-foreground sm:text-5xl">
               <FormattedMessage id="page.eLearning.hero.title" defaultMessage="E-Learning" />
-            </h1>            <p className="mt-6 text-xl/8 text-slate-700 dark:text-slate-300">
+            </h1>            <p className="mt-6 text-xl/8 text-muted-foreground">
               <FormattedMessage 
                 id="page.eLearning.hero.intro" 
                 defaultMessage="With strong expertise in managing the Instructional Systems Design (ISD) process - including conceptualization of design, e-Learning development, implementation, and evaluation - ISSI's professionals have successfully implemented user and system documentation/training for our clients."
@@ -55,7 +55,7 @@ export default function ELearningHero() {  const intl = useIntl();
             <div className="mt-10 flex gap-4">
               <Link
                 href={`/${locale}/contact`}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium flex items-center gap-2 transition-all"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-lg font-medium flex items-center gap-2 transition-all"
                 aria-label={intl.formatMessage({ id: 'elearning.hero.cta.consultation', defaultMessage: 'Get Free Consultation' })}
               >
                 Get Free Consultation
@@ -63,12 +63,12 @@ export default function ELearningHero() {  const intl = useIntl();
               </Link>
               <Link
                 href={`/${locale}/services`}
-                className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-6 py-3 rounded-lg font-medium transition-all"
+                className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3 rounded-lg font-medium transition-all"
                 aria-label={intl.formatMessage({ id: 'elearning.hero.cta.services', defaultMessage: 'View All Services' })}
               >
                 View All Services
               </Link>
-            </div><div className="mt-10 max-w-xl text-base/7 text-slate-700 dark:text-slate-300 lg:max-w-none">
+            </div><div className="mt-10 max-w-xl text-base/7 text-muted-foreground lg:max-w-none">
               <p>
                 <FormattedMessage 
                   id="page.eLearning.hero.tools" 

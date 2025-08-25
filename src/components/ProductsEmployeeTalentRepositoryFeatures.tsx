@@ -56,7 +56,7 @@ export default function ProductsEmployeeTalentRepositoryFeatures() {
             {/* Hero Image */}
             <div className="relative overflow-hidden pt-16">
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    <div className="bg-white rounded-xl p-4">
+                    <div className="bg-background rounded-xl p-4">
                         <Image
                             alt={intl.formatMessage({ id: "products.employee-talent-repository.hero.imageAlt" })}
                             src="/images/products/Employee Talent Repository.png"

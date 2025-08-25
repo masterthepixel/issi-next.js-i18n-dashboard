@@ -34,7 +34,7 @@ export default function ELearningHeader() {
                 src={profile.avatar}
                 width={128}
                 height={128}
-                className="size-24 rounded-full ring-4 ring-white sm:size-32"
+                className="size-24 rounded-full ring-4 ring-background sm:size-32"
                 priority
               />
             </div>
@@ -48,9 +48,9 @@ export default function ELearningHeader() {
                 <button
                   type="button"
                   aria-label="Send a message"
-                  className="inline-flex justify-center rounded-md bg-white dark:bg-slate-800 px-3 py-2 text-sm font-semibold text-slate-900 dark:text-slate-100 shadow-xs ring-1 ring-slate-300 dark:ring-slate-600 ring-inset hover:bg-slate-50 dark:hover:bg-slate-700"
+                  className="inline-flex justify-center rounded-md bg-background px-3 py-2 text-sm font-semibold text-foreground shadow-xs ring-1 ring-border ring-inset hover:bg-muted/50"
                 >
-                  <EnvelopeIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-slate-400" />
+                  <EnvelopeIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-muted-foreground" />
                   <span>
                     <FormattedMessage id="common.action.message" defaultMessage="Message" />
                   </span>
@@ -58,9 +58,9 @@ export default function ELearningHeader() {
                 <button
                   type="button"
                   aria-label="Make a phone call"
-                  className="inline-flex justify-center rounded-md bg-white dark:bg-slate-800 px-3 py-2 text-sm font-semibold text-slate-900 dark:text-slate-100 shadow-xs ring-1 ring-slate-300 dark:ring-slate-600 ring-inset hover:bg-slate-50 dark:hover:bg-slate-700"
+                  className="inline-flex justify-center rounded-md bg-background px-3 py-2 text-sm font-semibold text-foreground shadow-xs ring-1 ring-border ring-inset hover:bg-muted/50"
                 >
-                  <PhoneIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-slate-400" />
+                  <PhoneIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-muted-foreground" />
                   <span>
                     <FormattedMessage id="common.action.call" defaultMessage="Call" />
                   </span>

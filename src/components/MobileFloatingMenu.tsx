@@ -49,7 +49,7 @@ export default function MobileFloatingMenu({ items }: MobileFloatingMenuProps) {
     <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-40 md:hidden">
       <FloatingDock
         items={navigationItems}
-        mobileClassName="text-slate-600 dark:text-slate-300"
+        mobileClassName="text-muted-foreground"
       />
     </div>
   );

@@ -64,7 +64,7 @@ export default function ProductsComplaintTrackingSystemFeatures() {
                     </div>
                 </div>
                 <div className="mt-10 flex justify-center">
-                    <div className="bg-white rounded-xl p-4">
+                    <div className="bg-background rounded-xl p-4">
                         <Image
                             src="/images/products/ComplaintTracking.png"
                             alt={intl.formatMessage({ id: "products.complaint-tracking-system.hero.imageAlt" })}
@@ -91,7 +91,7 @@ export default function ProductsComplaintTrackingSystemFeatures() {
                         {features.map((feature, _idx) => {
                             const Icon = feature.icon;
                             return (
-                                <div key={feature.nameId} className="relative pl-9 bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md border border-gray-200 dark:border-gray-700 flex flex-col min-h-[180px] justify-start">
+                                <div key={feature.nameId} className="relative pl-9 bg-card rounded-lg p-6 shadow-md border border-border flex flex-col min-h-[180px] justify-start">
                                     <Icon className="absolute top-4 left-4 size-5 text-muted-foreground" aria-hidden="true" />
                                     <div className="font-semibold text-primary ml-6">
                                         <FormattedMessage id={feature.nameId} />

@@ -34,7 +34,7 @@ export default function PrivacyContentWrapper({
   const activeId = useIntersectionObserver(tocItems.map(item => item.id));
 
   return (
-    <div className="relative z-10 bg-white dark:bg-black">
+    <div className="relative z-10 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative lg:grid lg:grid-cols-4 lg:gap-8">          {/* Desktop Table of Contents */}
           <aside className="hidden lg:block lg:col-span-1">

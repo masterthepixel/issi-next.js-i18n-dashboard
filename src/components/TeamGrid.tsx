@@ -23,9 +23,9 @@ const ExpandIcon = () => {
   const { isExpanded } = useExpandable();
 
   return isExpanded ? (
-    <ChevronUp className="h-5 w-5 text-slate-500 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors" />
+    <ChevronUp className="h-5 w-5 text-muted-foreground group-hover:text-foreground transition-colors" />
   ) : (
-    <ChevronDown className="h-5 w-5 text-slate-500 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors" />
+    <ChevronDown className="h-5 w-5 text-muted-foreground group-hover:text-foreground transition-colors" />
   );
 };
 
@@ -34,10 +34,10 @@ export default function TeamGrid() {
     <section className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-2 lg:px-4">
         <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-slate-50 sm:text-5xl">
+          <h2 className="text-4xl font-semibold tracking-tight text-pretty text-foreground sm:text-5xl">
             <FormattedMessage id="team.section.title" />
           </h2>
-          <p className="mt-6 text-lg/8 text-slate-700 dark:text-slate-300">
+          <p className="mt-6 text-lg/8 text-muted-foreground">
             <FormattedMessage id="team.section.subtitle" />
           </p>
         </div>
@@ -53,7 +53,7 @@ export default function TeamGrid() {
                   expandDirection="vertical"
                 >
                   <ExpandableCard
-                    className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm dark:shadow-slate-900/20 hover:shadow-md dark:hover:shadow-slate-900/40 transition-all duration-200 overflow-visible"
+                    className="w-full bg-card border border-border shadow-sm hover:shadow-md transition-all duration-200 overflow-visible"
                     collapsedSize={{ width: undefined, height: 140 }}
                     expandedSize={{ width: undefined, height: undefined }}
                   >
@@ -65,14 +65,14 @@ export default function TeamGrid() {
                           src={person.imageUrl as string}
                           width={64}
                           height={64}
-                          className="size-16 rounded-full object-cover shadow-md ring-2 ring-slate-200 dark:ring-slate-600 border-2 border-white dark:border-slate-700 flex-shrink-0"
+                          className="size-16 rounded-full object-cover shadow-md ring-2 ring-border border-2 border-background flex-shrink-0"
                           loading="lazy"
                         />
                         <div className="flex flex-col justify-center flex-grow min-w-0">
-                          <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 truncate group-hover:text-slate-700 dark:group-hover:text-white transition-colors">
+                          <h3 className="text-lg font-semibold text-foreground truncate group-hover:text-foreground/80 transition-colors">
                             <FormattedMessage id={nameId} />
                           </h3>
-                          <p className="text-sm font-medium text-slate-600 dark:text-slate-400 truncate group-hover:text-slate-500 dark:group-hover:text-slate-300 transition-colors">
+                          <p className="text-sm font-medium text-muted-foreground truncate group-hover:text-muted-foreground/80 transition-colors">
                             <FormattedMessage id={roleId} />
                           </p>
                         </div>
@@ -88,8 +88,8 @@ export default function TeamGrid() {
                     {/* Expanded content - Bio */}
                     <ExpandableContent preset="slide-up">
                       <div className="px-4 pb-4">
-                        <div className="pt-2 border-t border-slate-200 dark:border-slate-600">
-                          <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300 mt-3">
+                        <div className="pt-2 border-t border-border">
+                          <p className="text-sm leading-relaxed text-muted-foreground mt-3">
                             <FormattedMessage id={bioId} />
                           </p>
                         </div>

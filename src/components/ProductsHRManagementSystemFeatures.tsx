@@ -110,7 +110,7 @@ export default function ProductsHRManagementSystemFeatures() {
       {/* Hero Image */}
       <div className="relative overflow-hidden pt-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="bg-white rounded-xl p-4">
+          <div className="bg-background rounded-xl p-4">
             <Image
               alt={intl.formatMessage({ id: "products.hr-management.hero.imageAlt", defaultMessage: "HR Management System Dashboard" })}
               src="/images/products/Human Resource Manager.png"
@@ -121,7 +121,7 @@ export default function ProductsHRManagementSystemFeatures() {
             />
           </div>
           <div aria-hidden="true" className="relative">
-            <div className="absolute -inset-x-20 bottom-0 bg-gradient-to-t from-white dark:from-gray-900 pt-[1%]" />
+            <div className="absolute -inset-x-20 bottom-0 bg-gradient-to-t from-background pt-[1%]" />
           </div>
         </div>
       </div>

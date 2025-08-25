@@ -236,21 +236,21 @@ const ProductsBentoGrid = () => {
           </p>
 
           {/* Stats Row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 p-6 bg-muted rounded-lg">
             <div className="text-center">
-              <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">30+</div>
+              <div className="text-2xl font-bold text-primary">30+</div>
               <div className="text-sm text-muted-foreground">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">40+</div>
+              <div className="text-2xl font-bold text-primary">40+</div>
               <div className="text-sm text-muted-foreground">Software Products</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">CMMI 3</div>
+              <div className="text-2xl font-bold text-primary">CMMI 3</div>
               <div className="text-sm text-muted-foreground">Level Certified</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">ISO</div>
+              <div className="text-2xl font-bold text-primary">ISO</div>
               <div className="text-sm text-muted-foreground">9001:2015 Certified</div>
             </div>
           </div>
@@ -294,7 +294,7 @@ const ProductsBentoGrid = () => {
         <div className="text-left mt-12">
           <a
             href="#"
-            className="inline-flex items-center text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
+            className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors"
           >
             View all products
             <ChevronRight className="ml-1 h-4 w-4" />

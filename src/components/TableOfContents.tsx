@@ -81,25 +81,25 @@ export default function TableOfContents({
       <div className="xl:hidden">
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-4 right-4 z-40 rounded-full bg-white dark:bg-slate-800 p-3 shadow-lg ring-1 ring-slate-200 dark:ring-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700"
+          className="fixed bottom-4 right-4 z-40 rounded-full bg-background p-3 shadow-lg ring-1 ring-border hover:bg-accent"
           aria-label={toggleAriaLabel}
         >
-          <Bars3Icon className="h-6 w-6 text-slate-600 dark:text-slate-300" />
+          <Bars3Icon className="h-6 w-6 text-muted-foreground" />
         </button>
       </div>
 
       {/* Mobile Overlay */}
       {isOpen && (
         <div className="fixed inset-0 z-50 xl:hidden">
-          <div className="fixed inset-0 bg-slate-600/75 dark:bg-slate-900/75" onClick={() => setIsOpen(false)} />
+          <div className="fixed inset-0 bg-black/50" onClick={() => setIsOpen(false)} />
           <div className="fixed inset-y-0 right-0 flex max-w-full pl-10">
             <div className="w-screen max-w-md">
-              <div className="flex h-full flex-col bg-white dark:bg-slate-800 shadow-xl">
+              <div className="flex h-full flex-col bg-background shadow-xl">
                 <div className="flex items-center justify-between px-4 py-6 sm:px-6">
-                  <h2 className="text-lg font-medium text-slate-900 dark:text-slate-100">{title}</h2>
+                  <h2 className="text-lg font-medium text-foreground">{title}</h2>
                   <button
                     onClick={() => setIsOpen(false)}
-                    className="rounded-md text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
+                    className="rounded-md text-muted-foreground hover:text-foreground"
                     aria-label={closeAriaLabel}
                   >
                     <XMarkIcon className="h-6 w-6" />
@@ -116,8 +116,8 @@ export default function TableOfContents({
                         }}
                         className={`block w-full text-left rounded-md px-3 py-2 text-sm ${getLevelClass(item.level)} ${
                           activeId === item.id
-                            ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 font-medium'
-                            : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-100'
+                            ? 'bg-primary/10 text-primary font-medium'
+                            : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
                         }`}
                       >
                         {item.title}
@@ -134,8 +134,8 @@ export default function TableOfContents({
       {/* Desktop TOC */}
       <div className="hidden xl:block">
         <div className="sticky top-20 w-64">
-          <div className="rounded-lg bg-white dark:bg-slate-800 p-6 shadow-sm ring-1 ring-slate-200 dark:ring-slate-700">
-            <h2 className="text-lg font-medium text-slate-900 dark:text-slate-100 mb-4">{title}</h2>
+          <div className="rounded-lg bg-card p-6 shadow-sm ring-1 ring-border">
+            <h2 className="text-lg font-medium text-foreground mb-4">{title}</h2>
             <nav className="space-y-1">
               {items.map((item) => (
                 <button
@@ -143,8 +143,8 @@ export default function TableOfContents({
                   onClick={() => scrollToSection(item.id)}
                   className={`block w-full text-left rounded-md px-3 py-2 text-sm ${getLevelClass(item.level)} ${
                     activeId === item.id
-                      ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 font-medium'
-                      : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-100'
+                      ? 'bg-primary/10 text-primary font-medium'
+                      : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
                   }`}
                 >
                   {item.title}

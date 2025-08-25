@@ -13,7 +13,7 @@ const stats = [
 export default function ComplianceStats() {
   return (
     <section 
-      className="relative isolate overflow-hidden bg-slate-900 dark:bg-slate-950 py-24 sm:py-32"
+      className="relative isolate overflow-hidden bg-slate-900 py-24 sm:py-32"
       aria-labelledby="compliance-stats-heading"
       role="region"
       aria-label="Compliance statistics and achievements"
@@ -36,23 +36,23 @@ export default function ComplianceStats() {
           />
         </div>
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
-          <p className="text-base/8 font-semibold text-indigo-400">
+          <p className="text-base/8 font-semibold text-primary">
             <FormattedMessage id="compliance.stats.title" defaultMessage="Our compliance record" />
           </p>
-          <h2 id="compliance-stats-heading" className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-white sm:text-5xl">
+          <h2 id="compliance-stats-heading" className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-primary-foreground sm:text-5xl">
             <FormattedMessage id="compliance.stats.headline" defaultMessage="Trusted security and compliance" />
           </h2>
-          <p className="mt-6 text-lg/8 text-slate-300">
+          <p className="mt-6 text-lg/8 text-slate-200">
             <FormattedMessage id="compliance.stats.description" defaultMessage="Our comprehensive compliance framework ensures the highest standards of security, quality, and regulatory adherence across all operations." />
           </p>
         </div>
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 text-white sm:mt-20 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-4" role="list">
+        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 text-primary-foreground sm:mt-20 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-4" role="list">
           {stats.map((stat) => (
-            <div key={stat.id} className="flex flex-col gap-y-3 border-l border-white/10 pl-6" role="listitem">
+            <div key={stat.id} className="flex flex-col gap-y-3 border-l border-primary-foreground/10 pl-6" role="listitem">
               <div className="order-first text-3xl font-semibold tracking-tight">
                 <FormattedMessage id={stat.valueKey} defaultMessage="0" />
               </div>
-              <div className="text-base text-slate-300">
+              <div className="text-base text-slate-200">
                 <FormattedMessage id={stat.nameKey} defaultMessage="Metric" />
               </div>
             </div>

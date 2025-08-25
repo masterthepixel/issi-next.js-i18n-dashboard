@@ -88,7 +88,7 @@ export default function ProductsInventoryAssetTrackingSystemFeatures() {
                     </div>
                 </div>
                 <div className="mt-10 flex justify-center">
-                    <div className="bg-white rounded-xl p-4">
+                    <div className="bg-background rounded-xl p-4">
                         <Image
                             src="/images/products/InventoryAssetTracking.png"
                             alt={intl.formatMessage({ id: "products.inventory-asset-tracking.hero.imageAlt" })}

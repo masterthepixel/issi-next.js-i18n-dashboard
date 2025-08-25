@@ -50,17 +50,17 @@ const industryCertifications = [
 
 export default function ComplianceIndustryCertifications() {
   return (
-    <div className="bg-white dark:bg-slate-900 py-24 sm:py-32">
+    <div className="bg-background py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-x-8 gap-y-16 lg:grid-cols-2">
           <div className="mx-auto w-full max-w-xl lg:mx-0">
-            <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-white sm:text-5xl">
+            <h2 className="text-4xl font-semibold tracking-tight text-pretty text-foreground sm:text-5xl">
               <FormattedMessage 
                 id="compliance.industry.title" 
                 defaultMessage="Industry-Leading Compliance Standards" 
               />
             </h2>
-            <p className="mt-6 text-lg/8 text-slate-600 dark:text-slate-300">
+            <p className="mt-6 text-lg/8 text-muted-foreground">
               <FormattedMessage 
                 id="compliance.industry.description" 
                 defaultMessage="Our comprehensive certifications and compliance standards demonstrate our commitment to security, quality, and operational excellence across all service areas." 
@@ -69,14 +69,14 @@ export default function ComplianceIndustryCertifications() {
             <div className="mt-8 flex items-center gap-x-6">
               <a
                 href="/contact"
-                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-primary-foreground shadow-xs hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 <FormattedMessage 
                   id="compliance.industry.cta.primary" 
                   defaultMessage="Learn More" 
                 />
               </a>
-              <a href="/compliance/iso27001" className="text-sm font-semibold text-slate-900 dark:text-white">
+              <a href="/compliance/iso27001" className="text-sm font-semibold text-foreground">
                 <FormattedMessage 
                   id="compliance.industry.cta.secondary" 
                   defaultMessage="View Certifications" 
@@ -93,7 +93,7 @@ export default function ComplianceIndustryCertifications() {
                   src={cert.src}
                   width={cert.width}
                   height={cert.height}
-                  className="max-h-12 w-full object-contain object-left filter dark:brightness-0 dark:invert"
+                  className="max-h-12 w-full object-contain object-left"
                   loading="lazy"
                   sizes="(max-width: 768px) 50vw, 200px"
                   title={cert.name}

@@ -88,7 +88,7 @@ export default function ProductsProfessionalManagementFeatures() {
                     </div>
                 </div>
                 <div className="mt-10 flex justify-center">
-                    <div className="bg-white rounded-xl p-4">
+                    <div className="bg-background rounded-xl p-4">
                         <Image
                             src="/images/products/ProfessionalManagement.png"
                             alt={intl.formatMessage({ id: "products.professional-management.hero.imageAlt" })}
