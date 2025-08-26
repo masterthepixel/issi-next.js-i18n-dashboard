@@ -1,7 +1,7 @@
 "use client";
 
 import { Meteors } from "@/components/ui/meteors";
-import { useTheme } from "@/contexts/ThemeContext";
+import { useTheme } from "next-themes";
 import React from "react";
 import { StarryBackground } from "./StarryBackground";
 

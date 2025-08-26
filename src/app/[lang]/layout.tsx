@@ -1,14 +1,13 @@
 import { AnimatedBackground } from "@/components/AnimatedBackground";
+import ClientNavigation from "@/components/ClientNavigation";
 import ClientOnly from "@/components/ClientOnly";
 import Content from "@/components/Content";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import FooterWrapper from "@/components/FooterWrapper";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
-import HoverGradientNavBar from "@/components/ui/hover-gradient-nav-bar";
 // UniversalIntelligentBreadcrumbWrapper removed
 import { ThemeProvider } from "next-themes";
 import React from 'react';
-import { IntlProvider } from "react-intl";
 
 import { fontClassNames } from "@/app/fonts";
 import { getUser } from "@/lib/data";
@@ -52,9 +51,7 @@ export default async function Root({ params, children }: Props) {
             </Content>
             <FooterWrapper locale={lang} />
             <ClientOnly>
-              <IntlProvider locale={lang} messages={intl.messages}>
-                <HoverGradientNavBar locale={lang} />
-              </IntlProvider>
+              <ClientNavigation locale={lang} messages={intl.messages} />
               <ScrollToTopButton />
             </ClientOnly>
           </ThemeProvider>
