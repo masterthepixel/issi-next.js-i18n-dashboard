@@ -10,6 +10,7 @@ import ScrollToTopButton from "@/components/ScrollToTopButton";
 import { ThemeProvider } from "next-themes";
 import React from 'react';
 
+import { fontClassNames } from "@/app/fonts";
 import { getUser } from "@/lib/data";
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
@@ -64,7 +65,7 @@ export default async function Root({ params, children }: Props) {
       href: `/${lang}/about`,
     },
   ]; return (
-    <html lang={lang} className="h-full">
+    <html lang={lang} className={`h-full ${fontClassNames}`}>
       <head />
       <body className="relative min-h-screen overflow-y-auto overflow-x-visible grid-background-with-fade flex flex-col debug-screens">
         <ErrorBoundary>

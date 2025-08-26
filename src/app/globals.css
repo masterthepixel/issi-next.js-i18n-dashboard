@@ -1,29 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --font-sans: 'Inter Tight', 'Inter', Arial, sans-serif;
-  --font-serif: 'Instrument Serif', Georgia, Times, serif;
-}
-
 @layer base {
   html {
-    font-family: var(--font-sans);
+    @apply transition-colors duration-300 ease-in-out font-sans;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
   }
+
   body {
-    font-family: var(--font-sans);
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "liga" 1, "clig" 1, "kern" 1, "calt" 1, "ss01" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
+
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    font-family: var(--font-serif);
+    @apply font-serif;
     font-weight: 400;
     font-style: normal;
+    font-feature-settings: "liga" 1, "kern" 1;
   }
+
   h1 em,
   h2 em,
   h3 em,
@@ -32,24 +36,6 @@
   h6 em {
     font-style: italic;
     font-weight: 400;
-  }
-}
-:root {
-  --font-sans: 'Inter Tight', 'Inter', Arial, sans-serif;
-  --font-serif: 'Instrument Serif', Georgia, Times, serif;
-}
-@layer base {
-  html {
-    @apply transition-colors duration-300 ease-in-out;
-    scroll-behavior: smooth;
-    scroll-padding-top: 4rem;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "liga" 1, "clig" 1, "kern" 1, "calt" 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
   .grid-background {
