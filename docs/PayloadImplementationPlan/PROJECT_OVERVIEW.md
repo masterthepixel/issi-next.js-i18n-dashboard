@@ -20,6 +20,7 @@ The Company Blog is a content management system designed to publish articles, ne
     *   Author profiles and management.
     *   SEO-optimized pages with social sharing.
     *   Integration with the main site's homepage and navigation.
+*   **Content Entry Method:** Blog articles are authored and managed via the PayloadCMS Admin UI, using a rich text editor (e.g., Lexical) that supports advanced formatting, code snippets, and media embedding. This interface provides an intuitive workflow for content creators and ensures consistency in published articles.
 *   **Documentation:** For a detailed breakdown of requirements, user personas, and the development roadmap, please refer to the [**Blog Product Requirements Document (PRD)**](./BLOG_PRD.md).
 
 ### 1.2. Company Job Portal

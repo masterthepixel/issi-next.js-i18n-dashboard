@@ -105,26 +105,8 @@ export default function DashboardNavbar({
     };
   }, []);
 
-  // Main navigation items
-  const navigationItems: NavigationSection[] = [
-    {
-      title: "Learning",
-      items: [
-        {
-          title: messages["common.navigation.eLearning"] || "eLearning",
-          href: `/${locale}/eLearning`,
-          description: "Professional training and certification programs",
-          icon: <GraduationCap className="h-4 w-4" />,
-        },
-        {
-          title: "Compliance",
-          href: `/${locale}/compliance`,
-          description: "Security standards and regulatory compliance",
-          icon: <ShieldCheck className="h-4 w-4" />,
-        },
-      ],
-    },
-  ];
+  // Main navigation items (dropdown sections) - now empty since eLearning and Compliance moved to top-level
+  const navigationItems: NavigationSection[] = [];
 
   // Top-level nav items
   const topNavItems: NavItem[] = [
@@ -149,20 +131,19 @@ export default function DashboardNavbar({
       icon: <GraduationCap className="h-4 w-4" />,
     },
     {
-      title: "Compliance",
+      title: messages["common.navigation.compliance"] || "Compliance",
       href: `/${locale}/compliance`,
       icon: <ShieldCheck className="h-4 w-4" />,
     },
-  ];
-
-  // Single navigation items
-  const singleNavItems: NavItem[] = [
     {
       title: messages["common.navigation.about"] || "About",
       href: `/${locale}/about`,
       icon: <User className="h-4 w-4" />,
     },
   ];
+
+  // Single navigation items (now empty since all moved to top-level)
+  const singleNavItems: NavItem[] = [];
 
   // Info menu items
   const _infoMenuItems = [

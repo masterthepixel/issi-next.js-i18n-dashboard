@@ -97,13 +97,13 @@ Our website currently lacks a dedicated platform for publishing in-depth, valuab
 | F-01 | **Content Management System (CMS) Integration** | **Must-Have** | C-1, C-2, C-3, C-4 | A new "Posts" collection is created in PayloadCMS. The CMS allows for creating, editing, deleting, and publishing blog posts. |
 | F-02 | **Rich Text Editor** | **Must-Have** | C-1, C-2 | The CMS provides a WYSIWYG editor for creating post content. The editor must support standard formatting (bold, italics, headings, lists, links). |
 | F-03 | **Code Snippet Embedding** | **Must-Have** | C-2 | The editor must allow for embedding code snippets with syntax highlighting for common languages (e.g., JavaScript, Python, JSON). |
-| F-04 | **Post Metadata Fields** | **Must-Have** | C-1, C-3, C-4 | Each post must include fields for: Title, Slug (URL-friendly, potentially per-language), Excerpt (for SEO and previews), Featured Image, Author (linked to Users), Publication Date, and Tags/Categories. |
+| F-04 | **Post Metadata Fields** | **Must-Have** | C-1, C-3, C-4 | Each post must include fields for: Title, Slug (URL-friendly, per-language), Excerpt (for SEO and previews), Featured Image, Author (linked to Users), Publication Date, and Tags/Categories. |
 | F-05 | **Scheduling** | **Should-Have** | C-3 | Content creators must be able to set a future "Published At" date and time to automatically publish posts. |
 | F-06 | **SEO Tools in Editor** | **Could-Have** | C-4 | The editor provides real-time feedback on readability and keyword usage. |
 | F-07 | **Blog Index Page** | **Must-Have** | R-5 | A public-facing page at `/[lang]/blog` displays a paginated list of published posts. Each post in the list shows its title, excerpt, featured image, author, and publication date. |
 | F-08 | **Blog Post Detail Page** | **Must-Have** | R-2, R-3 | A public-facing dynamic page at `/[lang]/blog/[slug]` displays the full content of a single post. The page must render the rich text content and code snippets correctly. |
 | F-09 | **Search Functionality** | **Must-Have** | R-5 | A search bar is prominently available on the blog index page, allowing users to search for posts by keywords in the title, content, and tags. |
-| F-10 | **Multilingual Content** | **Must-Have** | All | Each blog post must be translatable into the three project languages. The CMS must support creating and managing localized versions of the title, slug, excerpt, and content for each post. The frontend must serve the correct translation based on the `[lang]` URL parameter. |
+| F-10 | **Multilingual Content (i18n)** | **Must-Have** | All | Each blog post must be translatable into the three project languages (en, fr, de). The CMS must support creating and managing localized versions of the title, slug, excerpt, and content for each post. The frontend must serve the correct translation based on the `[lang]` URL parameter. Language switching functionality must be present and correctly update the blog content. |
 | F-11 | **Shadcn UI Theme Adherence** | **Must-Have** | R-3 | The visual design of all blog components, including the post list, post detail page, and search interface, must strictly follow the established Shadcn UI theme and components to ensure consistency with the rest of the website. |
 | F-12 | **Responsive Design** | **Must-Have** | R-3 | All blog pages must be fully responsive and provide a good user experience on desktop, tablet, and mobile devices. |
 | F-13 | **Social Sharing** | **Must-Have** | R-8 | Blog post detail pages must include social media sharing buttons (e.g., LinkedIn, Twitter, Facebook). |
@@ -120,7 +120,7 @@ Our website currently lacks a dedicated platform for publishing in-depth, valuab
 | NF-01 | **Performance** | **Must-Have** | Blog index and post pages must load in under 3 seconds on a standard broadband connection. Core Web Vitals (LCP, FID, CLS) must be in the "Good" range. |
 | NF-02 | **Security** | **Must-Have** | The CMS admin panel must be secured with authentication and authorization. All user inputs must be sanitized to prevent XSS and other injection attacks. The site must use HTTPS. |
 | NF-03 | **Usability** | **Must-Have** | The CMS admin interface must be intuitive for users with varying technical skills (marketing to developers). The public-facing blog must be easy to navigate and read. |
-| NF-04 | **Accessibility (a11y)** | **Must-Have** | All public-facing blog pages must conform to WCAG 2.1 Level AA standards. This includes proper use of headings, alt text for images, and ARIA attributes where necessary. |
+| NF-04 | **Accessibility (a11y)** | **Must-Have** | All public-facing blog pages must conform to WCAG 2.1 Level AA standards. This includes, but is not limited to: proper heading structure (`h1`-`h6`), descriptive `alt` text for all meaningful images, sufficient color contrast, keyboard navigability, and appropriate ARIA roles and attributes for dynamic content. All interactive elements must be focusable and operable via keyboard. |
 | NF-05 | **Maintainability** | **Should-Have** | The code for the blog feature must be well-documented and follow the existing project's coding standards. The CMS configuration should be easy to extend for future needs (e.g., new fields, new collections). |
 | NF-06 | **SEO Best Practices** | **Must-Have** | All blog post pages must have unique, SEO-friendly titles and meta descriptions. Images must have descriptive alt text. The site structure must be easily crawlable by search engines (e.g., using a sitemap). |
 
@@ -167,23 +167,24 @@ The blog will be a fully integrated part of the existing Next.js and PayloadCMS 
 
 *   **Backend (PayloadCMS):**
     *   A new collection, `Posts`, will be defined in the `cms/collections` directory.
-    *   This collection will define the schema for blog posts, including fields like `title`, `slug`, `content` (rich text), `excerpt`, `author` (relationship to `Users`), `publishedAt`, `featuredImage` (relationship to a `Media` collection), and `tags`.
-    *   Payload's Admin UI will serve as the content management interface.
+    *   This collection will define the schema for blog posts, including localized fields for `title`, `slug`, `content` (rich text), `excerpt`, and global fields like `author` (relationship to `Users`), `publishedAt`, `featuredImage` (relationship to a `Media` collection), and `tags`.
+    *   Payload's Admin UI will serve as the content management interface, providing a unified place for content creators to manage all language versions of a post.
     *   Payload will automatically generate REST/GraphQL endpoints for the `Posts` collection, which will be consumed by the Next.js frontend.
 
 *   **Frontend (Next.js):**
     *   Two new page structures will be added to the `src/app/[lang]` directory:
-        *   `blog/page.tsx`: The blog index page. This page will fetch a list of posts from the PayloadCMS API at build time (using `getStaticProps`) and display them.
-        *   `blog/[slug]/page.tsx`: The dynamic blog post detail page. This page will fetch the data for a single post based on the `slug` from the URL at build time (`getStaticPaths` and `getStaticProps`).
-    *   Reusable React components will be created to render the post list, post content, author bio, and other UI elements.
+        *   `blog/page.tsx`: The blog index page. This page will fetch a list of posts for the current language from the PayloadCMS API at build time (using `getStaticProps`) and display them.
+        *   `blog/[slug]/page.tsx`: The dynamic blog post detail page. This page will fetch the data for a single post based on the `slug` and `lang` from the URL at build time (`getStaticPaths` and `getStaticProps`).
+    *   Reusable React components, built with Shadcn UI, will be created to render the post list, post content, author bio, and other UI elements.
     *   The rich text content from PayloadCMS will be rendered using a suitable library (e.g., a serializer for the chosen rich text editor like Slate or Lexical).
-    *   The existing i18n setup will be leveraged to handle the `lang` parameter in the URL.
+    *   The existing i18n setup will be leveraged to handle the `lang` parameter in the URL, ensuring that the correct language content is fetched and displayed. This includes integrating with the project's i18n configuration for any static text on the blog pages.
 
 *   **Data Flow:**
-    1.  Content creators use the PayloadCMS Admin UI to create and manage posts.
-    2.  During the Next.js build process, the frontend fetches data from the PayloadCMS API.
-    3.  Next.js statically generates the blog pages, ensuring fast load times.
-    4.  Users navigate to the blog on the live website, served by the Next.js application.
+    1.  Content creators use the PayloadCMS Admin UI to create and manage posts, including all language versions.
+    2.  During the Next.js build process, the frontend fetches data for all supported languages from the PayloadCMS API.
+    3.  Next.js statically generates the blog pages for each language, ensuring fast load times and SEO benefits.
+    4.  Users navigate to the blog on the live website. The Next.js router serves the correct statically generated page based on the `[lang]` and `[slug]` parameters.
+    5.  The site's main navigation will be updated to include links to the blog index page for each available language (e.g., `/en/blog`, `/fr/blog`, `/de/blog`).
 
 ---
 
