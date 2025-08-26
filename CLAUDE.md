@@ -823,4 +823,27 @@ export default function Component(props: Props) {
 - Accessibility and i18n linting are enforced in CI/CD.
 - Fix all lint errors before merge.
 
+### ⚠️ CRITICAL: Button asChild Pattern Rules
+
+**Never use `asChild` with complex children** - this causes React.Children.only errors:
+
+```tsx
+// ❌ WRONG - Causes React.Children.only error
+<Button asChild>
+  <Link href="/page">
+    <span><Icon /> Text</span>
+  </Link>
+</Button>
+
+// ✅ CORRECT - Use onClick pattern instead
+<Button onClick={() => router.push('/page')}>
+  <Icon /> Text
+</Button>
+```
+
+**When to use each pattern**:
+- **onClick**: Navigation buttons, complex children (icon+text), FormattedMessage
+- **asChild**: Single child element only, no nested structures
+- **Always import useRouter**: `import { useRouter } from 'next/navigation'`
+
 ---

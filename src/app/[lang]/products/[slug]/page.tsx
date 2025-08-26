@@ -40,10 +40,10 @@ import { getIntl } from '@/lib/intl';
 import { getAllProducts, getProductBySlug } from '@/lib/products';
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     lang: Locale;
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -61,7 +61,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const product = await getProductBySlug(params.slug);
+  const { slug, lang } = await params;
+  const product = await getProductBySlug(slug);
 
   if (!product) {
     return {
@@ -79,7 +80,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
     openGraph: {
       title: product.name,
       description: product.description,
-      url: `${baseUrl}/${params.lang}/products/${product.slug}`,
+      url: `${baseUrl}/${lang}/products/${product.slug}`,
       siteName: 'ISSI - International Software Systems',
       images: [
         {
@@ -101,157 +102,159 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 }
 
 const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
-  if (params.slug === 'bug-tracking-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsBugTrackingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  const { slug, lang } = await params;
+  
+  if (slug === 'bug-tracking-system') {
+    const intl = await getIntl(lang);
+    return <ProductsBugTrackingSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'capture-manager') {
-    const intl = await getIntl(params.lang);
-    return <ProductsCaptureManagerFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'capture-manager') {
+    const intl = await getIntl(lang);
+    return <ProductsCaptureManagerFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'electronic-correspondence-tracking-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'electronic-correspondence-tracking-system') {
+    const intl = await getIntl(lang);
+    return <ProductsElectronicCorrespondenceTrackingSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'employee-performance-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsEmployeePerformanceSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'employee-performance-system') {
+    const intl = await getIntl(lang);
+    return <ProductsEmployeePerformanceSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'epermitting-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsEPermittingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'epermitting-system') {
+    const intl = await getIntl(lang);
+    return <ProductsEPermittingSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'grant-management-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsGrantManagementSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'grant-management-system') {
+    const intl = await getIntl(lang);
+    return <ProductsGrantManagementSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'hr-management-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsHRManagementSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'hr-management-system') {
+    const intl = await getIntl(lang);
+    return <ProductsHRManagementSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'membership-database-subsidy-payment-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsMembershipDatabaseSubsidyPaymentSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'membership-database-subsidy-payment-system') {
+    const intl = await getIntl(lang);
+    return <ProductsMembershipDatabaseSubsidyPaymentSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'project-management-suite') {
-    const intl = await getIntl(params.lang);
-    return <ProductsProjectManagementSuiteFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'project-management-suite') {
+    const intl = await getIntl(lang);
+    return <ProductsProjectManagementSuiteFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'prudent-agile-methodology') {
-    const intl = await getIntl(params.lang);
-    return <ProductsPrudentAgileMethodologyFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'prudent-agile-methodology') {
+    const intl = await getIntl(lang);
+    return <ProductsPrudentAgileMethodologyFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'requirements-management-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsRequirementsManagementSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'requirements-management-system') {
+    const intl = await getIntl(lang);
+    return <ProductsRequirementsManagementSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'task-management-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsTaskManagementSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'task-management-system') {
+    const intl = await getIntl(lang);
+    return <ProductsTaskManagementSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'timesheet-management-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsTimesheetManagementSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'timesheet-management-system') {
+    const intl = await getIntl(lang);
+    return <ProductsTimesheetManagementSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'employee-talent-repository') {
-    const intl = await getIntl(params.lang);
-    return <ProductsEmployeeTalentRepositoryFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'employee-talent-repository') {
+    const intl = await getIntl(lang);
+    return <ProductsEmployeeTalentRepositoryFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'competency-skills-matrix') {
-    const intl = await getIntl(params.lang);
-    return <ProductsCompetencySkillsMatrixFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'competency-skills-matrix') {
+    const intl = await getIntl(lang);
+    return <ProductsCompetencySkillsMatrixFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'training-dashboard') {
-    const intl = await getIntl(params.lang);
-    return <ProductsTrainingDashboardFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'training-dashboard') {
+    const intl = await getIntl(lang);
+    return <ProductsTrainingDashboardFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'i-learn-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsILearnSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'i-learn-system') {
+    const intl = await getIntl(lang);
+    return <ProductsILearnSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'rsvp-event-management') {
-    const intl = await getIntl(params.lang);
-    return <ProductsRSVPEventManagementFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'rsvp-event-management') {
+    const intl = await getIntl(lang);
+    return <ProductsRSVPEventManagementFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'audit-reporting-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsAuditReportingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'audit-reporting-system') {
+    const intl = await getIntl(lang);
+    return <ProductsAuditReportingSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'expense-tracking-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsExpenseTrackingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'expense-tracking-system') {
+    const intl = await getIntl(lang);
+    return <ProductsExpenseTrackingSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'meeting-minutes-manager') {
-    const intl = await getIntl(params.lang);
-    return <ProductsMeetingMinutesManagerFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'meeting-minutes-manager') {
+    const intl = await getIntl(lang);
+    return <ProductsMeetingMinutesManagerFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'training-records-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsTrainingRecordsSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'training-records-system') {
+    const intl = await getIntl(lang);
+    return <ProductsTrainingRecordsSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'central-data-platform') {
-    const intl = await getIntl(params.lang);
-    return <ProductsCentralDataPlatformFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'central-data-platform') {
+    const intl = await getIntl(lang);
+    return <ProductsCentralDataPlatformFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'e-survey-platform') {
-    const intl = await getIntl(params.lang);
-    return <ProductsESurveyPlatformFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'e-survey-platform') {
+    const intl = await getIntl(lang);
+    return <ProductsESurveyPlatformFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'form-management-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsFormManagementSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'form-management-system') {
+    const intl = await getIntl(lang);
+    return <ProductsFormManagementSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'i-code-testing-platform') {
-    const intl = await getIntl(params.lang);
-    return <ProductsICodeTestingPlatformFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'i-code-testing-platform') {
+    const intl = await getIntl(lang);
+    return <ProductsICodeTestingPlatformFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'professional-management-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsProfessionalManagementFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'professional-management-system') {
+    const intl = await getIntl(lang);
+    return <ProductsProfessionalManagementFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'complaint-tracking-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsComplaintTrackingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'complaint-tracking-system') {
+    const intl = await getIntl(lang);
+    return <ProductsComplaintTrackingSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'inventory-asset-tracking-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsInventoryAssetTrackingSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'inventory-asset-tracking-system') {
+    const intl = await getIntl(lang);
+    return <ProductsInventoryAssetTrackingSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  if (params.slug === 'visitor-log-system') {
-    const intl = await getIntl(params.lang);
-    return <ProductsVisitorLogSystemFeaturesWrapper locale={params.lang} messages={intl.messages} />;
+  if (slug === 'visitor-log-system') {
+    const intl = await getIntl(lang);
+    return <ProductsVisitorLogSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
   }
 
-  const product = await getProductBySlug(params.slug);
+  const product = await getProductBySlug(slug);
 
   if (!product) {
     notFound();
@@ -267,7 +270,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
           <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
             <li>
               <Link
-                href={`/${params.lang}`}
+                href={`/${lang}`}
                 className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 Home
@@ -276,7 +279,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
             <li className="flex items-center">
               <span className="mx-2">/</span>
               <Link
-                href={`/${params.lang}/products`}
+                href={`/${lang}/products`}
                 className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 Products
@@ -293,7 +296,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
 
         {/* Back Button */}
         <Link
-          href={`/${params.lang}/products`}
+          href={`/${lang}/products`}
           className="inline-flex items-center space-x-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -360,7 +363,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
             {/* CTA Section */}
             <div className="space-y-4 pt-6">
               <Link
-                href={`/${params.lang}/contact?product=${product.slug}`}
+                href={`/${lang}/contact?product=${product.slug}`}
                 className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
               >
                 <ExternalLink className="w-5 h-5 mr-2" />
@@ -453,13 +456,13 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href={`/${params.lang}/contact?product=${product.slug}`}
+                href={`/${lang}/contact?product=${product.slug}`}
                 className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
               >
                 Contact Sales Team
               </Link>
               <Link
-                href={`/${params.lang}/products`}
+                href={`/${lang}/products`}
                 className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-300 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
               >
                 View All Products

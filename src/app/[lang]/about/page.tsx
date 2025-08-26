@@ -80,9 +80,10 @@ const breadcrumbSchema = {
     ]
 };
 
-export async function generateMetadata({ params }: { params: { lang: Locale } }): Promise<Metadata> {
-    const _intl = await getIntl(params.lang);
-    const messages = (await import(`../../../lang/${params.lang}.json`)).default;
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+    const { lang } = await params;
+    const _intl = await getIntl(lang);
+    const messages = (await import(`../../../lang/${lang}.json`)).default;
 
     return {
         title: messages["about.meta.title"] || "About Us - ISSI | Award-Winning Software Development Since 1995",
@@ -92,7 +93,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
             title: messages["about.meta.title"] || "About Us - ISSI | Award-Winning Software Development",
             description: messages["about.meta.description"] || "30+ years of award-winning software development and IT support services since 1995",
             type: "website",
-            url: `https://issi-software.com/${params.lang}/about`,
+            url: `https://issi-software.com/${lang}/about`,
             images: [
                 {
                     url: "https://issi-software.com/images/issi_logo.png",
@@ -109,7 +110,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
             description: messages["about.meta.description"] || "30+ years of award-winning software development and IT support services since 1995"
         },
         alternates: {
-            canonical: `https://issi-software.com/${params.lang}/about`,
+            canonical: `https://issi-software.com/${lang}/about`,
             languages: {
                 'en': 'https://issi-software.com/en/about',
                 'fr': 'https://issi-software.com/fr/about',
@@ -123,12 +124,13 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
 }
 
 interface Props {
-    params: {
+    params: Promise<{
         lang: Locale;
-    };
+    }>;
 }
 
-export default function Page({ params: { lang: locale } }: Props) {
+export default async function Page({ params }: Props) {
+    const { lang: locale } = await params;
     const structuredData = [organizationSchema, localBusinessSchema, breadcrumbSchema];
 
     return (

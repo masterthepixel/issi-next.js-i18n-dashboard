@@ -10,7 +10,8 @@ import Spinner from "@/components/Spinner";
 
 import { Locale } from "@/lib/definitions";
 
-export async function generateMetadata({ params }: { params: { lang: Locale } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params;
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://issi.com';
 
   const seoData = {
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
     }
   };
 
-  const currentSeo = seoData[params.lang] || seoData.en;
+  const currentSeo = seoData[lang] || seoData.en;
 
   return {
     title: currentSeo.title,
@@ -40,7 +41,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
     openGraph: {
       title: currentSeo.title,
       description: currentSeo.description,
-      url: `${baseUrl}/${params.lang}/eLearning`,
+      url: `${baseUrl}/${lang}/eLearning`,
       siteName: "ISSI - International Software Systems",
       images: [
         {
@@ -50,7 +51,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
           alt: currentSeo.title,
         }
       ],
-      locale: params.lang === 'en' ? 'en_US' : params.lang === 'fr' ? 'fr_FR' : 'es_ES',
+      locale: lang === 'en' ? 'en_US' : lang === 'fr' ? 'fr_FR' : 'es_ES',
       type: 'website',
     },
     twitter: {
@@ -60,7 +61,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
       images: [`${baseUrl}/images/elearning-solutions-og.jpg`],
     },
     alternates: {
-      canonical: `${baseUrl}/${params.lang}/eLearning`,
+      canonical: `${baseUrl}/${lang}/eLearning`,
       languages: {
         'en': `${baseUrl}/en/eLearning`,
         'fr': `${baseUrl}/fr/eLearning`,
@@ -82,12 +83,13 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
 }
 
 interface Props {
-  params: {
+  params: Promise<{
     lang: Locale;
-  };
+  }>;
 }
 
-export default function Page({ params: { lang: locale } }: Props) {
+export default async function Page({ params }: Props) {
+  const { lang: locale } = await params;
   return (
     <Suspense fallback={<Spinner />}>
       <PageContent locale={locale} />

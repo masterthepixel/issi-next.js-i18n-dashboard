@@ -3,6 +3,62 @@
 ## Overview
 This document outlines the comprehensive plan for migrating all buttons in the ISSI Next.js i18n dashboard to use the enhanced button component with proper theme variables and advanced functionality.
 
+## ⚠️ CRITICAL: React.Children.only Error Resolution
+
+### Issue Resolved
+**Problem**: React.Children.only errors were occurring when Button components used `asChild` prop with complex children structures.
+
+**Root Cause**: Radix UI's Slot component (used by `asChild`) expects exactly one React element child, but our Button usages had Link components containing nested spans with icons and text, creating multiple children that violated this constraint.
+
+**Components Fixed**:
+- ✅ GovernmentHero.tsx - 2 buttons converted
+- ✅ Footer.tsx - 12+ navigation buttons converted  
+- ✅ DashboardNavbar.tsx - 1 contact button converted
+
+### ✅ Solution Pattern: Convert asChild to onClick
+```tsx
+// ❌ PROBLEMATIC PATTERN (causes React.Children.only error)
+<Button variant="ghost" size="sm" asChild>
+  <Link href={`/${locale}/contact`}>
+    <span className="inline-flex items-center">
+      <Mail className="h-4 w-4 mr-2" />
+      <FormattedMessage id="common.navigation.contact" />
+    </span>
+  </Link>
+</Button>
+
+// ✅ CORRECT PATTERN (no React.Children.only error)
+<Button 
+  variant="ghost" 
+  size="sm" 
+  className="inline-flex items-center"
+  onClick={() => router.push(`/${locale}/contact`)}
+>
+  <Mail className="h-4 w-4 mr-2" />
+  <FormattedMessage id="common.navigation.contact" />
+</Button>
+```
+
+### 🔍 When to Use Each Pattern
+
+**Use onClick pattern when**:
+- Button needs navigation functionality
+- Button has complex children (icon + text)
+- Button contains FormattedMessage components
+- Button needs to pass data or call functions
+
+**Use asChild pattern when**:
+- Single child element only
+- Child is a simple Link or other component
+- No complex nested structure
+- Component is designed for Slot pattern
+
+### 🛡️ Prevention Rules
+1. **Never use `asChild` with complex children** (Link > span > icon + text)
+2. **Always import and use useRouter** for navigation buttons
+3. **Prefer onClick over asChild** for navigation unless absolutely necessary
+4. **Test buttons immediately** after implementation to catch React.Children.only errors early
+
 ## Migration Goals
 - [ ] Replace all custom button implementations with enhanced button component
 - [ ] Implement loading states for async operations

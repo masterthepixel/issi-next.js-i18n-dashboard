@@ -733,3 +733,52 @@ When making code changes, I will:
 - **Theme Variables**: Use Tailwind theme variables for colors, radii, and effects. Avoid hardcoded values.
 - **Automated Linting**: Accessibility and i18n linting are enforced in CI/CD. Fix all lint errors before merging.
 - **Documentation**: See [CLAUDE.md](../CLAUDE.md), [CRUSH.md](../CRUSH.md), [COMPONENT_INTEGRATION_GUIDE.md](../COMPONENT_INTEGRATION_GUIDE.md), and [AI_PERSONA_ENHANCED_BUTTON.md](../AI_PERSONA_ENHANCED_BUTTON.md) for migration, usage, and persona alignment.
+
+### ⚠️ CRITICAL: Button asChild Pattern - React.Children.only Error Prevention
+
+**NEVER use `asChild` with complex children** - This causes React.Children.only errors that break the application.
+
+**Problem Pattern (FORBIDDEN)**:
+```tsx
+// ❌ NEVER DO THIS - Causes React.Children.only error
+<Button variant="ghost" size="sm" asChild>
+  <Link href={`/${locale}/contact`}>
+    <span className="inline-flex items-center">
+      <Mail className="h-4 w-4 mr-2" />
+      <FormattedMessage id="common.navigation.contact" />
+    </span>
+  </Link>
+</Button>
+```
+
+**Correct Pattern (REQUIRED)**:
+```tsx
+// ✅ ALWAYS DO THIS - Use onClick pattern instead
+import { useRouter } from 'next/navigation';
+
+const router = useRouter();
+
+<Button 
+  variant="ghost" 
+  size="sm" 
+  className="inline-flex items-center"
+  onClick={() => router.push(`/${locale}/contact`)}
+>
+  <Mail className="h-4 w-4 mr-2" />
+  <FormattedMessage id="common.navigation.contact" />
+</Button>
+```
+
+**When to use each pattern**:
+- **onClick**: Navigation buttons, buttons with icons + text, buttons with FormattedMessage components (90% of cases)
+- **asChild**: Only with single, simple child elements (e.g., `<Button asChild><Link>Simple Text</Link></Button>`)
+
+**Required imports for navigation buttons**:
+```tsx
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+```
+
+**Components already fixed**: GovernmentHero.tsx, Footer.tsx, DashboardNavbar.tsx
+
+**See detailed resolution guide**: `docs/shadcn-migration/REACT_CHILDREN_ONLY_ERROR_RESOLUTION.md`

@@ -1,136 +1,105 @@
 # Documentation Index
 
 > **Last Updated**: August 2025  
-> **Status**: Post-shadcn/ui Migration Complete
+> **Status**: Post-shadcn/ui Migration — master index with folder sections
 
 ## Overview
 
-This index provides a quick reference to all documentation created during and after our comprehensive shadcn/ui migration. These documents capture lessons learned, best practices, and patterns to follow for future development.
+This index provides a quick reference to documentation created during and after the shadcn/ui migration. It groups docs by functional area and links to high-priority resources and subfolder indexes. Use the subfolder index links for deeper lists of documents.
 
-## 📚 New Documentation (August 2025)
+## New / High Priority Documentation (August 2025)
 
-### 🏗️ Component Development
 - **[COMPONENT_DEVELOPMENT_GUIDE.md](./COMPONENT_DEVELOPMENT_GUIDE.md)** - Enterprise component development standards, shadcn/ui patterns, anti-patterns to avoid, and testing requirements
-
-### 🚀 Framework Compatibility  
 - **[NEXTJS_15_COMPATIBILITY.md](./NEXTJS_15_COMPATIBILITY.md)** - Next.js 15 migration guide, async params patterns, build system changes, and compatibility requirements
+- **[SHADCN_MIGRATION_LESSONS.md](./SHADCN_MIGRATION_LESSONS.md)** - Lessons learned from migrating 100+ components
 
-### 📖 Migration History
-- **[SHADCN_MIGRATION_LESSONS.md](./SHADCN_MIGRATION_LESSONS.md)** - Comprehensive lessons learned from migrating 100+ components, performance improvements, anti-patterns eliminated, and future recommendations
+## Key Insights Summary
 
-## 🎯 Key Insights Summary
+- Executive summaries, migration outcomes, and high-level quality gates are in the migration report and lessons docs.
+- For component patterns and templates, start with `COMPONENT_DEVELOPMENT_GUIDE.md`.
+- If in doubt about framework compatibility, consult `NEXTJS_15_COMPATIBILITY.md`.
 
-### What We Learned
-1. **Feature flags for UI are technical debt** - Better to use progressive enhancement
-2. **Theme tokens prevent design system lock-in** - Semantic tokens beat hardcoded colors
-3. **SSR compatibility is critical** - Client-side libraries need proper guards
-4. **Next.js 15 requires async params** - Breaking change affects all dynamic routes
-5. **Comprehensive testing enables confident refactoring** - 96% test success rate
-
-### What We Eliminated
-- ❌ Feature flag infrastructure (LaunchDarkly, local flags)
-- ❌ Hardcoded color systems (`text-slate-600 dark:text-slate-400`)
-- ❌ Parallel component implementations (Old/New pattern)
-- ❌ Mixed design system usage (Chakra + shadcn/ui)
-- ❌ Client-side libraries without SSR checks
-
-### What We Achieved
-- ✅ 100% shadcn/ui component adoption
-- ✅ Consistent theme token usage across all components
-- ✅ 17% bundle size reduction
-- ✅ 33% build time improvement  
-- ✅ Single source of truth for all UI patterns
-
-## 🔗 Related Existing Documentation
+## Related Existing Documentation
 
 ### Core Development
+
 - **[SHADCN_MIGRATION_REPORT.md](./SHADCN_MIGRATION_REPORT.md)** - Original migration planning and phase documentation
-- **[TAILWIND_DEBUG_SCREENS.md](./TAILWIND_DEBUG_SCREENS.md)** - Responsive development tools
+- **[COMPONENT_DEVELOPMENT_GUIDE.md](./COMPONENT_DEVELOPMENT_GUIDE.md)** - Component patterns and templates
 
 ### Architecture & Testing
-- **[TYPESCRIPT_LIBRARY_DOCUMENTATION.md](./TYPESCRIPT_LIBRARY_DOCUMENTATION.md)** - TypeScript patterns and library usage
-- **[PRODUCTS_SYSTEM_DOCUMENTATION.md](./PRODUCTS_SYSTEM_DOCUMENTATION.md)** - Product page architecture
 
-### UI Systems
-- **[UNIVERSAL_BREADCRUMB_DOCUMENTATION.md](./UNIVERSAL_BREADCRUMB_DOCUMENTATION.md)** - Navigation system implementation
-- **[MOBILE_FLOATING_MENU_DOCUMENTATION.md](./MOBILE_FLOATING_MENU_DOCUMENTATION.md)** - Mobile navigation patterns
+- **[TYPESCRIPT_LIBRARY_DOCUMENTATION.md](./config/TYPESCRIPT_LIBRARY_DOCUMENTATION.md)** - TypeScript patterns and library usage (config folder)
+- **[PRODUCTS_SYSTEM_DOCUMENTATION.md](./products/PRODUCTS_SYSTEM_DOCUMENTATION.md)** - Product page architecture and canonical product layout
 
-## 📋 Quick Reference Checklist
+## Configuration & Setup
 
-### For New Components
-- [ ] Use shadcn/ui components exclusively
-- [ ] Implement theme tokens, never hardcoded colors
-- [ ] Include TypeScript interfaces
-- [ ] Add internationalization (FormattedMessage)
-- [ ] Wrap in ErrorBoundary
-- [ ] Write comprehensive tests
-- [ ] Follow accessibility standards (WCAG 2.1 AA)
+Group of config and environment docs for local/dev setup and CI:
 
-### For Next.js 15 Compatibility
-- [ ] Make page/layout components `async`
-- [ ] Await `params` before accessing properties  
-- [ ] Update TypeScript interfaces for Promise-wrapped params
-- [ ] Test both development and production builds
+- **[VSCODE_MULTI_AGENT_SETUP.md](./config/VSCODE_MULTI_AGENT_SETUP.md)** - VS Code multi-agent setup
+- **[TAILWIND_DEBUG_SCREENS.md](./config/TAILWIND_DEBUG_SCREENS.md)** - Tailwind responsive debug screens and helpers
+- **[TYPESCRIPT_QUICK_START.md](./config/TYPESCRIPT_QUICK_START.md)** - Quick start for TypeScript in the repo
+- **[ESLINT_CONFIGURATION.md](./config/ESLINT_CONFIGURATION.md)** - ESLint configuration and resolution guide
 
-### For Testing
-- [ ] Test with multiple languages (EN, ES, FR)
-- [ ] Include accessibility testing with jest-axe
-- [ ] Test theme variants and responsive behavior
-- [ ] Maintain 90%+ test coverage
+## Products
 
-## 🎨 Component Template
+Product-related documentation and verification:
 
-Quick copy-paste template for new components:
+- **[PRODUCTS_SYSTEM_DOCUMENTATION.md](./products/PRODUCTS_SYSTEM_DOCUMENTATION.md)** - Product system architecture and development guidelines
+- **[PRODUCT_URL_TESTING.md](./products/PRODUCT_URL_TESTING.md)** - Scripts and tests for product URL validation
+- **[ProductDetailsPage.md](./products/ProductDetailsPage.md)** - Product page implementation notes
 
-```tsx
-"use client";
+## Breadcrumbs & Navigation
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { FormattedMessage } from "react-intl";
-import ErrorBoundary from "./ErrorBoundary";
+Navigation and breadcrumb systems, including i18n integration:
 
-interface MyComponentProps {
-  className?: string;
-  variant?: "default" | "secondary";
-}
+- **[UNIVERSAL_BREADCRUMB_DOCUMENTATION.md](./breadcrumbs/UNIVERSAL_BREADCRUMB_DOCUMENTATION.md)** - Universal breadcrumb system and i18n strategy
+- **[BREADCRUMB_TESTING.md](./breadcrumbs/BREADCRUMB_TESTING.md)** - Breadcrumb testing guidance
+- **[BREADCRUMB_WITH_GLOBE_DOCUMENTATION.md](./breadcrumbs/BREADCRUMB_WITH_GLOBE_DOCUMENTATION.md)** - Original breadcrumb-with-globe notes
 
-function MyComponentInternal({ className, variant = "default" }: MyComponentProps) {
-  return (
-    <div className={cn("w-full", className)}>
-      <Button variant={variant === "secondary" ? "outline" : "default"}>
-        <FormattedMessage id="mycomponent.action" defaultMessage="Action" />
-      </Button>
-    </div>
-  );
-}
+## Globe & Timeline
 
-export default function MyComponent(props: MyComponentProps) {
-  return (
-    <ErrorBoundary>
-      <MyComponentInternal {...props} />
-    </ErrorBoundary>
-  );
-}
-```
+Globe and timeline feature docs:
 
-## 🔍 Finding Information
+- **[INTERACTIVE_TIMELINE_DOCUMENTATION.md](./globe/INTERACTIVE_TIMELINE_DOCUMENTATION.md)** - Interactive timeline feature docs
+- **[GLOBE_DATA_STRUCTURE.md](./globe/GLOBE_DATA_STRUCTURE.md)** - Data model for the globe component
+- **[MOBILE_FLOATING_MENU_DOCUMENTATION.md](./globe/MOBILE_FLOATING_MENU_DOCUMENTATION.md)** - Mobile floating menu patterns for globe
+
+## Migration Indexes (subfolder indexes)
+
+When a subfolder maintains its own index, link to it here rather than enumerating every file:
+
+- **[shadcn-migration/DOCUMENTATION_INDEX.md](./shadcn-migration/DOCUMENTATION_INDEX.md)** - Shadcn migration quick reference and links
+- **[payloadcms-migration/MASTER_INDEX.md](./payloadcms-migration/MASTER_INDEX.md)** - PayloadCMS migration master index (detailed migration docs)
+
+## PayloadCMS Migration (high-value docs)
+
+- **[payloadcms-migration/CLAUDE_MIGRATION_GUIDE.md](./payloadcms-migration/CLAUDE_MIGRATION_GUIDE.md)** - Migration guide for Claude-related tasks
+- **[payloadcms-migration/IMPLEMENTATION_PLAN.md](./payloadcms-migration/IMPLEMENTATION_PLAN.md)** - Implementation plan and phases
+
+## Quick Reference Checklist
+
+- Start component work here: **COMPONENT_DEVELOPMENT_GUIDE.md**
+- For page-level migration plans, see **SHADCN_MIGRATION_REPORT.md** (Appendix B)
+- For i18n rules and breadcrumb patterns, see **UNIVERSAL_BREADCRUMB_DOCUMENTATION.md**
+
+
+## Finding Information
 
 ### Component Development Questions
-→ Start with **COMPONENT_DEVELOPMENT_GUIDE.md**
 
-### Next.js Issues
-→ Check **NEXTJS_15_COMPATIBILITY.md**  
+→ Start with **[COMPONENT_DEVELOPMENT_GUIDE.md](./COMPONENT_DEVELOPMENT_GUIDE.md)**
 
-### Migration Context
-→ Review **SHADCN_MIGRATION_LESSONS.md**
+### Next.js / Build Issues
 
-### Build/Test Problems
-→ Cross-reference all three documents above
+→ See **[NEXTJS_15_COMPATIBILITY.md](./NEXTJS_15_COMPATIBILITY.md)**
 
-### Historical Context
-→ See **SHADCN_MIGRATION_REPORT.md** for original planning
+### Migration Context / History
+
+→ Review **[SHADCN_MIGRATION_LESSONS.md](./SHADCN_MIGRATION_LESSONS.md)** and **[SHADCN_MIGRATION_REPORT.md](./SHADCN_MIGRATION_REPORT.md)**
 
 ---
 
-*This index will be updated as we create new documentation or learn new patterns. Keep it current to help future developers find the information they need quickly.*
+## Notes
+
+- This master index uses folder sections and points to subfolder indexes where appropriate. The repo includes an indexing task (`.bmad-core/tasks/index-docs.md`) — follow its rules when adding or removing entries.
+- Keep entries concise (one-line descriptions). When adding many files from a folder, either (A) add a subfolder `DOCUMENTATION_INDEX.md` and link to it from here, or (B) add a folder section and list the most important files only.

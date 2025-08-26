@@ -11,8 +11,9 @@ import Spinner from "@/components/Spinner";
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
 
-export async function generateMetadata({ params }: { params: { lang: Locale } }): Promise<Metadata> {
-  const messages = (await import(`../../../lang/${params.lang}.json`)).default;
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const messages = (await import(`../../../lang/${lang}.json`)).default;
 
   return {
     title: messages["page.compliance.meta.title"] || "Compliance & Certifications | ISO 27001, SOC 2, GDPR - ISSI",
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
       title: messages["page.compliance.meta.title"] || "Compliance & Certifications - ISSI",
       description: messages["page.compliance.meta.description"] || "ISSI's comprehensive compliance framework includes ISO 27001, ISO 9001, SOC 2 Type II, and GDPR certifications.",
       type: "website",
-      url: `https://issi-software.com/${params.lang}/compliance`,
+      url: `https://issi-software.com/${lang}/compliance`,
       images: [
         {
           url: "https://issi-software.com/images/compliance/compliance-og-image.jpg",
@@ -49,7 +50,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
       images: ["https://issi-software.com/images/compliance/compliance-og-image.jpg"]
     },
     alternates: {
-      canonical: `https://issi-software.com/${params.lang}/compliance`,
+      canonical: `https://issi-software.com/${lang}/compliance`,
       languages: {
         'en': 'https://issi-software.com/en/compliance',
         'fr': 'https://issi-software.com/fr/compliance',
@@ -71,9 +72,9 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
 }
 
 interface Props {
-  params: {
+  params: Promise<{
     lang: Locale;
-  };
+  }>;
 }
 
 export default async function Page({ params }: Props) {

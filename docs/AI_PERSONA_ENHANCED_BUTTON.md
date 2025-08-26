@@ -12,6 +12,17 @@ All ISSI AI agents and team members must be aware that the default Button implem
 ## Usage
 Import Button from `src/components/ui/button.tsx` for all button needs. See CLAUDE.md for usage examples.
 
+### ⚠️ CRITICAL: asChild Pattern Prevention
+**NEVER use `asChild` with complex children** - Use `onClick` pattern for navigation instead:
+
+```tsx
+// ❌ WRONG - Causes React.Children.only error
+<Button asChild><Link><span><Icon/>Text</span></Link></Button>
+
+// ✅ CORRECT - Always use onClick for navigation
+<Button onClick={() => router.push('/page')}><Icon/>Text</Button>
+```
+
 ## Migration Rationale
 Enhanced-button provides improved accessibility, visual effects, and easier icon integration.
 

@@ -60,6 +60,37 @@ className="text-muted-foreground"                 // Description
 - ❌ **Manual Dark Mode**: Any `dark:` prefixes for colors (theme handles automatically)
 - ❌ **Feature flags**: For UI toggling (should be removed post-migration)
 - ❌ **Mixed Systems**: Legacy and shadcn/ui components in same module
+- ❌ **Button asChild with Complex Children**: Causes React.Children.only errors (see below)
+
+### ⚠️ CRITICAL: Button asChild Anti-Pattern
+
+**NEVER use `asChild` with complex children** - This breaks the application with React.Children.only errors.
+
+```tsx
+// ❌ ANTI-PATTERN - Causes application crashes
+<Button variant="ghost" asChild>
+  <Link href="/page">
+    <span>
+      <Icon /> Text
+    </span>
+  </Link>
+</Button>
+
+// ✅ CORRECT PATTERN - Always works
+import { useRouter } from 'next/navigation';
+
+const router = useRouter();
+
+<Button 
+  variant="ghost" 
+  onClick={() => router.push('/page')}
+>
+  <Icon /> Text
+</Button>
+```
+
+**Fixed Components**: GovernmentHero.tsx, Footer.tsx, DashboardNavbar.tsx
+**See**: `docs/shadcn-migration/REACT_CHILDREN_ONLY_ERROR_RESOLUTION.md` for complete details
 
 ## Component Template & Testing
 - Use the provided template for new components.

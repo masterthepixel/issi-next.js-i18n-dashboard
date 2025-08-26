@@ -1,4 +1,4 @@
-import ContactForm from "@/components/ContactForm";
+import ContactFormWrapper from "@/components/ContactFormWrapper";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import Spinner from "@/components/Spinner";
 import {
@@ -18,12 +18,13 @@ export const metadata = {
 };
 
 interface Props {
-  params: {
+  params: Promise<{
     lang: Locale;
-  };
+  }>;
 }
 
-export default function Page({ params: { lang: locale } }: Props) {
+export default async function Page({ params }: Props) {
+  const { lang: locale } = await params;
   return (
     <Suspense fallback={<Spinner />}>
       <PageContent locale={locale} />
@@ -59,7 +60,7 @@ async function PageContent({ locale }: PageContentProps) {
             </CardHeader>
             <CardContent>
               <ErrorBoundary>
-                <ContactForm />
+                <ContactFormWrapper locale={locale} />
               </ErrorBoundary>
             </CardContent>
           </Card>

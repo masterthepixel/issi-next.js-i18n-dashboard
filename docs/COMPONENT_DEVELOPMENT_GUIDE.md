@@ -77,6 +77,41 @@ function MyComponent() {
 | Cards/panels | `bg-card` | Content containers |
 | Borders | `border-border` | Dividers, outlines |
 
+### ⚠️ CRITICAL: Button asChild Pattern - React.Children.only Error Prevention
+
+**NEVER use `asChild` with complex children** - This causes React.Children.only errors that crash the application.
+
+```tsx
+// ❌ WRONG - Causes React.Children.only error
+<Button variant="ghost" size="sm" asChild>
+  <Link href="/contact">
+    <span className="inline-flex items-center">
+      <Mail className="h-4 w-4 mr-2" />
+      <FormattedMessage id="common.navigation.contact" />
+    </span>
+  </Link>
+</Button>
+
+// ✅ CORRECT - Use onClick pattern instead
+import { useRouter } from 'next/navigation';
+
+const router = useRouter();
+
+<Button 
+  variant="ghost" 
+  size="sm" 
+  className="inline-flex items-center"
+  onClick={() => router.push('/contact')}
+>
+  <Mail className="h-4 w-4 mr-2" />
+  <FormattedMessage id="common.navigation.contact" />
+</Button>
+```
+
+**When to use each pattern**:
+- **onClick**: Navigation buttons, buttons with icons + text, FormattedMessage (90% of cases)
+- **asChild**: Only with single, simple child elements
+
 ## Component Architecture Patterns
 
 ### ✅ Recommended Component Structure

@@ -28,9 +28,17 @@ This architecture is necessary because client components cannot directly use the
 ```tsx
 'use client'
 
+import { Button } from '@/components/ui/button'
 import { FormattedMessage } from 'react-intl'
+import { useRouter } from 'next/navigation'
 
 export default function MyComponent() {
+  const router = useRouter();
+  
+  const handleAction = () => {
+    // Handle button click - navigation, API call, etc.
+    router.push('/target-page');
+  };
   return (
     <div className="my-component">
       <h2>
@@ -39,9 +47,9 @@ export default function MyComponent() {
       <p>
         <FormattedMessage id="mycomponent.description" />
       </p>
-      <button>
+      <Button onClick={handleAction}>
         <FormattedMessage id="mycomponent.button" />
-      </button>
+      </Button>
     </div>
   )
 }
@@ -52,6 +60,38 @@ export default function MyComponent() {
    - Use `FormattedMessage` components for all text that needs to be translated
    - Use consistent ID patterns (e.g., `componentname.element`)
    - Add proper TypeScript props interface if the component accepts props
+
+### ⚠️ CRITICAL: Button Usage Patterns
+
+**NEVER use `asChild` with complex children** - This causes React.Children.only errors:
+
+```tsx
+// ❌ WRONG - Causes React.Children.only error
+<Button asChild>
+  <Link href="/contact">
+    <span>
+      <Mail className="h-4 w-4 mr-2" />
+      <FormattedMessage id="button.contact" />
+    </span>
+  </Link>
+</Button>
+
+// ✅ CORRECT - Use onClick pattern
+import { useRouter } from 'next/navigation';
+
+const router = useRouter();
+
+<Button onClick={() => router.push('/contact')}>
+  <Mail className="h-4 w-4 mr-2" />
+  <FormattedMessage id="button.contact" />
+</Button>
+```
+
+**Required imports for Button usage**:
+```tsx
+import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
+```
 
 ## Creating a Wrapper Component
 

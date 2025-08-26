@@ -5,12 +5,19 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { FormattedMessage } from "react-intl";
+import { Locale } from "@/lib/definitions";
+import { FormattedMessage, IntlProvider } from "react-intl";
 
-export default function ContactForm() {
+interface ContactFormProps {
+  locale: Locale;
+  messages: Record<string, string>;
+}
+
+export default function ContactForm({ locale, messages }: ContactFormProps) {
     return (
-        <FormWrapper className="space-y-6" onSubmit={(data) => { console.log('ContactForm submit', data); }}>
-            <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+        <IntlProvider locale={locale} messages={messages}>
+            <FormWrapper className="space-y-6" onSubmit={(data) => { console.log('ContactForm submit', data); }}>
+                <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                 <div>
                     <Label htmlFor="first-name">
                         <FormattedMessage id="contact.form.firstName" defaultMessage="First name" />
@@ -44,11 +51,12 @@ export default function ContactForm() {
                     </div>
                 </div>
             </div>
-            <div className="mt-10">
-                <Button type="submit" className="w-full">
-                    <FormattedMessage id="contact.form.submit" defaultMessage="Let's talk" />
-                </Button>
-            </div>
-        </FormWrapper>
+                <div className="mt-10">
+                    <Button type="submit" className="w-full">
+                        <FormattedMessage id="contact.form.submit" defaultMessage="Let's talk" />
+                    </Button>
+                </div>
+            </FormWrapper>
+        </IntlProvider>
     );
 }
