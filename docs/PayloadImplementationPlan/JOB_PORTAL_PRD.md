@@ -132,7 +132,7 @@ Our current hiring process is fragmented, relying on multiple external job board
 | NF-01 | **Performance** | **Must-Have** | Key pages (job search, job details, application form) must load in under 2 seconds. The system must handle peak traffic (e.g., after a new job post) without degradation. |
 | NF-02 | **Security** | **Must-Have** | All data transmission must be over HTTPS. User passwords must be hashed. Role-based access control must be strictly enforced. The system must be protected against common web vulnerabilities (SQL injection, XSS). |
 | NF-03 | **Usability** | **Must-Have** | The interface for all user roles must be intuitive, clean, and easy to navigate. The application process for job seekers should be as simple and quick as possible. |
-| NF-04 | **Accessibility (a11y)** | **Must-Have** | The public-facing parts of the portal (job search, application form) must conform to WCAG 2.1 Level AA standards. |
+| NF-04 | **Accessibility (a11y)** | **Must-Have** | The public-facing parts of the portal (job search, application form) must conform to WCAG 2.1 Level AA standards. This includes, but is not limited to: proper heading structure (`h1`-`h6`), descriptive `alt` text for all meaningful images, sufficient color contrast, keyboard navigability, and appropriate ARIA roles and attributes for dynamic content. All interactive elements must be focusable and operable via keyboard. |
 | NF-05 | **Reliability** | **Must-Have** | The system must have high uptime (e.g., 99.9%). Notifications must be sent reliably and in a timely manner. |
 | NF-06 | **Scalability** | **Should-Have** | The architecture should be able to scale to handle a growing number of job postings, applications, and users over time. |
 | NF-07 | **Maintainability** | **Should-Have** | The codebase should be well-documented and follow best practices to allow for future maintenance and feature additions. |
@@ -181,27 +181,37 @@ The Job Portal will be a new application within the existing Next.js and Payload
 
 *   **Backend (PayloadCMS):**
     *   **Collections:** New Payload collections will be created:
-        *   `Users`: Extended to support different roles (Job Seeker, HR Manager, Hiring Manager, Admin).
+        *   `Users`: Extended to support different roles (Job Seeker, HR Manager, Hiring Manager, Admin). This will be the single source of truth for all users, potentially integrating with or replacing the existing `Users` collection if a unified user system is desired.
         *   `Jobs`: To store job listings with all specified fields.
         *   `Applications`: To store applications, linking a `User` (job seeker) to a `Job`. This collection will also store the application status, resume file path, cover letter, etc.
         *   `ApplicationStatusLogs`: To store the audit trail for status changes.
-    *   **Access Control:** Payload's built-in access control will be configured to enforce role-based permissions for reading/writing to collections.
-    *   **Hooks:** Payload hooks will be used to automate tasks like sending notifications upon status changes.
-    *   **Endpoints:** Payload will auto-generate REST/GraphQL APIs for all collections.
+    *   **Access Control:** Payload's built-in access control will be configured to enforce role-based permissions for reading/writing to collections. For example, Job Seekers can create applications but not read other users' applications, while HR Managers can read applications for jobs they manage.
+    *   **Hooks:** Payload hooks will be used to automate tasks like sending notifications (email/in-app) upon status changes or new application submissions.
+    *   **Endpoints:** Payload will auto-generate REST/GraphQL APIs for all collections, which will be consumed by the Next.js frontend. The API will be the primary means of integration between the frontend and backend.
+    *   **Internationalization (i18n):** While initial content is primarily internal, any public-facing text (e.g., on job descriptions, application forms) should be structured to support i18n, potentially leveraging the existing Next.js i18n framework if public-facing localization is a future goal. For the MVP, the primary language will be English.
 
 *   **Frontend (Next.js):**
-    *   **Page Structure:** New page structures will be added under a `/jobs` or `/careers` path (e.g., `/jobs`, `/jobs/[slug]`, `/jobs/apply/[slug]`, `/dashboard`).
-    *   **Authentication:** Next.js will handle user authentication, likely using NextAuth.js or a similar library, integrating with Payload's authentication.
-    *   **Role-Based UI:** The frontend will render different components and dashboards based on the authenticated user's role.
-    *   **Components:** Reusable components will be built for job cards, application forms, status pipelines, dashboards, etc.
-    *   **File Uploads:** Resume uploads will be handled via Payload's upload functionality, with frontend validation for file type and size.
+    *   **Page Structure:** New page structures will be added under a `/careers` path (e.g., `/careers`, `/careers/[slug]`, `/careers/apply/[slug]`, `/dashboard`). A dedicated dashboard area will be created for authenticated internal users (HR, Hiring Managers, Admins).
+    *   **Authentication & Authorization:** NextAuth.js will be configured to handle user authentication, integrating with the PayloadCMS `Users` collection. The frontend will use session data to determine the user's role and conditionally render UI components and protect routes (e.g., redirecting unauthenticated users from the dashboard).
+    *   **Role-Based UI:** The frontend will render different components, layouts, and dashboards based on the authenticated user's role (Job Seeker, HR Manager, Hiring Manager, Admin).
+    *   **Components:** Reusable components will be built for job cards, application forms, status pipelines, dashboards, file uploaders, etc. These components will adhere to the project's design system for consistency.
+    *   **File Uploads:** Resume uploads will be handled by posting directly to Payload's upload endpoints or through a Next.js API route that proxies the request to Payload, with frontend validation for file type (PDF, DOCX) and size (e.g., 5MB).
+    *   **API Communication:** The frontend will use `fetch` or a dedicated API client to communicate with the PayloadCMS REST/GraphQL endpoints for all data operations (fetching jobs, submitting applications, updating status, etc.).
 
 *   **Data Flow:**
-    1.  HR/Hiring Managers log in and use the Payload Admin UI or a custom frontend dashboard to manage jobs and applications.
-    2.  Job Seekers log in, browse jobs, and submit applications via the Next.js frontend.
-    3.  Application data is stored in Payload.
-    4.  Payload hooks trigger notifications (e.g., emails) when application statuses change.
-    5.  All user interactions are governed by role-based access control on both the frontend and backend.
+    1.  **User Authentication:** A user attempts to log in. NextAuth.js sends credentials to PayloadCMS. Upon successful authentication, Payload returns a user object with role information. NextAuth.js creates a session.
+    2.  **Internal User (HR/Hiring Manager/Admin):**
+        a.  The user navigates to a protected dashboard route.
+        b.  The frontend checks the session. If authenticated and authorized, it fetches relevant data (e.g., job postings, applications) from the Payload API.
+        c.  The user interacts with the dashboard (e.g., reviews an application, updates its status). The frontend sends a PUT/PATCH request to the Payload API.
+        d.  Payload updates the data in the database. A Payload hook triggers a notification (e.g., an email to the candidate).
+    3.  **External User (Job Seeker):**
+        a.  The user navigates to public pages (e.g., `/careers`). The frontend fetches active job listings from the Payload API.
+        b.  The user views a job detail page and clicks "Apply." They may be prompted to log in or register.
+        c.  Upon authentication/registration, the user is presented with an application form.
+        d.  The user fills out the form and uploads their resume. The frontend sends a POST request to the Payload API to create a new `Application` document, linking it to the `Job` and the `User`.
+        e.  Payload saves the application. A Payload hook triggers a notification to the relevant HR/Hiring Manager.
+    4.  All user interactions are governed by role-based access control checks on both the frontend (for UI rendering) and the backend (PayloadCMS API, for data security).
 
 ---
 

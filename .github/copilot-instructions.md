@@ -1,8 +1,10 @@
----
-description: Ultracite Rules
-globs: "**/*.{ts,tsx,js,jsx}"
-alwaysApply: true
----
+[...existing code...]
+
+## Reference
+
+For a complete view of the flattened codebase, see:
+
+[Flattened Codebase XML](file:///C:/Users/kfiagbedzi/AppData/Local/npm-cache/_npx/2d6bcd63982e6f85/node_modules/bmad-method/flattened-codebase.xml)
 
 - Don't use `accessKey` attribute on any HTML element.
 - Don't set `aria-hidden="true"` on focusable elements.
