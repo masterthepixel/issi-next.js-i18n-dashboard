@@ -16,7 +16,7 @@ This document outlines the complete project scaffold for migrating the ISSI Next
 
 ### **Root Level Structure**
 
-```
+```text
 issi-next.js-i18n-dashboard/
 ├── cms/                          # PayloadCMS Configuration & Collections
 │   ├── payload.config.ts         # Main PayloadCMS configuration

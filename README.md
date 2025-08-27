@@ -224,14 +224,14 @@ This project includes a **responsive breakpoint indicator** that shows the curre
 
 **⚠️ Important**: The debug indicator is currently always enabled. To disable it in production:
 
-**Option 1: Environment-based (Recommended)**
+#### Option 1: Environment-based (Recommended)
 
 ```tsx
 // In src/app/[lang]/layout.tsx
 <body className={`relative min-h-screen overflow-y-auto grid-background-with-fade flex flex-col ${process.env.NODE_ENV === 'development' ? 'debug-screens' : ''}`}>
 ```
 
-**Option 2: Manual removal**
+#### Option 2: Manual removal
 
 ```tsx
 // Remove 'debug-screens' from the className
@@ -331,7 +331,7 @@ The website is configured for deployment on Vercel or similar platforms.
 
 ## Contact Information
 
-**International Software Systems International (ISSI)**
+## International Software Systems International (ISSI)
 
 - **Address**: 7337 Hanover Pkwy, Suite# A, Greenbelt, MD 20770
 - **Phone**: 301-982-9700
@@ -400,4 +400,4 @@ This project includes comprehensive instructions and guides for all major develo
 
 ---
 
-_Last updated: June 9, 2025_
+### Last updated: June 9, 2025

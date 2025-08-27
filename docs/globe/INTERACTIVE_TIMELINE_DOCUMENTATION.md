@@ -9,9 +9,11 @@ The Interactive Timeline Feature transforms traditional static legal pages (Priv
 ### Core Components
 
 #### 1. Timeline Component (`src/components/ui/Timeline.tsx`)
+
 The foundational timeline component that provides the visual framework and animations.
 
 **Key Features:**
+
 - Scroll-based progress tracking using Framer Motion
 - Sticky section headers for easy navigation
 - Responsive design with mobile-first approach
@@ -19,6 +21,7 @@ The foundational timeline component that provides the visual framework and anima
 - Smooth animations and transitions
 
 **Props Interface:**
+
 ```typescript
 interface TimelineProps {
   data: TimelineEntry[];
@@ -33,6 +36,7 @@ interface TimelineEntry {
 ```
 
 **Animation System:**
+
 - Uses `useScroll` hook for scroll progress tracking
 - `heightTransform` and `opacityTransform` for smooth visual transitions
 - Gradient timeline line with animated progress indicator
@@ -40,9 +44,11 @@ interface TimelineEntry {
 #### 2. Content Components
 
 ##### Privacy Timeline (`src/components/PrivacyTimelineContent.tsx`)
+
 Maps privacy policy sections to timeline format.
 
 **Sections Covered:**
+
 - Privacy Notice & Commitment
 - Information Collection Overview
 - User Registration & Data Use
@@ -54,9 +60,11 @@ Maps privacy policy sections to timeline format.
 - Contact Information
 
 ##### Terms Timeline (`src/components/TermsTimelineContent.tsx`)
+
 Converts terms of service sections to interactive timeline.
 
 **Sections Covered:**
+
 - Introduction & Important Notices
 - Definitions and Terminology
 - Cookies Policy
@@ -69,9 +77,11 @@ Converts terms of service sections to interactive timeline.
 - Disclaimer and Limitations
 
 ##### License Timeline (`src/components/LicenseTimelineContent.tsx`)
+
 Transforms license agreement sections into timeline format.
 
 **Sections Covered:**
+
 - Same as Terms (shares license.sections.* translation keys)
 - Comprehensive legal disclaimers
 - Liability limitations and exclusions
@@ -80,6 +90,7 @@ Transforms license agreement sections into timeline format.
 #### 3. Wrapper Components
 
 Simple wrapper components that provide clean integration:
+
 - `PrivacyTimelineWrapper.tsx`
 - `TermsTimelineWrapper.tsx`  
 - `LicenseTimelineWrapper.tsx`
@@ -91,6 +102,7 @@ Each wrapper provides a transparent background container for the timeline conten
 ### Adding a New Timeline Page
 
 1. **Create Content Component**
+
 ```typescript
 // src/components/YourTimelineContent.tsx
 'use client';
@@ -141,6 +153,7 @@ function YourTimelineInner() {
 ```
 
 2. **Create Wrapper Component**
+
 ```typescript
 // src/components/YourTimelineWrapper.tsx
 'use client';
@@ -163,6 +176,7 @@ export default function YourTimelineWrapper({ messages, locale }: YourTimelineWr
 
 3. **Add Translation Keys**
 Add to all language files (`en.json`, `es.json`, `fr.json`):
+
 ```json
 {
   "your.timeline.title": "Your Page Timeline",
@@ -173,6 +187,7 @@ Add to all language files (`en.json`, `es.json`, `fr.json`):
 ```
 
 4. **Update Page Component**
+
 ```typescript
 // src/app/[lang]/your-page/page.tsx
 import YourTimelineWrapper from "@/components/YourTimelineWrapper";
@@ -191,18 +206,21 @@ return (
 ## Styling Guidelines
 
 ### Typography Hierarchy
+
 - **Main Timeline Title**: `text-lg md:text-4xl` with `dark:text-white`
 - **Timeline Subtitle**: `text-sm md:text-base` with `dark:text-slate-100`
 - **Section Headers**: `text-xl md:text-3xl` with `dark:text-slate-200`
 - **Content Text**: `text-slate-700 dark:text-slate-100`
 
 ### Color Scheme
+
 - **Primary Palette**: Slate colors for professional appearance
 - **Light Mode**: Dark slate text on light backgrounds
 - **Dark Mode**: Bright white/light slate text for optimal readability
 - **Accent Colors**: Blue for definition borders, amber for warnings
 
 ### Visual Elements
+
 - **Timeline Dots**: `bg-slate-600 dark:bg-white` for proper contrast
 - **Timeline Line**: Gradient from transparent to slate colors
 - **Progress Indicator**: Purple-to-blue gradient animation
@@ -211,6 +229,7 @@ return (
 ## Translation Integration
 
 ### Multilingual Support
+
 All timeline pages support full internationalization through React Intl:
 
 - **English**: Complete base translations
@@ -218,7 +237,8 @@ All timeline pages support full internationalization through React Intl:
 - **French**: Complete translation support
 
 ### Translation Key Structure
-```
+
+```text
 {page}.timeline.title          // Main timeline title
 {page}.timeline.subtitle       // Timeline description
 {page}.sections.{section}.title   // Section headers
@@ -228,12 +248,14 @@ All timeline pages support full internationalization through React Intl:
 ## Performance Considerations
 
 ### Optimization Features
+
 - **Lazy Loading**: Components load only when needed
 - **Efficient Animations**: Framer Motion optimizations for smooth scrolling
 - **Minimal Re-renders**: Proper React optimization patterns
 - **Responsive Images**: Optimized for all device sizes
 
 ### Bundle Size Impact
+
 - **Framer Motion**: Already included in project dependencies
 - **React Intl**: Existing internationalization system
 - **Minimal Overhead**: Reuses existing UI component library
@@ -241,12 +263,14 @@ All timeline pages support full internationalization through React Intl:
 ## Browser Compatibility
 
 ### Supported Features
+
 - **Modern Browsers**: Full support for Chrome, Firefox, Safari, Edge
 - **Mobile Devices**: Responsive design with touch optimization
 - **Accessibility**: ARIA compliance and keyboard navigation
 - **Dark Mode**: System preference detection and manual toggle
 
 ### Fallback Behavior
+
 - **JavaScript Disabled**: Content remains readable (server-rendered)
 - **Reduced Motion**: Respects user preference for reduced animations
 - **Low Bandwidth**: Progressive enhancement approach
@@ -254,12 +278,14 @@ All timeline pages support full internationalization through React Intl:
 ## Development Workflow
 
 ### Local Development
+
 1. **Start Development Server**: `npm run dev`
 2. **Test Multiple Languages**: Switch between `/en/`, `/es/`, `/fr/` routes
 3. **Dark Mode Testing**: Toggle system dark mode or use browser tools
 4. **Responsive Testing**: Test across different viewport sizes
 
 ### Quality Assurance
+
 1. **Translation Completeness**: Verify all timeline keys exist in all language files
 2. **Content Mapping**: Ensure all original content sections are preserved
 3. **Animation Performance**: Test scroll performance on various devices
@@ -268,16 +294,19 @@ All timeline pages support full internationalization through React Intl:
 ## Maintenance
 
 ### Adding New Sections
+
 1. Add translation keys to all language files
 2. Update the respective timeline content component
 3. Test across all languages and themes
 
 ### Updating Existing Content
+
 1. Modify translation files as needed
 2. Update content mapping in timeline components
 3. Verify changes across all languages
 
 ### Performance Monitoring
+
 - Monitor scroll performance metrics
 - Track user engagement with timeline interactions
 - Analyze content consumption patterns
@@ -285,6 +314,7 @@ All timeline pages support full internationalization through React Intl:
 ## Future Enhancements
 
 ### Potential Improvements
+
 - **Search Functionality**: Add search within timeline content
 - **Bookmarking**: Allow users to bookmark specific sections
 - **Print Optimization**: Enhanced print styles for legal documents
@@ -292,6 +322,7 @@ All timeline pages support full internationalization through React Intl:
 - **Analytics Integration**: Track section engagement metrics
 
 ### Scalability Considerations
+
 - **Content Management**: Consider CMS integration for large-scale content updates
 - **Performance Optimization**: Implement virtual scrolling for very long timelines
 - **Internationalization**: Add support for RTL languages if needed

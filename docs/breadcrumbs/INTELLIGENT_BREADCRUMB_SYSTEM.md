@@ -25,6 +25,7 @@ The Unified Intelligent Breadcrumb System is a sophisticated, single-component n
 ### ✅ Legacy Components (Removed)
 
 The following components have been successfully consolidated into the unified system:
+
 - ~~UniversalBreadcrumb.tsx~~ (replaced)
 - ~~BreadcrumbWithGlobe.tsx~~ (replaced)
 - ~~BreadcrumbWithGlobeWrapper.tsx~~ (replaced)  

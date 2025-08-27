@@ -25,7 +25,7 @@ The ISSI TypeScript Library provides comprehensive type definitions for the enti
 
 ## 📁 **Library Structure**
 
-```
+```text
 src/types/
 ├── index.ts           # Main entry point - exports everything
 ├── breadcrumb.ts      # Breadcrumb & navigation types

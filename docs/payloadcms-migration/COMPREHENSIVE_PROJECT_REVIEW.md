@@ -95,7 +95,7 @@ This comprehensive review evaluates the PayloadCMS migration project's readiness
 
 **Discovered Existing Files**:
 
-```
+```text
 ✅ payload.config.ts - Complete configuration
 ✅ cms/access/index.ts - Access control functions
 ✅ cms/collections/Users.ts - User collection with roles
@@ -140,6 +140,7 @@ This comprehensive review evaluates the PayloadCMS migration project's readiness
    ```
 
 3. **Frontend Integration** (15-20 hours)
+
    ```typescript
    Required Updates:
    - PayloadCMS API client implementation
@@ -226,7 +227,7 @@ This comprehensive review evaluates the PayloadCMS migration project's readiness
 
 #### **ROI Calculation Verification** ✅
 
-```
+```text
 Annual Savings:
 - Developer time reduction: $8,000
 - Faster content publishing: $3,000
@@ -362,6 +363,7 @@ Payback Period: 1.2 years ✅ STRONG ROI
    ```
 
 3. **Content Preparation**
+
    ```bash
    □ Complete backup of existing JSON files
    □ Content audit completed and validated

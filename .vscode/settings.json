@@ -2,7 +2,7 @@
   "chat.agent.enabled": true,
   "chat.agent.maxRequests": 15,
   "github.copilot.chat.agent.runTasks": true,
-  "chat.mcp.discovery.enabled": true,
+  "chat.mcp.discovery.enabled": {},
   "github.copilot.chat.agent.autoFix": true,
   "chat.tools.autoApprove": false,
   "editor.formatOnSave": true,
@@ -69,18 +69,38 @@
   "files.exclude": {
     "**/node_modules": true,
     "**/.next": true,
-    "**/dist": true
+    "**/dist": true,
+    "**/docs": true
   },
   "search.exclude": {
     "**/node_modules": true,
     "**/.next": true,
     "**/dist": true,
-    "**/pnpm-lock.yaml": true
+    "**/pnpm-lock.yaml": true,
+    "**/docs": true
   },
   "i18n-ally.localesPaths": [
     "src/lang"
   ],
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.formatOnPaste": true,
-  "emmet.showExpandedAbbreviation": "never"
+  "emmet.showExpandedAbbreviation": "never",
+  "markdown.validate.enabled": false,
+  "markdown.validate.fileLinks.enabled": "ignore",
+  "markdown.validate.referenceLinks.enabled": "ignore",
+  "markdown.validate.fragmentLinks.enabled": "ignore",
+  "markdown.validate.ignoreLinks": [
+    "**/docs/**"
+  ],
+  "markdownlint.config": {
+    "MD013": {
+      "line_length": 120,
+      "code_blocks": false
+    },
+    "MD022": false,
+    "MD032": false
+  },
+  "markdownlint.ignore": [
+    "**/docs/**"
+  ]
 }

@@ -104,7 +104,7 @@ When ready to reactivate the intelligent breadcrumb:
 
 ### Current Component Structure
 
-```
+```text
 UniversalBreadcrumb (layout.tsx)
   └── IntlProvider
       └── BreadcrumbWithGlobe

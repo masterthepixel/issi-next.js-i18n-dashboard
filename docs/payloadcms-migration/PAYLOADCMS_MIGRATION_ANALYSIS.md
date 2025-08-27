@@ -25,7 +25,7 @@ This report analyzes the comprehensive migration of the ISSI Next.js i18n Dashbo
 
 #### **Translation Volume by Language**
 
-```
+```text
 📁 src/lang/
 ├── en.json    →  1,716 keys (100% - Source language)
 ├── fr.json    →  1,716 keys (100% - Complete French translations)
@@ -36,7 +36,7 @@ Total Translation Strings: 5,148 (1,716 × 3 languages)
 
 #### **Content Categories by Key Count**
 
-```
+```text
 🏆 Top Content Categories:
 ├── products.*        →  1,200+ keys (70% of content)
 ├── page.*           →   200+ keys (12% of content)
@@ -359,6 +359,7 @@ export default buildConfig({
    ```
 
 3. **ISR (Incremental Static Regeneration) Configuration**
+
    ```typescript
    // pages/[lang]/products/[slug].tsx
    export const getStaticProps = async ({ params, locale }) => {

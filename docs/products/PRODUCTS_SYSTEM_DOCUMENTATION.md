@@ -19,7 +19,7 @@ This document provides comprehensive documentation for the ISSI Products System,
 
 ### Core Files Structure
 
-```
+```text
 src/
 ├── app/[lang]/products/
 │   ├── page.tsx                              # Products listing page
@@ -64,9 +64,10 @@ The Grant Management System (GMS) serves as the **flagship implementation** and 
 
 #### 1. Content Source Integration
 
-**Source**: https://www.issi-software.com/Products/ProductInfo?project=gms
+**Source**: <https://www.issi-software.com/Products/ProductInfo?project=gms>
 
 **Content Extracted**:
+
 - Hero section (tagline, title, context, description)
 - 13 detailed features with descriptions
 - Technical specifications
@@ -175,6 +176,7 @@ export default function ProductsGrantManagementSystemFeatures() {
 #### 3. Design Pattern and Layout
 
 **Layout Structure**:
+
 1. **Hero Section**: Left-aligned text with tagline, title, context, and description (max-w-7xl width)
 2. **Hero Image**: Full-width product screenshot with white background container and object-contain fitting  
 3. **Features Section**: Grid layout with icons and descriptions on separate lines
@@ -182,6 +184,7 @@ export default function ProductsGrantManagementSystemFeatures() {
 5. **Background**: Transparent component background with compact padding (`py-4 lg:py-8`)
 
 **Key Design Elements**:
+
 - **Typography**: Blue titles (`text-blue-600 dark:text-blue-400`) with slate supporting text
 - **Spacing**: Compact padding with `mt-1` spacing between feature names and descriptions
 - **Grid Layout**: Responsive 1-4 column grid for features
@@ -191,6 +194,7 @@ export default function ProductsGrantManagementSystemFeatures() {
 #### 4. Translation Integration
 
 **Translation Key Structure**:
+
 ```json
 {
   "products.gms.hero.tagline": "Complete Grant Lifecycle Management",
@@ -213,7 +217,7 @@ export default function ProductsGrantManagementSystemFeatures() {
 
 The GMS component serves as the **standardized template** for all detailed product pages. Future product pages should follow this exact structure:
 
-#### Required Sections:
+#### Required Sections
 
 1. **Hero Section**
    - Tagline (small subtitle)
@@ -232,7 +236,7 @@ The GMS component serves as the **standardized template** for all detailed produ
    - Grid layout for features (1-4 columns responsive)
    - Icon + feature name + description format
 
-#### CSS Classes Pattern:
+#### CSS Classes Pattern
 
 ```css
 /* Hero Container */
@@ -257,15 +261,17 @@ The GMS component serves as the **standardized template** for all detailed produ
 
 #### 1. Content Extraction from Source
 
-**Source Website**: https://www.issi-software.com/Products/ProductInfo?project=[product-code]
+**Source Website**: <https://www.issi-software.com/Products/ProductInfo?project=[product-code>]
 
 **Required Content**:
+
 - Hero section content (title, tagline, descriptions)
 - Features list (aim for 8-15 features)
 - Product specifications
 - Benefits and value propositions
 
 **Example WebFetch Integration**:
+
 ```javascript
 // Use WebFetch tool to extract content from ISSI website
 WebFetch({
@@ -277,7 +283,8 @@ WebFetch({
 #### 2. Translation Key Creation
 
 **Naming Convention**:
-```
+
+```text
 products.[productId].hero.tagline
 products.[productId].hero.title  
 products.[productId].hero.context
@@ -293,6 +300,7 @@ products.[productId].features.feature[N].description
 #### 3. Multi-language Implementation
 
 **Process**:
+
 1. Create English translations first
 2. Translate to Spanish (es.json)
 3. Translate to French (fr.json)
@@ -305,6 +313,7 @@ products.[productId].features.feature[N].description
 **Example**: `ProductsGrantManagementSystemFeatures.tsx`
 
 **Steps**:
+
 1. Copy GMS component as template
 2. Update product-specific translation keys
 3. Adjust feature count and icons
@@ -316,6 +325,7 @@ products.[productId].features.feature[N].description
 **File**: `src/app/[lang]/products/[slug]/page.tsx`
 
 Add product-specific routing:
+
 ```tsx
 if (params.slug === 'grant-management-system') {
   return <ProductsGrantManagementSystemFeaturesWrapper />
@@ -335,6 +345,7 @@ All product translations are stored in three language files:
 ### Grant Management System Translation Keys
 
 **English (`en.json`)**:
+
 ```json
 {
   "products.gms.hero.tagline": "Complete Grant Lifecycle Management",
@@ -348,6 +359,7 @@ All product translations are stored in three language files:
 ```
 
 **Spanish (`es.json`)**:
+
 ```json
 {
   "products.gms.hero.tagline": "Gestión Completa del Ciclo de Vida de Subvenciones",
@@ -358,6 +370,7 @@ All product translations are stored in three language files:
 ```
 
 **French (`fr.json`)**:
+
 ```json
 {
   "products.gms.hero.tagline": "Gestion Complète du Cycle de Vie des Subventions",
@@ -405,6 +418,7 @@ All product translations are stored in three language files:
 | 30 | `visitor-log` | Visitor Log System | `visitor-log-system` | 🔄 Generic |
 
 ### Status Legend
+
 - ✅ **Complete**: Full detailed page with content from source website
 - 🔄 **Generic**: Using generic ProductDetailsPage component
 - ❌ **Pending**: Not yet implemented
@@ -412,6 +426,7 @@ All product translations are stored in three language files:
 ### Access URLs
 
 All product pages are accessible via:
+
 - **English**: `http://localhost:3000/en/products/[slug]`
 - **Spanish**: `http://localhost:3000/es/products/[slug]`
 - **French**: `http://localhost:3000/fr/products/[slug]`
@@ -424,14 +439,14 @@ All product pages are accessible via:
 
 🎯 **Before implementing any new product page, ALWAYS visit:**
 
-**http://localhost:3000/en/products/grant-management-system**
+**<http://localhost:3000/en/products/grant-management-system>**
 
 This live URL is the **definitive template** showing exactly how product pages should look and function.
 
 #### Creating New Detailed Product Pages
 
 1. **Follow GMS Template**:
-   - **First**: Review the live layout at http://localhost:3000/en/products/grant-management-system
+   - **First**: Review the live layout at <http://localhost:3000/en/products/grant-management-system>
    - Copy `ProductsGrantManagementSystemFeatures.tsx`
    - Rename to `Products[ProductName]Features.tsx`
 
@@ -453,7 +468,7 @@ This live URL is the **definitive template** showing exactly how product pages s
    - Add product-specific condition and component
 
 6. **Verify Against Reference**:
-   - Compare your implementation to http://localhost:3000/en/products/grant-management-system
+   - Compare your implementation to <http://localhost:3000/en/products/grant-management-system>
    - Ensure visual and functional consistency
 
 #### Testing New Product Pages
@@ -475,6 +490,7 @@ curl http://localhost:3000/en/products/grant-management-system
 3. **Images**: Place in `public/images/products/`
 
 **Image Path Requirement:**
+
 - All product hero images must be placed in the `public/images/products` directory of the repository.
 - For example, on your local machine this is typically:
   `C:/Users/kfiagbedzi/Documents/GitHub/issi-next.js-i18n-dashboard/public/images/products`
@@ -492,6 +508,7 @@ curl http://localhost:3000/en/products/grant-management-system
 ### Code Standards
 
 #### Component Structure
+
 ```tsx
 'use client'
 
@@ -514,7 +531,8 @@ export default function Products[Name]Features() {
 ```
 
 #### Translation Key Naming
-```
+
+```text
 products.[productId].hero.tagline
 products.[productId].hero.title
 products.[productId].hero.context  
@@ -528,6 +546,7 @@ products.[productId].features.feature[N].description
 ```
 
 #### CSS Classes Standards
+
 - Use Tailwind CSS utilities
 - Follow responsive design patterns: `sm:` `md:` `lg:` `xl:`
 - Include dark mode support: `dark:`
@@ -536,16 +555,19 @@ products.[productId].features.feature[N].description
 ### Performance Considerations
 
 #### Image Optimization
+
 - Use Next.js Image component where possible
 - Optimize images for web (WebP format preferred)
 - Include proper alt text for accessibility
 
 #### Code Splitting
+
 - Each product component is lazy-loaded
 - Generic components shared across products
 - Translation keys loaded per locale
 
 #### SEO Optimization
+
 - Each product page has unique metadata
 - Proper heading hierarchy (h1, h2, h3)
 - Semantic HTML structure
@@ -553,6 +575,7 @@ products.[productId].features.feature[N].description
 ### Accessibility Standards
 
 #### Required Elements
+
 - Alt text for all images
 - Proper heading hierarchy
 - ARIA labels where needed
@@ -560,6 +583,7 @@ products.[productId].features.feature[N].description
 - Screen reader compatibility
 
 #### Testing
+
 - Test with screen readers
 - Verify keyboard navigation
 - Check color contrast ratios
@@ -670,6 +694,7 @@ export default function Products[ProductName]Features() {
 ```
 
 **Key Requirements:**
+
 - All text must use translation keys (no hardcoded English)
 - All content must be sourced from the relevant product’s data and translations
 - The layout, spacing, and visual style must match this pattern for all detailed product subpages

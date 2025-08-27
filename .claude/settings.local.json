@@ -43,7 +43,10 @@
       "Bash(curl:*)",
       "Bash(timeout 10 pnpm dev)",
       "Bash(pkill:*)",
-      "Bash(taskkill:*)"
+      "Bash(taskkill:*)",
+      "Bash(timeout:*)",
+      "Bash(pnpm list:*)",
+      "Bash(pnpm add:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits",

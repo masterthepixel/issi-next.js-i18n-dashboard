@@ -198,7 +198,7 @@ Products Collection:
 
 All existing URLs must be preserved during migration:
 
-```
+```text
 Current: /{lang}/products/{slug}
 Target:  /{lang}/products/{slug} (same)
 
@@ -272,7 +272,7 @@ type ContentBlock =
 
 ### **Collections**
 
-```
+```text
 cms/collections/
 ├── Pages.ts           // Static pages (about, services, etc.)
 ├── Products.ts        // Product pages with features
@@ -283,7 +283,7 @@ cms/collections/
 
 ### **Globals**
 
-```
+```text
 cms/globals/
 ├── SiteSettings.ts    // Site-wide configuration
 ├── Navigation.ts      // Menu and footer links
@@ -292,7 +292,7 @@ cms/globals/
 
 ### **Migration Scripts**
 
-```
+```text
 scripts/migration/
 ├── migrate-static-pages.ts    // Migrate static content
 ├── migrate-products.ts        // Migrate product pages
@@ -323,3 +323,14 @@ scripts/migration/
 **Status**: Ready for Implementation  
 **Total Pages to Migrate**: 126 pages (40+ unique × 3 languages)  
 **Priority Focus**: Static core pages and top product pages first
+
+```
+src/components/
+├── ui/          # For shadcn/ui and other UI primitives.
+├── layouts/     # For major page structure (Navbar, Footer, Sidebar).
+├── features/    # For components tied to specific business domains.
+│   ├── about/
+│   ├── products/
+│   └── government/
+└── shared/      # For common, reusable components (Logo, Spinner).
+```

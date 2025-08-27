@@ -551,7 +551,7 @@ export default function ClientComponent() {
 - Custom color palette: primary, secondary, accent colors
 - Glass morphism effects: `glass-card` utility
 - Animation: Tailwind animate utilities
-- For rounded corners use this philosphy - Inner radius = Outer radius - Outer thickness/2 - https://blog.designary.com/p/perfect-nested-rounded-corners
+- For rounded corners use this philosphy - Inner radius = Outer radius - Outer thickness/2 - <https://blog.designary.com/p/perfect-nested-rounded-corners>
 
 ### **🎨 Advanced Card Design System & Philosophy**
 
@@ -719,9 +719,7 @@ When making code changes, I will:
 9. **Performance-focused** - Optimize for Core Web Vitals and loading performance
 10. **Enterprise-ready** - Write scalable, maintainable, and well-documented code
 
-
 ---
-
 
 ## UI Component Migration & Standards (2024)
 
@@ -739,6 +737,7 @@ When making code changes, I will:
 **NEVER use `asChild` with complex children** - This causes React.Children.only errors that break the application.
 
 **Problem Pattern (FORBIDDEN)**:
+
 ```tsx
 // ❌ NEVER DO THIS - Causes React.Children.only error
 <Button variant="ghost" size="sm" asChild>
@@ -752,6 +751,7 @@ When making code changes, I will:
 ```
 
 **Correct Pattern (REQUIRED)**:
+
 ```tsx
 // ✅ ALWAYS DO THIS - Use onClick pattern instead
 import { useRouter } from 'next/navigation';
@@ -770,10 +770,12 @@ const router = useRouter();
 ```
 
 **When to use each pattern**:
+
 - **onClick**: Navigation buttons, buttons with icons + text, buttons with FormattedMessage components (90% of cases)
 - **asChild**: Only with single, simple child elements (e.g., `<Button asChild><Link>Simple Text</Link></Button>`)
 
 **Required imports for navigation buttons**:
+
 ```tsx
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';

@@ -82,7 +82,6 @@ When a subfolder maintains its own index, link to it here rather than enumeratin
 - For page-level migration plans, see **SHADCN_MIGRATION_REPORT.md** (Appendix B)
 - For i18n rules and breadcrumb patterns, see **UNIVERSAL_BREADCRUMB_DOCUMENTATION.md**
 
-
 ## Finding Information
 
 ### Component Development Questions

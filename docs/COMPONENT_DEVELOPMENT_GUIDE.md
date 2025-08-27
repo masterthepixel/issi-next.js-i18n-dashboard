@@ -18,6 +18,7 @@
 ### Core Principles
 
 #### ✅ Always Use shadcn/ui Components
+
 ```tsx
 // ✅ Good: Use shadcn/ui components
 import { Button } from "@/components/ui/button";
@@ -52,6 +53,7 @@ function MyComponent() {
 ```
 
 #### ✅ Use Theme Tokens, Never Hardcoded Colors
+
 ```tsx
 // ✅ Good: Theme tokens
 <div className="bg-background text-foreground border-border">
@@ -109,6 +111,7 @@ const router = useRouter();
 ```
 
 **When to use each pattern**:
+
 - **onClick**: Navigation buttons, buttons with icons + text, FormattedMessage (90% of cases)
 - **asChild**: Only with single, simple child elements
 
@@ -177,6 +180,7 @@ export default function Component(props: ComponentProps) {
 ### 🚫 Feature Flag Infrastructure
 
 **❌ What We Had:**
+
 ```tsx
 // Bad: Complex feature flag system for component switching
 const useNewComponent = getFeatureFlag("isNewComponentReady");
@@ -189,12 +193,14 @@ return useNewComponent ? (
 ```
 
 **✅ What We Should Do:**
+
 ```tsx
 // Good: Direct component usage, progressive enhancement through props
 <Component variant="enhanced" />
 ```
 
 **Lesson Learned:** Feature flags for UI components create unnecessary complexity. Instead:
+
 - Build components progressively with variant props
 - Use feature detection rather than feature flags
 - Migrate components completely rather than maintaining parallel versions
@@ -202,6 +208,7 @@ return useNewComponent ? (
 ### 🚫 Hardcoded Color Patterns
 
 **❌ What We Had:**
+
 ```tsx
 // Bad: Component-specific color variations
 const categoryColors = {
@@ -212,6 +219,7 @@ const categoryColors = {
 ```
 
 **✅ What We Should Do:**
+
 ```tsx
 // Good: Use semantic theme tokens with variants
 <Badge variant="it">IT Services</Badge>
@@ -222,6 +230,7 @@ const categoryColors = {
 ### 🚫 Client-Side Only Libraries Without SSR Checks
 
 **❌ What We Had:**
+
 ```tsx
 // Bad: LaunchDarkly initializing at module level
 import { asyncWithLDProvider } from "launchdarkly-react-client-sdk";
@@ -231,6 +240,7 @@ const LDProvider = await asyncWithLDProvider({ ... });
 ```
 
 **✅ What We Should Do:**
+
 ```tsx
 // Good: Proper client-side initialization
 "use client";
@@ -254,6 +264,7 @@ export function ClientOnlyProvider({ children }) {
 ### 🚫 Mixed Component Patterns
 
 **❌ What We Had:**
+
 ```tsx
 // Bad: Mixing different design systems
 <ChakraButton>  {/* Old system */}
@@ -264,6 +275,7 @@ export function ClientOnlyProvider({ children }) {
 ```
 
 **✅ What We Should Do:**
+
 ```tsx
 // Good: Consistent component usage
 <Button variant="outline" size="lg">
@@ -276,6 +288,7 @@ export function ClientOnlyProvider({ children }) {
 ### Next.js 15 Compatibility
 
 #### Async Params Pattern
+
 ```tsx
 // ✅ Correct: Await params before usage
 export default async function Page({ params }: Props) {
@@ -290,6 +303,7 @@ export default function Page({ params }: Props) {
 ```
 
 #### Layout Component Pattern
+
 ```tsx
 // ✅ Correct: Proper async/await in layout
 export default async function Layout({ params, children }: Props) {
@@ -307,6 +321,7 @@ export default async function Layout({ params, children }: Props) {
 ### Build Configuration
 
 #### Production Build Settings
+
 ```javascript
 // next.config.mjs
 export default {
@@ -320,6 +335,7 @@ export default {
 ```
 
 #### Vitest Configuration
+
 ```typescript
 // setupTests.ts - Global test setup
 import "@testing-library/jest-dom/vitest";
@@ -339,6 +355,7 @@ Object.defineProperty(window, 'matchMedia', {
 ## Testing Standards
 
 ### Component Test Structure
+
 ```tsx
 // ComponentName.test.tsx
 import { render, screen } from '@testing-library/react';
@@ -376,6 +393,7 @@ describe('Component', () => {
 ```
 
 ### Testing Requirements
+
 - [ ] Multi-language testing (English, Spanish, French)
 - [ ] Accessibility testing with jest-axe
 - [ ] Theme variant testing

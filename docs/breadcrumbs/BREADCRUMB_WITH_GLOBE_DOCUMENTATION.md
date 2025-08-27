@@ -42,7 +42,7 @@ The `BreadcrumbWithGlobe` component is an advanced, SEO-optimized navigation com
 
 ## Component Architecture
 
-```
+```text
 BreadcrumbWithGlobe/
 ├── BreadcrumbWithGlobe.tsx          # Main component
 ├── BreadcrumbWithGlobeWrapper.tsx   # i18n wrapper
@@ -51,9 +51,9 @@ BreadcrumbWithGlobe/
     └── BreadcrumbWithGlobe.test.tsx # Test suite
 ```
 
-### **Component Hierarchy**
+### Component Hierarchy
 
-```typescript
+```text
 BreadcrumbWithGlobeWrapper (i18n provider)
 └── BreadcrumbWithGlobe (main logic)
     ├── JSON-LD Script (SEO structured data)
@@ -65,7 +65,7 @@ BreadcrumbWithGlobeWrapper (i18n provider)
 
 ## SEO Implementation
 
-### **JSON-LD Structured Data**
+### JSON-LD Structured Data
 
 ```typescript
 const breadcrumbStructuredData = {
@@ -81,7 +81,7 @@ const breadcrumbStructuredData = {
 };
 ```
 
-### **Schema.org Microdata**
+### Schema.org Microdata
 
 ```html
 <nav aria-label="Breadcrumb navigation" 

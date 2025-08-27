@@ -206,19 +206,22 @@ These structured prompts provide a standardized way to request the implementatio
 
 🎯 **Before using any prompt template, ALWAYS review the reference implementation:**
 
-**http://localhost:3000/en/products/grant-management-system**
+**<http://localhost:3000/en/products/grant-management-system>**
 
 This live URL shows the **exact layout and functionality** that should be replicated for all product pages. Use it as your visual and functional specification.
 
 ### Step-by-Step Process
 
 #### 1. Choose Your Format
+
 Select either the XML or JSON format based on your preference. Both contain identical information.
 
 #### 2. Update Target Product Information
+
 Replace the `target_product` section with the desired product details:
 
 **XML Example:**
+
 ```xml
 <target_product>
   <id>ets</id>
@@ -230,6 +233,7 @@ Replace the `target_product` section with the desired product details:
 ```
 
 **JSON Example:**
+
 ```json
 "target_product": {
   "id": "ets",
@@ -241,27 +245,35 @@ Replace the `target_product` section with the desired product details:
 ```
 
 #### 3. Update Component Names
+
 Throughout the prompt, update all component names to match the new product:
 
 **Pattern:**
+
 - Main component: `Products[ProductName]Features.tsx`
 - Wrapper component: `Products[ProductName]FeaturesWrapper.tsx`
 
 **Example for Environmental Tracking System:**
+
 - `ProductsEnvironmentalTrackingSystemFeatures.tsx`
 - `ProductsEnvironmentalTrackingSystemFeaturesWrapper.tsx`
 
 #### 4. Update Translation Keys
+
 Replace the translation key patterns:
+
 - From: `products.ects.hero.*` and `products.ects.features.*`
 - To: `products.ets.hero.*` and `products.ets.features.*`
 
 #### 5. Update Routing Condition
+
 Replace the slug condition:
+
 - From: `params.slug === 'electronic-correspondence-tracking-system'`
 - To: `params.slug === 'environmental-tracking-system'`
 
 #### 6. Submit Complete Prompt
+
 Submit the fully updated XML or JSON prompt to initiate the implementation.
 
 ## Product Reference Table
@@ -302,6 +314,7 @@ Submit the fully updated XML or JSON prompt to initiate the implementation.
 | 30 | `visitor-log` | Visitor Log System | `visitor-log-system` | `project=vls` | 🔶 **LOW** |
 
 ### Priority Legend
+
 - ✅ **COMPLETE**: Fully implemented with detailed page
 - 🔥 **HIGH**: Featured products, high business value
 - 🟡 **MEDIUM**: Core functionality products
@@ -312,6 +325,7 @@ Submit the fully updated XML or JSON prompt to initiate the implementation.
 ### Example 1: Environmental Tracking System (ETS)
 
 **XML Prompt:**
+
 ```xml
 <product_page_implementation>
   <task>
@@ -354,6 +368,7 @@ Submit the fully updated XML or JSON prompt to initiate the implementation.
 ### Example 2: Multi-Dimensional System Planning Solution (MDSPS)
 
 **JSON Prompt:**
+
 ```json
 {
   "product_page_implementation": {
@@ -391,34 +406,40 @@ Submit the fully updated XML or JSON prompt to initiate the implementation.
 After implementing each product page, verify the following:
 
 #### ✅ **Component Files Created**
+
 - [ ] Main component: `Products[ProductName]Features.tsx`
 - [ ] Wrapper component: `Products[ProductName]FeaturesWrapper.tsx`
 - [ ] Both files follow the GMS template structure
 
 #### ✅ **Translation Keys Added**
+
 - [ ] English translations in `src/lang/en.json`
 - [ ] Spanish translations in `src/lang/es.json`
 - [ ] French translations in `src/lang/fr.json`
 - [ ] All keys follow the pattern: `products.[id].hero.*` and `products.[id].features.*`
 
 #### ✅ **Routing Integration**
+
 - [ ] Route condition added to `src/app/[lang]/products/[slug]/page.tsx`
 - [ ] Correct slug condition: `params.slug === '[product-slug]'`
 - [ ] Wrapper component imported and rendered
 
 #### ✅ **Content Integration**
+
 - [ ] Hero section content extracted from source website
 - [ ] 8-15 features with names and descriptions
 - [ ] Appropriate icons assigned to each feature
 - [ ] Image path correctly configured
 
 #### ✅ **URL Testing**
+
 - [ ] English URL works: `http://localhost:3000/en/products/[slug]`
 - [ ] Spanish URL works: `http://localhost:3000/es/products/[slug]`
 - [ ] French URL works: `http://localhost:3000/fr/products/[slug]`
 - [ ] All URLs return 200 status code
 
 #### ✅ **Quality Checks**
+
 - [ ] Text is left-aligned in hero section
 - [ ] Dark mode support functional
 - [ ] Responsive design on mobile/tablet/desktop
@@ -427,6 +448,7 @@ After implementing each product page, verify the following:
 - [ ] Icons display properly
 
 #### ✅ **Testing Commands**
+
 ```bash
 # Test all product URLs
 npm run test:products:all

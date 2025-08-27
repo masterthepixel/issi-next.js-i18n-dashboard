@@ -116,17 +116,20 @@ export default async function Page({ params }: Props) {
 ### Common Error Messages
 
 1. **Params Access Error**:
-   ```
+
+   ```text
    Error: Route "/[lang]/home" used `params.lang`. `params` should be awaited before using its properties.
    ```
 
 2. **Build Time Error**:
-   ```
+
+   ```text
    Type error: Property 'lang' does not exist on type 'Promise<{ lang: string }>'
    ```
 
 3. **Runtime Error**:
-   ```
+
+   ```text
    Cannot read properties of undefined (reading 'lang')
    ```
 
@@ -264,12 +267,14 @@ import { Card } from "@/components/ui/card";
 ## Migration Checklist
 
 ### Pre-Migration
+
 - [ ] Update Next.js to 15.x: `pnpm add next@latest`
 - [ ] Update React: `pnpm add react@latest react-dom@latest`
 - [ ] Update TypeScript: `pnpm add -D typescript@latest`
 - [ ] Review breaking changes documentation
 
 ### Code Changes
+
 - [ ] Convert all page components to async functions
 - [ ] Convert all layout components to async functions  
 - [ ] Await `params` before accessing properties
@@ -277,18 +282,21 @@ import { Card } from "@/components/ui/card";
 - [ ] Update TypeScript interfaces for Promise-wrapped params
 
 ### Build System
+
 - [ ] Clean up ESLint configuration files
 - [ ] Update production build settings
 - [ ] Test build performance
 - [ ] Verify CI/CD compatibility
 
 ### Testing
+
 - [ ] Update test configuration
 - [ ] Fix any test failures
 - [ ] Verify test coverage maintained
 - [ ] Test both development and production builds
 
 ### Verification
+
 - [ ] All pages render correctly
 - [ ] Dynamic routes work properly
 - [ ] Static generation works
@@ -371,12 +379,14 @@ If pages crash at runtime:
 ## Performance Impact
 
 ### Positive Changes
+
 - ✅ Faster static site generation
 - ✅ Better bundle optimization  
 - ✅ Improved tree shaking
 - ✅ More efficient hot reload
 
 ### Things to Monitor
+
 - Build time (generally improved)
 - Runtime performance (async overhead is minimal)
 - Bundle size (generally reduced)
@@ -384,11 +394,13 @@ If pages crash at runtime:
 ## Future Considerations
 
 ### Next.js 15+ Features to Explore
+
 - Improved Turbopack support
 - Better React Server Components integration
 - Enhanced static generation capabilities
 
 ### Compatibility Planning
+
 - Plan for regular Next.js updates
 - Keep async/await patterns consistent
 - Monitor Next.js release notes for future breaking changes

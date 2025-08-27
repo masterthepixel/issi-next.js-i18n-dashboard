@@ -240,7 +240,7 @@
 - **Important Priority (P1)**: 80-110 hours
 - **Nice-to-have Priority (P2)**: 20-30 hours
 
-### **Phase Breakdown**:
+### **Phase Breakdown**
 
 - **Phase 1 (Weeks 1-2)**: Collections, Globals, Core Migration Scripts
 - **Phase 2 (Weeks 3-4)**: Migration Execution, Data Transformation
@@ -251,7 +251,7 @@
 
 ## 🎯 Critical Path Components (Must Complete First)
 
-### **Week 1 Priority**:
+### **Week 1 Priority**
 
 1. Products.ts collection
 2. UIElements.ts collection
@@ -259,7 +259,7 @@
 4. migrate-products.ts script
 5. migrate-ui-elements.ts script
 
-### **Week 2 Priority**:
+### **Week 2 Priority**
 
 6. Pages.ts collection
 7. Media.ts collection

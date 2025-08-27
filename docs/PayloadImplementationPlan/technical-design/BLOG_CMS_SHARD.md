@@ -1,13 +1,14 @@
 # Technical Design: Blog CMS Shard
 
 ### Document Information
-*   **Design ID:** TD-BLOG-CMS-001
-*   **Shard:** `blog-cms`
-*   **Project:** PayloadCMS Blog & Job Portal
-*   **Version:** 1.0
-*   **Author:** Architect (bmad-architect)
-*   **Date:** August 26, 2025
-*   **Status:** Draft
+
+* **Design ID:** TD-BLOG-CMS-001
+* **Shard:** `blog-cms`
+* **Project:** PayloadCMS Blog & Job Portal
+* **Version:** 1.0
+* **Author:** Architect (bmad-architect)
+* **Date:** August 26, 2025
+* **Status:** Draft
 
 ---
 
@@ -168,13 +169,14 @@ export const Posts: CollectionConfig = {
 ```
 
 #### 2.2. Schema Justification
-*   **`title`, `slug`, `excerpt`, `content`:** Core content fields, all localized to support the i18n requirements.
-*   **`author`:** A relationship to the existing `Users` collection. This allows for author profiles and attributions.
-*   **`featuredImage`:** A relationship to the `Media` collection for consistent image handling.
-*   **`publishedAt`:** A timestamp for scheduling posts and ordering them chronologically.
-*   **`status`:** A simple draft/published state to control visibility on the frontend.
-*   **`tags`:** An array of text fields for categorizing posts, which can be used for filtering and search.
-*   **`meta`:** A group for SEO-specific metadata, allowing for customization of social sharing cards and search engine results. This is a simplified version; a dedicated SEO plugin (like the one already in use) could be extended to this collection.
+
+* **`title`, `slug`, `excerpt`, `content`:** Core content fields, all localized to support the i18n requirements.
+* **`author`:** A relationship to the existing `Users` collection. This allows for author profiles and attributions.
+* **`featuredImage`:** A relationship to the `Media` collection for consistent image handling.
+* **`publishedAt`:** A timestamp for scheduling posts and ordering them chronologically.
+* **`status`:** A simple draft/published state to control visibility on the frontend.
+* **`tags`:** An array of text fields for categorizing posts, which can be used for filtering and search.
+* **`meta`:** A group for SEO-specific metadata, allowing for customization of social sharing cards and search engine results. This is a simplified version; a dedicated SEO plugin (like the one already in use) could be extended to this collection.
 
 ---
 
@@ -182,10 +184,10 @@ export const Posts: CollectionConfig = {
 
 Access to the `Posts` collection is governed by user roles defined in the `Users` collection.
 
-*   **Read:** Public. All posts with `status: 'published'` are readable by unauthenticated users via the API. Drafts are only readable by authenticated users with appropriate permissions.
-*   **Create:** Users with the `author` or `admin` role can create new posts.
-*   **Update:** Users with the `author` or `admin` role can update posts. The `author` field can only be changed by an `admin` to prevent authors from reassigning posts.
-*   **Delete:** Restricted to users with the `admin` role to prevent accidental or malicious deletion of content.
+* **Read:** Public. All posts with `status: 'published'` are readable by unauthenticated users via the API. Drafts are only readable by authenticated users with appropriate permissions.
+* **Create:** Users with the `author` or `admin` role can create new posts.
+* **Update:** Users with the `author` or `admin` role can update posts. The `author` field can only be changed by an `admin` to prevent authors from reassigning posts.
+* **Delete:** Restricted to users with the `admin` role to prevent accidental or malicious deletion of content.
 
 This logic is implemented directly in the `access` property of the `Posts` collection configuration.
 
@@ -197,22 +199,22 @@ PayloadCMS will automatically generate REST and GraphQL endpoints for the `Posts
 
 #### 4.1. Key REST Endpoints
 
-*   **List Posts:** `GET /api/posts`
-    *   **Query Params:**
-        *   `where[status][equals]=published` (to fetch only live posts)
-        *   `locale=en` (or `fr`, `de`) to fetch content for a specific language.
-        *   `sort=-publishedAt` (to get the latest posts first).
-        *   `limit=10` (for pagination).
-        *   `page=1` (for pagination).
-    *   **Usage:** To fetch posts for the blog index page.
-*   **Get Single Post by Slug:** `GET /api/posts?where[slug][equals]=my-post-slug&locale=en`
-    *   **Usage:** To fetch data for a single blog post detail page. Since slugs are unique per locale, this query is effective.
-*   **Create Post:** `POST /api/posts`
-    *   **Auth:** Requires a valid PayloadCMS authentication token for a user with `create` permissions. Used by the Admin UI and potentially a headless CMS client.
-*   **Update Post:** `PATCH /api/posts/:id`
-    *   **Auth:** Requires a valid PayloadCMS authentication token for a user with `update` permissions.
-*   **Delete Post:** `DELETE /api/posts/:id`
-    *   **Auth:** Requires a valid PayloadCMS authentication token for a user with `delete` permissions.
+* **List Posts:** `GET /api/posts`
+  * **Query Params:**
+    * `where[status][equals]=published` (to fetch only live posts)
+    * `locale=en` (or `fr`, `de`) to fetch content for a specific language.
+    * `sort=-publishedAt` (to get the latest posts first).
+    * `limit=10` (for pagination).
+    * `page=1` (for pagination).
+  * **Usage:** To fetch posts for the blog index page.
+* **Get Single Post by Slug:** `GET /api/posts?where[slug][equals]=my-post-slug&locale=en`
+  * **Usage:** To fetch data for a single blog post detail page. Since slugs are unique per locale, this query is effective.
+* **Create Post:** `POST /api/posts`
+  * **Auth:** Requires a valid PayloadCMS authentication token for a user with `create` permissions. Used by the Admin UI and potentially a headless CMS client.
+* **Update Post:** `PATCH /api/posts/:id`
+  * **Auth:** Requires a valid PayloadCMS authentication token for a user with `update` permissions.
+* **Delete Post:** `DELETE /api/posts/:id`
+  * **Auth:** Requires a valid PayloadCMS authentication token for a user with `delete` permissions.
 
 #### 4.2. API Response Structure (Example for List)
 
@@ -251,10 +253,10 @@ PayloadCMS will automatically generate REST and GraphQL endpoints for the `Posts
 
 The Payload Admin UI will be customized to provide an optimal experience for content creators.
 
-*   **Grouping:** The `Posts` collection will be grouped under a "Blog" section in the main navigation of the Admin UI for better organization.
-*   **Field Positioning:** Key fields like `slug`, `excerpt`, `featuredImage`, `publishedAt`, and `status` will be positioned in the sidebar for quick access, as defined in the schema.
-*   **Rich Text Editor:** The `content` field will use the globally configured `slateEditor`. The existing configuration for elements and leaves is suitable for blog content. If code snippet highlighting is a priority for the MVP, a plugin or custom slate element for code blocks should be considered.
-*   **List View:** The default list view for posts in the Admin UI will be customized to display key columns: `Title`, `Status`, `Published At`, and `Author`.
+* **Grouping:** The `Posts` collection will be grouped under a "Blog" section in the main navigation of the Admin UI for better organization.
+* **Field Positioning:** Key fields like `slug`, `excerpt`, `featuredImage`, `publishedAt`, and `status` will be positioned in the sidebar for quick access, as defined in the schema.
+* **Rich Text Editor:** The `content` field will use the globally configured `slateEditor`. The existing configuration for elements and leaves is suitable for blog content. If code snippet highlighting is a priority for the MVP, a plugin or custom slate element for code blocks should be considered.
+* **List View:** The default list view for posts in the Admin UI will be customized to display key columns: `Title`, `Status`, `Published At`, and `Author`.
 
 ---
 

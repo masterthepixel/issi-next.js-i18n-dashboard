@@ -15,7 +15,7 @@ This document outlines how the existing Next.js i18n system (React Intl) will in
 
 ### **Current Architecture**
 
-```
+```text
 Static JSON Files → React Intl → Components
 src/lang/en.json → FormattedMessage → UI Rendering
 src/lang/fr.json → intl.formatMessage → Server Components
@@ -40,12 +40,12 @@ src/lang/es.json → IntlProvider → Client Components
 
 ### **Integration Flow**
 
-```
+```text
 ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
 │                 │     │                 │     │                 │
 │  PayloadCMS     │────▶│  Combined       │────▶│   Component     │
-│  Content        │     │  Translation    │     │   Rendering     │
-│                 │     │  Provider       │     │                 │
+│  Content        │     │  Translation    │     │  Provider       │
+│                 │     │                 │     │                 │
 └─────────────────┘     └─────────────────┘     └─────────────────┘
          │                       │                        │
          │                       │                        │

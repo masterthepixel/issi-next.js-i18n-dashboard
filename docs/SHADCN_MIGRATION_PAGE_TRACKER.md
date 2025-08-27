@@ -1,7 +1,9 @@
 # Shadcn/ui Migration Page Tracker
 
 ## Overview
+
 This document tracks the shadcn/ui compliance status for every page in the ISSI i18n dashboard. Each page will be audited for:
+
 - Shadcn theme variable usage
 - Color system compliance
 - Component standardization
@@ -58,6 +60,7 @@ This document tracks the shadcn/ui compliance status for every page in the ISSI 
 #### ✅ Changes Made
 
 **Fixed Color System Violations**:
+
 1. ✅ **ProductsBentoGridNew.tsx** - Fixed 11 hardcoded color violations
 2. ✅ **Unified color strategy** - Using consistent shadcn theme variables
 3. ✅ **Maintained semantic meaning** - Mapped brand colors to theme equivalents:
@@ -69,6 +72,7 @@ This document tracks the shadcn/ui compliance status for every page in the ISSI 
    - All chart colors use `text-chart-*` theme variables
 
 #### ✅ Already Compliant
+
 - Button components using proper shadcn variants
 - Card components using theme variables
 - Typography using theme fonts and colors
@@ -102,6 +106,7 @@ This document tracks the shadcn/ui compliance status for every page in the ISSI 
 ## Migration Methodology
 
 ### 📊 Audit Process
+
 For each page, we will:
 
 1. **Component Scan** - Identify hardcoded values
@@ -114,6 +119,7 @@ For each page, we will:
 ### 🔧 Fix Patterns
 
 **Standard Replacements**:
+
 - `text-blue-500` → `text-primary`
 - `text-green-500` → `text-secondary` or `text-primary`
 - `bg-white` → `bg-background`
@@ -124,11 +130,13 @@ For each page, we will:
 ### 📈 Progress Tracking
 
 **Legend**:
+
 - 🔴 **NOT COMPLIANT** - Major violations found
 - 🟡 **PARTIAL COMPLIANCE** - Minor violations, basic compliance
 - 🟢 **FULL COMPLIANCE** - All shadcn standards met
 
 **Status Updates**:
+
 1. After each page audit, update this tracker
 2. Include specific violation counts
 3. Provide fix estimates
@@ -138,14 +146,17 @@ For each page, we will:
 ## Next Steps
 
 ### 🚀 Immediate Actions
+
 1. **Fix Homepage First** - Complete compliance for `/` route
 2. **Create Component Audit Script** - Automated hardcoded color detection
 3. **Establish Color Standards** - Document mapping for each color family
 4. **Page-by-Page Migration** - Work through critical → important → support pages
 
 ### 📋 Hompage Recipes
+
 Current: `src/app/[lang]/page.tsx`
 Components to audit:
+
 - Hero section
 - Product showcase
 - Navigation

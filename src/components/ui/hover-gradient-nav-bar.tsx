@@ -115,7 +115,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
   ];
 
   return (
-    <div className="fixed top-0 left-0 w-full md:top-4 md:left-1/2 md:-translate-x-1/2 z-50">
+    <div className="fixed top-0 left-0 w-full md:top-4 md:left-1/2 md:-translate-x-1/2 z-[999]">
       <motion.nav
         className="w-full md:w-fit mx-auto px-1 md:px-2 py-1 md:py-2 rounded-none md:rounded-3xl 
         bg-background/90 backdrop-blur-lg 

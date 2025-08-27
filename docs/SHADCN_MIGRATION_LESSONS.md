@@ -24,6 +24,7 @@ This document captures critical lessons learned during our comprehensive migrati
 **Issue**: Next.js 15 requires `params` to be awaited before accessing properties.
 
 **Symptoms**:
+
 ```typescript
 // This breaks in Next.js 15
 export default function Page({ params: { lang } }: Props) {
@@ -32,6 +33,7 @@ export default function Page({ params: { lang } }: Props) {
 ```
 
 **Solution**:
+
 ```typescript
 // Correct pattern for Next.js 15
 export default async function Page({ params }: Props) {
@@ -49,6 +51,7 @@ export default async function Page({ params }: Props) {
 **Root Cause**: Module-level initialization without proper client-side checks.
 
 **Solution**:
+
 ```typescript
 // Bad: Module-level initialization
 initializeLDProvider(); // Runs on server!
@@ -68,18 +71,21 @@ useEffect(() => {
 **Problem**: Complex feature flag system for component A/B testing created maintenance burden.
 
 **What We Had**:
+
 ```typescript
 const useNewComponent = getFeatureFlag("componentReady");
 return useNewComponent ? <NewComponent /> : <OldComponent />;
 ```
 
 **Why It's Problematic**:
+
 - Doubled component maintenance
 - Runtime performance impact
 - Complex testing scenarios
 - Gradual code rot in unused branches
 
 **Better Approach**: Progressive component enhancement through props:
+
 ```typescript
 <Component variant="enhanced" features={["newDesign", "improvedUX"]} />
 ```
@@ -87,12 +93,14 @@ return useNewComponent ? <NewComponent /> : <OldComponent />;
 ### 4. Theme Token Migration Strategy
 
 **Challenge**: 29+ components using hardcoded color patterns like:
+
 ```typescript
 text-slate-600 dark:text-slate-400
 text-blue-600 dark:text-blue-400
 ```
 
 **Mass Migration Solution**: Used systematic replacement patterns:
+
 - `text-slate-600 dark:text-slate-400` → `text-muted-foreground`
 - `text-blue-600 dark:text-blue-400` → `text-primary`
 - `bg-white dark:bg-slate-900` → `bg-background`
@@ -104,6 +112,7 @@ text-blue-600 dark:text-blue-400
 **ESLint Conflicts**: Multiple configuration files caused unknown option errors.
 
 **Resolution Strategy**:
+
 1. Removed duplicate config files (`.eslintrc.js`, `eslint.config.js`)
 2. Kept single source of truth (`.eslintrc.json`)
 3. Configured production builds to skip linting for faster CI/CD
@@ -111,6 +120,7 @@ text-blue-600 dark:text-blue-400
 **Vitest Import Issues**: Global imports broke with Vitest v3.
 
 **Solution**:
+
 ```typescript
 // Remove explicit import, rely on global configuration
 // import { vi } from "vitest"; ❌
@@ -136,6 +146,7 @@ Object.defineProperty(window, 'matchMedia', {
 **Approach**: Maintained comprehensive test suite throughout migration.
 
 **Benefits**:
+
 - Caught breaking changes immediately
 - Provided confidence for large refactors  
 - Enabled automated verification of migration success
@@ -148,6 +159,7 @@ Object.defineProperty(window, 'matchMedia', {
 **We Used**: Direct replacement with variant props for different behaviors
 
 **Example**:
+
 ```typescript
 // Before: Two separate components
 <OldButton />
@@ -160,6 +172,7 @@ Object.defineProperty(window, 'matchMedia', {
 ### 4. Systematic Cleanup
 
 **Process**:
+
 1. Identify all usage patterns
 2. Create replacement mappings  
 3. Execute mass updates
@@ -171,17 +184,20 @@ Object.defineProperty(window, 'matchMedia', {
 ## Performance and Quality Improvements
 
 ### Bundle Size Reduction
+
 - Removed duplicate component implementations
 - Eliminated unused LaunchDarkly SDK (~200KB)
 - Streamlined CSS with consistent theme tokens
 
 ### Developer Experience Gains
+
 - Single source of truth for component patterns
 - Improved TypeScript IntelliSense
 - Faster development with pre-built components
 - Better accessibility defaults
 
 ### Maintenance Reduction
+
 - 50% fewer component variants to maintain
 - Eliminated feature flag complexity
 - Consistent patterns across all components
@@ -191,6 +207,7 @@ Object.defineProperty(window, 'matchMedia', {
 ### 1. Production Build Optimization
 
 **Configuration**:
+
 ```javascript
 // next.config.mjs
 export default {
@@ -210,6 +227,7 @@ export default {
 ### 2. Test Configuration Improvements
 
 **Vitest Setup**:
+
 ```typescript
 // vitest.config.ts
 export default defineConfig({
@@ -226,6 +244,7 @@ export default defineConfig({
 ## Anti-Patterns We Eliminated
 
 ### 1. ❌ Component Feature Flags
+
 ```typescript
 // Don't do this
 const useNew = getFeatureFlag("newDesign");
@@ -233,12 +252,14 @@ return useNew ? <NewComponent /> : <OldComponent />;
 ```
 
 ### 2. ❌ Hardcoded Color Systems
+
 ```typescript
 // Don't do this
 className="text-blue-600 dark:text-blue-400 bg-slate-100 dark:bg-slate-800"
 ```
 
 ### 3. ❌ Mixed Design Systems
+
 ```typescript
 // Don't do this
 <ChakraButton>
@@ -247,6 +268,7 @@ className="text-blue-600 dark:text-blue-400 bg-slate-100 dark:bg-slate-800"
 ```
 
 ### 4. ❌ Client-Side Libraries Without SSR Guards
+
 ```typescript
 // Don't do this
 import { clientLib } from 'client-only-library';
@@ -322,26 +344,31 @@ describe('Component', () => {
 ## Recommendations for Future Migrations
 
 ### 1. Plan for Breaking Changes
+
 - Always check framework upgrade guides first
 - Test critical paths early in migration
 - Plan for async/await patterns in modern frameworks
 
 ### 2. Eliminate Technical Debt During Migration
+
 - Don't migrate broken patterns
 - Remove feature flags and A/B test infrastructure
 - Consolidate duplicate components
 
 ### 3. Maintain Test Coverage
+
 - Never let test coverage drop during migration
 - Add tests for new patterns
 - Use tests to verify migration correctness
 
 ### 4. Document Everything
+
 - Keep migration notes for future reference
 - Document new patterns as you establish them
 - Create templates for common component types
 
 ### 5. Build System First
+
 - Fix build configuration before component work
 - Ensure tests pass consistently
 - Optimize CI/CD for migration velocity
@@ -349,6 +376,7 @@ describe('Component', () => {
 ## Impact Metrics
 
 ### Before Migration
+
 - 100+ components with inconsistent patterns
 - 3 different color systems in use
 - Complex feature flag infrastructure
@@ -357,6 +385,7 @@ describe('Component', () => {
 - Test reliability: 85%
 
 ### After Migration
+
 - 100% shadcn/ui component usage
 - Single consistent design system
 - No feature flag technical debt

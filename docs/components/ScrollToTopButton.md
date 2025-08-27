@@ -29,11 +29,13 @@ import ScrollToTopButton from '@/components/ScrollToTopButton';
 ## Styling
 
 ### Light Mode
+
 - Button: `bg-blue-600 hover:bg-blue-700`
 - Text: `text-white`
 - Pulse rings: `bg-blue-600`
 
 ### Dark Mode  
+
 - Button: `dark:bg-blue-500 dark:hover:bg-blue-600`
 - Text: `text-white`
 - Pulse rings: `dark:bg-blue-500`
@@ -41,11 +43,13 @@ import ScrollToTopButton from '@/components/ScrollToTopButton';
 ## Animation Details
 
 ### Pulse Effect
+
 - **First ring**: 3-second pulse with `ease-in-out` timing
 - **Second ring**: 4-second ping animation with `ease-in-out` timing
 - **Button**: Hover scale effect with smooth transitions
 
 ### Timing Configuration
+
 ```css
 animate-[pulse_3s_ease-in-out_infinite]  /* Background pulse */
 animate-[ping_4s_ease-in-out_infinite]   /* Expanding ring */
@@ -54,6 +58,7 @@ animate-[ping_4s_ease-in-out_infinite]   /* Expanding ring */
 ## Technical Implementation
 
 ### Scroll Detection
+
 ```tsx
 const toggleVisibility = () => {
   if (window.scrollY > 300) {
@@ -65,6 +70,7 @@ const toggleVisibility = () => {
 ```
 
 ### Scroll Methods
+
 The component uses multiple scroll methods for maximum compatibility:
 
 1. **Primary**: `window.scrollTo()` with smooth behavior
@@ -73,6 +79,7 @@ The component uses multiple scroll methods for maximum compatibility:
 4. **Final fallback**: Direct property assignment after 100ms timeout
 
 ### Event Cleanup
+
 Properly removes scroll event listeners on component unmount to prevent memory leaks.
 
 ## Positioning

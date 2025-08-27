@@ -25,6 +25,7 @@
 ```
 
 ### **Conversion Example: AboutPartnerNetwork.tsx**
+
 ```tsx
 // ❌ Before
 className="text-slate-900 dark:text-white"        // Heading
@@ -38,24 +39,28 @@ className="text-muted-foreground"                 // Description
 ## 🚀 Phase 3: Component Replacement Standards
 
 ### **MANDATORY for New Components:**
+
 - **Use shadcn/ui primitives** instead of custom implementations
 - **Leverage built-in accessibility** features (keyboard navigation, ARIA labels)
 - **Utilize advanced functionality** (loading states, validation, focus management)
 - **Follow shadcn/ui patterns** for consistent behavior across application
 
 ### **Phase 3 Replacement Priority:**
+
 1. **Forms & Inputs**: Replace with shadcn/ui Form + Input + Button components
 2. **Navigation**: Replace with NavigationMenu + DropdownMenu + Sheet
 3. **Modals/Dialogs**: Replace with Dialog + AlertDialog components
 4. **Data Display**: Replace with Table + Card + Badge components
 
 ### **Enterprise Component Standards**
+
 - **MANDATORY**: Use semantic theme variables for all colors (Phase 2 ✅ Complete)
 - **REQUIRED**: Use shadcn/ui primitives for enhanced functionality and accessibility
 - **FORBIDDEN**: Custom implementations where shadcn/ui primitives exist
 - **ENCOURAGED**: Composition of shadcn/ui primitives for complex components
 
 ## Anti-Patterns to Avoid
+
 - ❌ **Hardcoded Colors**: `text-slate-900 dark:text-white` (use `text-foreground`)
 - ❌ **Manual Dark Mode**: Any `dark:` prefixes for colors (theme handles automatically)
 - ❌ **Feature flags**: For UI toggling (should be removed post-migration)
@@ -93,9 +98,11 @@ const router = useRouter();
 **See**: `docs/shadcn-migration/REACT_CHILDREN_ONLY_ERROR_RESOLUTION.md` for complete details
 
 ## Component Template & Testing
+
 - Use the provided template for new components.
 - All components must have unit and accessibility tests.
 
 ## TypeScript & Accessibility
+
 - Use strict TypeScript interfaces for props.
 - Follow accessibility standards (ARIA, keyboard navigation, etc.).

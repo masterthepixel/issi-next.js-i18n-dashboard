@@ -8,15 +8,10 @@ import path from 'path';
 import { buildConfig } from 'payload/config';
 
 // Collections
+import { Categories } from './cms/collections/Categories';
 import { Media } from './cms/collections/Media';
-import { Pages } from './cms/collections/Pages';
-import { Products } from './cms/collections/Products';
-import { UIElements } from './cms/collections/UIElements';
+import { Posts } from './cms/collections/Posts';
 import { Users } from './cms/collections/Users';
-
-// Globals
-import { Navigation } from './cms/globals/Navigation';
-import { Settings } from './cms/globals/Settings';
 
 export default buildConfig({
     serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000',
@@ -59,8 +54,7 @@ export default buildConfig({
             ],
         },
     }),
-    collections: [Products, Pages, Media, UIElements, Users],
-    globals: [Settings, Navigation],
+    collections: [Users, Posts, Media, Categories],
     typescript: {
         outputFile: path.resolve(__dirname, 'payload-types.ts'),
     },
@@ -107,7 +101,7 @@ export default buildConfig({
             },
         }),
         seoPlugin({
-            collections: ['products', 'pages'],
+            collections: ['users'],
             uploadsCollection: 'media',
             generateTitle: ({ doc }) => `${doc?.title?.value || doc?.title} | ISSI`,
             generateDescription: ({ doc }) =>

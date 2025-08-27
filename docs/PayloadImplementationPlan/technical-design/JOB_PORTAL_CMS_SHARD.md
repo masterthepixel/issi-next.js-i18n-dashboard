@@ -1,13 +1,14 @@
 # Technical Design: Job Portal CMS Shard
 
 ### Document Information
-*   **Design ID:** TD-JOB-CMS-001
-*   **Shard:** `job-portal-cms`
-*   **Project:** PayloadCMS Blog & Job Portal
-*   **Version:** 1.0
-*   **Author:** Architect (bmad-architect)
-*   **Date:** August 26, 2025
-*   **Status:** Draft
+
+* **Design ID:** TD-JOB-CMS-001
+* **Shard:** `job-portal-cms`
+* **Project:** PayloadCMS Blog & Job Portal
+* **Version:** 1.0
+* **Author:** Architect (bmad-architect)
+* **Date:** August 26, 2025
+* **Status:** Draft
 
 ---
 
@@ -25,7 +26,8 @@ The Job Portal will require several new collections to be created in the `cms/co
 
 The existing `Users` collection (`cms/collections/Users.ts`) will be modified to include a `roles` field. This field will be an array of strings to define the user's permissions within the Job Portal.
 
-*   **New Field in `Users` Collection:**
+* **New Field in `Users` Collection:**
+
     ```typescript
     {
       name: 'roles',
@@ -49,9 +51,10 @@ The existing `Users` collection (`cms/collections/Users.ts`) will be modified to
       ],
     }
     ```
-*   **Registration Considerations:**
-    *   The `Users` collection's `access` control should allow `create` permissions for the `register` API route, which will not be associated with a logged-in user. This can be handled by a specific API key or by temporarily allowing public creation for this specific route and validating the request.
-    *   The `password` field in the `Users` collection must be configured to be hashed upon creation. Payload handles this automatically when a user is created via its API, but when creating users via a custom API route, the password must be hashed before being saved to Payload.
+
+* **Registration Considerations:**
+  * The `Users` collection's `access` control should allow `create` permissions for the `register` API route, which will not be associated with a logged-in user. This can be handled by a specific API key or by temporarily allowing public creation for this specific route and validating the request.
+  * The `password` field in the `Users` collection must be configured to be hashed upon creation. Payload handles this automatically when a user is created via its API, but when creating users via a custom API route, the password must be hashed before being saved to Payload.
 
 #### 2.2. `Jobs` Collection Schema
 
@@ -351,20 +354,20 @@ export const ApplicationStatusLogs: CollectionConfig = {
 
 Access control is role-based and defined within each collection's `access` property.
 
-*   **`Users`:**
-    *   Read/Update: Users can update their own profile. Admins can manage all users.
-*   **`Jobs`:**
-    *   Read: Public.
-    *   Create/Update: `hr-manager`, `admin`.
-    *   Delete: `admin`.
-*   **`Applications`:**
-    *   Read: `job-seeker` (own applications only), `hr-manager`, `hiring-manager`, `admin`.
-    *   Create: `job-seeker`.
-    *   Update: `hr-manager`, `hiring-manager`, `admin`.
-    *   Delete: `admin`.
-*   **`ApplicationStatusLogs`:**
-    *   Read/Create: `hr-manager`, `hiring-manager`, `admin` (creation typically automated via hooks).
-    *   Delete: `admin`.
+* **`Users`:**
+  * Read/Update: Users can update their own profile. Admins can manage all users.
+* **`Jobs`:**
+  * Read: Public.
+  * Create/Update: `hr-manager`, `admin`.
+  * Delete: `admin`.
+* **`Applications`:**
+  * Read: `job-seeker` (own applications only), `hr-manager`, `hiring-manager`, `admin`.
+  * Create: `job-seeker`.
+  * Update: `hr-manager`, `hiring-manager`, `admin`.
+  * Delete: `admin`.
+* **`ApplicationStatusLogs`:**
+  * Read/Create: `hr-manager`, `hiring-manager`, `admin` (creation typically automated via hooks).
+  * Delete: `admin`.
 
 ---
 
@@ -372,11 +375,11 @@ Access control is role-based and defined within each collection's `access` prope
 
 PayloadCMS will generate standard REST/GraphQL endpoints for these collections. Key interactions include:
 
-*   **Fetching Jobs:** `GET /api/jobs?where[status][equals]=open`
-*   **Applying for a Job:** `POST /api/applications` (authenticated job-seeker).
-*   **Updating Application Status:** `PATCH /api/applications/:id` (authenticated HR/Hiring Manager/Admin).
-*   **Fetching User Applications:** `GET /api/applications?where[applicant][equals]=:userId` (authenticated job-seeker).
-*   **Fetching Applications for HR/Hiring Manager:** `GET /api/applications` (with appropriate role-based filtering).
+* **Fetching Jobs:** `GET /api/jobs?where[status][equals]=open`
+* **Applying for a Job:** `POST /api/applications` (authenticated job-seeker).
+* **Updating Application Status:** `PATCH /api/applications/:id` (authenticated HR/Hiring Manager/Admin).
+* **Fetching User Applications:** `GET /api/applications?where[applicant][equals]=:userId` (authenticated job-seeker).
+* **Fetching Applications for HR/Hiring Manager:** `GET /api/applications` (with appropriate role-based filtering).
 
 ---
 
@@ -384,13 +387,13 @@ PayloadCMS will generate standard REST/GraphQL endpoints for these collections. 
 
 Hooks will be used to automate key business logic.
 
-*   **`Applications.afterChange`:**
-    *   **On Create:** Trigger a notification (e.g., email, in-app) to the relevant `hiringManager` and `hr-manager`s associated with the job.
-    *   **On Update (Status Change):**
-        *   Trigger a notification to the `applicant` about their application's new status.
-        *   Create a new entry in the `ApplicationStatusLogs` collection to record the change, including the user who made the change and a timestamp.
-*   **`Jobs.afterChange`:**
-    *   **On Status Change to 'Closed':** Optionally, notify applicants who have applied to this job that it is no longer open.
+* **`Applications.afterChange`:**
+  * **On Create:** Trigger a notification (e.g., email, in-app) to the relevant `hiringManager` and `hr-manager`s associated with the job.
+  * **On Update (Status Change):**
+    * Trigger a notification to the `applicant` about their application's new status.
+    * Create a new entry in the `ApplicationStatusLogs` collection to record the change, including the user who made the change and a timestamp.
+* **`Jobs.afterChange`:**
+  * **On Status Change to 'Closed':** Optionally, notify applicants who have applied to this job that it is no longer open.
 
 ---
 
