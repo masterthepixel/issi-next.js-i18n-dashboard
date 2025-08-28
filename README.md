@@ -16,6 +16,7 @@ This Next.js application features:
 
 - **Multilingual Support**: Website content is available in multiple languages including English, Spanish, and French
 - **Modern UI**: Responsive design with shadcn/ui components and BentoGrid layouts
+- **Blog System**: Complete PayloadCMS-powered blog with categories, search, and internationalization
 - **Expandable Team Cards**: Advanced cult-ui based expandable card system with smooth animations
 - **App Router**: Utilizes Next.js App Router for efficient routing and navigation
 - **Universal Breadcrumb System**: Automatic navigation with 3D globe integration

@@ -1,7 +1,6 @@
 import type { Access } from 'payload/types';
-import type { User } from '../payload-types';
 
-export const isAdmin: Access<User> = ({ req: { user } }) => {
+export const isAdmin: Access = ({ req: { user } }) => {
     return Boolean(user?.role === 'admin');
 };
 
@@ -25,7 +24,7 @@ export const isOwnerOrAdmin: Access = ({ req: { user } }) => {
 
 export const isPublished: Access = () => {
     return {
-        _status: {
+        status: {
             equals: 'published',
         },
     };
@@ -35,7 +34,7 @@ export const isPublishedOrAdmin: Access = ({ req: { user } }) => {
     if (user?.role === 'admin') return true;
 
     return {
-        _status: {
+        status: {
             equals: 'published',
         },
     };
@@ -49,7 +48,7 @@ export const isLoggedInOrPublished: Access = ({ req: { user } }) => {
     if (user) return true;
 
     return {
-        _status: {
+        status: {
             equals: 'published',
         },
     };

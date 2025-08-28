@@ -1,4 +1,6 @@
 import { User, Report, TeamMember, Activity } from "@/lib/definitions";
+import { getPayload as getPayloadInstance } from 'payload';
+import config from '../../payload.config';
 
 export async function getUser(): Promise<User> {
   return new Promise((resolve) => {
@@ -111,4 +113,14 @@ export async function getActivities(): Promise<Activity[]> {
 
     setTimeout(() => resolve(activities), 500);
   });
+}
+
+// PayloadCMS data fetching
+let payload: any = null;
+
+export async function getPayload() {
+  if (!payload) {
+    payload = await getPayloadInstance({ config });
+  }
+  return payload;
 }

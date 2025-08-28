@@ -1284,5 +1284,19 @@
   "products.visitor-log-system.features.feature6.name": "Registro rápido de grupos",
   "products.visitor-log-system.features.feature6.description": "Gestione fácilmente el registro de grandes grupos o eventos con flujos de trabajo optimizados.",
   "products.visitor-log-system.features.feature7.name": "Reportes integrales",
-  "products.visitor-log-system.features.feature7.description": "Genere estadísticas y reportes de visitantes para mejorar la seguridad y las mejores prácticas."
+  "products.visitor-log-system.features.feature7.description": "Genere estadísticas y reportes de visitantes para mejorar la seguridad y las mejores prácticas.",
+  "common.navigation.blog": "Blog",
+  "page.blog.meta.title": "Blog | Noticias e Insights | ISSI",
+  "page.blog.meta.description": "Manténgase actualizado con las últimas perspectivas, noticias y liderazgo intelectual del equipo de expertos tecnológicos de ISSI.",
+  "page.blog.meta.keywords": "blog ISSI, perspectivas tecnológicas, noticias desarrollo software, TI gubernamental, soluciones empresariales",
+  "page.blog.title": "Blog",
+  "page.blog.subtitle": "Manténgase actualizado con las últimas perspectivas, noticias y liderazgo intelectual de nuestro equipo de expertos tecnológicos.",
+  "page.blog.search.placeholder": "Buscar en el blog...",
+  "page.blog.search.button": "Buscar",
+  "page.blog.search.clear": "Limpiar búsqueda",
+  "page.blog.search.results": "Resultados para \"{query}\"",
+  "page.blog.empty.search": "No se encontraron artículos para su búsqueda.",
+  "page.blog.empty.default": "Aún no hay artículos de blog publicados.",
+  "page.blog.pagination.previous": "Anterior",
+  "page.blog.pagination.next": "Siguiente"
 }

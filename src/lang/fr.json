@@ -18,6 +18,7 @@
   "common.navigation.discover": "Découvrir",
   "common.navigation.home": "Accueil",
   "common.navigation.reports": "Rapports",
+  "common.navigation.blog": "Blog",
   "common.navigation.services": "Services",
   "common.navigation.products": "Produits",
   "common.navigation.government": "Gouvernement",
@@ -1801,5 +1802,18 @@
   "products.visitor-log-system.features.feature6.name": "Enregistrement rapide de groupe",
   "products.visitor-log-system.features.feature6.description": "Gérez facilement les arrivées de grands groupes ou d'événements avec des workflows optimisés.",
   "products.visitor-log-system.features.feature7.name": "Reporting complet",
-  "products.visitor-log-system.features.feature7.description": "Générez des statistiques et des rapports de visiteurs pour améliorer la sécurité et les bonnes pratiques."
+  "products.visitor-log-system.features.feature7.description": "Générez des statistiques et des rapports de visiteurs pour améliorer la sécurité et les bonnes pratiques.",
+  "page.blog.meta.title": "Blog | Actualités et Insights | ISSI",
+  "page.blog.meta.description": "Restez à jour avec les dernières informations, nouvelles et leadership d'opinion de l'équipe d'experts technologiques d'ISSI. Explorez notre blog pour les tendances de l'industrie.",
+  "page.blog.meta.keywords": "blog ISSI, insights technologiques, nouvelles développement logiciel, IT gouvernementale, solutions d'entreprise",
+  "page.blog.title": "Blog",
+  "page.blog.subtitle": "Restez à jour avec les dernières informations, nouvelles et leadership éclairé de notre équipe d'experts technologiques.",
+  "page.blog.search.placeholder": "Rechercher dans le blog...",
+  "page.blog.search.button": "Rechercher",
+  "page.blog.search.clear": "Effacer la recherche",
+  "page.blog.search.results": "Résultats pour \"{query}\"",
+  "page.blog.empty.search": "Aucun article trouvé pour votre recherche.",
+  "page.blog.empty.default": "Aucun article de blog publié pour le moment.",
+  "page.blog.pagination.previous": "Précédent",
+  "page.blog.pagination.next": "Suivant"
 }

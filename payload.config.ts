@@ -13,6 +13,9 @@ import { Media } from './cms/collections/Media';
 import { Posts } from './cms/collections/Posts';
 import { Users } from './cms/collections/Users';
 
+// Seed data
+import { seed } from './cms/seed';
+
 export default buildConfig({
     serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000',
     admin: {
@@ -124,4 +127,15 @@ export default buildConfig({
         process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000',
         process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
     ],
+    onInit: async (payload) => {
+        // Run seed data on initialization if no users exist
+        const existingUsers = await payload.find({
+            collection: 'users',
+            limit: 1,
+        });
+
+        if (existingUsers.docs.length === 0) {
+            await seed(payload);
+        }
+    },
 });

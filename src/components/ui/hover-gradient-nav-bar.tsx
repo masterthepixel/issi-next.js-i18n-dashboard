@@ -8,6 +8,7 @@ import {
   Building2, 
   GraduationCap, 
   ShieldCheck, 
+  BookOpen, 
   User 
 } from 'lucide-react';
 import Link from 'next/link';
@@ -103,6 +104,13 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
       label: <FormattedMessage id="common.navigation.compliance" defaultMessage="Compliance" />, 
       href: `/${locale}/compliance`, 
       gradient: "radial-gradient(circle, hsl(var(--chart-4) / 0.15) 0%, hsl(var(--chart-4) / 0.06) 50%, hsl(var(--chart-4) / 0) 100%)", 
+      iconColor: "group-hover:text-primary" 
+    },
+    { 
+      icon: <BookOpen className="h-5 w-5" />, 
+      label: <FormattedMessage id="common.navigation.blog" defaultMessage="Blog" />, 
+      href: `/${locale}/blog`, 
+      gradient: "radial-gradient(circle, hsl(var(--chart-1) / 0.15) 0%, hsl(var(--chart-1) / 0.06) 50%, hsl(var(--chart-1) / 0) 100%)", 
       iconColor: "group-hover:text-primary" 
     },
     { 

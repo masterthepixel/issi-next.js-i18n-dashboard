@@ -1,0 +1,99 @@
+/* PayloadCMS Admin Panel Styles */
+
+/* Custom branding for ISSI CMS */
+.payload-admin {
+  --primary-color: #3B82F6;
+  --secondary-color: #1E40AF;
+  --accent-color: #F59E0B;
+  --background-color: #F8FAFC;
+  --text-color: #1F2937;
+  --border-color: #E5E7EB;
+}
+
+/* Admin panel header customization */
+.payload-header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Form field enhancements */
+.field-type-text input,
+.field-type-textarea textarea,
+.field-type-richText .rich-text-editor {
+  border-radius: 6px;
+  border-color: var(--border-color);
+  transition: border-color 0.2s ease-in-out;
+}
+
+.field-type-text input:focus,
+.field-type-textarea textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+/* Button styling */
+.btn {
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn.btn--style-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn.btn--style-primary:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+/* Sidebar styling */
+.nav {
+  background-color: var(--background-color);
+  border-right: 1px solid var(--border-color);
+}
+
+/* Collection list enhancements */
+.collection-list .table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.collection-list .table th {
+  background-color: var(--background-color);
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* Rich text editor enhancements */
+.rich-text-editor {
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.rich-text-editor .slate-editor {
+  padding: 12px;
+  min-height: 200px;
+}
+
+/* Status indicators */
+.pill--status-published {
+  background-color: #10B981;
+  color: white;
+}
+
+.pill--status-draft {
+  background-color: #F59E0B;
+  color: white;
+}
+
+/* Dashboard customizations */
+.dashboard {
+  padding: 24px;
+}
+
+.dashboard .dashboard__label {
+  color: var(--text-color);
+  font-size: 24px;
+  font-weight: 700;
+}

@@ -36,6 +36,11 @@ export default function AppMenu({ locale }: AppMenuProps) {
                 </Link>
             </li>
             <li>
+                <Link href={`/${locale}/blog`} className="block px-4 py-2 text-sm">
+                    <FormattedMessage id="common.navigation.blog" />
+                </Link>
+            </li>
+            <li>
                 <Link href={`/${locale}/about`} className="block px-4 py-2 text-sm">
                     <FormattedMessage id="common.navigation.about" />
                 </Link>

@@ -20,6 +20,7 @@ export default function NavMenu({ locale }: NavMenuProps) {
         { name: <FormattedMessage id="common.navigation.government" />, link: `/${locale}/government` },
         { name: <FormattedMessage id="common.navigation.eLearning" />, link: `/${locale}/eLearning` },
         { name: <FormattedMessage id="common.navigation.compliance" />, link: `/${locale}/compliance` },
+        { name: <FormattedMessage id="common.navigation.blog" />, link: `/${locale}/blog` },
         { name: <FormattedMessage id="common.navigation.about" />, link: `/${locale}/about` }
     ];
 
