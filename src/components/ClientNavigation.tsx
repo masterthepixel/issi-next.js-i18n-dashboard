@@ -1,14 +1,14 @@
 "use client";
 
-import { IntlProvider } from "react-intl";
-import HoverGradientNavBar from "./ui/hover-gradient-nav-bar";
-import UtilityMenu from "./ui/utility-menu";
-import Logo from "./ui/logo";
 import { Locale } from "@/lib/definitions";
+import { IntlProvider, MessageFormatElement } from "react-intl";
+import HoverGradientNavBar from "./ui/hover-gradient-nav-bar";
+import Logo from "./ui/logo";
+import UtilityMenu from "./ui/utility-menu";
 
 interface ClientNavigationProps {
   locale: Locale;
-  messages: Record<string, string>;
+  messages: Record<string, string> | Record<string, MessageFormatElement[]>;
 }
 
 export default function ClientNavigation({ locale, messages }: ClientNavigationProps) {

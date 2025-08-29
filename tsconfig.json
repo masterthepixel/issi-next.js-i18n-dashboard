@@ -5,7 +5,10 @@
       "dom.iterable",
       "esnext"
     ],
-    "types": ["vitest/globals", "@testing-library/jest-dom"],
+    "types": [
+      "vitest/globals",
+      "@testing-library/jest-dom"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -26,6 +29,9 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "@payload-config": [
+        "./payload-config.ts"
       ]
     },
     "strictNullChecks": true,
@@ -39,6 +45,8 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "i18n-config.ts",
+    "payload.config.ts",
+    "cms/**/*.ts",
     ".next/types/**/*.ts",
     "vitest.config.ts",
     "src/setupTests.ts",
@@ -54,6 +62,7 @@
     "*.config.mjs",
     ".next/**/*",
     "public/**/*",
-    "**/*.md"
+    "**/*.md",
+    "cms/seed/index.ts"
   ]
 }

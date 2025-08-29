@@ -123,7 +123,7 @@ const Expandable = React.forwardRef<HTMLDivElement, ExpandableProps>(
                     animate={{
                         transition: {
                             duration: transitionDuration,
-                            ease: easeType,
+                            ease: easeType as any,
                             delay: initialDelay,
                         },
                     }}
@@ -283,7 +283,7 @@ const ExpandableContent = React.forwardRef<
                     height: smoothHeight,
                     overflow: "hidden",
                 }}
-                transition={{ duration: transitionDuration, ease: easeType }}
+                transition={{ duration: transitionDuration, ease: easeType as any }}
                 {..._props}
             >
                 {/* AnimatePresence handles the entering and exiting of components */}
@@ -295,7 +295,7 @@ const ExpandableContent = React.forwardRef<
                             initial={animationProps.initial}
                             animate={animationProps.animate}
                             exit={animationProps.exit}
-                            transition={{ duration: transitionDuration, ease: easeType }}
+                            transition={{ duration: transitionDuration, ease: easeType as any }}
                         >
                             {stagger ? (
                                 // If stagger is true, we apply a staggered animation to the children

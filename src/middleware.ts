@@ -11,7 +11,7 @@ function getLocale(request: NextRequest): string | undefined {
   const negotiatorHeaders: Record<string, string> = {};
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
 
-  // @ts-ignore locales are readonly
+  // @ts-expect-error locales are readonly
   const locales: string[] = i18n.locales;
 
   // Use negotiator and intl-localematcher to get best locale
@@ -26,6 +26,11 @@ export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   const fallbackPage = "home";
+
+  // Skip middleware for Payload admin and API routes
+  if (pathname.startsWith('/admin') || pathname.startsWith('/api')) {
+    return NextResponse.next();
+  }
 
   // Check if there is any supported locale in the pathname
   const pathnameIsMissingLocale = i18n.locales.every(

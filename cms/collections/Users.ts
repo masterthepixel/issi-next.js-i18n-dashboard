@@ -1,4 +1,4 @@
-import type { CollectionConfig } from 'payload/types';
+import type { CollectionConfig } from 'payload';
 import { isAdmin } from '../access';
 
 export const Users: CollectionConfig = {
@@ -15,9 +15,28 @@ export const Users: CollectionConfig = {
         group: 'System',
     },
     access: {
-        read: isAdmin,
-        create: isAdmin,
-        update: isAdmin,
+        // Allow user registration for initial admin creation
+        create: ({ req: { user } }) => {
+            // If no user logged in, allow creation (for first admin)
+            if (!user) return true;
+            // Admin users can create other users
+            return Boolean(user?.role === 'admin');
+        },
+        // Allow users to read and update their own data
+        read: ({ req: { user }, id }) => {
+            // Allow admins to read all users
+            if (user?.role === 'admin') return true;
+            // Allow users to read their own profile
+            if (user?.id === id) return true;
+            return false;
+        },
+        update: ({ req: { user }, id }) => {
+            // Allow admins to update all users
+            if (user?.role === 'admin') return true;
+            // Allow users to update their own profile
+            if (user?.id === id) return true;
+            return false;
+        },
         delete: isAdmin,
     },
     fields: [

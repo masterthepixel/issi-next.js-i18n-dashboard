@@ -1,8 +1,8 @@
-import type { CollectionConfig } from 'payload/types';
+import type { CollectionConfig, FieldHook } from 'payload';
 import { isEditor, isLoggedInOrPublished } from '../access';
 
 // Hook to auto-generate slug from title
-const slugifyHook = ({ data, req }: { data: any; req: any }) => {
+const slugifyHook: FieldHook = ({ data }) => {
     if (data?.title && !data?.slug) {
         return data.title
             .toLowerCase()
@@ -135,25 +135,4 @@ export const Posts: CollectionConfig = {
         },
     ],
     timestamps: true,
-    // Only show published posts to non-authenticated users
-    defaultWhere: ({ req }) => {
-        if (req.user) {
-            return {};
-        }
-        
-        return {
-            and: [
-                {
-                    status: {
-                        equals: 'published',
-                    },
-                },
-                {
-                    publishedAt: {
-                        less_than_equal: new Date(),
-                    },
-                },
-            ],
-        };
-    },
 };

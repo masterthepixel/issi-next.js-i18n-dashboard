@@ -1,5 +1,5 @@
 import path from 'path';
-import type { CollectionConfig } from 'payload/types';
+import type { CollectionConfig } from 'payload';
 import { fileURLToPath } from 'url';
 
 import { isLoggedIn, isLoggedInOrPublished } from '../access';
@@ -38,10 +38,19 @@ export const Media: CollectionConfig = {
             },
         },
         {
-            name: 'focalPoint',
-            type: 'point',
+            name: 'focalX',
+            type: 'number',
             admin: {
-                description: 'Focal point for image cropping (optional)',
+                description: 'Focal point X coordinate (0-1)',
+                step: 0.01,
+            },
+        },
+        {
+            name: 'focalY',
+            type: 'number',
+            admin: {
+                description: 'Focal point Y coordinate (0-1)',
+                step: 0.01,
             },
         },
     ],

@@ -1,4 +1,5 @@
-import {withSentryConfig} from '@sentry/nextjs';
+import { withPayload } from '@payloadcms/next/withPayload';
+import { withSentryConfig } from '@sentry/nextjs';
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -109,7 +110,7 @@ const nextConfig = {
   },
 };
 
-export default withSentryConfig(nextConfig, {
+export default withSentryConfig(withPayload(nextConfig), {
   // For all available options, see:
   // https://www.npmjs.com/package/@sentry/webpack-plugin#options
 
