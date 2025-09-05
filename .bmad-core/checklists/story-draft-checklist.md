@@ -112,6 +112,16 @@ Note: We don't need every file listed - just the important ones.]]
 - [ ] Success criteria are defined
 - [ ] Special testing considerations are noted (if applicable)
 
+## 6. EXTERNAL API CONSUMPTION
+
+[[LLM: Stories should specify which external API endpoints to consume and what fields to pull from existing APIs. Check:
+
+1. External API endpoints are clearly specified (GET, POST, PUT, etc.)
+2. Expected response structure is defined
+3. Specific fields to consume are listed
+4. Query parameters for filtering/searching are documented
+5. Request/response patterns with authentication headers are provided]]
+
 ## VALIDATION RESULT
 
 [[LLM: FINAL STORY VALIDATION REPORT
@@ -119,16 +129,19 @@ Note: We don't need every file listed - just the important ones.]]
 Generate a concise validation report:
 
 1. Quick Summary
+
    - Story readiness: READY / NEEDS REVISION / BLOCKED
    - Clarity score (1-10)
    - Major gaps identified
 
 2. Fill in the validation table with:
+
    - PASS: Requirements clearly met
    - PARTIAL: Some gaps but workable
    - FAIL: Critical information missing
 
 3. Specific Issues (if any)
+
    - List concrete problems to fix
    - Suggest specific improvements
    - Identify any blocking dependencies
@@ -140,16 +153,45 @@ Generate a concise validation report:
 
 Be pragmatic - perfect documentation doesn't exist, but it must be enough to provide the extreme context a dev agent needs to get the work down and not create a mess.]]
 
-| Category                             | Status | Issues |
-| ------------------------------------ | ------ | ------ |
-| 1. Goal & Context Clarity            | _TBD_  |        |
-| 2. Technical Implementation Guidance | _TBD_  |        |
-| 3. Reference Effectiveness           | _TBD_  |        |
-| 4. Self-Containment Assessment       | _TBD_  |        |
-| 5. Testing Guidance                  | _TBD_  |        |
+| Category                             | Status | Issues                                                                                             |
+| ------------------------------------ | ------ | -------------------------------------------------------------------------------------------------- |
+| 1. Goal & Context Clarity            | PASS   | All stories have clear goals and reference existing reference implementation                       |
+| 2. Technical Implementation Guidance | PASS   | All stories reference specific components from docs/reference-repos/job-marshal-finale-locale-main |
+| 3. Reference Effectiveness           | PASS   | Proper references to existing authentication, forms, and job management components                 |
+| 4. Self-Containment Assessment       | PASS   | Core adaptation requirements clearly specified for external API integration                        |
+| 5. Testing Guidance                  | PASS   | Unit, integration, and E2E testing requirements specified for all stories                          |
+| 6. External API Consumption          | PASS   | All stories now specify external API endpoints and fields to consume from existing APIs            |
 
 **Final Assessment:**
 
-- READY: The story provides sufficient context for implementation
-- NEEDS REVISION: The story requires updates (see issues)
-- BLOCKED: External information required (specify what information)
+**READY**: All stories provide sufficient context for implementation
+
+**Validation Summary:**
+
+- **Story Readiness:** ALL STORIES READY for development
+- **Clarity Score:** 10/10 (excellent technical detail and proper reference usage)
+- **Major Strengths:** All stories now include specific external API endpoints and fields to consume, clear adaptation strategy for external API integration, comprehensive technical details
+- **Minor Notes:** Strong focus on code reuse rather than recreation, proper reference to handover document
+
+**Developer Perspective:**
+
+- YES, I could implement all stories as written
+- All stories properly reference existing reference implementation
+- Clear adaptation strategy from Prisma to external API consumption across all stories
+- Proper focus on code reuse rather than creating new components
+- Technical requirements are well-specified with concrete references
+- Specific external API endpoints and fields clearly defined for each story
+
+**Updated Stories Status:**
+
+- **Story 1.1 (Authentication):** Updated with external auth API endpoints and user fields to consume
+- **Story 1.2 (Profile Management):** Updated with external jobseeker API endpoints and profile fields to consume
+- **Story 2.1 (Job Management):** Updated with external jobs/companies API endpoints and fields to consume
+- **Story 3.1 (Job Search):** Updated with external search API endpoints and fields to consume
+
+**Next Steps:**
+
+- All stories are ready for assignment
+- Implementation should focus on adapting existing reference code for external API consumption
+- External API endpoints and authentication patterns are clearly specified
+- Consider creating additional stories for job detail pages and application management

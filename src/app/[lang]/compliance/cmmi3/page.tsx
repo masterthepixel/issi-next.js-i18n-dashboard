@@ -1,13 +1,16 @@
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
-import { Metadata } from "next";
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "CMMI Level 3 Certification | ISSI Compliance",
   description:
     "Learn more about ISSI's CMMI Level 3 certification. Demonstrates defined processes and continuous improvement in project delivery and quality management.",
 };
+
+// Force dynamic rendering to avoid build-time issues
+export const dynamic = 'force-dynamic';
 
 interface Props {
   params: { lang: Locale };

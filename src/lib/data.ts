@@ -1,6 +1,4 @@
-import { User, Report, TeamMember, Activity } from "@/lib/definitions";
-import { getPayload as getPayloadInstance } from 'payload';
-import config from '../../payload.config';
+import { Activity, Report, TeamMember, User } from "@/lib/definitions";
 
 export async function getUser(): Promise<User> {
   return new Promise((resolve) => {
@@ -115,12 +113,46 @@ export async function getActivities(): Promise<Activity[]> {
   });
 }
 
-// PayloadCMS data fetching
-let payload: any = null;
+/**
+ * External PayloadCMS API Configuration
+ */
+const API_BASE_URL = process.env.NEXT_PUBLIC_PAYLOAD_URL || 'https://issi-dashboard-payloadcms.vercel.app';
 
-export async function getPayload() {
-  if (!payload) {
-    payload = await getPayloadInstance({ config });
+/**
+ * Generic function to fetch posts from external PayloadCMS
+ */
+export async function fetchPosts(params: {
+  page?: number;
+  limit?: number;
+  locale?: string;
+  where?: Record<string, unknown>;
+} = {}) {
+  const { page = 1, limit = 10, locale, where } = params;
+
+  let url = `${API_BASE_URL}/api/posts?page=${page}&limit=${limit}&locale=${locale || 'en'}&depth=2`;
+
+  if (where) {
+    url += `&where=${encodeURIComponent(JSON.stringify(where))}`;
   }
-  return payload;
+
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch posts: ${response.status} ${response.statusText}`);
+  }
+
+  return response.json();
+}
+
+/**
+ * Fetch a single post from external PayloadCMS
+ */
+export async function fetchPostBySlug(slug: string, locale: string = 'en') {
+  const where = {
+    slug: { equals: slug },
+    _status: { equals: 'published' }
+  };
+
+  const result = await fetchPosts({ where, locale, limit: 1 });
+  return result.docs?.[0] || null;
 }

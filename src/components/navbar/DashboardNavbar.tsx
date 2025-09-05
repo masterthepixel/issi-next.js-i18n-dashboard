@@ -24,6 +24,8 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Locale } from "@/lib/definitions";
 import { cn } from "@/lib/utils";
 import {
+  BookOpen,
+  Briefcase,
   Building2,
   GraduationCap,
   HelpCircle,
@@ -119,6 +121,11 @@ export default function DashboardNavbar({
       title: messages["common.navigation.products"] || "Products",
       href: `/${locale}/products`,
       icon: <Package className="h-4 w-4" />,
+    },
+    {
+      title: messages["common.navigation.jobs"] || "Jobs",
+      href: `/${locale}/jobs`,
+      icon: <Briefcase className="h-4 w-4" />,
     },
     {
       title: messages["common.navigation.government"] || "Government",

@@ -102,6 +102,19 @@ const mouseY = transform.y;
 
 ---
 
+## 📚 Quality Standards & Documentation References
+
+**Before starting lint fixes, review these documentation resources:**
+
+- **[DOCUMENTATION_INDEX.md](../docs/DOCUMENTATION_INDEX.md)** - Master documentation index
+- **[COMPONENT_DEVELOPMENT_GUIDE.md](../docs/COMPONENT_DEVELOPMENT_GUIDE.md)** - Code quality standards and patterns
+- **[NEXTJS_15_COMPATIBILITY.md](../docs/NEXTJS_15_COMPATIBILITY.md)** - Framework-specific requirements
+- **[SHADCN_MIGRATION_LESSONS.md](../docs/SHADCN_MIGRATION_LESSONS.md)** - Quality lessons from migration
+
+**All fixes must comply with established patterns documented in COMPONENT_DEVELOPMENT_GUIDE.md**
+
+---
+
 ## ⏰ **Timeline**
 
 - **Start**: Immediate

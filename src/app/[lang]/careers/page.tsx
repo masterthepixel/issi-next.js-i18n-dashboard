@@ -1,51 +1,97 @@
 import { Suspense } from "react";
-
-import Card from "@/components/Card";
-import CardBody from "@/components/CardBody";
-import CardHeader from "@/components/CardHeader";
-import Spinner from "@/components/Spinner";
-
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
+import ErrorBoundary from "@/components/ErrorBoundary";
+import { JobFilters } from "@/components/careers/JobFilters";
+import JobListings from "@/components/careers/JobListings";
+import JobListingsLoading from "@/components/careers/JobListingsLoading";
 
 export const metadata = {
   title: "Careers - ISSI - International Software Systems International",
   description: "Join ISSI's team of talented professionals. Explore career opportunities and grow with us in software development and technology.",
 };
 
-interface Props {
-  params: {
+interface SearchParamsProps {
+  params: Promise<{
     lang: Locale;
-  };
+  }>;
+  searchParams: Promise<{
+    page?: string;
+    employmentType?: string;
+    location?: string;
+    q?: string;
+    minSalary?: string;
+    maxSalary?: string;
+  }>;
 }
 
-export default function Page({ params: { lang: locale } }: Props) {
+export default async function CareersPage({ params, searchParams }: SearchParamsProps) {
+  const { lang } = await params;
+  const searchParamsResolved = await searchParams;
+  
+  const intl = await getIntl(lang);
+
+  const currentPage = Number(searchParamsResolved.page) || 1;
+  const employmentTypes = searchParamsResolved.employmentType?.split(",") || [];
+  const location = searchParamsResolved.location || "";
+  const keyword = searchParamsResolved.q || "";
+  const minSalary = searchParamsResolved.minSalary || "";
+  const maxSalary = searchParamsResolved.maxSalary || "";
+
+  // Create a composite key from all filter parameters for Suspense
+  const filterKey = `page=${currentPage};types=${employmentTypes.join(",")};location=${location};q=${keyword};minSalary=${minSalary};maxSalary=${maxSalary}`;
+
   return (
-    <Suspense fallback={<Spinner />}>
-      <PageContent locale={locale} />
-    </Suspense>
-  );
-}
+    <ErrorBoundary>
+      <div className="container mx-auto px-4 py-8">
+        {/* Page Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold tracking-tight mb-2">
+            {intl.formatMessage({ 
+              id: "careers.title", 
+              defaultMessage: "Career Opportunities" 
+            })}
+          </h1>
+          <p className="text-muted-foreground text-lg">
+            {intl.formatMessage({ 
+              id: "careers.description", 
+              defaultMessage: "Discover your next career opportunity with ISSI. Join our team of talented professionals building innovative software solutions." 
+            })}
+          </p>
+        </div>
 
-interface PageContentProps {
-  locale: Locale;
-}
-
-async function PageContent({ locale }: PageContentProps) {
-  const intl = await getIntl(locale);
-
-  return (
-    <div>
-      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-        <Card>
-          <CardHeader>{intl.formatMessage({ id: "page.careers.title" })}</CardHeader>
-          <CardBody>
-            <p className="text-base text-slate-700 dark:text-slate-300">
-              {intl.formatMessage({ id: "page.careers.description" })}
-            </p>
-          </CardBody>
-        </Card>
+        {/* Main Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <JobFilters locale={lang} />
+          
+          <div className="col-span-1 lg:col-span-2 flex flex-col gap-6">
+            <Suspense key={filterKey} fallback={<JobListingsLoading />}>
+              <JobListingsClient 
+                currentPage={currentPage}
+                employmentType={employmentTypes}
+                location={location}
+                keyword={keyword}
+                minSalary={minSalary}
+                maxSalary={maxSalary}
+                locale={lang}
+              />
+            </Suspense>
+          </div>
+        </div>
       </div>
-    </div>
+    </ErrorBoundary>
   );
+}
+
+// Client wrapper component for JobListings
+function JobListingsClient(props: {
+  currentPage: number;
+  employmentType: string[];
+  location: string;
+  keyword: string;
+  minSalary: string;
+  maxSalary: string;
+  locale: string;
+}) {
+  return <JobListings {...props} />;
 }

@@ -1,12 +1,4 @@
-import { AnimatedBackground } from "@/components/AnimatedBackground";
-import ClientNavigation from "@/components/ClientNavigation";
-import ClientOnly from "@/components/ClientOnly";
-import Content from "@/components/Content";
-import ErrorBoundary from "@/components/ErrorBoundary";
-import FooterWrapper from "@/components/FooterWrapper";
-import ScrollToTopButton from "@/components/ScrollToTopButton";
-// UniversalIntelligentBreadcrumbWrapper removed
-import { ThemeProvider } from "next-themes";
+import ClientLayout from "@/components/ClientLayout";
 import React from 'react';
 
 import { fontClassNames } from "@/app/fonts";
@@ -28,34 +20,21 @@ interface Props {
 
 export default async function Root({ params, children }: Props) {
   const { lang } = await params;
-  const user = await getUser();
+  const _user = await getUser();
   const intl = await getIntl(lang);
   const messages = (await import(`../../lang/${lang}.json`)).default;
 
- return (
+  return (
     <html lang={lang} className={`h-full ${fontClassNames}`}>
       <head />
       <body className="relative min-h-screen overflow-y-auto overflow-x-visible grid-background-with-fade flex flex-col debug-screens">
-        <ErrorBoundary>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <AnimatedBackground />
-            
-            <Content>
-              {/* Universal Intelligent Breadcrumb removed */}
-              {children}
-            </Content>
-            <FooterWrapper locale={lang} />
-            <ClientOnly>
-              <ClientNavigation locale={lang} messages={intl.messages} />
-              <ScrollToTopButton />
-            </ClientOnly>
-          </ThemeProvider>
-        </ErrorBoundary>
+        <ClientLayout
+          lang={lang}
+          messages={messages}
+          intlMessages={intl.messages}
+        >
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );

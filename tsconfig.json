@@ -29,9 +29,6 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ],
-      "@payload-config": [
-        "./payload-config.ts"
       ]
     },
     "strictNullChecks": true,
@@ -45,8 +42,6 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "i18n-config.ts",
-    "payload.config.ts",
-    "cms/**/*.ts",
     ".next/types/**/*.ts",
     "vitest.config.ts",
     "src/setupTests.ts",

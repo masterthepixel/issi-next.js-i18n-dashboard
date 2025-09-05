@@ -1,0 +1,273 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { X } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback } from "react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Separator } from "@/components/ui/separator";
+import { Input } from "@/components/ui/input";
+import { useIntl } from "react-intl";
+import { countryList, popularLocations } from "@/lib/utils/countriesList";
+
+interface JobFiltersProps {
+  locale?: string;
+}
+
+export function JobFilters({ locale = "en" }: JobFiltersProps) {
+  const intl = useIntl();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const jobTypes = ["full-time", "part-time", "contract", "internship"];
+
+  // Get current filters from URL
+  const currentJobTypes = searchParams.get("employmentType")?.split(",") || [];
+  const currentLocation = searchParams.get("location") || "";
+  const currentMinSalary = searchParams.get("minSalary") || "";
+  const currentMaxSalary = searchParams.get("maxSalary") || "";
+  const currentKeyword = searchParams.get("q") || "";
+
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+
+      if (value) {
+        params.set(name, value);
+      } else {
+        params.delete(name);
+      }
+
+      // Reset to page 1 when filters change
+      if (name !== "page") {
+        params.set("page", "1");
+      }
+
+      return params.toString();
+    },
+    [searchParams]
+  );
+
+  const handleJobTypeChange = (type: string, checked: boolean) => {
+    const current = new Set(currentJobTypes);
+    if (checked) {
+      current.add(type);
+    } else {
+      current.delete(type);
+    }
+
+    const newValue = Array.from(current).join(",");
+    router.push(`/${locale}/careers?${createQueryString("employmentType", newValue)}`);
+  };
+
+  const handleLocationChange = (location: string) => {
+    router.push(`/${locale}/careers?${createQueryString("location", location)}`);
+  };
+
+  const handleKeywordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    router.push(`/${locale}/careers?${createQueryString("q", e.target.value)}`);
+  };
+
+  const handleMinSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    router.push(`/${locale}/careers?${createQueryString("minSalary", e.target.value)}`);
+  };
+
+  const handleMaxSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    router.push(`/${locale}/careers?${createQueryString("maxSalary", e.target.value)}`);
+  };
+
+  const clearFilters = () => {
+    router.push(`/${locale}/careers`);
+  };
+
+  const getJobTypeLabel = (type: string): string => {
+    const labels = {
+      "full-time": intl.formatMessage({ id: "careers.jobType.fullTime", defaultMessage: "Full Time" }),
+      "part-time": intl.formatMessage({ id: "careers.jobType.partTime", defaultMessage: "Part Time" }),
+      "contract": intl.formatMessage({ id: "careers.jobType.contract", defaultMessage: "Contract" }),
+      "internship": intl.formatMessage({ id: "careers.jobType.internship", defaultMessage: "Internship" }),
+    };
+    return labels[type as keyof typeof labels] || type;
+  };
+
+  return (
+    <Card className="col-span-1 h-fit">
+      <CardHeader className="space-y-4">
+        <div className="flex justify-between items-center">
+          <CardTitle className="text-2xl font-semibold">
+            {intl.formatMessage({ id: "careers.filters.title", defaultMessage: "Filter" })}
+          </CardTitle>
+          <Button
+            variant="destructive"
+            size="sm"
+            className="h-8"
+            onClick={clearFilters}
+          >
+            <span className="mr-2">
+              {intl.formatMessage({ id: "careers.filters.clearAll", defaultMessage: "Clear all" })}
+            </span>
+            <X className="h-4 w-4" />
+          </Button>
+        </div>
+        <Separator />
+      </CardHeader>
+      <CardContent className="space-y-6">
+        {/* Keyword Search */}
+        <div className="space-y-4">
+          <Label className="text-lg font-semibold">
+            {intl.formatMessage({ id: "careers.filters.keyword", defaultMessage: "Keyword" })}
+          </Label>
+          <Input
+            placeholder={intl.formatMessage({ 
+              id: "careers.filters.keywordPlaceholder", 
+              defaultMessage: "Search for jobs..." 
+            })}
+            value={currentKeyword}
+            onChange={handleKeywordChange}
+            className="w-full"
+          />
+        </div>
+        
+        <Separator />
+
+        {/* Job Type Filter */}
+        <div className="space-y-4">
+          <Label className="text-lg font-semibold">
+            {intl.formatMessage({ id: "careers.filters.jobType", defaultMessage: "Job Type" })}
+          </Label>
+          <div className="grid grid-cols-1 gap-4">
+            {jobTypes.map((type) => (
+              <div key={type} className="flex items-center space-x-2">
+                <Checkbox
+                  id={type.toLowerCase()}
+                  checked={currentJobTypes.includes(type)}
+                  onCheckedChange={(checked) =>
+                    handleJobTypeChange(type, checked as boolean)
+                  }
+                />
+                <Label
+                  htmlFor={type.toLowerCase()}
+                  className="text-sm font-medium"
+                >
+                  {getJobTypeLabel(type)}
+                </Label>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <Separator />
+
+        {/* Location Filter */}
+        <div className="space-y-4">
+          <Label className="text-lg font-semibold">
+            {intl.formatMessage({ id: "careers.filters.location", defaultMessage: "Location" })}
+          </Label>
+          <Select value={currentLocation} onValueChange={handleLocationChange}>
+            <SelectTrigger>
+              <SelectValue placeholder={intl.formatMessage({ 
+                id: "careers.filters.selectLocation", 
+                defaultMessage: "Select Location" 
+              })} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>
+                  {intl.formatMessage({ id: "careers.filters.remote", defaultMessage: "Remote" })}
+                </SelectLabel>
+                <SelectItem value="remote">
+                  <span>🌍</span>
+                  <span className="pl-2">
+                    {intl.formatMessage({ 
+                      id: "careers.filters.worldwide", 
+                      defaultMessage: "Worldwide / Remote" 
+                    })}
+                  </span>
+                </SelectItem>
+              </SelectGroup>
+              
+              <SelectGroup>
+                <SelectLabel>
+                  {intl.formatMessage({ id: "careers.filters.popular", defaultMessage: "Popular" })}
+                </SelectLabel>
+                {popularLocations
+                  .filter(location => location !== "Remote/Worldwide")
+                  .map((location) => {
+                    const country = countryList.find(c => c.name === location);
+                    return (
+                      <SelectItem value={location} key={location}>
+                        <span>{country?.flagEmoji || "📍"}</span>
+                        <span className="pl-2">{location}</span>
+                      </SelectItem>
+                    );
+                  })}
+              </SelectGroup>
+
+              <SelectGroup>
+                <SelectLabel>
+                  {intl.formatMessage({ id: "careers.filters.allLocations", defaultMessage: "All Locations" })}
+                </SelectLabel>
+                {countryList
+                  .filter(country => !popularLocations.includes(country.name))
+                  .map((country) => (
+                    <SelectItem value={country.name} key={country.name}>
+                      <span>{country.flagEmoji}</span>
+                      <span className="pl-2">{country.name}</span>
+                    </SelectItem>
+                  ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
+        
+        <Separator />
+
+        {/* Salary Range Filter */}
+        <div className="space-y-4">
+          <Label className="text-lg font-semibold">
+            {intl.formatMessage({ id: "careers.filters.salaryRange", defaultMessage: "Salary Range" })}
+          </Label>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="minSalary" className="text-sm">
+                {intl.formatMessage({ id: "careers.filters.minSalary", defaultMessage: "Min Salary" })}
+              </Label>
+              <Input
+                id="minSalary"
+                type="number"
+                placeholder="0"
+                value={currentMinSalary}
+                onChange={handleMinSalaryChange}
+                className="w-full"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="maxSalary" className="text-sm">
+                {intl.formatMessage({ id: "careers.filters.maxSalary", defaultMessage: "Max Salary" })}
+              </Label>
+              <Input
+                id="maxSalary"
+                type="number"
+                placeholder="500,000"
+                value={currentMaxSalary}
+                onChange={handleMaxSalaryChange}
+                className="w-full"
+              />
+            </div>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}

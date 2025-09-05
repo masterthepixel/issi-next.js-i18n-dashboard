@@ -4,99 +4,50 @@ import { Suspense } from "react";
 
 import Spinner from "@/components/Spinner";
 import { Locale } from "@/lib/definitions";
-import { getPayload } from "@/lib/data";
 
 export async function generateStaticParams() {
-  const payload = await getPayload();
-  
-  try {
-    // Fetch all published posts for all locales to generate static params
-    const posts = await payload.find({
-      collection: 'posts',
-      where: {
-        status: {
-          equals: 'published',
-        },
-      },
-      limit: 1000, // Adjust as needed
-      depth: 0, // Only need slugs
-    });
-    
-    // Generate params for all posts in all locales
-    const locales = ['en', 'fr', 'es'];
-    const params: { lang: string; slug: string }[] = [];
-    
-    for (const locale of locales) {
-      for (const post of posts.docs) {
-        if (post.slug) {
-          params.push({
-            lang: locale,
-            slug: post.slug,
-          });
-        }
-      }
-    }
-    
-    return params;
-  } catch (error) {
-    console.error('Error generating static params:', error);
-    return [];
-  }
+  // For external PayloadCMS, we'll skip static generation to avoid issues
+  // The posts will be dynamically fetched at runtime
+  return [];
 }
 
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ lang: Locale; slug: string }> 
+// Force dynamic rendering to avoid build-time issues
+export const dynamic = 'force-dynamic';
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ lang: Locale; slug: string }>
 }): Promise<Metadata> {
   const { lang, slug } = await params;
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://issi.com';
-  
-  try {
-    const payload = await getPayload();
-    const post = await payload.find({
-      collection: 'posts',
-      where: {
-        and: [
-          {
-            slug: {
-              equals: slug,
-            },
-          },
-          {
-            status: {
-              equals: 'published',
-            },
-          },
-        ],
-      },
-      limit: 1,
-      locale: lang,
-      depth: 2, // Include author and featuredImage data
-    });
 
-    if (!post.docs[0]) {
+  try {
+    // Import the fetch function
+    const { fetchPostBySlug } = await import("@/lib/data");
+    const post = await fetchPostBySlug(slug, lang);
+
+    if (!post) {
       return {
         title: 'Post Not Found | ISSI',
         description: 'The requested blog post could not be found.',
       };
     }
 
-    const postData = post.docs[0];
-    const authorName = postData.author 
-      ? `${postData.author.firstName || ''} ${postData.author.lastName || ''}`.trim()
+    const authorName = post.author
+      ? `${post.author.firstName || ''} ${post.author.lastName || ''}`.trim()
       : 'ISSI Team';
 
-    const title = `${postData.title} | ISSI Blog`;
-    const description = postData.excerpt || `Read the latest from ${authorName} on the ISSI blog.`;
-    const featuredImageUrl = postData.featuredImage
-      ? (typeof postData.featuredImage === 'object' ? postData.featuredImage.url : postData.featuredImage)
+    const title = `${post.title} | ISSI Blog`;
+    const description = post.excerpt || `Read the latest from ${authorName} on the ISSI blog.`;
+    const featuredImageUrl = post.featuredImage
+      ? (typeof post.featuredImage === 'object' ? post.featuredImage.url : post.featuredImage)
       : `${baseUrl}/images/blog-og.jpg`;
 
     return {
       title,
       description,
-      keywords: `ISSI blog, ${postData.title}, ${authorName}, technology insights, software development`,
+      keywords: `ISSI blog, ${post.title}, ${authorName}, technology insights, software development`,
       authors: [{ name: authorName }],
       openGraph: {
         title,
@@ -108,13 +59,13 @@ export async function generateMetadata({
             url: featuredImageUrl,
             width: 1200,
             height: 630,
-            alt: postData.title,
+            alt: post.title,
           },
         ],
         locale: lang,
         type: "article",
-        publishedTime: postData.publishedAt,
-        modifiedTime: postData.updatedAt,
+        publishedTime: post.publishedAt,
+        modifiedTime: post.updatedAt,
         authors: [authorName],
       },
       twitter: {
@@ -162,7 +113,7 @@ interface Props {
 
 export default async function Page({ params }: Props) {
   const { lang: locale, slug } = await params;
-  
+
   return (
     <Suspense fallback={<Spinner />}>
       <PageContent locale={locale} slug={slug} />
@@ -177,41 +128,17 @@ interface PageContentProps {
 
 async function PageContent({ locale, slug }: PageContentProps) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://issi.com';
-  
-  try {
-    const payload = await getPayload();
-    const result = await payload.find({
-      collection: 'posts',
-      where: {
-        and: [
-          {
-            slug: {
-              equals: slug,
-            },
-          },
-          {
-            status: {
-              equals: 'published',
-            },
-          },
-          {
-            publishedAt: {
-              less_than_equal: new Date(),
-            },
-          },
-        ],
-      },
-      limit: 1,
-      locale,
-      depth: 2, // Include author and featuredImage data
-    });
 
-    if (!result.docs[0]) {
+  try {
+    // Import the fetch function
+    const { fetchPostBySlug } = await import("@/lib/data");
+    const post = await fetchPostBySlug(slug, locale);
+
+    if (!post) {
       notFound();
     }
 
-    const post = result.docs[0];
-    const authorName = post.author 
+    const authorName = post.author
       ? `${post.author.firstName || ''} ${post.author.lastName || ''}`.trim()
       : 'ISSI Team';
 
@@ -256,11 +183,11 @@ async function PageContent({ locale, slug }: PageContentProps) {
           },
           "image": post.featuredImage
             ? {
-                "@type": "ImageObject",
-                "url": typeof post.featuredImage === 'object' ? post.featuredImage.url : post.featuredImage,
-                "width": 1200,
-                "height": 630
-              }
+              "@type": "ImageObject",
+              "url": typeof post.featuredImage === 'object' ? post.featuredImage.url : post.featuredImage,
+              "width": 1200,
+              "height": 630
+            }
             : undefined,
           "articleSection": post.categories?.map((cat: any) => cat.title) || ["Technology"],
           "keywords": post.categories?.map((cat: any) => cat.title).join(", ") || "technology, software development",
@@ -311,30 +238,30 @@ async function PageContent({ locale, slug }: PageContentProps) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
-        
+
         <article className="max-w-4xl mx-auto px-4 py-8">
           {/* Breadcrumb Navigation */}
           <nav className="mb-8" aria-label="Breadcrumb">
             <ol className="flex items-center gap-2 text-sm text-muted-foreground">
               <li>
-                <a 
+                <a
                   href={`/${locale}`}
                   className="hover:text-primary transition-colors"
                 >
-                  {locale === 'en' ? 'Home' : 
-                   locale === 'fr' ? 'Accueil' : 
-                   'Inicio'}
+                  {locale === 'en' ? 'Home' :
+                    locale === 'fr' ? 'Accueil' :
+                      'Inicio'}
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <span>→</span>
-                <a 
+                <a
                   href={`/${locale}/blog`}
                   className="hover:text-primary transition-colors"
                 >
-                  {locale === 'en' ? 'Blog' : 
-                   locale === 'fr' ? 'Blog' : 
-                   'Blog'}
+                  {locale === 'en' ? 'Blog' :
+                    locale === 'fr' ? 'Blog' :
+                      'Blog'}
                 </a>
               </li>
               <li className="flex items-center gap-2">
@@ -385,8 +312,8 @@ async function PageContent({ locale, slug }: PageContentProps) {
                 <div>
                   <div className="font-medium text-sm">
                     {locale === 'en' ? 'By' :
-                     locale === 'fr' ? 'Par' :
-                     'Por'} {authorName}
+                      locale === 'fr' ? 'Par' :
+                        'Por'} {authorName}
                   </div>
                 </div>
               </div>
@@ -398,8 +325,8 @@ async function PageContent({ locale, slug }: PageContentProps) {
               {post.publishedAt !== post.updatedAt && (
                 <div className="text-sm text-muted-foreground">
                   {locale === 'en' ? 'Updated' :
-                   locale === 'fr' ? 'Mis à jour' :
-                   'Actualizado'} {formatDate(post.updatedAt)}
+                    locale === 'fr' ? 'Mis à jour' :
+                      'Actualizado'} {formatDate(post.updatedAt)}
                 </div>
               )}
             </div>
@@ -447,8 +374,8 @@ async function PageContent({ locale, slug }: PageContentProps) {
                 <div>
                   <h3 className="font-semibold text-lg mb-2">
                     {locale === 'en' ? 'About the Author' :
-                     locale === 'fr' ? 'À propos de l\'auteur' :
-                     'Sobre el Autor'}
+                      locale === 'fr' ? 'À propos de l\'auteur' :
+                        'Sobre el Autor'}
                   </h3>
                   <p className="text-muted-foreground mb-2">
                     <strong>{authorName}</strong>
@@ -456,12 +383,12 @@ async function PageContent({ locale, slug }: PageContentProps) {
                   <p className="text-sm text-muted-foreground">
                     {post.author.role === 'admin' ? (
                       locale === 'en' ? 'Administrator and technology leader at ISSI.' :
-                      locale === 'fr' ? 'Administrateur et leader technologique chez ISSI.' :
-                      'Administrador y líder tecnológico en ISSI.'
+                        locale === 'fr' ? 'Administrateur et leader technologique chez ISSI.' :
+                          'Administrador y líder tecnológico en ISSI.'
                     ) : (
                       locale === 'en' ? 'Content contributor and technology expert at ISSI.' :
-                      locale === 'fr' ? 'Contributeur de contenu et expert technologique chez ISSI.' :
-                      'Colaborador de contenido y experto en tecnología en ISSI.'
+                        locale === 'fr' ? 'Contributeur de contenu et expert technologique chez ISSI.' :
+                          'Colaborador de contenido y experto en tecnología en ISSI.'
                     )}
                   </p>
                 </div>
@@ -473,23 +400,23 @@ async function PageContent({ locale, slug }: PageContentProps) {
           <div className="flex flex-wrap items-center gap-4 mb-8">
             <span className="text-sm font-medium text-muted-foreground">
               {locale === 'en' ? 'Share this post:' :
-               locale === 'fr' ? 'Partager cet article :' :
-               'Compartir este artículo:'}
+                locale === 'fr' ? 'Partager cet article :' :
+                  'Compartir este artículo:'}
             </span>
             <div className="flex gap-2">
-              <SocialShareButton 
+              <SocialShareButton
                 platform="twitter"
                 url={`${baseUrl}/${locale}/blog/${slug}`}
                 title={post.title}
                 locale={locale}
               />
-              <SocialShareButton 
+              <SocialShareButton
                 platform="linkedin"
                 url={`${baseUrl}/${locale}/blog/${slug}`}
                 title={post.title}
                 locale={locale}
               />
-              <SocialShareButton 
+              <SocialShareButton
                 platform="facebook"
                 url={`${baseUrl}/${locale}/blog/${slug}`}
                 title={post.title}
@@ -505,7 +432,7 @@ async function PageContent({ locale, slug }: PageContentProps) {
               className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium"
             >
               ← {locale === 'en' ? 'Back to Blog' :
-                  locale === 'fr' ? 'Retour au Blog' :
+                locale === 'fr' ? 'Retour au Blog' :
                   'Volver al Blog'}
             </a>
           </div>
@@ -521,15 +448,15 @@ async function PageContent({ locale, slug }: PageContentProps) {
 // Rich Text Renderer Component
 function RichTextRenderer({ content }: { content: any }) {
   if (!content) return null;
-  
+
   // This is a simplified rich text renderer
   // In a real implementation, you'd want to use @payloadcms/richtext-lexical-react
   // or implement a proper renderer for your chosen rich text format
-  
+
   if (typeof content === 'string') {
     return <div dangerouslySetInnerHTML={{ __html: content }} />;
   }
-  
+
   // Handle Lexical JSON format (simplified)
   if (content?.root?.children) {
     return (
@@ -540,14 +467,14 @@ function RichTextRenderer({ content }: { content: any }) {
       </div>
     );
   }
-  
+
   // Fallback for other formats
   return <div>{JSON.stringify(content)}</div>;
 }
 
 function RenderNode({ node }: { node: any }) {
   if (!node) return null;
-  
+
   switch (node.type) {
     case 'paragraph':
       return (
@@ -605,29 +532,29 @@ function RenderNode({ node }: { node: any }) {
 }
 
 // Social Share Button Component
-function SocialShareButton({ 
-  platform, 
-  url, 
-  title, 
-  locale 
-}: { 
-  platform: 'twitter' | 'linkedin' | 'facebook'; 
-  url: string; 
-  title: string; 
-  locale: Locale; 
+function SocialShareButton({
+  platform,
+  url,
+  title,
+  locale
+}: {
+  platform: 'twitter' | 'linkedin' | 'facebook';
+  url: string;
+  title: string;
+  locale: Locale;
 }) {
   const shareUrls = {
     twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
   };
-  
+
   const labels = {
     twitter: 'Twitter',
-    linkedin: 'LinkedIn', 
+    linkedin: 'LinkedIn',
     facebook: 'Facebook',
   };
-  
+
   return (
     <a
       href={shareUrls[platform]}

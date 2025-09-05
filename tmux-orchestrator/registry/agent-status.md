@@ -2,6 +2,19 @@
 
 # Updated automatically by agents during their work
 
+## 📚 Documentation Resources
+
+**All agents should reference project documentation for guidance:**
+
+- **[DOCUMENTATION_INDEX.md](../docs/DOCUMENTATION_INDEX.md)** - Master index of all project documentation
+- **[COMPONENT_DEVELOPMENT_GUIDE.md](../docs/COMPONENT_DEVELOPMENT_GUIDE.md)** - Component standards and patterns
+- **[NEXTJS_15_COMPATIBILITY.md](../docs/NEXTJS_15_COMPATIBILITY.md)** - Framework compatibility guide
+- **[CHANGELOG.md](../CHANGELOG.md)** - Project change history and current status
+
+**Before starting work, review relevant documentation to understand current standards and avoid known issues.**
+
+---
+
 ## Frontend Agent (Window 1)
 
 **Last Update**: Not started

@@ -1,0 +1,277 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String          @id @default(cuid())
+  name          String?
+  email         String          @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  // Optional for WebAuthn support
+  Authenticator Authenticator[]
+
+  // Job Portal Fields
+  role          UserRole        @default(JOB_SEEKER)
+  onboardingCompleted Boolean @default(false)
+
+  stripeCustomerId String? @unique
+
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  // Relations
+  Company      Company?
+  JobSeeker    JobSeeker?
+  Applications Application[] @relation("ApplicationApplicant")
+  AssignedApplications Application[] @relation("ApplicationAssignee")
+  SavedJobs    SavedJob[]
+  JobPostLogs  JobPostLog[]
+  ApplicationStatusLogs ApplicationStatusLog[]
+}
+
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+}
+
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@id([identifier, token])
+}
+
+// Optional for WebAuthn support
+model Authenticator {
+  credentialID         String  @unique
+  userId               String
+  providerAccountId    String
+  credentialPublicKey  String
+  counter              Int
+  credentialDeviceType String
+  credentialBackedUp   Boolean
+  transports           String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, credentialID])
+}
+
+enum UserRole {
+  ADMIN
+  HR_MANAGER
+  HIRING_MANAGER
+  JOB_SEEKER
+}
+
+model Company {
+  id String @id @default(uuid())
+
+  name     String
+  location String
+  logo     String
+  website  String
+  xAccount String?
+  about    String
+  user     User    @relation(fields: [userId], references: [id])
+  userId   String  @unique
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  JobPosts  JobPost[]
+}
+
+model JobSeeker {
+  id     String @id @default(uuid())
+  name   String
+  about  String
+  resume String
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model JobPost {
+  id String @id @default(uuid())
+
+  jobTitle        String
+  employmentType  String
+  location        String
+  salaryFrom      Int
+  salaryTo        Int
+  jobDescription  String
+  listingDuration Int
+  benefits        String[]
+
+  status       JobPostStatus @default(DRAFT)
+  applications Int           @default(0)
+
+  // Additional fields for PRD requirements
+  department      String?
+  requirements    String?
+  responsibilities String?
+  applicationDeadline DateTime?
+  slug            String    @unique
+
+  company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  companyId String
+
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  Applications Application[]
+  SavedJobs    SavedJob[]
+  Logs         JobPostLog[]
+}
+
+enum JobPostStatus {
+  DRAFT
+  ACTIVE
+  EXPIRED
+  CLOSED
+  PAUSED
+}
+
+model Application {
+  id String @id @default(uuid())
+
+  status ApplicationStatus @default(APPLIED)
+
+  // Application content
+  resume      String?
+  coverLetter String?
+
+  // Metadata
+  appliedDate     DateTime @default(now())
+  lastStatusChange DateTime @default(now())
+  notes           String?
+
+  // Relations
+  job         JobPost @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  jobId       String
+  applicant   User    @relation("ApplicationApplicant", fields: [applicantId], references: [id], onDelete: Cascade)
+  applicantId String
+
+  // Assignment
+  assignedTo User?   @relation("ApplicationAssignee", fields: [assignedToId], references: [id])
+  assignedToId String?
+
+  // Priority
+  priority ApplicationPriority @default(NORMAL)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Logs      ApplicationStatusLog[]
+}
+
+enum ApplicationStatus {
+  APPLIED
+  UNDER_REVIEW_HR
+  SHORTLISTED
+  INTERVIEW
+  REJECTED
+  HIRED
+  WITHDRAWN
+}
+
+enum ApplicationPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+model SavedJob {
+  id     String @id @default(uuid())
+  jobId  String
+  userId String
+
+  job  JobPost @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  user User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, jobId])
+}
+
+model ApplicationStatusLog {
+  id String @id @default(uuid())
+
+  applicationId String
+  jobId         String
+  applicantId   String
+
+  oldStatus ApplicationStatus
+  newStatus ApplicationStatus
+
+  changedBy   User @relation(fields: [changedById], references: [id])
+  changedById String
+
+  notes     String?
+  ipAddress String?
+  userAgent String?
+
+  changedAt DateTime @default(now())
+
+  application Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@index([applicationId])
+  @@index([changedAt])
+}
+
+model JobPostLog {
+  id String @id @default(uuid())
+
+  jobId String
+  userId String
+
+  action    String // CREATE, UPDATE, DELETE, STATUS_CHANGE
+  oldValue  Json?
+  newValue  Json?
+  field     String?
+
+  user User @relation(fields: [userId], references: [id])
+  job  JobPost @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@index([jobId])
+  @@index([createdAt])
+}

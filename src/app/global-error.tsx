@@ -1,13 +1,12 @@
 'use client'
 
-import * as Sentry from "@sentry/nextjs";
+/* import * as Sentry from "@sentry/nextjs"; */
 import Error from "next/error";
-import { useEffect } from "react";
 
-export default function GlobalError({ error, reset }: { error: Error & { digest?: string }, reset: () => void }) {
-  useEffect(() => {
+export default function GlobalError({ error, reset }: { error: Error & { digest?: string }, reset?: () => void }) {
+  /* useEffect(() => {
     Sentry.captureException(error);
-  }, [error]);
+  }, [error]); */
 
   return (
     <html>
@@ -21,7 +20,7 @@ export default function GlobalError({ error, reset }: { error: Error & { digest?
             <div className="space-x-4">
               <button
                 className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                onClick={() => reset()}
+                onClick={() => reset?.()}
               >
                 Try again
               </button>
