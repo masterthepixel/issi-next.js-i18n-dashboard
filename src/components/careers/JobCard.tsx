@@ -86,9 +86,9 @@ export function JobCard({ job, locale = "en" }: JobCardProps) {
           )}
           
           <div className="flex flex-col flex-grow">
-            <h2 className="text-xl md:text-2xl font-bold">{job.jobTitle}</h2>
+            <h2 className="md:text-2xl">{job.jobTitle}</h2>
             <div className="flex flex-wrap items-center gap-2 mt-1">
-              <p className="text-sm text-muted-foreground">
+              <p className="" text-caption3331>
                 {job.company.name}
               </p>
               <span className="hidden md:inline text-muted-foreground">•</span>
@@ -102,7 +102,7 @@ export function JobCard({ job, locale = "en" }: JobCardProps) {
               {(job.salaryFrom || job.salaryTo) && (
                 <>
                   <span className="hidden md:inline text-muted-foreground">•</span>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="" text-caption4049>
                     {formatSalaryRange(job.salaryFrom, job.salaryTo)}
                   </p>
                 </>
@@ -113,11 +113,11 @@ export function JobCard({ job, locale = "en" }: JobCardProps) {
           <div className="md:ml-auto">
             <div className="flex items-center gap-2 mb-1">
               <MapPin className="size-4 text-muted-foreground" />
-              <h3 className="text-base md:text-lg font-semibold whitespace-nowrap">
+              <h3 className="md:text-lg whitespace-nowrap">
                 {job.location}
               </h3>
             </div>
-            <p className="text-sm text-muted-foreground md:text-right">
+            <p className="" text-caption4583>
               {formatRelativeTime(job.createdAt)}
             </p>
             {job.applications > 0 && (

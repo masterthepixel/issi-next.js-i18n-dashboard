@@ -33,22 +33,22 @@ const partners = [
 export default function AboutPartnerNetwork() {
   const intl = useIntl();
   return (
-    <section 
+    <section
       className="py-24 sm:py-32"
       aria-labelledby="partners-heading"
       role="region"
       aria-label="Strategic technology partnerships"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-x-8 gap-y-16 lg:grid-cols-2">          
+        <div className="grid grid-cols-1 items-center gap-x-8 gap-y-16 lg:grid-cols-2">
           <div className="mx-auto w-full max-w-xl lg:mx-0">
-            <h2 id="partners-heading" className="text-4xl font-semibold tracking-tight text-pretty text-foreground sm:text-5xl">
+            <h2 id="partners-heading" className="text-pretty text-foreground sm:text-5xl">
               {intl.formatMessage({ id: "about.partnerNetwork.title" })}
             </h2>
             <p className="mt-6 text-lg/8 text-muted-foreground">
               {intl.formatMessage({ id: "about.partnerNetwork.description" })}
             </p>
-          </div>          
+          </div>
           <div className="mx-auto grid w-full max-w-xl grid-cols-2 items-center gap-y-12 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:pl-8" role="list">
             {partners.map((partner) => (
               <div key={partner.id} className="flex justify-center lg:justify-start" role="listitem">

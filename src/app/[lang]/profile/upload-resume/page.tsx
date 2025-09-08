@@ -174,7 +174,7 @@ export default function UploadResumePage({ params }: { params: { lang: string } 
                                     {selectedFile ? (
                                         <div>
                                             <div className="text-green-600 text-6xl mb-4">✅</div>
-                                            <h3 className="text-lg font-medium text-green-900 mb-2">
+                                            <h3 className="text-green-900 mb-2">
                                                 <FormattedMessage
                                                     id="profile.upload.selected"
                                                     defaultMessage="File Selected"
@@ -183,7 +183,7 @@ export default function UploadResumePage({ params }: { params: { lang: string } 
                                             <p className="text-muted-foreground mb-4">
                                                 {selectedFile.name}
                                             </p>
-                                            <div className="text-sm text-muted-foreground mb-4">
+                                            <div className="" text-caption7133>
                                                 {selectedFile.size < 1024 * 1024
                                                     ? `${(selectedFile.size / 1024).toFixed(1)} KB`
                                                     : `${(selectedFile.size / (1024 * 1024)).toFixed(1)} MB`
@@ -207,7 +207,7 @@ export default function UploadResumePage({ params }: { params: { lang: string } 
                                     ) : (
                                         <div>
                                             <div className="text-muted-foreground text-6xl mb-4">📤</div>
-                                            <h3 className="text-lg font-medium mb-2">
+                                            <h3 className="mb-2">
                                                 <FormattedMessage
                                                     id="profile.upload.dropFiles"
                                                     defaultMessage="Drop your resume file here"
@@ -238,13 +238,13 @@ export default function UploadResumePage({ params }: { params: { lang: string } 
 
                                 {/* File Requirements */}
                                 <div className="mt-6 bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
-                                    <h4 className="font-medium text-blue-900 dark:text-blue-100 mb-3">
+                                    <h4 className="text-blue-900 dark:text-blue-100 mb-3">
                                         <FormattedMessage
                                             id="profile.upload.requirements.title"
                                             defaultMessage="File Requirements:"
                                         />
                                     </h4>
-                                    <ul className="text-sm text-blue-800 dark:text-blue-200 space-y-2">
+                                    <ul className="" text-caption11358>
                                         <li>• <FormattedMessage
                                             id="profile.upload.requirements.format"
                                             defaultMessage="PDF, DOC, or DOCX files only"
@@ -266,13 +266,13 @@ export default function UploadResumePage({ params }: { params: { lang: string } 
                                         <div className="flex">
                                             <div className="text-red-400 text-xl mr-3">⚠️</div>
                                             <div>
-                                                <h4 className="text-red-900 dark:text-red-100 font-medium">
+                                                <h4 className="text-red-900 dark:text-red-100">
                                                     <FormattedMessage
                                                         id="profile.upload.error.title"
                                                         defaultMessage="Upload Error"
                                                     />
                                                 </h4>
-                                                <p className="text-red-800 dark:text-red-200 text-sm mt-1">{error}</p>
+                                                <p className="text-red-800 dark:text-red-200  " text-caption13338>{error}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -304,7 +304,7 @@ export default function UploadResumePage({ params }: { params: { lang: string } 
                                 {/* Progress Bar */}
                                 {isUploading && (
                                     <div className="mt-6">
-                                        <div className="flex justify-between text-sm text-muted-foreground mb-2">
+                                        <div className="flex justify-between  " text-caption15153>
                                             <span>
                                                 <FormattedMessage
                                                     id="profile.upload.progress"
@@ -321,7 +321,7 @@ export default function UploadResumePage({ params }: { params: { lang: string } 
                             /* Success State */
                             <div className="text-center py-8">
                                 <div className="text-green-600 text-6xl mb-4">🎉</div>
-                                <h2 className="text-2xl font-bold text-green-900 mb-2">
+                                <h2 className="text-green-900 mb-2">
                                     <FormattedMessage
                                         id="profile.upload.success.title"
                                         defaultMessage="Resume Uploaded Successfully!"

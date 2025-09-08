@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from '@/lib/utils';
 import { ArrowRight, Award, CheckCircle, Clock, Shield, Star, Users } from 'lucide-react';
-import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import React from 'react';
 import { useIntl } from 'react-intl';
@@ -123,23 +122,23 @@ const GovernmentHeroInternal = () => {
           </span>
         </div>
 
-        <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl mb-4">
+        <h1 className="text-foreground sm:text-4xl mb-4">
           {intl.formatMessage({ id: "government.hero.title" })}
         </h1>
         <p className="text-lg text-muted-foreground max-w-3xl mb-8">
           {intl.formatMessage({ id: "government.hero.subtitle" })}
         </p>          {/* Action Buttons */}
         <div className="flex gap-4 mb-8">
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             rightIcon={<ArrowRight className="h-5 w-5 ml-2" />}
             onClick={() => router.push(`/${locale}/services`)}
             aria-label={intl.formatMessage({ id: "government.hero.cta.contracts" })}
           >
             {intl.formatMessage({ id: "government.hero.cta.contracts" })}
           </Button>
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             size="lg"
             onClick={() => router.push(`/${locale}/contact`)}
             aria-label={intl.formatMessage({ id: "government.hero.cta.contact" })}
@@ -184,7 +183,7 @@ const GovernmentHeroInternal = () => {
                   </CardTitle>
                   <p
                     id={`government-service-${service.id}-description`}
-                    className="text-muted-foreground text-sm"
+                    className="text-muted-foreground  " text-caption7259="true"
                   >
                     {service.description}
                   </p>

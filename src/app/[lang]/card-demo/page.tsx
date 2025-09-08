@@ -35,7 +35,7 @@ export default function CardEffectDemo() {
   return (
     <div className="py-16 px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <h1 className="text-3xl font-bold mb-8 text-center">Bento Grid with Card Hover Effect</h1>
+        <h1 className="mb-8 text-center">Bento Grid with Card Hover Effect</h1>
 
         <p className="text-lg mb-10 text-center max-w-3xl mx-auto">
           Hover over the cards below to see the Evervault-inspired hover effect integrated with our bento grid component.
@@ -51,7 +51,7 @@ export default function CardEffectDemo() {
                   <CardTitle className="mb-2 text-lg font-semibold">
                     {service.title}
                   </CardTitle>
-                  <p className="text-sm text-slate-600 dark:text-slate-300">
+                  <p className="" text-caption2241="true" text-muted-foreground2241="true">
                     {service.description}
                   </p>
                 </CardContent>
@@ -61,7 +61,7 @@ export default function CardEffectDemo() {
         </div>
 
         {/* Original Evervault Card Demo */}
-        <h2 className="text-2xl font-bold mb-8 text-center">Original Evervault Card</h2>
+        <h2 className="mb-8 text-center">Original Evervault Card</h2>
         <div className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start max-w-sm mx-auto p-4 relative h-[30rem] mb-16">
           <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
           <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
@@ -70,11 +70,11 @@ export default function CardEffectDemo() {
 
           <EvervaultCard text="hover" />
 
-          <h2 className="dark:text-white text-black mt-4 text-sm font-light">
+          <h2 className="dark: mt-4">
             Hover over this card to reveal an awesome effect. Running out of copy
             here.
           </h2>
-          <p className="text-sm border font-light dark:border-white/[0.2] border-black/[0.2] rounded-full mt-4 text-black dark:text-white px-2 py-0.5">
+          <p className="" text-caption3322="true">
             Watch me hover
           </p>
         </div>

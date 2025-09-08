@@ -86,7 +86,7 @@ export default function JobCard({
         <CardHeader className="pb-4">
           <div className="flex items-start justify-between gap-3">
             <div className="flex-1 min-w-0">
-              <h3 className="font-semibold text-lg text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+              <h3 className="text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
                 {job.jobTitle}
               </h3>
               
@@ -105,7 +105,7 @@ export default function JobCard({
                   </AvatarFallback>
                 </Avatar>
                 <div className="min-w-0 flex-1">
-                  <p className="font-medium text-sm text-foreground truncate">
+                  <p className="font-medium  " text-caption3555>
                     {job.company.name}
                   </p>
                   <div className="flex items-center gap-1 text-xs text-muted-foreground">
@@ -117,7 +117,7 @@ export default function JobCard({
 
               {/* Job Details */}
               <div className="space-y-2">
-                <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <div className="flex items-center gap-4  " text-caption4074>
                   <div className="flex items-center gap-1">
                     <MapPin className="h-3 w-3" />
                     <span>{job.location}</span>
@@ -129,7 +129,7 @@ export default function JobCard({
                 </div>
 
                 {(job.salaryFrom || job.salaryTo) && (
-                  <div className="flex items-center gap-1 text-sm text-foreground">
+                  <div className="flex items-center gap-1  " text-caption4625>
                     <DollarSign className="h-3 w-3" />
                     <span className="font-medium">{formattedSalary}</span>
                   </div>
@@ -169,7 +169,7 @@ export default function JobCard({
 
           {/* Job Description Excerpt */}
           {excerpt && (
-            <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+            <p className="" text-caption5927>
               {excerpt}
             </p>
           )}

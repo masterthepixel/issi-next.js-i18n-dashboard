@@ -54,32 +54,32 @@ export default function ComplianceIndustryCertifications() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-x-8 gap-y-16 lg:grid-cols-2">
           <div className="mx-auto w-full max-w-xl lg:mx-0">
-            <h2 className="text-4xl font-semibold tracking-tight text-pretty text-foreground sm:text-5xl">
-              <FormattedMessage 
-                id="compliance.industry.title" 
-                defaultMessage="Industry-Leading Compliance Standards" 
+            <h2 className="text-pretty text-foreground sm:text-5xl">
+              <FormattedMessage
+                id="compliance.industry.title"
+                defaultMessage="Industry-Leading Compliance Standards"
               />
             </h2>
             <p className="mt-6 text-lg/8 text-muted-foreground">
-              <FormattedMessage 
-                id="compliance.industry.description" 
-                defaultMessage="Our comprehensive certifications and compliance standards demonstrate our commitment to security, quality, and operational excellence across all service areas." 
+              <FormattedMessage
+                id="compliance.industry.description"
+                defaultMessage="Our comprehensive certifications and compliance standards demonstrate our commitment to security, quality, and operational excellence across all service areas."
               />
             </p>
             <div className="mt-8 flex items-center gap-x-6">
               <a
                 href="/contact"
-                className="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-primary-foreground shadow-xs hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                className="rounded-md bg-primary px-3.5 py-2.5  " text-caption2288="true"
               >
-                <FormattedMessage 
-                  id="compliance.industry.cta.primary" 
-                  defaultMessage="Learn More" 
+                <FormattedMessage
+                  id="compliance.industry.cta.primary"
+                  defaultMessage="Learn More"
                 />
               </a>
-              <a href="/compliance/iso27001" className="text-sm font-semibold text-foreground">
-                <FormattedMessage 
-                  id="compliance.industry.cta.secondary" 
-                  defaultMessage="View Certifications" 
+              <a href="/compliance/iso27001" className="" text-caption2738="true">
+                <FormattedMessage
+                  id="compliance.industry.cta.secondary"
+                  defaultMessage="View Certifications"
                 />
                 <span aria-hidden="true">&rarr;</span>
               </a>

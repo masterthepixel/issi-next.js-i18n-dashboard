@@ -69,7 +69,7 @@ export default function ProductsCompetencySkillsMatrixFeatures() {
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 {/* Hero Section */}
                 <div className="mx-auto max-w-7xl text-left">
-                    <h2 className="text-base/7 font-semibold text-muted-foreground">
+                    <h2 className="text-base/7 text-muted-foreground">
                         <FormattedMessage id="products.competency-skills-matrix.hero.tagline" />
                     </h2>
                     <p className="mt-2 text-4xl font-bold tracking-tight text-primary sm:text-5xl">
@@ -101,7 +101,7 @@ export default function ProductsCompetencySkillsMatrixFeatures() {
             {/* Features Section */}
             <div className="mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8">
                 <div className="mx-auto max-w-2xl lg:text-center mb-16">
-                    <h2 className="text-base/7 font-semibold text-muted-foreground">
+                    <h2 className="text-base/7 text-muted-foreground">
                         <FormattedMessage id="products.competency-skills-matrix.features.title" />
                     </h2>
                     <p className="mt-2 text-3xl font-bold tracking-tight text-primary sm:text-4xl">

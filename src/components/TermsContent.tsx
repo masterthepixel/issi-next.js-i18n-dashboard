@@ -23,7 +23,7 @@ function TermsContentInner() {
     <div className="prose max-w-none">
       {/* Introduction */}
       <section id="introduction" className="mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6">
+        <h2 className="text-foreground mb-6">
           <FormattedMessage id="license.sections.introduction.title" />
         </h2>
         <div className="space-y-4">
@@ -45,7 +45,7 @@ function TermsContentInner() {
 
       {/* Definitions */}
       <section id="definitions" className="mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6">
+        <h2 className="text-foreground mb-6">
           <FormattedMessage id="license.sections.definitions.title" />
         </h2>
         <div className="space-y-6">
@@ -89,7 +89,7 @@ function TermsContentInner() {
 
       {/* Cookies Policy */}
       <section id="cookies-policy" className="mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6">
+        <h2 className="text-foreground mb-6">
           <FormattedMessage id="license.sections.cookies.title" />
         </h2>
         <div className="space-y-4">
@@ -104,13 +104,13 @@ function TermsContentInner() {
 
       {/* Hyperlinking Guidelines */}
       <section id="hyperlinking-guidelines" className="mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6">
+        <h2 className="text-foreground mb-6">
           <FormattedMessage id="license.sections.hyperlinking.title" />
         </h2>
 
         {/* Approved Organizations */}
         <div id="approved-organizations" className="mb-8">
-          <h3 className="text-2xl font-semibold text-foreground mb-4">
+          <h3 className="text-foreground mb-4">
             <FormattedMessage id="license.sections.hyperlinking.approved.title" />
           </h3>
           <p className="text-muted-foreground mb-4">
@@ -137,7 +137,7 @@ function TermsContentInner() {
 
         {/* Conditional Approval */}
         <div id="conditional-approval" className="mb-8">
-          <h3 className="text-2xl font-semibold text-foreground mb-4">
+          <h3 className="text-foreground mb-4">
             <FormattedMessage id="license.sections.hyperlinking.conditional.title" />
           </h3>
           <p className="text-muted-foreground mb-4">
@@ -167,7 +167,7 @@ function TermsContentInner() {
 
         {/* Link Request Process */}
         <div id="link-request-process" className="mb-8">
-          <h3 className="text-2xl font-semibold text-foreground mb-4">
+          <h3 className="text-foreground mb-4">
             <FormattedMessage id="license.sections.hyperlinking.process.title" />
           </h3>
           <p className="text-muted-foreground mb-4">
@@ -206,7 +206,7 @@ function TermsContentInner() {
 
         {/* Linking Standards */}
         <div id="linking-standards" className="mb-8">
-          <h3 className="text-2xl font-semibold text-foreground mb-4">
+          <h3 className="text-foreground mb-4">
             <FormattedMessage id="license.sections.hyperlinking.standards.title" />
           </h3>
           <p className="text-muted-foreground mb-4">
@@ -238,7 +238,7 @@ function TermsContentInner() {
 
       {/* Iframes Policy */}
       <section id="iframes-policy" className="mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6">
+        <h2 className="text-foreground mb-6">
           <FormattedMessage id="license.sections.iframes.title" />
         </h2>
         <p className="text-lg text-muted-foreground">
@@ -248,13 +248,13 @@ function TermsContentInner() {
 
       {/* Rights and Modifications */}
       <section id="rights-modifications" className="mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6">
+        <h2 className="text-foreground mb-6">
           <FormattedMessage id="license.sections.rights.title" />
         </h2>
 
         {/* Reservation Rights */}
         <div id="reservation-rights" className="mb-8">
-          <h3 className="text-2xl font-semibold text-foreground mb-4">
+          <h3 className="text-foreground mb-4">
             <FormattedMessage id="license.sections.rights.reservation.title" />
           </h3>
           <div className="space-y-4">
@@ -269,7 +269,7 @@ function TermsContentInner() {
 
         {/* Link Removal */}
         <div id="link-removal" className="mb-8">
-          <h3 className="text-2xl font-semibold text-foreground mb-4">
+          <h3 className="text-foreground mb-4">
             <FormattedMessage id="license.sections.rights.linkRemoval.title" />
           </h3>
           <div className="space-y-4">
@@ -285,7 +285,7 @@ function TermsContentInner() {
 
       {/* Content Liability */}
       <section id="content-liability" className="mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6">
+        <h2 className="text-foreground mb-6">
           <FormattedMessage id="license.sections.liability.title" />
         </h2>
         <div className="space-y-4">
@@ -307,13 +307,13 @@ function TermsContentInner() {
 
       {/* Disclaimer and Limitations */}
       <section id="disclaimer-limitations" className="mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6">
+        <h2 className="text-foreground mb-6">
           <FormattedMessage id="license.sections.disclaimer.title" />
         </h2>
 
         {/* Liability Exclusions */}
         <div id="liability-exclusions" className="mb-8">
-          <h3 className="text-2xl font-semibold text-foreground mb-4">
+          <h3 className="text-foreground mb-4">
             <FormattedMessage id="license.sections.disclaimer.exclusions.title" />
           </h3>
           <p className="text-muted-foreground">
@@ -323,7 +323,7 @@ function TermsContentInner() {
 
         {/* Legal Limitations */}
         <div id="legal-limitations" className="mb-8">
-          <h3 className="text-2xl font-semibold text-foreground mb-4">
+          <h3 className="text-foreground mb-4">
             <FormattedMessage id="license.sections.disclaimer.limitations.title" />
           </h3>
           <p className="text-muted-foreground mb-4">

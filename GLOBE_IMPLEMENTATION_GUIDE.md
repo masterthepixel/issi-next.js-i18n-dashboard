@@ -150,7 +150,7 @@ function BreadcrumbComponent() {
       <MiniDataGlobe />
       <div>
         <div className="font-semibold">ISSI Global Infrastructure</div>
-        <div className="text-sm text-gray-600">84+ locations worldwide</div>
+        <div className="text-sm text-slate-600">84+ locations worldwide</div>
       </div>
     </div>
   );

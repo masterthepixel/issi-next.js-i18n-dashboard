@@ -7,7 +7,8 @@ import {
 } from "@/components/ui/sheet";
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
-import { BarChart, Compass, Home, Menu } from "lucide-react";
+import { BarChart, Compass, Menu } from "lucide-react";
+import Image from "next/image";
 import SidebarLink from "./SidebarLink";
 import { Button } from "./ui/button";
 
@@ -36,7 +37,13 @@ export default async function Sidebar({ locale }: Props) {
         <hr className="my-4 border-sidebar-border" />
         <div className="flex flex-col space-y-2">
           <SidebarLink href={`/${locale}/home`}>
-            <Home className="mr-2 h-5 w-5" />
+            <Image
+              src="/images/issi_logo.png"
+              alt="ISSI Logo"
+              width={32}
+              height={32}
+              className="mr-2 rounded"
+            />
             {intl.formatMessage({ id: "common.navigation.home" })}
           </SidebarLink>
           <SidebarLink href={`/${locale}/reports`}>

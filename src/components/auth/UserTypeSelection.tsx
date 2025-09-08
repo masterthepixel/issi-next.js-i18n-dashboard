@@ -85,13 +85,13 @@ export default function UserTypeSelection({ locale, onSelect }: UserTypeSelectio
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-4">
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-slate-800 p-4">
             <div className="w-full max-w-4xl">
                 <div className="text-center mb-8">
-                    <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                    <h1 className="dark: mb-2">
                         {getLocalizedText("title") as string}
                     </h1>
-                    <p className="text-lg text-gray-600 dark:text-gray-300">
+                    <p className="text-lg  " text-muted-foreground4461>
                         {getLocalizedText("subtitle") as string}
                     </p>
                 </div>
@@ -100,8 +100,8 @@ export default function UserTypeSelection({ locale, onSelect }: UserTypeSelectio
                     {/* Job Seeker Card */}
                     <Card
                         className={`cursor-pointer transition-all duration-300 hover:shadow-lg ${selectedType === "JOB_SEEKER"
-                                ? "ring-2 ring-blue-500 shadow-lg"
-                                : "hover:shadow-md"
+                            ? "ring-2 ring-blue-500 shadow-lg"
+                            : "hover:shadow-md"
                             }`}
                         onClick={() => handleSelection("JOB_SEEKER")}
                     >
@@ -118,7 +118,7 @@ export default function UserTypeSelection({ locale, onSelect }: UserTypeSelectio
                         </CardHeader>
                         <CardContent>
                             <div className="space-y-3">
-                                <h4 className="font-semibold text-sm text-gray-700 dark:text-gray-300">
+                                <h4 className="text-slate-700 dark:text-slate-300">
                                     {getLocalizedText("features") as string}:
                                 </h4>
                                 <div className="flex flex-wrap gap-2">
@@ -131,8 +131,8 @@ export default function UserTypeSelection({ locale, onSelect }: UserTypeSelectio
                     {/* Company Card */}
                     <Card
                         className={`cursor-pointer transition-all duration-300 hover:shadow-lg ${selectedType === "COMPANY"
-                                ? "ring-2 ring-green-500 shadow-lg"
-                                : "hover:shadow-md"
+                            ? "ring-2 ring-green-500 shadow-lg"
+                            : "hover:shadow-md"
                             }`}
                         onClick={() => handleSelection("COMPANY")}
                     >
@@ -149,7 +149,7 @@ export default function UserTypeSelection({ locale, onSelect }: UserTypeSelectio
                         </CardHeader>
                         <CardContent>
                             <div className="space-y-3">
-                                <h4 className="font-semibold text-sm text-gray-700 dark:text-gray-300">
+                                <h4 className="text-slate-700 dark:text-slate-300">
                                     {getLocalizedText("features") as string}:
                                 </h4>
                                 <div className="flex flex-wrap gap-2">

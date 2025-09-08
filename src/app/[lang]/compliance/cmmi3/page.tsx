@@ -146,25 +146,25 @@ export default async function Page({ params: { lang } }: Props) {
         <div className="grid-background-with-fade"></div>
         <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl font-semibold tracking-tight text-balance bg-clip-text text-transparent bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)] sm:text-6xl mb-6">
+            <h1 className="text-balance bg-clip-text text-transparent bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)] sm:text-6xl mb-6">
               {intl.formatMessage({ id: "cmmi.hero.title" })}
             </h1>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-8 mb-8">
+            <p className="text-xl  " text-muted-foreground6020>
               {intl.formatMessage({ id: "cmmi.hero.subtitle" })}
             </p>
             <div className="flex flex-wrap justify-center gap-4 mb-12">
               <div className="glass-card px-4 py-2 rounded-full">
-                <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                <span className="" text-caption6316 text-muted-foreground6316>
                   {intl.formatMessage({ id: "cmmi.hero.badge.maturity" })}
                 </span>
               </div>
               <div className="glass-card px-4 py-2 rounded-full">
-                <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                <span className="" text-caption6590 text-muted-foreground6597>
                   {intl.formatMessage({ id: "cmmi.hero.badge.processes" })}
                 </span>
               </div>
               <div className="glass-card px-4 py-2 rounded-full">
-                <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                <span className="" text-caption6865 text-muted-foreground6879>
                   {intl.formatMessage({ id: "cmmi.hero.badge.capability" })}
                 </span>
               </div>
@@ -177,10 +177,10 @@ export default async function Page({ params: { lang } }: Props) {
       <section className="py-20 px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl mb-4">
+            <h2 className="dark:text-slate-100 sm:text-4xl mb-4">
               {intl.formatMessage({ id: "cmmi.features.title" })}
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+            <p className="text-lg  " text-muted-foreground7527>
               {intl.formatMessage({ id: "cmmi.features.subtitle" })}
             </p>
           </div>
@@ -189,11 +189,11 @@ export default async function Page({ params: { lang } }: Props) {
               <div key={index} className="glass-card p-6 rounded-xl">
                 <div className="flex items-center gap-3 mb-4">
                   <CheckCircleIcon className="h-6 w-6 text-green-500" />
-                  <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
+                  <h3 className="dark:text-slate-100">
                     {feature.title}
                   </h3>
                 </div>
-                <p className="text-slate-600 dark:text-slate-400">
+                <p className="" text-muted-foreground8182>
                   {feature.description}
                 </p>
               </div>
@@ -206,24 +206,24 @@ export default async function Page({ params: { lang } }: Props) {
       <section className="py-20 px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl mb-4">
+            <h2 className="dark:text-slate-100 sm:text-4xl mb-4">
               {intl.formatMessage({ id: "cmmi.benefits.title" })}
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+            <p className="text-lg  " text-muted-foreground8769>
               {intl.formatMessage({ id: "cmmi.benefits.subtitle" })}
             </p>
           </div>
           <div className="grid gap-8 lg:grid-cols-3">
             {industryBenefits.map((benefit, index) => (
               <div key={index} className="glass-card p-6 rounded-xl">
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-4">
+                <h3 className="dark:text-slate-100 mb-4">
                   {benefit.title}
                 </h3>
                 <ul className="space-y-3">
                   {benefit.items.map((item, itemIndex) => (
                     <li key={itemIndex} className="flex items-start gap-2">
                       <CheckCircleIcon className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-600 dark:text-slate-400">{item}</span>
+                      <span className="" text-muted-foreground9559>{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -237,10 +237,10 @@ export default async function Page({ params: { lang } }: Props) {
       <section className="py-20 px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl mb-4">
+            <h2 className="dark:text-slate-100 sm:text-4xl mb-4">
               {intl.formatMessage({ id: "cmmi.process.title" })}
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+            <p className="text-lg  " text-muted-foreground10134>
               {intl.formatMessage({ id: "cmmi.process.subtitle" })}
             </p>
           </div>
@@ -249,10 +249,10 @@ export default async function Page({ params: { lang } }: Props) {
               <div key={index} className="relative">
                 <div className={`${level.color} rounded-xl p-6 text-white ${index === 2 ? 'ring-4 ring-yellow-400' : ''}`}>
                   <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-lg font-semibold">{level.title}</h3>
+                    <h3 className="">{level.title}</h3>
                     <span className="text-2xl font-bold opacity-90">{index + 1}</span>
                   </div>
-                  <p className="text-sm opacity-90">{level.description}</p>
+                  <p className="" text-caption10734>{level.description}</p>
                   {index === 2 && (
                     <div className="absolute -top-2 -right-2 bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded-full">
                       Current
@@ -272,20 +272,20 @@ export default async function Page({ params: { lang } }: Props) {
       <section className="py-20 px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl mb-4">
+            <h2 className="dark:text-slate-100 sm:text-4xl mb-4">
               {intl.formatMessage({ id: "cmmi.integration.title" })}
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+            <p className="text-lg  " text-muted-foreground11931>
               {intl.formatMessage({ id: "cmmi.integration.subtitle" })}
             </p>
           </div>
           <div className="grid gap-8 lg:grid-cols-3">
             {standards.map((standard, index) => (
               <div key={index} className="glass-card p-6 rounded-xl">
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-4">
+                <h3 className="dark:text-slate-100 mb-4">
                   {standard.title}
                 </h3>
-                <p className="text-slate-600 dark:text-slate-400">
+                <p className="" text-muted-foreground12429>
                   {standard.description}
                 </p>
               </div>
@@ -298,10 +298,10 @@ export default async function Page({ params: { lang } }: Props) {
       <section className="py-20 px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl mb-4">
+            <h2 className="dark:text-slate-100 sm:text-4xl mb-4">
               {intl.formatMessage({ id: "cmmi.certificate.title" })}
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+            <p className="text-lg  " text-muted-foreground12989>
               {intl.formatMessage({ id: "cmmi.certificate.subtitle" })}
             </p>
           </div>
@@ -311,7 +311,7 @@ export default async function Page({ params: { lang } }: Props) {
                 <dt className="font-semibold text-slate-900 dark:text-slate-100 mb-1 sm:mb-0">
                   {intl.formatMessage({ id: "cmmi.certificate.standard" })}
                 </dt>
-                <dd className="text-slate-600 dark:text-slate-400">
+                <dd className="" text-muted-foreground13578>
                   {intl.formatMessage({ id: "cmmi.certificate.standard.value" })}
                 </dd>
               </div>
@@ -319,7 +319,7 @@ export default async function Page({ params: { lang } }: Props) {
                 <dt className="font-semibold text-slate-900 dark:text-slate-100 mb-1 sm:mb-0">
                   {intl.formatMessage({ id: "cmmi.certificate.level" })}
                 </dt>
-                <dd className="text-slate-600 dark:text-slate-400">
+                <dd className="" text-muted-foreground14062>
                   {intl.formatMessage({ id: "cmmi.certificate.level.value" })}
                 </dd>
               </div>
@@ -327,7 +327,7 @@ export default async function Page({ params: { lang } }: Props) {
                 <dt className="font-semibold text-slate-900 dark:text-slate-100 mb-1 sm:mb-0">
                   {intl.formatMessage({ id: "cmmi.certificate.appraisal" })}
                 </dt>
-                <dd className="text-slate-600 dark:text-slate-400">
+                <dd className="" text-muted-foreground14547>
                   {intl.formatMessage({ id: "cmmi.certificate.appraisal.value" })}
                 </dd>
               </div>
@@ -335,7 +335,7 @@ export default async function Page({ params: { lang } }: Props) {
                 <dt className="font-semibold text-slate-900 dark:text-slate-100 mb-1 sm:mb-0">
                   {intl.formatMessage({ id: "cmmi.certificate.validity" })}
                 </dt>
-                <dd className="text-slate-600 dark:text-slate-400">
+                <dd className="" text-muted-foreground15035>
                   {intl.formatMessage({ id: "cmmi.certificate.validity.value" })}
                 </dd>
               </div>
@@ -343,7 +343,7 @@ export default async function Page({ params: { lang } }: Props) {
                 <dt className="font-semibold text-slate-900 dark:text-slate-100 mb-1 sm:mb-0">
                   {intl.formatMessage({ id: "cmmi.certificate.scope" })}
                 </dt>
-                <dd className="text-slate-600 dark:text-slate-400 sm:text-right sm:max-w-md">
+                <dd className="" text-muted-foreground15518>
                   {intl.formatMessage({ id: "cmmi.certificate.scope.value" })}
                 </dd>
               </div>
@@ -351,7 +351,7 @@ export default async function Page({ params: { lang } }: Props) {
                 <dt className="font-semibold text-slate-900 dark:text-slate-100 mb-1 sm:mb-0">
                   {intl.formatMessage({ id: "cmmi.certificate.organization" })}
                 </dt>
-                <dd className="text-slate-600 dark:text-slate-400">
+                <dd className="" text-muted-foreground16032>
                   {intl.formatMessage({ id: "cmmi.certificate.organization.value" })}
                 </dd>
               </div>
@@ -364,10 +364,10 @@ export default async function Page({ params: { lang } }: Props) {
       <section className="py-20 px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl mb-4">
+            <h2 className="dark:text-slate-100 sm:text-4xl mb-4">
               {intl.formatMessage({ id: "cmmi.metrics.title" })}
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+            <p className="text-lg  " text-muted-foreground16669>
               {intl.formatMessage({ id: "cmmi.metrics.subtitle" })}
             </p>
           </div>
@@ -377,10 +377,10 @@ export default async function Page({ params: { lang } }: Props) {
                 <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                   {metric.value}
                 </div>
-                <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                <h3 className="dark:text-slate-100 mb-2">
                   {metric.title}
                 </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
+                <p className="" text-caption17036 text-muted-foreground17334>
                   {metric.description}
                 </p>
               </div>
@@ -392,10 +392,10 @@ export default async function Page({ params: { lang } }: Props) {
       {/* Contact Section */}
       <section className="py-20 px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl mb-4">
+          <h2 className="dark:text-slate-100 sm:text-4xl mb-4">
             {intl.formatMessage({ id: "cmmi.contact.title" })}
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
+          <p className="text-lg  " text-muted-foreground17841>
             {intl.formatMessage({ id: "cmmi.contact.subtitle" })}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

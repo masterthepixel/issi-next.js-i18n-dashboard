@@ -98,7 +98,7 @@ export default function JobListingForm({
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-8">
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold">
+        <h1 className="">
           {mode === "create" ? "Create New Job Listing" : "Edit Job Listing"}
         </h1>
         <p className="text-muted-foreground">
@@ -138,7 +138,7 @@ export default function JobListingForm({
                   )}
                 />
                 {errors.jobTitle && (
-                  <p className="text-sm text-destructive">{errors.jobTitle.message}</p>
+                  <p className="" text-caption5255>{errors.jobTitle.message}</p>
                 )}
               </div>
 
@@ -163,7 +163,7 @@ export default function JobListingForm({
                   )}
                 />
                 {errors.employmentType && (
-                  <p className="text-sm text-destructive">{errors.employmentType.message}</p>
+                  <p className="" text-caption6414>{errors.employmentType.message}</p>
                 )}
               </div>
 
@@ -182,7 +182,7 @@ export default function JobListingForm({
                   )}
                 />
                 {errors.location && (
-                  <p className="text-sm text-destructive">{errors.location.message}</p>
+                  <p className="" text-caption7150>{errors.location.message}</p>
                 )}
               </div>
 
@@ -204,7 +204,7 @@ export default function JobListingForm({
                   )}
                 />
                 {errors.listingDuration && (
-                  <p className="text-sm text-destructive">{errors.listingDuration.message}</p>
+                  <p className="" text-caption8052>{errors.listingDuration.message}</p>
                 )}
               </div>
             </div>
@@ -243,7 +243,7 @@ export default function JobListingForm({
                   )}
                 />
                 {errors.salaryFrom && (
-                  <p className="text-sm text-destructive">{errors.salaryFrom.message}</p>
+                  <p className="" text-caption9546>{errors.salaryFrom.message}</p>
                 )}
               </div>
 
@@ -266,7 +266,7 @@ export default function JobListingForm({
                   )}
                 />
                 {errors.salaryTo && (
-                  <p className="text-sm text-destructive">{errors.salaryTo.message}</p>
+                  <p className="" text-caption10477>{errors.salaryTo.message}</p>
                 )}
               </div>
             </div>
@@ -293,7 +293,7 @@ export default function JobListingForm({
               )}
             />
             {errors.jobDescription && (
-              <p className="text-sm text-destructive mt-2">{errors.jobDescription.message}</p>
+              <p className="" text-caption11368>{errors.jobDescription.message}</p>
             )}
           </CardContent>
         </Card>
@@ -320,7 +320,7 @@ export default function JobListingForm({
                   />
                   <Label
                     htmlFor={benefit}
-                    className="text-sm font-normal cursor-pointer"
+                    className="" text-caption12439
                   >
                     {benefit}
                   </Label>
@@ -328,7 +328,7 @@ export default function JobListingForm({
               ))}
             </div>
             {errors.benefits && (
-              <p className="text-sm text-destructive mt-2">{errors.benefits.message}</p>
+              <p className="" text-caption12682>{errors.benefits.message}</p>
             )}
           </CardContent>
         </Card>

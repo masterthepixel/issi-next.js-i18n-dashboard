@@ -1,15 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { JobCard } from "./JobCard";
-import { EmptyState } from "./EmptyState";
-import { PaginationComponent } from "./PaginationComponent";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
 import { careersAPI, mockJobSearchData } from "@/lib/api/careers";
 import type { Job } from "@/lib/schemas/job";
-import { useIntl } from "react-intl";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle, Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { useIntl } from "react-intl";
+import { EmptyState } from "./EmptyState";
+import { JobCard } from "./JobCard";
+import { PaginationComponent } from "./PaginationComponent";
 
 interface JobListingsProps {
   currentPage: number;
@@ -58,13 +58,13 @@ export default function JobListings({
       );
 
       const result = await careersAPI.searchJobs(cleanedParams);
-      
+
       setJobs(result.jobs);
       setTotalPages(result.pagination.totalPages);
       setTotalJobs(result.pagination.totalDocs);
     } catch (err) {
       console.error("Error fetching jobs:", err);
-      
+
       // Fallback to mock data in development
       if (process.env.NODE_ENV === 'development') {
         console.log("Using mock data for development");
@@ -97,9 +97,9 @@ export default function JobListings({
           <div className="text-center space-y-4">
             <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary" />
             <p className="text-muted-foreground">
-              {intl.formatMessage({ 
-                id: "careers.loading", 
-                defaultMessage: "Searching for jobs..." 
+              {intl.formatMessage({
+                id: "careers.loading",
+                defaultMessage: "Searching for jobs..."
               })}
             </p>
           </div>
@@ -129,11 +129,11 @@ export default function JobListings({
       {/* Results Summary */}
       {totalJobs > 0 && (
         <div className="mb-6">
-          <p className="text-sm text-muted-foreground">
+          <p className="" text-caption4087="true">
             {intl.formatMessage(
-              { 
-                id: "careers.resultsCount", 
-                defaultMessage: "Showing {count} {count, plural, one {job} other {jobs}}" 
+              {
+                id: "careers.resultsCount",
+                defaultMessage: "Showing {count} {count, plural, one {job} other {jobs}}"
               },
               { count: totalJobs }
             )}
@@ -160,17 +160,17 @@ export default function JobListings({
         </div>
       ) : (
         <EmptyState
-          title={intl.formatMessage({ 
-            id: "careers.emptyState.title", 
-            defaultMessage: "No jobs found" 
+          title={intl.formatMessage({
+            id: "careers.emptyState.title",
+            defaultMessage: "No jobs found"
           })}
-          description={intl.formatMessage({ 
-            id: "careers.emptyState.description", 
-            defaultMessage: "Try searching for a different job title, location, or adjusting your filters." 
+          description={intl.formatMessage({
+            id: "careers.emptyState.description",
+            defaultMessage: "Try searching for a different job title, location, or adjusting your filters."
           })}
-          buttonText={intl.formatMessage({ 
-            id: "careers.emptyState.clearFilters", 
-            defaultMessage: "Clear all filters" 
+          buttonText={intl.formatMessage({
+            id: "careers.emptyState.clearFilters",
+            defaultMessage: "Clear all filters"
           })}
           href={`/${locale}/careers`}
           locale={locale}
@@ -179,10 +179,10 @@ export default function JobListings({
 
       {totalPages > 1 && (
         <div className="flex justify-center mt-8">
-          <PaginationComponent 
-            totalPages={totalPages} 
+          <PaginationComponent
+            totalPages={totalPages}
             currentPage={currentPage}
-            locale={locale} 
+            locale={locale}
           />
         </div>
       )}

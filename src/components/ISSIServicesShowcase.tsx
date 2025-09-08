@@ -172,7 +172,7 @@ const ISSIServicesShowcaseInternal = () => {
     <section className="py-16 px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="text-left mb-16">
-          <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl mb-4">
+          <h2 className="text-foreground sm:text-4xl mb-4">
             <FormattedMessage id="services.showcase.title" />
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mb-8">
@@ -185,7 +185,7 @@ const ISSIServicesShowcaseInternal = () => {
                 type="button"
                 onClick={() => setSelectedCategory(category.id)}
                 className={cn(
-                  "px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary",
+                  "px-6 py-3 rounded-full  font-medium transition-all duration-300 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary",
                   getButtonColors(category.id, selectedCategory === category.id)
                 )}
                 role="tab"
@@ -227,7 +227,7 @@ const ISSIServicesShowcaseInternal = () => {
                     )}>
                       {service.title}
                     </CardTitle>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground  " text-caption9164>
                       {service.description}
                     </p>
                   </CardContent>

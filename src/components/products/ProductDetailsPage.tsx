@@ -148,7 +148,7 @@ export default function ProductDetailsPage({
 
       {/* Product Features Grid */}
       <div className="mb-12">
-        <h2 className="text-2xl font-bold text-foreground mb-8 text-center">
+        <h2 className="text-foreground mb-8 text-center">
           <FormattedMessage id="products.features.title" defaultMessage="Key Features" />
         </h2>
 
@@ -176,7 +176,7 @@ export default function ProductDetailsPage({
                     defaultMessage: `${feature.id} Feature`
                   })}
                 </CardTitle>
-                <p className="text-sm text-muted-foreground">
+                <p className="" text-caption6037>
                   {intl.formatMessage({
                     id: feature.descriptionKey,
                     defaultMessage: "Comprehensive feature description that enhances your workflow."
@@ -196,7 +196,7 @@ export default function ProductDetailsPage({
         <div className="bg-card rounded-xl p-6 shadow-lg">
           <div className="flex items-center gap-3 mb-4">
             <FaCalendarAlt className="w-6 h-6 text-primary" />
-            <h3 className="text-lg font-semibold text-foreground">
+            <h3 className="text-foreground">
               <FormattedMessage id="products.implementation" defaultMessage="Implementation" />
             </h3>
           </div>
@@ -211,7 +211,7 @@ export default function ProductDetailsPage({
         <div className="bg-card rounded-xl p-6 shadow-lg">
           <div className="flex items-center gap-3 mb-4">
             <FaStar className="w-6 h-6 text-yellow-500" />
-            <h3 className="text-lg font-semibold text-foreground">
+            <h3 className="text-foreground">
               <FormattedMessage id="products.rating" defaultMessage="Customer Rating" />
             </h3>
           </div>
@@ -221,7 +221,7 @@ export default function ProductDetailsPage({
                 <FaStar key={star} className="w-4 h-4 text-yellow-400" />
               ))}
             </div>
-            <span className="text-sm text-muted-foreground">
+            <span className="" text-caption7929>
               (4.8/5 from 150+ reviews)
             </span>
           </div>
@@ -230,7 +230,7 @@ export default function ProductDetailsPage({
         <div className="bg-card rounded-xl p-6 shadow-lg">
           <div className="flex items-center gap-3 mb-4">
             <FaUsers className="w-6 h-6 text-green-500" />
-            <h3 className="text-lg font-semibold text-foreground">
+            <h3 className="text-foreground">
               <FormattedMessage id="products.support" defaultMessage="Support" />
             </h3>
           </div>
@@ -245,7 +245,7 @@ export default function ProductDetailsPage({
 
       {/* Contact Section */}
       <div className="text-center bg-gradient-to-r from-blue-50 to-blue-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-8">
-        <h2 className="text-2xl font-bold text-foreground mb-4">
+        <h2 className="text-foreground mb-4">
           <FormattedMessage id="products.contact.title" defaultMessage="Ready to Get Started?" />
         </h2>
         <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">

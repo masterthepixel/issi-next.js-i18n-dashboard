@@ -33,8 +33,8 @@ export const BentoGridItem: React.FC<{
     const content = (
         <div className={cn("bg-card p-4 rounded-lg shadow-sm h-full flex flex-col", className)}>
             {icon && <div className="mb-3">{icon}</div>}
-            {title && <h3 className="text-lg font-semibold mb-2">{title}</h3>}
-            {description && <p className="text-sm text-muted-foreground flex-grow">{description}</p>}
+            {title && <h3 className="mb-2">{title}</h3>}
+            {description && <p className="" text-caption1159>{description}</p>}
             {children}
         </div>
     );

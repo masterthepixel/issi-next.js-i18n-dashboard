@@ -10,7 +10,7 @@ export default function NewHomePageHero() {
     <div className="relative isolate overflow-hidden bg-white">
       <svg
         aria-hidden="true"
-        className="absolute inset-0 -z-10 size-full mask-[radial-gradient(100%_100%_at_top_right,white,transparent)] stroke-gray-200"
+        className="absolute inset-0 -z-10 size-full mask-[radial-gradient(100%_100%_at_top_right,white,transparent)] stroke-slate-200"
       >
         <defs>
           <pattern
@@ -33,49 +33,49 @@ export default function NewHomePageHero() {
             src="/images/issi_logo.png"
             className="h-11"
           />
-          <div className="mt-24 sm:mt-32 lg:mt-16">            <a href="#news" className="inline-flex space-x-6" title="View latest news and updates">              <span className="rounded-full bg-blue-600/10 px-3 py-1 text-sm/6 font-semibold text-blue-600 ring-1 ring-blue-600/10 ring-inset">
-                <FormattedMessage id="newhero.new.badge" defaultMessage="What's new" />
+          <div className="mt-24 sm:mt-32 lg:mt-16">            <a href="#news" className="inline-flex space-x-6" title="View latest news and updates">              <span className="rounded-full bg-blue-600/10 px-3 py-1  " text-caption1398="true">
+            <FormattedMessage id="newhero.new.badge" defaultMessage="What's new" />
+          </span>
+            <span className="inline-flex items-center space-x-2  " text-caption1645="true" text-muted-foreground1645="true">
+              <span>
+                <FormattedMessage id="newhero.new.version" defaultMessage="Just shipped v2.0" />
               </span>
-              <span className="inline-flex items-center space-x-2 text-sm/6 font-medium text-gray-600">
-                <span>
-                  <FormattedMessage id="newhero.new.version" defaultMessage="Just shipped v2.0" />
-                </span>
-                <ChevronRightIcon aria-hidden="true" className="size-5 text-gray-400" />
-              </span>
-            </a>
-          </div>          <h1 className="mt-10 text-5xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-7xl">
-            <FormattedMessage 
-              id="newhero.title" 
-              defaultMessage="Deploy to the cloud with confidence" 
+              <ChevronRightIcon aria-hidden="true" className="size-5 text-slate-400" />
+            </span>
+          </a>
+          </div>          <h1 className="mt-10 text-pretty sm:text-7xl">
+            <FormattedMessage
+              id="newhero.title"
+              defaultMessage="Deploy to the cloud with confidence"
             />
           </h1>
-          <p className="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-            <FormattedMessage 
-              id="newhero.description" 
-              defaultMessage="Leading government technology solutions with enterprise-grade security, compliance, and scalability. Trusted by agencies worldwide for mission-critical applications." 
+          <p className="mt-8 text-lg font-medium text-pretty text-slate-500 sm:text-xl/8">
+            <FormattedMessage
+              id="newhero.description"
+              defaultMessage="Leading government technology solutions with enterprise-grade security, compliance, and scalability. Trusted by agencies worldwide for mission-critical applications."
             />
           </p><div className="mt-10 flex items-center gap-x-6">
             <a
               href="#contact"
-              className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+              className="rounded-md bg-blue-600 px-3.5 py-2.5  " text-caption2754="true"
               title="Get started with ISSI services"
             >
               <FormattedMessage id="hero.cta.primary" defaultMessage="Get started" />
             </a>
-            <a href="#services" className="text-sm/6 font-semibold text-gray-900" title="Learn more about our services">
+            <a href="#services" className="" text-caption3157="true" title="Learn more about our services">
               <FormattedMessage id="hero.cta.secondary" defaultMessage="Learn more" /> <span aria-hidden="true">→</span>
             </a>
           </div>
         </div>
         <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:mt-0 lg:mr-0 lg:ml-10 lg:max-w-none lg:flex-none xl:ml-32">
           <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
-            <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-gray-900/10 ring-inset lg:-m-4 lg:rounded-2xl lg:p-4">
+            <div className="-m-2 rounded-xl bg-slate-900/5 p-2 ring-1 ring-slate-900/10 ring-inset lg:-m-4 lg:rounded-2xl lg:p-4">
               <img
                 alt="ISSI Technology Solutions Dashboard"
-                src="https://tailwindcss.com/plus-assets/img/component-images/project-app-screenshot.png"
+                src="/images/project-app-screenshot.png"
                 width={2432}
                 height={1442}
-                className="w-304 rounded-md shadow-2xl ring-1 ring-gray-900/10"
+                className="w-304 rounded-md shadow-2xl ring-1 ring-slate-900/10"
               />
             </div>
           </div>

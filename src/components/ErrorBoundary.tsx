@@ -42,7 +42,7 @@ class ErrorBoundary extends Component<Props, State> {
           "common.error.boundary.message": "We're sorry, but this part of the application has encountered an error."
         }}>
           <div className="flex flex-col items-center justify-center h-full p-8 bg-destructive/10 border border-destructive/20 rounded-lg">
-            <h2 className="text-xl font-bold text-destructive mb-2">
+            <h2 className="text-destructive mb-2">
               <FormattedMessage id="common.error.boundary.title" defaultMessage="Something went wrong" />
             </h2>
             <p className="text-destructive/80">

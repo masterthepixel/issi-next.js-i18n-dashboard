@@ -58,7 +58,7 @@ const ComplianceCarousel = () => {
   const intl = useIntl();
   return (
     <div className="w-full max-w-7xl mx-auto py-12 px-4 md:py-16 md:px-8">
-      <h1 className="text-5xl font-semibold tracking-tight text-balance bg-clip-text text-transparent text-center bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)] mb-6">
+      <h1 className="text-balance bg-clip-text text-transparent text-center bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)] mb-6">
         <FormattedMessage id="compliance.carousel.heading" defaultMessage="Our Compliance & Certifications" />
       </h1>
       <p className="mt-8 text-lg font-medium text-pretty text-muted-foreground sm:text-xl/8 text-center">
@@ -91,7 +91,7 @@ const ComplianceCarousel = () => {
                         />
                       </div>
                       <div className="p-4 w-full">
-                        <p className="text-sm font-medium text-muted-foreground">
+                        <p className="" text-caption3405="true">
                           {item.category}
                         </p>
                         <p className="text-lg font-semibold">

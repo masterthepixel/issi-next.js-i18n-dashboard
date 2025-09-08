@@ -103,7 +103,7 @@ export default function ProductsProfessionalManagementFeatures() {
                     <div className="text-base/7 font-semibold text-muted-foreground">
                         <FormattedMessage id="products.professional-management.features.title" />
                     </div>
-                    <h2 className="mt-2 text-3xl font-bold tracking-tight text-primary sm:text-4xl">
+                    <h2 className="mt-2 text-primary sm:text-4xl">
                         <FormattedMessage id="products.professional-management.features.subtitle" />
                     </h2>
                     <div className="mt-6 text-lg/8 text-muted-foreground">

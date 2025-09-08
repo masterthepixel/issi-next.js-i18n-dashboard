@@ -31,7 +31,7 @@ export default async function Page({ params: { lang } }: Props) {
               <span className="text-white font-bold text-xl">MD</span>
             </div>
           </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)]">
+            <h1 className="md:text-6xl mb-6 bg-clip-text text-transparent bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)]">
             {intl.formatMessage({ id: "mdot.hero.title" })}
           </h1>
           
@@ -55,7 +55,7 @@ export default async function Page({ params: { lang } }: Props) {
       </section>      {/* Certification Overview */}
       <section className="container mx-auto py-16 px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">{intl.formatMessage({ id: "mdot.certifications.title" })}</h2>
+          <h2 className="mb-4">{intl.formatMessage({ id: "mdot.certifications.title" })}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             {intl.formatMessage({ id: "mdot.certifications.description" })}
           </p>
@@ -66,8 +66,8 @@ export default async function Page({ params: { lang } }: Props) {
             <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
               <span className="text-primary font-bold text-2xl">M</span>
             </div>
-            <h3 className="text-xl font-semibold text-card-foreground mb-2">MBE</h3>
-            <h4 className="text-lg font-medium mb-3">{intl.formatMessage({ id: "mdot.certifications.mbe.title" })}</h4>
+            <h3 className="text-card-foreground mb-2">MBE</h3>
+            <h4 className="mb-3">{intl.formatMessage({ id: "mdot.certifications.mbe.title" })}</h4>
             <p className="text-muted-foreground">
               {intl.formatMessage({ id: "mdot.certifications.mbe.description" })}
             </p>
@@ -78,8 +78,8 @@ export default async function Page({ params: { lang } }: Props) {
             <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
               <span className="text-primary font-bold text-2xl">D</span>
             </div>
-            <h3 className="text-xl font-semibold text-card-foreground mb-2">DBE</h3>
-            <h4 className="text-lg font-medium mb-3">{intl.formatMessage({ id: "mdot.certifications.dbe.title" })}</h4>
+            <h3 className="text-card-foreground mb-2">DBE</h3>
+            <h4 className="mb-3">{intl.formatMessage({ id: "mdot.certifications.dbe.title" })}</h4>
             <p className="text-muted-foreground">
               {intl.formatMessage({ id: "mdot.certifications.dbe.description" })}
             </p>
@@ -88,8 +88,8 @@ export default async function Page({ params: { lang } }: Props) {
             <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
               <span className="text-primary font-bold text-2xl">S</span>
             </div>
-            <h3 className="text-xl font-semibold text-card-foreground mb-2">SBE</h3>
-            <h4 className="text-lg font-medium mb-3">{intl.formatMessage({ id: "mdot.certifications.sbe.title" })}</h4>
+            <h3 className="text-card-foreground mb-2">SBE</h3>
+            <h4 className="mb-3">{intl.formatMessage({ id: "mdot.certifications.sbe.title" })}</h4>
             <p className="text-muted-foreground">
               {intl.formatMessage({ id: "mdot.certifications.sbe.description" })}
             </p>
@@ -99,7 +99,7 @@ export default async function Page({ params: { lang } }: Props) {
       <section className="bg-secondary py-16">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">{intl.formatMessage({ id: "mdot.benefits.title" })}</h2>
+            <h2 className="mb-4">{intl.formatMessage({ id: "mdot.benefits.title" })}</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               {intl.formatMessage({ id: "mdot.benefits.subtitle" })}
             </p>
@@ -109,8 +109,8 @@ export default async function Page({ params: { lang } }: Props) {
             {/* Compliance Support */}
             <div className="bg-card rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
               <div className="text-4xl mb-4">📋</div>
-              <h3 className="text-lg font-semibold mb-2">{intl.formatMessage({ id: "mdot.benefits.compliance.title" })}</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="mb-2">{intl.formatMessage({ id: "mdot.benefits.compliance.title" })}</h3>
+              <p className="" text-caption6020>
                 {intl.formatMessage({ id: "mdot.benefits.compliance.description" })}
               </p>
             </div>
@@ -118,15 +118,15 @@ export default async function Page({ params: { lang } }: Props) {
             {/* Partnership Approach */}
             <div className="bg-card rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
               <div className="text-4xl mb-4">🤝</div>
-              <h3 className="text-lg font-semibold mb-2">{intl.formatMessage({ id: "mdot.benefits.partnership.title" })}</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="mb-2">{intl.formatMessage({ id: "mdot.benefits.partnership.title" })}</h3>
+              <p className="" text-caption6511>
                 {intl.formatMessage({ id: "mdot.benefits.partnership.description" })}
               </p>
             </div>            {/* Delivery Excellence */}
             <div className="bg-card rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
               <div className="text-4xl mb-4">⚡</div>
-              <h3 className="text-lg font-semibold mb-2">{intl.formatMessage({ id: "mdot.benefits.delivery.title" })}</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="mb-2">{intl.formatMessage({ id: "mdot.benefits.delivery.title" })}</h3>
+              <p className="" text-caption6994>
                 {intl.formatMessage({ id: "mdot.benefits.delivery.description" })}
               </p>
             </div>
@@ -134,8 +134,8 @@ export default async function Page({ params: { lang } }: Props) {
             {/* Experience & Trust */}
             <div className="bg-card rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
               <div className="text-4xl mb-4">🏆</div>
-              <h3 className="text-lg font-semibold mb-2">{intl.formatMessage({ id: "mdot.benefits.experience.title" })}</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="mb-2">{intl.formatMessage({ id: "mdot.benefits.experience.title" })}</h3>
+              <p className="" text-caption7480>
                 {intl.formatMessage({ id: "mdot.benefits.experience.description" })}
               </p>
             </div>
@@ -144,7 +144,7 @@ export default async function Page({ params: { lang } }: Props) {
       </section>      {/* Our Capabilities */}
       <section id="capabilities" className="container mx-auto py-16 px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">{intl.formatMessage({ id: "mdot.capabilities.title" })}</h2>
+          <h2 className="mb-4">{intl.formatMessage({ id: "mdot.capabilities.title" })}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             {intl.formatMessage({ id: "mdot.capabilities.subtitle" })}
           </p>
@@ -153,7 +153,7 @@ export default async function Page({ params: { lang } }: Props) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Transportation Infrastructure */}
           <div className="bg-card border border-border rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-primary mb-4">{intl.formatMessage({ id: "mdot.capabilities.infrastructure.title" })}</h3>
+            <h3 className="text-primary mb-4">{intl.formatMessage({ id: "mdot.capabilities.infrastructure.title" })}</h3>
             <div className="space-y-2 text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <span className="w-2 h-2 bg-primary rounded-full"></span>
@@ -176,7 +176,7 @@ export default async function Page({ params: { lang } }: Props) {
 
           {/* Technology Solutions */}
           <div className="bg-card border border-border rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-primary mb-4">{intl.formatMessage({ id: "mdot.capabilities.technology.title" })}</h3>
+            <h3 className="text-primary mb-4">{intl.formatMessage({ id: "mdot.capabilities.technology.title" })}</h3>
             <div className="space-y-2 text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <span className="w-2 h-2 bg-primary rounded-full"></span>
@@ -199,7 +199,7 @@ export default async function Page({ params: { lang } }: Props) {
 
           {/* Project Management & Support */}
           <div className="bg-card border border-border rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-primary mb-4">{intl.formatMessage({ id: "mdot.capabilities.management.title" })}</h3>
+            <h3 className="text-primary mb-4">{intl.formatMessage({ id: "mdot.capabilities.management.title" })}</h3>
             <div className="space-y-2 text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <span className="w-2 h-2 bg-primary rounded-full"></span>
@@ -222,7 +222,7 @@ export default async function Page({ params: { lang } }: Props) {
 
           {/* Professional Services */}
           <div className="bg-card border border-border rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-primary mb-4">{intl.formatMessage({ id: "mdot.capabilities.professional.title" })}</h3>
+            <h3 className="text-primary mb-4">{intl.formatMessage({ id: "mdot.capabilities.professional.title" })}</h3>
             <div className="space-y-2 text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <span className="w-2 h-2 bg-primary rounded-full"></span>
@@ -249,8 +249,8 @@ export default async function Page({ params: { lang } }: Props) {
       <section className="bg-primary text-primary-foreground py-16">
         <div className="container mx-auto px-6 text-center">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4">{intl.formatMessage({ id: "mdot.track_record.title" })}</h2>
-            <p className="text-primary-foreground/80 max-w-2xl mx-auto">
+            <h2 className="mb-4">{intl.formatMessage({ id: "mdot.track_record.title" })}</h2>
+            <p className=" max-w-2xl mx-auto">
               {intl.formatMessage({ id: "mdot.track_record.subtitle" })}
             </p>
           </div>
@@ -258,19 +258,19 @@ export default async function Page({ params: { lang } }: Props) {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             <div className="text-center">
               <div className="text-4xl font-bold mb-2">{intl.formatMessage({ id: "mdot.track_record.stats.experience.value" })}</div>
-              <div className="text-primary-foreground/80">{intl.formatMessage({ id: "mdot.track_record.stats.experience.label" })}</div>
+              <div className="">{intl.formatMessage({ id: "mdot.track_record.stats.experience.label" })}</div>
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold mb-2">{intl.formatMessage({ id: "mdot.track_record.stats.portfolio.value" })}</div>
-              <div className="text-primary-foreground/80">{intl.formatMessage({ id: "mdot.track_record.stats.portfolio.label" })}</div>
+              <div className="">{intl.formatMessage({ id: "mdot.track_record.stats.portfolio.label" })}</div>
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold mb-2">{intl.formatMessage({ id: "mdot.track_record.stats.contracts.value" })}</div>
-              <div className="text-primary-foreground/80">{intl.formatMessage({ id: "mdot.track_record.stats.contracts.label" })}</div>
+              <div className="">{intl.formatMessage({ id: "mdot.track_record.stats.contracts.label" })}</div>
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold mb-2">{intl.formatMessage({ id: "mdot.track_record.stats.states.value" })}</div>
-              <div className="text-primary-foreground/80">{intl.formatMessage({ id: "mdot.track_record.stats.states.label" })}</div>
+              <div className="">{intl.formatMessage({ id: "mdot.track_record.stats.states.label" })}</div>
             </div>
           </div>
           
@@ -278,7 +278,7 @@ export default async function Page({ params: { lang } }: Props) {
             <blockquote className="text-xl italic mb-4">
               {intl.formatMessage({ id: "mdot.track_record.testimonial.quote" })}
             </blockquote>
-            <cite className="text-primary-foreground/80">— {intl.formatMessage({ id: "mdot.track_record.testimonial.attribution" })}</cite>
+            <cite className="">— {intl.formatMessage({ id: "mdot.track_record.testimonial.attribution" })}</cite>
           </div>
         </div>
       </section>      {/* Get Started */}
@@ -286,7 +286,7 @@ export default async function Page({ params: { lang } }: Props) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div className="bg-card border border-border rounded-lg p-8">
-            <h3 className="text-2xl font-bold mb-6">{intl.formatMessage({ id: "mdot.contact.title" })}</h3>
+            <h3 className="mb-6">{intl.formatMessage({ id: "mdot.contact.title" })}</h3>
             <form className="space-y-4">
               <input 
                 type="text" 
@@ -325,7 +325,7 @@ export default async function Page({ params: { lang } }: Props) {
           {/* Contact Information */}
           <div className="space-y-6">
             <div>
-              <h3 className="text-2xl font-bold mb-6">{intl.formatMessage({ id: "mdot.contact.info.title" })}</h3>
+              <h3 className="mb-6">{intl.formatMessage({ id: "mdot.contact.info.title" })}</h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <span className="w-5 h-5 text-primary">📧</span>
@@ -350,8 +350,8 @@ export default async function Page({ params: { lang } }: Props) {
               </Link>
             </div>
               <div className="pt-6">
-              <h4 className="font-semibold mb-2">{intl.formatMessage({ id: "mdot.contact.info.certifications.title" })}</h4>
-              <p className="text-sm text-muted-foreground mb-3">
+              <h4 className="mb-2">{intl.formatMessage({ id: "mdot.contact.info.certifications.title" })}</h4>
+              <p className="" text-caption19798>
                 {intl.formatMessage({ id: "mdot.contact.info.certifications.description" })}
               </p>
               <Link 
@@ -366,7 +366,7 @@ export default async function Page({ params: { lang } }: Props) {
       </section>      {/* Footer CTA */}
       <section className="bg-accent py-12 text-center">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-4">{intl.formatMessage({ id: "mdot.footer_cta.title" })}</h2>
+          <h2 className="mb-4">{intl.formatMessage({ id: "mdot.footer_cta.title" })}</h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             {intl.formatMessage({ id: "mdot.footer_cta.subtitle" })}
           </p>

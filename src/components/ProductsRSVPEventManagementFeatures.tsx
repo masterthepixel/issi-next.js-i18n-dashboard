@@ -50,7 +50,7 @@ export default function ProductsRSVPEventManagementFeatures() {
         >
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-7xl text-left">
-                    <h2 className="text-base/7 font-semibold text-muted-foreground">
+                    <h2 className="text-base/7 text-muted-foreground">
                         <FormattedMessage id="products.rsvp.hero.tagline" />
                     </h2>
                     <p className="mt-6 text-lg/8 text-muted-foreground">

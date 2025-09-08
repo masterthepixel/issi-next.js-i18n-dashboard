@@ -257,7 +257,7 @@ export default function OnboardingForm({ lang }: OnboardingFormProps) {
                 email: formData.email.trim(),
                 password: formData.password,
                 userType: (userType === "job_seeker" ? "JOB_SEEKER" : "COMPANY") as "JOB_SEEKER" | "COMPANY",
-                profile: userType === "job_seeker" 
+                profile: userType === "job_seeker"
                     ? {
                         about: formData.about,
                         skills: formData.skills,
@@ -296,7 +296,7 @@ export default function OnboardingForm({ lang }: OnboardingFormProps) {
     // Step 1: Choose user type
     if (!userType) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-4">
+            <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-slate-800 p-4">
                 <Card className="w-full max-w-lg">
                     <CardHeader className="text-center">
                         <CardTitle className="text-2xl font-bold">{t("chooseRole")}</CardTitle>
@@ -311,9 +311,9 @@ export default function OnboardingForm({ lang }: OnboardingFormProps) {
                             >
                                 <div className="text-3xl mb-2">👨‍💼</div>
                                 <div className="font-semibold">{t("jobSeeker")}</div>
-                                <div className="text-sm text-muted-foreground">{t("jobSeekerDesc")}</div>
+                                <div className="" text-caption13391>{t("jobSeekerDesc")}</div>
                             </Button>
-                            
+
                             <Button
                                 variant="outline"
                                 className="h-auto p-6 flex flex-col items-center text-center hover:bg-green-50 dark:hover:bg-green-950"
@@ -321,12 +321,12 @@ export default function OnboardingForm({ lang }: OnboardingFormProps) {
                             >
                                 <div className="text-3xl mb-2">🏢</div>
                                 <div className="font-semibold">{t("company")}</div>
-                                <div className="text-sm text-muted-foreground">{t("companyDesc")}</div>
+                                <div className="" text-caption14053>{t("companyDesc")}</div>
                             </Button>
                         </div>
 
                         <div className="text-center">
-                            <p className="text-sm text-gray-600 dark:text-gray-400">
+                            <p className="" text-caption14280 text-muted-foreground14280>
                                 {t("alreadyHave")}{" "}
                                 <Link
                                     href={`/${lang}/auth/login`}
@@ -344,7 +344,7 @@ export default function OnboardingForm({ lang }: OnboardingFormProps) {
 
     // Step 2: Registration form
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-4">
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-slate-800 p-4">
             <Card className="w-full max-w-2xl">
                 <CardHeader className="text-center">
                     <div className="flex items-center justify-center mb-4">
@@ -489,7 +489,7 @@ export default function OnboardingForm({ lang }: OnboardingFormProps) {
                                             id="experience"
                                             value={formData.experience}
                                             onChange={(e) => handleInputChange("experience", e.target.value)}
-                                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2  ring-offset-background file:border-0 file:bg-transparent file: " text-caption23439
                                             disabled={isLoading}
                                         >
                                             <option value="">Select experience level</option>
@@ -534,7 +534,7 @@ export default function OnboardingForm({ lang }: OnboardingFormProps) {
                                             id="companySize"
                                             value={formData.companySize}
                                             onChange={(e) => handleInputChange("companySize", e.target.value)}
-                                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2  ring-offset-background file:border-0 file:bg-transparent file: " text-caption26891
                                             disabled={isLoading}
                                         >
                                             <option value="">Select company size</option>
@@ -583,7 +583,7 @@ export default function OnboardingForm({ lang }: OnboardingFormProps) {
                     </form>
 
                     <div className="text-center">
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                        <p className="" text-caption30373 text-muted-foreground30377>
                             {t("alreadyHave")}{" "}
                             <Link
                                 href={`/${lang}/auth/login`}

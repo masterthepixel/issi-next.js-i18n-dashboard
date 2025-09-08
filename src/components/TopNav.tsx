@@ -93,9 +93,9 @@ export default function TopNav({ locale }: Props) {
   return (
     <div className="hidden lg:flex items-center justify-center flex-1 space-x-8">
       <Link
-        href={`/${locale}/services`} className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${pathname?.includes("/services")
-            ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
-            : "border-transparent"
+        href={`/${locale}/services`} className={`flex items-center  text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${pathname?.includes("/services")
+          ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
+          : "border-transparent"
           }`}
       >
         <svg
@@ -115,9 +115,9 @@ export default function TopNav({ locale }: Props) {
         <FormattedMessage id="common.navigation.services" />
       </Link>{" "}
       <Link
-        href={`/${locale}/products`} className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${pathname?.includes("/products")
-            ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
-            : "border-transparent"
+        href={`/${locale}/products`} className={`flex items-center  text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${pathname?.includes("/products")
+          ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
+          : "border-transparent"
           }`}
       >
         <svg
@@ -137,9 +137,9 @@ export default function TopNav({ locale }: Props) {
         <FormattedMessage id="common.navigation.products" />
       </Link>{" "}
       <Link
-        href={`/${locale}/government`} className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${pathname?.includes("/government")
-            ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
-            : "border-transparent"
+        href={`/${locale}/government`} className={`flex items-center  text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${pathname?.includes("/government")
+          ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
+          : "border-transparent"
           }`}
       >
         <svg
@@ -159,9 +159,9 @@ export default function TopNav({ locale }: Props) {
         <FormattedMessage id="common.navigation.government" />
       </Link>{" "}
       <Link
-        href={`/${locale}/eLearning`} className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${pathname?.includes("/eLearning")
-            ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
-            : "border-transparent"
+        href={`/${locale}/eLearning`} className={`flex items-center  text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${pathname?.includes("/eLearning")
+          ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
+          : "border-transparent"
           }`}
       >
         <svg
@@ -182,9 +182,9 @@ export default function TopNav({ locale }: Props) {
       </Link>{" "}
       {/* Compliance Popover */}
       <Popover className="relative">        <PopoverButton
-        className={`inline-flex items-center gap-x-1 text-sm font-semibold py-5 border-b-2 transition-all ${pathname?.includes("/compliance")
-            ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
-            : "border-transparent text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
+        className={`inline-flex items-center gap-x-1  font-semibold py-5 border-b-2 transition-all ${pathname?.includes("/compliance")
+          ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
+          : "border-transparent text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
           }`}
       >
         <span>
@@ -193,17 +193,17 @@ export default function TopNav({ locale }: Props) {
         <ChevronDownIcon aria-hidden="true" className="size-5" />
       </PopoverButton>
         <PopoverPanel className="absolute left-1/2 z-20 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4">
-          <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white dark:bg-slate-900 text-sm shadow-lg ring-1 ring-gray-900/5 dark:ring-slate-700/40">
+          <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white dark:bg-slate-900  " text-caption8174>
             <div className="p-4">
               {complianceLinks.map((item, idx) => (
                 <div
                   key={idx}
-                  className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors"
+                  className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                 >
-                  <div className="mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
+                  <div className="mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-slate-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
                     <item.icon
                       aria-hidden="true"
-                      className="size-6 text-slate-600 dark:text-blue-400 group-hover:text-blue-600"
+                      className="size-6  " text-muted-foreground8906
                     />
                   </div>
                   <div>
@@ -211,17 +211,17 @@ export default function TopNav({ locale }: Props) {
                       {item.name}
                       <span className="absolute inset-0" />
                     </a>
-                    <p className="mt-1 text-slate-600 dark:text-slate-400">{item.description}</p>
+                    <p className="mt-1  " text-muted-foreground9309>{item.description}</p>
                   </div>
                 </div>
               ))}
             </div>
-            <div className="grid grid-cols-2 divide-x divide-gray-900/5 dark:divide-slate-700 bg-gray-50 dark:bg-slate-800">
+            <div className="grid grid-cols-2 divide-x divide-slate-900/5 dark:divide-slate-700 bg-slate-50 dark:bg-slate-800">
               {callsToAction.map((item, idx) => (
                 <a
                   key={idx}
                   href={item.href}
-                  className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-slate-900 dark:text-slate-100 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
+                  className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-slate-900 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
                 >
                   <item.icon aria-hidden="true" className="size-5 flex-none text-slate-400 dark:text-blue-400" />
                   {item.name}
@@ -232,9 +232,9 @@ export default function TopNav({ locale }: Props) {
         </PopoverPanel>
       </Popover>{" "}
       <Link
-        href={`/${locale}/about`} className={`flex items-center text-sm text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${pathname?.includes("/about")
-            ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
-            : "border-transparent"
+        href={`/${locale}/about`} className={`flex items-center  text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 py-5 border-b-2 transition-all ${pathname?.includes("/about")
+          ? "border-blue-500 text-blue-600 dark:text-blue-400 font-medium"
+          : "border-transparent"
           }`}
       >
         <svg

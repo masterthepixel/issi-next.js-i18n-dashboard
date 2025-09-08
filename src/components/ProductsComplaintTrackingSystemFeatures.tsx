@@ -53,7 +53,7 @@ export default function ProductsComplaintTrackingSystemFeatures() {
                     <div className="text-base/7 font-semibold text-muted-foreground">
                         <FormattedMessage id="products.complaint-tracking-system.hero.tagline" />
                     </div>
-                    <h1 className="mt-2 text-4xl font-bold tracking-tight text-primary sm:text-5xl">
+                    <h1 className="mt-2 text-primary sm:text-5xl">
                         <FormattedMessage id="products.complaint-tracking-system.hero.title" />
                     </h1>
                     <div className="mt-6 text-lg/8 text-muted-foreground">
@@ -79,7 +79,7 @@ export default function ProductsComplaintTrackingSystemFeatures() {
                     <div className="text-base/7 font-semibold text-muted-foreground">
                         <FormattedMessage id="products.complaint-tracking-system.features.title" />
                     </div>
-                    <h2 className="mt-2 text-3xl font-bold tracking-tight text-primary sm:text-4xl">
+                    <h2 className="mt-2 text-primary sm:text-4xl">
                         <FormattedMessage id="products.complaint-tracking-system.features.subtitle" />
                     </h2>
                     <div className="mt-6 text-lg/8 text-muted-foreground">

@@ -242,7 +242,7 @@ async function PageContent({ locale, slug }: PageContentProps) {
         <article className="max-w-4xl mx-auto px-4 py-8">
           {/* Breadcrumb Navigation */}
           <nav className="mb-8" aria-label="Breadcrumb">
-            <ol className="flex items-center gap-2 text-sm text-muted-foreground">
+            <ol className="flex items-center gap-2  " text-caption7690="true">
               <li>
                 <a
                   href={`/${locale}`}
@@ -281,7 +281,7 @@ async function PageContent({ locale, slug }: PageContentProps) {
                 {post.categories.map((category: any) => (
                   <span
                     key={category.id}
-                    className="inline-flex items-center px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full"
+                    className="inline-flex items-center px-3 py-1  " text-caption9155="true"
                   >
                     {category.title}
                   </span>
@@ -290,13 +290,13 @@ async function PageContent({ locale, slug }: PageContentProps) {
             )}
 
             {/* Title */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+            <h1 className="md:text-4xl lg:text-5xl mb-6 leading-tight">
               {post.title}
             </h1>
 
             {/* Excerpt */}
             {post.excerpt && (
-              <p className="text-lg md:text-xl text-muted-foreground mb-6 leading-relaxed">
+              <p className="text-lg md:text-xl text-muted-foreground mb-6">
                 {post.excerpt}
               </p>
             )}
@@ -310,20 +310,20 @@ async function PageContent({ locale, slug }: PageContentProps) {
                   </span>
                 </div>
                 <div>
-                  <div className="font-medium text-sm">
+                  <div className="font-medium  " text-caption10287="true">
                     {locale === 'en' ? 'By' :
                       locale === 'fr' ? 'Par' :
                         'Por'} {authorName}
                   </div>
                 </div>
               </div>
-              <div className="text-sm text-muted-foreground">
+              <div className="" text-caption10553="true">
                 <time dateTime={post.publishedAt}>
                   {formatDate(post.publishedAt)}
                 </time>
               </div>
               {post.publishedAt !== post.updatedAt && (
-                <div className="text-sm text-muted-foreground">
+                <div className="" text-caption10824="true">
                   {locale === 'en' ? 'Updated' :
                     locale === 'fr' ? 'Mis à jour' :
                       'Actualizado'} {formatDate(post.updatedAt)}
@@ -342,7 +342,7 @@ async function PageContent({ locale, slug }: PageContentProps) {
                 loading="lazy"
               />
               {typeof post.featuredImage === 'object' && post.featuredImage.caption && (
-                <div className="mt-2 text-sm text-muted-foreground text-center">
+                <div className="mt-2  " text-caption11683="true">
                   <RichTextRenderer content={post.featuredImage.caption} />
                 </div>
               )}
@@ -354,11 +354,7 @@ async function PageContent({ locale, slug }: PageContentProps) {
                          prose-headings:font-semibold prose-headings:tracking-tight
                          prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
                          prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-                         prose-strong:font-semibold prose-code:text-sm
-                         prose-pre:bg-muted prose-pre:border prose-pre:border-border
-                         prose-blockquote:border-l-primary prose-blockquote:bg-primary/5
-                         prose-img:rounded-lg prose-img:shadow-md
-                         mb-12">
+                         prose-strong:font-semibold prose-code: " text-caption11946="true">
             <RichTextRenderer content={post.content} />
           </div>
 
@@ -372,7 +368,7 @@ async function PageContent({ locale, slug }: PageContentProps) {
                   </span>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-2">
+                  <h3 className="mb-2">
                     {locale === 'en' ? 'About the Author' :
                       locale === 'fr' ? 'À propos de l\'auteur' :
                         'Sobre el Autor'}
@@ -380,7 +376,7 @@ async function PageContent({ locale, slug }: PageContentProps) {
                   <p className="text-muted-foreground mb-2">
                     <strong>{authorName}</strong>
                   </p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="" text-caption13567="true">
                     {post.author.role === 'admin' ? (
                       locale === 'en' ? 'Administrator and technology leader at ISSI.' :
                         locale === 'fr' ? 'Administrateur et leader technologique chez ISSI.' :
@@ -398,7 +394,7 @@ async function PageContent({ locale, slug }: PageContentProps) {
 
           {/* Social Share Buttons */}
           <div className="flex flex-wrap items-center gap-4 mb-8">
-            <span className="text-sm font-medium text-muted-foreground">
+            <span className="" text-caption14497="true">
               {locale === 'en' ? 'Share this post:' :
                 locale === 'fr' ? 'Partager cet article :' :
                   'Compartir este artículo:'}
@@ -563,7 +559,7 @@ function SocialShareButton({
       className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-border hover:bg-secondary transition-colors"
       aria-label={`${locale === 'en' ? 'Share on' : locale === 'fr' ? 'Partager sur' : 'Compartir en'} ${labels[platform]}`}
     >
-      <span className="text-sm font-semibold">
+      <span className="" text-caption19796="true">
         {platform.charAt(0).toUpperCase()}
       </span>
     </a>

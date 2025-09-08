@@ -27,10 +27,10 @@ export default function Hero({ lang: _lang = "en" }: HeroProps) {
             <CardHeader>
               <div className="">
                 <Link href="/about" className="inline-flex space-x-6" title="Learn more about ISSI's achievements">
-                  <span className="rounded-full bg-primary/10 px-3 py-1 text-sm/6 font-semibold text-primary ring-1 ring-primary/20 ring-inset">
+                  <span className="rounded-full bg-primary/10 px-3 py-1  " text-caption1032="true">
                     <FormattedMessage id="newhero.announcement.badge" />
                   </span>
-                  <span className="inline-flex items-center space-x-2 text-sm/6 font-medium text-muted-foreground">
+                  <span className="inline-flex items-center space-x-2  " text-caption1279="true">
                     <span>
                       <FormattedMessage id="newhero.announcement.text" />
                     </span>
@@ -38,10 +38,10 @@ export default function Hero({ lang: _lang = "en" }: HeroProps) {
                   </span>
                 </Link>
               </div>
-              <h1 className="mt-6 text-3xl font-semibold tracking-tight text-pretty text-foreground sm:text-4xl">
+              <h1 className="mt-6 text-pretty text-foreground sm:text-4xl">
                 <FormattedMessage id="newhero.title" />
               </h1>
-              <CardDescription className="mt-4 text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed">
+              <CardDescription className="mt-4  " text-caption1869="true">
                 <FormattedMessage
                   id="newhero.description"
                   values={{
@@ -107,7 +107,7 @@ export default function Hero({ lang: _lang = "en" }: HeroProps) {
             <div className="-m-2 rounded-xl bg-foreground/5 p-2 ring-1 ring-border ring-inset lg:-m-4 lg:rounded-2xl lg:p-4">
               <Image
                 alt="ISSI technology solutions dashboard and services overview"
-                src="https://tailwindcss.com/_next/static/media/project-app-screenshot.560e1f31.png"
+                src="/images/project-app-screenshot.png"
                 width={2432}
                 height={1442}
                 className="w-full max-w-[76rem] rounded-md shadow-2xl ring-1 ring-border"

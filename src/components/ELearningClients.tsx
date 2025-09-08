@@ -39,10 +39,10 @@ export default function ELearningClients() {
   return (
     <section className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4">        <div className="text-left mb-8">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="text-foreground sm:text-4xl">
             <FormattedMessage id="elearning.clients.title" />
           </h2>
-          <p className="mt-4 text-lg leading-8 text-muted-foreground">
+          <p className="mt-4  " text-lead1381>
             <FormattedMessage id="elearning.clients.subtitle" />
           </p>
         </div><div className="mx-auto mt-8 max-w-7xl">          <div className="flex flex-wrap gap-3 justify-start">

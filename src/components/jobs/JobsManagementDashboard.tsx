@@ -191,7 +191,7 @@ export default function JobsManagementDashboard({ locale = "en" }: JobsManagemen
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight">
+          <h1 className="">
             {intl.formatMessage({ id: "jobs.management.title", defaultMessage: "Jobs Management" })}
           </h1>
           <p className="text-muted-foreground">
@@ -211,7 +211,7 @@ export default function JobsManagementDashboard({ locale = "en" }: JobsManagemen
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
+            <CardTitle className="" text-caption6629>
               {intl.formatMessage({ id: "jobs.stats.total", defaultMessage: "Total Jobs" })}
             </CardTitle>
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
@@ -228,7 +228,7 @@ export default function JobsManagementDashboard({ locale = "en" }: JobsManagemen
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
+            <CardTitle className="" text-caption7420>
               {intl.formatMessage({ id: "jobs.stats.active", defaultMessage: "Active Jobs" })}
             </CardTitle>
             <Eye className="h-4 w-4 text-muted-foreground" />
@@ -245,7 +245,7 @@ export default function JobsManagementDashboard({ locale = "en" }: JobsManagemen
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
+            <CardTitle className="" text-caption8211>
               {intl.formatMessage({ id: "jobs.stats.applications", defaultMessage: "Applications" })}
             </CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
@@ -262,7 +262,7 @@ export default function JobsManagementDashboard({ locale = "en" }: JobsManagemen
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
+            <CardTitle className="" text-caption9019>
               {intl.formatMessage({ id: "jobs.stats.drafts", defaultMessage: "Draft Jobs" })}
             </CardTitle>
             <Clock className="h-4 w-4 text-muted-foreground" />
@@ -367,12 +367,12 @@ export default function JobsManagementDashboard({ locale = "en" }: JobsManagemen
                 <div key={job.id} className="flex items-center space-x-4 p-4">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center space-x-2">
-                      <h3 className="font-medium truncate">{job.jobTitle}</h3>
+                      <h3 className="truncate">{job.jobTitle}</h3>
                       <Badge variant={getStatusVariant(job.status)}>
                         {job.status}
                       </Badge>
                     </div>
-                    <div className="flex items-center space-x-4 text-sm text-muted-foreground mt-1">
+                    <div className="flex items-center space-x-4  " text-caption13805>
                       <span>{job.company.name}</span>
                       <span>•</span>
                       <span>{job.location}</span>
@@ -381,7 +381,7 @@ export default function JobsManagementDashboard({ locale = "en" }: JobsManagemen
                     </div>
                   </div>
                   
-                  <div className="flex items-center space-x-4 text-sm">
+                  <div className="flex items-center space-x-4  " text-caption14218>
                     <div className="text-center">
                       <div className="font-medium">{job.applications}</div>
                       <div className="text-muted-foreground">
@@ -472,7 +472,7 @@ export default function JobsManagementDashboard({ locale = "en" }: JobsManagemen
               {intl.formatMessage({ id: "pagination.previous", defaultMessage: "Previous" })}
             </Button>
             
-            <span className="text-sm text-muted-foreground">
+            <span className="" text-caption18739>
               {intl.formatMessage(
                 { id: "pagination.pageOfPages", defaultMessage: "Page {current} of {total}" },
                 { current: filters.page, total: totalPages }

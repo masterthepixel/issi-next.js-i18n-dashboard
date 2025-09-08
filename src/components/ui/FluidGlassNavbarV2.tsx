@@ -148,7 +148,7 @@ export default function FluidGlassNavbar({ navItems, locale, className }: FluidG
                     isActive ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 border-neutral-200 dark:border-white/[0.2]" : ""
                   )}
                 >
-                  <span className="text-sm font-medium">{navItem.name}</span>
+                  <span className="" text-caption5635>{navItem.name}</span>
                   <ChevronDownIcon className="size-4" />
                   <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                 </button>
@@ -161,26 +161,26 @@ export default function FluidGlassNavbar({ navItems, locale, className }: FluidG
                     className="absolute top-full left-0 right-0 mt-2 flex justify-center z-50"
                   >
                     <div className="w-[720px]">
-                      <div className="overflow-hidden rounded-3xl bg-white/10 dark:bg-slate-900/10 backdrop-blur-xl shadow-lg ring-1 ring-gray-900/5 dark:ring-slate-700/40">
+                      <div className="overflow-hidden rounded-3xl bg-white/10 dark:bg-slate-900/10 backdrop-blur-xl shadow-lg ring-1 ring-slate-900/5 dark:ring-slate-700/40">
                         <div className="p-3">
                           {complianceLinks.map((item, compIdx) => (
                             <Link
                               key={compIdx}
                               href={item.href}
-                              className="group relative flex gap-x-4 rounded-lg p-3 hover:bg-gray-50/20 dark:hover:bg-slate-800/20 transition-colors"
+                              className="group relative flex gap-x-4 rounded-lg p-3 hover:bg-slate-50/20 dark:hover:bg-slate-800/20 transition-colors"
                               onClick={handleDropdownClose}
                             >
-                              <div className="mt-0.5 flex size-8 flex-none items-center justify-center rounded-lg bg-gray-50/20 dark:bg-slate-800/20 group-hover:bg-white/30 dark:group-hover:bg-slate-700/30">
+                              <div className="mt-0.5 flex size-8 flex-none items-center justify-center rounded-lg bg-slate-50/20 dark:bg-slate-800/20 group-hover:bg-white/30 dark:group-hover:bg-slate-700/30">
                                 <item.icon
                                   aria-hidden="true"
-                                  className="size-4 text-slate-600 dark:text-blue-400 group-hover:text-blue-600"
+                                  className="size-4  " text-muted-foreground7402
                                 />
                               </div>
                               <div>
-                                <div className="font-medium text-sm text-slate-900 dark:text-slate-100">
+                                <div className="font-medium  " text-caption7598>
                                   {item.name}
                                 </div>
-                                <p className="mt-0.5 text-slate-600 dark:text-slate-400 text-xs leading-relaxed">{item.description}</p>
+                                <p className="mt-0.5  " text-muted-foreground7821>{item.description}</p>
                               </div>
                             </Link>
                           ))}
@@ -205,7 +205,7 @@ export default function FluidGlassNavbar({ navItems, locale, className }: FluidG
               aria-label={navItem.ariaLabel}
             >
               {navItem.icon && <span className="block">{navItem.icon}</span>}
-              {navItem.name && <span className="text-sm font-medium">{navItem.name}</span>}
+              {navItem.name && <span className="" text-caption9015>{navItem.name}</span>}
               <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             </Link>
           );

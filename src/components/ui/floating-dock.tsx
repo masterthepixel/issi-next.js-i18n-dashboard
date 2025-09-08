@@ -6,12 +6,12 @@
 
 import { cn } from "@/lib/utils";
 import {
-    AnimatePresence,
-    MotionValue,
-    motion,
-    useMotionValue,
-    useSpring,
-    useTransform,
+  AnimatePresence,
+  MotionValue,
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
 } from "motion/react";
 import React, { useRef, useState } from 'react';
 
@@ -40,7 +40,7 @@ const FloatingDockMobile = ({
   className?: string;
 }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  
+
   // Create background colors for each item based on their index/title
   const getItemBgColor = (index: number, _title: string) => {
     const colors = [
@@ -51,16 +51,16 @@ const FloatingDockMobile = ({
       "bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-700", // compliance
       "bg-teal-100 dark:bg-teal-900/30 border border-teal-200 dark:border-teal-700", // about
     ];
-    return colors[index % colors.length] || "bg-gray-100 dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700";
+    return colors[index % colors.length] || "bg-slate-100 dark:bg-neutral-900 border border-slate-200 dark:border-neutral-700";
   };
-  
+
   return (
     <div className={cn("relative block md:hidden", className)}>
       {/* Always show the horizontal dock - no toggle needed */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="flex items-center gap-2 px-3 py-2 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-lg rounded-full border border-gray-200 dark:border-neutral-700 shadow-lg"
+        className="flex items-center gap-2 px-3 py-2 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-lg rounded-full border border-slate-200 dark:border-neutral-700 shadow-lg"
       >
         {items.map((item, idx) => (
           <div key={item.title} className="relative flex flex-col items-center">
@@ -71,14 +71,14 @@ const FloatingDockMobile = ({
                   initial={{ opacity: 0, y: 10, scale: 0.8 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.8 }}
-                  className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-white text-white dark:text-slate-900 px-2 py-1 rounded-md text-xs whitespace-nowrap font-medium z-10"
+                  className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-2 py-1 rounded-md text-xs whitespace-nowrap font-medium z-10"
                 >
                   {item.title}
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-900 dark:border-t-white"></div>
                 </motion.div>
               )}
             </AnimatePresence>
-            
+
             <motion.a
               href={item.href}
               initial={{ opacity: 0, scale: 0.8 }}
@@ -116,7 +116,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-gray-50 px-4 pb-3 md:flex dark:bg-neutral-900",
+        "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-slate-50 px-4 pb-3 md:flex dark:bg-neutral-900",
         className
       )}
     >
@@ -189,7 +189,7 @@ function IconContainer({
     if (titleLower.includes('learning') || titleLower.includes('elearning')) return "bg-orange-200 dark:bg-orange-800";
     if (titleLower.includes('compliance')) return "bg-red-200 dark:bg-red-800";
     if (titleLower.includes('about')) return "bg-teal-200 dark:bg-teal-800";
-    return "bg-gray-200 dark:bg-neutral-800";
+    return "bg-slate-200 dark:bg-neutral-800";
   };
 
   return (
@@ -210,7 +210,7 @@ function IconContainer({
               initial={{ opacity: 0, y: 10, x: "-50%" }}
               animate={{ opacity: 1, y: 0, x: "-50%" }}
               exit={{ opacity: 0, y: 2, x: "-50%" }}
-              className="absolute -top-8 left-1/2 w-fit rounded-md border border-gray-200 bg-gray-100 px-2 py-0.5 text-xs whitespace-pre text-neutral-700 dark:border-neutral-900 dark:bg-neutral-800 dark:text-white"
+              className="absolute -top-8 left-1/2 w-fit rounded-md border border-slate-200 bg-slate-100 px-2 py-0.5 text-xs whitespace-pre text-neutral-700 dark:border-neutral-900 dark:bg-neutral-800 dark:text-white"
             >
               {title}
             </motion.div>

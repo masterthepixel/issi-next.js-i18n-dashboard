@@ -450,11 +450,11 @@ For enhanced visual appeal, implement alternating icon colors:
 ```tsx
 export default function YourBentoGrid({ lang }: YourBentoGridProps) {
   const intl = useIntl();
-  
+
   // Define alternating icon colors
   const iconColors = [
     "text-blue-600 dark:text-blue-400",
-    "text-green-600 dark:text-green-400", 
+    "text-green-600 dark:text-green-400",
     "text-purple-600 dark:text-purple-400",
     "text-orange-600 dark:text-orange-400",
     "text-red-600 dark:text-red-400",
@@ -468,7 +468,7 @@ export default function YourBentoGrid({ lang }: YourBentoGridProps) {
       {items.map((item, index) => {
         const IconComponent = item.icon;
         const iconColorClass = iconColors[index % iconColors.length];
-        
+
         return (
           <div key={item.id} className={item.className}>
             <div className="flex justify-start">
@@ -514,9 +514,7 @@ interface Product {
 Add visual feedback for interactive cards:
 
 ```tsx
-<div className="cursor-pointer hover:shadow-xl transition duration-300">
-  {/* Card content */}
-</div>
+<div className="cursor-pointer hover:shadow-xl transition duration-300">{/* Card content */}</div>
 ```
 
 #### Left-Aligned Filter Tabs
@@ -593,104 +591,113 @@ const categoryColors = {
   featured: {
     icon: "text-blue-600 dark:text-blue-400",
     border: "border-blue-200 dark:border-blue-800",
-    hover: "hover:border-blue-400 dark:hover:border-blue-500"
+    hover: "hover:border-blue-400 dark:hover:border-blue-500",
   },
   project: {
-    icon: "text-green-600 dark:text-green-400", 
+    icon: "text-green-600 dark:text-green-400",
     border: "border-green-200 dark:border-green-800",
-    hover: "hover:border-green-400 dark:hover:border-green-500"
+    hover: "hover:border-green-400 dark:hover:border-green-500",
   },
   hr: {
     icon: "text-purple-600 dark:text-purple-400",
-    border: "border-purple-200 dark:border-purple-800", 
-    hover: "hover:border-purple-400 dark:hover:border-purple-500"
+    border: "border-purple-200 dark:border-purple-800",
+    hover: "hover:border-purple-400 dark:hover:border-purple-500",
   },
   compliance: {
     icon: "text-orange-600 dark:text-orange-400",
     border: "border-orange-200 dark:border-orange-800",
-    hover: "hover:border-orange-400 dark:hover:border-orange-500"
+    hover: "hover:border-orange-400 dark:hover:border-orange-500",
   },
   data: {
     icon: "text-red-600 dark:text-red-400",
     border: "border-red-200 dark:border-red-800",
-    hover: "hover:border-red-400 dark:hover:border-red-500"
+    hover: "hover:border-red-400 dark:hover:border-red-500",
   },
   modernization: {
     icon: "text-blue-600 dark:text-blue-400",
-    border: "border-blue-200 dark:border-blue-800", 
-    hover: "hover:border-blue-400 dark:hover:border-blue-500"
+    border: "border-blue-200 dark:border-blue-800",
+    hover: "hover:border-blue-400 dark:hover:border-blue-500",
   },
   technology: {
     icon: "text-teal-600 dark:text-teal-400",
     border: "border-teal-200 dark:border-teal-800",
-    hover: "hover:border-teal-400 dark:hover:border-teal-500"
-  }
+    hover: "hover:border-teal-400 dark:hover:border-teal-500",
+  },
 };
 
 // Function to get colors for any category
 const getCategoryColors = (category: string) => {
-  return categoryColors[category as keyof typeof categoryColors] || {
-    icon: "text-slate-600 dark:text-slate-400",
-    border: "border-gray-200 dark:border-gray-700",
-    hover: "hover:border-gray-400 dark:hover:border-gray-500"
-  };
+  return (
+    categoryColors[category as keyof typeof categoryColors] || {
+      icon: "text-slate-600 dark:text-slate-400",
+      border: "border-slate-200 dark:border-slate-700",
+      hover: "hover:border-slate-400 dark:hover:border-slate-500",
+    }
+  );
 };
 ```
 
 ### Enhanced Card Structure with Color Coordination
 
 ```tsx
-{filteredProducts.map((product, index) => {
-  const IconComponent = product.icon;
-  const colors = getCategoryColors(product.category);
-  
-  return (
-    <div
-      key={product.id}
-      className={cn(
-        "row-span-1 rounded-xl group/bento hover:shadow-xl transition-all duration-300 shadow-input dark:shadow-none p-1 bg-gradient-to-br from-transparent via-transparent to-transparent relative min-h-[200px] cursor-pointer",
-        // Category-specific glow effects
-        "hover:shadow-2xl hover:scale-[1.02]",
-        product.category === "featured" && "hover:shadow-blue-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(59_130_246_/_0.5)]",
-        product.category === "project" && "hover:shadow-green-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(34_197_94_/_0.5)]",
-        product.category === "hr" && "hover:shadow-purple-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(147_51_234_/_0.5)]",
-        // ... other categories
-        product.className
-      )}
-    >              
-      {/* Card Content with Coordinated Colors */}
-      <div className={cn(
-        "relative flex h-full flex-col justify-between p-4 rounded-lg border-2 transition-all duration-300 bg-white dark:bg-slate-800/80 backdrop-blur-sm",
-        colors.border,
-        colors.hover,
-        "group-hover/bento:border-opacity-60 group-hover/bento:bg-white/90 dark:group-hover/bento:bg-slate-800/90"
-      )}>
-        {/* Icon with category color */}
-        <div className="flex justify-start">
-          <IconComponent className={cn(
-            "text-3xl transition-all duration-300",
-            colors.icon,
-            "group-hover/bento:drop-shadow-lg"
-          )} />
-        </div>
+{
+  filteredProducts.map((product, index) => {
+    const IconComponent = product.icon;
+    const colors = getCategoryColors(product.category);
 
-        {/* Title with matching category color */}
-        <div className="mt-auto">
-          <h3 className={cn(
-            "font-semibold tracking-tight text-xl mb-2 transition duration-300",
-            colors.icon, // Use same color as icon
-            "dark:text-slate-100" // Override for dark mode readability
-          )}>
-            {product.titleKey ? intl.formatMessage({ id: product.titleKey }) : product.title}
-          </h3>
-          <p className="text-slate-600 dark:text-slate-300 text-sm">
-            {product.descriptionKey ? intl.formatMessage({ id: product.descriptionKey }) : product.description}
-          </p>
+    return (
+      <div
+        key={product.id}
+        className={cn(
+          "row-span-1 rounded-xl group/bento hover:shadow-xl transition-all duration-300 shadow-input dark:shadow-none p-1 bg-gradient-to-br from-transparent via-transparent to-transparent relative min-h-[200px] cursor-pointer",
+          // Category-specific glow effects
+          "hover:shadow-2xl hover:scale-[1.02]",
+          product.category === "featured" &&
+            "hover:shadow-blue-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(59_130_246_/_0.5)]",
+          product.category === "project" &&
+            "hover:shadow-green-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(34_197_94_/_0.5)]",
+          product.category === "hr" &&
+            "hover:shadow-purple-500/20 hover:[box-shadow:0_0_30px_-5px_rgb(147_51_234_/_0.5)]",
+          // ... other categories
+          product.className
+        )}
+      >
+        {/* Card Content with Coordinated Colors */}
+        <div
+          className={cn(
+            "relative flex h-full flex-col justify-between p-4 rounded-lg border-2 transition-all duration-300 bg-white dark:bg-slate-800/80 backdrop-blur-sm",
+            colors.border,
+            colors.hover,
+            "group-hover/bento:border-opacity-60 group-hover/bento:bg-white/90 dark:group-hover/bento:bg-slate-800/90"
+          )}
+        >
+          {/* Icon with category color */}
+          <div className="flex justify-start">
+            <IconComponent
+              className={cn("text-3xl transition-all duration-300", colors.icon, "group-hover/bento:drop-shadow-lg")}
+            />
+          </div>
+
+          {/* Title with matching category color */}
+          <div className="mt-auto">
+            <h3
+              className={cn(
+                "font-semibold tracking-tight text-xl mb-2 transition duration-300",
+                colors.icon, // Use same color as icon
+                "dark:text-slate-100" // Override for dark mode readability
+              )}
+            >
+              {product.titleKey ? intl.formatMessage({ id: product.titleKey }) : product.title}
+            </h3>
+            <p className="text-slate-600 dark:text-slate-300 text-sm">
+              {product.descriptionKey ? intl.formatMessage({ id: product.descriptionKey }) : product.description}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  );
-})}
+    );
+  });
+}
 ```
 
 ### WCAG AAA Compliant Filter Buttons
@@ -704,7 +711,7 @@ const getButtonColors = (category: string, isActive: boolean) => {
     featured: {
       active: "bg-blue-700 text-white border-blue-700 dark:bg-blue-600 dark:border-blue-600",
       inactive: "bg-blue-50 dark:bg-blue-950/50 text-blue-800 dark:text-blue-200 border-blue-300 dark:border-blue-700",
-      hover: "hover:border-blue-600 dark:hover:border-blue-500 hover:bg-blue-100 dark:hover:bg-blue-900/50"
+      hover: "hover:border-blue-600 dark:hover:border-blue-500 hover:bg-blue-100 dark:hover:bg-blue-900/50",
     },
     // ... other categories with -700 shades for better contrast
   };
@@ -731,7 +738,7 @@ const getButtonColors = (category: string, isActive: boolean) => {
       {categoryMap[category as keyof typeof categoryMap] || category}
     </button>
   ))}
-</div>
+</div>;
 ```
 
 ### CSS-Based Glowing Effects
@@ -845,13 +852,13 @@ Use these specific color combinations for consistency:
 
 ```tsx
 // Primary category colors
-featured: blue-600/700/800    // #2563eb / #1d4ed8 / #1e40af
-project: green-600/700/800    // #16a34a / #15803d / #166534
-hr: purple-600/700/800        // #9333ea / #7c3aed / #6b21d4
-compliance: orange-600/700/800 // #ea580c / #c2410c / #9a3412
-data: red-600/700/800         // #dc2626 / #b91c1c / #991b1b
-modernization: blue-600/700/800 // #4f46e5 / #4338ca / #3730a3
-technology: teal-600/700/800  // #0d9488 / #0f766e / #115e59
+featured: blue - 600 / 700 / 800; // #2563eb / #1d4ed8 / #1e40af
+project: green - 600 / 700 / 800; // #16a34a / #15803d / #166534
+hr: purple - 600 / 700 / 800; // #9333ea / #7c3aed / #6b21d4
+compliance: orange - 600 / 700 / 800; // #ea580c / #c2410c / #9a3412
+data: red - 600 / 700 / 800; // #dc2626 / #b91c1c / #991b1b
+modernization: blue - 600 / 700 / 800; // #4f46e5 / #4338ca / #3730a3
+technology: teal - 600 / 700 / 800; // #0d9488 / #0f766e / #115e59
 ```
 
 This ensures visual consistency across all BentoGrid implementations while maintaining excellent accessibility standards.

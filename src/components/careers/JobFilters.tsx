@@ -2,8 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { X } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -13,13 +14,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
+import { countryList, popularLocations } from "@/lib/utils/countriesList";
+import { X } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Separator } from "@/components/ui/separator";
-import { Input } from "@/components/ui/input";
 import { useIntl } from "react-intl";
-import { countryList, popularLocations } from "@/lib/utils/countriesList";
 
 interface JobFiltersProps {
   locale?: string;
@@ -129,16 +129,16 @@ export function JobFilters({ locale = "en" }: JobFiltersProps) {
             {intl.formatMessage({ id: "careers.filters.keyword", defaultMessage: "Keyword" })}
           </Label>
           <Input
-            placeholder={intl.formatMessage({ 
-              id: "careers.filters.keywordPlaceholder", 
-              defaultMessage: "Search for jobs..." 
+            placeholder={intl.formatMessage({
+              id: "careers.filters.keywordPlaceholder",
+              defaultMessage: "Search for jobs..."
             })}
             value={currentKeyword}
             onChange={handleKeywordChange}
             className="w-full"
           />
         </div>
-        
+
         <Separator />
 
         {/* Job Type Filter */}
@@ -158,7 +158,7 @@ export function JobFilters({ locale = "en" }: JobFiltersProps) {
                 />
                 <Label
                   htmlFor={type.toLowerCase()}
-                  className="text-sm font-medium"
+                  className="" text-caption5761="true"
                 >
                   {getJobTypeLabel(type)}
                 </Label>
@@ -166,7 +166,7 @@ export function JobFilters({ locale = "en" }: JobFiltersProps) {
             ))}
           </div>
         </div>
-        
+
         <Separator />
 
         {/* Location Filter */}
@@ -176,9 +176,9 @@ export function JobFilters({ locale = "en" }: JobFiltersProps) {
           </Label>
           <Select value={currentLocation} onValueChange={handleLocationChange}>
             <SelectTrigger>
-              <SelectValue placeholder={intl.formatMessage({ 
-                id: "careers.filters.selectLocation", 
-                defaultMessage: "Select Location" 
+              <SelectValue placeholder={intl.formatMessage({
+                id: "careers.filters.selectLocation",
+                defaultMessage: "Select Location"
               })} />
             </SelectTrigger>
             <SelectContent>
@@ -189,14 +189,14 @@ export function JobFilters({ locale = "en" }: JobFiltersProps) {
                 <SelectItem value="remote">
                   <span>🌍</span>
                   <span className="pl-2">
-                    {intl.formatMessage({ 
-                      id: "careers.filters.worldwide", 
-                      defaultMessage: "Worldwide / Remote" 
+                    {intl.formatMessage({
+                      id: "careers.filters.worldwide",
+                      defaultMessage: "Worldwide / Remote"
                     })}
                   </span>
                 </SelectItem>
               </SelectGroup>
-              
+
               <SelectGroup>
                 <SelectLabel>
                   {intl.formatMessage({ id: "careers.filters.popular", defaultMessage: "Popular" })}
@@ -230,7 +230,7 @@ export function JobFilters({ locale = "en" }: JobFiltersProps) {
             </SelectContent>
           </Select>
         </div>
-        
+
         <Separator />
 
         {/* Salary Range Filter */}
@@ -240,7 +240,7 @@ export function JobFilters({ locale = "en" }: JobFiltersProps) {
           </Label>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="minSalary" className="text-sm">
+              <Label htmlFor="minSalary" className="" text-caption9096>
                 {intl.formatMessage({ id: "careers.filters.minSalary", defaultMessage: "Min Salary" })}
               </Label>
               <Input
@@ -253,7 +253,7 @@ export function JobFilters({ locale = "en" }: JobFiltersProps) {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="maxSalary" className="text-sm">
+              <Label htmlFor="maxSalary" className="" text-caption9613>
                 {intl.formatMessage({ id: "careers.filters.maxSalary", defaultMessage: "Max Salary" })}
               </Label>
               <Input

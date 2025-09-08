@@ -42,7 +42,7 @@ async function JobsPageContent({ locale }: JobsPageContentProps) {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight mb-2">
+        <h1 className="mb-2">
           {intl.formatMessage({ id: "page.jobs.title", defaultMessage: "Career Opportunities" })}
         </h1>
         <p className="text-muted-foreground text-lg">

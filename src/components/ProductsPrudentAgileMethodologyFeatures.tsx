@@ -57,7 +57,7 @@ export default function ProductsPrudentAgileMethodologyFeatures() {
         >
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-7xl text-left">
-                    <h2 className="text-base/7 font-semibold text-muted-foreground">
+                    <h2 className="text-base/7 text-muted-foreground">
                         <FormattedMessage id="products.prudentAgileMethodology.hero.subtitle" />
                     </h2>
                 </div>

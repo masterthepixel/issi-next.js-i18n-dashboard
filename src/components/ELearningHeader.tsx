@@ -41,18 +41,18 @@ export default function ELearningHeader() {
             </div>
             <div className="mt-6 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
               <div className="mt-6 min-w-0 flex-1 sm:hidden md:block">
-                <h1 className="truncate text-2xl font-bold bg-clip-text text-transparent text-center bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)]">
+                <h1 className="truncate bg-clip-text text-transparent text-center bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)]">
                   <FormattedMessage id="page.eLearning.title" defaultMessage="eLearning Platform" />
                 </h1>
               </div>{" "}
               <div className="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
-                <Button type="button" aria-label="Send a message" className="inline-flex justify-center rounded-md bg-background px-3 py-2 text-sm font-semibold text-foreground shadow-xs ring-1 ring-border ring-inset hover:bg-muted/50">
+                <Button type="button" aria-label="Send a message" className="inline-flex justify-center rounded-md bg-background px-3 py-2  " text-caption2329>
                   <EnvelopeIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-muted-foreground" />
                   <span>
                     <FormattedMessage id="common.action.message" defaultMessage="Message" />
                   </span>
                 </Button>
-                <Button type="button" aria-label="Make a phone call" className="inline-flex justify-center rounded-md bg-background px-3 py-2 text-sm font-semibold text-foreground shadow-xs ring-1 ring-border ring-inset hover:bg-muted/50">
+                <Button type="button" aria-label="Make a phone call" className="inline-flex justify-center rounded-md bg-background px-3 py-2  " text-caption2855>
                   <PhoneIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-muted-foreground" />
                   <span>
                     <FormattedMessage id="common.action.call" defaultMessage="Call" />
@@ -62,7 +62,7 @@ export default function ELearningHeader() {
             </div>
           </div>
           <div className="mt-6 hidden min-w-0 flex-1 sm:block md:hidden">
-            <h1 className="truncate text-2xl font-bold bg-clip-text text-transparent text-center bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)]">
+            <h1 className="truncate bg-clip-text text-transparent text-center bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)]">
               <FormattedMessage id="page.eLearning.title" defaultMessage="eLearning Platform" />
             </h1>
           </div>

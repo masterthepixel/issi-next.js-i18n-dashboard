@@ -57,10 +57,10 @@ export default function Footer({ locale, messages }: FooterProps) {
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
               {/* Brand Section */}
               <div className="lg:col-span-1">
-                <h2 className="text-lg font-semibold text-foreground mb-4">
+                <h2 className="text-foreground mb-4">
                   International Software Systems, Inc.
                 </h2>
-                <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+                <p className="" text-caption2106>
                   <FormattedMessage id="footer.company.description" defaultMessage="Leading technology solutions provider specializing in cybersecurity, compliance, and digital transformation for government and enterprise clients." />
                 </p>
               </div>
@@ -72,7 +72,7 @@ export default function Footer({ locale, messages }: FooterProps) {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {/* Services */}
                 <div>
-                  <h3 className="text-sm font-semibold text-foreground mb-4">
+                  <h3 className="text-foreground mb-4">
                     <FormattedMessage id="footer.sections.services" />
                   </h3>
                   <ul className="space-y-3">
@@ -80,7 +80,7 @@ export default function Footer({ locale, messages }: FooterProps) {
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        className="justify-start p-0 h-auto  " text-caption3049
                         onClick={() => router.push(`/${locale}/services`)}
                       >
                         <WrenchScrewdriverIcon className="h-4 w-4 mr-2" />
@@ -91,7 +91,7 @@ export default function Footer({ locale, messages }: FooterProps) {
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        className="justify-start p-0 h-auto  " text-caption3629
                         onClick={() => router.push(`/${locale}/products`)}
                       >
                         <CubeIcon className="h-4 w-4 mr-2" />
@@ -102,7 +102,7 @@ export default function Footer({ locale, messages }: FooterProps) {
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        className="justify-start p-0 h-auto  " text-caption4196
                         onClick={() => router.push(`/${locale}/government`)}
                       >
                         <BuildingLibraryIcon className="h-4 w-4 mr-2" />
@@ -113,7 +113,7 @@ export default function Footer({ locale, messages }: FooterProps) {
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        className="justify-start p-0 h-auto  " text-caption4778
                         onClick={() => router.push(`/${locale}/eLearning`)}
                       >
                         <AcademicCapIcon className="h-4 w-4 mr-2" />
@@ -124,7 +124,7 @@ export default function Footer({ locale, messages }: FooterProps) {
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        className="justify-start p-0 h-auto  " text-caption5354
                         onClick={() => router.push(`/${locale}/compliance`)}
                       >
                         <ShieldCheckIcon className="h-4 w-4 mr-2" />
@@ -136,7 +136,7 @@ export default function Footer({ locale, messages }: FooterProps) {
 
                 {/* Support */}
                 <div>
-                  <h3 className="text-sm font-semibold text-foreground mb-4">
+                  <h3 className="text-foreground mb-4">
                     <FormattedMessage id="footer.sections.support" />
                   </h3>
                   <ul className="space-y-3">
@@ -144,7 +144,7 @@ export default function Footer({ locale, messages }: FooterProps) {
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        className="justify-start p-0 h-auto  " text-caption6238
                         onClick={() => router.push(`/${locale}/docs`)}
                       >
                         <DocumentTextIcon className="h-4 w-4 mr-2" />
@@ -155,7 +155,7 @@ export default function Footer({ locale, messages }: FooterProps) {
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        className="justify-start p-0 h-auto  " text-caption6811
                         onClick={() => router.push(`/${locale}/guides`)}
                       >
                         <BookOpenIcon className="h-4 w-4 mr-2" />
@@ -166,7 +166,7 @@ export default function Footer({ locale, messages }: FooterProps) {
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        className="justify-start p-0 h-auto  " text-caption7375
                         onClick={() => router.push(`/${locale}/contact`)}
                       >
                         <QuestionMarkCircleIcon className="h-4 w-4 mr-2" />
@@ -177,7 +177,7 @@ export default function Footer({ locale, messages }: FooterProps) {
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        className="justify-start p-0 h-auto  " text-caption7954
                         onClick={() => router.push(`/${locale}/support`)}
                       >
                         <TicketIcon className="h-4 w-4 mr-2" />
@@ -189,7 +189,7 @@ export default function Footer({ locale, messages }: FooterProps) {
 
                 {/* Company */}
                 <div>
-                  <h3 className="text-sm font-semibold text-foreground mb-4">
+                  <h3 className="text-foreground mb-4">
                     <FormattedMessage id="footer.sections.company" />
                   </h3>
                   <ul className="space-y-3">
@@ -197,7 +197,7 @@ export default function Footer({ locale, messages }: FooterProps) {
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        className="justify-start p-0 h-auto  " text-caption8823
                         onClick={() => router.push(`/${locale}/about`)}
                       >
                         <InformationCircleIcon className="h-4 w-4 mr-2" />
@@ -208,7 +208,7 @@ export default function Footer({ locale, messages }: FooterProps) {
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        className="justify-start p-0 h-auto  " text-caption9397
                         onClick={() => router.push(`/${locale}/careers`)}
                       >
                         <AcademicCapIcon className="h-4 w-4 mr-2" />
@@ -219,7 +219,7 @@ export default function Footer({ locale, messages }: FooterProps) {
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        className="justify-start p-0 h-auto  " text-caption9966
                         onClick={() => router.push(`/${locale}/news`)}
                       >
                         <DocumentTextIcon className="h-4 w-4 mr-2" />
@@ -231,7 +231,7 @@ export default function Footer({ locale, messages }: FooterProps) {
 
                 {/* Legal */}
                 <div>
-                  <h3 className="text-sm font-semibold text-foreground mb-4">
+                  <h3 className="text-foreground mb-4">
                     <FormattedMessage id="footer.sections.legal" />
                   </h3>
                   <ul className="space-y-3">
@@ -239,7 +239,7 @@ export default function Footer({ locale, messages }: FooterProps) {
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        className="justify-start p-0 h-auto  " text-caption10832
                         onClick={() => router.push(`/${locale}/privacy`)}
                       >
                         <ShieldExclamationIcon className="h-4 w-4 mr-2" />
@@ -250,7 +250,7 @@ export default function Footer({ locale, messages }: FooterProps) {
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        className="justify-start p-0 h-auto  " text-caption11405
                         onClick={() => router.push(`/${locale}/terms`)}
                       >
                         <DocumentTextIcon className="h-4 w-4 mr-2" />
@@ -261,7 +261,7 @@ export default function Footer({ locale, messages }: FooterProps) {
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="justify-start p-0 h-auto text-sm text-muted-foreground hover:text-primary transition-colors"
+                        className="justify-start p-0 h-auto  " text-caption11969
                         onClick={() => router.push(`/${locale}/license`)}
                       >
                         <DocumentTextIcon className="h-4 w-4 mr-2" />
@@ -279,7 +279,7 @@ export default function Footer({ locale, messages }: FooterProps) {
         {/* Copyright Section */}
         <Separator className="my-6" />
         <div className="py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
+          <div className="flex flex-col md:flex-row justify-between items-center  " text-caption12628>
             <div className="mb-2 md:mb-0">
               <FormattedMessage
                 id="footer.copyright"

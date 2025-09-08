@@ -50,13 +50,13 @@ export default function ProductsElectronicCorrespondenceTrackingSystemFeatures()
         <div className="bg-white py-24 sm:py-32">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-2xl sm:text-center">
-                    <h2 className="text-base/7 font-semibold text-blue-600">
+                    <h2 className="text-base/7 text-blue-600">
                         <FormattedMessage id="products.ects.hero.tagline" />
                     </h2>
-                    <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl sm:text-balance">
+                    <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl sm:text-balance">
                         <FormattedMessage id="products.ects.hero.title" />
                     </p>
-                    <p className="mt-6 text-lg/8 text-gray-600">
+                    <p className="mt-6 text-lg/8  " text-muted-foreground2115>
                         <FormattedMessage id="products.ects.hero.description" />
                     </p>
                 </div>
@@ -68,7 +68,7 @@ export default function ProductsElectronicCorrespondenceTrackingSystemFeatures()
                         src="/images/products/ectsproduct.png"
                         width={2432}
                         height={1442}
-                        className="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-gray-900/10"
+                        className="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-slate-900/10"
                     />
                     <div aria-hidden="true" className="relative">
                         <div className="absolute -inset-x-20 bottom-0 bg-gradient-to-t from-white pt-[7%]" />
@@ -76,9 +76,9 @@ export default function ProductsElectronicCorrespondenceTrackingSystemFeatures()
                 </div>
             </div>
             <div className="mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8">
-                <dl className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base/7 text-gray-600 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
+                <dl className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base/7  " text-muted-foreground3147>
                     {features.map((feature, _index) => [
-                        <dt key={feature.nameId + '-dt'} className="relative pl-9 inline font-semibold text-gray-900">
+                        <dt key={feature.nameId + '-dt'} className="relative pl-9 inline font-semibold text-slate-900">
                             <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-blue-600" />
                             <FormattedMessage id={feature.nameId} />
                         </dt>,

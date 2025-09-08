@@ -103,7 +103,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
 const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   const { slug, lang } = await params;
-  
+
   if (slug === 'bug-tracking-system') {
     const intl = await getIntl(lang);
     return <ProductsBugTrackingSystemFeaturesWrapper locale={lang} messages={intl.messages} />;
@@ -263,11 +263,11 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   const IconComponent = product.icon;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="mb-8">
-          <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+          <ol className="flex items-center space-x-2  " text-caption11945 text-muted-foreground11945>
             <li>
               <Link
                 href={`/${lang}`}
@@ -287,7 +287,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
             </li>
             <li className="flex items-center">
               <span className="mx-2">/</span>
-              <span aria-current="page" className="text-gray-900 dark:text-gray-100 font-medium">
+              <span aria-current="page" className="text-slate-900 dark:text-slate-100 font-medium">
                 {product.name}
               </span>
             </li>
@@ -338,10 +338,10 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
           {/* Product Information */}
           <div className="space-y-6">
             <div>
-              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+              <h1 className="lg:text-5xl dark: mb-4">
                 {product.name}
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+              <p className="text-xl  " text-muted-foreground14924>
                 {product.description}
               </p>
             </div>
@@ -352,7 +352,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
                 {product.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg border border-gray-200 dark:border-gray-600"
+                    className="px-3 py-1  " text-caption15326
                   >
                     {tag}
                   </span>
@@ -364,12 +364,12 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
             <div className="space-y-4 pt-6">
               <Link
                 href={`/${lang}/contact?product=${product.slug}`}
-                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800"
               >
                 <ExternalLink className="w-5 h-5 mr-2" />
                 Request Demo
               </Link>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="" text-caption16277>
                 Get a personalized demonstration of this solution
               </p>
             </div>
@@ -381,8 +381,8 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
           {/* Features */}
           {product.features && product.features.length > 0 && (
             <div className="lg:col-span-2">
-              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-200 dark:border-gray-700">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-sm border border-slate-200 dark:border-slate-700">
+                <h2 className="dark: mb-6 flex items-center">
                   <Star className="w-6 h-6 mr-3 text-yellow-500" />
                   Key Features
                 </h2>
@@ -390,7 +390,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
                   {product.features.map((feature, index) => (
                     <div key={index} className="flex items-start space-x-3">
                       <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                      <span className="text-slate-700 dark:text-slate-300">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -401,17 +401,17 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
           {/* Specifications */}
           {product.specifications && Object.keys(product.specifications).length > 0 && (
             <div>
-              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-200 dark:border-gray-700">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-sm border border-slate-200 dark:border-slate-700">
+                <h2 className="dark: mb-6">
                   Specifications
                 </h2>
                 <dl className="space-y-4">
                   {Object.entries(product.specifications).map(([key, value]) => (
-                    <div key={key} className="border-b border-gray-200 dark:border-gray-600 pb-3 last:border-b-0">
-                      <dt className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-1">
+                    <div key={key} className="border-b border-slate-200 dark:border-slate-600 pb-3 last:border-b-0">
+                      <dt className="" text-caption18184 text-muted-foreground18208>
                         {key}
                       </dt>
-                      <dd className="text-gray-900 dark:text-gray-100">
+                      <dd className="text-slate-900 dark:text-slate-100">
                         {value}
                       </dd>
                     </div>
@@ -426,7 +426,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
         {product.benefits && product.benefits.length > 0 && (
           <div className="mt-12">
             <div className="bg-gradient-to-r from-blue-50 to-blue-50 dark:from-blue-900/10 dark:to-blue-900/10 rounded-2xl p-8 border border-blue-200 dark:border-blue-800">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+              <h2 className="dark: mb-6 text-center">
                 Key Benefits
               </h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -435,7 +435,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
                     <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-3">
                       <CheckCircle className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                     </div>
-                    <p className="text-gray-700 dark:text-gray-300 font-medium">
+                    <p className="text-slate-700 dark:text-slate-300 font-medium">
                       {benefit}
                     </p>
                   </div>
@@ -447,23 +447,23 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
 
         {/* Contact CTA */}
         <div className="mt-16 text-center">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-12 shadow-sm border border-gray-200 dark:border-gray-700">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl p-12 shadow-sm border border-slate-200 dark:border-slate-700">
+            <h2 className="dark: mb-4">
               Ready to Get Started?
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl  " text-muted-foreground20051>
               Contact our team to learn more about {product.name} and how it can transform your operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href={`/${lang}/contact?product=${product.slug}`}
-                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800"
               >
                 Contact Sales Team
               </Link>
               <Link
                 href={`/${lang}/products`}
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-300 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-slate-300 dark:border-slate-600 hover:border-blue-500 dark:hover:border-blue-400 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800"
               >
                 View All Products
               </Link>

@@ -227,7 +227,7 @@ const ProductsBentoGrid = () => {
     <section className="py-16 px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="text-left mb-16">
-          <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl mb-4">
+          <h1 className="text-foreground sm:text-4xl mb-4">
             Products & Software Solutions
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mb-8">
@@ -239,19 +239,19 @@ const ProductsBentoGrid = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 p-6 bg-muted rounded-lg">
             <div className="text-center">
               <div className="text-2xl font-bold text-primary">30+</div>
-              <div className="text-sm text-muted-foreground">Years Experience</div>
+              <div className="" text-caption8463>Years Experience</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-primary">40+</div>
-              <div className="text-sm text-muted-foreground">Software Products</div>
+              <div className="" text-caption8685>Software Products</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-primary">CMMI 3</div>
-              <div className="text-sm text-muted-foreground">Level Certified</div>
+              <div className="" text-caption8911>Level Certified</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-primary">ISO</div>
-              <div className="text-sm text-muted-foreground">9001:2015 Certified</div>
+              <div className="" text-caption9132>9001:2015 Certified</div>
             </div>
           </div>
 

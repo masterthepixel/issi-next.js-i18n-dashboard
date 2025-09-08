@@ -286,7 +286,7 @@ export default function HomePageGlobalHero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >            <div className="space-y-6">
-              <h1 className="text-3xl font-semibold tracking-tight text-balance text-slate-900 dark:text-slate-100 sm:text-4xl">
+              <h1 className="text-balance dark:text-slate-100 sm:text-4xl">
                 <div className="flex flex-col">
                   <span><FormattedMessage id="hero.flipwords.prefix" /></span>
                   <span>
@@ -299,7 +299,7 @@ export default function HomePageGlobalHero() {
                   </span>
                 </div>
               </h1>
-              <p className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+              <p className="" text-caption16209 text-muted-foreground16209>
                 <FormattedMessage
                   id="hero.description" values={{
                     innovativeTechnology: (chunks) => (
@@ -355,14 +355,14 @@ export default function HomePageGlobalHero() {
               <a
                 href="/contact"
                 title="Contact ISSI to get started with our solutions"
-                className="bg-blue-600 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg text-center text-sm sm:text-base flex-1 sm:flex-none"
+                className="bg-blue-600 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg text-center  " text-caption19119
               >
                 <FormattedMessage id="hero.cta.get-started" />
               </a>
               <a
                 href="/services"
                 title="Explore ISSI's software solutions and services"
-                className="border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 px-3 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all text-center text-sm sm:text-base flex-1 sm:flex-none"
+                className="border-2 border-slate-300 dark:border-slate-600  " text-muted-foreground19569
               >
                 <FormattedMessage id="hero.cta.learn-more" />
               </a>
@@ -380,18 +380,18 @@ export default function HomePageGlobalHero() {
 
             {/* Pause Indicator */}
             {isPaused && (
-              <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm font-medium">
+              <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full  " text-caption20466>
                 ⏸️ Paused - Click to resume
               </div>
             )}
 
             {/* Active Transfers Indicator */}
             {dataTransfers.length > 0 && !isPaused && (
-              <div className="absolute bottom-4 left-4 bg-yellow-500/20 border border-yellow-500/50 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-full text-sm font-medium">
+              <div className="absolute bottom-4 left-4 bg-yellow-500/20 border border-yellow-500/50 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-full  " text-caption20778>
                 📡 {dataTransfers.length} active transfer{dataTransfers.length !== 1 ? 's' : ''}
               </div>
             )}            {/* Small Legend for Globe */}
-            <div className="absolute bottom-4 right-4 sm:bottom-4 sm:right-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-2 text-xs">
+            <div className="absolute bottom-4 right-4 sm:bottom-4 sm:right-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-lg p-2 text-xs">
               {/* Mobile: Horizontal layout */}
               <div className="flex sm:hidden gap-3">
                 <div className="flex items-center gap-1">

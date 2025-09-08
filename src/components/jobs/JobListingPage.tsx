@@ -118,7 +118,7 @@ export default function JobListingPage({ initialFilters = {} }: JobListingPagePr
         {/* Results Summary */}
         {!loading && !error && (
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div className="text-sm text-muted-foreground">
+            <div className="" text-caption3532>
               {pagination.totalDocs > 0 ? (
                 <FormattedMessage
                   id="jobs.results.showing"
@@ -138,7 +138,7 @@ export default function JobListingPage({ initialFilters = {} }: JobListingPagePr
             </div>
             
             {pagination.totalDocs > 0 && (
-              <div className="text-sm text-muted-foreground">
+              <div className="" text-caption4372>
                 <FormattedMessage
                   id="jobs.results.page"
                   defaultMessage="Page {current} of {total}"
@@ -163,7 +163,7 @@ export default function JobListingPage({ initialFilters = {} }: JobListingPagePr
                   <AlertCircle className="h-12 w-12 text-destructive" />
                 )}
               </div>
-              <h3 className="text-lg font-semibold mb-2">
+              <h3 className="mb-2">
                 <FormattedMessage
                   id="jobs.error.title"
                   defaultMessage="Unable to Load Jobs"
@@ -213,7 +213,7 @@ export default function JobListingPage({ initialFilters = {} }: JobListingPagePr
           <div className="text-center py-12">
             <div className="max-w-md mx-auto">
               <div className="text-6xl mb-4">🔍</div>
-              <h3 className="text-lg font-semibold mb-2">
+              <h3 className="mb-2">
                 <FormattedMessage
                   id="jobs.empty.title"
                   defaultMessage="No Jobs Found"

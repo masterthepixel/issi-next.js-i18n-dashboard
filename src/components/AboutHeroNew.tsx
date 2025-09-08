@@ -3,8 +3,7 @@
 import {
     Card,
     CardContent,
-    CardHeader,
-    CardTitle
+    CardHeader
 } from "@/components/ui/card";
 import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
@@ -61,9 +60,9 @@ export default function AboutHeroNew() {
                                         <FormattedMessage id="about.hero.subtitle" defaultMessage="Award-Winning Software Development Since 1995" />
                                     </p>
                                     <h2 id="about-hero-heading">
-                                        <CardTitle className="text-5xl font-bold tracking-tight text-balance bg-clip-text text-transparent text-center bg-gradient-to-b from-foreground to-muted-foreground sm:text-7xl">
+                                        <h1 className="text-balance text-foreground text-center sm:text-7xl">
                                             <FormattedMessage id="about.hero.title" defaultMessage="Welcome to ISSI" />
-                                        </CardTitle>
+                                        </h1>
                                     </h2>
                                 </CardHeader>
                                 <CardContent>
@@ -87,7 +86,7 @@ export default function AboutHeroNew() {
                         <div className="flex items-center justify-center lg:justify-end">
                             <Image
                                 alt="ISSI headquarters in Greenbelt, Maryland showcasing our modern office environment and commitment to technology excellence since 1995"
-                                src="https://tailwindcss.com/_next/static/media/dark-project-app-screenshot.b4a53163.png"
+                                src="/images/dark-project-app-screenshot.png"
                                 width={2432}
                                 height={1442}
                                 priority

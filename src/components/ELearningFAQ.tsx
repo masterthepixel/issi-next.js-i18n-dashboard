@@ -25,10 +25,10 @@ export default function ELearningFAQ() {  const intl = useIntl();
     <section className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl mb-4">
+            <h2 className="text-foreground sm:text-4xl mb-4">
               <FormattedMessage id="elearning.faq.title" />
             </h2>
-            <p className="text-lg leading-8 text-muted-foreground">
+            <p className="" text-lead1191>
               <FormattedMessage id="elearning.faq.subtitle" />
             </p>
           </div>
@@ -62,7 +62,7 @@ export default function ELearningFAQ() {  const intl = useIntl();
           {/* Contact CTA */}
           <div className="mt-16 text-center">
             <div className="bg-muted/50 rounded-lg p-8">
-              <h3 className="text-lg font-semibold text-foreground mb-4">
+              <h3 className="text-foreground mb-4">
                 <FormattedMessage id="elearning.faq.contact.title" />
               </h3>
               <p className="text-muted-foreground mb-6">

@@ -56,7 +56,7 @@ export function EmptyState({
         </div>
         
         <div className="space-y-2">
-          <h3 className="text-2xl font-semibold">
+          <h3 className="">
             {title || defaultTitle}
           </h3>
           <p className="text-muted-foreground max-w-md mx-auto">

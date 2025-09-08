@@ -127,7 +127,7 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
                   </div>
                 )}
 
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2  " text-caption4831>
                   <Clock className="h-4 w-4" />
                   {intl.formatMessage({ 
                     id: "jobs.postedTime", 
@@ -209,9 +209,9 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h4 className="font-semibold mb-2">{job.company.name}</h4>
+                <h4 className="mb-2">{job.company.name}</h4>
                 {job.company.about && (
-                  <p className="text-sm text-muted-foreground mb-3">
+                  <p className="" text-caption7883>
                     {job.company.about}
                   </p>
                 )}
@@ -219,7 +219,7 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
 
               <Separator />
 
-              <div className="space-y-2 text-sm">
+              <div className="space-y-2  " text-caption8091>
                 <div className="flex items-center gap-2">
                   <MapPin className="h-4 w-4 text-muted-foreground" />
                   <span>{job.company.location}</span>
@@ -250,7 +250,7 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
                 {intl.formatMessage({ id: "jobs.jobDetails", defaultMessage: "Job Details" })}
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3 text-sm">
+            <CardContent className="space-y-3  " text-caption9397>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">
                   {intl.formatMessage({ id: "jobs.employmentType", defaultMessage: "Employment Type" })}

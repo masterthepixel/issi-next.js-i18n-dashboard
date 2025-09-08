@@ -24,12 +24,10 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Locale } from "@/lib/definitions";
 import { cn } from "@/lib/utils";
 import {
-  BookOpen,
   Briefcase,
   Building2,
   GraduationCap,
   HelpCircle,
-  Home,
   LogOut,
   Mail,
   Menu,
@@ -234,9 +232,9 @@ export default function DashboardNavbar({
                           <div className="flex items-start gap-2">
                             {item.icon}
                             <div>
-                              <div className="text-sm font-medium leading-none">{item.title}</div>
+                              <div className="" text-caption7677>{item.title}</div>
                               {item.description && (
-                                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                                <p className="line-clamp-2  " text-caption7829>
                                   {item.description}
                                 </p>
                               )}
@@ -267,9 +265,9 @@ export default function DashboardNavbar({
           {/* Right-side content outside nav */}
           <div className="flex flex-1 items-center justify-end space-x-2">
             {/* Contact Button */}
-            <Button 
-              variant="ghost" 
-              size="sm" 
+            <Button
+              variant="ghost"
+              size="sm"
               className="inline-flex items-center"
               onClick={() => router.push(`/${locale}/contact`)}
             >
@@ -299,7 +297,7 @@ export default function DashboardNavbar({
               <DropdownMenuContent className="w-56" align="end" forceMount>
                 <DropdownMenuLabel className="font-normal">
                   <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-medium leading-none">{userName}</p>
+                    <p className="" text-caption10459>{userName}</p>
                     <p className="text-xs leading-none text-muted-foreground">{userEmail}</p>
                   </div>
                 </DropdownMenuLabel>
@@ -351,9 +349,15 @@ export default function DashboardNavbar({
                   <div className="grid gap-2 py-4">
                     <Link
                       href={`/${locale}/home`}
-                      className="flex items-center gap-2 px-2 py-1 text-sm hover:bg-accent rounded-md"
+                      className="flex items-center gap-2 px-2 py-1  " text-caption12501
                     >
-                      <Home className="h-4 w-4" />
+                      <Image
+                        src="/images/issi_logo.png"
+                        alt="ISSI Logo"
+                        width={16}
+                        height={16}
+                        className="rounded"
+                      />
                       <FormattedMessage id="common.navigation.home" defaultMessage="Home" />
                     </Link>
 
@@ -361,7 +365,7 @@ export default function DashboardNavbar({
                       <Link
                         key={item.href}
                         href={item.href}
-                        className="flex items-center gap-2 px-2 py-1 text-sm hover:bg-accent rounded-md"
+                        className="flex items-center gap-2 px-2 py-1  " text-caption13169
                       >
                         {item.icon}
                         {item.title}
@@ -372,7 +376,7 @@ export default function DashboardNavbar({
                       <Link
                         key={item.href}
                         href={item.href}
-                        className="flex items-center gap-2 px-2 py-1 text-sm hover:bg-accent rounded-md"
+                        className="flex items-center gap-2 px-2 py-1  " text-caption13587
                       >
                         {item.icon}
                         {item.title}

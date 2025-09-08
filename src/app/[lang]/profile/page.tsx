@@ -138,7 +138,7 @@ export default function ProfilePage({ params }: { params: { lang: string } }) {
                                 </div>
                                 <div className="text-right">
                                     <div className="text-2xl font-bold">{profile.name}</div>
-                                    <div className="text-green-100 text-sm">
+                                    <div className="text-green-100  " text-caption5932>
                                         <FormattedMessage
                                             id="profile.lastUpdated"
                                             defaultMessage="Last updated:"
@@ -155,7 +155,7 @@ export default function ProfilePage({ params }: { params: { lang: string } }) {
                 <Card className="mb-6">
                     <CardContent className="pt-6">
                         <div className="flex items-center justify-between mb-4">
-                            <h2 className="text-xl font-semibold">
+                            <h2 className="">
                                 <FormattedMessage
                                     id="profile.completion.title"
                                     defaultMessage="Profile Completion"
@@ -184,13 +184,13 @@ export default function ProfilePage({ params }: { params: { lang: string } }) {
 
                         {completionPercentage < 100 && (
                             <div className="bg-yellow-50 dark:bg-yellow-950 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
-                                <h3 className="font-medium text-yellow-900 dark:text-yellow-100 mb-2">
+                                <h3 className="text-yellow-900 dark:text-yellow-100 mb-2">
                                     <FormattedMessage
                                         id="profile.improve.title"
                                         defaultMessage="Ways to improve your profile:"
                                     />
                                 </h3>
-                                <ul className="text-sm text-yellow-800 dark:text-yellow-200 space-y-1">
+                                <ul className="" text-caption8649>
                                     {!profile.resume && (
                                         <li>• <FormattedMessage
                                             id="profile.improve.resume"
@@ -220,7 +220,7 @@ export default function ProfilePage({ params }: { params: { lang: string } }) {
                     {/* Basic Information */}
                     <Card>
                         <CardContent className="pt-6">
-                            <h2 className="text-xl font-semibold mb-4">
+                            <h2 className="mb-4">
                                 <FormattedMessage
                                     id="profile.basic.title"
                                     defaultMessage="Basic Information"
@@ -229,21 +229,21 @@ export default function ProfilePage({ params }: { params: { lang: string } }) {
 
                             <div className="space-y-4">
                                 <div>
-                                    <label className="block text-sm font-medium text-muted-foreground">
+                                    <label className="block  " text-caption10817>
                                         <FormattedMessage id="profile.name" defaultMessage="Full Name" />
                                     </label>
                                     <p className="text-foreground">{profile.name}</p>
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-muted-foreground">
+                                    <label className="block  " text-caption11243>
                                         <FormattedMessage id="profile.email" defaultMessage="Email" />
                                     </label>
                                     <p className="text-foreground">{profile.email}</p>
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-muted-foreground">
+                                    <label className="block  " text-caption11667>
                                         <FormattedMessage id="profile.type" defaultMessage="Account Type" />
                                     </label>
                                     <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
@@ -268,7 +268,7 @@ export default function ProfilePage({ params }: { params: { lang: string } }) {
                     {/* About Section */}
                     <Card>
                         <CardContent className="pt-6">
-                            <h2 className="text-xl font-semibold mb-4">
+                            <h2 className="mb-4">
                                 <FormattedMessage
                                     id="profile.about.title"
                                     defaultMessage="About You"
@@ -305,7 +305,7 @@ export default function ProfilePage({ params }: { params: { lang: string } }) {
                 {/* Quick Actions */}
                 <Card className="mt-6">
                     <CardContent className="pt-6">
-                        <h2 className="text-xl font-semibold mb-4">
+                        <h2 className="mb-4">
                             <FormattedMessage
                                 id="profile.quickActions"
                                 defaultMessage="Quick Actions"

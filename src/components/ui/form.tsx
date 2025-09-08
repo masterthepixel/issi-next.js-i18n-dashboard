@@ -49,7 +49,7 @@ const FormLabel = React.forwardRef<
     <label
         ref={ref}
         className={cn(
-            "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+            " font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
             className
         )}
         {...props}
@@ -75,7 +75,7 @@ const FormDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
     <p
         ref={ref}
-        className={cn("text-sm text-muted-foreground", className)}
+        className={cn(" text-muted-foreground", className)}
         {...props}
     />
 ))
@@ -96,7 +96,7 @@ const FormMessage = React.forwardRef<
     return (
         <p
             ref={ref}
-            className={cn("text-sm font-medium text-red-500", className)}
+            className={cn(" font-medium text-red-500", className)}
             {...props}
         >
             {fieldError.message as string ?? children}

@@ -25,7 +25,7 @@ function PrivacyTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-lg text-slate-700 dark:text-slate-100">
+            <p className="text-lg  " text-muted-foreground797>
               <FormattedMessage id="privacy.sections.notice.commitment" />
             </p>
           </div>
@@ -37,10 +37,10 @@ function PrivacyTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground1229>
               <FormattedMessage id="privacy.sections.overview.anonymous" />
             </p>
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground1388>
               <FormattedMessage id="privacy.sections.overview.ipAddress" />
             </p>
           </div>
@@ -52,16 +52,16 @@ function PrivacyTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground1817>
               <FormattedMessage id="privacy.sections.registration.voluntary" />
             </p>
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground1980>
               <FormattedMessage id="privacy.sections.registration.dataUse" />
             </p>
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground2141>
               <FormattedMessage id="privacy.sections.registration.transfer" />
             </p>
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground2303>
               <FormattedMessage id="privacy.sections.registration.storage" />
             </p>
           </div>
@@ -73,13 +73,13 @@ function PrivacyTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground2729>
               <FormattedMessage id="privacy.sections.cookies.definition" />
             </p>
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground2888>
               <FormattedMessage id="privacy.sections.cookies.currentUse" />
             </p>
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground3047>
               <FormattedMessage id="privacy.sections.cookies.control" />
             </p>
           </div>
@@ -91,10 +91,10 @@ function PrivacyTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground3470>
               <FormattedMessage id="privacy.sections.cookies.anonymousData" />
             </p>
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground3632>
               <FormattedMessage id="privacy.sections.cookies.dataAnalysis" />
             </p>
           </div>
@@ -106,7 +106,7 @@ function PrivacyTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground4056>
               <FormattedMessage id="privacy.sections.links.disclaimer" />
             </p>
           </div>
@@ -118,10 +118,10 @@ function PrivacyTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground4487>
               <FormattedMessage id="privacy.sections.deleteDeactivate.options" />
             </p>
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground4652>
               <FormattedMessage
                 id="privacy.sections.deleteDeactivate.process"
                 values={{
@@ -138,10 +138,10 @@ function PrivacyTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground5244>
               <FormattedMessage id="privacy.sections.changeModify.options" />
             </p>
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground5405>
               <FormattedMessage
                 id="privacy.sections.changeModify.process"
                 values={{
@@ -149,7 +149,7 @@ function PrivacyTimelineInner() {
                 }}
               />
             </p>
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground5723>
               <FormattedMessage id="privacy.sections.changeModify.policyUpdates" />
             </p>
           </div>
@@ -161,17 +161,17 @@ function PrivacyTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground6155>
               <FormattedMessage id="privacy.sections.contact.questions" />
             </p>
             <div className="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg">
-              <p className="text-slate-700 dark:text-slate-100 font-medium">
+              <p className="" text-muted-foreground6391>
                 <FormattedMessage id="privacy.sections.contact.address" />
               </p>
-              <p className="text-slate-700 dark:text-slate-100">
+              <p className="" text-muted-foreground6565>
                 <FormattedMessage id="privacy.sections.contact.phone" />
               </p>
-              <p className="text-slate-700 dark:text-slate-100">
+              <p className="" text-muted-foreground6725>
                 <FormattedMessage id="privacy.sections.contact.email" />
               </p>
             </div>

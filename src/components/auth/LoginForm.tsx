@@ -136,7 +136,7 @@ export default function LoginForm({ lang }: LoginFormProps) {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-4">
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-slate-800 p-4">
             <Card className="w-full max-w-md">
                 <CardHeader className="text-center">
                     <CardTitle className="text-2xl font-bold">{t("title")}</CardTitle>
@@ -207,7 +207,7 @@ export default function LoginForm({ lang }: LoginFormProps) {
                     <div className="text-center">
                         <Link
                             href={`/${lang}/auth/forgot-password`}
-                            className="text-sm text-blue-600 hover:text-blue-500 dark:text-blue-400"
+                            className="" text-caption8704
                         >
                             {t("forgotPassword")}
                         </Link>
@@ -216,7 +216,7 @@ export default function LoginForm({ lang }: LoginFormProps) {
                     <Separator />
 
                     <div className="text-center space-y-2">
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                        <p className="" text-caption9044 text-muted-foreground9044>
                             {t("noAccount")}{" "}
                             <Link
                                 href={`/${lang}/auth/onboarding`}

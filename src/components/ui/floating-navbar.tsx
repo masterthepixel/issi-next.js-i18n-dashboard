@@ -50,7 +50,7 @@ export const FloatingNav = ({
           aria-current={isActive ? 'page' : undefined}
         >
           <span className="block sm:hidden">{navItem.icon}</span>
-          <span className="text-sm !cursor-pointer">{navItem.name}</span>
+          <span className="" text-caption1723>{navItem.name}</span>
         </Link>
       );
     });

@@ -106,10 +106,10 @@ export default function GovernmentClients() {
     <section className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4">
         <div className="text-left mb-8">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="text-foreground sm:text-4xl">
             <FormattedMessage id="government.clients.title" defaultMessage="Our Government Clients & Partners" />
           </h2>
-          <p className="mt-4 text-lg leading-8 text-muted-foreground">
+          <p className="mt-4  " text-lead4997>
             <FormattedMessage id="government.clients.subtitle" defaultMessage="Trusted by federal, state, and local government agencies for mission-critical technology solutions." />
           </p>
         </div>

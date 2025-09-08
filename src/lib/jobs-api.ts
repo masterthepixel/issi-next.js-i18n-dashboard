@@ -43,7 +43,7 @@ export interface JobPost {
       type: 'root';
       children: Array<{
         type: string;
-        children: Array<{ text: string; [key: string]: any }>;
+        children: Array<{ text: string;[key: string]: any }>;
       }>;
     };
   };
@@ -214,7 +214,7 @@ async function getValidToken(): Promise<string> {
   if (authToken && tokenExpiry && Date.now() < tokenExpiry) {
     return authToken;
   }
-  
+
   // Authenticate and get a new token
   return authenticate();
 }
@@ -224,7 +224,7 @@ async function handleApiResponse<T>(response: Response): Promise<T> {
   if (!response.ok) {
     const errorText = await response.text();
     let errorMessage = 'An error occurred';
-    
+
     switch (response.status) {
       case 400:
         errorMessage = 'Invalid request. Please check your input.';
@@ -244,17 +244,17 @@ async function handleApiResponse<T>(response: Response): Promise<T> {
       default:
         errorMessage = 'Something went wrong. Please try again.';
     }
-    
+
     console.error('API Error:', {
       status: response.status,
       statusText: response.statusText,
       url: response.url,
       errorText: errorText.substring(0, 200)
     });
-    
+
     throw new JobAPIError(errorMessage, response.status);
   }
-  
+
   return response.json();
 }
 
@@ -277,7 +277,7 @@ export async function getJobById(jobId: string | number): Promise<JobPost> {
 export async function searchJobs(searchParams: JobSearchParams): Promise<JobSearchResponse> {
   const token = await getValidToken();
   const params = new URLSearchParams();
-  
+
   if (searchParams.query) params.append('q', searchParams.query);
   if (searchParams.location) params.append('location', searchParams.location);
   if (searchParams.employmentType) params.append('employmentType', searchParams.employmentType);
@@ -285,7 +285,7 @@ export async function searchJobs(searchParams: JobSearchParams): Promise<JobSear
   if (searchParams.salaryMax) params.append('salaryMax', searchParams.salaryMax.toString());
   params.append('page', (searchParams.page || 1).toString());
   params.append('limit', (searchParams.limit || 10).toString());
-  
+
   const response = await fetch(`${API_BASE_URL}/api/search/jobs?${params}`, {
     headers: {
       'Authorization': `JWT ${token}`,
@@ -361,7 +361,7 @@ export function getTimeAgo(dateString: string): string {
   const now = new Date();
   const diffInMs = now.getTime() - date.getTime();
   const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-  
+
   if (diffInDays === 0) return 'Today';
   if (diffInDays === 1) return '1 day ago';
   if (diffInDays < 7) return `${diffInDays} days ago`;
@@ -382,7 +382,7 @@ export const EMPLOYMENT_TYPE_OPTIONS = [
 export const POPULAR_LOCATIONS = [
   'Remote',
   'Seattle',
-  'San Francisco', 
+  'San Francisco',
   'New York',
   'Austin',
   'Denver',
@@ -395,9 +395,9 @@ export const POPULAR_LOCATIONS = [
 // Rich Text Renderer Helper (for job descriptions)
 export function extractTextFromRichText(richText: JobPost['jobDescription']): string {
   if (!richText?.root?.children) return '';
-  
+
   return richText.root.children
-    .map(child => 
+    .map(child =>
       child.children
         ?.map(textNode => textNode.text || '')
         .join(' ') || ''
@@ -418,13 +418,13 @@ export const jobsAPI = {
 // Additional utility functions for job components
 export function createExcerpt(richText: JobPost['jobDescription'] | string, maxLength: number = 150): string {
   if (!richText) return '';
-  
+
   // If it's already a string, use it directly
   if (typeof richText === 'string') {
     if (richText.length <= maxLength) return richText;
     return richText.slice(0, maxLength).trim() + '...';
   }
-  
+
   // If it's a rich text object, extract the text first
   const plainText = extractTextFromRichText(richText);
   if (plainText.length <= maxLength) return plainText;
@@ -442,16 +442,16 @@ export async function createApplication(jobId: string, formData: ApplicationForm
   if (formData.resumeFile) {
     const uploadFormData = new FormData();
     uploadFormData.append('file', formData.resumeFile);
-    
+
     const uploadResponse = await fetch('/api/upload/resume', {
       method: 'POST',
       body: uploadFormData,
     });
-    
+
     if (!uploadResponse.ok) {
       throw new Error('Failed to upload resume');
     }
-    
+
     const uploadResult = await uploadResponse.json();
     resumeUrl = uploadResult.url;
   }
@@ -613,7 +613,7 @@ export function getApplicationStatusColor(status: Application['status']): string
     'OFFER': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
     'HIRED': 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200',
     'REJECTED': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
-    'WITHDRAWN': 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
+    'WITHDRAWN': 'bg-slate-100 text-slate-800 dark:bg-slate-900 dark:text-slate-200'
   };
   return statusColors[status];
 }

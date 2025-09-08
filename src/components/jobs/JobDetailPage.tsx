@@ -118,7 +118,7 @@ export default function JobDetailPage({
                 <CardHeader className="pb-4">
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                     <div className="flex-1 min-w-0">
-                      <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
+                      <h1 className="sm:text-3xl text-foreground mb-3">
                         {job.jobTitle}
                       </h1>
                       
@@ -134,7 +134,7 @@ export default function JobDetailPage({
                           </AvatarFallback>
                         </Avatar>
                         <div className="min-w-0 flex-1">
-                          <h2 className="font-semibold text-lg text-foreground">
+                          <h2 className="text-foreground">
                             {job.company.name}
                           </h2>
                           <div className="flex items-center gap-1 text-muted-foreground">
@@ -145,7 +145,7 @@ export default function JobDetailPage({
                       </div>
 
                       {/* Job Meta */}
-                      <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
+                      <div className="flex flex-wrap items-center gap-4  " text-caption5092>
                         <div className="flex items-center gap-1">
                           <MapPin className="h-4 w-4" />
                           <span>{job.location}</span>
@@ -218,7 +218,7 @@ export default function JobDetailPage({
                   {/* Benefits */}
                   {job.benefits.length > 0 && (
                     <div>
-                      <h3 className="font-semibold mb-3">
+                      <h3 className="mb-3">
                         <FormattedMessage id="jobs.detail.benefits" defaultMessage="Benefits & Perks" />
                       </h3>
                       <div className="flex flex-wrap gap-2 mb-6">
@@ -226,7 +226,7 @@ export default function JobDetailPage({
                           <Badge 
                             key={benefit} 
                             variant="outline"
-                            className="text-sm px-3 py-1"
+                            className="" text-caption8957
                           >
                             {jobsUtils.formatBenefit(benefit)}
                           </Badge>
@@ -239,7 +239,7 @@ export default function JobDetailPage({
 
                   {/* Job Description */}
                   <div>
-                    <h3 className="font-semibold mb-4">
+                    <h3 className="mb-4">
                       <FormattedMessage id="jobs.detail.description" defaultMessage="Job Description" />
                     </h3>
                     <div className="prose prose-sm max-w-none">
@@ -256,10 +256,10 @@ export default function JobDetailPage({
               <Card className="sticky top-6">
                 <CardContent className="p-6">
                   <div className="text-center mb-6">
-                    <h3 className="font-semibold text-lg mb-2">
+                    <h3 className="mb-2">
                       <FormattedMessage id="jobs.detail.apply.title" defaultMessage="Ready to Apply?" />
                     </h3>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="" text-caption10244>
                       <FormattedMessage 
                         id="jobs.detail.apply.description" 
                         defaultMessage="Submit your application for this position" 
@@ -287,7 +287,7 @@ export default function JobDetailPage({
               {/* Company Info Card */}
               <Card>
                 <CardHeader>
-                  <h3 className="font-semibold">
+                  <h3 className="">
                     <FormattedMessage id="jobs.detail.company.about" defaultMessage="About the Company" />
                   </h3>
                 </CardHeader>
@@ -303,14 +303,14 @@ export default function JobDetailPage({
                       </AvatarFallback>
                     </Avatar>
                     <div>
-                      <h4 className="font-medium text-lg">{job.company.name}</h4>
-                      <p className="text-sm text-muted-foreground">{job.company.location}</p>
+                      <h4 className="">{job.company.name}</h4>
+                      <p className="" text-caption12267>{job.company.location}</p>
                     </div>
                   </div>
 
                   {job.company.about && (
                     <div>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="" text-caption12488>
                         {job.company.about}
                       </p>
                     </div>
@@ -336,38 +336,38 @@ export default function JobDetailPage({
               {/* Job Details Card */}
               <Card>
                 <CardHeader>
-                  <h3 className="font-semibold">
+                  <h3 className="">
                     <FormattedMessage id="jobs.detail.info.title" defaultMessage="Job Information" />
                   </h3>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">
+                    <span className="" text-caption13868>
                       <FormattedMessage id="jobs.detail.info.posted" defaultMessage="Posted Date" />
                     </span>
-                    <span className="text-sm font-medium">{formattedDate}</span>
+                    <span className="" text-caption14069>{formattedDate}</span>
                   </div>
                   
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">
+                    <span className="" text-caption14268>
                       <FormattedMessage id="jobs.detail.info.type" defaultMessage="Employment Type" />
                     </span>
-                    <span className="text-sm font-medium">{formattedType}</span>
+                    <span className="" text-caption14471>{formattedType}</span>
                   </div>
                   
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">
+                    <span className="" text-caption14670>
                       <FormattedMessage id="jobs.detail.info.location" defaultMessage="Location" />
                     </span>
-                    <span className="text-sm font-medium">{job.location}</span>
+                    <span className="" text-caption14870>{job.location}</span>
                   </div>
                   
                   {(job.salaryFrom || job.salaryTo) && (
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">
+                      <span className="" text-caption15130>
                         <FormattedMessage id="jobs.detail.info.salary" defaultMessage="Salary Range" />
                       </span>
-                      <span className="text-sm font-medium">{formattedSalary}</span>
+                      <span className="" text-caption15338>{formattedSalary}</span>
                     </div>
                   )}
                 </CardContent>

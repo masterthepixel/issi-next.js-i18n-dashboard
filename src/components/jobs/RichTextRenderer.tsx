@@ -50,7 +50,7 @@ export default function RichTextRenderer({ content, className }: RichTextRendere
         text = (
           <code 
             key={index}
-            className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono"
+            className="bg-muted px-1.5 py-0.5 rounded  " text-caption1329
           >
             {text}
           </code>
@@ -81,8 +81,8 @@ export default function RichTextRenderer({ content, className }: RichTextRendere
           2: 'text-xl font-semibold mb-3 mt-6 first:mt-0',
           3: 'text-lg font-semibold mb-3 mt-4 first:mt-0',
           4: 'text-base font-semibold mb-2 mt-4 first:mt-0',
-          5: 'text-sm font-semibold mb-2 mt-3 first:mt-0',
-          6: 'text-sm font-medium mb-2 mt-3 first:mt-0',
+          5: ' font-semibold mb-2 mt-3 first:mt-0',
+          6: ' font-medium mb-2 mt-3 first:mt-0',
         };
         
         return (
@@ -126,7 +126,7 @@ export default function RichTextRenderer({ content, className }: RichTextRendere
       case 'code':
         return (
           <pre key={index} className="bg-muted p-4 rounded-lg overflow-x-auto my-4">
-            <code className="text-sm font-mono">
+            <code className="" text-caption3550>
               {children}
             </code>
           </pre>

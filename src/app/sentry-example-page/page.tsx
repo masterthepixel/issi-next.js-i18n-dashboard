@@ -11,7 +11,7 @@ export default function Page() {
       </Head>
 
       <main className="p-8 text-center">
-        <h1 className="text-2xl font-semibold mb-4">Sentry Integration Disabled</h1>
+        <h1 className="mb-4">Sentry Integration Disabled</h1>
         <p className="text-muted-foreground max-w-xl mx-auto">
           The Sentry example page has been temporarily disabled while we remove Sentry from the build. Re-enable it later to test error reporting.
         </p>

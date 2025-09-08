@@ -189,7 +189,7 @@ function ApplicationDashboardClientInternal({ locale }: ApplicationDashboardClie
       <div className="text-center py-12">
         <div className="mx-auto max-w-md">
           <FileText className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-          <h3 className="text-lg font-semibold mb-2">
+          <h3 className="mb-2">
             {intl.formatMessage({
               id: "applications.noApplications.title",
               defaultMessage: "No Applications Yet"
@@ -290,13 +290,13 @@ function ApplicationDashboardClientInternal({ locale }: ApplicationDashboardClie
               {/* Job Details */}
               {application.job && (
                 <>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2  " text-caption10007>
                     <MapPin className="h-4 w-4 flex-shrink-0" />
                     <span className="truncate">{application.job.location}</span>
                   </div>
                   
                   {(application.job.salaryFrom || application.job.salaryTo) && (
-                    <div className="flex items-center gap-2 text-sm text-green-600 dark:text-green-400">
+                    <div className="flex items-center gap-2  " text-caption10376>
                       <DollarSign className="h-4 w-4 flex-shrink-0" />
                       <span>
                         {application.job.salaryFrom && application.job.salaryTo
@@ -311,7 +311,7 @@ function ApplicationDashboardClientInternal({ locale }: ApplicationDashboardClie
               <Separator />
 
               {/* Application Info */}
-              <div className="space-y-2 text-sm">
+              <div className="space-y-2  " text-caption11091>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">
                     {intl.formatMessage({
@@ -351,7 +351,7 @@ function ApplicationDashboardClientInternal({ locale }: ApplicationDashboardClie
               {application.notes && (
                 <>
                   <Separator />
-                  <div className="text-sm">
+                  <div className="" text-caption12757>
                     <div className="text-muted-foreground mb-1">
                       {intl.formatMessage({
                         id: "applications.notes",

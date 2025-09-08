@@ -253,7 +253,7 @@ export default function EditProfilePage({ params }: { params: { lang: string } }
                             <div className="space-y-8">
                                 {/* Basic Information */}
                                 <div>
-                                    <h2 className="text-xl font-semibold mb-4">
+                                    <h2 className="mb-4">
                                         <FormattedMessage
                                             id="profile.edit.basic.title"
                                             defaultMessage="Basic Information"
@@ -262,7 +262,7 @@ export default function EditProfilePage({ params }: { params: { lang: string } }
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                         <div>
-                                            <label className="text-sm font-medium mb-2 block">
+                                            <label className="" text-caption9764>
                                                 <FormattedMessage id="profile.name" defaultMessage="Full Name" /> *
                                             </label>
                                             <Input
@@ -272,12 +272,12 @@ export default function EditProfilePage({ params }: { params: { lang: string } }
                                                 className={errors.name ? "border-red-500" : ""}
                                             />
                                             {errors.name && (
-                                                <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                                                <p className="text-red-500  " text-caption10626>{errors.name}</p>
                                             )}
                                         </div>
 
                                         <div>
-                                            <label className="text-sm font-medium mb-2 block">
+                                            <label className="" text-caption10879>
                                                 <FormattedMessage id="profile.email" defaultMessage="Email" />
                                             </label>
                                             <Input
@@ -295,7 +295,7 @@ export default function EditProfilePage({ params }: { params: { lang: string } }
                                     </div>
 
                                     <div>
-                                        <label className="text-sm font-medium mb-2 block">
+                                        <label className="" text-caption12026>
                                             <FormattedMessage id="profile.about" defaultMessage="About You" /> *
                                         </label>
                                         <Textarea
@@ -309,7 +309,7 @@ export default function EditProfilePage({ params }: { params: { lang: string } }
                                             className={`min-h-[120px] ${errors.about ? "border-red-500" : ""}`}
                                         />
                                         {errors.about && (
-                                            <p className="text-red-500 text-sm mt-1">{errors.about}</p>
+                                            <p className="text-red-500  " text-caption13126>{errors.about}</p>
                                         )}
                                     </div>
                                 </div>
@@ -317,7 +317,7 @@ export default function EditProfilePage({ params }: { params: { lang: string } }
                                 {/* Work Experience */}
                                 <div>
                                     <div className="flex items-center justify-between mb-4">
-                                        <h2 className="text-xl font-semibold">
+                                        <h2 className="">
                                             <FormattedMessage
                                                 id="profile.edit.work.title"
                                                 defaultMessage="Work Experience"
@@ -350,7 +350,7 @@ export default function EditProfilePage({ params }: { params: { lang: string } }
                                             {formData.workExperience.map((exp, index) => (
                                                 <div key={exp.id || index} className="border rounded-lg p-4 bg-muted/20">
                                                     <div className="flex justify-between items-start mb-4">
-                                                        <h3 className="font-medium">
+                                                        <h3 className="">
                                                             <FormattedMessage
                                                                 id="profile.edit.work.item"
                                                                 defaultMessage="Experience {number}"
@@ -413,7 +413,7 @@ export default function EditProfilePage({ params }: { params: { lang: string } }
                                                             checked={exp.current || false}
                                                             onChange={(e) => updateWorkExperience(index, "current", e.target.checked)}
                                                         />
-                                                        <label htmlFor={`current-${index}`} className="text-sm">
+                                                        <label htmlFor={`current-${index}`} className="" text-caption20808>
                                                             <FormattedMessage
                                                                 id="profile.edit.work.current"
                                                                 defaultMessage="Current Job"
@@ -439,7 +439,7 @@ export default function EditProfilePage({ params }: { params: { lang: string } }
                                 {/* Education */}
                                 <div>
                                     <div className="flex items-center justify-between mb-4">
-                                        <h2 className="text-xl font-semibold">
+                                        <h2 className="">
                                             <FormattedMessage
                                                 id="profile.edit.education.title"
                                                 defaultMessage="Education"
@@ -472,7 +472,7 @@ export default function EditProfilePage({ params }: { params: { lang: string } }
                                             {formData.education.map((edu, index) => (
                                                 <div key={edu.id || index} className="border rounded-lg p-4 bg-muted/20">
                                                     <div className="flex justify-between items-start mb-4">
-                                                        <h3 className="font-medium">
+                                                        <h3 className="">
                                                             <FormattedMessage
                                                                 id="profile.edit.education.item"
                                                                 defaultMessage="Education {number}"

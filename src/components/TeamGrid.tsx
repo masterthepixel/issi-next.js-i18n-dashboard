@@ -34,7 +34,7 @@ export default function TeamGrid() {
     <section className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-2 lg:px-4">
         <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-4xl font-semibold tracking-tight text-pretty text-foreground sm:text-5xl">
+          <h2 className="text-pretty text-foreground sm:text-5xl">
             <FormattedMessage id="team.section.title" />
           </h2>
           <p className="mt-6 text-lg/8 text-muted-foreground">
@@ -69,10 +69,10 @@ export default function TeamGrid() {
                           loading="lazy"
                         />
                         <div className="flex flex-col justify-center flex-grow min-w-0">
-                          <h3 className="text-lg font-semibold text-foreground truncate group-hover:text-foreground/80 transition-colors">
+                          <h3 className="text-foreground truncate group-hover:text-foreground/80 transition-colors">
                             <FormattedMessage id={nameId} />
                           </h3>
-                          <p className="text-sm font-medium text-muted-foreground truncate group-hover:text-muted-foreground/80 transition-colors">
+                          <p className="" text-caption3226="true">
                             <FormattedMessage id={roleId} />
                           </p>
                         </div>
@@ -89,7 +89,7 @@ export default function TeamGrid() {
                     <ExpandableContent preset="slide-up">
                       <div className="px-4 pb-4">
                         <div className="pt-2 border-t border-border">
-                          <p className="text-sm leading-relaxed text-muted-foreground mt-3">
+                          <p className="" text-caption4133="true">
                             <FormattedMessage id={bioId} />
                           </p>
                         </div>

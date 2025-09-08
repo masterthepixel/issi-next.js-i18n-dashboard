@@ -54,7 +54,7 @@ export const statsVariants = {
 export const filterVariants = {
     active: "bg-primary text-primary-foreground",
     inactive: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-    pill: "rounded-full px-4 py-2 text-sm",
+    pill: "rounded-full px-4 py-2 ",
 }
 
 export const actionVariants = {
@@ -79,7 +79,7 @@ export const utilityVariants = {
 
 export const sizeVariants = {
     xs: "h-7 px-2 text-xs",
-    sm: "h-8 px-3 text-sm",
+    sm: "h-8 px-3 ",
     md: "h-9 px-4 py-2",
     lg: "h-10 px-6 text-base",
     xl: "h-12 px-8 text-lg",

@@ -46,7 +46,7 @@ export default function ProductsILearnSystemFeatures() {
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 {/* Hero Section */}
                 <div className="mx-auto max-w-7xl text-left">
-                    <h2 className="text-base/7 font-semibold text-muted-foreground">
+                    <h2 className="text-base/7 text-muted-foreground">
                         <FormattedMessage id="products.i-learn.hero.tagline" />
                     </h2>
                     <p className="mt-2 text-4xl font-bold tracking-tight text-primary sm:text-5xl">
@@ -82,7 +82,7 @@ export default function ProductsILearnSystemFeatures() {
 
             {/* Key Features Section */}
             <div className="mx-auto max-w-2xl lg:text-center mb-16">
-                <h2 className="text-base/7 font-semibold text-muted-foreground">
+                <h2 className="text-base/7 text-muted-foreground">
                     <FormattedMessage id="products.i-learn.features.title" />
                 </h2>
                 <p className="mt-2 text-3xl font-bold tracking-tight text-primary sm:text-4xl">

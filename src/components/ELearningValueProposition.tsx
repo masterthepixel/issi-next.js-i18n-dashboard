@@ -32,10 +32,10 @@ const stats = [
 export default function ELearningValueProposition() {
   return (
     <section className="py-24 sm:py-32 ">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">        <h1 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent text-center bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)]">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">        <h1 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)]">
           <FormattedMessage id="elearning.value.title" />
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-muted-foreground">
+        <p className="mx-auto mt-6 max-w-2xl text-center  " text-lead1232>
           <FormattedMessage id="elearning.value.subtitle" />
         </p>
 
@@ -49,7 +49,7 @@ export default function ELearningValueProposition() {
               <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-primary text-primary-foreground text-3xl mb-6">
                 {card.icon}
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-4">
+              <h3 className="text-foreground mb-4">
                 <FormattedMessage id={card.titleKey} />
               </h3>
               <p className="text-muted-foreground">
@@ -66,7 +66,7 @@ export default function ELearningValueProposition() {
               <div className="text-4xl font-bold text-muted-foreground sm:text-5xl">
                 <FormattedMessage id={stat.numberKey} />
               </div>
-              <div className="mt-2 text-sm font-medium text-muted-foreground">
+              <div className="mt-2  " text-caption2681>
                 <FormattedMessage id={stat.labelKey} />
               </div>
             </div>

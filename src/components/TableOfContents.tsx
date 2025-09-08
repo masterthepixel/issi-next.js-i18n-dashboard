@@ -97,7 +97,7 @@ export default function TableOfContents({
             <div className="w-screen max-w-md">
               <div className="flex h-full flex-col bg-background shadow-xl">
                 <div className="flex items-center justify-between px-4 py-6 sm:px-6">
-                  <h2 className="text-lg font-medium text-foreground">{title}</h2>
+                  <h2 className="text-foreground">{title}</h2>
                   <Button
                     onClick={() => setIsOpen(false)}
                     className="rounded-md text-muted-foreground hover:text-foreground"
@@ -116,7 +116,7 @@ export default function TableOfContents({
                           scrollToSection(item.id);
                           handleLinkClick();
                         }}
-                        className={`block w-full text-left rounded-md px-3 py-2 text-sm ${getLevelClass(item.level)} ${activeId === item.id
+                        className={`block w-full text-left rounded-md px-3 py-2  ${getLevelClass(item.level)} ${activeId === item.id
                           ? 'bg-primary/10 text-primary font-medium'
                           : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
                           }`}
@@ -137,13 +137,13 @@ export default function TableOfContents({
       <div className="hidden xl:block">
         <div className="sticky top-20 w-64">
           <div className="rounded-lg bg-card p-6 shadow-sm ring-1 ring-border">
-            <h2 className="text-lg font-medium text-foreground mb-4">{title}</h2>
+            <h2 className="text-foreground mb-4">{title}</h2>
             <nav className="space-y-1">
               {items.map((item) => (
                 <Button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`block w-full text-left rounded-md px-3 py-2 text-sm ${getLevelClass(item.level)} ${activeId === item.id
+                  className={`block w-full text-left rounded-md px-3 py-2  ${getLevelClass(item.level)} ${activeId === item.id
                     ? 'bg-primary/10 text-primary font-medium'
                     : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
                     }`}

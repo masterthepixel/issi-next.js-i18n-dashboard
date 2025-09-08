@@ -49,7 +49,7 @@ export default function LicenseContentWrapper({
           {/* Main Content */}
           <div className="flex-1 xl:pr-8">
             <div className="mb-8">
-              <h1 className="text-4xl font-bold text-foreground mb-4">
+              <h1 className="text-foreground mb-4">
                 {messages['license.page.title']}
               </h1>
               <p className="text-xl text-muted-foreground">

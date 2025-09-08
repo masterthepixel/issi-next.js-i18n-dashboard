@@ -61,16 +61,16 @@ export default function ISSIServicesMap() {
     <div className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-base/7 font-semibold text-primary">
+          <h2 className="text-base/7 text-primary">
             <FormattedMessage id="services.map.subtitle" defaultMessage="Nationwide Coverage" />
           </h2>
           <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-foreground sm:text-5xl sm:text-balance">
             <FormattedMessage id="services.map.title" defaultMessage="Trusted IT Partner Across America" />
           </p>
           <p className="mt-6 text-lg/8 text-muted-foreground">
-            <FormattedMessage 
-              id="services.map.description" 
-              defaultMessage="For over 30 years, ISSI has provided award-winning software development and IT support services to clients across the United States." 
+            <FormattedMessage
+              id="services.map.description"
+              defaultMessage="For over 30 years, ISSI has provided award-winning software development and IT support services to clients across the United States."
             />
           </p>
         </div>

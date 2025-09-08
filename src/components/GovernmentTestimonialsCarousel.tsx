@@ -8,10 +8,10 @@ export default function GovernmentTestimonialsCarousel() {
     <section className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl mb-4">
+          <h2 className="text-foreground sm:text-4xl mb-4">
             <FormattedMessage id="government.testimonials.carousel.title" />
           </h2>
-          <p className="text-lg leading-8 text-muted-foreground max-w-3xl mx-auto">
+          <p className="" text-lead521>
             <FormattedMessage id="government.testimonials.carousel.subtitle" />
           </p>
         </div>

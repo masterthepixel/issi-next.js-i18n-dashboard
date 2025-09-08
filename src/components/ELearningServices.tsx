@@ -75,10 +75,10 @@ export default function ELearningServices() {
   return (
     <section className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <h2 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+        <h2 className="text-center text-foreground sm:text-4xl">
           <FormattedMessage id="elearning.services.title" />
         </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-muted-foreground">
+        <p className="mx-auto mt-6 max-w-2xl text-center  " text-lead2535>
           <FormattedMessage id="elearning.services.subtitle" />
         </p>
         
@@ -89,7 +89,7 @@ export default function ELearningServices() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-primary-foreground text-xl">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-foreground">
+                <h3 className="text-foreground">
                   <FormattedMessage id={service.titleKey} />
                 </h3>
               </div>
@@ -100,7 +100,7 @@ export default function ELearningServices() {
               
               <ul className="space-y-2">
                 {service.features.map((featureKey, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <li key={featureIndex} className="flex items-start gap-2  " text-caption3774>
                     <span className="text-muted-foreground mt-1">•</span>
                     <FormattedMessage id={featureKey} />
                   </li>

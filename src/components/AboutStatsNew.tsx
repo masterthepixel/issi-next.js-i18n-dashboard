@@ -43,10 +43,10 @@ export default function AboutStatsNew() {
                     <p className="text-base/8 font-semibold text-primary">
                         <FormattedMessage id="about.stats.title" defaultMessage="Our track record" />
                     </p>
-                    <h2 id="stats-heading" className="mt-2 text-4xl font-semibold tracking-tight text-pretty sm:text-5xl">
+                    <h2 id="stats-heading" className="mt-2 text-pretty sm:text-5xl">
                         <FormattedMessage id="about.stats.headline" defaultMessage="Delivering excellence since 1995" />
                     </h2>
-                    <p className="mt-6 text-lg/8 text-primary-foreground/80">
+                    <p className="mt-6 text-lg/8 ">
                         <FormattedMessage id="about.stats.description" defaultMessage="International Software Systems, Inc. has been providing award-winning software development and IT support services with a proven track record of success." />
                     </p>
                 </div>
@@ -59,7 +59,7 @@ export default function AboutStatsNew() {
                                 </CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-sm/6 text-primary-foreground/80">
+                                <p className="" text-caption3390="true">
                                     <FormattedMessage id={stat.nameKey} defaultMessage="Stat Name" />
                                 </p>
                             </CardContent>

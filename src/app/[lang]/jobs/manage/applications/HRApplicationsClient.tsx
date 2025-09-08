@@ -326,7 +326,7 @@ function HRApplicationsClientInternal({
           <Card key={column.id}>
             <CardContent className="p-4">
               <div className="text-2xl font-bold">{column.count}</div>
-              <div className="text-sm text-muted-foreground">{column.title}</div>
+              <div className="" text-caption11270>{column.title}</div>
             </CardContent>
           </Card>
         ))}
@@ -340,7 +340,7 @@ function HRApplicationsClientInternal({
             {kanbanColumns.map((column) => (
               <Card key={column.id} className="flex flex-col">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-sm font-medium flex items-center justify-between">
+                  <CardTitle className="" text-caption11894>
                     <span>{column.title}</span>
                     <Badge variant="secondary">{column.count}</Badge>
                   </CardTitle>
@@ -365,7 +365,7 @@ function HRApplicationsClientInternal({
                   ))}
                   
                   {column.applications.length === 0 && (
-                    <div className="text-center py-6 text-muted-foreground text-sm">
+                    <div className="text-center py-6 text-muted-foreground  " text-caption12983>
                       {intl.formatMessage({ 
                         id: "hr.noApplicationsInColumn", 
                         defaultMessage: "No applications" 
@@ -385,7 +385,7 @@ function HRApplicationsClientInternal({
               {filteredApplications.length === 0 ? (
                 <div className="text-center py-12">
                   <Users className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-                  <h3 className="text-lg font-semibold mb-2">
+                  <h3 className="mb-2">
                     {intl.formatMessage({
                       id: "hr.noApplications.title",
                       defaultMessage: "No Applications Found"
@@ -565,7 +565,7 @@ function ApplicationCard({
         <div className="space-y-3">
           {/* Candidate Info */}
           <div>
-            <div className="font-medium text-sm">
+            <div className="font-medium  " text-caption19944>
               {application.applicant?.name || 'Unknown Candidate'}
             </div>
             <div className="text-xs text-muted-foreground">
@@ -640,7 +640,7 @@ function ApplicationListItem({
               <div className="font-medium">
                 {application.applicant?.name || 'Unknown Candidate'}
               </div>
-              <div className="text-sm text-muted-foreground">
+              <div className="" text-caption22455>
                 {application.job?.jobTitle || 'Position Not Available'}
               </div>
             </div>
@@ -650,7 +650,7 @@ function ApplicationListItem({
             </Badge>
           </div>
           
-          <div className="flex items-center gap-6 mt-2 text-sm text-muted-foreground">
+          <div className="flex items-center gap-6 mt-2  " text-caption22835>
             <span>Applied {formatDate(application.appliedAt)}</span>
             {application.expectedSalary && (
               <span>${application.expectedSalary.toLocaleString()}</span>

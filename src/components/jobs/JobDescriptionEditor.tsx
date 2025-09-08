@@ -142,7 +142,7 @@ export default function JobDescriptionEditor({ field }: JobDescriptionEditorProp
         {/* Preview */}
         {showPreview && (
           <div className="border rounded-md p-3 bg-muted/10">
-            <h4 className="text-sm font-medium mb-2">Preview</h4>
+            <h4 className="mb-2">Preview</h4>
             <div
               className="prose prose-sm max-w-none"
               dangerouslySetInnerHTML={{

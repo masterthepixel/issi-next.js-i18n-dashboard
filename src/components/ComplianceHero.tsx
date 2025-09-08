@@ -32,7 +32,7 @@ export default function ComplianceHero() {
               <p className="text-base/7 font-semibold text-primary">
                 <FormattedMessage id="compliance.hero.subtitle" defaultMessage="Security & Compliance" />
               </p>
-              <h1 id="compliance-hero-heading" className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-foreground sm:text-5xl">
+              <h1 id="compliance-hero-heading" className="mt-2 text-pretty text-foreground sm:text-5xl">
                 <FormattedMessage id="compliance.hero.title" defaultMessage="Enterprise-Grade Compliance Solutions" />
               </h1>
               <p className="mt-6 text-lg/8 text-muted-foreground">

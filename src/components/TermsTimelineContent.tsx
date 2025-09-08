@@ -25,7 +25,7 @@ function TermsTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-lg text-slate-700 dark:text-slate-100">
+            <p className="text-lg  " text-muted-foreground791>
               <FormattedMessage id="terms.sections.introduction.welcome" />
             </p>
             <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4">
@@ -47,7 +47,7 @@ function TermsTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-6">
-            <p className="text-lg text-slate-700 dark:text-slate-100">
+            <p className="text-lg  " text-muted-foreground1713>
               <FormattedMessage id="terms.sections.definitions.intro" />
             </p>
             <dl className="space-y-4">
@@ -55,7 +55,7 @@ function TermsTimelineInner() {
                 <dt className="font-semibold text-slate-900 dark:text-slate-100">
                   <FormattedMessage id="terms.sections.definitions.client.term" />
                 </dt>
-                <dd className="text-slate-700 dark:text-slate-100 mt-1">
+                <dd className="" text-muted-foreground2177>
                   <FormattedMessage id="terms.sections.definitions.client.definition" />
                 </dd>
               </div>
@@ -63,7 +63,7 @@ function TermsTimelineInner() {
                 <dt className="font-semibold text-slate-900 dark:text-slate-100">
                   <FormattedMessage id="terms.sections.definitions.company.term" />
                 </dt>
-                <dd className="text-slate-700 dark:text-slate-100 mt-1">
+                <dd className="" text-muted-foreground2642>
                   <FormattedMessage id="terms.sections.definitions.company.definition" />
                 </dd>
               </div>
@@ -71,7 +71,7 @@ function TermsTimelineInner() {
                 <dt className="font-semibold text-slate-900 dark:text-slate-100">
                   <FormattedMessage id="terms.sections.definitions.parties.term" />
                 </dt>
-                <dd className="text-slate-700 dark:text-slate-100 mt-1">
+                <dd className="" text-muted-foreground3108>
                   <FormattedMessage id="terms.sections.definitions.parties.definition" />
                 </dd>
               </div>
@@ -85,13 +85,13 @@ function TermsTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-lg text-slate-700 dark:text-slate-100">
+            <p className="text-lg  " text-muted-foreground3598>
               <FormattedMessage id="terms.sections.websiteUse.license" />
             </p>
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground3763>
               <FormattedMessage id="terms.sections.websiteUse.restrictions" />
             </p>
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground3925>
               <FormattedMessage id="terms.sections.websiteUse.termination" />
             </p>
           </div>
@@ -103,10 +103,10 @@ function TermsTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-lg text-slate-700 dark:text-slate-100">
+            <p className="text-lg  " text-muted-foreground4352>
               <FormattedMessage id="terms.sections.disclaimer.accuracy" />
             </p>
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground4518>
               <FormattedMessage id="terms.sections.disclaimer.reliability" />
             </p>
           </div>
@@ -118,10 +118,10 @@ function TermsTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground4946>
               <FormattedMessage id="terms.sections.limitations.liability" />
             </p>
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground5106>
               <FormattedMessage id="terms.sections.limitations.jurisdiction" />
             </p>
           </div>
@@ -133,10 +133,10 @@ function TermsTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground5534>
               <FormattedMessage id="terms.sections.revisions.materials" />
             </p>
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground5692>
               <FormattedMessage id="terms.sections.revisions.changes" />
             </p>
           </div>
@@ -148,10 +148,10 @@ function TermsTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground6109>
               <FormattedMessage id="terms.sections.links.responsibility" />
             </p>
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground6268>
               <FormattedMessage id="terms.sections.links.inclusion" />
             </p>
           </div>
@@ -163,7 +163,7 @@ function TermsTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground6691>
               <FormattedMessage id="terms.sections.modifications.content" />
             </p>
           </div>
@@ -175,7 +175,7 @@ function TermsTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-slate-700 dark:text-slate-100">
+            <p className="" text-muted-foreground7119>
               <FormattedMessage id="terms.sections.governingLaw.content" />
             </p>
           </div>

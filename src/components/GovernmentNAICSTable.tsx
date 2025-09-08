@@ -96,10 +96,10 @@ export default function GovernmentNAICSTable() {
     <section className="py-16 sm:py-24">
       <div className="px-4 sm:px-6 lg:px-8">        <div className="max-w-7xl mx-auto">
           <div className="mb-8">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="text-foreground sm:text-4xl">
               <FormattedMessage id="government.naics.title" />
             </h2>
-            <p className="mt-4 text-lg leading-8 text-muted-foreground">
+            <p className="mt-4  " text-lead3543>
               <FormattedMessage id="government.naics.subtitle" />
             </p>
           </div>
@@ -113,31 +113,31 @@ export default function GovernmentNAICSTable() {
                       <tr>
                         <th
                           scope="col"
-                          className="py-3.5 pr-3 pl-4 text-left text-sm font-semibold text-foreground sm:pl-6"
+                          className="py-3.5 pr-3 pl-4 text-left  " text-caption4241
                         >
                           <FormattedMessage id="government.naics.table.sic" />
                         </th>
                         <th
                           scope="col"
-                          className="px-3 py-3.5 text-left text-sm font-semibold text-foreground"
+                          className="px-3 py-3.5 text-left  " text-caption4559
                         >
                           <FormattedMessage id="government.naics.table.naics" />
                         </th>
                         <th
                           scope="col"
-                          className="px-3 py-3.5 text-left text-sm font-semibold text-foreground"
+                          className="px-3 py-3.5 text-left  " text-caption4866
                         >
                           <FormattedMessage id="government.naics.table.description" />
                         </th>
                         <th
                           scope="col"
-                          className="px-3 py-3.5 text-left text-sm font-semibold text-foreground"
+                          className="px-3 py-3.5 text-left  " text-caption5179
                         >
                           <FormattedMessage id="government.naics.table.capabilities" />
                         </th>
                         <th
                           scope="col"
-                          className="px-3 py-3.5 text-left text-sm font-semibold text-foreground"
+                          className="px-3 py-3.5 text-left  " text-caption5493
                         >
                           <FormattedMessage id="government.naics.table.certifications" />
                         </th>
@@ -146,19 +146,19 @@ export default function GovernmentNAICSTable() {
                     <tbody className="divide-y divide-border bg-background">
                       {naicsData.map((item, index) => (
                         <tr key={item.naics} className={index % 2 === 0 ? 'bg-background' : 'bg-muted/50'}>
-                          <td className="py-4 pr-3 pl-4 text-sm font-medium text-foreground sm:pl-6">
+                          <td className="py-4 pr-3 pl-4  " text-caption6048>
                             {item.sic}
                           </td>
-                          <td className="px-3 py-4 text-sm font-semibold text-primary">
+                          <td className="px-3 py-4  " text-caption6224>
                             {item.naics}
                           </td>
-                          <td className="px-3 py-4 text-sm text-foreground max-w-xs">
+                          <td className="px-3 py-4  " text-caption6388>
                             <FormattedMessage id={item.descriptionKey} />
                           </td>
-                          <td className="px-3 py-4 text-sm text-muted-foreground max-w-md">
+                          <td className="px-3 py-4  " text-caption6583>
                             <FormattedMessage id={item.capabilitiesKey} />
                           </td>
-                          <td className="px-3 py-4 text-sm text-muted-foreground max-w-md">
+                          <td className="px-3 py-4  " text-caption6785>
                             <FormattedMessage id={item.certificationsKey} />
                           </td>
                         </tr>
@@ -179,10 +179,10 @@ export default function GovernmentNAICSTable() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-sm font-medium text-foreground">
+                <h3 className="text-foreground">
                   <FormattedMessage id="government.naics.info.title" />
                 </h3>
-                <div className="mt-2 text-sm text-muted-foreground">
+                <div className="mt-2  " text-caption7969>
                   <p>
                     <FormattedMessage id="government.naics.info.description" />
                   </p>

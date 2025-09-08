@@ -51,7 +51,7 @@ export default function AboutCertifications() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-x-8 gap-y-16 lg:grid-cols-2">
           <div className="mx-auto w-full max-w-xl lg:mx-0">
-            <h2 id="certifications-heading" className="text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl">
+            <h2 id="certifications-heading" className="text-balance text-foreground sm:text-5xl">
               <FormattedMessage id="about.certifications.title" defaultMessage="Certified Excellence" />
             </h2>
             <p className="mt-6 text-lg/8 text-muted-foreground">
@@ -66,7 +66,7 @@ export default function AboutCertifications() {
               <Card key={index} className="group hover:shadow-lg transition-all duration-300">
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-sm font-medium">{cert.name}</CardTitle>
+                    <CardTitle className="" text-caption3042>{cert.name}</CardTitle>
                     <Badge variant="secondary" className="text-xs">
                       {cert.category}
                     </Badge>

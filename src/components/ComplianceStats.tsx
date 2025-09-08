@@ -12,7 +12,7 @@ const stats = [
 
 export default function ComplianceStats() {
   return (
-    <section 
+    <section
       className="relative isolate overflow-hidden bg-slate-900 py-24 sm:py-32"
       aria-labelledby="compliance-stats-heading"
       role="region"
@@ -39,7 +39,7 @@ export default function ComplianceStats() {
           <p className="text-base/8 font-semibold text-primary">
             <FormattedMessage id="compliance.stats.title" defaultMessage="Our compliance record" />
           </p>
-          <h2 id="compliance-stats-heading" className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-primary-foreground sm:text-5xl">
+          <h2 id="compliance-stats-heading" className="mt-2 text-pretty text-primary-foreground sm:text-5xl">
             <FormattedMessage id="compliance.stats.headline" defaultMessage="Trusted security and compliance" />
           </h2>
           <p className="mt-6 text-lg/8 text-slate-200">

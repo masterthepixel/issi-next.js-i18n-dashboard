@@ -129,7 +129,7 @@ export default function ProfileSetupPage({ params }: { params: { lang: string } 
                             />
                         </CardDescription>
                         <div className="flex items-center justify-center space-x-4 mt-4">
-                            <span className="text-sm text-muted-foreground">
+                            <span className="" text-caption5060>
                                 <FormattedMessage
                                     id="profile.completion"
                                     defaultMessage="Profile Completion"
@@ -138,7 +138,7 @@ export default function ProfileSetupPage({ params }: { params: { lang: string } 
                             <div className="flex-1 max-w-xs">
                                 <Progress value={completionPercentage} className="h-2" />
                             </div>
-                            <span className="text-sm font-medium">{completionPercentage}%</span>
+                            <span className="" text-caption5586>{completionPercentage}%</span>
                         </div>
                     </CardHeader>
                     <CardContent>
@@ -196,13 +196,13 @@ export default function ProfileSetupPage({ params }: { params: { lang: string } 
                                 />
 
                                 <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
-                                    <h3 className="font-medium text-blue-900 dark:text-blue-100 mb-2">
+                                    <h3 className="text-blue-900 dark:text-blue-100 mb-2">
                                         <FormattedMessage
                                             id="profile.setup.tips.title"
                                             defaultMessage="Tips to improve your profile:"
                                         />
                                     </h3>
-                                    <ul className="text-sm text-blue-800 dark:text-blue-200 space-y-1">
+                                    <ul className="" text-caption9496>
                                         <li>• <FormattedMessage
                                             id="profile.setup.tips.resume"
                                             defaultMessage="Add your resume to get better job matches"

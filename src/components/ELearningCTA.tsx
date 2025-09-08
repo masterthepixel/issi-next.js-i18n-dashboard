@@ -16,11 +16,11 @@ const ELearningCTA: React.FC = () => {
             <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="max-w-4xl mx-auto text-center">
                     {/* Main CTA Content */}
-                    <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-xl border border-border/50">                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                    <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-xl border border-border/50">                        <h2 className="md:text-4xl text-foreground mb-6">
                         {intl.formatMessage({ id: 'page.eLearning.cta.title' })}
                     </h2>
 
-                        <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+                        <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto  " 1101>
                             {intl.formatMessage({ id: 'page.eLearning.cta.subtitle' })}
                         </p>
 
@@ -38,7 +38,7 @@ const ELearningCTA: React.FC = () => {
                                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-3">
                                     <span className="text-primary text-lg font-bold">📞</span>
                                 </div>
-                                <h3 className="font-semibold text-foreground mb-1">
+                                <h3 className="text-foreground mb-1">
                                     <FormattedMessage id="page.eLearning.cta.contact.title" />
                                 </h3>
                                 <p className="text-muted-foreground">
@@ -50,7 +50,7 @@ const ELearningCTA: React.FC = () => {
                                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-3">
                                     <span className="text-primary text-lg font-bold">✉️</span>
                                 </div>
-                                <h3 className="font-semibold text-foreground mb-1">
+                                <h3 className="text-foreground mb-1">
                                     <FormattedMessage id="page.eLearning.cta.contact.email.title" />
                                 </h3>
                                 <p className="text-muted-foreground">
@@ -62,7 +62,7 @@ const ELearningCTA: React.FC = () => {
                                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-3">
                                     <span className="text-primary text-lg font-bold">📍</span>
                                 </div>
-                                <h3 className="font-semibold text-foreground mb-1">
+                                <h3 className="text-foreground mb-1">
                                     <FormattedMessage id="page.eLearning.cta.contact.location.title" />
                                 </h3>
                                 <p className="text-muted-foreground">

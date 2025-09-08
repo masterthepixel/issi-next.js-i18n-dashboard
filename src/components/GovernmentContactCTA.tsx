@@ -14,7 +14,7 @@ export default function GovernmentContactCTA() {
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-4xl text-center">
                     <div className="bg-card rounded-lg p-8 border border-border">
-                        <h3 className="text-lg font-semibold text-foreground mb-4">
+                        <h3 className="text-foreground mb-4">
                             <FormattedMessage id="government.faq.contact.title" />
                         </h3>
                         <p className="text-muted-foreground mb-6">

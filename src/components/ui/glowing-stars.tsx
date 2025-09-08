@@ -56,7 +56,7 @@ export const GlowingStarsTitle = ({
   children?: React.ReactNode;
 }) => {
   return (
-    <h2 className={cn("font-bold text-2xl text-[#eaeaea]", className)}>
+    <h2 className={cn("font-normal text-2xl text-[#eaeaea]", className)}>
       {children}
     </h2>
   );

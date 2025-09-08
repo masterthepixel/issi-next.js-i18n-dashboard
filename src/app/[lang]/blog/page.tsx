@@ -229,7 +229,7 @@ async function PageContent({ locale, page, search }: PageContentProps) {
         <div className="relative bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 border-b border-border/20">
           <div className="container mx-auto px-4 py-16 md:py-20">
             <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-6">
+              <h1 className="md:text-5xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-6">
                 {locale === 'en' ? 'Blog' :
                   locale === 'fr' ? 'Blog' :
                     'Blog'}
@@ -275,7 +275,7 @@ async function PageContent({ locale, page, search }: PageContentProps) {
             </form>
             {search && (
               <div className="mt-2">
-                <p className="text-sm text-muted-foreground">
+                <p className="" text-caption11150>
                   {locale === 'en' ? `Showing results for "${search}"` :
                     locale === 'fr' ? `Résultats pour "${search}"` :
                       `Resultados para "${search}"`}
@@ -346,7 +346,7 @@ async function PageContent({ locale, page, search }: PageContentProps) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">
+          <h1 className="mb-4">
             {locale === 'en' ? 'Error Loading Blog' :
               locale === 'fr' ? 'Erreur de Chargement du Blog' :
                 'Error Cargando Blog'}
@@ -394,7 +394,7 @@ function BlogPostCard({ post, locale, baseUrl }: { post: any; locale: Locale; ba
       {/* Content */}
       <div className="p-6">
         {/* Meta */}
-        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+        <div className="flex items-center gap-2  " text-caption15724>
           <time dateTime={post.publishedAt}>
             {formatDate(post.publishedAt)}
           </time>
@@ -403,7 +403,7 @@ function BlogPostCard({ post, locale, baseUrl }: { post: any; locale: Locale; ba
         </div>
 
         {/* Title */}
-        <h2 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
+        <h2 className="mb-3 group-hover:text-primary transition-colors">
           <a
             href={`/${locale}/blog/${post.slug}`}
             className="after:absolute after:inset-0"

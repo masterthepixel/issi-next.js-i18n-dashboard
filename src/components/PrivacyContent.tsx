@@ -22,7 +22,7 @@ function PrivacyContentInner() {
     <div className="prose max-w-none">
       {/* Notice */}
       <section id="notice" className="mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6">
+        <h2 className="text-foreground mb-6">
           <FormattedMessage id="privacy.sections.notice.title" />
         </h2>
         <div className="space-y-4">
@@ -34,7 +34,7 @@ function PrivacyContentInner() {
 
       {/* Overview */}
       <section id="overview" className="mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6">
+        <h2 className="text-foreground mb-6">
           <FormattedMessage id="privacy.sections.overview.title" />
         </h2>
         <div className="space-y-4">
@@ -49,7 +49,7 @@ function PrivacyContentInner() {
 
       {/* Registration */}
       <section id="registration" className="mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6">
+        <h2 className="text-foreground mb-6">
           <FormattedMessage id="privacy.sections.registration.title" />
         </h2>
         <div className="space-y-4">
@@ -68,7 +68,7 @@ function PrivacyContentInner() {
         </div>
       </section>      {/* Cookies */}
       <section id="cookies" className="mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6">
+        <h2 className="text-foreground mb-6">
           <FormattedMessage id="privacy.sections.cookies.title" />
         </h2>
         <div className="space-y-4">
@@ -84,7 +84,7 @@ function PrivacyContentInner() {
         </div>
       </section>      {/* Anonymous Data Collection */}
       <section id="anonymous-data" className="mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6">
+        <h2 className="text-foreground mb-6">
           <FormattedMessage id="privacy.sections.anonymous.title" />
         </h2>
         <div className="space-y-4">
@@ -99,7 +99,7 @@ function PrivacyContentInner() {
 
       {/* Links to Other Websites */}
       <section id="links" className="mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6">
+        <h2 className="text-foreground mb-6">
           <FormattedMessage id="privacy.sections.links.title" />
         </h2>
         <div className="space-y-4">
@@ -111,7 +111,7 @@ function PrivacyContentInner() {
 
       {/* Delete/Deactivate */}
       <section id="delete-deactivate" className="mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6">
+        <h2 className="text-foreground mb-6">
           <FormattedMessage id="privacy.sections.deleteDeactivate.title" />
         </h2>
         <div className="space-y-4">
@@ -131,7 +131,7 @@ function PrivacyContentInner() {
 
       {/* Change/Modify */}
       <section id="change-modify" className="mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6">
+        <h2 className="text-foreground mb-6">
           <FormattedMessage id="privacy.sections.changeModify.title" />
         </h2>
         <div className="space-y-4">
@@ -154,7 +154,7 @@ function PrivacyContentInner() {
 
       {/* Contact Information */}
       <section id="contact" className="mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6">
+        <h2 className="text-foreground mb-6">
           <FormattedMessage id="privacy.sections.contact.title" />
         </h2>
         <div className="space-y-4">

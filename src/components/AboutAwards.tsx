@@ -35,7 +35,7 @@ export default function AboutAwards() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">        
         <div className="text-center">
-          <h2 id="awards-heading" className="text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl">
+          <h2 id="awards-heading" className="text-balance text-foreground sm:text-5xl">
             <FormattedMessage id="about.awards.title" defaultMessage="Our Awards" />
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg/8 text-muted-foreground">

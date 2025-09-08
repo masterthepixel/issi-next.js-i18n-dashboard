@@ -41,7 +41,7 @@ async function PageContent({ locale }: PageContentProps) {
         <Card>
           <CardHeader>{intl.formatMessage({ id: "page.support.title" })}</CardHeader>
           <CardBody>
-            <p className="text-base text-slate-700 dark:text-slate-300">
+            <p className="text-base  " text-muted-foreground1276>
               {intl.formatMessage({ id: "page.support.description" })}
             </p>
           </CardBody>
