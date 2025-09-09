@@ -394,25 +394,25 @@ export default async function Page({ params: { lang } }: Props) {
             <div className="text-center">
               <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">{intl.formatMessage({ id: "iso27001.trust.years.value" })}</div>
               <div className="text-slate-900 dark:text-white font-semibold mb-1">{intl.formatMessage({ id: "iso27001.trust.years.label" })}</div>
-              <div className="" text-caption25315 text-muted-foreground25603>{intl.formatMessage({ id: "iso27001.trust.years.description" })}</div>
+              <div className="text-sm text-muted-foreground">{intl.formatMessage({ id: "iso27001.trust.years.description" })}</div>
             </div>
 
             <div className="text-center">
               <div className="text-4xl font-bold text-green-600 dark:text-green-400 mb-2">{intl.formatMessage({ id: "iso27001.trust.breaches.value" })}</div>
               <div className="text-slate-900 dark:text-white font-semibold mb-1">{intl.formatMessage({ id: "iso27001.trust.breaches.label" })}</div>
-              <div className="" text-caption25829 text-muted-foreground26123>{intl.formatMessage({ id: "iso27001.trust.breaches.description" })}</div>
+              <div className="text-sm text-muted-foreground">{intl.formatMessage({ id: "iso27001.trust.breaches.description" })}</div>
             </div>
 
             <div className="text-center">
               <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">{intl.formatMessage({ id: "iso27001.trust.monitoring.value" })}</div>
               <div className="text-slate-900 dark:text-white font-semibold mb-1">{intl.formatMessage({ id: "iso27001.trust.monitoring.label" })}</div>
-              <div className="" text-caption26352 text-muted-foreground26652>{intl.formatMessage({ id: "iso27001.trust.monitoring.description" })}</div>
+              <div className="text-sm text-muted-foreground">{intl.formatMessage({ id: "iso27001.trust.monitoring.description" })}</div>
             </div>
 
             <div className="text-center">
               <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">{intl.formatMessage({ id: "iso27001.trust.uptime.value" })}</div>
               <div className="text-slate-900 dark:text-white font-semibold mb-1">{intl.formatMessage({ id: "iso27001.trust.uptime.label" })}</div>
-              <div className="" text-caption26869 text-muted-foreground27175>{intl.formatMessage({ id: "iso27001.trust.uptime.description" })}</div>
+              <div className="text-sm text-muted-foreground">{intl.formatMessage({ id: "iso27001.trust.uptime.description" })}</div>
             </div>
           </div>
         </div>

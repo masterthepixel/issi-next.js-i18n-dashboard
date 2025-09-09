@@ -138,17 +138,17 @@ export default async function Page({ params: { lang } }: Props) {
             </p>
             <div className="flex flex-wrap justify-center gap-4 mb-12">
               <div className="glass-card px-4 py-2 rounded-full">
-                <span className="" text-caption6037 text-muted-foreground6037>
+                <span className="text-sm font-medium">
                   {intl.formatMessage({ id: "iso9001.hero.badge.certified" })}
                 </span>
               </div>
               <div className="glass-card px-4 py-2 rounded-full">
-                <span className="" text-caption6315 text-muted-foreground6322>
+                <span className="text-sm font-medium">
                   {intl.formatMessage({ id: "iso9001.hero.badge.continuous" })}
                 </span>
               </div>
               <div className="glass-card px-4 py-2 rounded-full">
-                <span className="" text-caption6594 text-muted-foreground6608>
+                <span className="text-sm font-medium">
                   {intl.formatMessage({ id: "iso9001.hero.badge.customer" })}
                 </span>
               </div>
@@ -233,7 +233,7 @@ export default async function Page({ params: { lang } }: Props) {
               <div key={index} className="relative">
                 <div className={`${step.color} rounded-xl p-6 text-white`}>
                   <h3 className="mb-3">{step.title}</h3>
-                  <p className="" text-caption10235>{step.description}</p>
+                  <p className="text-sm opacity-90">{step.description}</p>
                 </div>
                 {index < pdcaProcess.length - 1 && (
                   <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-slate-300 dark:bg-slate-600 transform -translate-y-1/2"></div>
@@ -342,7 +342,7 @@ export default async function Page({ params: { lang } }: Props) {
                 <h3 className="dark:text-slate-100 mb-2">
                   {metric.title}
                 </h3>
-                <p className="" text-caption15545 text-muted-foreground15837>
+                <p className="text-sm text-muted-foreground">
                   {metric.description}
                 </p>
               </div>

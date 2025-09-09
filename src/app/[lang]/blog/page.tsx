@@ -275,7 +275,7 @@ async function PageContent({ locale, page, search }: PageContentProps) {
             </form>
             {search && (
               <div className="mt-2">
-                <p className="" text-caption11150>
+                <p className="text-sm text-muted-foreground">
                   {locale === 'en' ? `Showing results for "${search}"` :
                     locale === 'fr' ? `Résultats pour "${search}"` :
                       `Resultados para "${search}"`}
@@ -394,7 +394,7 @@ function BlogPostCard({ post, locale, baseUrl }: { post: any; locale: Locale; ba
       {/* Content */}
       <div className="p-6">
         {/* Meta */}
-        <div className="flex items-center gap-2  " text-caption15724>
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <time dateTime={post.publishedAt}>
             {formatDate(post.publishedAt)}
           </time>

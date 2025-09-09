@@ -1,59 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useIntl } from "react-intl";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { 
-  getJobApplications,
-  getJobs,
-  updateApplicationStatus,
-  scheduleInterview,
-  formatApplicationStatus, 
-  getApplicationStatusColor,
-  type Application,
-  type JobPost
-} from "@/lib/jobs-api";
-import { useAuth } from "@/lib/auth";
-import { Locale } from "@/lib/definitions";
 import ErrorBoundary from "@/components/ErrorBoundary";
-import {
-  AlertCircle,
-  Building2,
-  Calendar,
-  ChevronRight,
-  Clock,
-  DollarSign,
-  Download,
-  ExternalLink,
-  Eye,
-  FileText,
-  Filter,
-  Loader2,
-  Mail,
-  MapPin,
-  MoreHorizontal,
-  Phone,
-  Search,
-  Star,
-  User,
-  Users,
-  Video
-} from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -62,9 +13,39 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Textarea } from "@/components/ui/textarea";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Link from "next/link";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Textarea } from "@/components/ui/textarea";
+import { useAuth } from "@/lib/auth";
+import { Locale } from "@/lib/definitions";
+import {
+  formatApplicationStatus,
+  getApplicationStatusColor,
+  getJobApplications,
+  getJobs,
+  updateApplicationStatus,
+  type Application,
+  type JobPost
+} from "@/lib/jobs-api";
+import {
+  AlertCircle,
+  Loader2,
+  MoreHorizontal,
+  Search,
+  Users
+} from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useIntl } from "react-intl";
 
 interface HRApplicationsClientProps {
   locale: Locale;
@@ -87,17 +68,17 @@ interface StatusUpdateDialog {
   notes: string;
 }
 
-function HRApplicationsClientInternal({ 
-  locale, 
-  initialJobId, 
-  initialStatus, 
-  initialPage = 1 
+function HRApplicationsClientInternal({
+  locale,
+  initialJobId,
+  initialStatus,
+  initialPage = 1
 }: HRApplicationsClientProps) {
   const intl = useIntl();
   const router = useRouter();
   const searchParams = useSearchParams();
   const { isAuthenticated, userType } = useAuth();
-  
+
   const [applications, setApplications] = useState<Application[]>([]);
   const [jobs, setJobs] = useState<JobPost[]>([]);
   const [selectedJobId, setSelectedJobId] = useState<string>(initialJobId || 'all');
@@ -106,7 +87,7 @@ function HRApplicationsClientInternal({
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [updatingAppId, setUpdatingAppId] = useState<string | null>(null);
-  
+
   const [statusDialog, setStatusDialog] = useState<StatusUpdateDialog>({
     open: false,
     application: null,
@@ -130,7 +111,7 @@ function HRApplicationsClientInternal({
       router.push(`/${locale}/auth/login`);
       return;
     }
-    
+
     loadInitialData();
   }, [isAuthenticated, userType, locale, router]);
 
@@ -138,17 +119,17 @@ function HRApplicationsClientInternal({
     try {
       setIsLoading(true);
       setError(null);
-      
+
       // Load company jobs first
       const jobsResponse = await getJobs();
       const companyJobs = jobsResponse.docs || [];
       setJobs(companyJobs);
-      
+
       // Load applications for all jobs or specific job
       let allApplications: Application[] = [];
       if (selectedJobId === 'all') {
         // Load applications for all company jobs
-        const applicationPromises = companyJobs.map(job => 
+        const applicationPromises = companyJobs.map(job =>
           getJobApplications(job.id.toString())
         );
         const responses = await Promise.all(applicationPromises);
@@ -157,7 +138,7 @@ function HRApplicationsClientInternal({
         const response = await getJobApplications(selectedJobId);
         allApplications = response.docs || [];
       }
-      
+
       setApplications(allApplications);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load applications');
@@ -168,12 +149,12 @@ function HRApplicationsClientInternal({
 
   // Filter applications based on search and job selection
   const filteredApplications = applications.filter(app => {
-    const matchesSearch = !searchQuery || 
+    const matchesSearch = !searchQuery ||
       (app.applicant?.name?.toLowerCase().includes(searchQuery.toLowerCase())) ||
       (app.job?.jobTitle?.toLowerCase().includes(searchQuery.toLowerCase()));
-    
+
     const matchesJob = selectedJobId === 'all' || app.jobId === selectedJobId;
-    
+
     return matchesSearch && matchesJob;
   });
 
@@ -189,20 +170,20 @@ function HRApplicationsClientInternal({
 
   const handleStatusUpdate = async (application: Application, newStatus: Application['status'], notes?: string) => {
     if (!application.id) return;
-    
+
     try {
       setUpdatingAppId(application.id);
       await updateApplicationStatus(application.id, newStatus, notes);
-      
+
       // Update local state
-      setApplications(prev => prev.map(app => 
-        app.id === application.id 
+      setApplications(prev => prev.map(app =>
+        app.id === application.id
           ? { ...app, status: newStatus, notes: notes || app.notes, updatedAt: new Date().toISOString() }
           : app
       ));
-      
+
       setStatusDialog({ open: false, application: null, newStatus: null, notes: '' });
-      
+
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to update application status');
     } finally {
@@ -233,8 +214,8 @@ function HRApplicationsClientInternal({
                 })}
               </AlertDescription>
             </Alert>
-            <Button 
-              className="w-full mt-4" 
+            <Button
+              className="w-full mt-4"
               onClick={() => router.push(`/${locale}/auth/login`)}
             >
               {intl.formatMessage({ id: "common.login", defaultMessage: "Log In" })}
@@ -296,9 +277,9 @@ function HRApplicationsClientInternal({
           <div className="relative flex-1 sm:max-w-sm">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
-              placeholder={intl.formatMessage({ 
-                id: "hr.searchApplications", 
-                defaultMessage: "Search applications..." 
+              placeholder={intl.formatMessage({
+                id: "hr.searchApplications",
+                defaultMessage: "Search applications..."
               })}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -345,7 +326,7 @@ function HRApplicationsClientInternal({
                     <Badge variant="secondary">{column.count}</Badge>
                   </CardTitle>
                 </CardHeader>
-                
+
                 <CardContent className="flex-1 space-y-3">
                   {column.applications.map((application) => (
                     <ApplicationCard
@@ -363,12 +344,12 @@ function HRApplicationsClientInternal({
                       isUpdating={updatingAppId === application.id}
                     />
                   ))}
-                  
+
                   {column.applications.length === 0 && (
                     <div className="text-center py-6 text-sm text-muted-foreground">
-                      {intl.formatMessage({ 
-                        id: "hr.noApplicationsInColumn", 
-                        defaultMessage: "No applications" 
+                      {intl.formatMessage({
+                        id: "hr.noApplicationsInColumn",
+                        defaultMessage: "No applications"
                       })}
                     </div>
                   )}
@@ -424,8 +405,8 @@ function HRApplicationsClientInternal({
       </Tabs>
 
       {/* Status Update Dialog */}
-      <Dialog 
-        open={statusDialog.open} 
+      <Dialog
+        open={statusDialog.open}
         onOpenChange={(open) => !open && setStatusDialog({ open: false, application: null, newStatus: null, notes: '' })}
       >
         <DialogContent>
@@ -450,7 +431,7 @@ function HRApplicationsClientInternal({
               )}
             </DialogDescription>
           </DialogHeader>
-          
+
           <div className="space-y-4">
             <div>
               <Label>
@@ -465,7 +446,7 @@ function HRApplicationsClientInternal({
                 </Badge>
               </div>
             </div>
-            
+
             <div>
               <Label htmlFor="statusNotes">
                 {intl.formatMessage({
@@ -487,13 +468,13 @@ function HRApplicationsClientInternal({
           </div>
 
           <DialogFooter>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               onClick={() => setStatusDialog({ open: false, application: null, newStatus: null, notes: '' })}
             >
               {intl.formatMessage({ id: "common.cancel", defaultMessage: "Cancel" })}
             </Button>
-            <Button 
+            <Button
               onClick={() => {
                 if (statusDialog.application && statusDialog.newStatus) {
                   handleStatusUpdate(statusDialog.application, statusDialog.newStatus, statusDialog.notes);
@@ -524,11 +505,11 @@ function HRApplicationsClientInternal({
 }
 
 // Application Card Component for Kanban View
-function ApplicationCard({ 
-  application, 
-  locale, 
-  onStatusUpdate, 
-  isUpdating 
+function ApplicationCard({
+  application,
+  locale,
+  onStatusUpdate,
+  isUpdating
 }: {
   application: Application;
   locale: Locale;
@@ -579,7 +560,7 @@ function ApplicationCard({
               <span>{intl.formatMessage({ id: "applications.appliedOn", defaultMessage: "Applied" })}</span>
               <span>{formatDate(application.appliedAt)}</span>
             </div>
-            
+
             {application.expectedSalary && (
               <div className="flex items-center justify-between">
                 <span>{intl.formatMessage({ id: "applications.expectedSalary", defaultMessage: "Expected" })}</span>
@@ -610,11 +591,11 @@ function ApplicationCard({
 }
 
 // Application List Item Component for List View
-function ApplicationListItem({ 
-  application, 
-  locale, 
-  onStatusUpdate, 
-  isUpdating 
+function ApplicationListItem({
+  application,
+  locale,
+  onStatusUpdate,
+  isUpdating
 }: {
   application: Application;
   locale: Locale;
@@ -644,12 +625,12 @@ function ApplicationListItem({
                 {application.job?.jobTitle || 'Position Not Available'}
               </div>
             </div>
-            
+
             <Badge className={getApplicationStatusColor(application.status)}>
               {formatApplicationStatus(application.status)}
             </Badge>
           </div>
-          
+
           <div className="flex items-center gap-6 mt-2 text-xs text-muted-foreground">
             <span>Applied {formatDate(application.appliedAt)}</span>
             {application.expectedSalary && (

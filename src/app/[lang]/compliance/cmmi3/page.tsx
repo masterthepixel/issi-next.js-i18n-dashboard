@@ -154,17 +154,17 @@ export default async function Page({ params: { lang } }: Props) {
             </p>
             <div className="flex flex-wrap justify-center gap-4 mb-12">
               <div className="glass-card px-4 py-2 rounded-full">
-                <span className="" text-caption6316 text-muted-foreground6316>
+                <span className="text-sm font-medium">
                   {intl.formatMessage({ id: "cmmi.hero.badge.maturity" })}
                 </span>
               </div>
               <div className="glass-card px-4 py-2 rounded-full">
-                <span className="" text-caption6590 text-muted-foreground6597>
+                <span className="text-sm font-medium">
                   {intl.formatMessage({ id: "cmmi.hero.badge.processes" })}
                 </span>
               </div>
               <div className="glass-card px-4 py-2 rounded-full">
-                <span className="" text-caption6865 text-muted-foreground6879>
+                <span className="text-sm font-medium">
                   {intl.formatMessage({ id: "cmmi.hero.badge.capability" })}
                 </span>
               </div>
@@ -252,7 +252,7 @@ export default async function Page({ params: { lang } }: Props) {
                     <h3 className="">{level.title}</h3>
                     <span className="text-2xl font-bold opacity-90">{index + 1}</span>
                   </div>
-                  <p className="" text-caption10734>{level.description}</p>
+                  <p className="text-sm opacity-90">{level.description}</p>
                   {index === 2 && (
                     <div className="absolute -top-2 -right-2 bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded-full">
                       Current
@@ -380,7 +380,7 @@ export default async function Page({ params: { lang } }: Props) {
                 <h3 className="dark:text-slate-100 mb-2">
                   {metric.title}
                 </h3>
-                <p className="" text-caption17036 text-muted-foreground17334>
+                <p className="text-sm text-muted-foreground">
                   {metric.description}
                 </p>
               </div>

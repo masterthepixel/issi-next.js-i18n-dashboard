@@ -5,7 +5,7 @@ import ClientNavigation from "@/components/ClientNavigation";
 import ClientOnly from "@/components/ClientOnly";
 import Content from "@/components/Content";
 import ErrorBoundary from "@/components/ErrorBoundary";
-import FooterWrapper from "@/components/FooterWrapper";
+import Footer from "@/components/Footer";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import { ThemeProviderWrapper } from "@/components/ThemeProviderWrapper";
 import React from 'react';
@@ -33,11 +33,11 @@ export default function ClientLayout({ lang, messages, intlMessages, children }:
             {/* Universal Intelligent Breadcrumb removed */}
             {children}
           </Content>
-          <FooterWrapper locale={lang} />
+          <Footer locale={lang} messages={messages} />
         </IntlProvider>
 
+        <ClientNavigation locale={lang} messages={intlMessages} />
         <ClientOnly>
-          <ClientNavigation locale={lang} messages={intlMessages} />
           <ScrollToTopButton />
         </ClientOnly>
       </ThemeProviderWrapper>
