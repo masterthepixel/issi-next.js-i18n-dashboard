@@ -242,7 +242,7 @@ async function PageContent({ locale, slug }: PageContentProps) {
         <article className="max-w-4xl mx-auto px-4 py-8">
           {/* Breadcrumb Navigation */}
           <nav className="mb-8" aria-label="Breadcrumb">
-            <ol className="flex items-center gap-2  " text-caption7690="true">
+            <ol className="flex items-center gap-2 text-sm text-muted-foreground">
               <li>
                 <a
                   href={`/${locale}`}
@@ -281,7 +281,7 @@ async function PageContent({ locale, slug }: PageContentProps) {
                 {post.categories.map((category: any) => (
                   <span
                     key={category.id}
-                    className="inline-flex items-center px-3 py-1  " text-caption9155="true"
+                    className="inline-flex items-center px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm"
                   >
                     {category.title}
                   </span>
