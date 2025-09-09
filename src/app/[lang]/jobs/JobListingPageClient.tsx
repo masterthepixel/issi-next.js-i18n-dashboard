@@ -140,7 +140,7 @@ function JobListingPageClientInternal({ locale }: JobListingPageClientProps) {
 
       {/* Results Summary */}
       <div className="flex items-center justify-between">
-        <p className="" text-caption4427>
+        <p className="text-muted-foreground">
           {isLoading ? (
             <Skeleton className="h-4 w-40" />
           ) : (

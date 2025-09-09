@@ -262,7 +262,7 @@ export default function EditProfilePage({ params }: { params: { lang: string } }
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                         <div>
-                                            <label className="" text-caption9764>
+                                            <label className="block text-sm font-medium">
                                                 <FormattedMessage id="profile.name" defaultMessage="Full Name" /> *
                                             </label>
                                             <Input
@@ -272,7 +272,7 @@ export default function EditProfilePage({ params }: { params: { lang: string } }
                                                 className={errors.name ? "border-red-500" : ""}
                                             />
                                             {errors.name && (
-                                                <p className="text-red-500  " text-caption10626>{errors.name}</p>
+                                                <p className="text-red-500 text-sm">{errors.name}</p>
                                             )}
                                         </div>
 

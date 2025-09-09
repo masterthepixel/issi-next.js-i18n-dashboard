@@ -18,6 +18,12 @@ All notable changes to this project will be documented in this file.
   - Improved build process with successful production builds
   - Enhanced development server stability
 
+- **Next.js 15 Compatibility**:
+  - Fixed async params handling in dynamic routes (await params destructuring)
+  - Added missing translation keys for MDOT compliance page
+  - Resolved compilation errors and React warnings
+  - Improved TypeScript strict mode compatibility
+
 ### 🎉 COMPLETED - Blog System Implementation (August 25, 2025)
 
 - **✅ PHASE 1 MVP COMPLETE**: Successfully implemented production-ready blog system with PayloadCMS
