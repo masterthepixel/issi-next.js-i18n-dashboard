@@ -1,12 +1,12 @@
-import { Metadata } from "next";
-import { Suspense } from "react";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import JobListingForm from "@/components/jobs/JobListingForm";
 import Spinner from "@/components/Spinner";
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
-import JobListingForm from "@/components/jobs/JobListingForm";
 import { ArrowLeft } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Create Job Listing - ISSI Jobs",
@@ -43,7 +43,7 @@ async function CreateJobPageContent({ locale }: CreateJobPageContentProps) {
     <div className="min-h-screen bg-background">
       <div className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-14 items-center">
-          <Link 
+          <Link
             href={`/${locale}/jobs`}
             className="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-secondary"
           >
@@ -52,7 +52,7 @@ async function CreateJobPageContent({ locale }: CreateJobPageContentProps) {
           </Link>
         </div>
       </div>
-      
+
       <div className="container mx-auto py-8">
         <JobListingForm mode="create" />
       </div>

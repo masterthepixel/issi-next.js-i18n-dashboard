@@ -55,7 +55,7 @@ export default function GlowingStarsTestPage({ params: _params }: Props) {
               <p className="" text-muted-foreground2305>
                 This background is now integrated as the light mode background for the entire application.
               </p>
-              <p className="" text-caption2472 text-muted-foreground2504>
+              <p className="text-muted-foreground">
                 Switch to dark mode to see the original starry background with meteors.
               </p>
             </div>

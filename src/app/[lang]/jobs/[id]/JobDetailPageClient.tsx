@@ -1,29 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import ApplicationForm from "@/components/applications/ApplicationForm";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { formatBenefit, formatEmploymentType, formatSalary, getTimeAgo, extractTextFromRichText } from "@/lib/jobs-api";
-import type { JobPost } from "@/lib/jobs-api";
+import { Separator } from "@/components/ui/separator";
 import type { Locale } from "@/lib/definitions";
-import { 
-  Building2, 
-  Clock, 
-  DollarSign, 
-  ExternalLink, 
-  Globe, 
-  MapPin, 
-  Share2,
-  ArrowLeft
+import type { JobPost } from "@/lib/jobs-api";
+import { extractTextFromRichText, formatBenefit, formatEmploymentType, formatSalary, getTimeAgo } from "@/lib/jobs-api";
+import {
+  ArrowLeft,
+  Building2,
+  Clock,
+  DollarSign,
+  ExternalLink,
+  Globe,
+  MapPin,
+  Share2
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { useIntl } from "react-intl";
-import ApplicationForm from "@/components/applications/ApplicationForm";
 
 interface JobDetailPageClientProps {
   locale: Locale;
@@ -34,7 +34,7 @@ interface JobDetailPageClientProps {
 function RichTextRenderer({ content }: { content: JobPost['jobDescription'] }) {
   // For now, extract plain text - can be enhanced with proper rich text rendering
   const textContent = extractTextFromRichText(content);
-  
+
   return (
     <div className="prose prose-sm max-w-none dark:prose-invert">
       <div className="whitespace-pre-wrap">{textContent}</div>
@@ -94,7 +94,7 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
                     </div>
                   </CardDescription>
                 </div>
-                
+
                 {/* Company Logo */}
                 {job.company.logo && (
                   <div className="ml-6 flex-shrink-0">
@@ -115,7 +115,7 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
                   <MapPin className="h-4 w-4" />
                   {job.location}
                 </div>
-                
+
                 <Badge variant="secondary">
                   {formatEmploymentType(job.employmentType)}
                 </Badge>
@@ -129,9 +129,9 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
 
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <Clock className="h-4 w-4" />
-                  {intl.formatMessage({ 
-                    id: "jobs.postedTime", 
-                    defaultMessage: "Posted {time}" 
+                  {intl.formatMessage({
+                    id: "jobs.postedTime",
+                    defaultMessage: "Posted {time}"
                   }, { time: getTimeAgo(job.createdAt) })}
                 </div>
               </div>
@@ -181,17 +181,17 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <Button 
-                className="w-full" 
+              <Button
+                className="w-full"
                 size="lg"
                 onClick={() => setShowApplicationForm(true)}
               >
                 {intl.formatMessage({ id: "jobs.applyForPosition", defaultMessage: "Apply for this Position" })}
               </Button>
-              
-              <Button 
-                variant="outline" 
-                className="w-full" 
+
+              <Button
+                variant="outline"
+                className="w-full"
                 onClick={handleShare}
               >
                 <Share2 className="h-4 w-4 mr-2" />
@@ -224,13 +224,13 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
                   <MapPin className="h-4 w-4 text-muted-foreground" />
                   <span>{job.company.location}</span>
                 </div>
-                
+
                 {job.company.website && (
                   <div className="flex items-center gap-2">
                     <Globe className="h-4 w-4 text-muted-foreground" />
-                    <Link 
-                      href={job.company.website} 
-                      target="_blank" 
+                    <Link
+                      href={job.company.website}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="text-primary hover:underline flex items-center gap-1"
                     >
@@ -257,14 +257,14 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
                 </span>
                 <span>{formatEmploymentType(job.employmentType)}</span>
               </div>
-              
+
               <div className="flex justify-between">
                 <span className="text-muted-foreground">
                   {intl.formatMessage({ id: "jobs.location", defaultMessage: "Location" })}
                 </span>
                 <span>{job.location}</span>
               </div>
-              
+
               {(job.salaryFrom || job.salaryTo) && (
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">
@@ -275,7 +275,7 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
                   </span>
                 </div>
               )}
-              
+
               <div className="flex justify-between">
                 <span className="text-muted-foreground">
                   {intl.formatMessage({ id: "jobs.posted", defaultMessage: "Posted" })}

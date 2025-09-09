@@ -1,12 +1,12 @@
-import { Metadata } from "next";
-import { Suspense } from "react";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import Spinner from "@/components/Spinner";
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
-import EditJobPageClient from "./EditJobPageClient";
 import { ArrowLeft } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
+import EditJobPageClient from "./EditJobPageClient";
 
 export const metadata: Metadata = {
   title: "Edit Job Listing - ISSI Jobs",
@@ -46,7 +46,7 @@ async function EditJobPageContent({ locale, jobId }: EditJobPageContentProps) {
     <div className="min-h-screen bg-background">
       <div className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-14 items-center">
-          <Link 
+          <Link
             href={`/${locale}/jobs/${jobId}`}
             className="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-secondary"
           >
@@ -55,7 +55,7 @@ async function EditJobPageContent({ locale, jobId }: EditJobPageContentProps) {
           </Link>
         </div>
       </div>
-      
+
       <div className="container mx-auto py-8">
         <EditJobPageClient locale={locale} jobId={jobId} />
       </div>

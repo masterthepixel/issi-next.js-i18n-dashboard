@@ -183,7 +183,7 @@ export default function UploadResumePage({ params }: { params: { lang: string } 
                                             <p className="text-muted-foreground mb-4">
                                                 {selectedFile.name}
                                             </p>
-                                            <div className="" text-caption7133>
+                                            <div className="text-sm text-muted-foreground">
                                                 {selectedFile.size < 1024 * 1024
                                                     ? `${(selectedFile.size / 1024).toFixed(1)} KB`
                                                     : `${(selectedFile.size / (1024 * 1024)).toFixed(1)} MB`
@@ -244,7 +244,7 @@ export default function UploadResumePage({ params }: { params: { lang: string } 
                                             defaultMessage="File Requirements:"
                                         />
                                     </h4>
-                                    <ul className="" text-caption11358>
+                                    <ul className="space-y-1 text-sm text-muted-foreground">
                                         <li>• <FormattedMessage
                                             id="profile.upload.requirements.format"
                                             defaultMessage="PDF, DOC, or DOCX files only"
@@ -272,7 +272,7 @@ export default function UploadResumePage({ params }: { params: { lang: string } 
                                                         defaultMessage="Upload Error"
                                                     />
                                                 </h4>
-                                                <p className="text-red-800 dark:text-red-200  " text-caption13338>{error}</p>
+                                                <p className="text-red-800 dark:text-red-200 text-sm">{error}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -304,7 +304,7 @@ export default function UploadResumePage({ params }: { params: { lang: string } 
                                 {/* Progress Bar */}
                                 {isUploading && (
                                     <div className="mt-6">
-                                        <div className="flex justify-between  " text-caption15153>
+                                        <div className="flex justify-between text-sm mb-2">
                                             <span>
                                                 <FormattedMessage
                                                     id="profile.upload.progress"

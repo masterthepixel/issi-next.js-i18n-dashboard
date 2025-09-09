@@ -1,44 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useIntl } from "react-intl";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Separator } from "@/components/ui/separator";
-import { 
-  getApplications, 
-  formatApplicationStatus, 
-  getApplicationStatusColor,
-  withdrawApplication,
-  type Application 
-} from "@/lib/jobs-api";
-import { useAuth } from "@/lib/auth";
-import { Locale } from "@/lib/definitions";
 import ErrorBoundary from "@/components/ErrorBoundary";
-import {
-  AlertCircle,
-  Building2,
-  Calendar,
-  DollarSign,
-  ExternalLink,
-  Eye,
-  Loader2,
-  MapPin,
-  MoreHorizontal,
-  Trash2,
-  FileText,
-  Clock
-} from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -49,7 +12,44 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Separator } from "@/components/ui/separator";
+import { useAuth } from "@/lib/auth";
+import { Locale } from "@/lib/definitions";
+import {
+  formatApplicationStatus,
+  getApplications,
+  getApplicationStatusColor,
+  withdrawApplication,
+  type Application
+} from "@/lib/jobs-api";
+import {
+  AlertCircle,
+  Building2,
+  Calendar,
+  Clock,
+  DollarSign,
+  ExternalLink,
+  Eye,
+  FileText,
+  Loader2,
+  MapPin,
+  MoreHorizontal,
+  Trash2
+} from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useIntl } from "react-intl";
 
 interface ApplicationDashboardClientProps {
   locale: Locale;
@@ -59,7 +59,7 @@ function ApplicationDashboardClientInternal({ locale }: ApplicationDashboardClie
   const intl = useIntl();
   const router = useRouter();
   const { isAuthenticated, userType } = useAuth();
-  
+
   const [applications, setApplications] = useState<Application[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -75,7 +75,7 @@ function ApplicationDashboardClientInternal({ locale }: ApplicationDashboardClie
       router.push(`/${locale}/auth/login`);
       return;
     }
-    
+
     loadApplications();
   }, [isAuthenticated, userType, locale, router]);
 
@@ -94,15 +94,15 @@ function ApplicationDashboardClientInternal({ locale }: ApplicationDashboardClie
 
   const handleWithdrawApplication = async (application: Application) => {
     if (!application.id) return;
-    
+
     try {
       setWithdrawingId(application.id);
       await withdrawApplication(application.id);
-      
+
       // Remove from local state
       setApplications(prev => prev.filter(app => app.id !== application.id));
       setWithdrawDialog({ open: false, application: null });
-      
+
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to withdraw application');
     } finally {
@@ -150,8 +150,8 @@ function ApplicationDashboardClientInternal({ locale }: ApplicationDashboardClie
                 })}
               </AlertDescription>
             </Alert>
-            <Button 
-              className="w-full mt-4" 
+            <Button
+              className="w-full mt-4"
               onClick={() => router.push(`/${locale}/auth/login`)}
             >
               {intl.formatMessage({ id: "common.login", defaultMessage: "Log In" })}
@@ -233,7 +233,7 @@ function ApplicationDashboardClientInternal({ locale }: ApplicationDashboardClie
                     </span>
                   </CardDescription>
                 </div>
-                
+
                 {/* Actions Dropdown */}
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
@@ -258,9 +258,9 @@ function ApplicationDashboardClientInternal({ locale }: ApplicationDashboardClie
                     )}
                     {application.status === 'APPLIED' && (
                       <DropdownMenuItem
-                        onClick={() => setWithdrawDialog({ 
-                          open: true, 
-                          application 
+                        onClick={() => setWithdrawDialog({
+                          open: true,
+                          application
                         })}
                         className="text-red-600 focus:text-red-600"
                       >
@@ -294,7 +294,7 @@ function ApplicationDashboardClientInternal({ locale }: ApplicationDashboardClie
                     <MapPin className="h-4 w-4 flex-shrink-0" />
                     <span className="truncate">{application.job.location}</span>
                   </div>
-                  
+
                   {(application.job.salaryFrom || application.job.salaryTo) && (
                     <div className="flex items-center gap-2 text-muted-foreground">
                       <DollarSign className="h-4 w-4 flex-shrink-0" />
@@ -321,7 +321,7 @@ function ApplicationDashboardClientInternal({ locale }: ApplicationDashboardClie
                   </span>
                   <span>{formatDate(application.appliedAt)}</span>
                 </div>
-                
+
                 {application.updatedAt !== application.appliedAt && (
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">
@@ -370,8 +370,8 @@ function ApplicationDashboardClientInternal({ locale }: ApplicationDashboardClie
       </div>
 
       {/* Withdraw Confirmation Dialog */}
-      <AlertDialog 
-        open={withdrawDialog.open} 
+      <AlertDialog
+        open={withdrawDialog.open}
         onOpenChange={(open) => setWithdrawDialog({ open, application: null })}
       >
         <AlertDialogContent>
