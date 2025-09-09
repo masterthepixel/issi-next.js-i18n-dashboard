@@ -29,13 +29,13 @@ export default async function Page({ params: { lang } }: Props) {
             </p>
             <div className="flex flex-wrap justify-center gap-4 mb-12">
               <div className="glass-card px-4 py-2 rounded-full">
-                <span className="" text-caption1441>{intl.formatMessage({ id: "iso27001.hero.badge.certified" })}</span>
+                <span className="text-sm font-medium">{intl.formatMessage({ id: "iso27001.hero.badge.certified" })}</span>
               </div>
               <div className="glass-card px-4 py-2 rounded-full">
-                <span className="" text-caption1689>{intl.formatMessage({ id: "iso27001.hero.badge.audits" })}</span>
+                <span className="text-sm font-medium">{intl.formatMessage({ id: "iso27001.hero.badge.audits" })}</span>
               </div>
               <div className="glass-card px-4 py-2 rounded-full">
-                <span className="" text-caption1932>{intl.formatMessage({ id: "iso27001.hero.badge.monitoring" })}</span>
+                <span className="text-sm font-medium">{intl.formatMessage({ id: "iso27001.hero.badge.monitoring" })}</span>
               </div>
             </div>
           </div>

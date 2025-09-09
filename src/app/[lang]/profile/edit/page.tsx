@@ -413,7 +413,7 @@ export default function EditProfilePage({ params }: { params: { lang: string } }
                                                             checked={exp.current || false}
                                                             onChange={(e) => updateWorkExperience(index, "current", e.target.checked)}
                                                         />
-                                                        <label htmlFor={`current-${index}`} className="" text-caption20808>
+                                                        <label htmlFor={`current-${index}`} className="text-sm font-medium">
                                                             <FormattedMessage
                                                                 id="profile.edit.work.current"
                                                                 defaultMessage="Current Job"

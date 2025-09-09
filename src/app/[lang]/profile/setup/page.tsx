@@ -129,7 +129,7 @@ export default function ProfileSetupPage({ params }: { params: { lang: string } 
                             />
                         </CardDescription>
                         <div className="flex items-center justify-center space-x-4 mt-4">
-                            <span className="" text-caption5060>
+                            <span className="text-sm font-medium">
                                 <FormattedMessage
                                     id="profile.completion"
                                     defaultMessage="Profile Completion"
@@ -138,7 +138,7 @@ export default function ProfileSetupPage({ params }: { params: { lang: string } 
                             <div className="flex-1 max-w-xs">
                                 <Progress value={completionPercentage} className="h-2" />
                             </div>
-                            <span className="" text-caption5586>{completionPercentage}%</span>
+                            <span className="text-sm font-bold">{completionPercentage}%</span>
                         </div>
                     </CardHeader>
                     <CardContent>
@@ -202,7 +202,7 @@ export default function ProfileSetupPage({ params }: { params: { lang: string } 
                                             defaultMessage="Tips to improve your profile:"
                                         />
                                     </h3>
-                                    <ul className="" text-caption9496>
+                                    <ul className="space-y-1 text-sm text-muted-foreground">
                                         <li>• <FormattedMessage
                                             id="profile.setup.tips.resume"
                                             defaultMessage="Add your resume to get better job matches"

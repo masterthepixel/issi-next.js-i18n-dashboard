@@ -311,7 +311,7 @@ function ApplicationDashboardClientInternal({ locale }: ApplicationDashboardClie
               <Separator />
 
               {/* Application Info */}
-              <div className="space-y-2  " text-caption11091>
+              <div className="space-y-2">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">
                     {intl.formatMessage({
@@ -351,7 +351,7 @@ function ApplicationDashboardClientInternal({ locale }: ApplicationDashboardClie
               {application.notes && (
                 <>
                   <Separator />
-                  <div className="" text-caption12757>
+                  <div className="space-y-2">
                     <div className="text-muted-foreground mb-1">
                       {intl.formatMessage({
                         id: "applications.notes",

@@ -310,20 +310,20 @@ async function PageContent({ locale, slug }: PageContentProps) {
                   </span>
                 </div>
                 <div>
-                  <div className="font-medium  " text-caption10287="true">
+                  <div className="font-medium text-sm">
                     {locale === 'en' ? 'By' :
                       locale === 'fr' ? 'Par' :
                         'Por'} {authorName}
                   </div>
                 </div>
               </div>
-              <div className="" text-caption10553="true">
+              <div className="text-xs text-muted-foreground">
                 <time dateTime={post.publishedAt}>
                   {formatDate(post.publishedAt)}
                 </time>
               </div>
               {post.publishedAt !== post.updatedAt && (
-                <div className="" text-caption10824="true">
+                <div className="text-xs text-muted-foreground">
                   {locale === 'en' ? 'Updated' :
                     locale === 'fr' ? 'Mis à jour' :
                       'Actualizado'} {formatDate(post.updatedAt)}
@@ -342,7 +342,7 @@ async function PageContent({ locale, slug }: PageContentProps) {
                 loading="lazy"
               />
               {typeof post.featuredImage === 'object' && post.featuredImage.caption && (
-                <div className="mt-2  " text-caption11683="true">
+                <div className="mt-2 text-sm text-muted-foreground text-center">
                   <RichTextRenderer content={post.featuredImage.caption} />
                 </div>
               )}
@@ -354,7 +354,7 @@ async function PageContent({ locale, slug }: PageContentProps) {
                          prose-headings:font-semibold prose-headings:tracking-tight
                          prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
                          prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-                         prose-strong:font-semibold prose-code: " text-caption11946="true">
+                         prose-strong:font-semibold prose-code:bg-muted prose-code:rounded prose-code:px-1">
             <RichTextRenderer content={post.content} />
           </div>
 
@@ -376,7 +376,7 @@ async function PageContent({ locale, slug }: PageContentProps) {
                   <p className="text-muted-foreground mb-2">
                     <strong>{authorName}</strong>
                   </p>
-                  <p className="" text-caption13567="true">
+                  <p className="text-sm text-muted-foreground">
                     {post.author.role === 'admin' ? (
                       locale === 'en' ? 'Administrator and technology leader at ISSI.' :
                         locale === 'fr' ? 'Administrateur et leader technologique chez ISSI.' :
@@ -394,7 +394,7 @@ async function PageContent({ locale, slug }: PageContentProps) {
 
           {/* Social Share Buttons */}
           <div className="flex flex-wrap items-center gap-4 mb-8">
-            <span className="" text-caption14497="true">
+            <span className="text-sm font-medium">
               {locale === 'en' ? 'Share this post:' :
                 locale === 'fr' ? 'Partager cet article :' :
                   'Compartir este artículo:'}
@@ -559,7 +559,7 @@ function SocialShareButton({
       className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-border hover:bg-secondary transition-colors"
       aria-label={`${locale === 'en' ? 'Share on' : locale === 'fr' ? 'Partager sur' : 'Compartir en'} ${labels[platform]}`}
     >
-      <span className="" text-caption19796="true">
+      <span className="text-sm font-semibold">
         {platform.charAt(0).toUpperCase()}
       </span>
     </a>

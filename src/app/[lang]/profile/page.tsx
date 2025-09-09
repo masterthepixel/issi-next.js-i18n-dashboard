@@ -138,7 +138,7 @@ export default function ProfilePage({ params }: { params: { lang: string } }) {
                                 </div>
                                 <div className="text-right">
                                     <div className="text-2xl font-bold">{profile.name}</div>
-                                    <div className="text-green-100  " text-caption5932>
+                                    <div className="text-sm text-muted-foreground">
                                         <FormattedMessage
                                             id="profile.lastUpdated"
                                             defaultMessage="Last updated:"
@@ -190,7 +190,7 @@ export default function ProfilePage({ params }: { params: { lang: string } }) {
                                         defaultMessage="Ways to improve your profile:"
                                     />
                                 </h3>
-                                <ul className="" text-caption8649>
+                                <ul className="space-y-1 text-sm">
                                     {!profile.resume && (
                                         <li>• <FormattedMessage
                                             id="profile.improve.resume"
@@ -229,21 +229,21 @@ export default function ProfilePage({ params }: { params: { lang: string } }) {
 
                             <div className="space-y-4">
                                 <div>
-                                    <label className="block  " text-caption10817>
+                                    <label className="block text-sm font-medium text-muted-foreground">
                                         <FormattedMessage id="profile.name" defaultMessage="Full Name" />
                                     </label>
                                     <p className="text-foreground">{profile.name}</p>
                                 </div>
 
                                 <div>
-                                    <label className="block  " text-caption11243>
+                                    <label className="block text-sm font-medium text-muted-foreground">
                                         <FormattedMessage id="profile.email" defaultMessage="Email" />
                                     </label>
                                     <p className="text-foreground">{profile.email}</p>
                                 </div>
 
                                 <div>
-                                    <label className="block  " text-caption11667>
+                                    <label className="block text-sm font-medium text-muted-foreground">
                                         <FormattedMessage id="profile.type" defaultMessage="Account Type" />
                                     </label>
                                     <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
