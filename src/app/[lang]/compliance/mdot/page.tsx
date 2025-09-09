@@ -16,7 +16,7 @@ interface Props {
 export default async function Page({ params }: Props) {
   const { lang } = await params;
   const intl = await getIntl(lang);
-  
+
   return (
     <main className="-mt-20">
       {/* Hero Section */}
@@ -24,7 +24,7 @@ export default async function Page({ params }: Props) {
         {/* Background Grid Pattern */}
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background"></div>
-        
+
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           {/* Maryland DOT Badge */}
           <div className="inline-flex items-center justify-center w-24 h-24 bg-primary/10 rounded-full mb-8">
@@ -32,20 +32,20 @@ export default async function Page({ params }: Props) {
               <span className="text-white font-bold text-xl">MD</span>
             </div>
           </div>
-            <h1 className="md:text-6xl mb-6 bg-clip-text text-transparent bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)]">
+          <h1 className="md:text-6xl mb-6 bg-clip-text text-transparent bg-gradient-to-b from-[var(--h1-gradient-from)] to-[var(--h1-gradient-to)]">
             {intl.formatMessage({ id: "mdot.hero.title" })}
           </h1>
-          
+
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
             {intl.formatMessage({ id: "mdot.hero.subtitle" })}
           </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">            <Link 
-              href={`/${lang}/contact`}
-              className="bg-primary text-primary-foreground px-8 py-4 rounded-lg hover:bg-primary/90 transition-colors font-semibold"
-            >
-              {intl.formatMessage({ id: "mdot.hero.cta.primary" })}
-            </Link>
-            <Link 
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">            <Link
+            href={`/${lang}/contact`}
+            className="bg-primary text-primary-foreground px-8 py-4 rounded-lg hover:bg-primary/90 transition-colors font-semibold"
+          >
+            {intl.formatMessage({ id: "mdot.hero.cta.primary" })}
+          </Link>
+            <Link
               href="#capabilities"
               className="border border-border px-8 py-4 rounded-lg hover:bg-accent transition-colors font-semibold"
             >
@@ -61,7 +61,7 @@ export default async function Page({ params }: Props) {
             {intl.formatMessage({ id: "mdot.certifications.description" })}
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">          {/* MBE Card */}
           <div className="bg-card border border-border rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
             <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
@@ -105,7 +105,7 @@ export default async function Page({ params }: Props) {
               {intl.formatMessage({ id: "mdot.benefits.subtitle" })}
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Compliance Support */}
             <div className="bg-card rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
@@ -150,7 +150,7 @@ export default async function Page({ params }: Props) {
             {intl.formatMessage({ id: "mdot.capabilities.subtitle" })}
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Transportation Infrastructure */}
           <div className="bg-card border border-border rounded-lg p-6">
@@ -255,7 +255,7 @@ export default async function Page({ params }: Props) {
               {intl.formatMessage({ id: "mdot.track_record.subtitle" })}
             </p>
           </div>
-          
+
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             <div className="text-center">
               <div className="text-4xl font-bold mb-2">{intl.formatMessage({ id: "mdot.track_record.stats.experience.value" })}</div>
@@ -274,7 +274,7 @@ export default async function Page({ params }: Props) {
               <div className="">{intl.formatMessage({ id: "mdot.track_record.stats.states.label" })}</div>
             </div>
           </div>
-          
+
           <div className="max-w-3xl mx-auto">
             <blockquote className="text-xl italic mb-4">
               {intl.formatMessage({ id: "mdot.track_record.testimonial.quote" })}
@@ -289,14 +289,14 @@ export default async function Page({ params }: Props) {
           <div className="bg-card border border-border rounded-lg p-8">
             <h3 className="mb-6">{intl.formatMessage({ id: "mdot.contact.title" })}</h3>
             <form className="space-y-4">
-              <input 
-                type="text" 
+              <input
+                type="text"
                 placeholder={intl.formatMessage({ id: "mdot.contact.form.name" })}
                 className="w-full p-3 border border-border rounded bg-background"
                 required
               />
-              <input 
-                type="email" 
+              <input
+                type="email"
                 placeholder={intl.formatMessage({ id: "mdot.contact.form.email" })}
                 className="w-full p-3 border border-border rounded bg-background"
                 required
@@ -309,12 +309,12 @@ export default async function Page({ params }: Props) {
                 <option value="technology">{intl.formatMessage({ id: "mdot.contact.form.project_type.technology" })}</option>
                 <option value="other">{intl.formatMessage({ id: "mdot.contact.form.project_type.other" })}</option>
               </select>
-              <textarea 
+              <textarea
                 placeholder={intl.formatMessage({ id: "mdot.contact.form.message" })}
                 rows={4}
                 className="w-full p-3 border border-border rounded bg-background"
               ></textarea>
-              <button 
+              <button
                 type="submit"
                 className="w-full bg-primary text-primary-foreground px-8 py-3 rounded hover:bg-primary/90 transition-colors font-semibold"
               >
@@ -342,20 +342,20 @@ export default async function Page({ params }: Props) {
                 </div>
               </div>
             </div>
-              <div className="pt-6">
-              <Link 
+            <div className="pt-6">
+              <Link
                 href={`/${lang}/capabilities`}
                 className="inline-block bg-secondary text-secondary-foreground px-6 py-3 rounded hover:bg-accent transition-colors font-semibold"
               >
                 {intl.formatMessage({ id: "mdot.contact.info.download" })}
               </Link>
             </div>
-              <div className="pt-6">
+            <div className="pt-6">
               <h4 className="mb-2">{intl.formatMessage({ id: "mdot.contact.info.certifications.title" })}</h4>
               <p className="text-muted-foreground">
                 {intl.formatMessage({ id: "mdot.contact.info.certifications.description" })}
               </p>
-              <Link 
+              <Link
                 href={`/${lang}/compliance`}
                 className="text-primary hover:underline font-medium"
               >
@@ -371,7 +371,7 @@ export default async function Page({ params }: Props) {
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             {intl.formatMessage({ id: "mdot.footer_cta.subtitle" })}
           </p>
-          <Link 
+          <Link
             href={`/${lang}/contact`}
             className="inline-block bg-primary text-primary-foreground px-10 py-4 rounded-lg text-lg hover:bg-primary/90 transition-colors font-semibold"
           >

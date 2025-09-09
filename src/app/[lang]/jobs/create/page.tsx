@@ -45,7 +45,7 @@ async function CreateJobPageContent({ locale }: CreateJobPageContentProps) {
         <div className="container flex h-14 items-center">
           <Link 
             href={`/${locale}/jobs`}
-            className="inline-flex items-center justify-center rounded-md  " text-caption1440
+            className="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-secondary"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             {intl.formatMessage({ id: "common.back", defaultMessage: "Back to Jobs" })}

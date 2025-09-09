@@ -51,7 +51,7 @@ export default function CardEffectDemo() {
                   <CardTitle className="mb-2 text-lg font-semibold">
                     {service.title}
                   </CardTitle>
-                  <p className="" text-caption2241="true" text-muted-foreground2241="true">
+                  <p className="text-muted-foreground">
                     {service.description}
                   </p>
                 </CardContent>
@@ -74,7 +74,7 @@ export default function CardEffectDemo() {
             Hover over this card to reveal an awesome effect. Running out of copy
             here.
           </h2>
-          <p className="" text-caption3322="true">
+          <p className="text-muted-foreground">
             Watch me hover
           </p>
         </div>

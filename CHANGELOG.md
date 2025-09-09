@@ -13,6 +13,7 @@ All notable changes to this project will be documented in this file.
   - Enhanced font consistency between main and hamburger menu
 
 - **Code Quality & Performance**:
+
   - Comprehensive cleanup of invalid DOM attributes (`text-caption` removal)
   - Fixed React warnings and syntax errors across 200+ components
   - Improved build process with successful production builds

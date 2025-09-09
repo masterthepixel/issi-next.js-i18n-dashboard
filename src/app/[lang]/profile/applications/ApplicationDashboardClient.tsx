@@ -290,13 +290,13 @@ function ApplicationDashboardClientInternal({ locale }: ApplicationDashboardClie
               {/* Job Details */}
               {application.job && (
                 <>
-                  <div className="flex items-center gap-2  " text-caption10007>
+                  <div className="flex items-center gap-2 text-muted-foreground">
                     <MapPin className="h-4 w-4 flex-shrink-0" />
                     <span className="truncate">{application.job.location}</span>
                   </div>
                   
                   {(application.job.salaryFrom || application.job.salaryTo) && (
-                    <div className="flex items-center gap-2  " text-caption10376>
+                    <div className="flex items-center gap-2 text-muted-foreground">
                       <DollarSign className="h-4 w-4 flex-shrink-0" />
                       <span>
                         {application.job.salaryFrom && application.job.salaryTo

@@ -277,7 +277,7 @@ export default function EditProfilePage({ params }: { params: { lang: string } }
                                         </div>
 
                                         <div>
-                                            <label className="" text-caption10879>
+                                            <label className="block text-sm font-medium mb-2">
                                                 <FormattedMessage id="profile.email" defaultMessage="Email" />
                                             </label>
                                             <Input
@@ -295,7 +295,7 @@ export default function EditProfilePage({ params }: { params: { lang: string } }
                                     </div>
 
                                     <div>
-                                        <label className="" text-caption12026>
+                                        <label className="block text-sm font-medium mb-2">
                                             <FormattedMessage id="profile.about" defaultMessage="About You" /> *
                                         </label>
                                         <Textarea
@@ -309,7 +309,7 @@ export default function EditProfilePage({ params }: { params: { lang: string } }
                                             className={`min-h-[120px] ${errors.about ? "border-red-500" : ""}`}
                                         />
                                         {errors.about && (
-                                            <p className="text-red-500  " text-caption13126>{errors.about}</p>
+                                            <p className="text-red-500 text-sm mt-1">{errors.about}</p>
                                         )}
                                     </div>
                                 </div>

@@ -5,9 +5,9 @@ import JobCard from "@/components/jobs/JobCard";
 import JobSearchFilters from "@/components/jobs/JobSearchFilters";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { searchJobs } from "@/lib/jobs-api";
-import type { JobPost, JobSearchParams } from "@/lib/jobs-api";
 import type { Locale } from "@/lib/definitions";
+import type { JobPost, JobSearchParams } from "@/lib/jobs-api";
+import { searchJobs } from "@/lib/jobs-api";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { useIntl } from "react-intl";
@@ -61,7 +61,7 @@ function JobListingPageClientInternal({ locale }: JobListingPageClientProps) {
   const fetchJobs = useCallback(async () => {
     setIsLoading(true);
     setError(null);
-    
+
     try {
       const response = await searchJobs(filters);
       setJobs(response.jobs);
@@ -94,9 +94,9 @@ function JobListingPageClientInternal({ locale }: JobListingPageClientProps) {
     const range = [];
     const rangeWithDots = [];
 
-    for (let i = Math.max(2, currentPage - delta); 
-         i <= Math.min(totalPages - 1, currentPage + delta); 
-         i++) {
+    for (let i = Math.max(2, currentPage - delta);
+      i <= Math.min(totalPages - 1, currentPage + delta);
+      i++) {
       range.push(i);
     }
 
@@ -131,7 +131,7 @@ function JobListingPageClientInternal({ locale }: JobListingPageClientProps) {
   return (
     <div className="space-y-6">
       {/* Search and Filters */}
-      <JobSearchFilters 
+      <JobSearchFilters
         filters={filters}
         onFiltersChange={setFilters}
         onClearFilters={() => setFilters({ page: 1, limit: 12 })}
@@ -145,9 +145,9 @@ function JobListingPageClientInternal({ locale }: JobListingPageClientProps) {
             <Skeleton className="h-4 w-40" />
           ) : (
             intl.formatMessage(
-              { 
-                id: "jobs.resultsCount", 
-                defaultMessage: "Showing {count} {count, plural, one {job} other {jobs}}" 
+              {
+                id: "jobs.resultsCount",
+                defaultMessage: "Showing {count} {count, plural, one {job} other {jobs}}"
               },
               { count: totalJobs }
             )
@@ -165,13 +165,13 @@ function JobListingPageClientInternal({ locale }: JobListingPageClientProps) {
       ) : jobs.length === 0 ? (
         <div className="text-center py-12">
           <p className="text-muted-foreground mb-4">
-            {intl.formatMessage({ 
-              id: "jobs.noResults", 
-              defaultMessage: "No jobs found matching your criteria." 
+            {intl.formatMessage({
+              id: "jobs.noResults",
+              defaultMessage: "No jobs found matching your criteria."
             })}
           </p>
-          <Button 
-            onClick={() => setFilters({ page: 1, limit: 12 })} 
+          <Button
+            onClick={() => setFilters({ page: 1, limit: 12 })}
             variant="outline"
           >
             {intl.formatMessage({ id: "jobs.clearFilters", defaultMessage: "Clear Filters" })}
@@ -197,7 +197,7 @@ function JobListingPageClientInternal({ locale }: JobListingPageClientProps) {
             <ChevronLeft className="h-4 w-4" />
             {intl.formatMessage({ id: "jobs.previous", defaultMessage: "Previous" })}
           </Button>
-          
+
           {getPaginationNumbers().map((pageNumber, index) => (
             <Button
               key={index}
@@ -210,7 +210,7 @@ function JobListingPageClientInternal({ locale }: JobListingPageClientProps) {
               {pageNumber}
             </Button>
           ))}
-          
+
           <Button
             variant="outline"
             size="sm"

@@ -1730,7 +1730,6 @@
   "products.visitor-log-system.features.feature6.description": "Easily manage large group or event sign-ins with streamlined workflows.",
   "products.visitor-log-system.features.feature7.name": "Comprehensive Reporting",
   "products.visitor-log-system.features.feature7.description": "Generate visitor statistics and reports to improve security and best practices.",
-  
   "jobs.page.title": "Find Your Next Opportunity",
   "jobs.page.description": "Discover exciting career opportunities at ISSI. Join our team of innovative professionals building the future of technology solutions.",
   "jobs.search.button": "Search",
@@ -1833,7 +1832,6 @@
   "careers.jobCard.noDescription": "No description available",
   "careers.jobCard.applications": "{count} {count, plural, one {application} other {applications}}",
   "careers.jobCard.moreBenefits": "more",
-  
   "applications.title": "My Applications",
   "applications.description": "Track the status of your job applications and manage your application pipeline.",
   "applications.noApplications.title": "No Applications Yet",
@@ -1850,7 +1848,6 @@
   "applications.expectedSalary": "Expected Salary",
   "applications.notes": "Notes",
   "applications.loginRequired": "Please log in as a job seeker to view your applications.",
-  
   "application.form.title": "Apply for Position",
   "application.form.description": "Complete the form below to apply for this position. All fields marked with * are required.",
   "application.form.coverLetter.label": "Cover Letter *",
@@ -1886,7 +1883,6 @@
   "application.form.validation.salary.invalid": "Please enter a valid salary amount",
   "application.form.loginRequired": "Please log in to apply for this position.",
   "application.form.alreadyApplied": "You have already applied for this position.",
-  
   "hr.applications.title": "Application Management",
   "hr.applications.description": "Review and manage applications for your job postings. Move candidates through your hiring pipeline.",
   "hr.applications.filter.all": "All Applications",
@@ -1917,7 +1913,6 @@
   "hr.applications.statusUpdate.cancel": "Cancel",
   "hr.applications.statusUpdate.update": "Update Status",
   "hr.applications.statusUpdate.updating": "Updating...",
-  
   "interview.schedule.title": "Schedule Interview",
   "interview.schedule.candidate": "Candidate",
   "interview.schedule.position": "Position",
@@ -1938,7 +1933,6 @@
   "interview.schedule.cancel": "Cancel",
   "interview.schedule.schedule": "Schedule Interview",
   "interview.schedule.scheduling": "Scheduling...",
-  
   "email.applicationSubmitted.subject": "Application Submitted Successfully - {jobTitle}",
   "email.applicationReceived.subject": "New Application Received - {jobTitle}",
   "email.statusChanged.subject": "Application Status Update - {jobTitle}",
