@@ -1,6 +1,8 @@
 'use client'
 import { motion, Variants } from 'framer-motion';
 import {
+  BookOpen,
+  Briefcase,
   Building2,
   GraduationCap,
   Menu,
@@ -100,7 +102,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
 
   const menuItems: HoverGradientMenuItem[] = [
     {
-      icon: <Image src="/images/issi_logo.png" alt="ISSI Logo" width={20} height={20} className="rounded-sm" />,
+      icon: <Image src="/images/issi_logo.png" alt="ISSI Logo" width={56} height={56} className="rounded-sm" />,
       label: <FormattedMessage id="common.navigation.home" defaultMessage="Home" />,
       href: `/${locale}/home`,
       gradient: "radial-gradient(circle, hsl(var(--primary) / 0.15) 0%, hsl(var(--primary) / 0.06) 50%, hsl(var(--primary) / 0) 100%)",
@@ -142,6 +144,20 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
       iconColor: "group-hover:text-primary"
     },
     {
+      icon: <Briefcase className="h-5 w-5" />,
+      label: <FormattedMessage id="common.navigation.careers" defaultMessage="Careers" />,
+      href: `/${locale}/careers`,
+      gradient: "radial-gradient(circle, hsl(var(--chart-1) / 0.15) 0%, hsl(var(--chart-1) / 0.06) 50%, hsl(var(--chart-1) / 0) 100%)",
+      iconColor: "group-hover:text-primary"
+    },
+    {
+      icon: <BookOpen className="h-5 w-5" />,
+      label: <FormattedMessage id="common.navigation.blog" defaultMessage="Blog" />,
+      href: `/${locale}/blog`,
+      gradient: "radial-gradient(circle, hsl(var(--chart-6) / 0.15) 0%, hsl(var(--chart-6) / 0.06) 50%, hsl(var(--chart-6) / 0) 100%)",
+      iconColor: "group-hover:text-primary"
+    },
+    {
       icon: <User className="h-5 w-5" />,
       label: <FormattedMessage id="common.navigation.about" defaultMessage="About" />,
       href: `/${locale}/about`,
@@ -152,16 +168,6 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
 
   // Additional menu items for the dropdown hamburger menu
   const additionalMenuItems = [
-    {
-      icon: <User className="h-4 w-4" />,
-      label: <FormattedMessage id="common.navigation.careers" defaultMessage="Careers" />,
-      href: `/${locale}/careers`,
-    },
-    {
-      icon: <Package className="h-4 w-4" />,
-      label: <FormattedMessage id="common.navigation.blog" defaultMessage="Blog" />,
-      href: `/${locale}/blog`,
-    },
     {
       icon: <ShieldCheck className="h-4 w-4" />,
       label: <FormattedMessage id="common.navigation.contact" defaultMessage="Contact" />,
@@ -182,9 +188,10 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
         <ul className="flex items-center justify-around md:justify-center gap-0.5 md:gap-1 relative z-10">
           {menuItems.map((item: HoverGradientMenuItem) => {
             const isActive = pathname === item.href;
+            const isServicesItem = item.href === `/${locale}/services`;
 
             return (
-              <motion.li key={item.href} className="relative flex-1 md:flex-none">
+              <motion.li key={item.href} className={`relative flex-1 md:flex-none ${isServicesItem ? 'ml-1 md:ml-2' : ''}`}>
                 <motion.div
                   className={`block rounded-xl md:rounded-2xl overflow-visible group relative ${isActive ? 'bg-muted/50' : ''
                     }`}
