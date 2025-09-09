@@ -138,7 +138,7 @@ export default function JobListingForm({
                   )}
                 />
                 {errors.jobTitle && (
-                  <p className="" text-caption5255>{errors.jobTitle.message}</p>
+                  <p className="">{errors.jobTitle.message}</p>
                 )}
               </div>
 
@@ -163,7 +163,7 @@ export default function JobListingForm({
                   )}
                 />
                 {errors.employmentType && (
-                  <p className="" text-caption6414>{errors.employmentType.message}</p>
+                  <p className="">{errors.employmentType.message}</p>
                 )}
               </div>
 
@@ -182,7 +182,7 @@ export default function JobListingForm({
                   )}
                 />
                 {errors.location && (
-                  <p className="" text-caption7150>{errors.location.message}</p>
+                  <p className="">{errors.location.message}</p>
                 )}
               </div>
 
@@ -204,7 +204,7 @@ export default function JobListingForm({
                   )}
                 />
                 {errors.listingDuration && (
-                  <p className="" text-caption8052>{errors.listingDuration.message}</p>
+                  <p className="">{errors.listingDuration.message}</p>
                 )}
               </div>
             </div>
@@ -243,7 +243,7 @@ export default function JobListingForm({
                   )}
                 />
                 {errors.salaryFrom && (
-                  <p className="" text-caption9546>{errors.salaryFrom.message}</p>
+                  <p className="">{errors.salaryFrom.message}</p>
                 )}
               </div>
 
@@ -266,7 +266,7 @@ export default function JobListingForm({
                   )}
                 />
                 {errors.salaryTo && (
-                  <p className="" text-caption10477>{errors.salaryTo.message}</p>
+                  <p className="">{errors.salaryTo.message}</p>
                 )}
               </div>
             </div>
@@ -293,7 +293,7 @@ export default function JobListingForm({
               )}
             />
             {errors.jobDescription && (
-              <p className="" text-caption11368>{errors.jobDescription.message}</p>
+              <p className="">{errors.jobDescription.message}</p>
             )}
           </CardContent>
         </Card>
@@ -320,7 +320,7 @@ export default function JobListingForm({
                   />
                   <Label
                     htmlFor={benefit}
-                    className="" text-caption12439
+                    className=""
                   >
                     {benefit}
                   </Label>
@@ -328,7 +328,7 @@ export default function JobListingForm({
               ))}
             </div>
             {errors.benefits && (
-              <p className="" text-caption12682>{errors.benefits.message}</p>
+              <p className="">{errors.benefits.message}</p>
             )}
           </CardContent>
         </Card>

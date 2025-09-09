@@ -14,7 +14,7 @@ export default function DebugComponent() {
     <div className="p-4 bg-blue-100 border border-blue-300 rounded">
       <h3 className="text-blue-800">Debug Component</h3>
       <p className="text-blue-600">This component helps identify client-side issues.</p>
-      <p className="" text-caption608>Check the browser console for more details.</p>
+      <p className="">Check the browser console for more details.</p>
     </div>
   );
 }

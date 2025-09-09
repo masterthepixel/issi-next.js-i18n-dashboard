@@ -145,7 +145,7 @@ export default function JobDetailPage({
                       </div>
 
                       {/* Job Meta */}
-                      <div className="flex flex-wrap items-center gap-4  " text-caption5092>
+                      <div className="flex flex-wrap items-center gap-4  ">
                         <div className="flex items-center gap-1">
                           <MapPin className="h-4 w-4" />
                           <span>{job.location}</span>
@@ -226,7 +226,7 @@ export default function JobDetailPage({
                           <Badge 
                             key={benefit} 
                             variant="outline"
-                            className="" text-caption8957
+                            className=""
                           >
                             {jobsUtils.formatBenefit(benefit)}
                           </Badge>
@@ -259,7 +259,7 @@ export default function JobDetailPage({
                     <h3 className="mb-2">
                       <FormattedMessage id="jobs.detail.apply.title" defaultMessage="Ready to Apply?" />
                     </h3>
-                    <p className="" text-caption10244>
+                    <p className="">
                       <FormattedMessage 
                         id="jobs.detail.apply.description" 
                         defaultMessage="Submit your application for this position" 
@@ -304,13 +304,13 @@ export default function JobDetailPage({
                     </Avatar>
                     <div>
                       <h4 className="">{job.company.name}</h4>
-                      <p className="" text-caption12267>{job.company.location}</p>
+                      <p className="">{job.company.location}</p>
                     </div>
                   </div>
 
                   {job.company.about && (
                     <div>
-                      <p className="" text-caption12488>
+                      <p className="">
                         {job.company.about}
                       </p>
                     </div>
@@ -342,32 +342,32 @@ export default function JobDetailPage({
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="" text-caption13868>
+                    <span className="">
                       <FormattedMessage id="jobs.detail.info.posted" defaultMessage="Posted Date" />
                     </span>
-                    <span className="" text-caption14069>{formattedDate}</span>
+                    <span className="">{formattedDate}</span>
                   </div>
                   
                   <div className="flex justify-between items-center">
-                    <span className="" text-caption14268>
+                    <span className="">
                       <FormattedMessage id="jobs.detail.info.type" defaultMessage="Employment Type" />
                     </span>
-                    <span className="" text-caption14471>{formattedType}</span>
+                    <span className="">{formattedType}</span>
                   </div>
                   
                   <div className="flex justify-between items-center">
-                    <span className="" text-caption14670>
+                    <span className="">
                       <FormattedMessage id="jobs.detail.info.location" defaultMessage="Location" />
                     </span>
-                    <span className="" text-caption14870>{job.location}</span>
+                    <span className="">{job.location}</span>
                   </div>
                   
                   {(job.salaryFrom || job.salaryTo) && (
                     <div className="flex justify-between items-center">
-                      <span className="" text-caption15130>
+                      <span className="">
                         <FormattedMessage id="jobs.detail.info.salary" defaultMessage="Salary Range" />
                       </span>
-                      <span className="" text-caption15338>{formattedSalary}</span>
+                      <span className="">{formattedSalary}</span>
                     </div>
                   )}
                 </CardContent>

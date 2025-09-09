@@ -27,10 +27,10 @@ export default function Hero({ lang: _lang = "en" }: HeroProps) {
             <CardHeader>
               <div className="">
                 <Link href="/about" className="inline-flex space-x-6" title="Learn more about ISSI's achievements">
-                  <span className="rounded-full bg-primary/10 px-3 py-1  " text-caption1032="true">
+                  <span className="rounded-full bg-primary/10 px-3 py-1  ">
                     <FormattedMessage id="newhero.announcement.badge" />
                   </span>
-                  <span className="inline-flex items-center space-x-2  " text-caption1279="true">
+                  <span className="inline-flex items-center space-x-2  ">
                     <span>
                       <FormattedMessage id="newhero.announcement.text" />
                     </span>
@@ -41,7 +41,7 @@ export default function Hero({ lang: _lang = "en" }: HeroProps) {
               <h1 className="mt-6 text-pretty text-foreground sm:text-4xl">
                 <FormattedMessage id="newhero.title" />
               </h1>
-              <CardDescription className="mt-4  " text-caption1869="true">
+              <CardDescription className="mt-4  ">
                 <FormattedMessage
                   id="newhero.description"
                   values={{
@@ -120,3 +120,4 @@ export default function Hero({ lang: _lang = "en" }: HeroProps) {
     </div>
   );
 }
+

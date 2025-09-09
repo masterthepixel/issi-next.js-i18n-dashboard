@@ -129,7 +129,7 @@ export default function JobListings({
       {/* Results Summary */}
       {totalJobs > 0 && (
         <div className="mb-6">
-          <p className="" text-caption4087="true">
+          <p>
             {intl.formatMessage(
               {
                 id: "careers.resultsCount",

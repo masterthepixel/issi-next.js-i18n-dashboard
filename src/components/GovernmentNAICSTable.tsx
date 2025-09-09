@@ -113,31 +113,31 @@ export default function GovernmentNAICSTable() {
                       <tr>
                         <th
                           scope="col"
-                          className="py-3.5 pr-3 pl-4 text-left  " text-caption4241
+                          className="py-3.5 pr-3 pl-4 text-left  "
                         >
                           <FormattedMessage id="government.naics.table.sic" />
                         </th>
                         <th
                           scope="col"
-                          className="px-3 py-3.5 text-left  " text-caption4559
+                          className="px-3 py-3.5 text-left  "
                         >
                           <FormattedMessage id="government.naics.table.naics" />
                         </th>
                         <th
                           scope="col"
-                          className="px-3 py-3.5 text-left  " text-caption4866
+                          className="px-3 py-3.5 text-left  "
                         >
                           <FormattedMessage id="government.naics.table.description" />
                         </th>
                         <th
                           scope="col"
-                          className="px-3 py-3.5 text-left  " text-caption5179
+                          className="px-3 py-3.5 text-left  "
                         >
                           <FormattedMessage id="government.naics.table.capabilities" />
                         </th>
                         <th
                           scope="col"
-                          className="px-3 py-3.5 text-left  " text-caption5493
+                          className="px-3 py-3.5 text-left  "
                         >
                           <FormattedMessage id="government.naics.table.certifications" />
                         </th>
@@ -146,19 +146,19 @@ export default function GovernmentNAICSTable() {
                     <tbody className="divide-y divide-border bg-background">
                       {naicsData.map((item, index) => (
                         <tr key={item.naics} className={index % 2 === 0 ? 'bg-background' : 'bg-muted/50'}>
-                          <td className="py-4 pr-3 pl-4  " text-caption6048>
+                          <td className="py-4 pr-3 pl-4  ">
                             {item.sic}
                           </td>
-                          <td className="px-3 py-4  " text-caption6224>
+                          <td className="px-3 py-4  ">
                             {item.naics}
                           </td>
-                          <td className="px-3 py-4  " text-caption6388>
+                          <td className="px-3 py-4  ">
                             <FormattedMessage id={item.descriptionKey} />
                           </td>
-                          <td className="px-3 py-4  " text-caption6583>
+                          <td className="px-3 py-4  ">
                             <FormattedMessage id={item.capabilitiesKey} />
                           </td>
-                          <td className="px-3 py-4  " text-caption6785>
+                          <td className="px-3 py-4  ">
                             <FormattedMessage id={item.certificationsKey} />
                           </td>
                         </tr>
@@ -182,7 +182,7 @@ export default function GovernmentNAICSTable() {
                 <h3 className="text-foreground">
                   <FormattedMessage id="government.naics.info.title" />
                 </h3>
-                <div className="mt-2  " text-caption7969>
+                <div className="mt-2  ">
                   <p>
                     <FormattedMessage id="government.naics.info.description" />
                   </p>
@@ -195,3 +195,4 @@ export default function GovernmentNAICSTable() {
     </section>
   );
 }
+

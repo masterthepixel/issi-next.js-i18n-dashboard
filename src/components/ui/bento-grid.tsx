@@ -34,7 +34,7 @@ export const BentoGridItem: React.FC<{
         <div className={cn("bg-card p-4 rounded-lg shadow-sm h-full flex flex-col", className)}>
             {icon && <div className="mb-3">{icon}</div>}
             {title && <h3 className="mb-2">{title}</h3>}
-            {description && <p className="" text-caption1159>{description}</p>}
+            {description && <p className="">{description}</p>}
             {children}
         </div>
     );
@@ -53,3 +53,4 @@ export const BentoGridItem: React.FC<{
         </div>
     );
 };
+

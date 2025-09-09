@@ -28,15 +28,15 @@ export function ComplianceCertifications() {
               className="h-80 object-cover object-left"
             />
             <div className="p-10">
-              <h3 className="" text-caption1434="true">{intl.formatMessage({ id: "compliance.bento.iso27001.category" })}</h3>
+              <h3 >{intl.formatMessage({ id: "compliance.bento.iso27001.category" })}</h3>
               <p className="mt-2 text-lg font-medium tracking-tight text-card-foreground">{intl.formatMessage({ id: "compliance.bento.iso27001.title" })}</p>
-              <p className="mt-2 max-w-lg  " text-caption1727>
+              <p className="mt-2 max-w-lg  ">
                 {intl.formatMessage({ id: "compliance.bento.iso27001.description" })}
               </p>
               <div className="mt-4">
                 <Link
                   href={`/${locale}/compliance/iso27001`}
-                  className="inline-flex items-center rounded-md bg-primary px-3 py-2  " text-caption2033
+                  className="inline-flex items-center rounded-md bg-primary px-3 py-2  "
                 >
                   Learn More
                   <svg className="ml-1.5 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -54,15 +54,15 @@ export function ComplianceCertifications() {
                 className="h-80 object-cover"
               />
               <div className="p-10">
-                <h3 className="" text-caption3181>{intl.formatMessage({ id: "compliance.bento.iso9001.category" })}</h3>
+                <h3 className="">{intl.formatMessage({ id: "compliance.bento.iso9001.category" })}</h3>
                 <p className="mt-2 text-lg font-medium tracking-tight text-card-foreground">{intl.formatMessage({ id: "compliance.bento.iso9001.title" })}</p>
-                <p className="mt-2 max-w-lg  " text-caption3476>
+                <p className="mt-2 max-w-lg  ">
                   {intl.formatMessage({ id: "compliance.bento.iso9001.description" })}
                 </p>
                 <div className="mt-4">
                   <Link
                     href={`/${locale}/compliance/iso9001`}
-                    className="inline-flex items-center rounded-md bg-primary px-3 py-2  " text-caption3791
+                    className="inline-flex items-center rounded-md bg-primary px-3 py-2  "
                   >
                     Learn More
                     <svg className="ml-1.5 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -80,15 +80,15 @@ export function ComplianceCertifications() {
                 className="h-80 object-cover"
               />
               <div className="p-10">
-                <h3 className="" text-caption4952>{intl.formatMessage({ id: "compliance.bento.mdot.category" })}</h3>
+                <h3 className="">{intl.formatMessage({ id: "compliance.bento.mdot.category" })}</h3>
                 <p className="mt-2 text-lg font-medium tracking-tight text-card-foreground">{intl.formatMessage({ id: "compliance.bento.mdot.title" })}</p>
-                <p className="mt-2 max-w-lg  " text-caption5241>
+                <p className="mt-2 max-w-lg  ">
                   {intl.formatMessage({ id: "compliance.bento.mdot.description" })}
                 </p>
                 <div className="mt-4">
                   <Link
                     href={`/${locale}/compliance/mdot`}
-                    className="inline-flex items-center rounded-md bg-primary px-3 py-2  " text-caption5550
+                    className="inline-flex items-center rounded-md bg-primary px-3 py-2  "
                   >
                     Learn More
                     <svg className="ml-1.5 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -106,15 +106,15 @@ export function ComplianceCertifications() {
                 className="h-80 object-cover object-left"
               />
               <div className="p-10">
-                <h3 className="" text-caption6748>{intl.formatMessage({ id: "compliance.bento.cmmi3.category" })}</h3>
+                <h3 className="">{intl.formatMessage({ id: "compliance.bento.cmmi3.category" })}</h3>
                 <p className="mt-2 text-lg font-medium tracking-tight text-card-foreground">{intl.formatMessage({ id: "compliance.bento.cmmi3.title" })}</p>
-                <p className="mt-2 max-w-lg  " text-caption7039>
+                <p className="mt-2 max-w-lg  ">
                   {intl.formatMessage({ id: "compliance.bento.cmmi3.description" })}
                 </p>
                 <div className="mt-4">
                   <Link
                     href={`/${locale}/compliance/cmmi3`}
-                    className="inline-flex items-center rounded-md bg-primary px-3 py-2  " text-caption7350
+                    className="inline-flex items-center rounded-md bg-primary px-3 py-2  "
                   >
                     Learn More
                     <svg className="ml-1.5 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

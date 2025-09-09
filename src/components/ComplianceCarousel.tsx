@@ -91,7 +91,7 @@ const ComplianceCarousel = () => {
                         />
                       </div>
                       <div className="p-4 w-full">
-                        <p className="" text-caption3405="true">
+                        <p>
                           {item.category}
                         </p>
                         <p className="text-lg font-semibold">

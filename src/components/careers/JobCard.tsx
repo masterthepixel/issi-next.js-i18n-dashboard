@@ -88,7 +88,7 @@ export function JobCard({ job, locale = "en" }: JobCardProps) {
           <div className="flex flex-col flex-grow">
             <h2 className="md:text-2xl">{job.jobTitle}</h2>
             <div className="flex flex-wrap items-center gap-2 mt-1">
-              <p className="" text-caption3331>
+              <p className="">
                 {job.company.name}
               </p>
               <span className="hidden md:inline text-muted-foreground">•</span>
@@ -102,7 +102,7 @@ export function JobCard({ job, locale = "en" }: JobCardProps) {
               {(job.salaryFrom || job.salaryTo) && (
                 <>
                   <span className="hidden md:inline text-muted-foreground">•</span>
-                  <p className="" text-caption4049>
+                  <p className="">
                     {formatSalaryRange(job.salaryFrom, job.salaryTo)}
                   </p>
                 </>
@@ -117,7 +117,7 @@ export function JobCard({ job, locale = "en" }: JobCardProps) {
                 {job.location}
               </h3>
             </div>
-            <p className="" text-caption4583>
+            <p className="">
               {formatRelativeTime(job.createdAt)}
             </p>
             {job.applications > 0 && (

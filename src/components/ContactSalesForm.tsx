@@ -23,7 +23,7 @@ export default function ContactSalesForm({ locale, messages }: ContactSalesFormP
       <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div>
-            <label htmlFor="first-name" className="block  " text-caption1068="true">
+            <label htmlFor="first-name" className="block">
               {t('contactSales.firstName')}
             </label>
             <div className="mt-2.5">
@@ -37,7 +37,7 @@ export default function ContactSalesForm({ locale, messages }: ContactSalesFormP
             </div>
           </div>
           <div>
-            <label htmlFor="last-name" className="block  " text-caption1706="true">
+            <label htmlFor="last-name" className="block">
               {t('contactSales.lastName')}
             </label>
             <div className="mt-2.5">
@@ -51,7 +51,7 @@ export default function ContactSalesForm({ locale, messages }: ContactSalesFormP
             </div>
           </div>
           <div className="sm:col-span-2">
-            <label htmlFor="company" className="block  " text-caption2362="true">
+            <label htmlFor="company" className="block ">
               {t('contactSales.company')}
             </label>
             <div className="mt-2.5">
@@ -65,7 +65,7 @@ export default function ContactSalesForm({ locale, messages }: ContactSalesFormP
             </div>
           </div>
           <div className="sm:col-span-2">
-            <label htmlFor="email" className="block  " text-caption3012="true">
+            <label htmlFor="email" className="block ">
               {t('contactSales.email')}
             </label>
             <div className="mt-2.5">
@@ -79,7 +79,7 @@ export default function ContactSalesForm({ locale, messages }: ContactSalesFormP
             </div>
           </div>
           <div className="sm:col-span-2">
-            <label htmlFor="phone-number" className="block  " text-caption3659="true">
+            <label htmlFor="phone-number" className="block ">
               {t('contactSales.phoneNumber')}
             </label>
             <div className="mt-2.5">
@@ -90,7 +90,7 @@ export default function ContactSalesForm({ locale, messages }: ContactSalesFormP
                     name="country"
                     autoComplete="country"
                     aria-label="Country"
-                    className="col-start-1 row-start-1 w-full appearance-none rounded-md py-2 pr-7 pl-3.5 text-base text-muted-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary sm: " text-caption4252="true"
+                    className="col-start-1 row-start-1 w-full appearance-none rounded-md py-2 pr-7 pl-3.5 text-base text-muted-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary sm:"
                   >
                     <option>US</option>
                     <option>CA</option>
@@ -106,13 +106,13 @@ export default function ContactSalesForm({ locale, messages }: ContactSalesFormP
                   name="phone-number"
                   type="text"
                   placeholder="123-456-7890"
-                  className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-foreground placeholder:text-muted-foreground focus:outline-none sm: " text-caption5135="true"
+                  className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-foreground placeholder:text-muted-foreground focus:outline-none sm:"
                 />
               </div>
             </div>
           </div>
           <div className="sm:col-span-2">
-            <label htmlFor="message" className="block  " text-caption5457="true">
+            <label htmlFor="message" className="block ">
               {t('contactSales.message')}
             </label>
             <div className="mt-2.5">              <textarea
@@ -138,7 +138,7 @@ export default function ContactSalesForm({ locale, messages }: ContactSalesFormP
                 />
               </Switch>
             </div>
-            <Label className="" text-caption6896="true">
+            <Label>
               {t('contactSales.privacyText')}{' '}
               <Link href={`/${locale}/privacy`} className="font-semibold text-primary">
                 {t('contactSales.privacyPolicy')}
@@ -150,7 +150,7 @@ export default function ContactSalesForm({ locale, messages }: ContactSalesFormP
         <div className="mt-10">
           <button
             type="submit"
-            className="block w-full rounded-md bg-primary px-3.5 py-2.5 text-center  " text-caption7317="true"
+            className="block w-full rounded-md bg-primary px-3.5 py-2.5 text-center "
           >
             {t('contactSales.submitButton')}
           </button>

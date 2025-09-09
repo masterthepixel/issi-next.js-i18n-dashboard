@@ -99,7 +99,7 @@ export default function GovernmentTestimonial() {
                   defaultMessage="Outstanding technical expertise and commitment to security compliance. ISSI consistently delivers solutions that exceed our expectations."
                 />
               </blockquote>
-              <cite className="text-blue-200  " text-caption4351>
+              <cite className="text-blue-200  ">
                 — <FormattedMessage
                   id="government.testimonial.attribution2"
                   defaultMessage="Department of Defense IT Director"
@@ -114,7 +114,7 @@ export default function GovernmentTestimonial() {
                   defaultMessage="Their agile approach and understanding of government processes helped us modernize our legacy systems efficiently and securely."
                 />
               </blockquote>
-              <cite className="text-blue-200  " text-caption5082>
+              <cite className="text-blue-200  ">
                 — <FormattedMessage
                   id="government.testimonial.attribution3"
                   defaultMessage="State Agency CIO"
@@ -127,3 +127,4 @@ export default function GovernmentTestimonial() {
     </section>
   );
 }
+

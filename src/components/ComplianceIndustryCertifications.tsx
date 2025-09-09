@@ -69,14 +69,14 @@ export default function ComplianceIndustryCertifications() {
             <div className="mt-8 flex items-center gap-x-6">
               <a
                 href="/contact"
-                className="rounded-md bg-primary px-3.5 py-2.5  " text-caption2288="true"
+                className="rounded-md bg-primary px-3.5 py-2.5 "
               >
                 <FormattedMessage
                   id="compliance.industry.cta.primary"
                   defaultMessage="Learn More"
                 />
               </a>
-              <a href="/compliance/iso27001" className="" text-caption2738="true">
+              <a href="/compliance/iso27001" >
                 <FormattedMessage
                   id="compliance.industry.cta.secondary"
                   defaultMessage="View Certifications"

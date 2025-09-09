@@ -72,7 +72,7 @@ export default function TeamGrid() {
                           <h3 className="text-foreground truncate group-hover:text-foreground/80 transition-colors">
                             <FormattedMessage id={nameId} />
                           </h3>
-                          <p className="" text-caption3226="true">
+                          <p className="">
                             <FormattedMessage id={roleId} />
                           </p>
                         </div>
@@ -89,7 +89,7 @@ export default function TeamGrid() {
                     <ExpandableContent preset="slide-up">
                       <div className="px-4 pb-4">
                         <div className="pt-2 border-t border-border">
-                          <p className="" text-caption4133="true">
+                          <p className="">
                             <FormattedMessage id={bioId} />
                           </p>
                         </div>

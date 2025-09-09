@@ -158,7 +158,7 @@ export function JobFilters({ locale = "en" }: JobFiltersProps) {
                 />
                 <Label
                   htmlFor={type.toLowerCase()}
-                  className="" text-caption5761="true"
+                  
                 >
                   {getJobTypeLabel(type)}
                 </Label>
@@ -240,7 +240,7 @@ export function JobFilters({ locale = "en" }: JobFiltersProps) {
           </Label>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="minSalary" className="" text-caption9096>
+              <Label htmlFor="minSalary" className="">
                 {intl.formatMessage({ id: "careers.filters.minSalary", defaultMessage: "Min Salary" })}
               </Label>
               <Input
@@ -253,7 +253,7 @@ export function JobFilters({ locale = "en" }: JobFiltersProps) {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="maxSalary" className="" text-caption9613>
+              <Label htmlFor="maxSalary" className="">
                 {intl.formatMessage({ id: "careers.filters.maxSalary", defaultMessage: "Max Salary" })}
               </Label>
               <Input

@@ -239,19 +239,19 @@ const ProductsBentoGrid = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 p-6 bg-muted rounded-lg">
             <div className="text-center">
               <div className="text-2xl font-bold text-primary">30+</div>
-              <div className="" text-caption8463>Years Experience</div>
+              <div className="">Years Experience</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-primary">40+</div>
-              <div className="" text-caption8685>Software Products</div>
+              <div className="">Software Products</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-primary">CMMI 3</div>
-              <div className="" text-caption8911>Level Certified</div>
+              <div className="">Level Certified</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-primary">ISO</div>
-              <div className="" text-caption9132>9001:2015 Certified</div>
+              <div className="">9001:2015 Certified</div>
             </div>
           </div>
 
@@ -304,3 +304,4 @@ const ProductsBentoGrid = () => {
 };
 
 export default ProductsBentoGrid;
+

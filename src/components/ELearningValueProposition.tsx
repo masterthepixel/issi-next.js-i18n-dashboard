@@ -66,7 +66,7 @@ export default function ELearningValueProposition() {
               <div className="text-4xl font-bold text-muted-foreground sm:text-5xl">
                 <FormattedMessage id={stat.numberKey} />
               </div>
-              <div className="mt-2  " text-caption2681>
+              <div className="mt-2  ">
                 <FormattedMessage id={stat.labelKey} />
               </div>
             </div>
@@ -76,3 +76,4 @@ export default function ELearningValueProposition() {
     </section>
   );
 }
+

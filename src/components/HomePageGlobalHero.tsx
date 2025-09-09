@@ -299,7 +299,7 @@ export default function HomePageGlobalHero() {
                   </span>
                 </div>
               </h1>
-              <p className="" text-caption16209 text-muted-foreground16209>
+              <p className="" text-muted-foreground16209>
                 <FormattedMessage
                   id="hero.description" values={{
                     innovativeTechnology: (chunks) => (
@@ -355,7 +355,7 @@ export default function HomePageGlobalHero() {
               <a
                 href="/contact"
                 title="Contact ISSI to get started with our solutions"
-                className="bg-blue-600 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg text-center  " text-caption19119
+                className="bg-blue-600 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg text-center  "
               >
                 <FormattedMessage id="hero.cta.get-started" />
               </a>
@@ -380,14 +380,14 @@ export default function HomePageGlobalHero() {
 
             {/* Pause Indicator */}
             {isPaused && (
-              <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full  " text-caption20466>
+              <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full  ">
                 ⏸️ Paused - Click to resume
               </div>
             )}
 
             {/* Active Transfers Indicator */}
             {dataTransfers.length > 0 && !isPaused && (
-              <div className="absolute bottom-4 left-4 bg-yellow-500/20 border border-yellow-500/50 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-full  " text-caption20778>
+              <div className="absolute bottom-4 left-4 bg-yellow-500/20 border border-yellow-500/50 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-full  ">
                 📡 {dataTransfers.length} active transfer{dataTransfers.length !== 1 ? 's' : ''}
               </div>
             )}            {/* Small Legend for Globe */}
@@ -437,3 +437,4 @@ export default function HomePageGlobalHero() {
     </div>
   );
 }
+

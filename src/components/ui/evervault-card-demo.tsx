@@ -15,9 +15,10 @@ export default function EvervaultCardDemo() {
         Hover over this card to reveal an awesome effect. Running out of copy
         here.
       </h2>
-      <p className="" text-caption848>
+      <p className="">
         Watch me hover
       </p>
     </div>
   );
 }
+

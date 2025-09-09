@@ -50,7 +50,7 @@ export default function RichTextRenderer({ content, className }: RichTextRendere
         text = (
           <code 
             key={index}
-            className="bg-muted px-1.5 py-0.5 rounded  " text-caption1329
+            className="bg-muted px-1.5 py-0.5 rounded  "
           >
             {text}
           </code>
@@ -126,7 +126,7 @@ export default function RichTextRenderer({ content, className }: RichTextRendere
       case 'code':
         return (
           <pre key={index} className="bg-muted p-4 rounded-lg overflow-x-auto my-4">
-            <code className="" text-caption3550>
+            <code className="">
               {children}
             </code>
           </pre>

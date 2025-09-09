@@ -31,7 +31,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
         <div className="flex items-center justify-center h-full min-h-[400px] text-slate-500">
           <div className="text-center">
             <div className="text-lg font-medium mb-2">Globe Loading</div>
-            <div className="" text-caption998>Interactive globe is loading...</div>
+            <div className="">Interactive globe is loading...</div>
           </div>
         </div>
       );
@@ -42,3 +42,4 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 }
 
 export default ErrorBoundary;
+

@@ -31,7 +31,7 @@ function JobCardInternal({ job, className }: JobCardProps) {
               </Link>
             </CardTitle>
             <CardDescription className="mt-1">
-              <div className="flex items-center gap-2  " text-caption1354>
+              <div className="flex items-center gap-2  ">
                 <Building2 className="h-4 w-4" />
                 {job.company.name}
               </div>
@@ -57,7 +57,7 @@ function JobCardInternal({ job, className }: JobCardProps) {
         {/* Job Details */}
         <div className="space-y-2">
           {/* Location & Employment Type */}
-          <div className="flex items-center gap-4  " text-caption2189>
+          <div className="flex items-center gap-4  ">
             <div className="flex items-center gap-1">
               <MapPin className="h-4 w-4" />
               {job.location}
@@ -69,7 +69,7 @@ function JobCardInternal({ job, className }: JobCardProps) {
 
           {/* Salary */}
           {(job.salaryFrom || job.salaryTo) && (
-            <div className="flex items-center gap-1  " text-caption2662>
+            <div className="flex items-center gap-1  ">
               <DollarSign className="h-4 w-4" />
               {formatSalary(job.salaryFrom, job.salaryTo)}
             </div>

@@ -100,7 +100,7 @@ export default function ELearningServices() {
               
               <ul className="space-y-2">
                 {service.features.map((featureKey, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start gap-2  " text-caption3774>
+                  <li key={featureIndex} className="flex items-start gap-2  ">
                     <span className="text-muted-foreground mt-1">•</span>
                     <FormattedMessage id={featureKey} />
                   </li>
@@ -113,3 +113,4 @@ export default function ELearningServices() {
     </section>
   );
 }
+

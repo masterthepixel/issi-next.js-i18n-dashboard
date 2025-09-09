@@ -65,7 +65,7 @@ export const Timeline = ({ data, title = "Timeline", subtitle = "A timeline over
         <h2 className="md:text-4xl mb-4 text-foreground max-w-4xl">
           {title}
         </h2>
-        <p className="text-muted-foreground  " text-caption1827>
+        <p className="text-muted-foreground  ">
           {subtitle}
         </p>
       </div>
@@ -114,3 +114,4 @@ export const Timeline = ({ data, title = "Timeline", subtitle = "A timeline over
     </div>
   );
 };
+

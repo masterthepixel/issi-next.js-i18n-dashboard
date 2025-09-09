@@ -121,7 +121,7 @@ function JobSearchFiltersInternal({
               <ToggleGroupItem 
                 key={option.value} 
                 value={option.value}
-                className="" text-caption4455
+                className=""
                 disabled={isLoading}
               >
                 {option.label}

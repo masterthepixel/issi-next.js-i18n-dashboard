@@ -183,7 +183,7 @@ const GovernmentHeroInternal = () => {
                   </CardTitle>
                   <p
                     id={`government-service-${service.id}-description`}
-                    className="text-muted-foreground  " text-caption7259="true"
+                    className="text-muted-foreground  "
                   >
                     {service.description}
                   </p>
@@ -204,3 +204,4 @@ const GovernmentHero = () => (
 );
 
 export default GovernmentHero;
+

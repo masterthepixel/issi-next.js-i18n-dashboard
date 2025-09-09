@@ -11,40 +11,41 @@ export default function AppMenu({ locale }: AppMenuProps) {
     return (
         <ul className="py-1">
             <li>
-                <Link href={`/${locale}/services`} className="block px-4 py-2  " text-caption325>
+                <Link href={`/${locale}/services`} className="block px-4 py-2  ">
                     <FormattedMessage id="common.navigation.services" />
                 </Link>
             </li>
             <li>
-                <Link href={`/${locale}/products`} className="block px-4 py-2  " text-caption550>
+                <Link href={`/${locale}/products`} className="block px-4 py-2  ">
                     <FormattedMessage id="common.navigation.products" />
                 </Link>
             </li>
             <li>
-                <Link href={`/${locale}/government`} className="block px-4 py-2  " text-caption777>
+                <Link href={`/${locale}/government`} className="block px-4 py-2  ">
                     <FormattedMessage id="common.navigation.government" />
                 </Link>
             </li>
             <li>
-                <Link href={`/${locale}/eLearning`} className="block px-4 py-2  " text-caption1005>
+                <Link href={`/${locale}/eLearning`} className="block px-4 py-2  ">
                     <FormattedMessage id="common.navigation.eLearning" />
                 </Link>
             </li>
             <li>
-                <Link href={`/${locale}/compliance`} className="block px-4 py-2  " text-caption1233>
+                <Link href={`/${locale}/compliance`} className="block px-4 py-2  ">
                     <FormattedMessage id="common.navigation.compliance" />
                 </Link>
             </li>
             <li>
-                <Link href={`/${locale}/blog`} className="block px-4 py-2  " text-caption1456>
+                <Link href={`/${locale}/blog`} className="block px-4 py-2  ">
                     <FormattedMessage id="common.navigation.blog" />
                 </Link>
             </li>
             <li>
-                <Link href={`/${locale}/about`} className="block px-4 py-2  " text-caption1674>
+                <Link href={`/${locale}/about`} className="block px-4 py-2  ">
                     <FormattedMessage id="common.navigation.about" />
                 </Link>
             </li>
         </ul>
     );
 }
+

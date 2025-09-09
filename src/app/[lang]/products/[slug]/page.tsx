@@ -267,7 +267,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="mb-8">
-          <ol className="flex items-center space-x-2  " text-caption11945 text-muted-foreground11945>
+          <ol className="flex items-center space-x-2 text-muted-foreground">
             <li>
               <Link
                 href={`/${lang}`}

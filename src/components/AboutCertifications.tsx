@@ -1,7 +1,7 @@
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import { FormattedMessage } from "react-intl";
 
@@ -42,7 +42,7 @@ const certifications = [
 
 export default function AboutCertifications() {
   return (
-    <section 
+    <section
       className="relative isolate overflow-hidden bg-background py-24 sm:py-32"
       aria-labelledby="certifications-heading"
       role="region"
@@ -55,9 +55,9 @@ export default function AboutCertifications() {
               <FormattedMessage id="about.certifications.title" defaultMessage="Certified Excellence" />
             </h2>
             <p className="mt-6 text-lg/8 text-muted-foreground">
-              <FormattedMessage 
-                id="about.certifications.description" 
-                defaultMessage="ISSI maintains the highest standards of quality, security, and process excellence through our comprehensive certifications. These certifications demonstrate our commitment to delivering reliable, secure, and compliant solutions that meet the most stringent industry requirements." 
+              <FormattedMessage
+                id="about.certifications.description"
+                defaultMessage="ISSI maintains the highest standards of quality, security, and process excellence through our comprehensive certifications. These certifications demonstrate our commitment to delivering reliable, secure, and compliant solutions that meet the most stringent industry requirements."
               />
             </p>
           </div>
@@ -66,7 +66,7 @@ export default function AboutCertifications() {
               <Card key={index} className="group hover:shadow-lg transition-all duration-300">
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
-                    <CardTitle className="" text-caption3042>{cert.name}</CardTitle>
+                    <CardTitle className="text-lg font-semibold">{cert.name}</CardTitle>
                     <Badge variant="secondary" className="text-xs">
                       {cert.category}
                     </Badge>

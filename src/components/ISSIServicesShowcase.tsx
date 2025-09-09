@@ -227,7 +227,7 @@ const ISSIServicesShowcaseInternal = () => {
                     )}>
                       {service.title}
                     </CardTitle>
-                    <p className="text-muted-foreground  " text-caption9164>
+                    <p className="text-muted-foreground  ">
                       {service.description}
                     </p>
                   </CardContent>
@@ -258,3 +258,4 @@ export default function ISSIServicesShowcase() {
     </ErrorBoundary>
   );
 }
+

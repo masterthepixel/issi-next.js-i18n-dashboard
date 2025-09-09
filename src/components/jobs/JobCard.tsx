@@ -105,7 +105,7 @@ export default function JobCard({
                   </AvatarFallback>
                 </Avatar>
                 <div className="min-w-0 flex-1">
-                  <p className="font-medium  " text-caption3555>
+                  <p className="font-medium  ">
                     {job.company.name}
                   </p>
                   <div className="flex items-center gap-1 text-xs text-muted-foreground">
@@ -117,7 +117,7 @@ export default function JobCard({
 
               {/* Job Details */}
               <div className="space-y-2">
-                <div className="flex items-center gap-4  " text-caption4074>
+                <div className="flex items-center gap-4  ">
                   <div className="flex items-center gap-1">
                     <MapPin className="h-3 w-3" />
                     <span>{job.location}</span>
@@ -129,7 +129,7 @@ export default function JobCard({
                 </div>
 
                 {(job.salaryFrom || job.salaryTo) && (
-                  <div className="flex items-center gap-1  " text-caption4625>
+                  <div className="flex items-center gap-1  ">
                     <DollarSign className="h-3 w-3" />
                     <span className="font-medium">{formattedSalary}</span>
                   </div>
@@ -169,7 +169,7 @@ export default function JobCard({
 
           {/* Job Description Excerpt */}
           {excerpt && (
-            <p className="" text-caption5927>
+            <p className="">
               {excerpt}
             </p>
           )}

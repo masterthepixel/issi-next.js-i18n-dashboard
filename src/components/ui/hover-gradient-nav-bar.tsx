@@ -108,16 +108,16 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
         <Image
           src="/images/issi_logo.png"
           alt="ISSI Logo"
-          width={28}
-          height={28}
-          className="rounded"
+          width={56}
+          height={56}
+          className="rounded mx-3"
         />
       ),
       label: <FormattedMessage id="common.navigation.home" defaultMessage="Home" />,
       href: `/${locale}/home`,
       gradient: "radial-gradient(circle, hsl(var(--primary) / 0.15) 0%, hsl(var(--primary) / 0.06) 50%, hsl(var(--primary) / 0) 100%)",
-  iconColor: "text-foreground",
-  noPadding: true,
+      iconColor: "text-foreground",
+      noPadding: true,
     },
     {
       icon: <Wrench className="h-3 w-3" />,
@@ -201,7 +201,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
             const key = item.href || `dropdown-${index}`;
 
             return (
-              <motion.li key={key} className="relative flex-1 md:flex-none">
+              <motion.li key={key} className={`relative flex-1 md:flex-none ${index === 1 ? 'ml-2 md:ml-4' : ''}`}>
                 <motion.div
                   className={`block rounded-xl md:rounded-2xl overflow-visible group relative ${isActive ? 'bg-muted/50' : ''
                     }`}
@@ -249,7 +249,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                           {item.icon}
                         </span>
                         {item.href !== `/${locale}/home` && (
-                          <span className="hidden md:inline font-medium">{item.label}</span>
+                          <span className="hidden md:inline text-sm md:text-base">{item.label}</span>
                         )}
                       </Link>
                     )}
@@ -286,7 +286,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                           {item.icon}
                         </span>
                         {item.href !== `/${locale}/home` && (
-                          <span className="hidden md:inline font-medium">{item.label}</span>
+                          <span className="hidden md:inline text-sm md:text-base">{item.label}</span>
                         )}
                       </Link>
                     )}
@@ -310,7 +310,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
             {/* Sign In */}
             <button
               onClick={handleSignIn}
-              className="w-full flex items-center gap-2 px-3 py-2  " text-caption12811
+              className="w-full flex items-center gap-2 px-3 py-2 text-sm md:text-base hover:bg-accent/10 rounded-md transition-colors"
             >
               <span className="text-lg">👤</span>
               <span>Sign In</span>
@@ -319,7 +319,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="w-full flex items-center gap-2 px-3 py-2  " text-caption13153
+              className="w-full flex items-center gap-2 px-3 py-2 text-sm md:text-base hover:bg-accent/10 rounded-md transition-colors"
             >
               <span className="text-lg">{theme === 'dark' ? '☀️' : '🌙'}</span>
               <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
@@ -330,7 +330,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
             {/* Current Language */}
             <button
               onClick={() => setDropdownOpen(false)}
-              className="w-full flex items-center gap-2 px-3 py-2  " text-caption13656
+              className="w-full flex items-center gap-2 px-3 py-2 text-sm md:text-base hover:bg-accent/10 rounded-md transition-colors"
             >
               <span className="text-lg">{currentLanguage.flag}</span>
               <span>{currentLanguage.name}</span>
@@ -341,7 +341,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
               <button
                 key={language.code}
                 onClick={() => switchLanguage(language.code)}
-                className="w-full flex items-center gap-2 px-3 py-2  " text-caption14148
+                className="w-full flex items-center gap-2 px-3 py-2 text-sm md:text-base hover:bg-accent/10 rounded-md transition-colors"
               >
                 <span className="text-lg">{language.flag}</span>
                 <span>{language.name}</span>

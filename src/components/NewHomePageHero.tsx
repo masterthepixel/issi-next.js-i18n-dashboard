@@ -33,10 +33,10 @@ export default function NewHomePageHero() {
             src="/images/issi_logo.png"
             className="h-11"
           />
-          <div className="mt-24 sm:mt-32 lg:mt-16">            <a href="#news" className="inline-flex space-x-6" title="View latest news and updates">              <span className="rounded-full bg-blue-600/10 px-3 py-1  " text-caption1398="true">
+          <div className="mt-24 sm:mt-32 lg:mt-16">            <a href="#news" className="inline-flex space-x-6" title="View latest news and updates">              <span className="rounded-full bg-blue-600/10 px-3 py-1  ">
             <FormattedMessage id="newhero.new.badge" defaultMessage="What's new" />
           </span>
-            <span className="inline-flex items-center space-x-2  " text-caption1645="true" text-muted-foreground1645="true">
+            <span className="inline-flex items-center space-x-2  " text-muted-foreground1645="true">
               <span>
                 <FormattedMessage id="newhero.new.version" defaultMessage="Just shipped v2.0" />
               </span>
@@ -57,12 +57,12 @@ export default function NewHomePageHero() {
           </p><div className="mt-10 flex items-center gap-x-6">
             <a
               href="#contact"
-              className="rounded-md bg-blue-600 px-3.5 py-2.5  " text-caption2754="true"
+              className="rounded-md bg-blue-600 px-3.5 py-2.5  "
               title="Get started with ISSI services"
             >
               <FormattedMessage id="hero.cta.primary" defaultMessage="Get started" />
             </a>
-            <a href="#services" className="" text-caption3157="true" title="Learn more about our services">
+            <a href="#services" className="" title="Learn more about our services">
               <FormattedMessage id="hero.cta.secondary" defaultMessage="Learn more" /> <span aria-hidden="true">→</span>
             </a>
           </div>
@@ -84,3 +84,4 @@ export default function NewHomePageHero() {
     </div>
   );
 }
+

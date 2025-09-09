@@ -74,7 +74,7 @@ export default function Pagination({ pagination, onPageChange, className }: Pagi
     <ErrorBoundary>
       <div className={cn("flex flex-col sm:flex-row items-center justify-between gap-4", className)}>
         {/* Results Info */}
-        <div className="" text-caption1955>
+        <div className="">
           <FormattedMessage
             id="pagination.showing"
             defaultMessage="Showing {start} to {end} of {total} results"

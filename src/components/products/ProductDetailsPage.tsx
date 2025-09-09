@@ -176,7 +176,7 @@ export default function ProductDetailsPage({
                     defaultMessage: `${feature.id} Feature`
                   })}
                 </CardTitle>
-                <p className="" text-caption6037>
+                <p className="">
                   {intl.formatMessage({
                     id: feature.descriptionKey,
                     defaultMessage: "Comprehensive feature description that enhances your workflow."
@@ -221,7 +221,7 @@ export default function ProductDetailsPage({
                 <FaStar key={star} className="w-4 h-4 text-yellow-400" />
               ))}
             </div>
-            <span className="" text-caption7929>
+            <span className="">
               (4.8/5 from 150+ reviews)
             </span>
           </div>

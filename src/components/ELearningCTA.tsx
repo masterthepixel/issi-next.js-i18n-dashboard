@@ -20,7 +20,7 @@ const ELearningCTA: React.FC = () => {
                         {intl.formatMessage({ id: 'page.eLearning.cta.title' })}
                     </h2>
 
-                        <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto  " 1101>
+                        <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
                             {intl.formatMessage({ id: 'page.eLearning.cta.subtitle' })}
                         </p>
 

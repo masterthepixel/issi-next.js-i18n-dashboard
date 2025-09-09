@@ -154,7 +154,7 @@ export default function JobSearchFilters({
         )}>
           {/* Location Filter */}
           <div className="space-y-2">
-            <Label className="" text-caption5107>
+            <Label className="">
               <MapPin className="h-4 w-4" />
               <FormattedMessage id="jobs.filters.location" defaultMessage="Location" />
             </Label>
@@ -181,7 +181,7 @@ export default function JobSearchFilters({
 
           {/* Employment Type Filter */}
           <div className="space-y-2">
-            <Label className="" text-caption6236>
+            <Label className="">
               <Briefcase className="h-4 w-4" />
               <FormattedMessage id="jobs.filters.type" defaultMessage="Job Type" />
             </Label>
@@ -205,7 +205,7 @@ export default function JobSearchFilters({
 
           {/* Salary Range Filter */}
           <div className="space-y-2">
-            <Label className="" text-caption7216>
+            <Label className="">
               <DollarSign className="h-4 w-4" />
               <FormattedMessage id="jobs.filters.salary" defaultMessage="Salary Range" />
             </Label>
@@ -238,7 +238,7 @@ export default function JobSearchFilters({
 
           {/* Custom Salary Input (Optional) */}
           <div className="space-y-2 md:col-span-3 lg:col-span-1">
-            <Label className="" text-caption8478>
+            <Label className="">
               <FormattedMessage id="jobs.filters.customSalary" defaultMessage="Custom Min Salary" />
             </Label>
             <div className="relative">
@@ -263,7 +263,7 @@ export default function JobSearchFilters({
         {/* Active Filters Display */}
         {hasActiveFilters && (
           <div className="flex flex-wrap gap-2 pt-2 border-t border-border">
-            <span className="" text-caption9498>
+            <span className="">
               <FormattedMessage id="jobs.filters.active" defaultMessage="Active filters:" />
             </span>
             

@@ -203,7 +203,7 @@ function ApplicationFormInternal({ job, locale, onSuccess, onCancel }: Applicati
               className="min-h-32"
               required
             />
-            <p className="" text-caption7160>
+            <p className="">
               {intl.formatMessage({
                 id: "applications.coverLetterHelp",
                 defaultMessage: "Share your passion for the role and highlight relevant experience."
@@ -258,7 +258,7 @@ function ApplicationFormInternal({ job, locale, onSuccess, onCancel }: Applicati
                       />
                     </Label>
                   </div>
-                  <p className="" text-caption9490>
+                  <p className="">
                     {intl.formatMessage({
                       id: "applications.resumeFormats",
                       defaultMessage: "PDF, DOC, or DOCX (max 5MB)"
@@ -341,7 +341,7 @@ function ApplicationFormInternal({ job, locale, onSuccess, onCancel }: Applicati
               min="0"
               step="1000"
             />
-            <p className="" text-caption12452>
+            <p className="">
               {intl.formatMessage({
                 id: "applications.expectedSalaryHelp",
                 defaultMessage: "Annual salary in USD (optional)"

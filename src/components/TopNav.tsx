@@ -193,7 +193,7 @@ export default function TopNav({ locale }: Props) {
         <ChevronDownIcon aria-hidden="true" className="size-5" />
       </PopoverButton>
         <PopoverPanel className="absolute left-1/2 z-20 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4">
-          <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white dark:bg-slate-900  " text-caption8174>
+          <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white dark:bg-slate-900  ">
             <div className="p-4">
               {complianceLinks.map((item, idx) => (
                 <div
@@ -256,3 +256,4 @@ export default function TopNav({ locale }: Props) {
     </div>
   );
 }
+

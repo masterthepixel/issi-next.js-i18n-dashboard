@@ -46,13 +46,13 @@ export default function ELearningHeader() {
                 </h1>
               </div>{" "}
               <div className="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
-                <Button type="button" aria-label="Send a message" className="inline-flex justify-center rounded-md bg-background px-3 py-2  " text-caption2329>
+                <Button type="button" aria-label="Send a message" className="inline-flex justify-center rounded-md bg-background px-3 py-2  ">
                   <EnvelopeIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-muted-foreground" />
                   <span>
                     <FormattedMessage id="common.action.message" defaultMessage="Message" />
                   </span>
                 </Button>
-                <Button type="button" aria-label="Make a phone call" className="inline-flex justify-center rounded-md bg-background px-3 py-2  " text-caption2855>
+                <Button type="button" aria-label="Make a phone call" className="inline-flex justify-center rounded-md bg-background px-3 py-2  ">
                   <PhoneIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-muted-foreground" />
                   <span>
                     <FormattedMessage id="common.action.call" defaultMessage="Call" />
@@ -71,3 +71,4 @@ export default function ELearningHeader() {
     </div>
   );
 }
+

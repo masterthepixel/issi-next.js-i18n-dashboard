@@ -232,9 +232,9 @@ export default function DashboardNavbar({
                           <div className="flex items-start gap-2">
                             {item.icon}
                             <div>
-                              <div className="" text-caption7677>{item.title}</div>
+                              <div className="">{item.title}</div>
                               {item.description && (
-                                <p className="line-clamp-2  " text-caption7829>
+                                <p className="line-clamp-2  ">
                                   {item.description}
                                 </p>
                               )}
@@ -297,7 +297,7 @@ export default function DashboardNavbar({
               <DropdownMenuContent className="w-56" align="end" forceMount>
                 <DropdownMenuLabel className="font-normal">
                   <div className="flex flex-col space-y-1">
-                    <p className="" text-caption10459>{userName}</p>
+                    <p className="">{userName}</p>
                     <p className="text-xs leading-none text-muted-foreground">{userEmail}</p>
                   </div>
                 </DropdownMenuLabel>
@@ -349,7 +349,7 @@ export default function DashboardNavbar({
                   <div className="grid gap-2 py-4">
                     <Link
                       href={`/${locale}/home`}
-                      className="flex items-center gap-2 px-2 py-1  " text-caption12501
+                      className="flex items-center gap-2 px-2 py-1  "
                     >
                       <Image
                         src="/images/issi_logo.png"
@@ -365,7 +365,7 @@ export default function DashboardNavbar({
                       <Link
                         key={item.href}
                         href={item.href}
-                        className="flex items-center gap-2 px-2 py-1  " text-caption13169
+                        className="flex items-center gap-2 px-2 py-1  "
                       >
                         {item.icon}
                         {item.title}
@@ -376,7 +376,7 @@ export default function DashboardNavbar({
                       <Link
                         key={item.href}
                         href={item.href}
-                        className="flex items-center gap-2 px-2 py-1  " text-caption13587
+                        className="flex items-center gap-2 px-2 py-1  "
                       >
                         {item.icon}
                         {item.title}

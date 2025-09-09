@@ -311,7 +311,7 @@ export default function OnboardingForm({ lang }: OnboardingFormProps) {
                             >
                                 <div className="text-3xl mb-2">👨‍💼</div>
                                 <div className="font-semibold">{t("jobSeeker")}</div>
-                                <div className="" text-caption13391>{t("jobSeekerDesc")}</div>
+                                <div className="">{t("jobSeekerDesc")}</div>
                             </Button>
 
                             <Button
@@ -321,12 +321,12 @@ export default function OnboardingForm({ lang }: OnboardingFormProps) {
                             >
                                 <div className="text-3xl mb-2">🏢</div>
                                 <div className="font-semibold">{t("company")}</div>
-                                <div className="" text-caption14053>{t("companyDesc")}</div>
+                                <div className="">{t("companyDesc")}</div>
                             </Button>
                         </div>
 
                         <div className="text-center">
-                            <p className="" text-caption14280 text-muted-foreground14280>
+                            <p className="" text-muted-foreground14280>
                                 {t("alreadyHave")}{" "}
                                 <Link
                                     href={`/${lang}/auth/login`}
@@ -489,7 +489,7 @@ export default function OnboardingForm({ lang }: OnboardingFormProps) {
                                             id="experience"
                                             value={formData.experience}
                                             onChange={(e) => handleInputChange("experience", e.target.value)}
-                                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2  ring-offset-background file:border-0 file:bg-transparent file: " text-caption23439
+                                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2  ring-offset-background file:border-0 file:bg-transparent file: "
                                             disabled={isLoading}
                                         >
                                             <option value="">Select experience level</option>
@@ -534,7 +534,7 @@ export default function OnboardingForm({ lang }: OnboardingFormProps) {
                                             id="companySize"
                                             value={formData.companySize}
                                             onChange={(e) => handleInputChange("companySize", e.target.value)}
-                                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2  ring-offset-background file:border-0 file:bg-transparent file: " text-caption26891
+                                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2  ring-offset-background file:border-0 file:bg-transparent file: "
                                             disabled={isLoading}
                                         >
                                             <option value="">Select company size</option>
@@ -583,7 +583,7 @@ export default function OnboardingForm({ lang }: OnboardingFormProps) {
                     </form>
 
                     <div className="text-center">
-                        <p className="" text-caption30373 text-muted-foreground30377>
+                        <p className="" text-muted-foreground30377>
                             {t("alreadyHave")}{" "}
                             <Link
                                 href={`/${lang}/auth/login`}

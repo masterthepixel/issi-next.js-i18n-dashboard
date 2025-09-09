@@ -148,7 +148,7 @@ export default function FluidGlassNavbar({ navItems, locale, className }: FluidG
                     isActive ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 border-neutral-200 dark:border-white/[0.2]" : ""
                   )}
                 >
-                  <span className="" text-caption5635>{navItem.name}</span>
+                  <span className="">{navItem.name}</span>
                   <ChevronDownIcon className="size-4" />
                   <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                 </button>
@@ -177,7 +177,7 @@ export default function FluidGlassNavbar({ navItems, locale, className }: FluidG
                                 />
                               </div>
                               <div>
-                                <div className="font-medium  " text-caption7598>
+                                <div className="font-medium  ">
                                   {item.name}
                                 </div>
                                 <p className="mt-0.5  " text-muted-foreground7821>{item.description}</p>
@@ -205,7 +205,7 @@ export default function FluidGlassNavbar({ navItems, locale, className }: FluidG
               aria-label={navItem.ariaLabel}
             >
               {navItem.icon && <span className="block">{navItem.icon}</span>}
-              {navItem.name && <span className="" text-caption9015>{navItem.name}</span>}
+              {navItem.name && <span className="">{navItem.name}</span>}
               <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             </Link>
           );
@@ -214,3 +214,4 @@ export default function FluidGlassNavbar({ navItems, locale, className }: FluidG
     </AnimatePresence>
   );
 }
+

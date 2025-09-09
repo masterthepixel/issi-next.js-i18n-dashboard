@@ -59,7 +59,7 @@ export default function AboutStatsNew() {
                                 </CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="" text-caption3390="true">
+                                <p className="text-sm text-muted-foreground">
                                     <FormattedMessage id={stat.nameKey} defaultMessage="Stat Name" />
                                 </p>
                             </CardContent>

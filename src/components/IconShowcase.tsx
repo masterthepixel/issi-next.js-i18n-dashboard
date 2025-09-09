@@ -21,22 +21,22 @@ export default function IconShowcase() {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <div className="flex flex-col items-center space-y-2 p-4 border border-slate-200 dark:border-slate-700 rounded-lg">
                         <ISSIIcon size={48} className="text-blue-600" />
-                        <span className="" text-caption1021 text-muted-foreground1021>ISSI Icon</span>
+                        <span className="" text-muted-foreground1021>ISSI Icon</span>
                     </div>
 
                     <div className="flex flex-col items-center space-y-2 p-4 border border-slate-200 dark:border-slate-700 rounded-lg">
                         <FigmaIcon size={48} />
-                        <span className="" text-caption1333 text-muted-foreground1340>Figma Icon</span>
+                        <span className="" text-muted-foreground1340>Figma Icon</span>
                     </div>
 
                     <div className="flex flex-col items-center space-y-2 p-4 border border-slate-200 dark:border-slate-700 rounded-lg">
                         <ISSIIcon size={48} className="text-green-600" />
-                        <span className="" text-caption1672 text-muted-foreground1686>Colored</span>
+                        <span className="" text-muted-foreground1686>Colored</span>
                     </div>
 
                     <div className="flex flex-col items-center space-y-2 p-4 border border-slate-200 dark:border-slate-700 rounded-lg">
                         <ISSIIcon size={32} className="text-purple-600" />
-                        <span className="" text-caption2009 text-muted-foreground2030>Small</span>
+                        <span className="" text-muted-foreground2030>Small</span>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@ export default function IconShowcase() {
                 <h3 className="text-slate-800 dark:text-slate-200">
                     Figma Community Icons Templates ({figmaIconEntries.length} ready)
                 </h3>
-                <p className="" text-caption2427 text-muted-foreground2455>
+                <p className="" text-muted-foreground2455>
                     These icons are ready for you to replace with actual SVG content from the Figma file.
                 </p>
 
@@ -63,7 +63,7 @@ export default function IconShowcase() {
 
                 {figmaIconEntries.length > 24 && (
                     <div className="text-center mt-4">
-                        <span className="" text-caption3570 text-muted-foreground3570>
+                        <span className="" text-muted-foreground3570>
                             + {figmaIconEntries.length - 24} more icons available
                         </span>
                     </div>
@@ -75,7 +75,7 @@ export default function IconShowcase() {
                 <h3 className="mb-4 text-blue-900 dark:text-blue-100">
                     🚀 How to Complete the Icon Import
                 </h3>
-                <div className="space-y-3  " text-caption4190>
+                <div className="space-y-3  ">
                     <div className="flex items-start space-x-2">
                         <span className="font-bold text-blue-600 dark:text-blue-400">3.</span>
                         <span>For each icon: Right-click 16 &quot;Copy as SVG&quot;</span>
@@ -102,7 +102,7 @@ export default function IconShowcase() {
             {/* Usage Examples */}
             <div className="mt-8 p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
                 <h3 className="mb-2">Usage Examples:</h3>
-                <div className="space-y-2  " text-caption6010 text-muted-foreground6065>
+                <div className="space-y-2  " text-muted-foreground6065>
                     <div>{'import { HomeIcon, ArrowUpIcon } from &quot;@/components/icons&quot;;'}</div>
                     <div>{'<HomeIcon size={24} className=&quot;text-blue-600&quot; />'}</div>
                     <div>{'<ArrowUpIcon size={32} color=&quot;#10B981&quot; strokeWidth={2} />'}</div>
@@ -111,3 +111,4 @@ export default function IconShowcase() {
         </div>
     );
 }
+
