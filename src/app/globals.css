@@ -271,4 +271,24 @@
       content: "2xl";
     }
   }
+
+  /* Navigation link styles */
+  .no-underline {
+    text-decoration: none !important;
+  }
+
+  /* Ensure navigation links never have underlines */
+  nav a,
+  .navigation-link {
+    text-decoration: none !important;
+  }
+
+  nav a:hover,
+  nav a:focus,
+  nav a:visited,
+  .navigation-link:hover,
+  .navigation-link:focus,
+  .navigation-link:visited {
+    text-decoration: none !important;
+  }
 }

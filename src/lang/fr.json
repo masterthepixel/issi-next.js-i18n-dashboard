@@ -27,6 +27,9 @@
   "common.navigation.compliance": "Conformité",
   "common.navigation.about": "À propos",
   "common.navigation.contact": "Contact",
+  "common.navigation.careers": "Carrières",
+  "common.navigation.more": "Plus",
+  "common.auth.signIn": "Se connecter",
   "common.theme-switcher": "Basculer en mode sombre",
   "common.theme-switcher.dark": "Passer en mode clair",
   "common.theme-switcher.light": "Passer en mode sombre",
@@ -1817,7 +1820,6 @@
   "page.blog.empty.default": "Aucun article de blog publié pour le moment.",
   "page.blog.pagination.previous": "Précédent",
   "page.blog.pagination.next": "Suivant",
-  
   "jobs.page.title": "Trouvez Votre Prochaine Opportunité",
   "jobs.page.description": "Découvrez des opportunités de carrière passionnantes chez ISSI. Rejoignez notre équipe de professionnels innovants construisant l'avenir des solutions technologiques.",
   "jobs.search.button": "Rechercher",
@@ -1888,7 +1890,6 @@
   "careers.jobCard.noDescription": "Aucune description disponible",
   "careers.jobCard.applications": "{count} {count, plural, one {candidature} other {candidatures}}",
   "careers.jobCard.moreBenefits": "plus",
-  
   "applications.title": "Mes Candidatures",
   "applications.description": "Suivez l'état de vos candidatures d'emploi et gérez votre pipeline de candidatures.",
   "applications.noApplications.title": "Aucune Candidature Encore",
@@ -1905,7 +1906,6 @@
   "applications.expectedSalary": "Salaire Attendu",
   "applications.notes": "Notes",
   "applications.loginRequired": "Veuillez vous connecter en tant que demandeur d'emploi pour voir vos candidatures.",
-  
   "application.form.title": "Postuler pour le Poste",
   "application.form.description": "Complétez le formulaire ci-dessous pour postuler à ce poste. Tous les champs marqués d'un * sont obligatoires.",
   "application.form.coverLetter.label": "Lettre de Motivation *",
@@ -1941,7 +1941,6 @@
   "application.form.validation.salary.invalid": "Veuillez entrer un montant de salaire valide",
   "application.form.loginRequired": "Veuillez vous connecter pour postuler à ce poste.",
   "application.form.alreadyApplied": "Vous avez déjà postulé pour ce poste.",
-  
   "hr.applications.title": "Gestion des Candidatures",
   "hr.applications.description": "Examinez et gérez les candidatures pour vos offres d'emploi. Faites progresser les candidats dans votre pipeline de recrutement.",
   "hr.applications.filter.all": "Toutes les Candidatures",
@@ -1972,7 +1971,6 @@
   "hr.applications.statusUpdate.cancel": "Annuler",
   "hr.applications.statusUpdate.update": "Mettre à Jour le Statut",
   "hr.applications.statusUpdate.updating": "Mise à jour...",
-  
   "interview.schedule.title": "Planifier un Entretien",
   "interview.schedule.candidate": "Candidat",
   "interview.schedule.position": "Poste",
@@ -1993,7 +1991,6 @@
   "interview.schedule.cancel": "Annuler",
   "interview.schedule.schedule": "Planifier l'Entretien",
   "interview.schedule.scheduling": "Planification...",
-  
   "email.applicationSubmitted.subject": "Candidature Soumise avec Succès - {jobTitle}",
   "email.applicationReceived.subject": "Nouvelle Candidature Reçue - {jobTitle}",
   "email.statusChanged.subject": "Mise à Jour du Statut de Candidature - {jobTitle}",
@@ -2003,7 +2000,6 @@
   "email.offerExtended.subject": "Offre d'Emploi - Poste {jobTitle}",
   "email.applicationRejected.subject": "Mise à Jour du Statut de Candidature - {jobTitle}",
   "email.applicationWithdrawn.subject": "Confirmation de Retrait de Candidature - {jobTitle}",
-  
   "pagination.previous": "Précédent",
   "pagination.next": "Suivant",
   "common.retry": "Réessayer",

@@ -36,8 +36,8 @@ const glowVariants = {
     opacity: 1,
     scale: 2,
     transition: {
-      opacity: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
-      scale: { duration: 0.5, type: "spring", stiffness: 300, damping: 25 },
+      opacity: { duration: 0.5, ease: "easeOut" as const },
+      scale: { duration: 0.5, type: "spring" as const, stiffness: 300, damping: 25 },
     },
   },
 }
@@ -48,13 +48,13 @@ const navGlowVariants = {
     opacity: 1,
     transition: {
       duration: 0.5,
-      ease: [0.4, 0, 0.2, 1],
+      ease: "easeOut" as const,
     },
   },
 }
 
 const sharedTransition = {
-  type: "spring",
+  type: "spring" as const,
   stiffness: 100,
   damping: 20,
   duration: 0.5,
@@ -65,8 +65,17 @@ export const MenuBar = React.forwardRef<HTMLDivElement, MenuBarProps>(
     const { theme } = useTheme()
     const isDarkTheme = theme === "dark"
 
-    // Extract motion-specific props to avoid conflicts
-    const { onDrag, onDragEnd, onDragStart, ...restProps } = props
+    // Extract motion-specific props and conflicting event handlers to avoid conflicts
+    const {
+      onDrag,
+      onDragEnd,
+      onDragStart,
+      onAnimationStart,
+      onAnimationEnd,
+      onAnimationIteration,
+      onTransitionEnd,
+      ...restProps
+    } = props
 
     return (
       <motion.nav
@@ -81,8 +90,8 @@ export const MenuBar = React.forwardRef<HTMLDivElement, MenuBarProps>(
       >
         <motion.div
           className={`absolute -inset-2 bg-gradient-radial from-transparent ${isDarkTheme
-              ? "via-blue-400/30 via-30% via-purple-400/30 via-60% via-red-400/30 via-90%"
-              : "via-blue-400/20 via-30% via-purple-400/20 via-60% via-red-400/20 via-90%"
+            ? "via-blue-400/30 via-30% via-purple-400/30 via-60% via-red-400/30 via-90%"
+            : "via-blue-400/20 via-30% via-purple-400/20 via-60% via-red-400/20 via-90%"
             } to-transparent rounded-3xl z-0 pointer-events-none`}
           variants={navGlowVariants}
         />

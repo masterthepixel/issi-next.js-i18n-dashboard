@@ -3,16 +3,28 @@ import { motion, Variants } from 'framer-motion';
 import {
   Building2,
   GraduationCap,
-  Home,
+  Menu,
+  Moon,
   Package,
   ShieldCheck,
+  Sun,
   User,
   Wrench
 } from 'lucide-react';
+import { useTheme } from 'next-themes';
+import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 // --- HoverGradientNavBar Component ---
 
@@ -61,10 +73,34 @@ const sharedTransition = {
 
 function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.Element {
   const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
+  const router = useRouter();
+
+  const languages = [
+    { code: 'en', name: 'English', flag: '🇬🇧' },
+    { code: 'fr', name: 'Français', flag: '🇫🇷' },
+    { code: 'es', name: 'Español', flag: '🇪🇸' },
+  ];
+
+  const currentLanguage = languages.find(lang => lang.code === locale) || languages[0];
+
+  const switchLanguage = (newLocale: string) => {
+    const currentPath = pathname.replace(`/${locale}`, '');
+    router.push(`/${newLocale}${currentPath}`);
+  };
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
+  const handleSignIn = () => {
+    console.log('Sign in clicked');
+    // Add your sign-in logic here
+  };
 
   const menuItems: HoverGradientMenuItem[] = [
     {
-      icon: <Home className="h-5 w-5" />,
+      icon: <Image src="/images/issi_logo.png" alt="ISSI Logo" width={20} height={20} className="rounded-sm" />,
       label: <FormattedMessage id="common.navigation.home" defaultMessage="Home" />,
       href: `/${locale}/home`,
       gradient: "radial-gradient(circle, hsl(var(--primary) / 0.15) 0%, hsl(var(--primary) / 0.06) 50%, hsl(var(--primary) / 0) 100%)",
@@ -114,6 +150,25 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
     },
   ];
 
+  // Additional menu items for the dropdown hamburger menu
+  const additionalMenuItems = [
+    {
+      icon: <User className="h-4 w-4" />,
+      label: <FormattedMessage id="common.navigation.careers" defaultMessage="Careers" />,
+      href: `/${locale}/careers`,
+    },
+    {
+      icon: <Package className="h-4 w-4" />,
+      label: <FormattedMessage id="common.navigation.blog" defaultMessage="Blog" />,
+      href: `/${locale}/blog`,
+    },
+    {
+      icon: <ShieldCheck className="h-4 w-4" />,
+      label: <FormattedMessage id="common.navigation.contact" defaultMessage="Contact" />,
+      href: `/${locale}/contact`,
+    },
+  ];
+
   return (
     <div className="fixed top-0 left-0 w-full md:top-4 md:left-1/2 md:-translate-x-1/2 z-50">
       <motion.nav
@@ -160,7 +215,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                       transformOrigin: "center bottom"
                     }}
                   >
-                    <Link href={item.href} className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1.5">
+                    <Link href={item.href} className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1.5 no-underline">
                       <span className={`transition-colors duration-300 ${item.iconColor} ${isActive ? 'text-foreground' : ''
                         }`}>
                         {item.icon}
@@ -185,7 +240,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                       transform: "rotateX(90deg)"
                     }}
                   >
-                    <Link href={item.href} className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1.5">
+                    <Link href={item.href} className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1.5 no-underline">
                       <span className={`transition-colors duration-300 ${item.iconColor} ${isActive ? 'text-foreground' : ''
                         }`}>
                         {item.icon}
@@ -199,6 +254,115 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
               </motion.li>
             );
           })}
+
+          {/* Hamburger Menu */}
+          <motion.li className="relative flex-1 md:flex-none">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <motion.div
+                  className="block rounded-xl md:rounded-2xl overflow-visible group relative cursor-pointer"
+                  style={{ perspective: "600px" }}
+                  whileHover="hover"
+                  initial="initial"
+                >
+                  {/* Per-item glow */}
+                  <motion.div
+                    className="absolute inset-0 z-0 pointer-events-none rounded-xl md:rounded-2xl"
+                    variants={glowVariants}
+                    style={{
+                      background: "radial-gradient(circle, hsl(var(--muted) / 0.15) 0%, hsl(var(--muted) / 0.06) 50%, hsl(var(--muted) / 0) 100%)",
+                    }}
+                  />
+                  {/* Front-facing */}
+                  <motion.div
+                    className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-1.5
+                    px-1.5 py-1 md:px-3 md:py-1.5 relative z-10
+                    bg-transparent text-muted-foreground
+                    group-hover:text-foreground
+                    transition-colors rounded-xl md:rounded-2xl text-xs md:text-sm"
+                    variants={itemVariants}
+                    transition={sharedTransition}
+                    style={{
+                      transformStyle: "preserve-3d",
+                      transformOrigin: "center bottom"
+                    }}
+                  >
+                    <span className="transition-colors duration-300 group-hover:text-primary">
+                      <Menu className="h-5 w-5" />
+                    </span>
+                  </motion.div>
+                  {/* Back-facing */}
+                  <motion.div
+                    className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-1.5
+                    px-1.5 py-1 md:px-3 md:py-1.5 absolute inset-0 z-10
+                    bg-transparent text-muted-foreground
+                    group-hover:text-foreground
+                    transition-colors rounded-xl md:rounded-2xl text-xs md:text-sm"
+                    variants={backVariants}
+                    transition={sharedTransition}
+                    style={{
+                      transformStyle: "preserve-3d",
+                      transformOrigin: "center top",
+                      transform: "rotateX(90deg)"
+                    }}
+                  >
+                    <span className="transition-colors duration-300 group-hover:text-primary">
+                      <Menu className="h-5 w-5" />
+                    </span>
+                  </motion.div>
+                </motion.div>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48">
+                {/* Sign In */}
+                <DropdownMenuItem onClick={handleSignIn}>
+                  <User className="h-4 w-4" />
+                  <span>
+                    <FormattedMessage id="common.auth.signIn" defaultMessage="Sign In" />
+                  </span>
+                </DropdownMenuItem>
+
+                {/* Theme Toggle */}
+                <DropdownMenuItem onClick={toggleTheme}>
+                  {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                  <span>
+                    {theme === 'dark' ? (
+                      <FormattedMessage id="common.theme-switcher.light" defaultMessage="Light Mode" />
+                    ) : (
+                      <FormattedMessage id="common.theme-switcher.dark" defaultMessage="Dark Mode" />
+                    )}
+                  </span>
+                </DropdownMenuItem>
+
+                <DropdownMenuSeparator />
+
+                {/* Current Language Display */}
+                <DropdownMenuItem disabled>
+                  <span className="text-lg">{currentLanguage.flag}</span>
+                  <span>{currentLanguage.name}</span>
+                </DropdownMenuItem>
+
+                {/* Language Options */}
+                {languages.filter(lang => lang.code !== locale).map((language) => (
+                  <DropdownMenuItem key={language.code} onClick={() => switchLanguage(language.code)}>
+                    <span className="text-lg">{language.flag}</span>
+                    <span>{language.name}</span>
+                  </DropdownMenuItem>
+                ))}
+
+                <DropdownMenuSeparator />
+
+                {/* Additional Menu Items */}
+                {additionalMenuItems.map((item) => (
+                  <DropdownMenuItem key={item.href} asChild>
+                    <Link href={item.href} className="flex items-center gap-2 no-underline">
+                      {item.icon}
+                      <span>{item.label}</span>
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </motion.li>
         </ul>
       </motion.nav>
     </div>

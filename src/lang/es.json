@@ -20,6 +20,10 @@
   "common.navigation.compliance": "Cumplimiento",
   "common.navigation.about": "Sobre nosotros",
   "common.navigation.contact": "Contacto",
+  "common.navigation.careers": "Carreras",
+  "common.navigation.blog": "Blog",
+  "common.navigation.more": "Más",
+  "common.auth.signIn": "Iniciar sesión",
   "common.theme-switcher": "Cambiar a modo oscuro",
   "common.theme-switcher.dark": "Cambiar a modo claro",
   "common.theme-switcher.light": "Cambiar a modo oscuro",
@@ -1300,7 +1304,6 @@
   "page.blog.empty.default": "Aún no hay artículos de blog publicados.",
   "page.blog.pagination.previous": "Anterior",
   "page.blog.pagination.next": "Siguiente",
-  
   "jobs.page.title": "Encuentra Tu Próxima Oportunidad",
   "jobs.page.description": "Descubre emocionantes oportunidades profesionales en ISSI. Únete a nuestro equipo de profesionales innovadores construyendo el futuro de las soluciones tecnológicas.",
   "jobs.search.button": "Buscar",
@@ -1403,7 +1406,6 @@
   "careers.jobCard.noDescription": "No hay descripción disponible",
   "careers.jobCard.applications": "{count} {count, plural, one {aplicación} other {aplicaciones}}",
   "careers.jobCard.moreBenefits": "más",
-  
   "applications.title": "Mis Solicitudes",
   "applications.description": "Seguir el estado de sus solicitudes de empleo y gestionar su pipeline de solicitudes.",
   "applications.noApplications.title": "Aún No Hay Solicitudes",
@@ -1420,7 +1422,6 @@
   "applications.expectedSalary": "Salario Esperado",
   "applications.notes": "Notas",
   "applications.loginRequired": "Por favor inicia sesión como solicitante de empleo para ver tus solicitudes.",
-  
   "application.form.title": "Solicitar Puesto",
   "application.form.description": "Completa el formulario a continuación para solicitar este puesto. Todos los campos marcados con * son obligatorios.",
   "application.form.coverLetter.label": "Carta de Presentación *",
@@ -1456,7 +1457,6 @@
   "application.form.validation.salary.invalid": "Por favor ingresa un monto de salario válido",
   "application.form.loginRequired": "Por favor inicia sesión para solicitar este puesto.",
   "application.form.alreadyApplied": "Ya has solicitado este puesto.",
-  
   "hr.applications.title": "Gestión de Solicitudes",
   "hr.applications.description": "Revisa y gestiona solicitudes para tus ofertas de trabajo. Mueve candidatos a través de tu pipeline de contratación.",
   "hr.applications.filter.all": "Todas las Solicitudes",
@@ -1487,7 +1487,6 @@
   "hr.applications.statusUpdate.cancel": "Cancelar",
   "hr.applications.statusUpdate.update": "Actualizar Estado",
   "hr.applications.statusUpdate.updating": "Actualizando...",
-  
   "interview.schedule.title": "Programar Entrevista",
   "interview.schedule.candidate": "Candidato",
   "interview.schedule.position": "Puesto",
@@ -1508,7 +1507,6 @@
   "interview.schedule.cancel": "Cancelar",
   "interview.schedule.schedule": "Programar Entrevista",
   "interview.schedule.scheduling": "Programando...",
-  
   "email.applicationSubmitted.subject": "Solicitud Enviada Exitosamente - {jobTitle}",
   "email.applicationReceived.subject": "Nueva Solicitud Recibida - {jobTitle}",
   "email.statusChanged.subject": "Actualización de Estado de Solicitud - {jobTitle}",
@@ -1518,7 +1516,6 @@
   "email.offerExtended.subject": "Oferta de Trabajo - Puesto {jobTitle}",
   "email.applicationRejected.subject": "Actualización de Estado de Solicitud - {jobTitle}",
   "email.applicationWithdrawn.subject": "Confirmación de Retiro de Solicitud - {jobTitle}",
-  
   "pagination.previous": "Anterior",
   "pagination.next": "Siguiente",
   "common.retry": "Reintentar",
