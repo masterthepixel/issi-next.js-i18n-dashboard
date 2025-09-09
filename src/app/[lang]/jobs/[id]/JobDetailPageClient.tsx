@@ -127,7 +127,7 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
                   </div>
                 )}
 
-                <div className="flex items-center gap-2  " text-caption4831>
+                <div className="flex items-center gap-2 text-muted-foreground">
                   <Clock className="h-4 w-4" />
                   {intl.formatMessage({ 
                     id: "jobs.postedTime", 
@@ -211,7 +211,7 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
               <div>
                 <h4 className="mb-2">{job.company.name}</h4>
                 {job.company.about && (
-                  <p className="" text-caption7883>
+                  <p className="text-muted-foreground">
                     {job.company.about}
                   </p>
                 )}
@@ -219,7 +219,7 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
 
               <Separator />
 
-              <div className="space-y-2  " text-caption8091>
+              <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <MapPin className="h-4 w-4 text-muted-foreground" />
                   <span>{job.company.location}</span>
@@ -250,7 +250,7 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
                 {intl.formatMessage({ id: "jobs.jobDetails", defaultMessage: "Job Details" })}
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3  " text-caption9397>
+            <CardContent className="space-y-3">
               <div className="flex justify-between">
                 <span className="text-muted-foreground">
                   {intl.formatMessage({ id: "jobs.employmentType", defaultMessage: "Employment Type" })}
