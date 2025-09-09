@@ -352,7 +352,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
                 {product.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1  " text-caption15326
+                    className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm"
                   >
                     {tag}
                   </span>
@@ -369,7 +369,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
                 <ExternalLink className="w-5 h-5 mr-2" />
                 Request Demo
               </Link>
-              <p className="" text-caption16277>
+              <p className="text-muted-foreground">
                 Get a personalized demonstration of this solution
               </p>
             </div>
@@ -408,7 +408,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
                 <dl className="space-y-4">
                   {Object.entries(product.specifications).map(([key, value]) => (
                     <div key={key} className="border-b border-slate-200 dark:border-slate-600 pb-3 last:border-b-0">
-                      <dt className="" text-caption18184 text-muted-foreground18208>
+                      <dt className="text-muted-foreground font-medium">
                         {key}
                       </dt>
                       <dd className="text-slate-900 dark:text-slate-100">

@@ -14,7 +14,7 @@ export default function GlobalError({ error, reset }: { error: Error & { digest?
         <div className="flex min-h-screen items-center justify-center">
           <div className="text-center">
             <h2 className="text-red-600 mb-4">Something went wrong!</h2>
-            <p className="" text-muted-foreground540>
+            <p className="">
               We encountered an error while loading the page.
             </p>
             <div className="space-x-4">

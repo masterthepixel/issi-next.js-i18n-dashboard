@@ -36,7 +36,7 @@ export default function NewHomePageHero() {
           <div className="mt-24 sm:mt-32 lg:mt-16">            <a href="#news" className="inline-flex space-x-6" title="View latest news and updates">              <span className="rounded-full bg-blue-600/10 px-3 py-1  ">
             <FormattedMessage id="newhero.new.badge" defaultMessage="What's new" />
           </span>
-            <span className="inline-flex items-center space-x-2  " text-muted-foreground1645="true">
+            <span className="inline-flex items-center space-x-2  ">
               <span>
                 <FormattedMessage id="newhero.new.version" defaultMessage="Just shipped v2.0" />
               </span>

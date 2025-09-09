@@ -10,10 +10,11 @@ export const metadata: Metadata = {
 };
 
 interface Props {
-  params: { lang: Locale };
+  params: Promise<{ lang: Locale }>;
 }
 
-export default async function Page({ params: { lang } }: Props) {
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
   const intl = await getIntl(lang);
   
   return (
@@ -110,7 +111,7 @@ export default async function Page({ params: { lang } }: Props) {
             <div className="bg-card rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
               <div className="text-4xl mb-4">📋</div>
               <h3 className="mb-2">{intl.formatMessage({ id: "mdot.benefits.compliance.title" })}</h3>
-              <p className="" text-caption6020>
+              <p className="text-muted-foreground">
                 {intl.formatMessage({ id: "mdot.benefits.compliance.description" })}
               </p>
             </div>
@@ -119,14 +120,14 @@ export default async function Page({ params: { lang } }: Props) {
             <div className="bg-card rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
               <div className="text-4xl mb-4">🤝</div>
               <h3 className="mb-2">{intl.formatMessage({ id: "mdot.benefits.partnership.title" })}</h3>
-              <p className="" text-caption6511>
+              <p className="text-muted-foreground">
                 {intl.formatMessage({ id: "mdot.benefits.partnership.description" })}
               </p>
             </div>            {/* Delivery Excellence */}
             <div className="bg-card rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
               <div className="text-4xl mb-4">⚡</div>
               <h3 className="mb-2">{intl.formatMessage({ id: "mdot.benefits.delivery.title" })}</h3>
-              <p className="" text-caption6994>
+              <p className="text-muted-foreground">
                 {intl.formatMessage({ id: "mdot.benefits.delivery.description" })}
               </p>
             </div>
@@ -135,7 +136,7 @@ export default async function Page({ params: { lang } }: Props) {
             <div className="bg-card rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
               <div className="text-4xl mb-4">🏆</div>
               <h3 className="mb-2">{intl.formatMessage({ id: "mdot.benefits.experience.title" })}</h3>
-              <p className="" text-caption7480>
+              <p className="text-muted-foreground">
                 {intl.formatMessage({ id: "mdot.benefits.experience.description" })}
               </p>
             </div>
@@ -351,7 +352,7 @@ export default async function Page({ params: { lang } }: Props) {
             </div>
               <div className="pt-6">
               <h4 className="mb-2">{intl.formatMessage({ id: "mdot.contact.info.certifications.title" })}</h4>
-              <p className="" text-caption19798>
+              <p className="text-muted-foreground">
                 {intl.formatMessage({ id: "mdot.contact.info.certifications.description" })}
               </p>
               <Link 

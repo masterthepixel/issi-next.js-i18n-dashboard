@@ -173,14 +173,14 @@ export default function FluidGlassNavbar({ navItems, locale, className }: FluidG
                               <div className="mt-0.5 flex size-8 flex-none items-center justify-center rounded-lg bg-slate-50/20 dark:bg-slate-800/20 group-hover:bg-white/30 dark:group-hover:bg-slate-700/30">
                                 <item.icon
                                   aria-hidden="true"
-                                  className="size-4  " text-muted-foreground7402
+                                  className="size-4  "
                                 />
                               </div>
                               <div>
                                 <div className="font-medium  ">
                                   {item.name}
                                 </div>
-                                <p className="mt-0.5  " text-muted-foreground7821>{item.description}</p>
+                                <p className="mt-0.5  ">{item.description}</p>
                               </div>
                             </Link>
                           ))}

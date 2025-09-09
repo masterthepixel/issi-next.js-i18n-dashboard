@@ -25,7 +25,7 @@ function LicenseTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-lg  " text-muted-foreground803>
+            <p className="text-lg  ">
               <FormattedMessage id="license.sections.introduction.welcome" />
             </p>
             <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4">
@@ -47,7 +47,7 @@ function LicenseTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-6">
-            <p className="text-lg  " text-muted-foreground1731>
+            <p className="text-lg  ">
               <FormattedMessage id="license.sections.definitions.intro" />
             </p>
             <dl className="space-y-4">
@@ -55,7 +55,7 @@ function LicenseTimelineInner() {
                 <dt className="font-semibold text-slate-900 dark:text-slate-100">
                   <FormattedMessage id="license.sections.definitions.client.term" />
                 </dt>
-                <dd className="" text-muted-foreground2199>
+                <dd className="">
                   <FormattedMessage id="license.sections.definitions.client.definition" />
                 </dd>
               </div>
@@ -63,7 +63,7 @@ function LicenseTimelineInner() {
                 <dt className="font-semibold text-slate-900 dark:text-slate-100">
                   <FormattedMessage id="license.sections.definitions.company.term" />
                 </dt>
-                <dd className="" text-muted-foreground2668>
+                <dd className="">
                   <FormattedMessage id="license.sections.definitions.company.definition" />
                 </dd>
               </div>
@@ -71,12 +71,12 @@ function LicenseTimelineInner() {
                 <dt className="font-semibold text-slate-900 dark:text-slate-100">
                   <FormattedMessage id="license.sections.definitions.parties.term" />
                 </dt>
-                <dd className="" text-muted-foreground3138>
+                <dd className="">
                   <FormattedMessage id="license.sections.definitions.parties.definition" />
                 </dd>
               </div>
             </dl>
-            <p className="" text-muted-foreground3364>
+            <p className="">
               <FormattedMessage id="license.sections.definitions.allTerms" />
             </p>
           </div>
@@ -88,10 +88,10 @@ function LicenseTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="text-lg  " text-muted-foreground3790>
+            <p className="text-lg  ">
               <FormattedMessage id="license.sections.cookies.consent" />
             </p>
-            <p className="" text-muted-foreground3954>
+            <p className="">
               <FormattedMessage id="license.sections.cookies.description" />
             </p>
           </div>
@@ -107,23 +107,23 @@ function LicenseTimelineInner() {
               <h4 className="dark:text-slate-100 mb-3">
                 <FormattedMessage id="license.sections.hyperlinking.approved.title" />
               </h4>
-              <p className="" text-muted-foreground4571>
+              <p className="">
                 <FormattedMessage id="license.sections.hyperlinking.approved.intro" />
               </p>
               <ul className="space-y-2">
-                <li className="" text-muted-foreground4795>
+                <li className="">
                   <FormattedMessage id="license.sections.hyperlinking.approved.government" />
                 </li>
-                <li className="" text-muted-foreground4982>
+                <li className="">
                   <FormattedMessage id="license.sections.hyperlinking.approved.searchEngines" />
                 </li>
-                <li className="" text-muted-foreground5172>
+                <li className="">
                   <FormattedMessage id="license.sections.hyperlinking.approved.news" />
                 </li>
-                <li className="" text-muted-foreground5353>
+                <li className="">
                   <FormattedMessage id="license.sections.hyperlinking.approved.directories" />
                 </li>
-                <li className="" text-muted-foreground5541>
+                <li className="">
                   <FormattedMessage id="license.sections.hyperlinking.approved.accredited" />
                 </li>
               </ul>
@@ -133,26 +133,26 @@ function LicenseTimelineInner() {
               <h4 className="dark:text-slate-100 mb-3">
                 <FormattedMessage id="license.sections.hyperlinking.conditional.title" />
               </h4>
-              <p className="" text-muted-foreground5956>
+              <p className="">
                 <FormattedMessage id="license.sections.hyperlinking.conditional.intro" />
               </p>
               <ul className="space-y-2">
-                <li className="" text-muted-foreground6183>
+                <li className="">
                   <FormattedMessage id="license.sections.hyperlinking.conditional.consumer" />
                 </li>
-                <li className="" text-muted-foreground6371>
+                <li className="">
                   <FormattedMessage id="license.sections.hyperlinking.conditional.community" />
                 </li>
-                <li className="" text-muted-foreground6560>
+                <li className="">
                   <FormattedMessage id="license.sections.hyperlinking.conditional.charities" />
                 </li>
-                <li className="" text-muted-foreground6749>
+                <li className="">
                   <FormattedMessage id="license.sections.hyperlinking.conditional.portals" />
                 </li>
-                <li className="" text-muted-foreground6936>
+                <li className="">
                   <FormattedMessage id="license.sections.hyperlinking.conditional.professional" />
                 </li>
-                <li className="" text-muted-foreground7128>
+                <li className="">
                   <FormattedMessage id="license.sections.hyperlinking.conditional.educational" />
                 </li>
               </ul>
@@ -166,7 +166,7 @@ function LicenseTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="" text-muted-foreground7633>
+            <p className="">
               <FormattedMessage
                 id="license.sections.hyperlinking.process.intro"
                 values={{
@@ -175,23 +175,23 @@ function LicenseTimelineInner() {
               />
             </p>
             <ul className="space-y-2">
-              <li className="" text-muted-foreground7964>
+              <li className="">
                 <FormattedMessage id="license.sections.hyperlinking.process.name" />
               </li>
-              <li className="" text-muted-foreground8138>
+              <li className="">
                 <FormattedMessage id="license.sections.hyperlinking.process.contact" />
               </li>
-              <li className="" text-muted-foreground8315>
+              <li className="">
                 <FormattedMessage id="license.sections.hyperlinking.process.url" />
               </li>
-              <li className="" text-muted-foreground8488>
+              <li className="">
                 <FormattedMessage id="license.sections.hyperlinking.process.linkUrls" />
               </li>
-              <li className="" text-muted-foreground8666>
+              <li className="">
                 <FormattedMessage id="license.sections.hyperlinking.process.targetUrls" />
               </li>
             </ul>
-            <p className="" text-muted-foreground8862>
+            <p className="">
               <FormattedMessage id="license.sections.hyperlinking.process.timeline" />
             </p>
           </div>
@@ -203,17 +203,17 @@ function LicenseTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="" text-muted-foreground9312>
+            <p className="">
               <FormattedMessage id="license.sections.hyperlinking.standards.intro" />
             </p>
             <ul className="space-y-2">
-              <li className="" text-muted-foreground9524>
+              <li className="">
                 <FormattedMessage id="license.sections.hyperlinking.standards.corporateName" />
               </li>
-              <li className="" text-muted-foreground9709>
+              <li className="">
                 <FormattedMessage id="license.sections.hyperlinking.standards.url" />
               </li>
-              <li className="" text-muted-foreground9884>
+              <li className="">
                 <FormattedMessage id="license.sections.hyperlinking.standards.description" />
               </li>
             </ul>
@@ -236,7 +236,7 @@ function LicenseTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="" text-muted-foreground10837>
+            <p className="">
               <FormattedMessage id="license.sections.iframes.content" />
             </p>
           </div>
@@ -252,10 +252,10 @@ function LicenseTimelineInner() {
               <h4 className="dark:text-slate-100 mb-3">
                 <FormattedMessage id="license.sections.rights.reservation.title" />
               </h4>
-              <p className="" text-muted-foreground11441>
+              <p className="">
                 <FormattedMessage id="license.sections.rights.reservation.removal" />
               </p>
-              <p className="" text-muted-foreground11614>
+              <p className="">
                 <FormattedMessage id="license.sections.rights.reservation.amendment" />
               </p>
             </div>
@@ -264,13 +264,13 @@ function LicenseTimelineInner() {
               <h4 className="dark:text-slate-100 mb-3">
                 <FormattedMessage id="license.sections.rights.removal.title" />
               </h4>
-              <p className="" text-muted-foreground11989>
+              <p className="">
                 <FormattedMessage id="license.sections.rights.removal.content" />
               </p>
-              <p className="" text-muted-foreground12158>
+              <p className="">
                 <FormattedMessage id="license.sections.rights.linkRemoval.process" />
               </p>
-              <p className="" text-muted-foreground12331>
+              <p className="">
                 <FormattedMessage id="license.sections.rights.linkRemoval.disclaimer" />
               </p>
             </div>
@@ -283,13 +283,13 @@ function LicenseTimelineInner() {
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <div className="space-y-4">
-            <p className="" text-muted-foreground12792>
+            <p className="">
               <FormattedMessage id="license.sections.liability.content" />
             </p>
-            <p className="" text-muted-foreground12950>
+            <p className="">
               <FormattedMessage id="license.sections.liability.noResponsibility" />
             </p>
-            <p className="" text-muted-foreground13117>
+            <p className="">
               <FormattedMessage id="license.sections.liability.prohibited" />
             </p>
           </div>
@@ -305,7 +305,7 @@ function LicenseTimelineInner() {
               <h4 className="dark:text-slate-100 mb-3">
                 <FormattedMessage id="license.sections.disclaimer.exclusions.title" />
               </h4>
-              <p className="" text-muted-foreground13733>
+              <p className="">
                 <FormattedMessage id="license.sections.disclaimer.exclusions.content" />
               </p>
             </div>
@@ -314,24 +314,24 @@ function LicenseTimelineInner() {
               <h4 className="dark:text-slate-100 mb-3">
                 <FormattedMessage id="license.sections.disclaimer.limitations.title" />
               </h4>
-              <p className="" text-muted-foreground14117>
+              <p className="">
                 <FormattedMessage id="license.sections.disclaimer.limitations.intro" />
               </p>
               <ul className="space-y-2">
-                <li className="" text-muted-foreground14337>
+                <li className="">
                   <FormattedMessage id="license.sections.disclaimer.limitations.negligence" />
                 </li>
-                <li className="" text-muted-foreground14525>
+                <li className="">
                   <FormattedMessage id="license.sections.disclaimer.limitations.fraud" />
                 </li>
-                <li className="" text-muted-foreground14708>
+                <li className="">
                   <FormattedMessage id="license.sections.disclaimer.limitations.notPermitted" />
                 </li>
-                <li className="" text-muted-foreground14898>
+                <li className="">
                   <FormattedMessage id="license.sections.disclaimer.limitations.notExcluded" />
                 </li>
               </ul>
-              <p className="" text-muted-foreground15105>
+              <p className="">
                 <FormattedMessage id="license.sections.disclaimer.limitations.freeServices" />
               </p>
             </div>

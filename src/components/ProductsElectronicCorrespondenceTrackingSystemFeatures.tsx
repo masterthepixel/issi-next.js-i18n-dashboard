@@ -56,7 +56,7 @@ export default function ProductsElectronicCorrespondenceTrackingSystemFeatures()
                     <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl sm:text-balance">
                         <FormattedMessage id="products.ects.hero.title" />
                     </p>
-                    <p className="mt-6 text-lg/8  " text-muted-foreground2115>
+                    <p className="mt-6 text-lg/8  ">
                         <FormattedMessage id="products.ects.hero.description" />
                     </p>
                 </div>
@@ -76,7 +76,7 @@ export default function ProductsElectronicCorrespondenceTrackingSystemFeatures()
                 </div>
             </div>
             <div className="mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8">
-                <dl className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base/7  " text-muted-foreground3147>
+                <dl className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base/7  ">
                     {features.map((feature, _index) => [
                         <dt key={feature.nameId + '-dt'} className="relative pl-9 inline font-semibold text-slate-900">
                             <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-blue-600" />

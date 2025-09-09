@@ -326,7 +326,7 @@ export default function OnboardingForm({ lang }: OnboardingFormProps) {
                         </div>
 
                         <div className="text-center">
-                            <p className="" text-muted-foreground14280>
+                            <p className="">
                                 {t("alreadyHave")}{" "}
                                 <Link
                                     href={`/${lang}/auth/login`}
@@ -583,7 +583,7 @@ export default function OnboardingForm({ lang }: OnboardingFormProps) {
                     </form>
 
                     <div className="text-center">
-                        <p className="" text-muted-foreground30377>
+                        <p className="">
                             {t("alreadyHave")}{" "}
                             <Link
                                 href={`/${lang}/auth/login`}

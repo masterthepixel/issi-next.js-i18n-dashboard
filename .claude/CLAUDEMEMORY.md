@@ -1,6 +1,6 @@
 # Claude Memory - ISSI Next.js Multilingual Website
 
-This document captures important context and decisions for this project, allowing Claude and developers to maintain continuity across sessions.
+This document captures important context and decisions for this project, allowing Claude and developers to maintain continuity across sessions. ahem
 
 ## Table of Contents
 
@@ -16,14 +16,17 @@ This document captures important context and decisions for this project, allowin
 The project contains numerous ESLint warnings that were suppressed through a custom `.eslintrc.js` configuration to prevent build failures. These warnings primarily fall into four categories:
 
 1. **Unused Variables**: Many variables and function parameters are defined but never used in the code.
+
    - **Solution**: Prefix all unused variables with an underscore (e.g., `_varName`) to indicate they're intentionally unused.
    - **Files Affected**: Multiple files across `/src/types/`, `/src/components/`, and application pages.
 
 2. **Let vs Const Declarations**: Many variables are declared with `let` but never reassigned.
+
    - **Solution**: Convert all non-reassigned variables from `let` to `const` for better code quality and to prevent accidental mutations.
    - **Files Affected**: Primarily UI components like `bento-grid.tsx`, `evervault-card.tsx`, `floating-dock.tsx`, and various globe components.
 
 3. **React Hooks Dependency Arrays**: Several `useEffect` and `useCallback` hooks have incomplete dependency arrays.
+
    - **Solution**: Properly populate dependency arrays to prevent stale closures and ensure components update correctly.
    - **Files Affected**: Complex components like `GeoGlobe.tsx`, `HomePageGlobalHero.tsx`, and animation-heavy components.
 
@@ -88,17 +91,20 @@ A detailed guide for addressing these issues is available in `docs/ESLINT_WARNIN
 - **Routing Integration**: Added routing condition in `[slug]/page.tsx` for `prudent-agile-methodology` slug
 
 **Key Source Content Implemented:**
+
 - **Main Description**: "Storing and managing your organization's projects can be a pain without a project tracking system. To maximize an organization's effectiveness in the market, you need to effectively plan, organize, prioritize, manage resources, and analyze the data collected."
 - **PIMS Value**: "PIMS will provide your organization with a centralized place for your team members to see which client you're working with, associate projects, and what technologies and environments were used. Bring visibility to your work and increase your productivity and reduce errors that prevent meeting your clients' expectations."
 - **Core Features**: "Store all client and project related data" and "Detailed Project Profile" directly from source
 
 **Key Files Created/Modified:**
+
 - `src/components/ProductsPrudentAgileMethodologyFeatures.tsx` - Main features component with Heroicons
 - `src/components/ProductsPrudentAgileMethodologyFeaturesWrapper.tsx` - IntlProvider wrapper component
 - `src/lang/en.json`, `src/lang/es.json`, `src/lang/fr.json` - Added comprehensive translations
 - `src/app/[lang]/products/[slug]/page.tsx` - Added routing for prudent-agile-methodology
 
 **Template Compliance:**
+
 - Uses Heroicons instead of Lucide React icons for consistency
 - Follows the established IntlProvider wrapper pattern
 - Implements the same grid layout and styling as other product pages
@@ -117,6 +123,7 @@ A detailed guide for addressing these issues is available in `docs/ESLINT_WARNIN
 - **Routing Integration**: Added routing condition in `[slug]/page.tsx` for `capture-manager` slug
 
 **Key Source Content Implemented:**
+
 - **Main Description**: "The Capture Manager is a tailored software that streamlines the processes of identifying opportunities, evaluates the current business environment, and simultaneously identifies and implements winning strategies."
 - **Core Features**: "Manage Projects and Time" and "Plan & Optimize Resources" directly from source
 - **Additional Features**: Derived from source description (Opportunity Identification, Business Environment Analysis, etc.)
@@ -176,6 +183,7 @@ A detailed guide for addressing these issues is available in `docs/ESLINT_WARNIN
 - **Created comprehensive documentation** for the testing system and maintenance procedures
 
 **Key Files Created/Modified:**
+
 - `test-product-urls.js` - Tests English product URLs (30 URLs)
 - `test-all-product-urls.js` - Tests all locales (90 URLs: en, es, fr)
 - `test-actual-product-urls.js` - Tests actual card-generated URLs vs expected URLs
@@ -185,6 +193,7 @@ A detailed guide for addressing these issues is available in `docs/ESLINT_WARNIN
 - Updated `README.md` with testing section
 
 **Technical Details:**
+
 - All product cards now generate correct SEO-friendly URLs (e.g., `/en/products/grant-management-system`)
 - ProductsBentoGrid component properly uses productSlugMap for URL generation
 - Automated testing covers all 30 products across 3 locales with comprehensive error handling
@@ -225,7 +234,7 @@ A detailed guide for addressing these issues is available in `docs/ESLINT_WARNIN
 ### Prudent Agile Methodology Implementation (July 2, 2025)
 
 - **Complete Prudent Agile Methodology product page implemented** following the established template design
-- **Source-Based Content**: Used only actual features and content from https://www.issi-software.com/Products/ProductInfo?project=projectmanagement  
+- **Source-Based Content**: Used only actual features and content from https://www.issi-software.com/Products/ProductInfo?project=projectmanagement
 - **6 Core Features**: Based on source content including "Store all client and project related data" and "Detailed Project Profile"
 - **Next.js Image Optimization**: Proper implementation with `priority` prop for hero image performance
 - **Component Structure**: Created `ProductsPrudentAgileMethodologyFeatures.tsx` and `ProductsPrudentAgileMethodologyFeaturesWrapper.tsx`
@@ -234,6 +243,7 @@ A detailed guide for addressing these issues is available in `docs/ESLINT_WARNIN
 - **Routing Integration**: Added routing condition in `[slug]/page.tsx` for `prudent-agile-methodology` slug
 
 **Key Source Content Implemented:**
+
 - **Main Description**: "Storing and managing your organization's projects can be a pain without a project tracking system. PIMS will provide your organization with a centralized place for your team members to see which client you're working with, associate projects, and what technologies and environments were used."
 - **Core Features**: "Store all client and project related data" and "Detailed Project Profile" directly from source
 - **Additional Features**: Derived from source description (Team Visibility, Client Association, Resource Management, Productivity Enhancement)
@@ -241,11 +251,12 @@ A detailed guide for addressing these issues is available in `docs/ESLINT_WARNIN
 **Key Files Created/Modified:**
 
 - `src/components/ProductsPrudentAgileMethodologyFeatures.tsx` - Main PAM component with react-intl
-- `src/components/ProductsPrudentAgileMethodologyFeaturesWrapper.tsx` - Wrapper component for internationalization  
+- `src/components/ProductsPrudentAgileMethodologyFeaturesWrapper.tsx` - Wrapper component for internationalization
 - `src/lang/en.json`, `src/lang/es.json`, `src/lang/fr.json` - Added comprehensive PAM translations
 - `src/app/[lang]/products/[slug]/page.tsx` - Added PAM routing
 
 **Technical Implementation Notes:**
+
 - Fixed compilation issues by switching from `next-intl` to `react-intl` pattern used by existing components
 - Used `FormattedMessage` components for translation display instead of `useTranslations` hook
 - Used `intl.formatMessage()` for alt text and other string interpolation

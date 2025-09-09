@@ -299,7 +299,7 @@ export default function HomePageGlobalHero() {
                   </span>
                 </div>
               </h1>
-              <p className="" text-muted-foreground16209>
+              <p className="">
                 <FormattedMessage
                   id="hero.description" values={{
                     innovativeTechnology: (chunks) => (
@@ -362,7 +362,7 @@ export default function HomePageGlobalHero() {
               <a
                 href="/services"
                 title="Explore ISSI's software solutions and services"
-                className="border-2 border-slate-300 dark:border-slate-600  " text-muted-foreground19569
+                className="border-2 border-slate-300 dark:border-slate-600  "
               >
                 <FormattedMessage id="hero.cta.learn-more" />
               </a>

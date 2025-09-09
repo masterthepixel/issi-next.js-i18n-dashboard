@@ -216,7 +216,7 @@ export default function LoginForm({ lang }: LoginFormProps) {
                     <Separator />
 
                     <div className="text-center space-y-2">
-                        <p className="" text-muted-foreground9044>
+                        <p className="">
                             {t("noAccount")}{" "}
                             <Link
                                 href={`/${lang}/auth/onboarding`}

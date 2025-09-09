@@ -203,7 +203,7 @@ export default function TopNav({ locale }: Props) {
                   <div className="mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-slate-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
                     <item.icon
                       aria-hidden="true"
-                      className="size-6  " text-muted-foreground8906
+                      className="size-6  "
                     />
                   </div>
                   <div>
@@ -211,7 +211,7 @@ export default function TopNav({ locale }: Props) {
                       {item.name}
                       <span className="absolute inset-0" />
                     </a>
-                    <p className="mt-1  " text-muted-foreground9309>{item.description}</p>
+                    <p className="mt-1  ">{item.description}</p>
                   </div>
                 </div>
               ))}

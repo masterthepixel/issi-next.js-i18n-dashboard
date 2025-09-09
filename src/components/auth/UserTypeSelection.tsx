@@ -91,7 +91,7 @@ export default function UserTypeSelection({ locale, onSelect }: UserTypeSelectio
                     <h1 className="dark: mb-2">
                         {getLocalizedText("title") as string}
                     </h1>
-                    <p className="text-lg  " text-muted-foreground4461>
+                    <p className="text-lg  ">
                         {getLocalizedText("subtitle") as string}
                     </p>
                 </div>
