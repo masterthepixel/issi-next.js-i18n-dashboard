@@ -1,4 +1,5 @@
 'use client'
+import 'flag-icons/css/flag-icons.min.css';
 import { motion, Variants } from 'framer-motion';
 import {
   BookOpen,
@@ -79,9 +80,9 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
   const router = useRouter();
 
   const languages = [
-    { code: 'en', name: 'English', flag: '🇬🇧' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' },
-    { code: 'es', name: 'Español', flag: '🇪🇸' },
+    { code: 'en', name: 'English', flagCode: 'gb' },
+    { code: 'fr', name: 'Français', flagCode: 'fr' },
+    { code: 'es', name: 'Español', flagCode: 'es' },
   ];
 
   const currentLanguage = languages.find(lang => lang.code === locale) || languages[0];
@@ -343,14 +344,14 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
 
                 {/* Current Language Display */}
                 <DropdownMenuItem disabled>
-                  <span className="text-lg">{currentLanguage.flag}</span>
+                  <span className={`fi fi-${currentLanguage.flagCode} w-5 h-4 rounded-sm`}></span>
                   <span>{currentLanguage.name}</span>
                 </DropdownMenuItem>
 
                 {/* Language Options */}
                 {languages.filter(lang => lang.code !== locale).map((language) => (
                   <DropdownMenuItem key={language.code} onClick={() => switchLanguage(language.code)}>
-                    <span className="text-lg">{language.flag}</span>
+                    <span className={`fi fi-${language.flagCode} w-5 h-4 rounded-sm`}></span>
                     <span>{language.name}</span>
                   </DropdownMenuItem>
                 ))}
