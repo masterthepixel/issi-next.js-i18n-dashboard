@@ -19,6 +19,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import 'flag-icons/css/flag-icons.min.css';
 
 import {
   DropdownMenu,
@@ -79,9 +80,9 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
   const router = useRouter();
 
   const languages = [
-    { code: 'en', name: 'English', flag: '🇬🇧' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' },
-    { code: 'es', name: 'Español', flag: '🇪🇸' },
+    { code: 'en', name: 'English', flagCode: 'us' },
+    { code: 'fr', name: 'Français', flagCode: 'fr' },
+    { code: 'es', name: 'Español', flagCode: 'es' },
   ];
 
   const currentLanguage = languages.find(lang => lang.code === locale) || languages[0];
@@ -106,63 +107,63 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
       label: <FormattedMessage id="common.navigation.home" defaultMessage="Home" />,
       href: `/${locale}/home`,
       gradient: "radial-gradient(circle, hsl(var(--primary) / 0.15) 0%, hsl(var(--primary) / 0.06) 50%, hsl(var(--primary) / 0) 100%)",
-      iconColor: "group-hover:text-primary dark:group-hover:text-white"
+      iconColor: "text-primary group-hover:text-primary/80"
     },
     {
       icon: <Wrench className="h-5 w-5" />,
       label: <FormattedMessage id="common.navigation.services" defaultMessage="Services" />,
       href: `/${locale}/services`,
       gradient: "radial-gradient(circle, hsl(var(--secondary) / 0.15) 0%, hsl(var(--secondary) / 0.06) 50%, hsl(var(--secondary) / 0) 100%)",
-      iconColor: "group-hover:text-primary dark:group-hover:text-white"
+      iconColor: "text-primary group-hover:text-primary/80"
     },
     {
       icon: <Package className="h-5 w-5" />,
       label: <FormattedMessage id="common.navigation.products" defaultMessage="Products" />,
       href: `/${locale}/products`,
       gradient: "radial-gradient(circle, hsl(var(--accent) / 0.15) 0%, hsl(var(--accent) / 0.06) 50%, hsl(var(--accent) / 0) 100%)",
-      iconColor: "group-hover:text-primary dark:group-hover:text-white"
+      iconColor: "text-primary group-hover:text-primary/80"
     },
     {
       icon: <Building2 className="h-5 w-5" />,
       label: <FormattedMessage id="common.navigation.government" defaultMessage="Government" />,
       href: `/${locale}/government`,
       gradient: "radial-gradient(circle, hsl(var(--chart-2) / 0.15) 0%, hsl(var(--chart-2) / 0.06) 50%, hsl(var(--chart-2) / 0) 100%)",
-      iconColor: "group-hover:text-primary dark:group-hover:text-white"
+      iconColor: "text-primary group-hover:text-primary/80"
     },
     {
       icon: <GraduationCap className="h-5 w-5" />,
       label: <FormattedMessage id="common.navigation.eLearning" defaultMessage="eLearning" />,
       href: `/${locale}/eLearning`,
       gradient: "radial-gradient(circle, hsl(var(--chart-3) / 0.15) 0%, hsl(var(--chart-3) / 0.06) 50%, hsl(var(--chart-3) / 0) 100%)",
-      iconColor: "group-hover:text-primary dark:group-hover:text-white"
+      iconColor: "text-primary group-hover:text-primary/80"
     },
     {
       icon: <ShieldCheck className="h-5 w-5" />,
       label: <FormattedMessage id="common.navigation.compliance" defaultMessage="Compliance" />,
       href: `/${locale}/compliance`,
       gradient: "radial-gradient(circle, hsl(var(--chart-4) / 0.15) 0%, hsl(var(--chart-4) / 0.06) 50%, hsl(var(--chart-4) / 0) 100%)",
-      iconColor: "group-hover:text-primary dark:group-hover:text-white"
+      iconColor: "text-primary group-hover:text-primary/80"
     },
     {
       icon: <Briefcase className="h-5 w-5" />,
       label: <FormattedMessage id="common.navigation.careers" defaultMessage="Careers" />,
       href: `/${locale}/careers`,
       gradient: "radial-gradient(circle, hsl(var(--chart-1) / 0.15) 0%, hsl(var(--chart-1) / 0.06) 50%, hsl(var(--chart-1) / 0) 100%)",
-      iconColor: "group-hover:text-primary dark:group-hover:text-white"
+      iconColor: "text-primary group-hover:text-primary/80"
     },
     {
       icon: <BookOpen className="h-5 w-5" />,
       label: <FormattedMessage id="common.navigation.blog" defaultMessage="Blog" />,
       href: `/${locale}/blog`,
       gradient: "radial-gradient(circle, hsl(var(--chart-6) / 0.15) 0%, hsl(var(--chart-6) / 0.06) 50%, hsl(var(--chart-6) / 0) 100%)",
-      iconColor: "group-hover:text-primary dark:group-hover:text-white"
+      iconColor: "text-primary group-hover:text-primary/80"
     },
     {
       icon: <User className="h-5 w-5" />,
       label: <FormattedMessage id="common.navigation.about" defaultMessage="About" />,
       href: `/${locale}/about`,
       gradient: "radial-gradient(circle, hsl(var(--chart-5) / 0.15) 0%, hsl(var(--chart-5) / 0.06) 50%, hsl(var(--chart-5) / 0) 100%)",
-      iconColor: "group-hover:text-primary dark:group-hover:text-white"
+      iconColor: "text-primary group-hover:text-primary/80"
     },
   ];
 
@@ -228,7 +229,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                         {item.icon}
                       </span>
                       {item.href !== `/${locale}/home` && (
-                        <span className="hidden md:inline text-foreground dark:text-primary">{item.label}</span>
+                        <span className="hidden md:inline text-foreground">{item.label}</span>
                       )}
                     </Link>
                   </motion.div>
@@ -253,7 +254,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                         {item.icon}
                       </span>
                       {item.href !== `/${locale}/home` && (
-                        <span className="hidden md:inline text-foreground dark:text-primary">{item.label}</span>
+                        <span className="hidden md:inline text-foreground">{item.label}</span>
                       )}
                     </Link>
                   </motion.div>
@@ -344,14 +345,14 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
 
                 {/* Current Language Display */}
                 <DropdownMenuItem disabled>
-                  <span className="text-lg">{currentLanguage.flag}</span>
+                  <span className={`fi fi-${currentLanguage.flagCode} w-5 h-4 rounded-sm`}></span>
                   <span>{currentLanguage.name}</span>
                 </DropdownMenuItem>
 
                 {/* Language Options */}
                 {languages.filter(lang => lang.code !== locale).map((language) => (
                   <DropdownMenuItem key={language.code} onClick={() => switchLanguage(language.code)}>
-                    <span className="text-lg">{language.flag}</span>
+                    <span className={`fi fi-${language.flagCode} w-5 h-4 rounded-sm`}></span>
                     <span>{language.name}</span>
                   </DropdownMenuItem>
                 ))}
