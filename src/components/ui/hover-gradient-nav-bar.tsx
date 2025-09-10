@@ -185,13 +185,13 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
         initial="initial"
         whileHover="hover"
       >
-        <ul className="flex items-center justify-around md:justify-center gap-0.5 md:gap-1 relative z-10">
+        <ul className="flex items-center justify-around md:justify-center gap-0 md:gap-0 relative z-10">
           {menuItems.map((item: HoverGradientMenuItem) => {
             const isActive = pathname === item.href;
             const isServicesItem = item.href === `/${locale}/services`;
 
             return (
-              <motion.li key={item.href} className={`relative flex-1 md:flex-none ${isServicesItem ? 'ml-1 md:ml-2' : ''}`}>
+              <motion.li key={item.href} className={`relative flex-1 md:flex-none ${isServicesItem ? 'ml-0.5 md:ml-0.5' : ''}`}>
                 <motion.div
                   className={`block rounded-xl md:rounded-2xl overflow-visible group relative ${isActive ? 'bg-muted/50' : ''
                     }`}
@@ -212,7 +212,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                   <motion.div
                     className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-1.5
                     px-1.5 py-1 md:px-3 md:py-1.5 relative z-10
-                    bg-transparent text-muted-foreground
+                    bg-transparent text-foreground
                     group-hover:text-foreground
                     transition-colors rounded-xl md:rounded-2xl text-xs md:text-sm"
                     variants={itemVariants}
@@ -228,7 +228,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                         {item.icon}
                       </span>
                       {item.href !== `/${locale}/home` && (
-                        <span className="hidden md:inline font-medium">{item.label}</span>
+                        <span className="hidden md:inline">{item.label}</span>
                       )}
                     </Link>
                   </motion.div>
@@ -236,7 +236,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                   <motion.div
                     className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-1.5
                     px-1.5 py-1 md:px-3 md:py-1.5 absolute inset-0 z-10
-                    bg-transparent text-muted-foreground
+                    bg-transparent text-foreground
                     group-hover:text-foreground
                     transition-colors rounded-xl md:rounded-2xl text-xs md:text-sm"
                     variants={backVariants}
@@ -253,7 +253,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                         {item.icon}
                       </span>
                       {item.href !== `/${locale}/home` && (
-                        <span className="hidden md:inline font-medium">{item.label}</span>
+                        <span className="hidden md:inline">{item.label}</span>
                       )}
                     </Link>
                   </motion.div>
