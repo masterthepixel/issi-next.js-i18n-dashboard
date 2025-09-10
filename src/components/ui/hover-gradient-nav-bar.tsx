@@ -1,4 +1,5 @@
 'use client'
+import 'flag-icons/css/flag-icons.min.css';
 import { motion, Variants } from 'framer-motion';
 import {
   BookOpen,
@@ -19,7 +20,6 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import 'flag-icons/css/flag-icons.min.css';
 
 import {
   DropdownMenu,
