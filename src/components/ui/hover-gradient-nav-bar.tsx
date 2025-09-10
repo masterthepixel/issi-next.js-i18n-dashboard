@@ -106,63 +106,63 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
       label: <FormattedMessage id="common.navigation.home" defaultMessage="Home" />,
       href: `/${locale}/home`,
       gradient: "radial-gradient(circle, hsl(var(--primary) / 0.15) 0%, hsl(var(--primary) / 0.06) 50%, hsl(var(--primary) / 0) 100%)",
-      iconColor: "group-hover:text-primary"
+      iconColor: "group-hover:text-primary dark:group-hover:text-white"
     },
     {
       icon: <Wrench className="h-5 w-5" />,
       label: <FormattedMessage id="common.navigation.services" defaultMessage="Services" />,
       href: `/${locale}/services`,
       gradient: "radial-gradient(circle, hsl(var(--secondary) / 0.15) 0%, hsl(var(--secondary) / 0.06) 50%, hsl(var(--secondary) / 0) 100%)",
-      iconColor: "group-hover:text-secondary-foreground"
+      iconColor: "group-hover:text-primary dark:group-hover:text-white"
     },
     {
       icon: <Package className="h-5 w-5" />,
       label: <FormattedMessage id="common.navigation.products" defaultMessage="Products" />,
       href: `/${locale}/products`,
       gradient: "radial-gradient(circle, hsl(var(--accent) / 0.15) 0%, hsl(var(--accent) / 0.06) 50%, hsl(var(--accent) / 0) 100%)",
-      iconColor: "group-hover:text-accent-foreground"
+      iconColor: "group-hover:text-primary dark:group-hover:text-white"
     },
     {
       icon: <Building2 className="h-5 w-5" />,
       label: <FormattedMessage id="common.navigation.government" defaultMessage="Government" />,
       href: `/${locale}/government`,
       gradient: "radial-gradient(circle, hsl(var(--chart-2) / 0.15) 0%, hsl(var(--chart-2) / 0.06) 50%, hsl(var(--chart-2) / 0) 100%)",
-      iconColor: "group-hover:text-primary"
+      iconColor: "group-hover:text-primary dark:group-hover:text-white"
     },
     {
       icon: <GraduationCap className="h-5 w-5" />,
       label: <FormattedMessage id="common.navigation.eLearning" defaultMessage="eLearning" />,
       href: `/${locale}/eLearning`,
       gradient: "radial-gradient(circle, hsl(var(--chart-3) / 0.15) 0%, hsl(var(--chart-3) / 0.06) 50%, hsl(var(--chart-3) / 0) 100%)",
-      iconColor: "group-hover:text-primary"
+      iconColor: "group-hover:text-primary dark:group-hover:text-white"
     },
     {
       icon: <ShieldCheck className="h-5 w-5" />,
       label: <FormattedMessage id="common.navigation.compliance" defaultMessage="Compliance" />,
       href: `/${locale}/compliance`,
       gradient: "radial-gradient(circle, hsl(var(--chart-4) / 0.15) 0%, hsl(var(--chart-4) / 0.06) 50%, hsl(var(--chart-4) / 0) 100%)",
-      iconColor: "group-hover:text-primary"
+      iconColor: "group-hover:text-primary dark:group-hover:text-white"
     },
     {
       icon: <Briefcase className="h-5 w-5" />,
       label: <FormattedMessage id="common.navigation.careers" defaultMessage="Careers" />,
       href: `/${locale}/careers`,
       gradient: "radial-gradient(circle, hsl(var(--chart-1) / 0.15) 0%, hsl(var(--chart-1) / 0.06) 50%, hsl(var(--chart-1) / 0) 100%)",
-      iconColor: "group-hover:text-primary"
+      iconColor: "group-hover:text-primary dark:group-hover:text-white"
     },
     {
       icon: <BookOpen className="h-5 w-5" />,
       label: <FormattedMessage id="common.navigation.blog" defaultMessage="Blog" />,
       href: `/${locale}/blog`,
       gradient: "radial-gradient(circle, hsl(var(--chart-6) / 0.15) 0%, hsl(var(--chart-6) / 0.06) 50%, hsl(var(--chart-6) / 0) 100%)",
-      iconColor: "group-hover:text-primary"
+      iconColor: "group-hover:text-primary dark:group-hover:text-white"
     },
     {
       icon: <User className="h-5 w-5" />,
       label: <FormattedMessage id="common.navigation.about" defaultMessage="About" />,
       href: `/${locale}/about`,
       gradient: "radial-gradient(circle, hsl(var(--chart-5) / 0.15) 0%, hsl(var(--chart-5) / 0.06) 50%, hsl(var(--chart-5) / 0) 100%)",
-      iconColor: "group-hover:text-primary"
+      iconColor: "group-hover:text-primary dark:group-hover:text-white"
     },
   ];
 
@@ -228,7 +228,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                         {item.icon}
                       </span>
                       {item.href !== `/${locale}/home` && (
-                        <span className="hidden md:inline text-foreground">{item.label}</span>
+                        <span className="hidden md:inline text-foreground dark:text-primary">{item.label}</span>
                       )}
                     </Link>
                   </motion.div>
@@ -253,7 +253,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                         {item.icon}
                       </span>
                       {item.href !== `/${locale}/home` && (
-                        <span className="hidden md:inline text-foreground">{item.label}</span>
+                        <span className="hidden md:inline text-foreground dark:text-primary">{item.label}</span>
                       )}
                     </Link>
                   </motion.div>
