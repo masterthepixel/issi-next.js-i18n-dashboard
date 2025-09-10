@@ -179,24 +179,27 @@ const ISSIServicesShowcaseInternal = () => {
             <FormattedMessage id="services.showcase.subtitle" />
           </p>          {/* Category Filter */}
           <div className="flex flex-wrap justify-start gap-2 mb-8" role="tablist" aria-label="Service category filters">
-            {CATEGORIES.map((category) => (
-              <Button
-                key={category.id}
-                type="button"
-                onClick={() => setSelectedCategory(category.id)}
-                className={cn(
-                  "px-6 py-3 rounded-full  font-medium transition-all duration-300 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary",
-                  getButtonColors(category.id, selectedCategory === category.id)
-                )}
-                role="tab"
-                aria-selected={selectedCategory === category.id ? "true" : "false"}
-                aria-controls={`services-${category.id}`}
-                tabIndex={selectedCategory === category.id ? 0 : -1}
-                title={intl.formatMessage({ id: category.label })}
-              >
-                <FormattedMessage id={category.label} />
-              </Button>
-            ))}
+            {CATEGORIES.map((category) => {
+              const isSelected = selectedCategory === category.id;
+              return (
+                <Button
+                  key={category.id}
+                  type="button"
+                  onClick={() => setSelectedCategory(category.id)}
+                  className={cn(
+                    "px-6 py-3 rounded-full  font-medium transition-all duration-300 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary",
+                    getButtonColors(category.id, isSelected)
+                  )}
+                  role="tab"
+                  {...(isSelected ? { 'aria-selected': true } : { 'aria-selected': false })}
+                  aria-controls={`services-${category.id}`}
+                  tabIndex={isSelected ? 0 : -1}
+                  title={intl.formatMessage({ id: category.label })}
+                >
+                  <FormattedMessage id={category.label} />
+                </Button>
+              );
+            })}
           </div>
         </div>        {/* Bento Grid Layout */}
         {isLoaded && (

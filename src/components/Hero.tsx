@@ -112,6 +112,8 @@ export default function Hero({ lang: _lang = "en" }: HeroProps) {
                 height={1442}
                 className="w-full max-w-[76rem] rounded-md shadow-2xl ring-1 ring-border"
                 priority
+                fetchPriority="high"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 76rem"
               />
             </div>
           </div>

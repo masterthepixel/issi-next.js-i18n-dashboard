@@ -222,7 +222,11 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                       transformOrigin: "center bottom"
                     }}
                   >
-                    <Link href={item.href} className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1.5 no-underline">
+                    <Link
+                      href={item.href}
+                      className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1.5 no-underline"
+                      aria-label={typeof item.label === 'string' ? item.label : `Navigate to ${item.href.split('/').pop()}`}
+                    >
                       <span className={`transition-colors duration-300 ${item.iconColor} ${isActive ? 'text-foreground' : ''
                         }`}>
                         {item.icon}
@@ -247,7 +251,11 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                       transform: "rotateX(90deg)"
                     }}
                   >
-                    <Link href={item.href} className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1.5 no-underline">
+                    <Link
+                      href={item.href}
+                      className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1.5 no-underline"
+                      aria-label={typeof item.label === 'string' ? item.label : `Navigate to ${item.href.split('/').pop()}`}
+                    >
                       <span className={`transition-colors duration-300 ${item.iconColor} ${isActive ? 'text-foreground' : ''
                         }`}>
                         {item.icon}
@@ -266,58 +274,66 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
           <motion.li className="relative flex-1 md:flex-none">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <motion.div
-                  className="block rounded-xl md:rounded-2xl overflow-visible group relative cursor-pointer"
+                <button
+                  className="block rounded-xl md:rounded-2xl overflow-visible group relative cursor-pointer border-0 bg-transparent"
                   style={{ perspective: "600px" }}
-                  whileHover="hover"
-                  initial="initial"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  aria-label="Open navigation menu"
+                  type="button"
                 >
-                  {/* Per-item glow */}
                   <motion.div
-                    className="absolute inset-0 z-0 pointer-events-none rounded-xl md:rounded-2xl"
-                    variants={glowVariants}
-                    style={{
-                      background: "radial-gradient(circle, hsl(var(--muted) / 0.15) 0%, hsl(var(--muted) / 0.06) 50%, hsl(var(--muted) / 0) 100%)",
-                    }}
-                  />
-                  {/* Front-facing */}
-                  <motion.div
-                    className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-1.5
-                    px-1.5 py-1 md:px-3 md:py-1.5 relative z-10
-                    bg-transparent text-muted-foreground
-                    group-hover:text-foreground
-                    transition-colors rounded-xl md:rounded-2xl text-xs md:text-sm"
-                    variants={itemVariants}
-                    transition={sharedTransition}
-                    style={{
-                      transformStyle: "preserve-3d",
-                      transformOrigin: "center bottom"
-                    }}
+                    className="w-full h-full"
+                    whileHover="hover"
+                    initial="initial"
                   >
-                    <span className="transition-colors duration-300 group-hover:text-primary">
-                      <Menu className="h-5 w-5" />
-                    </span>
+                    {/* Per-item glow */}
+                    <motion.div
+                      className="absolute inset-0 z-0 pointer-events-none rounded-xl md:rounded-2xl"
+                      variants={glowVariants}
+                      style={{
+                        background: "radial-gradient(circle, hsl(var(--muted) / 0.15) 0%, hsl(var(--muted) / 0.06) 50%, hsl(var(--muted) / 0) 100%)",
+                      }}
+                    />
+                    {/* Front-facing */}
+                    <motion.div
+                      className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-1.5
+                      px-1.5 py-1 md:px-3 md:py-1.5 relative z-10
+                      bg-transparent text-muted-foreground
+                      group-hover:text-foreground
+                      transition-colors rounded-xl md:rounded-2xl text-xs md:text-sm"
+                      variants={itemVariants}
+                      transition={sharedTransition}
+                      style={{
+                        transformStyle: "preserve-3d",
+                        transformOrigin: "center bottom"
+                      }}
+                    >
+                      <span className="transition-colors duration-300 group-hover:text-primary">
+                        <Menu className="h-5 w-5" />
+                      </span>
+                    </motion.div>
+                    {/* Back-facing */}
+                    <motion.div
+                      className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-1.5
+                      px-1.5 py-1 md:px-3 md:py-1.5 absolute inset-0 z-10
+                      bg-transparent text-muted-foreground
+                      group-hover:text-foreground
+                      transition-colors rounded-xl md:rounded-2xl text-xs md:text-sm"
+                      variants={backVariants}
+                      transition={sharedTransition}
+                      style={{
+                        transformStyle: "preserve-3d",
+                        transformOrigin: "center top",
+                        transform: "rotateX(90deg)"
+                      }}
+                    >
+                      <span className="transition-colors duration-300 group-hover:text-primary">
+                        <Menu className="h-5 w-5" />
+                      </span>
+                    </motion.div>
                   </motion.div>
-                  {/* Back-facing */}
-                  <motion.div
-                    className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-1.5
-                    px-1.5 py-1 md:px-3 md:py-1.5 absolute inset-0 z-10
-                    bg-transparent text-muted-foreground
-                    group-hover:text-foreground
-                    transition-colors rounded-xl md:rounded-2xl text-xs md:text-sm"
-                    variants={backVariants}
-                    transition={sharedTransition}
-                    style={{
-                      transformStyle: "preserve-3d",
-                      transformOrigin: "center top",
-                      transform: "rotateX(90deg)"
-                    }}
-                  >
-                    <span className="transition-colors duration-300 group-hover:text-primary">
-                      <Menu className="h-5 w-5" />
-                    </span>
-                  </motion.div>
-                </motion.div>
+                </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
                 {/* Sign In */}
@@ -361,7 +377,11 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                 {/* Additional Menu Items */}
                 {additionalMenuItems.map((item) => (
                   <DropdownMenuItem key={item.href} asChild>
-                    <Link href={item.href} className="flex items-center gap-2 no-underline">
+                    <Link
+                      href={item.href}
+                      className="flex items-center gap-2 no-underline"
+                      aria-label={typeof item.label === 'string' ? item.label : `Navigate to ${item.href.split('/').pop()}`}
+                    >
                       {item.icon}
                       <span>{item.label}</span>
                     </Link>

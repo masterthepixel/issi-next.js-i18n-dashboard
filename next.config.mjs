@@ -39,10 +39,15 @@ const nextConfig = {
       },
     ],
     formats: ['image/webp', 'image/avif'],
+    minimumCacheTTL: 31536000, // 1 year
   },
 
+  // Performance optimizations
+  poweredByHeader: false,
+  compress: true,
+
   // Build optimizations
-  webpack: (config, { dev, isServer, defaultLoaders, webpack }) => {
+  webpack: (config, { dev, isServer, webpack }) => {
     // React Three Fiber compatibility fix for React 18.3+
     config.resolve.alias = {
       ...config.resolve.alias,
@@ -56,28 +61,51 @@ const nextConfig = {
       })
     );
 
-    // Optimize bundle splitting for better caching (only in production)
+    // Optimize bundle splitting for better caching and reduce main thread blocking
     if (!dev && !isServer) {
       config.optimization.splitChunks = {
         ...config.optimization.splitChunks,
+        chunks: 'all',
         cacheGroups: {
           ...config.optimization.splitChunks.cacheGroups,
+          // Separate vendor libraries to reduce main bundle size
+          vendor: {
+            name: 'vendor',
+            test: /[\\/]node_modules[\\/]/,
+            chunks: 'all',
+            priority: 10,
+            maxSize: 200000, // Split large vendor bundles
+          },
           // Separate three.js and related 3D libraries
           three: {
             name: 'three',
-            test: /[\/]node_modules[\/](three|@react-three|cobe|react-globe\.gl|three-globe)[\/]/,
+            test: /[\\/]node_modules[\\/](three|@react-three|cobe|react-globe\.gl|three-globe)[\\/]/,
             chunks: 'all',
             priority: 20,
+            maxSize: 150000,
           },
           // Separate UI libraries
           ui: {
             name: 'ui',
-            test: /[\/]node_modules[\/](lucide-react|@heroicons|@headlessui|@radix-ui)[\/]/,
+            test: /[\\/]node_modules[\\/](lucide-react|@heroicons|@headlessui|@radix-ui)[\\/]/,
             chunks: 'all',
             priority: 15,
+            maxSize: 100000,
+          },
+          // Separate i18n libraries
+          i18n: {
+            name: 'i18n',
+            test: /[\\/]node_modules[\\/](react-intl|@formatjs)[\\/]/,
+            chunks: 'all',
+            priority: 12,
+            maxSize: 80000,
           },
         },
       };
+
+      // Additional optimizations to reduce main thread blocking
+      config.optimization.minimize = true;
+      config.optimization.sideEffects = false;
     }
 
     return config;
@@ -104,7 +132,15 @@ const nextConfig = {
       'lucide-react',
       '@heroicons/react',
       'three',
+      'react-intl',
+      '@formatjs/icu-messageformat-parser',
     ],
+    // Enable new optimizations (disabled optimizeCss due to critters dependency)
+    gzipSize: true,
+    // Reduce JavaScript bundle size
+    esmExternals: true,
+    // Improve hydration performance
+    optimizeServerReact: true,
   },
 };
 

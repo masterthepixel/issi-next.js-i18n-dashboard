@@ -26,7 +26,22 @@ export default async function Root({ params, children }: Props) {
 
   return (
     <html lang={lang} className={`h-full ${fontClassNames}`}>
-      <head />
+      <head>
+        {/* Performance optimizations */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://tailwindcss.com" />
+
+        {/* Critical CSS inlining hint */}
+        <link rel="preload" href="/images/project-app-screenshot.png" as="image" fetchPriority="high" />
+
+        {/* Viewport optimization */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+        {/* Performance hints */}
+        <meta httpEquiv="x-dns-prefetch-control" content="on" />
+      </head>
       <body className="relative min-h-screen overflow-y-auto overflow-x-visible grid-background-with-fade flex flex-col debug-screens">
         <ClientLayout
           lang={lang}
