@@ -13,7 +13,7 @@ const API_BASE_URL = "/api";
 
 export interface JobSearchParams {
   q?: string; // keyword search
-  employmentType?: string; // job type filter
+  employmentType?: string | string[]; // job type filter - can be single string or array
   location?: string; // location filter  
   salaryFrom?: number; // minimum salary
   salaryTo?: number; // maximum salary
@@ -50,13 +50,21 @@ const searchJobs = async (params: JobSearchParams = {}): Promise<JobSearchResult
     searchParams.set("where[or][1][jobDescription][contains]", params.q);
   }
 
-  // Add employment type filter
-  if (params.employmentType && params.employmentType !== "") {
-    searchParams.set("where[employmentType][equals]", params.employmentType);
+  // Add employment type filter - handle both single string and array
+  if (params.employmentType) {
+    if (Array.isArray(params.employmentType) && params.employmentType.length > 0) {
+      // Multiple employment types - create OR conditions
+      params.employmentType.forEach((type, index) => {
+        searchParams.set(`where[or][${index}][employmentType][equals]`, type);
+      });
+    } else if (typeof params.employmentType === 'string' && params.employmentType !== "") {
+      // Single employment type
+      searchParams.set("where[employmentType][equals]", params.employmentType);
+    }
   }
 
   // Add location filter
-  if (params.location && params.location !== "" && params.location !== "worldwide") {
+  if (params.location && params.location !== "" && params.location !== "remote" && params.location !== "worldwide") {
     searchParams.set("where[location][contains]", params.location);
   }
 

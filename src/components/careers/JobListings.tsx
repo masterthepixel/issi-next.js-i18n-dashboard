@@ -43,7 +43,7 @@ export default function JobListings({
         page: currentPage,
         limit: 7, // Match reference implementation
         q: keyword || undefined,
-        employmentType: employmentType.length > 0 ? employmentType[0] : undefined, // Take first employment type for now
+        employmentType: employmentType.length > 0 ? employmentType : undefined, // Pass all employment types
         location: location || undefined,
         salaryFrom: minSalary ? parseInt(minSalary) : undefined,
         salaryTo: maxSalary ? parseInt(maxSalary) : undefined,
