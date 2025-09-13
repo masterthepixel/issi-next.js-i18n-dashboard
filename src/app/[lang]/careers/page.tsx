@@ -1,15 +1,19 @@
-import { Suspense } from "react";
-import { Locale } from "@/lib/definitions";
-import { getIntl } from "@/lib/intl";
-import ErrorBoundary from "@/components/ErrorBoundary";
+import APIErrorBoundary from "@/components/APIErrorBoundary";
 import { JobFilters } from "@/components/careers/JobFilters";
 import JobListings from "@/components/careers/JobListings";
 import JobListingsLoading from "@/components/careers/JobListingsLoading";
+import ErrorBoundary from "@/components/ErrorBoundary";
+import { Locale } from "@/lib/definitions";
+import { getIntl } from "@/lib/intl";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Careers - ISSI - International Software Systems International",
   description: "Join ISSI's team of talented professionals. Explore career opportunities and grow with us in software development and technology.",
 };
+
+// ISR: Regenerate page every 5 minutes (300 seconds)
+export const revalidate = 300;
 
 interface SearchParamsProps {
   params: Promise<{
@@ -28,7 +32,7 @@ interface SearchParamsProps {
 export default async function CareersPage({ params, searchParams }: SearchParamsProps) {
   const { lang } = await params;
   const searchParamsResolved = await searchParams;
-  
+
   const intl = await getIntl(lang);
 
   const currentPage = Number(searchParamsResolved.page) || 1;
@@ -47,15 +51,15 @@ export default async function CareersPage({ params, searchParams }: SearchParams
         {/* Page Header */}
         <div className="mb-8">
           <h1 className="mb-2">
-            {intl.formatMessage({ 
-              id: "careers.title", 
-              defaultMessage: "Career Opportunities" 
+            {intl.formatMessage({
+              id: "careers.title",
+              defaultMessage: "Career Opportunities"
             })}
           </h1>
           <p className="text-muted-foreground text-lg">
-            {intl.formatMessage({ 
-              id: "careers.description", 
-              defaultMessage: "Discover your next career opportunity with ISSI. Join our team of talented professionals building innovative software solutions." 
+            {intl.formatMessage({
+              id: "careers.description",
+              defaultMessage: "Discover your next career opportunity with ISSI. Join our team of talented professionals building innovative software solutions."
             })}
           </p>
         </div>
@@ -63,18 +67,20 @@ export default async function CareersPage({ params, searchParams }: SearchParams
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <JobFilters locale={lang} />
-          
+
           <div className="col-span-1 lg:col-span-2 flex flex-col gap-6">
             <Suspense key={filterKey} fallback={<JobListingsLoading />}>
-              <JobListingsClient 
-                currentPage={currentPage}
-                employmentType={employmentTypes}
-                location={location}
-                keyword={keyword}
-                minSalary={minSalary}
-                maxSalary={maxSalary}
-                locale={lang}
-              />
+              <APIErrorBoundary>
+                <JobListingsClient
+                  currentPage={currentPage}
+                  employmentType={employmentTypes}
+                  location={location}
+                  keyword={keyword}
+                  minSalary={minSalary}
+                  maxSalary={maxSalary}
+                  locale={lang}
+                />
+              </APIErrorBoundary>
             </Suspense>
           </div>
         </div>

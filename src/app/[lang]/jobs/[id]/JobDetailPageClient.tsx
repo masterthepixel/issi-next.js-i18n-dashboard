@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useIntl } from "react-intl";
 
@@ -43,6 +44,7 @@ function RichTextRenderer({ content }: { content: JobPost['jobDescription'] }) {
 }
 
 function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) {
+  const router = useRouter();
   const intl = useIntl();
   const [showApplicationForm, setShowApplicationForm] = useState(false);
 
@@ -54,7 +56,7 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
           text: `Check out this job opportunity: ${job.jobTitle} at ${job.company.name}`,
           url: window.location.href,
         });
-      } catch (err) {
+      } catch {
         // Fallback to copying to clipboard
         navigator.clipboard?.writeText(window.location.href);
       }
@@ -68,11 +70,9 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
     <div className="container mx-auto px-4 py-8">
       {/* Back to Jobs Link */}
       <div className="mb-6">
-        <Button variant="ghost" asChild className="p-0">
-          <Link href="/jobs">
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            {intl.formatMessage({ id: "jobs.backToJobs", defaultMessage: "Back to Jobs" })}
-          </Link>
+        <Button variant="ghost" className="p-0" onClick={() => router.push(`/${locale}/careers`)}>
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          {intl.formatMessage({ id: "jobs.backToJobs", defaultMessage: "Back to Jobs" })}
         </Button>
       </div>
 

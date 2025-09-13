@@ -1,10 +1,15 @@
 "use client";
 
-import { JobAPIError, handleResponse } from "./jobs";
 import type { Job, JobsResponse } from "@/lib/schemas/job";
+import {
+  transformJobFromPayload,
+  transformJobsResponseFromPayload
+} from "@/lib/utils/data-transforms";
+import { cache } from "react";
+import { handleResponse } from "./jobs";
 
 // API Base URL
-const API_BASE_URL = "https://issi-dashboard-payloadcms.vercel.app/api";
+const API_BASE_URL = "/api";
 
 export interface JobSearchParams {
   q?: string; // keyword search
@@ -30,89 +35,103 @@ export interface JobSearchResult {
 }
 
 
-// Careers Search API Functions
-export const careersAPI = {
-  // Search jobs with filters
-  async searchJobs(params: JobSearchParams = {}): Promise<JobSearchResult> {
-    const searchParams = new URLSearchParams();
-    
-    // Set default pagination
-    searchParams.set("page", (params.page || 1).toString());
-    searchParams.set("limit", (params.limit || 10).toString());
-    
-    // Add status filter to only show active jobs
-    searchParams.set("where[status][equals]", "ACTIVE");
-    
-    // Add keyword search
-    if (params.q && params.q.trim()) {
-      // Search in both job title and description
-      searchParams.set("where[or][0][jobTitle][contains]", params.q);
-      searchParams.set("where[or][1][jobDescription][contains]", params.q);
-    }
-    
-    // Add employment type filter
-    if (params.employmentType && params.employmentType !== "") {
-      searchParams.set("where[employmentType][equals]", params.employmentType);
-    }
-    
-    // Add location filter
-    if (params.location && params.location !== "" && params.location !== "worldwide") {
-      searchParams.set("where[location][contains]", params.location);
-    }
-    
-    // Add salary range filter
-    if (params.salaryFrom) {
-      searchParams.set("where[salaryFrom][greater_than_equal]", params.salaryFrom.toString());
-    }
-    if (params.salaryTo) {
-      searchParams.set("where[salaryTo][less_than_equal]", params.salaryTo.toString());
-    }
-    
-    // Add benefits filter
-    if (params.benefits && params.benefits.trim()) {
-      searchParams.set("where[benefits][contains]", params.benefits);
-    }
-    
-    // Include company data
-    searchParams.set("depth", "1");
-    
-    const response = await fetch(
-      `${API_BASE_URL}/jobposts?${searchParams.toString()}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    
-    const result: JobsResponse = await handleResponse<JobsResponse>(response);
-    
-    // Transform to expected format
-    return {
-      jobs: result.docs,
-      pagination: {
-        totalDocs: result.totalDocs,
-        limit: result.limit,
-        page: result.page,
-        totalPages: result.totalPages,
-        hasNextPage: result.hasNextPage,
-        hasPrevPage: result.hasPrevPage,
-      },
-    };
-  },
+// Cached API functions to prevent duplicate requests
+const searchJobs = async (params: JobSearchParams = {}): Promise<JobSearchResult> => {
+  const searchParams = new URLSearchParams();
 
-  // Get job by ID (reuse from jobs API)
-  async getJob(id: string): Promise<Job> {
-    const response = await fetch(`${API_BASE_URL}/jobposts/${id}`, {
+  // Set default pagination
+  searchParams.set("page", (params.page || 1).toString());
+  searchParams.set("limit", (params.limit || 10).toString());
+
+  // Add keyword search
+  if (params.q && params.q.trim()) {
+    // Search in both job title and description
+    searchParams.set("where[or][0][jobTitle][contains]", params.q);
+    searchParams.set("where[or][1][jobDescription][contains]", params.q);
+  }
+
+  // Add employment type filter
+  if (params.employmentType && params.employmentType !== "") {
+    searchParams.set("where[employmentType][equals]", params.employmentType);
+  }
+
+  // Add location filter
+  if (params.location && params.location !== "" && params.location !== "worldwide") {
+    searchParams.set("where[location][contains]", params.location);
+  }
+
+  // Add salary range filter
+  if (params.salaryFrom) {
+    searchParams.set("where[salaryFrom][greater_than_equal]", params.salaryFrom.toString());
+  }
+  if (params.salaryTo) {
+    searchParams.set("where[salaryTo][less_than_equal]", params.salaryTo.toString());
+  }
+
+  // Add benefits filter
+  if (params.benefits && params.benefits.trim()) {
+    searchParams.set("where[benefits][contains]", params.benefits);
+  }
+
+  // Include company data
+  searchParams.set("depth", "1");
+
+  const url = `${API_BASE_URL}/jobposts?${searchParams.toString()}`;
+
+  try {
+    const response = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     });
-    
-    return handleResponse<Job>(response);
-  },
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`API Error: ${response.status} - ${errorText}`);
+    }
+
+    const result: JobsResponse = await response.json();
+
+    // Transform to expected format
+    const transformedResult = transformJobsResponseFromPayload(result);
+    return {
+      jobs: transformedResult.docs,
+      pagination: {
+        totalDocs: transformedResult.totalDocs,
+        limit: transformedResult.limit,
+        page: transformedResult.page,
+        totalPages: transformedResult.totalPages,
+        hasNextPage: transformedResult.hasNextPage,
+        hasPrevPage: transformedResult.hasPrevPage,
+      },
+    };
+  } catch (error) {
+    console.error("Error in searchJobs:", error);
+    throw error;
+  }
+};
+
+const cachedGetJob = cache(async (id: string): Promise<Job> => {
+  const response = await fetch(`${API_BASE_URL}/jobposts/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    next: { revalidate: 300 }, // Cache for 5 minutes
+  });
+
+  const job = await handleResponse<Record<string, unknown>>(response);
+  return transformJobFromPayload(job);
+});
+
+// Careers Search API Functions
+export const careersAPI = {
+  // Search jobs with filters
+  searchJobs,
+
+  // Get job by ID
+  getJob: cachedGetJob,
 
   // Get distinct employment types for filter options
   async getEmploymentTypes(): Promise<string[]> {
@@ -128,7 +147,7 @@ export const careersAPI = {
     return [
       "Remote",
       "New York, NY",
-      "San Francisco, CA", 
+      "San Francisco, CA",
       "Los Angeles, CA",
       "Chicago, IL",
       "Seattle, WA",

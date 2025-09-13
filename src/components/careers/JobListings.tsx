@@ -1,11 +1,9 @@
 "use client";
 
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { careersAPI, mockJobSearchData } from "@/lib/api/careers";
+import { careersAPI } from "@/lib/api/careers";
 import type { Job } from "@/lib/schemas/job";
-import { AlertCircle, Loader2 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Loader2 } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 import { EmptyState } from "./EmptyState";
 import { JobCard } from "./JobCard";
@@ -34,22 +32,21 @@ export default function JobListings({
   const [jobs, setJobs] = useState<Job[]>([]);
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<Error | null>(null);
   const [totalJobs, setTotalJobs] = useState(0);
 
-  const fetchJobs = async () => {
+  const fetchJobs = useCallback(async () => {
     setIsLoading(true);
-    setError(null);
 
     try {
       const searchParams = {
         page: currentPage,
         limit: 7, // Match reference implementation
         q: keyword || undefined,
-        employmentType: employmentType.length > 0 ? employmentType.join(",") : undefined,
+        employmentType: employmentType.length > 0 ? employmentType[0] : undefined, // Take first employment type for now
         location: location || undefined,
-        minSalary: minSalary ? parseInt(minSalary) : undefined,
-        maxSalary: maxSalary ? parseInt(maxSalary) : undefined,
+        salaryFrom: minSalary ? parseInt(minSalary) : undefined,
+        salaryTo: maxSalary ? parseInt(maxSalary) : undefined,
       };
 
       // Filter out undefined values
@@ -57,38 +54,34 @@ export default function JobListings({
         Object.entries(searchParams).filter(([_, value]) => value !== undefined)
       );
 
-      const result = await careersAPI.searchJobs(cleanedParams);
+      try {
+        const result = await careersAPI.searchJobs(cleanedParams);
 
-      setJobs(result.jobs);
-      setTotalPages(result.pagination.totalPages);
-      setTotalJobs(result.pagination.totalDocs);
-    } catch (err) {
-      console.error("Error fetching jobs:", err);
-
-      // Fallback to mock data in development
-      if (process.env.NODE_ENV === 'development') {
-        console.log("Using mock data for development");
-        setJobs(mockJobSearchData);
-        setTotalPages(1);
-        setTotalJobs(mockJobSearchData.length);
-      } else {
-        setError(err instanceof Error ? err.message : "Failed to fetch jobs");
-        setJobs([]);
-        setTotalPages(1);
-        setTotalJobs(0);
+        setJobs(result.jobs);
+        setTotalPages(result.pagination.totalPages);
+        setTotalJobs(result.pagination.totalDocs);
+      } catch (apiError) {
+        console.error("JobListings: API call failed:", apiError);
+        throw apiError;
       }
+    } catch (err) {
+      console.error("JobListings: Error fetching jobs:", err);
+      const error = err instanceof Error ? err : new Error("Failed to fetch jobs");
+      setError(error);
     } finally {
       setIsLoading(false);
     }
-  };
-
-  useEffect(() => {
-    fetchJobs();
   }, [currentPage, employmentType, location, keyword, minSalary, maxSalary]);
 
-  const handleRetry = () => {
+  useEffect(() => {
+    console.log("JobListings: useEffect triggered, calling fetchJobs");
     fetchJobs();
-  };
+  }, [fetchJobs]);
+
+  // Throw error during render so the error boundary can catch it
+  if (error) {
+    throw error;
+  }
 
   if (isLoading) {
     return (
@@ -104,22 +97,6 @@ export default function JobListings({
             </p>
           </div>
         </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="space-y-6">
-        <Alert variant="destructive">
-          <AlertCircle className="h-4 w-4" />
-          <AlertDescription className="flex items-center justify-between">
-            <span>{error}</span>
-            <Button variant="outline" size="sm" onClick={handleRetry}>
-              {intl.formatMessage({ id: "common.retry", defaultMessage: "Retry" })}
-            </Button>
-          </AlertDescription>
-        </Alert>
       </div>
     );
   }
