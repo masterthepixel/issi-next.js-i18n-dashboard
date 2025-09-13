@@ -53,10 +53,8 @@ const searchJobs = async (params: JobSearchParams = {}): Promise<JobSearchResult
   // Add employment type filter - handle both single string and array
   if (params.employmentType) {
     if (Array.isArray(params.employmentType) && params.employmentType.length > 0) {
-      // Multiple employment types - create OR conditions
-      params.employmentType.forEach((type, index) => {
-        searchParams.set(`where[or][${index}][employmentType][equals]`, type);
-      });
+      // Multiple employment types - use 'in' operator
+      searchParams.set("where[employmentType][in]", JSON.stringify(params.employmentType));
     } else if (typeof params.employmentType === 'string' && params.employmentType !== "") {
       // Single employment type
       searchParams.set("where[employmentType][equals]", params.employmentType);
