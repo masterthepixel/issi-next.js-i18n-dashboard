@@ -47,10 +47,10 @@ export default async function CareersPage({ params, searchParams }: SearchParams
 
   return (
     <ErrorBoundary>
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Page Header */}
         <div className="mb-8">
-          <h1 className="mb-2">
+          <h1 className="text-3xl font-bold tracking-tight mb-2">
             {intl.formatMessage({
               id: "careers.title",
               defaultMessage: "Career Opportunities"
