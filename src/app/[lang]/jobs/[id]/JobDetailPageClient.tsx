@@ -67,7 +67,7 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 max-w-7xl">
       {/* Back to Jobs Link */}
       <div className="mb-6">
         <Button variant="ghost" className="p-0" onClick={() => router.push(`/${locale}/careers`)}>
@@ -135,6 +135,22 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
                   }, { time: getTimeAgo(job.createdAt) })}
                 </div>
               </div>
+
+              {/* Benefits & Perks */}
+              {job.benefits && job.benefits.length > 0 && (
+                <div className="pt-4">
+                  <h4 className="text-sm font-medium text-muted-foreground mb-2">
+                    {intl.formatMessage({ id: "jobs.benefits", defaultMessage: "Benefits & Perks" })}
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {job.benefits.map((benefit) => (
+                      <Badge key={benefit} variant="outline">
+                        {formatBenefit(benefit)}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              )}
             </CardHeader>
           </Card>
 
@@ -149,26 +165,6 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
               <RichTextRenderer content={job.jobDescription} />
             </CardContent>
           </Card>
-
-          {/* Benefits */}
-          {job.benefits && job.benefits.length > 0 && (
-            <Card>
-              <CardHeader>
-                <CardTitle>
-                  {intl.formatMessage({ id: "jobs.benefits", defaultMessage: "Benefits & Perks" })}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {job.benefits.map((benefit) => (
-                    <Badge key={benefit} variant="outline">
-                      {formatBenefit(benefit)}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          )}
         </div>
 
         {/* Sidebar */}
@@ -239,48 +235,6 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
                     </Link>
                   </div>
                 )}
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Job Details */}
-          <Card>
-            <CardHeader>
-              <CardTitle>
-                {intl.formatMessage({ id: "jobs.jobDetails", defaultMessage: "Job Details" })}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">
-                  {intl.formatMessage({ id: "jobs.employmentType", defaultMessage: "Employment Type" })}
-                </span>
-                <span>{formatEmploymentType(job.employmentType)}</span>
-              </div>
-
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">
-                  {intl.formatMessage({ id: "jobs.location", defaultMessage: "Location" })}
-                </span>
-                <span>{job.location}</span>
-              </div>
-
-              {(job.salaryFrom || job.salaryTo) && (
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">
-                    {intl.formatMessage({ id: "jobs.salary", defaultMessage: "Salary" })}
-                  </span>
-                  <span className="font-medium">
-                    {formatSalary(job.salaryFrom, job.salaryTo)}
-                  </span>
-                </div>
-              )}
-
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">
-                  {intl.formatMessage({ id: "jobs.posted", defaultMessage: "Posted" })}
-                </span>
-                <span>{getTimeAgo(job.createdAt)}</span>
               </div>
             </CardContent>
           </Card>
