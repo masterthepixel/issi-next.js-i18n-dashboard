@@ -18,6 +18,7 @@ export interface JobSearchParams {
   salaryFrom?: number; // minimum salary
   salaryTo?: number; // maximum salary
   benefits?: string; // benefits filter
+  sort?: string; // date sorting filter
   page?: number; // pagination
   limit?: number; // page size
 }
@@ -43,21 +44,27 @@ const searchJobs = async (params: JobSearchParams = {}): Promise<JobSearchResult
   searchParams.set("page", (params.page || 1).toString());
   searchParams.set("limit", (params.limit || 10).toString());
 
-  // Add keyword search
+  // Add keyword search - try where syntax with like operator
   if (params.q && params.q.trim()) {
-    // Search in both job title and description
-    searchParams.set("where[or][0][jobTitle][contains]", params.q);
-    searchParams.set("where[or][1][jobDescription][contains]", params.q);
+    // Try searching in job title with like operator
+    searchParams.set("where[jobTitle][like]", params.q);
   }
 
-  // Add employment type filter - handle both single string and array
+  // Add employment type filter
   if (params.employmentType) {
     if (Array.isArray(params.employmentType) && params.employmentType.length > 0) {
-      // Multiple employment types - use 'in' operator
-      searchParams.set("where[employmentType][in]", JSON.stringify(params.employmentType));
+      if (params.employmentType.length === 1) {
+        // Single employment type passed as array
+        searchParams.set("employmentType", params.employmentType[0]);
+      } else {
+        // Multiple employment types - add multiple parameters with same name
+        params.employmentType.forEach(type => {
+          searchParams.append("employmentType", type);
+        });
+      }
     } else if (typeof params.employmentType === 'string' && params.employmentType !== "") {
-      // Single employment type
-      searchParams.set("where[employmentType][equals]", params.employmentType);
+      // Single employment type as string
+      searchParams.set("employmentType", params.employmentType);
     }
   }
 
@@ -77,6 +84,41 @@ const searchJobs = async (params: JobSearchParams = {}): Promise<JobSearchResult
   // Add benefits filter
   if (params.benefits && params.benefits.trim()) {
     searchParams.set("where[benefits][contains]", params.benefits);
+  }
+
+  // Add date sorting and filtering
+  if (params.sort) {
+    const now = new Date();
+    let dateFilter: Date | null = null;
+
+    switch (params.sort) {
+      case "1day":
+        dateFilter = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+        break;
+      case "1week":
+        dateFilter = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+        break;
+      case "1month":
+        dateFilter = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+        break;
+      case "1year":
+        dateFilter = new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000);
+        break;
+      default:
+        // "new" or empty - sort by newest first
+        searchParams.set("sort", "-createdAt");
+        break;
+    }
+
+    // For date filtering, we'll handle it on the frontend since PayloadCMS might not support complex date queries
+    // Just sort by newest for all cases
+    if (dateFilter) {
+      searchParams.set("sort", "-createdAt");
+      // Note: Date filtering will be handled in the frontend
+    }
+  } else {
+    // Default sorting by newest first if no sort specified
+    searchParams.set("sort", "-createdAt");
   }
 
   // Include company data

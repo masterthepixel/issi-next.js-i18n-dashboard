@@ -16,6 +16,7 @@ interface JobListingsProps {
   keyword?: string;
   minSalary?: string;
   maxSalary?: string;
+  sort?: string;
   locale?: string;
 }
 
@@ -26,6 +27,7 @@ export default function JobListings({
   keyword = "",
   minSalary = "",
   maxSalary = "",
+  sort = "",
   locale = "en",
 }: JobListingsProps) {
   const intl = useIntl();
@@ -47,6 +49,7 @@ export default function JobListings({
         location: location || undefined,
         salaryFrom: minSalary ? parseInt(minSalary) : undefined,
         salaryTo: maxSalary ? parseInt(maxSalary) : undefined,
+        sort: sort || undefined,
       };
 
       // Filter out undefined values
@@ -57,9 +60,39 @@ export default function JobListings({
       try {
         const result = await careersAPI.searchJobs(cleanedParams);
 
-        setJobs(result.jobs);
+        let filteredJobs = result.jobs;
+
+        // Apply date filtering on the frontend if sort parameter specifies a date range
+        if (sort && sort !== "") {
+          const now = new Date();
+          let dateThreshold: Date | null = null;
+
+          switch (sort) {
+            case "1day":
+              dateThreshold = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+              break;
+            case "1week":
+              dateThreshold = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+              break;
+            case "1month":
+              dateThreshold = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+              break;
+            case "1year":
+              dateThreshold = new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000);
+              break;
+          }
+
+          if (dateThreshold) {
+            filteredJobs = result.jobs.filter(job => {
+              const jobDate = new Date(job.createdAt);
+              return jobDate >= dateThreshold!;
+            });
+          }
+        }
+
+        setJobs(filteredJobs);
         setTotalPages(result.pagination.totalPages);
-        setTotalJobs(result.pagination.totalDocs);
+        setTotalJobs(filteredJobs.length); // Update total count based on filtered results
       } catch (apiError) {
         console.error("JobListings: API call failed:", apiError);
         throw apiError;
@@ -71,7 +104,7 @@ export default function JobListings({
     } finally {
       setIsLoading(false);
     }
-  }, [currentPage, employmentType, location, keyword, minSalary, maxSalary]);
+  }, [currentPage, employmentType, location, keyword, minSalary, maxSalary, sort]);
 
   useEffect(() => {
     console.log("JobListings: useEffect triggered, calling fetchJobs");
@@ -129,7 +162,7 @@ export default function JobListings({
 
       {jobs.length > 0 ? (
         <div className="flex flex-col gap-6">
-          <div className="space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {jobs.map((job) => (
               <JobCard key={job.id} job={job} locale={locale} />
             ))}

@@ -26,6 +26,7 @@ interface SearchParamsProps {
     q?: string;
     minSalary?: string;
     maxSalary?: string;
+    sort?: string;
   }>;
 }
 
@@ -41,9 +42,10 @@ export default async function CareersPage({ params, searchParams }: SearchParams
   const keyword = searchParamsResolved.q || "";
   const minSalary = searchParamsResolved.minSalary || "";
   const maxSalary = searchParamsResolved.maxSalary || "";
+  const sort = searchParamsResolved.sort || "";
 
   // Create a composite key from all filter parameters for Suspense
-  const filterKey = `page=${currentPage};types=${employmentTypes.join(",")};location=${location};q=${keyword};minSalary=${minSalary};maxSalary=${maxSalary}`;
+  const filterKey = `page=${currentPage};types=${employmentTypes.join(",")};location=${location};q=${keyword};minSalary=${minSalary};maxSalary=${maxSalary};sort=${sort}`;
 
   return (
     <ErrorBoundary>
@@ -65,10 +67,12 @@ export default async function CareersPage({ params, searchParams }: SearchParams
         </div>
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <JobFilters locale={lang} />
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+          <div className="lg:col-span-2">
+            <JobFilters locale={lang} />
+          </div>
 
-          <div className="col-span-1 lg:col-span-2 flex flex-col gap-6">
+          <div className="col-span-1 lg:col-span-3 flex flex-col gap-6">
             <Suspense key={filterKey} fallback={<JobListingsLoading />}>
               <APIErrorBoundary>
                 <JobListingsClient
@@ -78,6 +82,7 @@ export default async function CareersPage({ params, searchParams }: SearchParams
                   keyword={keyword}
                   minSalary={minSalary}
                   maxSalary={maxSalary}
+                  sort={sort}
                   locale={lang}
                 />
               </APIErrorBoundary>
@@ -97,6 +102,7 @@ function JobListingsClient(props: {
   keyword: string;
   minSalary: string;
   maxSalary: string;
+  sort: string;
   locale: string;
 }) {
   return <JobListings {...props} />;

@@ -50,20 +50,59 @@ async function PageContent({ locale }: PageContentProps) {
             {intl.formatMessage({ id: "page.contact.description" })}
           </p>
         </div>
-        <div className="mx-auto mt-16 max-w-xl sm:mt-20">
-          <Card>
-            <CardHeader>
-              <CardTitle>{intl.formatMessage({ id: "contact.form.title" })}</CardTitle>
-              <CardDescription>
-                {intl.formatMessage({ id: "contact.form.description" })}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ErrorBoundary>
-                <ContactFormWrapper locale={locale} />
-              </ErrorBoundary>
-            </CardContent>
-          </Card>
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:items-start mt-16">
+          <div className="lg:col-span-2">
+            <Card>
+              <CardHeader>
+                <CardTitle>{intl.formatMessage({ id: "contact.form.title" })}</CardTitle>
+                <CardDescription>
+                  {intl.formatMessage({ id: "contact.form.description" })}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ErrorBoundary>
+                  <ContactFormWrapper locale={locale} />
+                </ErrorBoundary>
+              </CardContent>
+            </Card>
+          </div>
+
+          <aside className="space-y-6">
+            <section className="p-6 rounded-lg bg-card">
+              <h3 className="text-lg font-semibold mb-3">Our Locations</h3>
+              <div className="space-y-4 text-sm text-muted-foreground">
+                <div>
+                  <h4 className="font-medium">Maryland Headquarters</h4>
+                  <p>7337 Hanover Pkwy, Suite# A, Greenbelt, MD 20770</p>
+                  <p>Business & Products: 301-982-9700</p>
+                  <p>Fax: 301-982-0500</p>
+                  <p>Toll Free: 1-888-810-3661</p>
+                  <p>Email: info@issi-software.com</p>
+                </div>
+                <div>
+                  <h4 className="font-medium">Florida Office</h4>
+                  <p>See site for details</p>
+                </div>
+                <div>
+                  <h4 className="font-medium">Dallas Office</h4>
+                  <p>See site for details</p>
+                </div>
+                <div>
+                  <h4 className="font-medium">Hyderabad Office</h4>
+                  <p>See site for details</p>
+                </div>
+                <div>
+                  <h4 className="font-medium">Visakhapatnam Office</h4>
+                  <p>See site for details</p>
+                </div>
+              </div>
+            </section>
+
+            <section className="p-6 rounded-lg bg-card">
+              <h3 className="text-lg font-semibold mb-3">Map</h3>
+              <div className="aspect-[4/3] bg-muted" />
+            </section>
+          </aside>
         </div>
       </div>
     </div>

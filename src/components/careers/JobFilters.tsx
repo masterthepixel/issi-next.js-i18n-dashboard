@@ -1,5 +1,6 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -38,6 +39,14 @@ export function JobFilters({ locale = "en" }: JobFiltersProps) {
   const currentMinSalary = searchParams.get("minSalary") || "";
   const currentMaxSalary = searchParams.get("maxSalary") || "";
   const currentKeyword = searchParams.get("q") || "";
+  const currentSort = searchParams.get("sort") || "";
+
+  const dateSortOptions = [
+    { value: "1day", label: "careers.sort.today", defaultMessage: "Today" },
+    { value: "1week", label: "careers.sort.thisWeek", defaultMessage: "This Week" },
+    { value: "1month", label: "careers.sort.thisMonth", defaultMessage: "This Month" },
+    { value: "1year", label: "careers.sort.thisYear", defaultMessage: "This Year" },
+  ];
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
@@ -85,6 +94,10 @@ export function JobFilters({ locale = "en" }: JobFiltersProps) {
 
   const handleMaxSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     router.push(`/${locale}/careers?${createQueryString("maxSalary", e.target.value)}`);
+  };
+
+  const handleSortChange = (sortValue: string) => {
+    router.push(`/${locale}/careers?${createQueryString("sort", sortValue)}`);
   };
 
   const clearFilters = () => {
@@ -141,6 +154,30 @@ export function JobFilters({ locale = "en" }: JobFiltersProps) {
 
         <Separator />
 
+        {/* Date Posted Filter */}
+        <div className="space-y-4">
+          <Label className="text-lg font-semibold">
+            {intl.formatMessage({ id: "careers.filters.datePosted", defaultMessage: "Date Posted" })}
+          </Label>
+          <div className="flex flex-wrap gap-2">
+            {dateSortOptions.map((option) => (
+              <Badge
+                key={option.value}
+                variant={currentSort === option.value ? "default" : "outline"}
+                className="cursor-pointer hover:bg-primary/80 transition-colors"
+                onClick={() => handleSortChange(option.value)}
+              >
+                {intl.formatMessage({
+                  id: option.label,
+                  defaultMessage: option.defaultMessage
+                })}
+              </Badge>
+            ))}
+          </div>
+        </div>
+
+        <Separator />
+
         {/* Job Type Filter */}
         <div className="space-y-4">
           <Label className="text-lg font-semibold">
@@ -158,7 +195,7 @@ export function JobFilters({ locale = "en" }: JobFiltersProps) {
                 />
                 <Label
                   htmlFor={type.toLowerCase()}
-                  
+
                 >
                   {getJobTypeLabel(type)}
                 </Label>
