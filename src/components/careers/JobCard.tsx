@@ -54,13 +54,13 @@ export function JobCard({ job, locale = "en" }: JobCardProps) {
 
   return (
     <Card
-      className="hover:shadow-lg transition-all duration-300 hover:border-primary relative cursor-pointer group"
+      className="bg-background hover:shadow-lg transition-all duration-300 hover:border-primary relative cursor-pointer group"
       onClick={handleCardClick}
     >
       <CardHeader>
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1">
-            <h2 className="text-3xl font-normal text-primary">{job.jobTitle}</h2>
+            <h2 className="text-3xl lg:text-5xl font-normal text-primary">{job.jobTitle}</h2>
             <p className="text-muted-foreground line-clamp-3 leading-relaxed mt-3">
               {getJobDescriptionPreview()}
             </p>
