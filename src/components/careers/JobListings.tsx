@@ -38,6 +38,15 @@ export default function JobListings({
   const [totalJobs, setTotalJobs] = useState(0);
 
   const fetchJobs = useCallback(async () => {
+    console.log("🚀 JobListings: fetchJobs called with params:", {
+      currentPage,
+      keyword,
+      employmentType,
+      location,
+      minSalary,
+      maxSalary,
+      sort
+    });
     setIsLoading(true);
 
     try {
@@ -58,7 +67,14 @@ export default function JobListings({
       );
 
       try {
+        console.log("🔍 JobListings: Calling careersAPI.searchJobs with cleaned params:", cleanedParams);
         const result = await careersAPI.searchJobs(cleanedParams);
+        console.log("✅ JobListings: API call successful:", {
+          jobsCount: result.jobs.length,
+          totalJobs: result.pagination.totalDocs,
+          hasJobs: result.jobs.length > 0,
+          firstJob: result.jobs[0]
+        });
 
         let filteredJobs = result.jobs;
 
@@ -91,6 +107,11 @@ export default function JobListings({
         }
 
         setJobs(filteredJobs);
+        console.log("🔄 JobListings: State updated:", {
+          jobsCount: filteredJobs.length,
+          totalPages: result.pagination.totalPages,
+          totalJobs: filteredJobs.length
+        });
         setTotalPages(result.pagination.totalPages);
         setTotalJobs(filteredJobs.length); // Update total count based on filtered results
       } catch (apiError) {
@@ -107,7 +128,7 @@ export default function JobListings({
   }, [currentPage, employmentType, location, keyword, minSalary, maxSalary, sort]);
 
   useEffect(() => {
-    console.log("JobListings: useEffect triggered, calling fetchJobs");
+    console.log("🔥 JobListings: useEffect triggered, calling fetchJobs");
     fetchJobs();
   }, [fetchJobs]);
 
@@ -133,6 +154,8 @@ export default function JobListings({
       </div>
     );
   }
+
+  console.log("🎯 JobListings: About to render with state:", { jobsCount: jobs.length, totalJobs, isLoading, error: !!error });
 
   return (
     <>
