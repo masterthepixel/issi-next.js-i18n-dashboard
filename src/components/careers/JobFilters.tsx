@@ -142,7 +142,7 @@ export function JobFilters({ locale = "en", totalJobs = 0, keyword = "" }: JobFi
 
   return (
     <Card className="col-span-1 h-fit">
-      <CardHeader className="space-y-4">
+      <CardHeader className="space-y-2">
         <div className="flex justify-between items-center">
           <CardTitle className="text-2xl font-semibold">
             {intl.formatMessage({ id: "careers.filters.title", defaultMessage: "Filter" })}
@@ -150,7 +150,7 @@ export function JobFilters({ locale = "en", totalJobs = 0, keyword = "" }: JobFi
           <Button
             variant="destructive"
             size="sm"
-            className="h-8"
+            className="h-8 !bg-red-600 !text-white hover:!bg-red-700"
             onClick={clearFilters}
           >
             <span className="mr-2">
@@ -161,10 +161,10 @@ export function JobFilters({ locale = "en", totalJobs = 0, keyword = "" }: JobFi
         </div>
         <Separator />
       </CardHeader>
-      <CardContent className="space-y-6">
+      <CardContent className="space-y-4">
         {/* Results Summary */}
         {currentTotalJobs > 0 && (
-          <div className="pb-2 border-b">
+          <div className="pb-1 border-b">
             <p className="text-sm text-muted-foreground">
               {intl.formatMessage(
                 {
@@ -187,7 +187,7 @@ export function JobFilters({ locale = "en", totalJobs = 0, keyword = "" }: JobFi
         )}
 
         {/* Keyword Search */}
-        <div className="space-y-4">
+        <div className="space-y-0.5">
           <Label className="text-lg font-semibold">
             {intl.formatMessage({ id: "careers.filters.keyword", defaultMessage: "Keyword" })}
           </Label>
@@ -198,25 +198,22 @@ export function JobFilters({ locale = "en", totalJobs = 0, keyword = "" }: JobFi
             })}
             value={currentKeyword}
             onChange={handleKeywordChange}
-            className="w-full"
+            className="w-full bg-background border-input"
           />
         </div>
 
         <Separator />
 
         {/* Date Posted Filter */}
-        <div className="space-y-4">
+        <div className="space-y-0.5">
           <Label className="text-lg font-semibold">
             {intl.formatMessage({ id: "careers.filters.datePosted", defaultMessage: "Date Posted" })}
           </Label>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1">
             {dateSortOptions.map((option) => (
               <Badge
                 key={option.value}
-                variant={currentSort === option.value ? "default" : "outline"}
-                className={`cursor-pointer transition-colors ${currentSort === option.value
-                    ? "bg-primary text-primary-foreground hover:bg-primary/80"
-                    : "bg-primary text-primary-foreground hover:bg-primary/80 border-primary"
+                className={`cursor-pointer transition-colors !bg-blue-600 !text-white hover:!bg-blue-700 ${currentSort === option.value ? "ring-2 ring-blue-500/50" : ""
                   }`}
                 onClick={() => handleSortChange(option.value)}
               >
@@ -232,11 +229,11 @@ export function JobFilters({ locale = "en", totalJobs = 0, keyword = "" }: JobFi
         <Separator />
 
         {/* Job Type Filter */}
-        <div className="space-y-4">
+        <div className="space-y-0.5">
           <Label className="text-lg font-semibold">
             {intl.formatMessage({ id: "careers.filters.jobType", defaultMessage: "Job Type" })}
           </Label>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-2">
             {jobTypes.map((type) => (
               <div key={type} className="flex items-center space-x-2">
                 <Checkbox
@@ -260,18 +257,18 @@ export function JobFilters({ locale = "en", totalJobs = 0, keyword = "" }: JobFi
         <Separator />
 
         {/* Location Filter */}
-        <div className="space-y-4">
+        <div className="space-y-0.5">
           <Label className="text-lg font-semibold">
             {intl.formatMessage({ id: "careers.filters.location", defaultMessage: "Location" })}
           </Label>
           <Select value={currentLocation} onValueChange={handleLocationChange}>
-            <SelectTrigger>
+            <SelectTrigger className="bg-background border-input">
               <SelectValue placeholder={intl.formatMessage({
                 id: "careers.filters.selectLocation",
                 defaultMessage: "Select Location"
               })} />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-popover border-border">
               <SelectGroup>
                 <SelectLabel>
                   {intl.formatMessage({ id: "careers.filters.remote", defaultMessage: "Remote" })}
@@ -324,13 +321,13 @@ export function JobFilters({ locale = "en", totalJobs = 0, keyword = "" }: JobFi
         <Separator />
 
         {/* Salary Range Filter */}
-        <div className="space-y-4">
+        <div className="space-y-0.5">
           <Label className="text-lg font-semibold">
             {intl.formatMessage({ id: "careers.filters.salaryRange", defaultMessage: "Salary Range" })}
           </Label>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="minSalary" className="">
+          <div className="grid grid-cols-2 gap-2">
+            <div className="space-y-0.5">
+              <Label htmlFor="minSalary" className="text-sm">
                 {intl.formatMessage({ id: "careers.filters.minSalary", defaultMessage: "Min Salary" })}
               </Label>
               <Input
@@ -339,11 +336,11 @@ export function JobFilters({ locale = "en", totalJobs = 0, keyword = "" }: JobFi
                 placeholder="0"
                 value={currentMinSalary}
                 onChange={handleMinSalaryChange}
-                className="w-full"
+                className="w-full bg-background border-input"
               />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="maxSalary" className="">
+            <div className="space-y-0.5">
+              <Label htmlFor="maxSalary" className="text-sm">
                 {intl.formatMessage({ id: "careers.filters.maxSalary", defaultMessage: "Max Salary" })}
               </Label>
               <Input
@@ -352,7 +349,7 @@ export function JobFilters({ locale = "en", totalJobs = 0, keyword = "" }: JobFi
                 placeholder="500,000"
                 value={currentMaxSalary}
                 onChange={handleMaxSalaryChange}
-                className="w-full"
+                className="w-full bg-background border-input"
               />
             </div>
           </div>

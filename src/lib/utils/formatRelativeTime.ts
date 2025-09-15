@@ -16,6 +16,24 @@ export function formatRelativeTime(date: Date | string): string {
   }
 }
 
+export function formatTimeBadge(date: Date | string): string {
+  const now = new Date();
+  const targetDate = typeof date === 'string' ? new Date(date) : date;
+  const diffInDays = Math.floor(
+    (now.getTime() - targetDate.getTime()) / (1000 * 60 * 60 * 24)
+  );
+
+  if (diffInDays === 0) {
+    return "Today";
+  } else if (diffInDays < 7) {
+    return "This week";
+  } else if (diffInDays < 30) {
+    return "This month";
+  } else {
+    return "This year";
+  }
+}
+
 export function formatDateForDisplay(date: Date | string): string {
   const targetDate = typeof date === 'string' ? new Date(date) : date;
   return targetDate.toLocaleDateString('en-US', {

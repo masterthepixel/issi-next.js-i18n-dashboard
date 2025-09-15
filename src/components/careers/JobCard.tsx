@@ -25,7 +25,7 @@ export function JobCard({ job, locale = "en" }: JobCardProps) {
     try {
       if (typeof job.jobDescription === 'string') {
         const desc = job.jobDescription as string;
-        return desc.length > 200 ? desc.substring(0, 200) + "..." : desc;
+        return desc.length > 300 ? desc.substring(0, 300) + "..." : desc;
       }
 
       if (job.jobDescription?.root?.children) {
@@ -39,7 +39,7 @@ export function JobCard({ job, locale = "en" }: JobCardProps) {
             return child.text || '';
           })
           .join(' ');
-        return textContent.substring(0, 200) + (textContent.length > 200 ? "..." : "");
+        return textContent.substring(0, 300) + (textContent.length > 300 ? "..." : "");
       }
     } catch (error) {
       console.error('Error extracting job description preview:', error);
@@ -48,7 +48,7 @@ export function JobCard({ job, locale = "en" }: JobCardProps) {
     return "No description available";
   }; return (
     <Card
-      className="bg-white dark:bg-gray-900 hover:shadow-lg transition-all duration-300 hover:border-link relative cursor-pointer group"
+      className="hover:shadow-lg transition-all duration-300 hover:border-link relative cursor-pointer group"
       onClick={handleCardClick}
     >
       <CardHeader className="pb-4">
@@ -56,7 +56,7 @@ export function JobCard({ job, locale = "en" }: JobCardProps) {
           <div className="flex-1">
             {/* Time Badge */}
             <div className="flex items-center justify-start mb-3">
-              <Badge className="bg-primary text-primary-foreground text-xs font-light">
+              <Badge className="!bg-blue-600 !text-white text-xs font-light">
                 {formatTimeBadge(job.createdAt)}
               </Badge>
             </div>
@@ -70,7 +70,7 @@ export function JobCard({ job, locale = "en" }: JobCardProps) {
             </div>
 
             {/* Divider */}
-            <Separator className="my-4 bg-border" />
+            <Separator className="my-2 bg-border" />
 
             {/* Job Description */}
             <p className="text-sm text-foreground/80 leading-relaxed line-clamp-3 w-full">

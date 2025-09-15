@@ -69,7 +69,10 @@ export default async function CareersPage({ params, searchParams }: SearchParams
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           <div className="lg:col-span-2">
-            <JobFilters locale={lang} />
+            <JobFiltersWrapper
+              locale={lang}
+              keyword={keyword}
+            />
           </div>
 
           <div className="col-span-1 lg:col-span-3 flex flex-col gap-6">
@@ -106,4 +109,12 @@ function JobListingsClient(props: {
   locale: string;
 }) {
   return <JobListings {...props} />;
+}
+
+// Client wrapper component for JobFilters with shared state
+function JobFiltersWrapper(props: {
+  locale: string;
+  keyword: string;
+}) {
+  return <JobFilters locale={props.locale} keyword={props.keyword} />;
 }

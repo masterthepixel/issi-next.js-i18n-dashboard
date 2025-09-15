@@ -114,6 +114,11 @@ export default function JobListings({
         });
         setTotalPages(result.pagination.totalPages);
         setTotalJobs(filteredJobs.length); // Update total count based on filtered results
+
+        // Store totalJobs in sessionStorage for JobFilters to access
+        if (typeof window !== 'undefined') {
+          sessionStorage.setItem('careers_totalJobs', filteredJobs.length.toString());
+        }
       } catch (apiError) {
         console.error("JobListings: API call failed:", apiError);
         throw apiError;
@@ -158,38 +163,12 @@ export default function JobListings({
   console.log("🎯 JobListings: About to render with state:", { jobsCount: jobs.length, totalJobs, isLoading, error: !!error });
 
   return (
-    <>
-      {/* Results Summary */}
-      {totalJobs > 0 && (
-        <div className="mb-6">
-          <p>
-            {intl.formatMessage(
-              {
-                id: "careers.resultsCount",
-                defaultMessage: "Showing {count} {count, plural, one {job} other {jobs}}"
-              },
-              { count: totalJobs }
-            )}
-            {keyword && (
-              <>
-                {" "}
-                {intl.formatMessage(
-                  { id: "careers.searchResultsFor", defaultMessage: "for \"{keyword}\"" },
-                  { keyword }
-                )}
-              </>
-            )}
-          </p>
-        </div>
-      )}
-
+    <div className="flex flex-col gap-6">
       {jobs.length > 0 ? (
-        <div className="flex flex-col gap-6">
-          <div className="grid grid-cols-1 gap-6">
-            {jobs.map((job) => (
-              <JobCard key={job.id} job={job} locale={locale} />
-            ))}
-          </div>
+        <div className="grid grid-cols-1 gap-6">
+          {jobs.map((job) => (
+            <JobCard key={job.id} job={job} locale={locale} />
+          ))}
         </div>
       ) : (
         <EmptyState
@@ -219,6 +198,6 @@ export default function JobListings({
           />
         </div>
       )}
-    </>
+    </div>
   );
 }

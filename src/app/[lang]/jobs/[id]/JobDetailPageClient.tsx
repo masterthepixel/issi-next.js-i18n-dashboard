@@ -4,12 +4,12 @@ import ApplicationForm from "@/components/applications/ApplicationForm";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
 import type { Locale } from "@/lib/definitions";
 import type { JobPost } from "@/lib/jobs-api";
-import { extractTextFromRichText, formatBenefit, formatEmploymentType, formatSalary, getTimeAgo } from "@/lib/jobs-api";
+import { formatBenefit, formatEmploymentType, formatSalary, getTimeAgo } from "@/lib/jobs-api";
 import {
   ArrowLeft,
   Building2,
@@ -23,7 +23,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useIntl } from "react-intl";
 
 interface JobDetailPageClientProps {
@@ -31,14 +31,115 @@ interface JobDetailPageClientProps {
   job: JobPost;
 }
 
-// Rich Text Renderer Component (simplified for now, can be enhanced later)
+// Rich Text Renderer Component (proper PayloadCMS rich text rendering)
+interface RichTextNode {
+  type?: string;
+  text?: string;
+  children?: RichTextNode[];
+  tag?: number;
+  listType?: string;
+  url?: string;
+  newTab?: boolean;
+  bold?: boolean;
+  italic?: boolean;
+  underline?: boolean;
+}
+
 function RichTextRenderer({ content }: { content: JobPost['jobDescription'] }) {
-  // For now, extract plain text - can be enhanced with proper rich text rendering
-  const textContent = extractTextFromRichText(content);
+  if (!content?.root?.children) {
+    return <div className="text-muted-foreground">No job description available.</div>;
+  }
+
+  const renderNode = (node: RichTextNode, index: number): React.ReactNode => {
+    if (!node) return null;
+
+    // Handle text nodes
+    if (node.text !== undefined) {
+      let textContent: React.ReactNode = node.text;
+
+      // Apply text formatting
+      if (node.bold) textContent = <strong key={index}>{textContent}</strong>;
+      if (node.italic) textContent = <em key={index}>{textContent}</em>;
+      if (node.underline) textContent = <u key={index}>{textContent}</u>;
+
+      return textContent;
+    }
+
+    // Handle block nodes
+    switch (node.type) {
+      case 'paragraph':
+        return (
+          <p key={index} className="mb-4 leading-relaxed">
+            {node.children?.map((child: RichTextNode, childIndex: number) => renderNode(child, childIndex))}
+          </p>
+        );
+
+      case 'heading':
+        const HeadingTag = `h${node.tag || 2}` as keyof JSX.IntrinsicElements;
+        return React.createElement(
+          HeadingTag,
+          {
+            key: index,
+            className: `font-serif font-normal mt-6 mb-3 ${node.tag === 1 ? 'text-2xl' :
+              node.tag === 2 ? 'text-xl' :
+                node.tag === 3 ? 'text-lg' : 'text-base'
+              }`
+          },
+          node.children?.map((child: RichTextNode, childIndex: number) => renderNode(child, childIndex))
+        );
+
+      case 'list':
+        const ListTag = node.listType === 'number' ? 'ol' : 'ul';
+        return React.createElement(
+          ListTag,
+          {
+            key: index,
+            className: `mb-4 pl-6 space-y-1 ${node.listType === 'number' ? 'list-decimal' : 'list-disc'
+              }`
+          },
+          node.children?.map((child: RichTextNode, childIndex: number) => renderNode(child, childIndex))
+        );
+
+      case 'listItem':
+        return (
+          <li key={index} className="leading-relaxed">
+            {node.children?.map((child: RichTextNode, childIndex: number) => renderNode(child, childIndex))}
+          </li>
+        );
+
+      case 'quote':
+        return (
+          <blockquote key={index} className="border-l-4 border-primary pl-4 my-4 italic text-muted-foreground">
+            {node.children?.map((child: RichTextNode, childIndex: number) => renderNode(child, childIndex))}
+          </blockquote>
+        );
+
+      case 'link':
+        return (
+          <a
+            key={index}
+            href={node.url}
+            className="text-primary hover:underline"
+            target={node.newTab ? '_blank' : undefined}
+            rel={node.newTab ? 'noopener noreferrer' : undefined}
+          >
+            {node.children?.map((child: RichTextNode, childIndex: number) => renderNode(child, childIndex))}
+          </a>
+        );
+
+      default:
+        // Fallback for unknown node types
+        return (
+          <div key={index}>
+            {node.children?.map((child: RichTextNode, childIndex: number) => renderNode(child, childIndex))}
+          </div>
+        );
+    }
+  };
 
   return (
-    <div className="prose prose-sm max-w-none dark:prose-invert">
-      <div className="whitespace-pre-wrap">{textContent}</div>
+    <div className="prose prose-gray dark:prose-invert max-w-none">
+      {content.root.children.map((node, index) => renderNode(node as RichTextNode, index))}
     </div>
   );
 }
@@ -47,6 +148,7 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
   const router = useRouter();
   const intl = useIntl();
   const [showApplicationForm, setShowApplicationForm] = useState(false);
+  const [showFullDescription, setShowFullDescription] = useState(false);
 
   const handleShare = async () => {
     if (navigator.share) {
@@ -80,71 +182,75 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-6">
           {/* Job Header */}
-          <Card>
-            <CardHeader>
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <CardTitle className="text-2xl font-bold mb-2">
+          <Card className="overflow-hidden">
+            <CardHeader className="pb-6">
+              <div className="flex flex-col sm:flex-row items-start gap-4">
+                <div className="flex-1 min-w-0">
+                  <h1 className="text-2xl sm:text-3xl font-serif font-normal mb-3 leading-tight break-words">
                     {job.jobTitle}
-                  </CardTitle>
-                  <CardDescription className="text-lg">
-                    <div className="flex items-center gap-2">
-                      <Building2 className="h-5 w-5" />
-                      {job.company.name}
+                  </h1>
+                  <CardDescription className="text-lg mb-4">
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <Building2 className="h-5 w-5 flex-shrink-0" />
+                      <span className="font-medium">{job.company.name}</span>
                     </div>
                   </CardDescription>
                 </div>
 
                 {/* Company Logo */}
                 {job.company.logo && (
-                  <div className="ml-6 flex-shrink-0">
-                    <Image
-                      src={job.company.logo}
-                      alt={`${job.company.name} logo`}
-                      width={80}
-                      height={80}
-                      className="rounded-lg object-contain"
-                    />
+                  <div className="flex-shrink-0">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 bg-background border rounded-xl p-2 shadow-sm">
+                      <Image
+                        src={job.company.logo}
+                        alt={`${job.company.name} logo`}
+                        width={88}
+                        height={88}
+                        className="w-full h-full rounded-lg object-contain"
+                      />
+                    </div>
                   </div>
                 )}
               </div>
 
               {/* Job Meta Info */}
-              <div className="flex flex-wrap items-center gap-4 pt-4">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
                 <div className="flex items-center gap-2 text-muted-foreground">
-                  <MapPin className="h-4 w-4" />
-                  {job.location}
+                  <MapPin className="h-4 w-4 flex-shrink-0" />
+                  <span className="text-sm font-medium">{job.location}</span>
                 </div>
 
-                <Badge variant="secondary">
+                <Badge variant="secondary" className="font-medium">
                   {formatEmploymentType(job.employmentType)}
                 </Badge>
 
                 {(job.salaryFrom || job.salaryTo) && (
-                  <div className="flex items-center gap-2 font-medium text-green-600 dark:text-green-400">
-                    <DollarSign className="h-4 w-4" />
-                    {formatSalary(job.salaryFrom, job.salaryTo)}
+                  <div className="flex items-center gap-2 font-semibold text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-950/30 px-3 py-1.5 rounded-full">
+                    <DollarSign className="h-4 w-4 flex-shrink-0" />
+                    <span className="text-sm">{formatSalary(job.salaryFrom, job.salaryTo)}</span>
                   </div>
                 )}
 
                 <div className="flex items-center gap-2 text-muted-foreground">
-                  <Clock className="h-4 w-4" />
-                  {intl.formatMessage({
-                    id: "jobs.postedTime",
-                    defaultMessage: "Posted {time}"
-                  }, { time: getTimeAgo(job.createdAt) })}
+                  <Clock className="h-4 w-4 flex-shrink-0" />
+                  <span className="text-sm">
+                    {intl.formatMessage({
+                      id: "jobs.postedTime",
+                      defaultMessage: "Posted {time}"
+                    }, { time: getTimeAgo(job.createdAt) })}
+                  </span>
                 </div>
               </div>
 
               {/* Benefits & Perks */}
               {job.benefits && job.benefits.length > 0 && (
                 <div className="pt-4">
-                  <h4 className="text-sm font-medium text-muted-foreground mb-2">
+                  <h4 className="text-sm font-serif font-normal text-muted-foreground mb-2">
                     {intl.formatMessage({ id: "jobs.benefits", defaultMessage: "Benefits & Perks" })}
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {job.benefits.map((benefit) => (
-                      <Badge key={benefit} variant="outline">
+                      <Badge key={benefit} variant="outline" className="bg-background">
                         {formatBenefit(benefit)}
                       </Badge>
                     ))}
@@ -157,9 +263,9 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
           {/* Job Description */}
           <Card>
             <CardHeader>
-              <CardTitle>
+              <h1 className="text-2xl sm:text-3xl font-serif font-normal mb-3 leading-tight break-words">
                 {intl.formatMessage({ id: "jobs.description", defaultMessage: "Job Description" })}
-              </CardTitle>
+              </h1>
             </CardHeader>
             <CardContent>
               <RichTextRenderer content={job.jobDescription} />
@@ -169,66 +275,99 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
 
         {/* Sidebar */}
         <div className="space-y-6">
+          {/* Company Logo (Sidebar) */}
+          {job.company.logo && (
+            <div className="flex justify-center">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 bg-background border rounded-xl p-2 shadow-sm">
+                <Image
+                  src={job.company.logo}
+                  alt={`${job.company.name} logo`}
+                  width={88}
+                  height={88}
+                  className="w-full h-full rounded-lg object-contain"
+                />
+              </div>
+            </div>
+          )}
+
           {/* Apply Card */}
-          <Card>
-            <CardHeader>
-              <CardTitle>
-                {intl.formatMessage({ id: "jobs.applyNow", defaultMessage: "Apply Now" })}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
+          <div className="space-y-4">
+            <div className="flex gap-3">
               <Button
-                className="w-full"
+                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
                 size="lg"
                 onClick={() => setShowApplicationForm(true)}
               >
-                {intl.formatMessage({ id: "jobs.applyForPosition", defaultMessage: "Apply for this Position" })}
+                {intl.formatMessage({ id: "jobs.applyNow", defaultMessage: "Apply Now" })}
               </Button>
-
               <Button
                 variant="outline"
-                className="w-full"
+                className="flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                 onClick={handleShare}
               >
                 <Share2 className="h-4 w-4 mr-2" />
                 {intl.formatMessage({ id: "jobs.shareJob", defaultMessage: "Share Job" })}
               </Button>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
           {/* Company Info */}
           <Card>
             <CardHeader>
-              <CardTitle>
+              <h1 className="text-2xl sm:text-3xl font-serif font-normal mb-3 leading-tight break-words">
                 {intl.formatMessage({ id: "jobs.aboutCompany", defaultMessage: "About the Company" })}
-              </CardTitle>
+              </h1>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h4 className="mb-2">{job.company.name}</h4>
+                <h4 className="mb-2 font-serif font-normal">{job.company.name}</h4>
                 {job.company.about && (
-                  <p className="text-muted-foreground">
-                    {job.company.about}
-                  </p>
+                  <div className="text-muted-foreground">
+                    {job.company.about.length > 500 && !showFullDescription ? (
+                      <>
+                        <p className="leading-relaxed text-sm">
+                          {job.company.about.slice(0, 500)}...
+                        </p>
+                        <button
+                          onClick={() => setShowFullDescription(true)}
+                          className="mt-2 text-primary hover:underline text-sm"
+                        >
+                          Read more
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <p className="leading-relaxed text-sm">{job.company.about}</p>
+                        {job.company.about.length > 500 && (
+                          <button
+                            onClick={() => setShowFullDescription(false)}
+                            className="mt-2 text-primary hover:underline text-sm"
+                          >
+                            Show less
+                          </button>
+                        )}
+                      </>
+                    )}
+                  </div>
                 )}
               </div>
 
               <Separator />
 
-              <div className="space-y-2">
+              <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-muted-foreground" />
-                  <span>{job.company.location}</span>
+                  <MapPin className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                  <span className="text-sm">{job.company.location}</span>
                 </div>
 
                 {job.company.website && (
                   <div className="flex items-center gap-2">
-                    <Globe className="h-4 w-4 text-muted-foreground" />
+                    <Globe className="h-4 w-4 text-muted-foreground flex-shrink-0" />
                     <Link
                       href={job.company.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary hover:underline flex items-center gap-1"
+                      className="text-primary hover:underline flex items-center gap-1 text-sm"
                     >
                       {intl.formatMessage({ id: "jobs.visitWebsite", defaultMessage: "Visit Website" })}
                       <ExternalLink className="h-3 w-3" />
