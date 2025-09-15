@@ -19,17 +19,43 @@ import { Separator } from "@/components/ui/separator";
 import { countryList, popularLocations } from "@/lib/utils/countriesList";
 import { X } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 
 interface JobFiltersProps {
   locale?: string;
+  totalJobs?: number;
+  keyword?: string;
 }
 
-export function JobFilters({ locale = "en" }: JobFiltersProps) {
+export function JobFilters({ locale = "en", totalJobs = 0, keyword = "" }: JobFiltersProps) {
   const intl = useIntl();
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [currentTotalJobs, setCurrentTotalJobs] = useState(totalJobs);
+
+  // Read totalJobs from sessionStorage and update state
+  useEffect(() => {
+    const checkTotalJobs = () => {
+      if (typeof window !== 'undefined') {
+        const storedTotalJobs = sessionStorage.getItem('careers_totalJobs');
+        if (storedTotalJobs) {
+          const parsedTotalJobs = parseInt(storedTotalJobs, 10);
+          if (parsedTotalJobs !== currentTotalJobs) {
+            setCurrentTotalJobs(parsedTotalJobs);
+          }
+        }
+      }
+    };
+
+    // Check immediately
+    checkTotalJobs();
+
+    // Set up interval to check for updates
+    const interval = setInterval(checkTotalJobs, 500);
+
+    return () => clearInterval(interval);
+  }, [currentTotalJobs]);
 
   const jobTypes = ["full-time", "part-time", "contract", "internship"];
 
@@ -136,6 +162,30 @@ export function JobFilters({ locale = "en" }: JobFiltersProps) {
         <Separator />
       </CardHeader>
       <CardContent className="space-y-6">
+        {/* Results Summary */}
+        {currentTotalJobs > 0 && (
+          <div className="pb-2 border-b">
+            <p className="text-sm text-muted-foreground">
+              {intl.formatMessage(
+                {
+                  id: "careers.resultsCount",
+                  defaultMessage: "Showing {count} {count, plural, one {job} other {jobs}}"
+                },
+                { count: currentTotalJobs }
+              )}
+              {keyword && (
+                <>
+                  {" "}
+                  {intl.formatMessage(
+                    { id: "careers.searchResultsFor", defaultMessage: "for \"{keyword}\"" },
+                    { keyword }
+                  )}
+                </>
+              )}
+            </p>
+          </div>
+        )}
+
         {/* Keyword Search */}
         <div className="space-y-4">
           <Label className="text-lg font-semibold">
@@ -164,7 +214,10 @@ export function JobFilters({ locale = "en" }: JobFiltersProps) {
               <Badge
                 key={option.value}
                 variant={currentSort === option.value ? "default" : "outline"}
-                className="cursor-pointer hover:bg-primary/80 transition-colors"
+                className={`cursor-pointer transition-colors ${currentSort === option.value
+                    ? "bg-primary text-primary-foreground hover:bg-primary/80"
+                    : "bg-primary text-primary-foreground hover:bg-primary/80 border-primary"
+                  }`}
                 onClick={() => handleSortChange(option.value)}
               >
                 {intl.formatMessage({
@@ -183,7 +236,7 @@ export function JobFilters({ locale = "en" }: JobFiltersProps) {
           <Label className="text-lg font-semibold">
             {intl.formatMessage({ id: "careers.filters.jobType", defaultMessage: "Job Type" })}
           </Label>
-          <div className="grid grid-cols-1 gap-4">
+          <div className="grid grid-cols-2 gap-4">
             {jobTypes.map((type) => (
               <div key={type} className="flex items-center space-x-2">
                 <Checkbox

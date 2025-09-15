@@ -185,7 +185,7 @@ export default function JobListings({
 
       {jobs.length > 0 ? (
         <div className="flex flex-col gap-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6">
             {jobs.map((job) => (
               <JobCard key={job.id} job={job} locale={locale} />
             ))}

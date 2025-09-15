@@ -1,12 +1,12 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import type { Job } from "@/lib/schemas/job";
-import { formatSalaryRange } from "@/lib/utils/formatCurrency";
-import { formatRelativeTime } from "@/lib/utils/formatRelativeTime";
-import { ArrowUpRight } from "lucide-react";
+import { formatTimeBadge } from "@/lib/utils/formatRelativeTime";
+import { ArrowUpRight, MapPin } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useIntl } from "react-intl";
 
 interface JobCardProps {
   job: Job;
@@ -14,15 +14,18 @@ interface JobCardProps {
 }
 
 export function JobCard({ job, locale = "en" }: JobCardProps) {
-  const intl = useIntl();
   const router = useRouter();
+
+  const handleCardClick = () => {
+    router.push(`/${locale}/jobs/${job.id}`);
+  };
 
   // Extract job description text for preview
   const getJobDescriptionPreview = (): string => {
     try {
       if (typeof job.jobDescription === 'string') {
         const desc = job.jobDescription as string;
-        return desc.length > 150 ? desc.substring(0, 150) + "..." : desc;
+        return desc.length > 200 ? desc.substring(0, 200) + "..." : desc;
       }
 
       if (job.jobDescription?.root?.children) {
@@ -36,49 +39,48 @@ export function JobCard({ job, locale = "en" }: JobCardProps) {
             return child.text || '';
           })
           .join(' ');
-        return textContent.substring(0, 150) + (textContent.length > 150 ? "..." : "");
+        return textContent.substring(0, 200) + (textContent.length > 200 ? "..." : "");
       }
     } catch (error) {
       console.error('Error extracting job description preview:', error);
     }
 
-    return job.company.about || intl.formatMessage({
-      id: "careers.jobCard.noDescription",
-      defaultMessage: "No description available"
-    });
-  };
-
-  const handleCardClick = () => {
-    router.push(`/${locale}/jobs/${job.id}`);
-  };
-
-  return (
+    return "No description available";
+  }; return (
     <Card
-      className="bg-background hover:shadow-lg transition-all duration-300 hover:border-primary relative cursor-pointer group"
+      className="bg-white dark:bg-gray-900 hover:shadow-lg transition-all duration-300 hover:border-link relative cursor-pointer group"
       onClick={handleCardClick}
     >
-      <CardHeader>
+      <CardHeader className="pb-4">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1">
-            <h2 className="text-3xl lg:text-5xl font-normal text-primary">{job.jobTitle}</h2>
-            <p className="text-muted-foreground line-clamp-3 leading-relaxed mt-3">
+            {/* Time Badge */}
+            <div className="flex items-center justify-start mb-3">
+              <Badge className="bg-primary text-primary-foreground text-xs font-light">
+                {formatTimeBadge(job.createdAt)}
+              </Badge>
+            </div>
+
+            <h2 className="text-xl lg:text-2xl font-normal text-primary">{job.jobTitle}</h2>
+
+            {/* Job Address */}
+            <div className="flex items-center gap-2 mt-2 text-muted-foreground">
+              <MapPin className="h-4 w-4" />
+              <span className="text-sm">{job.location}</span>
+            </div>
+
+            {/* Divider */}
+            <Separator className="my-4 bg-border" />
+
+            {/* Job Description */}
+            <p className="text-sm text-foreground/80 leading-relaxed line-clamp-3 w-full">
               {getJobDescriptionPreview()}
             </p>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-3">
-              <p className="text-muted-foreground">
-                {formatRelativeTime(job.createdAt)}
-              </p>
-              {(job.salaryFrom || job.salaryTo) && (
-                <p className="font-medium">
-                  {formatSalaryRange(job.salaryFrom, job.salaryTo)}
-                </p>
-              )}
-            </div>
           </div>
         </div>
       </CardHeader>
       <div className="absolute top-4 right-4">
-        <div className="rounded-full p-2 bg-primary text-white transition-colors duration-300">
+        <div className="rounded-full p-2 bg-card border border-border text-card-foreground shadow-sm transition-colors duration-300 hover:bg-accent">
           <ArrowUpRight className="h-4 w-4" />
         </div>
       </div>
