@@ -7,12 +7,12 @@ export default function GovernmentTestimonialsCarousel() {
   return (
     <section className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="text-center mb-12">
+        <div className="text-left mb-12">
           <h2 className="text-foreground sm:text-6xl mb-4 font-serif font-[400] text-4xl tracking-tight">
-            <FormattedMessage id="government.testimonials.carousel.title" />
+            <FormattedMessage id="government.testimonials.carousel.title" defaultMessage="Client Testimonials" />
           </h2>
-          <p className="" text-lead521>
-            <FormattedMessage id="government.testimonials.carousel.subtitle" />
+          <p className="text-muted-foreground text-lg">
+            <FormattedMessage id="government.testimonials.carousel.subtitle" defaultMessage="What our government clients say about working with us" />
           </p>
         </div>
 
@@ -22,7 +22,7 @@ export default function GovernmentTestimonialsCarousel() {
             direction="right"
             speed="slow"
             pauseOnHover={true}
-            className="w-full"
+            className="testimonial-cards"
           />
         </div>
       </div>
