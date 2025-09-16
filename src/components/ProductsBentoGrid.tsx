@@ -1,11 +1,11 @@
 "use client";
 
 import ErrorBoundary from "@/components/ErrorBoundary";
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { allProducts } from "@/data/products";
 import { cn } from "@/lib/utils";
-import { cva } from "class-variance-authority";
+import { ArrowUpRight } from 'lucide-react';
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useIntl } from "react-intl";
@@ -82,7 +82,7 @@ interface ProductsBentoGridProps {
 }
 
 const ProductsBentoGrid = ({ lang }: ProductsBentoGridProps) => {
-  const [activeFilter, setActiveFilter] = useState("all");
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const intl = useIntl();
 
   // Get unique categories with proper display names
@@ -107,99 +107,169 @@ const ProductsBentoGrid = ({ lang }: ProductsBentoGridProps) => {
 
   // Filter products based on active filter (memoized)
   const filteredProducts = useMemo(() => {
-    return activeFilter === "all" ? allProducts : allProducts.filter((product) => product.category === activeFilter);
-  }, [activeFilter]);
+    return selectedCategory === "all" ? allProducts : allProducts.filter((product) => product.category === selectedCategory);
+  }, [selectedCategory]);
 
-  const cardVariants = cva(
-    "flex flex-col h-full space-y-2 overflow-hidden transition-all duration-300",
-    {
-      variants: {
-        category: {
-          featured: "border-chart-1/50 hover:border-chart-1 hover:shadow-chart-1/20 hover:[box-shadow:0_0_30px_-5px_hsl(var(--chart-1))]",
-          project: "border-chart-2/50 hover:border-chart-2 hover:shadow-chart-2/20 hover:[box-shadow:0_0_30px_-5px_hsl(var(--chart-2))]",
-          hr: "border-chart-3/50 hover:border-chart-3 hover:shadow-chart-3/20 hover:[box-shadow:0_0_30px_-5px_hsl(var(--chart-3))]",
-          compliance: "border-chart-4/50 hover:border-chart-4 hover:shadow-chart-4/20 hover:[box-shadow:0_0_30px_-5px_hsl(var(--chart-4))]",
-          data: "border-chart-5/50 hover:border-chart-5 hover:shadow-chart-5/20 hover:[box-shadow:0_0_30px_-5px_hsl(var(--chart-5))]",
-          modernization: "border-primary/50 hover:border-primary hover:shadow-primary/20 hover:[box-shadow:0_0_30px_-5px_hsl(var(--primary))]",
-          technology: "border-secondary/50 hover:border-secondary hover:shadow-secondary/20 hover:[box-shadow:0_0_30px_-5px_hsl(var(--secondary))]",
-          all: "border-border hover:border-primary hover:shadow-lg",
-        },
-      },
-      defaultVariants: {
-        category: "all",
-      },
+  // Define category-specific colors for consistency using semantic theme variables
+  const categoryColors = {
+    featured: {
+      icon: "text-blue-500",
+      border: "border-border",
+      hover: "hover:border-primary/50"
+    },
+    project: {
+      icon: "text-emerald-500",
+      border: "border-border",
+      hover: "hover:border-primary/50"
+    },
+    hr: {
+      icon: "text-red-500",
+      border: "border-border",
+      hover: "hover:border-primary/50"
+    },
+    compliance: {
+      icon: "text-purple-500",
+      border: "border-border",
+      hover: "hover:border-primary/50"
+    },
+    data: {
+      icon: "text-orange-500",
+      border: "border-border",
+      hover: "hover:border-primary/50"
+    },
+    modernization: {
+      icon: "text-pink-500",
+      border: "border-border",
+      hover: "hover:border-primary/50"
+    },
+    technology: {
+      icon: "text-cyan-500",
+      border: "border-border",
+      hover: "hover:border-primary/50"
     }
-  );
+  };
 
-  const iconVariants = cva("text-3xl transition-all duration-300 group-hover:drop-shadow-lg", {
-    variants: {
-      category: {
-        featured: "text-chart-1",
-        project: "text-chart-2",
-        hr: "text-chart-3",
-        compliance: "text-chart-4",
-        data: "text-chart-5",
-        modernization: "text-primary",
-        technology: "text-secondary",
-        all: "text-foreground",
+  // Get colors for a specific category
+  const getCategoryColors = (category: string) => {
+    return categoryColors[category as keyof typeof categoryColors] || categoryColors.featured;
+  };
+
+  // WCAG AAA compliant button colors using semantic theme variables
+  const getButtonColors = (category: string, isActive: boolean) => {
+    const categoryButtonColors = {
+      all: {
+        active: "bg-slate-600 text-white border-slate-600",
+        inactive: "bg-slate-100 text-slate-800 border-slate-300 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-600 dark:hover:bg-slate-700"
       },
-    },
-    defaultVariants: {
-      category: "all",
-    },
-  });
+      featured: {
+        active: "bg-blue-600 text-white border-blue-600",
+        inactive: "bg-blue-100 text-blue-800 border-blue-300 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:border-blue-700 dark:hover:bg-blue-800"
+      },
+      project: {
+        active: "bg-emerald-600 text-white border-emerald-600",
+        inactive: "bg-emerald-100 text-emerald-800 border-emerald-300 hover:bg-emerald-200 dark:bg-emerald-900 dark:text-emerald-200 dark:border-emerald-700 dark:hover:bg-emerald-800"
+      },
+      hr: {
+        active: "bg-red-600 text-white border-red-600",
+        inactive: "bg-red-100 text-red-800 border-red-300 hover:bg-red-200 dark:bg-red-900 dark:text-red-200 dark:border-red-700 dark:hover:bg-red-800"
+      },
+      compliance: {
+        active: "bg-purple-600 text-white border-purple-600",
+        inactive: "bg-purple-100 text-purple-800 border-purple-300 hover:bg-purple-200 dark:bg-purple-900 dark:text-purple-200 dark:border-purple-700 dark:hover:bg-purple-800"
+      },
+      data: {
+        active: "bg-orange-600 text-white border-orange-600",
+        inactive: "bg-orange-100 text-orange-800 border-orange-300 hover:bg-orange-200 dark:bg-orange-900 dark:text-orange-200 dark:border-orange-700 dark:hover:bg-orange-800"
+      },
+      modernization: {
+        active: "bg-pink-600 text-white border-pink-600",
+        inactive: "bg-pink-100 text-pink-800 border-pink-300 hover:bg-pink-200 dark:bg-pink-900 dark:text-pink-200 dark:border-pink-700 dark:hover:bg-pink-800"
+      },
+      technology: {
+        active: "bg-cyan-600 text-white border-cyan-600",
+        inactive: "bg-cyan-100 text-cyan-800 border-cyan-300 hover:bg-cyan-200 dark:bg-cyan-900 dark:text-cyan-200 dark:border-cyan-700 dark:hover:bg-cyan-800"
+      }
+    };
+
+    const colors = categoryButtonColors[category as keyof typeof categoryButtonColors] || categoryButtonColors.all;
+    return isActive ? colors.active : colors.inactive;
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-      {/* Filter Tabs */}
-      <ToggleGroup
-        type="single"
-        defaultValue="all"
-        onValueChange={(value: string) => {
-          if (value) setActiveFilter(value);
-        }}
-        className="flex flex-wrap justify-start gap-2 mb-12"
-        role="tablist"
-        aria-label="Product category filters"
-      >
-        {categories.map((category) => (
-          <ToggleGroupItem
-            key={category}
-            value={category}
-            id={`tab-${category}`}
-            aria-controls={`products-list`}
-            aria-labelledby={`tab-${category}`}
-          >
-            {categoryMap[category as keyof typeof categoryMap] || category}
-          </ToggleGroupItem>
-        ))}
-      </ToggleGroup>
+      {/* Category Filter */}
+      <div className="flex flex-wrap justify-start gap-2 mb-12" role="tablist" aria-label="Product category filters">
+        {categories.map((category) => {
+          const isSelected = selectedCategory === category;
+          return (
+            <Button
+              key={category}
+              type="button"
+              onClick={() => setSelectedCategory(category)}
+              className={cn(
+                "px-6 py-3 rounded-lg font-medium text-base transition-all duration-300 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary",
+                getButtonColors(category, isSelected)
+              )}
+              role="tab"
+              {...(isSelected ? { 'aria-selected': true } : { 'aria-selected': false })}
+              aria-controls={`products-${category}`}
+              tabIndex={isSelected ? 0 : -1}
+              title={categoryMap[category as keyof typeof categoryMap] || category}
+            >
+              {categoryMap[category as keyof typeof categoryMap] || category}
+            </Button>
+          );
+        })}
+      </div>
+
       {/* Products Grid */}
       <div
         id="products-list"
         role="tabpanel"
-        aria-labelledby={`tab-${activeFilter}`}
+        aria-labelledby={`tab-${selectedCategory}`}
         className="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-7xl mx-auto auto-rows-min"
       >
         {filteredProducts.map((product, _index) => {
           const IconComponent = product.icon;
           const productSlug = getProductSlug(product.id);
           const productHref = `/${lang}/products/${productSlug}`;
+          const colors = getCategoryColors(product.category);
 
           return (
-            <Link href={productHref} key={product.id} className={cn("group", product.className)}>
+            <Link href={productHref} key={product.id} className={cn("group no-underline", product.className)}>
               <Card
                 className={cn(
-                  cardVariants({ category: product.category as any })
+                  "flex flex-col justify-between overflow-hidden cursor-pointer h-full bg-card relative group",
+                  product.className,
+                  "hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
                 )}
               >
-                <CardHeader>
-                  <IconComponent className={cn(iconVariants({ category: product.category as any }))} />
-                </CardHeader>
-                <CardContent>
-                  <CardTitle>{product.titleKey ? intl.formatMessage({ id: product.titleKey }) : product.title || 'Untitled'}</CardTitle>
-                  <CardDescription>{product.descriptionKey ? intl.formatMessage({ id: product.descriptionKey }) : product.description || 'No description available'}</CardDescription>
-                </CardContent>
+                {/* Blue arrow in top right corner */}
+                <div className="absolute top-4 right-4 z-20">
+                  <ArrowUpRight className="w-5 h-5 text-blue-500 transition-all duration-300 group-hover:text-blue-600" />
+                </div>
+
+                {/* Content container */}
+                <div className="relative z-10 flex flex-col justify-between h-full">
+                  <CardHeader className="flex flex-row items-center space-y-0 space-x-2">
+                    <IconComponent className={cn(
+                      "size-6 transition-all duration-300",
+                      colors.icon,
+                      "group-hover/bento:drop-shadow-lg"
+                    )} />
+                    <CardTitle className={cn(
+                      "font-serif font-[400] tracking-tight text-2xl transition duration-300",
+                      "text-foreground"
+                    )}>
+                      {product.titleKey ? intl.formatMessage({ id: product.titleKey }) : product.title || 'Untitled'}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="mt-auto">
+                    <CardDescription className="text-muted-foreground text-sm">
+                      {product.descriptionKey ? intl.formatMessage({ id: product.descriptionKey }) : product.description || 'No description available'}
+                    </CardDescription>
+                  </CardContent>
+                </div>
               </Card>
             </Link>
           );

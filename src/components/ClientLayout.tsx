@@ -9,9 +9,9 @@ import Footer from "@/components/Footer";
 import IntelligentBreadcrumb from "@/components/IntelligentBreadcrumb";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import { ThemeProviderWrapper } from "@/components/ThemeProviderWrapper";
+import { usePathname } from 'next/navigation';
 import React from 'react';
 import { IntlProvider } from 'react-intl';
-import { usePathname } from 'next/navigation';
 
 import { Locale } from "@/lib/definitions";
 import { MessageFormatElement } from "react-intl";
@@ -25,7 +25,7 @@ interface Props {
 
 export default function ClientLayout({ lang, messages, intlMessages, children }: Props) {
   const pathname = usePathname();
-  
+
   // Check if we're on homepage (including /home routes)
   const homepagePaths = ['/', '/en', '/fr', '/es', '/en/home', '/fr/home', '/es/home', '/home'];
   const isHomepage = homepagePaths.includes(pathname);

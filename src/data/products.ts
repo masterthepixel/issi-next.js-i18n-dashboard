@@ -107,8 +107,8 @@ export const allProducts: Product[] = [
         icon: FaBug,
         category: "project",
         tags: ["Auto Detection", "Custom Workflows"],
-        size: { width: 1, height: 1 }, // Standard card
-        className: "col-span-1",
+        size: { width: 2, height: 1 }, // Wide card
+        className: "col-span-2",
         priority: 6,
     },
     {
@@ -129,8 +129,8 @@ export const allProducts: Product[] = [
         icon: FaRocket,
         category: "project",
         tags: ["Scrum Support", "Kanban", "Team Management"],
-        size: { width: 2, height: 1 }, // Wide card
-        className: "col-span-2",
+        size: { width: 1, height: 1 }, // Standard card
+        className: "col-span-1",
         priority: 8,
     },
     {
@@ -289,8 +289,8 @@ export const allProducts: Product[] = [
         icon: FaPoll,
         category: "data",
         tags: ["Real-time Analytics", "Custom Questions"],
-        size: { width: 2, height: 1 }, // Wide
-        className: "col-span-2",
+        size: { width: 1, height: 1 }, // Standard card
+        className: "col-span-1",
         priority: 23,
     },
     {
@@ -324,8 +324,8 @@ export const allProducts: Product[] = [
         icon: FaUserTie,
         category: "modernization",
         tags: ["Resume Tracking", "Onboarding"],
-        size: { width: 2, height: 1 }, // Wide
-        className: "col-span-2",
+        size: { width: 1, height: 1 }, // Standard card
+        className: "col-span-1",
         priority: 26,
     },
     {

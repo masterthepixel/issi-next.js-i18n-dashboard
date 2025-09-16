@@ -118,14 +118,14 @@ export default function IntelligentBreadcrumb({
     return (
         <div className={`py-4 ${className}`}>
             <div className="flex items-center justify-between w-full">
-                <Breadcrumb className="font-serif font-normal text-2xl">
+                <Breadcrumb className="font-serif font-normal text-3xl">
                     <BreadcrumbList>
                         {showHome && (
                             <>
                                 <BreadcrumbItem>
                                     <BreadcrumbLink asChild>
                                         <Link href={basePath || "/"} className="flex items-center gap-2">
-                                            <HomeIcon className="h-4 w-4" />
+                                            <HomeIcon className="h-6 w-6" />
                                             <span className="sr-only">
                                                 {getTranslatedLabel("breadcrumb.home", "Home")}
                                             </span>
