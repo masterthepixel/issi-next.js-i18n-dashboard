@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from '@/lib/utils';
 import { ArrowUpRight, Building, ChevronRight, Code, Cpu, Database, GraduationCap, Headset, Search, Server, Shield, Wrench } from 'lucide-react';
+import { motion } from 'motion/react';
 import { useEffect, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -207,8 +208,24 @@ const ISSIServicesShowcaseInternal = () => {
     <section className="py-16 px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="text-left mb-16">
-          <h2 className="text-foreground sm:text-4xl mb-4">
-            <FormattedMessage id="services.showcase.title" />
+          <h2 className="relative z-10 max-w-4xl text-left text-2xl font-normal text-foreground md:text-4xl lg:text-7xl">
+            {"Our Services"
+              .split(" ")
+              .map((word, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
+                  animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                  transition={{
+                    duration: 0.3,
+                    delay: index * 0.1,
+                    ease: "easeInOut",
+                  }}
+                  className="mr-2 inline-block"
+                >
+                  {word}
+                </motion.span>
+              ))}
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mb-8">
             <FormattedMessage id="services.showcase.subtitle" />
