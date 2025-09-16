@@ -9,7 +9,7 @@ const services = [
     descriptionKey: "elearning.services.lms.description",
     features: [
       "elearning.services.lms.feature1",
-      "elearning.services.lms.feature2", 
+      "elearning.services.lms.feature2",
       "elearning.services.lms.feature3",
       "elearning.services.lms.feature4"
     ]
@@ -78,10 +78,10 @@ export default function ELearningServices() {
         <h2 className="text-center text-foreground sm:text-4xl">
           <FormattedMessage id="elearning.services.title" />
         </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-center  " text-lead2535>
+        <p className="mx-auto mt-6 max-w-2xl text-center text-lg text-muted-foreground">
           <FormattedMessage id="elearning.services.subtitle" />
         </p>
-        
+
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
           {services.map((service, index) => (
             <div key={index} className="rounded-2xl border-2 border-border p-8 transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1 bg-card">
@@ -93,14 +93,14 @@ export default function ELearningServices() {
                   <FormattedMessage id={service.titleKey} />
                 </h3>
               </div>
-              
+
               <p className="text-muted-foreground mb-4">
                 <FormattedMessage id={service.descriptionKey} />
               </p>
-              
+
               <ul className="space-y-2">
                 {service.features.map((featureKey, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start gap-2  ">
+                  <li key={featureIndex} className="flex items-start gap-2">
                     <span className="text-muted-foreground mt-1">•</span>
                     <FormattedMessage id={featureKey} />
                   </li>
