@@ -48,7 +48,7 @@ export interface RegisterData {
     location?: string;
 }
 
-const API_BASE_URL = "https://issi-dashboard-payloadcms.vercel.app/api";
+const API_BASE_URL = "/api/auth"; // Use local API proxy
 
 class AuthService {
     private tokenKey = "auth_token";
@@ -95,7 +95,10 @@ class AuthService {
     // Authentication methods
     async login(credentials: LoginCredentials): Promise<AuthResponse> {
         try {
-            const response = await fetch(`${API_BASE_URL}/auth/login`, {
+            console.log('Making login request to:', `${API_BASE_URL}/login`);
+            console.log('Credentials:', { email: credentials.email, password: '***' });
+            
+            const response = await fetch(`${API_BASE_URL}/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -103,7 +106,11 @@ class AuthService {
                 body: JSON.stringify(credentials),
             });
 
+            console.log('Response status:', response.status);
+            console.log('Response ok:', response.ok);
+
             const data = await response.json();
+            console.log('Response data:', data);
 
             if (!response.ok) {
                 return {
@@ -112,7 +119,7 @@ class AuthService {
                 };
             }
 
-            if (data.token && data.user) {
+            if (data.success && data.token && data.user) {
                 this.setToken(data.token);
                 this.setUser(data.user);
                 return {
@@ -124,9 +131,10 @@ class AuthService {
 
             return {
                 success: false,
-                message: "Invalid response from server",
+                message: data.message || "Invalid response from server",
             };
         } catch (error) {
+            console.error('Login error:', error);
             return {
                 success: false,
                 message: error instanceof Error ? error.message : "Network error",
@@ -136,7 +144,7 @@ class AuthService {
 
     async register(data: RegisterData): Promise<AuthResponse> {
         try {
-            const response = await fetch(`${API_BASE_URL}/auth/register`, {
+            const response = await fetch(`${API_BASE_URL}/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -144,28 +152,28 @@ class AuthService {
                 body: JSON.stringify(data),
             });
 
-            const data_ = await response.json();
+            const responseData = await response.json();
 
             if (!response.ok) {
                 return {
                     success: false,
-                    message: data_.message || "Registration failed",
+                    message: responseData.message || "Registration failed",
                 };
             }
 
-            if (data_.token && data_.user) {
-                this.setToken(data_.token);
-                this.setUser(data_.user);
+            if (responseData.success && responseData.token && responseData.user) {
+                this.setToken(responseData.token);
+                this.setUser(responseData.user);
                 return {
                     success: true,
-                    token: data_.token,
-                    user: data_.user,
+                    token: responseData.token,
+                    user: responseData.user,
                 };
             }
 
             return {
                 success: false,
-                message: "Invalid response from server",
+                message: responseData.message || "Invalid response from server",
             };
         } catch (error) {
             return {
@@ -186,10 +194,10 @@ class AuthService {
         if (!token) return false;
 
         try {
-            const response = await fetch(`${API_BASE_URL}/auth/validate`, {
+            const response = await fetch(`https://issi-dashboard-payloadcms.vercel.app/api/users/me`, {
                 method: "GET",
                 headers: {
-                    "Authorization": `Bearer ${token}`,
+                    "Authorization": `JWT ${token}`,
                 },
             });
 

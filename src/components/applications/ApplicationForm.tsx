@@ -52,11 +52,22 @@ function ApplicationFormInternal({ job, locale, onSuccess, onCancel }: Applicati
               })}
             </AlertDescription>
           </Alert>
-          <div className="mt-4 flex gap-2">
-            <Button onClick={() => router.push(`/${locale}/auth/login`)}>
-              {intl.formatMessage({ id: "common.login", defaultMessage: "Log In" })}
-            </Button>
-            <Button variant="outline" onClick={onCancel}>
+          <div className="mt-4 space-y-3">
+            <div className="flex gap-2">
+              <Button onClick={() => {
+                // Redirect to login and return to application page
+                router.push(`/${locale}/auth/login?redirect=${encodeURIComponent(`/${locale}/jobs/${job.id}/apply`)}`);
+              }} className="flex-1">
+                {intl.formatMessage({ id: "common.login", defaultMessage: "Log In" })}
+              </Button>
+              <Button variant="outline" onClick={() => {
+                // Redirect to sign up and return to application page  
+                router.push(`/${locale}/auth/onboarding?redirect=${encodeURIComponent(`/${locale}/jobs/${job.id}/apply`)}`);
+              }} className="flex-1">
+                {intl.formatMessage({ id: "common.signUp", defaultMessage: "Sign Up" })}
+              </Button>
+            </div>
+            <Button variant="ghost" onClick={onCancel} className="w-full">
               {intl.formatMessage({ id: "common.cancel", defaultMessage: "Cancel" })}
             </Button>
           </div>
@@ -68,6 +79,53 @@ function ApplicationFormInternal({ job, locale, onSuccess, onCancel }: Applicati
   const handleResumeUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
+      // Check file type
+      const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+      if (!allowedTypes.includes(file.type)) {
+        setError(intl.formatMessage({
+          id: "applications.invalidFileType",
+          defaultMessage: "Please upload a PDF or Word document."
+        }));
+        return;
+      }
+      
+      // Check file size (5MB limit)
+      if (file.size > 5 * 1024 * 1024) {
+        setError(intl.formatMessage({
+          id: "applications.fileTooLarge",
+          defaultMessage: "File size must be less than 5MB."
+        }));
+        return;
+      }
+      
+      setResumeFile(file);
+      setError(null);
+    }
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDragEnter = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const files = e.dataTransfer.files;
+    if (files && files[0]) {
+      const file = files[0];
+      
       // Check file type
       const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
       if (!allowedTypes.includes(file.type)) {
@@ -119,6 +177,8 @@ function ApplicationFormInternal({ job, locale, onSuccess, onCancel }: Applicati
     setError(null);
 
     try {
+      console.log('Starting form submission...');
+      
       // Validate required fields
       if (!formData.coverLetter.trim()) {
         throw new Error(intl.formatMessage({
@@ -143,8 +203,19 @@ function ApplicationFormInternal({ job, locale, onSuccess, onCancel }: Applicati
         resumeFile,
       };
 
+      console.log('Submitting application data:', {
+        jobId: job.id.toString(),
+        coverLetter: submitData.coverLetter.substring(0, 50) + '...',
+        hasResumeFile: !!submitData.resumeFile,
+        portfolioLinks: submitData.portfolioLinks,
+        expectedSalary: submitData.expectedSalary,
+        availability: submitData.availability
+      });
+
       await createApplication(job.id.toString(), submitData);
 
+      console.log('Application submitted successfully');
+      
       // Success - show success message or redirect
       onSuccess?.();
       
@@ -152,6 +223,7 @@ function ApplicationFormInternal({ job, locale, onSuccess, onCancel }: Applicati
       router.push(`/${locale}/profile/applications`);
 
     } catch (err) {
+      console.error('Application submission error:', err);
       setError(err instanceof Error ? err.message : 'An error occurred while submitting your application.');
     } finally {
       setIsSubmitting(false);
@@ -176,9 +248,9 @@ function ApplicationFormInternal({ job, locale, onSuccess, onCancel }: Applicati
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Error Alert */}
           {error && (
-            <Alert variant="destructive">
-              <AlertCircle className="h-4 w-4" />
-              <AlertDescription>{error}</AlertDescription>
+            <Alert variant="destructive" className="bg-red-600 text-white border-red-600">
+              <AlertCircle className="h-4 w-4 text-white" />
+              <AlertDescription className="text-white font-medium">{error}</AlertDescription>
             </Alert>
           )}
 
@@ -224,7 +296,14 @@ function ApplicationFormInternal({ job, locale, onSuccess, onCancel }: Applicati
               <span className="text-red-500">*</span>
             </Label>
             
-            <div className="border-2 border-dashed border-border rounded-lg p-6 text-center">
+            <div 
+              className="border-2 border-dashed border-border rounded-lg p-8 text-center min-h-32 hover:border-primary/50 transition-colors cursor-pointer"
+              onDragOver={handleDragOver}
+              onDragEnter={handleDragEnter}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+              onClick={() => document.getElementById('resume')?.click()}
+            >
               {resumeFile ? (
                 <div className="flex items-center justify-center gap-2">
                   <FileText className="h-5 w-5 text-green-600" />
@@ -233,37 +312,44 @@ function ApplicationFormInternal({ job, locale, onSuccess, onCancel }: Applicati
                     type="button"
                     variant="ghost"
                     size="sm"
-                    onClick={() => setResumeFile(null)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setResumeFile(null);
+                    }}
                   >
                     <X className="h-4 w-4" />
                   </Button>
                 </div>
               ) : (
-                <div className="space-y-2">
-                  <Upload className="h-8 w-8 mx-auto text-muted-foreground" />
-                  <div>
-                    <Label htmlFor="resume" className="cursor-pointer">
-                      <span className="text-primary hover:text-primary/80 font-medium">
-                        {intl.formatMessage({
-                          id: "applications.uploadResume",
-                          defaultMessage: "Click to upload your resume"
-                        })}
-                      </span>
-                      <Input
-                        id="resume"
-                        type="file"
-                        accept=".pdf,.doc,.docx"
-                        onChange={handleResumeUpload}
-                        className="hidden"
-                      />
-                    </Label>
+                <div className="space-y-4">
+                  <Upload className="h-12 w-12 mx-auto text-muted-foreground" />
+                  <div className="space-y-2">
+                    <p className="text-lg font-medium text-primary">
+                      {intl.formatMessage({
+                        id: "applications.uploadResume",
+                        defaultMessage: "Click to upload your resume"
+                      })}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {intl.formatMessage({
+                        id: "applications.dragDropHint",
+                        defaultMessage: "or drag and drop your file here"
+                      })}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {intl.formatMessage({
+                        id: "applications.resumeFormats",
+                        defaultMessage: "PDF, DOC, or DOCX (max 5MB)"
+                      })}
+                    </p>
                   </div>
-                  <p className="">
-                    {intl.formatMessage({
-                      id: "applications.resumeFormats",
-                      defaultMessage: "PDF, DOC, or DOCX (max 5MB)"
-                    })}
-                  </p>
+                  <Input
+                    id="resume"
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    onChange={handleResumeUpload}
+                    className="hidden"
+                  />
                 </div>
               )}
             </div>
@@ -376,7 +462,7 @@ function ApplicationFormInternal({ job, locale, onSuccess, onCancel }: Applicati
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1"
+              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
             >
               {isSubmitting ? (
                 <>
@@ -399,6 +485,7 @@ function ApplicationFormInternal({ job, locale, onSuccess, onCancel }: Applicati
               variant="outline"
               onClick={onCancel}
               disabled={isSubmitting}
+              className="flex-1 border-red-600 text-red-600 hover:bg-red-600 hover:text-white"
             >
               {intl.formatMessage({ id: "common.cancel", defaultMessage: "Cancel" })}
             </Button>

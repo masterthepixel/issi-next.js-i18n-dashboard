@@ -278,9 +278,9 @@ export default function OnboardingForm({ lang }: OnboardingFormProps) {
                 throw new Error(result.message || t("signUpError"));
             }
 
-            // Redirect to dashboard
-            const dashboardRoute = getDashboardRoute(userType === "job_seeker" ? "JOB_SEEKER" : "COMPANY", lang);
-            router.push(dashboardRoute);
+            // Redirect to specified page or dashboard
+            const redirectTo = searchParams.get("redirect") || getDashboardRoute(userType === "job_seeker" ? "JOB_SEEKER" : "COMPANY", lang);
+            router.push(redirectTo);
 
         } catch (err) {
             setError(err instanceof Error ? err.message : t("signUpError"));

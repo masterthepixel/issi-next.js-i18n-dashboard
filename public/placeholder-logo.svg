@@ -1,0 +1,11 @@
+<svg width="88" height="88" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with ISSI brand colors -->
+  <circle cx="44" cy="44" r="42" fill="#1e40af" stroke="#e5e7eb" stroke-width="2"/>
+  
+  <!-- ISSI text -->
+  <text x="44" y="38" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold" fill="white">ISSI</text>
+  
+  <!-- Subtitle -->
+  <text x="44" y="54" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" fill="#bfdbfe">International</text>
+  <text x="44" y="64" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" fill="#bfdbfe">Solutions</text>
+</svg>

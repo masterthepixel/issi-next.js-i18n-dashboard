@@ -24,7 +24,6 @@ const World = dynamic(() => import("@/components/ui/globe").then((m) => m.World)
 interface IntelligentBreadcrumbProps {
     className?: string;
     showHome?: boolean;
-    hideOnHomepage?: boolean;
 }
 
 interface BreadcrumbSegment {
@@ -35,8 +34,7 @@ interface BreadcrumbSegment {
 
 export default function IntelligentBreadcrumb({
     className = "",
-    showHome = true,
-    hideOnHomepage = true
+    showHome = true
 }: IntelligentBreadcrumbProps) {
     const pathname = usePathname();
     const intl = useIntl();
@@ -79,13 +77,6 @@ export default function IntelligentBreadcrumb({
             .join(' ');
     };
 
-    // Check if we're on homepage (be more specific about what counts as homepage)
-    const isHomePage = pathname === '/' || pathname === '/en' || pathname === '/fr' || pathname === '/es';
-
-    if (hideOnHomepage && isHomePage) {
-        return null;
-    }
-
     // Parse pathname into segments
     const segments = pathname.split('/').filter(Boolean);
 
@@ -119,35 +110,8 @@ export default function IntelligentBreadcrumb({
         }
     });
 
-    // Don't render if no valid segments, but always show for non-homepage
+    // Don't render if no valid segments
     if (breadcrumbSegments.length === 0) {
-        // For debugging: always show something on non-homepage routes
-        if (!isHomePage) {
-            return (
-                <div className={`py-4 ${className}`}>
-                    <Breadcrumb>
-                        <BreadcrumbList>
-                            <BreadcrumbItem>
-                                <BreadcrumbLink asChild>
-                                    <Link href={basePath || "/"} className="flex items-center gap-2">
-                                        <HomeIcon className="h-4 w-4" />
-                                        <span className="sr-only">
-                                            {getTranslatedLabel("breadcrumb.home", "Home")}
-                                        </span>
-                                    </Link>
-                                </BreadcrumbLink>
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator />
-                            <BreadcrumbItem>
-                                <BreadcrumbPage>
-                                    {cleanSegments.length > 0 ? formatSegmentName(cleanSegments[cleanSegments.length - 1]) : 'Page'}
-                                </BreadcrumbPage>
-                            </BreadcrumbItem>
-                        </BreadcrumbList>
-                    </Breadcrumb>
-                </div>
-            );
-        }
         return null;
     }
 

@@ -3,6 +3,8 @@
  * Uses existing project patterns and utilities
  */
 
+import { authService } from './auth';
+
 // API Configuration
 const API_BASE_URL = process.env.NEXT_PUBLIC_PAYLOAD_URL || 'https://issi-dashboard-payloadcms.vercel.app';
 
@@ -443,12 +445,23 @@ export async function createApplication(jobId: string, formData: ApplicationForm
     const uploadFormData = new FormData();
     uploadFormData.append('file', formData.resumeFile);
 
+    // Get the JWT token for authentication
+    const token = authService.getToken();
+    if (!token) {
+      throw new Error('Authentication required for file upload');
+    }
+
     const uploadResponse = await fetch('/api/upload/resume', {
       method: 'POST',
+      headers: {
+        'Authorization': `JWT ${token}`,
+      },
       body: uploadFormData,
     });
 
     if (!uploadResponse.ok) {
+      const errorText = await uploadResponse.text();
+      console.error('Upload error response:', errorText);
       throw new Error('Failed to upload resume');
     }
 

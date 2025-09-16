@@ -1,11 +1,9 @@
 "use client";
 
-import ApplicationForm from "@/components/applications/ApplicationForm";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
 import type { Locale } from "@/lib/definitions";
 import type { JobPost } from "@/lib/jobs-api";
@@ -147,8 +145,35 @@ function RichTextRenderer({ content }: { content: JobPost['jobDescription'] }) {
 function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) {
   const router = useRouter();
   const intl = useIntl();
-  const [showApplicationForm, setShowApplicationForm] = useState(false);
   const [showFullDescription, setShowFullDescription] = useState(false);
+
+  // Helper function to get a safe logo URL
+  const getSafeLogoUrl = (logo: string | { url?: string } | null | undefined): string => {
+    if (!logo) return '/images/issi_logo.png';
+
+    if (typeof logo === 'string') {
+      // If it's a PayloadCMS API URL that might be broken, fallback to ISSI logo
+      if (logo.includes('/api/media/file/') || logo.includes('logo_')) {
+        return '/images/issi_logo.png';
+      }
+      return logo;
+    }
+
+    // If it's an object with url property
+    const logoUrl = (logo as { url?: string })?.url;
+    if (logoUrl && !logoUrl.includes('/api/media/file/') && !logoUrl.includes('logo_')) {
+      return logoUrl;
+    }
+
+    return '/images/issi_logo.png';
+  };
+
+  // Debug logo URL
+  React.useEffect(() => {
+    if (job.company.logo) {
+      console.log('Company logo URL:', job.company.logo);
+    }
+  }, [job.company.logo]);
 
   const handleShare = async () => {
     if (navigator.share) {
@@ -202,11 +227,17 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
                   <div className="flex-shrink-0">
                     <div className="w-20 h-20 sm:w-24 sm:h-24 bg-background border rounded-xl p-2 shadow-sm">
                       <Image
-                        src={job.company.logo}
+                        src={getSafeLogoUrl(job.company.logo)}
                         alt={`${job.company.name} logo`}
                         width={88}
                         height={88}
                         className="w-full h-full rounded-lg object-contain"
+                        unoptimized={true}
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          console.error('Failed to load company logo:', job.company.logo);
+                          target.src = '/images/issi_logo.png';
+                        }}
                       />
                     </div>
                   </div>
@@ -275,28 +306,13 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
 
         {/* Sidebar */}
         <div className="space-y-6">
-          {/* Company Logo (Sidebar) */}
-          {job.company.logo && (
-            <div className="flex justify-center">
-              <div className="w-20 h-20 sm:w-24 sm:h-24 bg-background border rounded-xl p-2 shadow-sm">
-                <Image
-                  src={job.company.logo}
-                  alt={`${job.company.name} logo`}
-                  width={88}
-                  height={88}
-                  className="w-full h-full rounded-lg object-contain"
-                />
-              </div>
-            </div>
-          )}
-
           {/* Apply Card */}
           <div className="space-y-4">
             <div className="flex gap-3">
               <Button
                 className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
                 size="lg"
-                onClick={() => setShowApplicationForm(true)}
+                onClick={() => router.push(`/${locale}/jobs/${job.id}/apply`)}
               >
                 {intl.formatMessage({ id: "jobs.applyNow", defaultMessage: "Apply Now" })}
               </Button>
@@ -380,25 +396,6 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
         </div>
       </div>
 
-      {/* Application Form Dialog */}
-      <Dialog open={showApplicationForm} onOpenChange={setShowApplicationForm}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader className="sr-only">
-            <DialogTitle>
-              {intl.formatMessage({ id: "jobs.applyForPosition", defaultMessage: "Apply for this Position" })}
-            </DialogTitle>
-            <DialogDescription>
-              {intl.formatMessage({ id: "applications.fillOutForm", defaultMessage: "Fill out the application form below to apply for this position." })}
-            </DialogDescription>
-          </DialogHeader>
-          <ApplicationForm
-            job={job}
-            locale={locale}
-            onSuccess={() => setShowApplicationForm(false)}
-            onCancel={() => setShowApplicationForm(false)}
-          />
-        </DialogContent>
-      </Dialog>
     </div>
   );
 }

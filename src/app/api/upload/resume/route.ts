@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile, mkdir } from 'fs/promises';
-import { existsSync } from 'fs';
-import path from 'path';
+
+const API_BASE_URL = "https://issi-dashboard-payloadcms.vercel.app/api";
 
 // File upload configuration
 const ALLOWED_FILE_TYPES = [
@@ -10,31 +9,13 @@ const ALLOWED_FILE_TYPES = [
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 ];
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
-const UPLOAD_DIR = path.join(process.cwd(), 'public', 'uploads', 'resumes');
-
-// Ensure upload directory exists
-async function ensureUploadDir() {
-  if (!existsSync(UPLOAD_DIR)) {
-    await mkdir(UPLOAD_DIR, { recursive: true });
-  }
-}
-
-// Generate unique filename
-function generateFilename(originalName: string, userId: string): string {
-  const ext = path.extname(originalName);
-  const timestamp = Date.now();
-  const sanitized = originalName
-    .replace(/[^a-zA-Z0-9.-]/g, '_')
-    .replace(/_+/g, '_');
-  return `${userId}_${timestamp}_${sanitized}`;
-}
 
 // Validate file
 function validateFile(file: File): { valid: boolean; error?: string } {
   if (!ALLOWED_FILE_TYPES.includes(file.type)) {
     return {
       valid: false,
-      error: `Invalid file type. Allowed types: ${ALLOWED_FILE_TYPES.join(', ')}`,
+      error: `Invalid file type. Allowed types: PDF, DOC, DOCX`,
     };
   }
 
@@ -51,11 +32,14 @@ function validateFile(file: File): { valid: boolean; error?: string } {
 // POST /api/upload/resume - Upload resume file
 export async function POST(request: NextRequest) {
   try {
-    // TODO: Add authentication check here
-    // const user = await getCurrentUser(request);
-    // if (!user || user.userType !== 'JOB_SEEKER') {
-    //   return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    // }
+    // Get the authorization header from the request
+    const authHeader = request.headers.get('authorization');
+    if (!authHeader) {
+      return NextResponse.json(
+        { error: 'Authorization required for file upload' },
+        { status: 401 }
+      );
+    }
 
     const formData = await request.formData();
     const file = formData.get('file') as File;
@@ -76,49 +60,127 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Ensure upload directory exists
-    await ensureUploadDir();
+    // Let's try uploading without any alt field and see what happens
+    // Maybe the alt field isn't actually required for file uploads
+    console.log('Uploading file to PayloadCMS without alt field:', {
+      name: file.name,
+      type: file.type,
+      size: file.size
+    });
 
-    // Generate unique filename
-    const userId = 'current-user-id'; // Replace with actual user ID from auth
-    const filename = generateFilename(file.name, userId);
-    const filepath = path.join(UPLOAD_DIR, filename);
+    const payloadFormData = new FormData();
+    payloadFormData.append('file', file);
 
-    // Save file
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-    await writeFile(filepath, buffer);
+    const response = await fetch(`${API_BASE_URL}/media`, {
+      method: 'POST',
+      headers: {
+        'Authorization': authHeader,
+      },
+      body: payloadFormData,
+    });
 
-    // Generate public URL
-    const publicUrl = `/uploads/resumes/${filename}`;
+    console.log('Upload response status:', response.status);
 
-    // TODO: Save file reference to database
-    // await saveFileReference({
-    //   userId,
-    //   filename,
-    //   originalName: file.name,
-    //   filePath: filepath,
-    //   publicUrl,
-    //   fileSize: file.size,
-    //   mimeType: file.type,
-    //   uploadedAt: new Date(),
-    // });
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error('PayloadCMS upload error:', errorData);
+      
+      // Check if this is specifically about alt field or other validation
+      if (errorData.errors?.some((error: any) => error.message?.includes('Alt'))) {
+        console.log('Alt field is required by PayloadCMS configuration');
+        
+        // Since alt field is required, let's just provide a minimal one
+        console.log('Uploading with minimal alt field...');
+        
+        const retryFormData = new FormData();
+        retryFormData.append('file', file);
+        retryFormData.append('alt', ''); // Try empty string
+        
+        const retryResponse = await fetch(`${API_BASE_URL}/media`, {
+          method: 'POST',
+          headers: {
+            'Authorization': authHeader,
+          },
+          body: retryFormData,
+        });
+        
+        if (!retryResponse.ok) {
+          // If empty string fails, try with actual content
+          const finalFormData = new FormData();
+          finalFormData.append('file', file);
+          finalFormData.append('alt', 'Uploaded file'); // Simple, generic alt text
+          
+          const finalResponse = await fetch(`${API_BASE_URL}/media`, {
+            method: 'POST',
+            headers: {
+              'Authorization': authHeader,
+            },
+            body: finalFormData,
+          });
+          
+          if (!finalResponse.ok) {
+            const finalError = await finalResponse.json();
+            console.error('Final upload attempt failed:', finalError);
+            throw new Error('PayloadCMS alt field validation failed - check collection configuration');
+          }
+          
+          const finalResult = await finalResponse.json();
+          console.log('Upload successful with generic alt text');
+          
+          return NextResponse.json(
+            {
+              success: true,
+              id: finalResult.doc.id,
+              filename: finalResult.doc.filename,
+              originalName: file.name,
+              url: finalResult.doc.url,
+              size: finalResult.doc.filesize,
+              type: finalResult.doc.mimeType,
+            },
+            { status: 201 }
+          );
+        } else {
+          const retryResult = await retryResponse.json();
+          console.log('Upload successful with empty alt field');
+          
+          return NextResponse.json(
+            {
+              success: true,
+              id: retryResult.doc.id,
+              filename: retryResult.doc.filename,
+              originalName: file.name,
+              url: retryResult.doc.url,
+              size: retryResult.doc.filesize,
+              type: retryResult.doc.mimeType,
+            },
+            { status: 201 }
+          );
+        }
+      } else {
+        // Not an alt field issue, some other validation problem
+        console.error('Upload failed for non-alt field reason:', errorData);
+        throw new Error(errorData.message || 'Failed to upload to PayloadCMS');
+      }
+    }
 
+    const result = await response.json();
+    
     return NextResponse.json(
       {
         success: true,
-        filename,
+        id: result.doc.id,
+        filename: result.doc.filename,
         originalName: file.name,
-        url: publicUrl,
-        size: file.size,
-        type: file.type,
+        url: result.doc.url,
+        size: result.doc.filesize,
+        type: result.doc.mimeType,
       },
       { status: 201 }
     );
   } catch (error) {
     console.error('Error uploading resume:', error);
     return NextResponse.json(
-      { error: 'Failed to upload resume' },
+      { error: error instanceof Error ? error.message : 'Failed to upload resume' },
       { status: 500 }
     );
   }
@@ -133,21 +195,26 @@ export async function GET(request: NextRequest) {
     //   return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     // }
 
-    // TODO: Get user's uploaded files from database
-    // const files = await getUserFiles(user.id);
+    // Get media files from PayloadCMS
+    // TODO: Filter by current user when authentication is implemented
+    const response = await fetch(`${API_BASE_URL}/media`);
+    
+    if (!response.ok) {
+      throw new Error('Failed to fetch media from PayloadCMS');
+    }
 
-    // Mock response
-    const files = [
-      {
-        id: '1',
-        filename: 'user1_1642781234567_john_doe_resume.pdf',
-        originalName: 'john_doe_resume.pdf',
-        url: '/uploads/resumes/user1_1642781234567_john_doe_resume.pdf',
-        size: 245760,
-        type: 'application/pdf',
-        uploadedAt: '2024-01-15T10:30:00Z',
-      },
-    ];
+    const result = await response.json();
+    
+    // Transform PayloadCMS response to expected format
+    const files = result.docs.map((doc: any) => ({
+      id: doc.id,
+      filename: doc.filename,
+      originalName: doc.filename,
+      url: doc.url,
+      size: doc.filesize,
+      type: doc.mimeType,
+      uploadedAt: doc.createdAt,
+    }));
 
     return NextResponse.json({ files });
   } catch (error) {

@@ -131,9 +131,15 @@ export default function LoginForm({ lang }: LoginFormProps) {
     };
 
     const handleGuestContinue = () => {
-        // For guest access, redirect to main site
-        router.push(`/${lang}`);
+        // For guest access, check if there's a redirect parameter, otherwise go to main site
+        const redirectTo = searchParams.get("redirect") || `/${lang}`;
+        router.push(redirectTo);
     };
+
+    // Check if we should show guest option - hide for job application pages
+    const redirectUrl = searchParams.get("redirect") || "";
+    const isJobApplication = redirectUrl.includes("/jobs/") && redirectUrl.includes("/apply");
+    const showGuestOption = !isJobApplication;
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-slate-800 p-4">
@@ -226,15 +232,19 @@ export default function LoginForm({ lang }: LoginFormProps) {
                             </Link>
                         </p>
 
-                        <Separator />
+                        {showGuestOption && (
+                            <>
+                                <Separator />
 
-                        <Button
-                            variant="outline"
-                            onClick={handleGuestContinue}
-                            className="w-full"
-                        >
-                            {t("continueAsGuest")}
-                        </Button>
+                                <Button
+                                    variant="outline"
+                                    onClick={handleGuestContinue}
+                                    className="w-full"
+                                >
+                                    {t("continueAsGuest")}
+                                </Button>
+                            </>
+                        )}
                     </div>
                 </CardContent>
             </Card>

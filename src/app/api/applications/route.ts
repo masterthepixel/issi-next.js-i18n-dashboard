@@ -6,10 +6,20 @@ import { emailNotifications } from '@/lib/email-service';
 const CreateApplicationSchema = z.object({
   jobId: z.string(),
   coverLetter: z.string().min(1),
-  resumeUrl: z.string().url(),
-  portfolioLinks: z.array(z.string().url()).optional(),
-  expectedSalary: z.number().positive().optional(),
-  availableStartDate: z.string().optional(),
+  resumeUrl: z.string().optional().default(''), // Allow empty string
+  portfolioLinks: z.array(z.string()).optional().default([]).transform(links => 
+    // Filter out empty strings and validate URLs
+    links?.filter(link => link.trim() !== '').filter(link => {
+      try {
+        new URL(link);
+        return true;
+      } catch {
+        return false;
+      }
+    }) || []
+  ),
+  expectedSalary: z.union([z.number().positive(), z.string().transform(val => val === '' ? undefined : Number(val))]).optional(),
+  availableStartDate: z.string().optional().default(''),
   notes: z.string().optional(),
 });
 
@@ -19,70 +29,89 @@ const UpdateApplicationSchema = z.object({
   notes: z.string().optional(),
 });
 
-// Mock database functions - replace with actual database calls
+const API_BASE_URL = "https://issi-dashboard-payloadcms.vercel.app/api";
+
+// PayloadCMS integration functions
 async function createApplication(data: any) {
-  // This would integrate with your actual database
-  return {
-    id: Math.random().toString(36).substr(2, 9),
-    ...data,
-    status: 'APPLIED',
-    appliedAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  };
+  // Create application via PayloadCMS API
+  const response = await fetch(`${API_BASE_URL}/applications`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      ...data,
+      status: 'APPLIED',
+      appliedAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to create application in PayloadCMS');
+  }
+
+  const result = await response.json();
+  return result.doc;
 }
 
 async function getApplications(userId?: string, jobId?: string, status?: string) {
-  // Mock data - replace with actual database query
-  const mockApplications = [
-    {
-      id: '1',
-      jobId: 'job-1',
-      userId: 'user-1',
-      status: 'APPLIED',
-      coverLetter: 'I am very interested in this position...',
-      resumeUrl: 'https://example.com/resume.pdf',
-      portfolioLinks: ['https://portfolio.example.com'],
-      expectedSalary: 75000,
-      availableStartDate: '2024-02-01',
-      appliedAt: '2024-01-15T10:00:00Z',
-      updatedAt: '2024-01-15T10:00:00Z',
-      job: {
-        id: 'job-1',
-        jobTitle: 'Senior Software Engineer',
-        company: { name: 'ISSI Software Solutions' },
-        location: 'Remote',
-        salaryFrom: 70000,
-        salaryTo: 90000,
-      },
-    },
-  ];
+  // Build query parameters for PayloadCMS
+  const searchParams = new URLSearchParams();
+  
+  if (userId) {
+    searchParams.append('where[userId][equals]', userId);
+  }
+  if (jobId) {
+    searchParams.append('where[jobId][equals]', jobId);
+  }
+  if (status) {
+    searchParams.append('where[status][equals]', status);
+  }
+  
+  // Include related job data
+  searchParams.append('depth', '2');
+  
+  const response = await fetch(`${API_BASE_URL}/applications?${searchParams.toString()}`);
+  
+  if (!response.ok) {
+    throw new Error('Failed to fetch applications from PayloadCMS');
+  }
 
-  return {
-    docs: mockApplications.filter(app => {
-      if (userId && app.userId !== userId) return false;
-      if (jobId && app.jobId !== jobId) return false;
-      if (status && app.status !== status) return false;
-      return true;
-    }),
-    totalDocs: mockApplications.length,
-    page: 1,
-    totalPages: 1,
-    hasNextPage: false,
-    hasPrevPage: false,
-  };
+  return await response.json();
 }
 
 async function updateApplication(id: string, data: any) {
-  // Mock update - replace with actual database update
-  return {
-    id,
-    ...data,
-    updatedAt: new Date().toISOString(),
-  };
+  // Update application via PayloadCMS API
+  const response = await fetch(`${API_BASE_URL}/applications/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      ...data,
+      updatedAt: new Date().toISOString(),
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to update application in PayloadCMS');
+  }
+
+  const result = await response.json();
+  return result.doc;
 }
 
 async function deleteApplication(id: string) {
-  // Mock delete - replace with actual database delete
+  // Delete application via PayloadCMS API
+  const response = await fetch(`${API_BASE_URL}/applications/${id}`, {
+    method: 'DELETE',
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to delete application in PayloadCMS');
+  }
+
   return { success: true };
 }
 
