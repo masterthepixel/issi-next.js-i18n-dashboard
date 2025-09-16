@@ -1,67 +1,52 @@
 "use client";
 
-import {
-  AcademicCapIcon,
-  BeakerIcon,
-  BookOpenIcon,
-  BuildingLibraryIcon,
-  BuildingOfficeIcon,
-  CommandLineIcon,
-  DocumentTextIcon,
-  GlobeAmericasIcon,
-  ScaleIcon,
-  ServerIcon,
-  ShieldCheckIcon,
-  UserGroupIcon,
-  WrenchScrewdriverIcon
-} from "@heroicons/react/24/outline";
 import { FormattedMessage } from "react-intl";
-import { InfiniteMovingBadges } from "./ui/infinite-moving-badges";
+import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 
-// Updated to include icons
+// Updated to include icons - transformed for InfiniteMovingCards format
 const clients = [
-  { name: "Savannah River Nuclear Solutions", icon: BeakerIcon },
-  { name: "Professional Services Contract", icon: BuildingOfficeIcon },
-  { name: "Library of Congress", icon: BookOpenIcon },
-  { name: "Leidos ITSSC II Contract", icon: ServerIcon },
-  { name: "Food and Drug APES Contract", icon: BeakerIcon },
-  { name: "Anne Arundel County BPA Contract", icon: BuildingOfficeIcon },
-  { name: "EPTS Modernization", icon: CommandLineIcon },
-  { name: "National LMS BPA", icon: AcademicCapIcon },
-  { name: "ECTS Implementation", icon: CommandLineIcon },
-  { name: "DoDEA Contract", icon: ShieldCheckIcon },
-  { name: "Leidos ITSSC Subcontract", icon: ServerIcon },
-  { name: "NRECA Contract", icon: BuildingOfficeIcon },
-  { name: "CMS Contract", icon: BuildingOfficeIcon },
-  { name: "IBTS Contract", icon: BuildingOfficeIcon },
-  { name: "U.S. EPAAS Contract", icon: GlobeAmericasIcon },
-  { name: "SC Inc. Subcontract for CMS", icon: BuildingOfficeIcon },
-  { name: "SC Inc. Subcontract for DoDEA", icon: AcademicCapIcon },
-  { name: "Library of Congress LMS Contract", icon: BookOpenIcon },
-  { name: "LMS and Maintenance Contract", icon: AcademicCapIcon },
-  { name: "NORAD/NORTHCOM", icon: ShieldCheckIcon },
-  { name: "National Security Agency", icon: ShieldCheckIcon },
-  { name: "S4 Inc. Subcontract for NORAD", icon: ShieldCheckIcon },
-  { name: "USNORTHCOM (N2ITSM) Contract", icon: ShieldCheckIcon },
-  { name: "Tarrant County Probation Office", icon: ScaleIcon },
-  { name: "University of Maryland Baltimore", icon: AcademicCapIcon },
-  { name: "Food and Drug Administration", icon: BeakerIcon },
-  { name: "U.S. Army Sam/Calm Division", icon: ShieldCheckIcon },
-  { name: "U.S. Dept. of Veterans Affairs", icon: UserGroupIcon },
-  { name: "ITS NEDC", icon: ServerIcon },
-  { name: "USDA ITS/ARS PWA PBRAU", icon: GlobeAmericasIcon },
-  { name: "Naval Air Warfare Center", icon: ShieldCheckIcon },
-  { name: "CNCS and Maintenance Contract", icon: WrenchScrewdriverIcon },
-  { name: "USDA - National IT Center", icon: GlobeAmericasIcon },
-  { name: "USAAC LMS Contract", icon: AcademicCapIcon },
-  { name: "U.S. Government Publishing Office", icon: DocumentTextIcon },
-  { name: "City of Goodyear Contract", icon: BuildingOfficeIcon },
-  { name: "Federal Communications Commission", icon: CommandLineIcon },
-  { name: "National Security Agency Contract", icon: ShieldCheckIcon },
-  { name: "Library of Congress Percipio", icon: BookOpenIcon },
-  { name: "Florida Department of Revenue", icon: BuildingLibraryIcon },
-  { name: "Fairstead IT Managed Services", icon: ServerIcon },
-  { name: "U.S. Army ITES-2S", icon: ShieldCheckIcon }
+  { quote: "Professional IT Services", name: "Savannah River Nuclear Solutions", title: "Nuclear Solutions Contract" },
+  { quote: "Comprehensive IT Support", name: "Professional Services Contract", title: "Government Services" },
+  { quote: "Digital Library Solutions", name: "Library of Congress", title: "Federal Library Services" },
+  { quote: "IT Systems & Support", name: "Leidos ITSSC II Contract", title: "Defense Contractor" },
+  { quote: "Regulatory Compliance Systems", name: "Food and Drug APES Contract", title: "FDA Partnership" },
+  { quote: "County IT Solutions", name: "Anne Arundel County BPA Contract", title: "Local Government" },
+  { quote: "System Modernization", name: "EPTS Modernization", title: "Legacy System Upgrade" },
+  { quote: "Learning Management Systems", name: "National LMS BPA", title: "Educational Technology" },
+  { quote: "Correspondence Tracking", name: "ECTS Implementation", title: "Document Management" },
+  { quote: "Defense Education Support", name: "DoDEA Contract", title: "Military Education" },
+  { quote: "IT Infrastructure Support", name: "Leidos ITSSC Subcontract", title: "Defense Systems" },
+  { quote: "Energy Sector IT", name: "NRECA Contract", title: "Rural Electric Co-op" },
+  { quote: "Healthcare IT Systems", name: "CMS Contract", title: "Medicare Services" },
+  { quote: "Business Technology Solutions", name: "IBTS Contract", title: "IT Business Systems" },
+  { quote: "Environmental IT Systems", name: "U.S. EPAAS Contract", title: "Environmental Protection" },
+  { quote: "Healthcare Systems Support", name: "SC Inc. Subcontract for CMS", title: "Medicare Technology" },
+  { quote: "Educational IT Support", name: "SC Inc. Subcontract for DoDEA", title: "Defense Education" },
+  { quote: "Library Management Systems", name: "Library of Congress LMS Contract", title: "Federal Library Tech" },
+  { quote: "Learning Platform Maintenance", name: "LMS and Maintenance Contract", title: "Educational Support" },
+  { quote: "Defense Command Systems", name: "NORAD/NORTHCOM", title: "Aerospace Defense" },
+  { quote: "National Security IT", name: "National Security Agency", title: "Cybersecurity Solutions" },
+  { quote: "Defense Subcontracting", name: "S4 Inc. Subcontract for NORAD", title: "Aerospace Defense Support" },
+  { quote: "Military IT Support", name: "USNORTHCOM (N2ITSM) Contract", title: "Defense Communications" },
+  { quote: "Probation Management Systems", name: "Tarrant County Probation Office", title: "Criminal Justice IT" },
+  { quote: "Academic IT Solutions", name: "University of Maryland Baltimore", title: "Higher Education" },
+  { quote: "Regulatory IT Systems", name: "Food and Drug Administration", title: "Federal Regulatory" },
+  { quote: "Military Systems Support", name: "U.S. Army Sam/Calm Division", title: "Defense Technology" },
+  { quote: "Veterans Services IT", name: "U.S. Dept. of Veterans Affairs", title: "Veteran Support Systems" },
+  { quote: "IT Network Solutions", name: "ITS NEDC", title: "Network Infrastructure" },
+  { quote: "Agricultural IT Systems", name: "USDA ITS/ARS PWA PBRAU", title: "Agriculture Technology" },
+  { quote: "Naval Aviation IT", name: "Naval Air Warfare Center", title: "Defense Aviation" },
+  { quote: "Maintenance Support Systems", name: "CNCS and Maintenance Contract", title: "Technical Maintenance" },
+  { quote: "Agricultural IT Center", name: "USDA - National IT Center", title: "Federal Agriculture" },
+  { quote: "Army Learning Systems", name: "USAAC LMS Contract", title: "Military Education" },
+  { quote: "Government Publishing IT", name: "U.S. Government Publishing Office", title: "Federal Publishing" },
+  { quote: "Municipal IT Services", name: "City of Goodyear Contract", title: "Local Government" },
+  { quote: "Communications IT", name: "Federal Communications Commission", title: "Telecommunications" },
+  { quote: "Security Agency IT", name: "National Security Agency Contract", title: "National Security" },
+  { quote: "Learning Platform Services", name: "Library of Congress Percipio", title: "Federal Learning" },
+  { quote: "State Revenue Systems", name: "Florida Department of Revenue", title: "State Government" },
+  { quote: "Managed IT Services", name: "Fairstead IT Managed Services", title: "Private Sector IT" },
+  { quote: "Army IT Enterprise", name: "U.S. Army ITES-2S", title: "Defense IT Services" }
 ];
 
 // Split clients into 5 rows
@@ -79,34 +64,13 @@ function splitIntoRows(items: typeof clients, rowCount: number) {
 }
 
 export default function GovernmentClients() {
-  const clientRows = splitIntoRows(clients, 5);
-
-  // Badge style generator for enhanced WCAG AAA contrast
-  const getBadgeStyle = (index: number) => {
-    // Alternating colors with high contrast for accessibility (WCAG AAA compliant)
-    const colorIndex = index % 5; // Use 5 different colors for more variety
-
-    switch (colorIndex) {
-      case 0:
-        return 'bg-slate-900 text-primary-foreground ring-1 ring-slate-700'; // Dark slate
-      case 1:
-        return 'bg-blue-800 text-primary-foreground ring-1 ring-blue-700'; // Deep blue
-      case 2:
-        return 'bg-purple-800 text-primary-foreground ring-1 ring-purple-700'; // Deep purple
-      case 3:
-        return 'bg-emerald-800 text-primary-foreground ring-1 ring-emerald-700'; // Deep emerald
-      case 4:
-        return 'bg-amber-800 text-primary-foreground ring-1 ring-amber-700'; // Deep amber
-      default:
-        return 'bg-slate-900 text-primary-foreground ring-1 ring-slate-700';
-    }
-  };
+  const clientRows = splitIntoRows(clients, 3);
 
   return (
     <section className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4">
         <div className="text-left mb-8">
-          <h2 className="text-foreground sm:text-4xl">
+          <h2 className="text-foreground sm:text-6xl font-serif font-[400] text-4xl tracking-tight">
             <FormattedMessage id="government.clients.title" defaultMessage="Our Government Clients & Partners" />
           </h2>
           <p className="mt-4  " text-lead4997>
@@ -115,45 +79,29 @@ export default function GovernmentClients() {
         </div>
 
         <div className="mx-auto mt-8 max-w-7xl">
-          <div className="space-y-3 py-2">
-            <InfiniteMovingBadges
+          <div className="space-y-2 py-2">
+            <InfiniteMovingCards
               items={clientRows[0]}
               direction="right"
               speed="fast"
               pauseOnHover={true}
-              badgeClassName={getBadgeStyle}
+              className="patriotic-cards-blue"
             />
 
-            <InfiniteMovingBadges
+            <InfiniteMovingCards
               items={clientRows[1]}
               direction="left"
               speed="fast"
               pauseOnHover={true}
-              badgeClassName={getBadgeStyle}
+              className="patriotic-cards-white"
             />
 
-            <InfiniteMovingBadges
+            <InfiniteMovingCards
               items={clientRows[2]}
               direction="right"
               speed="fast"
               pauseOnHover={true}
-              badgeClassName={getBadgeStyle}
-            />
-
-            <InfiniteMovingBadges
-              items={clientRows[3]}
-              direction="left"
-              speed="fast"
-              pauseOnHover={true}
-              badgeClassName={getBadgeStyle}
-            />
-
-            <InfiniteMovingBadges
-              items={clientRows[4]}
-              direction="right"
-              speed="fast"
-              pauseOnHover={true}
-              badgeClassName={getBadgeStyle}
+              className="patriotic-cards-red"
             />
           </div>
         </div>

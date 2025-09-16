@@ -7,7 +7,7 @@ export default function GovernmentTestimonial() {
     <section className="py-16 sm:py-24 bg-gradient-to-r from-blue-600 to-purple-700">
       <div className="container mx-auto px-6">
         <div className="text-center">
-          <h2 className="sm:text-4xl mb-8">
+          <h2 className="sm:text-4xl mb-8 font-serif font-[400] text-3xl tracking-tight text-white">
             <FormattedMessage
               id="government.testimonial.title"
               defaultMessage="Trusted by Government Agencies"

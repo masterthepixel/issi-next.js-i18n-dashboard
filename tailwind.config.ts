@@ -8,7 +8,23 @@ const config: Config = {
 		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
 	],
 	safelist: [
-		'debug-screens'
+		'debug-screens',
+		'col-span-1',
+		'col-span-2',
+		'col-span-3',
+		'col-span-4',
+		'md:col-span-1',
+		'md:col-span-2',
+		'md:col-span-3',
+		'md:col-span-4',
+		'grid-cols-1',
+		'grid-cols-2',
+		'grid-cols-3',
+		'grid-cols-4',
+		'md:grid-cols-1',
+		'md:grid-cols-2',
+		'md:grid-cols-3',
+		'md:grid-cols-4'
 	],
 	theme: {
 		extend: {
@@ -20,7 +36,8 @@ const config: Config = {
 				'fade-in': 'fadeIn 0.2s ease-in-out',
 				'meteor-effect': 'meteor 5s linear infinite',
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'scroll': 'scroll var(--animation-duration, 55s) var(--animation-direction, forwards) linear infinite'
 			},
 			keyframes: {
 				fadeIn: {
@@ -58,6 +75,11 @@ const config: Config = {
 					},
 					to: {
 						height: '0'
+					}
+				},
+				scroll: {
+					to: {
+						transform: 'translate(calc(-50% - 0.5rem))'
 					}
 				}
 			},

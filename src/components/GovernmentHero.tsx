@@ -24,37 +24,37 @@ const GovernmentHeroInternal = () => {
     }
   };
 
-  // Define category-specific colors using theme tokens
+  // Define category-specific colors using patriotic red, white, and blue theme
   const categoryColors = {
     security: {
-      icon: "text-primary",
-      border: "border-primary/20",
-      hover: "hover:border-primary/40"
+      icon: "text-blue-600",
+      border: "border-blue-600/20",
+      hover: "hover:border-blue-600/40"
     },
     experience: {
-      icon: "text-chart-2",
-      border: "border-chart-2/20",
-      hover: "hover:border-chart-2/40"
+      icon: "text-red-600",
+      border: "border-red-600/20",
+      hover: "hover:border-red-600/40"
     },
     contracts: {
-      icon: "text-secondary",
-      border: "border-secondary/20",
-      hover: "hover:border-secondary/40"
+      icon: "text-blue-700",
+      border: "border-blue-700/20",
+      hover: "hover:border-blue-700/40"
     },
     clients: {
-      icon: "text-chart-3",
-      border: "border-chart-3/20",
-      hover: "hover:border-chart-3/40"
+      icon: "text-red-700",
+      border: "border-red-700/20",
+      hover: "hover:border-red-700/40"
     },
     core: {
-      icon: "text-chart-4",
-      border: "border-chart-4/20",
-      hover: "hover:border-chart-4/40"
+      icon: "text-blue-800",
+      border: "border-blue-800/20",
+      hover: "hover:border-blue-800/40"
     },
     certifications: {
-      icon: "text-chart-5",
-      border: "border-chart-5/20",
-      hover: "hover:border-chart-5/40"
+      icon: "text-red-800",
+      border: "border-red-800/20",
+      hover: "hover:border-red-800/40"
     }
   };
 
@@ -122,7 +122,7 @@ const GovernmentHeroInternal = () => {
           </span>
         </div>
 
-        <h1 className="text-foreground sm:text-4xl mb-4">
+        <h1 className="text-foreground sm:text-6xl mb-4 font-serif font-[400] text-4xl tracking-tight">
           {intl.formatMessage({ id: "government.hero.title" })}
         </h1>
         <p className="text-lg text-muted-foreground max-w-3xl mb-8">
@@ -131,6 +131,7 @@ const GovernmentHeroInternal = () => {
         <div className="flex gap-4 mb-8">
           <Button
             size="lg"
+            className="bg-blue-600 hover:bg-blue-700 text-white border-blue-600 hover:border-blue-700"
             rightIcon={<ArrowRight className="h-5 w-5 ml-2" />}
             onClick={() => router.push(`/${locale}/services`)}
             aria-label={intl.formatMessage({ id: "government.hero.cta.contracts" })}
@@ -174,7 +175,7 @@ const GovernmentHeroInternal = () => {
                   <CardTitle
                     id={`government-service-${service.id}-title`}
                     className={cn(
-                      "font-semibold tracking-tight text-xl mb-2 transition duration-300",
+                      "font-serif font-[400] tracking-tight text-2xl mb-2 transition duration-300",
                       colors.icon, // Use same color as icon
                       "text-foreground"
                     )}

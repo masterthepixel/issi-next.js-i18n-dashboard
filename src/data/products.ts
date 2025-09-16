@@ -335,8 +335,8 @@ export const allProducts: Product[] = [
         icon: FaComments,
         category: "modernization",
         tags: ["Workflow Automation", "Case Management"],
-        size: { width: 1, height: 1 }, // Standard card
-        className: "col-span-1",
+        size: { width: 2, height: 1 }, // Wide card
+        className: "col-span-2",
         priority: 27,
     },
 

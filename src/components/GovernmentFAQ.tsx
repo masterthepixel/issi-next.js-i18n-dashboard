@@ -21,7 +21,7 @@ export default function GovernmentFAQ() {
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
         <div className="mx-auto max-w-4xl">
           <div className="text-center mb-16">
-            <h2 className="text-foreground sm:text-5xl mb-4">
+            <h2 className="text-foreground sm:text-7xl mb-4 font-serif font-[400] text-5xl tracking-tight">
               <FormattedMessage id="government.faq.title" />
             </h2>
             <p className="" text-lead1021>

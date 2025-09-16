@@ -8,14 +8,14 @@ export default function GovernmentTestimonialsCarousel() {
     <section className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4">
         <div className="text-center mb-12">
-          <h2 className="text-foreground sm:text-4xl mb-4">
+          <h2 className="text-foreground sm:text-6xl mb-4 font-serif font-[400] text-4xl tracking-tight">
             <FormattedMessage id="government.testimonials.carousel.title" />
           </h2>
           <p className="" text-lead521>
             <FormattedMessage id="government.testimonials.carousel.subtitle" />
           </p>
         </div>
-        
+
         <div className="h-[20rem] rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden">
           <InfiniteMovingCards
             items={governmentTestimonials}
@@ -39,7 +39,7 @@ const governmentTestimonials = [
   },
   {
     quote: "Outstanding technical expertise and commitment to government standards. They exceed expectations consistently.",
-    name: "IT Director", 
+    name: "IT Director",
     title: "Food and Drug Administration",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
   },

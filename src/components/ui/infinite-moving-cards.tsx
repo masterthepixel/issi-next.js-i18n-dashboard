@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+import 'flag-icons/css/flag-icons.min.css';
 import React, { useEffect, useState } from "react";
 
 export const InfiniteMovingCards = ({
@@ -15,7 +15,6 @@ export const InfiniteMovingCards = ({
     quote: string;
     name: string;
     title: string;
-    avatar?: string;
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
@@ -23,20 +22,28 @@ export const InfiniteMovingCards = ({
   className?: string;
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const scrollerRef = React.useRef<HTMLUListElement>(null);
 
-  // Instead of directly cloning DOM nodes (which risks React reconciliation
-  // mismatches), render the list twice via JSX. This keeps the DOM under
-  // React control and is safer during hydration and updates.
-  const [start, setStart] = useState(false);
   useEffect(() => {
-    // Set CSS vars for animation direction and speed on mount
-    getDirection();
-    getSpeed();
-    // Start the CSS animation after mount to avoid initial jump
-    setStart(true);
-    // intentionally run only once on mount
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    addAnimation();
   }, []);
+  const [start, setStart] = useState(false);
+  function addAnimation() {
+    if (containerRef.current && scrollerRef.current) {
+      const scrollerContent = Array.from(scrollerRef.current.children);
+
+      scrollerContent.forEach((item) => {
+        const duplicatedItem = item.cloneNode(true);
+        if (scrollerRef.current) {
+          scrollerRef.current.appendChild(duplicatedItem);
+        }
+      });
+
+      getDirection();
+      getSpeed();
+      setStart(true);
+    }
+  }
   const getDirection = () => {
     if (containerRef.current) {
       if (direction === "left") {
@@ -55,17 +62,14 @@ export const InfiniteMovingCards = ({
   const getSpeed = () => {
     if (containerRef.current) {
       if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "20s");
+        containerRef.current.style.setProperty("--animation-duration", "26s"); // 30% slower than 20s
       } else if (speed === "normal") {
-        containerRef.current.style.setProperty("--animation-duration", "40s");
+        containerRef.current.style.setProperty("--animation-duration", "55s"); // 30% slower than 40s  
       } else {
-        containerRef.current.style.setProperty("--animation-duration", "80s");
+        containerRef.current.style.setProperty("--animation-duration", "104s"); // 30% slower than 80s
       }
     }
   };
-  // Render the items twice in a single list to create the infinite scroll
-  const doubled = [...items, ...items];
-
   return (
     <div
       ref={containerRef}
@@ -75,54 +79,58 @@ export const InfiniteMovingCards = ({
       )}
     >
       <ul
+        ref={scrollerRef}
         className={cn(
           "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]",
         )}
       >
-        {doubled.map((item, idx) => (
-          <li
-            className="relative w-[350px] max-w-full shrink-0 rounded-2xl border border-b-0 border-border bg-card px-8 py-6 md:w-[450px]"
-            key={`${item.name ?? 'item'}-${idx}`}
-            aria-hidden={idx >= items.length} // mark the duplicated half as presentation for accessibility
-          >
-            <blockquote>
-              <div
-                aria-hidden="true"
-                className="user-select-none pointer-events-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-              ></div>
-              <span className="relative z-20  ">
-                {item.quote}
-              </span>
-              <div className="relative z-20 mt-6 flex flex-row items-center">
-                {item.avatar && (
-                  <div className="mr-4 flex-shrink-0">
-                    <Image
-                      src={item.avatar}
-                      alt={item.avatar ? `${item.name} avatar` : ''}
-                      className="w-12 h-12 rounded-full object-cover border-2 border-border"
-                      width={48}
-                      height={48}
-                      loading="lazy"
-                      unoptimized={item.avatar.includes('unsplash.com')}
-                    />
-                  </div>
-                )}
-                <span className="flex flex-col gap-1">
-                  <span className="">
-                    {item.name}
+        {items.map((item, _idx) => {
+          // Determine patriotic colors based on container class
+          let cardStyles = "relative min-w-[200px] max-w-[400px] shrink-0 rounded-2xl border border-b-0 px-6 py-4 w-fit";
+
+          if (className?.includes("patriotic-cards-blue")) {
+            cardStyles += " border-blue-600 bg-gradient-to-br from-blue-700 via-blue-600 to-blue-800 text-white";
+          } else if (className?.includes("patriotic-cards-red")) {
+            cardStyles += " border-red-600 bg-gradient-to-br from-red-700 via-red-600 to-red-800 text-white";
+          } else if (className?.includes("patriotic-cards-white")) {
+            cardStyles += " border-gray-300 bg-gradient-to-br from-gray-50 via-white to-gray-100 text-gray-900 dark:border-gray-600 dark:from-gray-800 dark:via-gray-700 dark:to-gray-900 dark:text-white";
+          } else {
+            cardStyles += " border-zinc-200 bg-[linear-gradient(180deg,#fafafa,#f5f5f5)] dark:border-zinc-700 dark:bg-[linear-gradient(180deg,#27272a,#18181b)]";
+          }
+
+          return (
+            <li
+              className={cardStyles}
+              key={item.name}
+            >
+              <blockquote>
+                <div
+                  aria-hidden="true"
+                  className="user-select-none pointer-events-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
+                ></div>
+                <div className="flex items-start gap-3">
+                  <span className="fi fi-us w-6 h-4 rounded-sm mt-1 flex-shrink-0"></span>
+                  <span className="relative z-20 text-base leading-[1.6] font-serif font-normal">
+                    {item.quote}
                   </span>
-                  <span className="">
-                    {item.title}
+                </div>
+                <div className="relative z-20 mt-6 flex flex-row items-center">
+                  <span className="flex flex-col gap-1">
+                    <span className="text-base leading-[1.6] font-semibold">
+                      {item.name}
+                    </span>
+                    <span className="text-sm leading-[1.6] font-normal opacity-80">
+                      {item.title}
+                    </span>
                   </span>
-                </span>
-              </div>
-            </blockquote>
-          </li>
-        ))}
+                </div>
+              </blockquote>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
 };
-
