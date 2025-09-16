@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { useParams } from "next/navigation";
@@ -40,13 +39,10 @@ export function ComplianceCertifications() {
         </p>
         <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2">          <div className="flex p-px lg:col-span-4">
           <div className="overflow-hidden rounded-lg bg-card ring-1 ring-border max-lg:rounded-t-4xl lg:rounded-tl-4xl">
-            <Image
+            <img
               alt={intl.formatMessage({ id: "compliance.bento.iso27001.imageAlt" })}
               src="/images/bento-02-releases.png"
-              width={800}
-              height={320}
-              className="h-80 object-cover object-left"
-              priority
+              className="h-80 w-full object-cover object-left"
             />
             <div className="p-10">
               <h3 >{intl.formatMessage({ id: "compliance.bento.iso27001.category" })}</h3>
@@ -69,12 +65,10 @@ export function ComplianceCertifications() {
           </div>
         </div>          <div className="flex p-px lg:col-span-2">
             <div className="overflow-hidden rounded-lg bg-card ring-1 ring-border lg:rounded-tr-4xl">
-              <Image
+              <img
                 alt={intl.formatMessage({ id: "compliance.bento.iso9001.imageAlt" })}
                 src="/images/bento-02-integrations.png"
-                width={400}
-                height={320}
-                className="h-80 object-cover"
+                className="h-80 w-full object-cover"
               />
               <div className="p-10">
                 <h3 className="">{intl.formatMessage({ id: "compliance.bento.iso9001.category" })}</h3>
@@ -97,12 +91,10 @@ export function ComplianceCertifications() {
             </div>
           </div>          <div className="flex p-px lg:col-span-2">
             <div className="overflow-hidden rounded-lg bg-card ring-1 ring-border lg:rounded-bl-4xl">
-              <Image
+              <img
                 alt={intl.formatMessage({ id: "compliance.bento.mdot.imageAlt" })}
                 src="/images/bento-02-security.png"
-                width={400}
-                height={320}
-                className="h-80 object-cover"
+                className="h-80 w-full object-cover"
               />
               <div className="p-10">
                 <h3 className="">{intl.formatMessage({ id: "compliance.bento.mdot.category" })}</h3>
@@ -125,12 +117,10 @@ export function ComplianceCertifications() {
             </div>
           </div>          <div className="flex p-px lg:col-span-4">
             <div className="overflow-hidden rounded-lg bg-card ring-1 ring-border max-lg:rounded-b-4xl lg:rounded-br-4xl">
-              <Image
+              <img
                 alt={intl.formatMessage({ id: "compliance.bento.cmmi3.imageAlt" })}
                 src="/images/bento-02-performance.png"
-                width={800}
-                height={320}
-                className="h-80 object-cover object-left"
+                className="h-80 w-full object-cover object-left"
               />
               <div className="p-10">
                 <h3 className="">{intl.formatMessage({ id: "compliance.bento.cmmi3.category" })}</h3>
