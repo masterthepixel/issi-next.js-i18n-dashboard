@@ -1,4 +1,5 @@
 import { Locale } from "@/lib/definitions";
+import Image from "next/image";
 
 interface Author {
   id: number;
@@ -25,7 +26,7 @@ interface FeaturedImage {
 
 interface BlogPost {
   id: number;
-  title: string;
+  title?: string;
   excerpt?: string;
   slug: string;
   publishedAt: string;
@@ -65,6 +66,29 @@ export function FeaturedBlogCard({ post, locale }: BlogCardProps) {
   const readingTime = post.readingTime ? `${post.readingTime} min read` :
     `${Math.max(1, Math.ceil((post.content?.root?.children?.length || 1) * 0.5))} min read`;
 
+  // Generate fallback title from slug if title is missing
+  const displayTitle = post.title && post.title.trim() !== ''
+    ? post.title
+    : post.slug
+      ? post.slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+      : 'Untitled Article';
+
+  // Generate fallback excerpt if missing
+  const displayExcerpt = post.excerpt && post.excerpt.trim() !== ''
+    ? post.excerpt
+    : locale === 'en'
+      ? 'Read this article to discover insights and updates from our team.'
+      : locale === 'fr'
+      ? 'Lisez cet article pour découvrir les perspectives et mises à jour de notre équipe.'
+      : 'Lea este artículo para descubrir perspectivas y actualizaciones de nuestro equipo.';
+
+  // Generate fallback slug from title if slug is missing, or use post ID as last resort
+  const displaySlug = post.slug && post.slug.trim() !== ''
+    ? post.slug
+    : post.title
+      ? post.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+      : `post-${post.id}`;
+
   return (
     <article className="group relative bg-card rounded-2xl border border-border/50 overflow-hidden hover:border-border hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
       <div className="grid md:grid-cols-2 gap-8 p-8">
@@ -90,16 +114,16 @@ export function FeaturedBlogCard({ post, locale }: BlogCardProps) {
           {/* Title */}
           <h2 className="text-3xl md:text-4xl font-bold leading-tight group-hover:text-primary transition-colors duration-300">
             <a
-              href={`/${locale}/blog/${post.slug}`}
+              href={`/${locale}/blog/${displaySlug}`}
               className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-4 rounded-lg no-underline"
             >
-              {post.title}
+              {displayTitle}
             </a>
           </h2>
 
           {/* Excerpt */}
           <p className="text-lg text-muted-foreground leading-relaxed line-clamp-3">
-            {post.excerpt}
+            {displayExcerpt}
           </p>
 
           {/* Meta Information */}
@@ -140,7 +164,7 @@ export function FeaturedBlogCard({ post, locale }: BlogCardProps) {
           {/* CTA */}
           <div className="pt-4">
             <a
-              href={`/${locale}/blog/${post.slug}`}
+              href={`/${locale}/blog/${displaySlug}`}
               className="inline-flex items-center gap-3 px-6 py-3 bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 group/cta no-underline"
             >
               {locale === 'en' ? 'Read Full Article' : locale === 'fr' ? 'Lire l\'Article' : 'Leer Artículo'}
@@ -159,11 +183,12 @@ export function FeaturedBlogCard({ post, locale }: BlogCardProps) {
         {/* Featured Image */}
         <div className="relative aspect-[4/3] overflow-hidden bg-muted rounded-xl">
           {post.featuredImage ? (
-            <img
+            <Image
               src={`https://issi-dashboard-payloadcms.vercel.app${post.featuredImage.sizes?.card?.url || post.featuredImage.url}`}
-              alt={post.featuredImage.alt || post.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              loading="lazy"
+              alt={post.featuredImage.alt || displayTitle}
+              className="object-cover group-hover:scale-105 transition-transform duration-700"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           ) : (
             <div className="w-full h-full bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 flex items-center justify-center">
@@ -206,16 +231,40 @@ export function BlogPostCard({ post, locale }: BlogCardProps) {
   const readingTime = post.readingTime ? `${post.readingTime} min read` :
     `${Math.max(1, Math.ceil((post.content?.root?.children?.length || 1) * 0.5))} min read`;
 
+  // Generate fallback title from slug if title is missing
+  const displayTitle = post.title && post.title.trim() !== ''
+    ? post.title
+    : post.slug
+      ? post.slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+      : 'Untitled Article';
+
+  // Generate fallback excerpt if missing
+  const displayExcerpt = post.excerpt && post.excerpt.trim() !== ''
+    ? post.excerpt
+    : locale === 'en'
+      ? 'Read this article to discover insights and updates from our team.'
+      : locale === 'fr'
+      ? 'Lisez cet article pour découvrir les perspectives et mises à jour de notre équipe.'
+      : 'Lea este artículo para descubrir perspectivas y actualizaciones de nuestro equipo.';
+
+  // Generate fallback slug from title if slug is missing, or use post ID as last resort
+  const displaySlug = post.slug && post.slug.trim() !== ''
+    ? post.slug
+    : post.title
+      ? post.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+      : `post-${post.id}`;
+
   return (
     <article className="group relative bg-card rounded-xl border border-border/50 overflow-hidden hover:border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
       {/* Featured Image */}
       <div className="relative aspect-[16/10] overflow-hidden bg-muted">
         {post.featuredImage ? (
-          <img
+          <Image
             src={`https://issi-dashboard-payloadcms.vercel.app${post.featuredImage.sizes?.card?.url || post.featuredImage.url}`}
-            alt={post.featuredImage.alt || post.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            loading="lazy"
+            alt={post.featuredImage.alt || displayTitle}
+            className="object-cover group-hover:scale-110 transition-transform duration-500"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 flex items-center justify-center">
@@ -247,16 +296,16 @@ export function BlogPostCard({ post, locale }: BlogCardProps) {
         {/* Title */}
         <h3 className="text-xl font-bold leading-tight group-hover:text-primary transition-colors duration-200 line-clamp-2">
           <a
-            href={`/${locale}/blog/${post.slug}`}
+            href={`/${locale}/blog/${displaySlug}`}
             className="block after:absolute after:inset-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg no-underline"
           >
-            {post.title}
+            {displayTitle}
           </a>
         </h3>
 
         {/* Excerpt */}
         <p className="text-muted-foreground leading-relaxed line-clamp-3 text-sm">
-          {post.excerpt}
+          {displayExcerpt}
         </p>
 
         {/* Meta Information */}

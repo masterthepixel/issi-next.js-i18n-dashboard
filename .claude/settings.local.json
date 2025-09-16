@@ -49,7 +49,9 @@
       "Bash(pnpm add:*)",
       "WebSearch",
       "Bash(npx payload generate:importmap:*)",
-      "WebFetch(domain:github.blog)"
+      "WebFetch(domain:github.blog)",
+      "WebFetch(domain:localhost)",
+      "Bash(/dev/null)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits",

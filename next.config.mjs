@@ -37,6 +37,12 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "issi-dashboard-payloadcms.vercel.app",
+        port: "",
+        pathname: "/**",
+      },
     ],
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 31536000, // 1 year

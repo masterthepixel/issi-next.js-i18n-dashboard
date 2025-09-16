@@ -127,7 +127,6 @@ async function PageContent({ locale, page, search }: PageContentProps) {
   // Only show published posts with actual content
   const where: Record<string, unknown> = {
     _status: { equals: 'published' },
-    title: { not_equals: null },
     content: { not_equals: null }
   };
 
@@ -142,7 +141,30 @@ async function PageContent({ locale, page, search }: PageContentProps) {
       where
     });
 
-    const posts = result.docs || [];
+    // Get all posts and handle missing data gracefully in the UI
+    const allPosts = result.docs || [];
+    console.log('🔍 All posts before filtering:', allPosts.map(p => ({ id: p.id, title: p.title, slug: p.slug })));
+
+    // Show all posts - we'll handle missing data gracefully in the UI with fallbacks
+    const posts = allPosts.filter((post: any) => {
+      // Only exclude posts that have no id or are completely broken
+      if (!post.id) {
+        console.log(`❌ Filtering out post with no ID:`, post);
+        return false;
+      }
+
+      // Log data state for debugging
+      if (!post.slug || post.slug === null || post.slug === '') {
+        console.log(`⚠️ Post ${post.id} has no slug - will use fallback: ${post.title || 'untitled'}`);
+      }
+      if (!post.title || post.title === null || post.title === '') {
+        console.log(`⚠️ Post ${post.id} has no title - will generate from slug or use fallback`);
+      }
+
+      return true;
+    });
+
+    console.log('✅ Posts after filtering:', posts.map(p => ({ id: p.id, title: p.title, slug: p.slug })));
     const totalPages = result.totalPages || 1;
     const hasNextPage = result.hasNextPage || false;
     const hasPrevPage = result.hasPrevPage || false;
