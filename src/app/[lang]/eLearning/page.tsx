@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Suspense } from "react";
 
+import ELearningAceternityFeaturesWrapper from "@/components/ELearningAceternityFeaturesWrapper";
 import ELearningAceternityHeroWrapper from "@/components/ELearningAceternityHeroWrapper";
 import ELearningClientsWrapper from "@/components/ELearningClientsWrapper";
 import ELearningFAQWrapper from "@/components/ELearningFAQWrapper";
@@ -225,6 +226,9 @@ async function PageContent({ locale }: PageContentProps) {
 
       {/* Features section */}
       <ELearningFeaturesWrapper locale={locale} messages={messages} />
+
+      {/* Aceternity Features section - Modern animated features */}
+      <ELearningAceternityFeaturesWrapper locale={locale} messages={messages} />
 
       {/* Services section */}
       <ELearningServicesWrapper locale={locale} messages={messages} />

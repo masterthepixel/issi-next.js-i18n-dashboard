@@ -152,6 +152,9 @@ importers:
       glob:
         specifier: ^11.0.3
         version: 11.0.3
+      gsap:
+        specifier: ^3.13.0
+        version: 3.13.0
       inngest:
         specifier: ^3.30.0
         version: 3.40.2(express@5.1.0)(next@15.5.0(@babel/core@7.28.4)(@opentelemetry/api@1.9.0)(@playwright/test@1.55.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.4))(typescript@5.8.3)
@@ -4611,6 +4614,9 @@ packages:
   graphql@16.11.0:
     resolution: {integrity: sha512-mS1lbMsxgQj6hge1XZ6p7GPhbrtFwUFYi3wRzXAC/FmYnyXMTvvI3td3rjmQ2u8ewXueaSvRPWaEcgVVOT9Jnw==}
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
+
+  gsap@3.13.0:
+    resolution: {integrity: sha512-QL7MJ2WMjm1PHWsoFrAQH/J8wUeqZvMtHO58qdekHpCfhvhSL4gSiz6vJf5EeMP0LOn3ZCprL2ki/gjED8ghVw==}
 
   h3-js@4.2.1:
     resolution: {integrity: sha512-HYiUrq5qTRFqMuQu3jEHqxXLk1zsSJiby9Lja/k42wHjabZG7tN9rOuzT/PEFf+Wa7rsnHLMHRWIu0mgcJ0ewQ==}
@@ -12006,6 +12012,8 @@ snapshots:
   graphemer@1.4.0: {}
 
   graphql@16.11.0: {}
+
+  gsap@3.13.0: {}
 
   h3-js@4.2.1: {}
 
