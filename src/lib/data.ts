@@ -135,13 +135,28 @@ export async function fetchPosts(params: {
     url += `&where=${encodeURIComponent(JSON.stringify(where))}`;
   }
 
-  const response = await fetch(url);
+  console.log('🔍 Fetching posts from:', url);
+  console.log('📋 Where clause:', where);
 
-  if (!response.ok) {
-    throw new Error(`Failed to fetch posts: ${response.status} ${response.statusText}`);
+  try {
+    const response = await fetch(url);
+    console.log('📊 API Response status:', response.status, response.statusText);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('❌ API Error response:', errorText);
+      throw new Error(`Failed to fetch posts: ${response.status} ${response.statusText} - ${errorText}`);
+    }
+
+    const data = await response.json();
+    console.log('✅ API Response data:', { docsCount: data.docs?.length, totalDocs: data.totalDocs, hasNextPage: data.hasNextPage });
+    console.log('📝 Sample post data:', data.docs?.[0]);
+
+    return data;
+  } catch (error) {
+    console.error('💥 Fetch posts error:', error);
+    throw error;
   }
-
-  return response.json();
 }
 
 /**
@@ -150,7 +165,7 @@ export async function fetchPosts(params: {
 export async function fetchPostBySlug(slug: string, locale: string = 'en') {
   const where = {
     slug: { equals: slug },
-    _status: { equals: 'published' }
+    status: { equals: 'published' }
   };
 
   const result = await fetchPosts({ where, locale, limit: 1 });

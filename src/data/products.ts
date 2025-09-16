@@ -151,8 +151,8 @@ export const allProducts: Product[] = [
         icon: FaProjectDiagram,
         category: "project",
         tags: ["Requirements Traceability", "Change Control"],
-        size: { width: 1, height: 1 }, // Standard card
-        className: "col-span-1",
+        size: { width: 2, height: 1 }, // Wide card
+        className: "col-span-2",
         priority: 30,
     },
 
@@ -175,8 +175,8 @@ export const allProducts: Product[] = [
         icon: FaUserCheck,
         category: "hr",
         tags: ["Talent Tracking", "Skills Database"],
-        size: { width: 1, height: 2 }, // Double height card
-        className: "col-span-1 row-span-2",
+        size: { width: 2, height: 2 }, // Large card
+        className: "col-span-2 row-span-2",
         priority: 13,
     },
     {
@@ -219,8 +219,8 @@ export const allProducts: Product[] = [
         icon: FaHandshake,
         category: "hr",
         tags: ["Event Planning", "Invitation Management"],
-        size: { width: 2, height: 1 }, // Wide (increased from 1x1)
-        className: "col-span-2",
+        size: { width: 1, height: 1 }, // Standard card
+        className: "col-span-1",
         priority: 17,
     },
 
@@ -255,7 +255,7 @@ export const allProducts: Product[] = [
         category: "compliance",
         tags: ["Meeting Management", "Action Items"],
         size: { width: 2, height: 1 }, // Wide
-        className: "col-span-1",
+        className: "col-span-2",
         priority: 20,
     },
     {
@@ -278,8 +278,8 @@ export const allProducts: Product[] = [
         icon: FaDatabase,
         category: "data",
         tags: ["Analytics Dashboard", "Data Integration"],
-        size: { width: 1, height: 1 }, // Standard card
-        className: "col-span-1",
+        size: { width: 2, height: 1 }, // Wide card
+        className: "col-span-2",
         priority: 22,
     },
     {
@@ -324,8 +324,8 @@ export const allProducts: Product[] = [
         icon: FaUserTie,
         category: "modernization",
         tags: ["Resume Tracking", "Onboarding"],
-        size: { width: 1, height: 1 }, // Standard card
-        className: "col-span-1",
+        size: { width: 2, height: 1 }, // Wide card
+        className: "col-span-2",
         priority: 26,
     },
     {
@@ -348,8 +348,8 @@ export const allProducts: Product[] = [
         icon: FaBox,
         category: "technology",
         tags: ["Asset Management", "License Tracking"],
-        size: { width: 2, height: 1 }, // Wide
-        className: "col-span-2",
+        size: { width: 1, height: 1 }, // Standard card
+        className: "col-span-1",
         priority: 28,
     },
     {
@@ -359,8 +359,8 @@ export const allProducts: Product[] = [
         icon: FaIdCard,
         category: "technology",
         tags: ["Visitor Management", "Security Tracking"],
-        size: { width: 2, height: 1 }, // Wide card
-        className: "col-span-2",
+        size: { width: 1, height: 1 }, // Standard card
+        className: "col-span-1",
         priority: 29,
     },
 ];
