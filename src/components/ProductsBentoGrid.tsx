@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { allProducts } from "@/data/products";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from 'lucide-react';
+import { motion } from "motion/react";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -198,22 +199,47 @@ const ProductsBentoGrid = ({ lang }: ProductsBentoGridProps) => {
   };
 
   return (
-    <div className="py-12">
+    <div className="py-2">
       <div className="mx-auto max-w-7xl px-2">
         {/* Header Section */}
         <div className="max-w-2xl text-left">
-          <h2 className="text-3xl tracking-tight text-foreground sm:text-4xl font-serif font-[400]">
-            <FormattedMessage
-              id="products.showcase.title"
-              defaultMessage="Our Products"
-            />
+          <h2 className="relative z-10 max-w-4xl text-left text-2xl font-normal text-foreground md:text-4xl lg:text-7xl">
+            {"Innovative Software Products & Solutions"
+              .split(" ")
+              .map((word, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
+                  animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                  transition={{
+                    duration: 0.3,
+                    delay: index * 0.1,
+                    ease: "easeInOut",
+                  }}
+                  className="mr-2 inline-block"
+                >
+                  {word}
+                </motion.span>
+              ))}
           </h2>
-          <p className="mt-2 text-lg leading-8 text-muted-foreground">
+          <motion.p
+            initial={{
+              opacity: 0,
+            }}
+            animate={{
+              opacity: 1,
+            }}
+            transition={{
+              duration: 0.3,
+              delay: 0.8,
+            }}
+            className="relative z-10 max-w-xl py-4 text-left text-lg font-normal text-muted-foreground"
+          >
             <FormattedMessage
               id="products.showcase.subtitle"
               defaultMessage="Comprehensive software solutions designed to streamline operations and enhance productivity for government organizations."
             />
-          </p>
+          </motion.p>
         </div>
 
         {/* Filter Tabs */}

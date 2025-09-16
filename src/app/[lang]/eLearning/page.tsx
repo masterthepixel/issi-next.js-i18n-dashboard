@@ -5,8 +5,6 @@ import ELearningAceternityFeaturesWrapper from "@/components/ELearningAceternity
 import ELearningAceternityHeroWrapper from "@/components/ELearningAceternityHeroWrapper";
 import ELearningClientsWrapper from "@/components/ELearningClientsWrapper";
 import ELearningFAQWrapper from "@/components/ELearningFAQWrapper";
-import ELearningFeaturesWrapper from "@/components/ELearningFeaturesWrapper";
-import ELearningHeroWrapper from "@/components/ELearningHeroWrapper";
 import ELearningServicesWrapper from "@/components/ELearningServicesWrapper";
 import Spinner from "@/components/Spinner";
 
@@ -220,12 +218,6 @@ async function PageContent({ locale }: PageContentProps) {
 
       {/* Aceternity Hero section - Advanced animated hero */}
       <ELearningAceternityHeroWrapper locale={locale} messages={messages} />
-
-      {/* Original Hero section */}
-      <ELearningHeroWrapper locale={locale} messages={messages} />
-
-      {/* Features section */}
-      <ELearningFeaturesWrapper locale={locale} messages={messages} />
 
       {/* Aceternity Features section - Modern animated features */}
       <ELearningAceternityFeaturesWrapper locale={locale} messages={messages} />
