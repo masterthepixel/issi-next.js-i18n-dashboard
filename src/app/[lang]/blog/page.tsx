@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import Spinner from "@/components/Spinner";
 import { fetchPosts } from "@/lib/data";
 import { Locale } from "@/lib/definitions";
+import { FeaturedBlogCard, BlogPostCard } from "./components";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -123,9 +124,11 @@ async function PageContent({ locale, page, search }: PageContentProps) {
   // Fetch blog posts from external PayloadCMS
   const limit = 10;
 
-  // TEMPORARY: Show draft posts to test enhanced card design
+  // Only show published posts with actual content
   const where: Record<string, unknown> = {
-    status: { in: ['published', 'draft'] } // Include both for testing
+    _status: { equals: 'published' },
+    title: { not_equals: null },
+    content: { not_equals: null }
   };
 
   // Note: Complex filtering like publishedAt and search not yet supported by external API
@@ -310,17 +313,48 @@ async function PageContent({ locale, page, search }: PageContentProps) {
             </div>
           ) : (
             <>
-              {/* Posts Grid */}
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
-                {posts.map((post: any) => (
-                  <BlogPostCard
-                    key={post.id}
-                    post={post}
+              {/* Featured Post */}
+              {posts.length > 0 && (
+                <div className="mb-16">
+                  <div className="mb-8">
+                    <h2 className="text-2xl font-bold text-foreground mb-2">
+                      {locale === 'en' ? 'Featured Article' :
+                        locale === 'fr' ? 'Article en Vedette' :
+                          'Artículo Destacado'}
+                    </h2>
+                    <div className="w-16 h-1 bg-primary rounded-full"></div>
+                  </div>
+                  <FeaturedBlogCard
+                    post={posts[0]}
                     locale={locale}
                     baseUrl={baseUrl}
                   />
-                ))}
-              </div>
+                </div>
+              )}
+
+              {/* Recent Posts */}
+              {posts.length > 1 && (
+                <div className="mb-16">
+                  <div className="mb-8">
+                    <h2 className="text-2xl font-bold text-foreground mb-2">
+                      {locale === 'en' ? 'Latest Articles' :
+                        locale === 'fr' ? 'Derniers Articles' :
+                          'Últimos Artículos'}
+                    </h2>
+                    <div className="w-16 h-1 bg-primary rounded-full"></div>
+                  </div>
+                  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+                    {posts.slice(1).map((post: any) => (
+                      <BlogPostCard
+                        key={post.id}
+                        post={post}
+                        locale={locale}
+                        baseUrl={baseUrl}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Pagination */}
               {totalPages > 1 && (
@@ -361,123 +395,6 @@ async function PageContent({ locale, page, search }: PageContentProps) {
   }
 }
 
-// Blog Post Card Component
-function BlogPostCard({ post, locale, baseUrl }: { post: any; locale: Locale; baseUrl: string }) {
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat(locale, {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    }).format(date);
-  };
-
-  const authorName = post.author
-    ? `${post.author.firstName || ''} ${post.author.lastName || ''}`.trim()
-    : 'Anonymous';
-
-  const readingTime = post.readingTime ? `${post.readingTime} min read` : null;
-  const hasImage = post.featuredImage;
-
-  return (
-    <article className="group relative bg-card rounded-xl border border-border/50 overflow-hidden hover:border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-      {/* Featured Image */}
-      {hasImage && (
-        <div className="relative aspect-video overflow-hidden bg-muted">
-          <img
-            src={typeof post.featuredImage === 'object' ? post.featuredImage.url : post.featuredImage}
-            alt={typeof post.featuredImage === 'object' ? post.featuredImage.alt : post.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        </div>
-      )}
-
-      {/* Content */}
-      <div className="p-6 space-y-4">
-        {/* Meta Information */}
-        <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-          <div className="flex items-center gap-1">
-            <div className="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center">
-              <div className="w-2 h-2 rounded-full bg-primary" />
-            </div>
-            <time dateTime={post.publishedAt} className="font-medium">
-              {formatDate(post.publishedAt)}
-            </time>
-          </div>
-
-          {authorName !== 'Anonymous' && (
-            <>
-              <span className="text-muted-foreground/50">•</span>
-              <span className="font-medium">{authorName}</span>
-            </>
-          )}
-
-          {readingTime && (
-            <>
-              <span className="text-muted-foreground/50">•</span>
-              <span className="text-xs bg-muted px-2 py-1 rounded-md">{readingTime}</span>
-            </>
-          )}
-        </div>
-
-        {/* Title */}
-        <h2 className="text-xl font-bold leading-tight group-hover:text-primary transition-colors duration-200 line-clamp-2">
-          <a
-            href={`/${locale}/blog/${post.slug}`}
-            className="block after:absolute after:inset-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg"
-          >
-            {post.title}
-          </a>
-        </h2>
-
-        {/* Excerpt */}
-        {post.excerpt && (
-          <p className="text-muted-foreground leading-relaxed line-clamp-3">
-            {post.excerpt}
-          </p>
-        )}
-
-        {/* Footer with Categories and CTA */}
-        <div className="flex items-center justify-between pt-2">
-          {/* Categories */}
-          {post.categories && post.categories.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              {post.categories.slice(0, 2).map((category: any) => (
-                <span
-                  key={category.id}
-                  className="inline-flex items-center px-3 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full border border-primary/20"
-                >
-                  {category.title}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {/* Read More CTA */}
-          <a
-            href={`/${locale}/blog/${post.slug}`}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors group/link"
-          >
-            {locale === 'en' ? 'Read more' : locale === 'fr' ? 'Lire la suite' : 'Leer más'}
-            <svg
-              className="w-4 h-4 group-hover/link:translate-x-1 transition-transform duration-200"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      {/* Hover effect overlay */}
-      <div className="absolute inset-0 rounded-xl ring-2 ring-transparent group-hover:ring-primary/20 transition-all duration-300 pointer-events-none" />
-    </article>
-  );
-}
 
 // Blog Pagination Component
 function BlogPagination({

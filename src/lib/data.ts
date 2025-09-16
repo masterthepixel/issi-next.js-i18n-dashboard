@@ -165,7 +165,7 @@ export async function fetchPosts(params: {
 export async function fetchPostBySlug(slug: string, locale: string = 'en') {
   const where = {
     slug: { equals: slug },
-    status: { equals: 'published' }
+    _status: { equals: 'published' }
   };
 
   const result = await fetchPosts({ where, locale, limit: 1 });
