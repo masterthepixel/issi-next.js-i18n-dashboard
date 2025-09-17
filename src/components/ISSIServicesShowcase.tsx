@@ -268,8 +268,8 @@ const ISSIServicesShowcaseInternal = () => {
                     "hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
                   )}
                 >
-                  {/* Avatar with ring and arrow in top right corner */}
-                  <div className="absolute top-4 right-4 z-20 flex items-center justify-center">
+                  {/* Avatar with ring and arrow in top right corner - HIDDEN */}
+                  <div className="absolute top-4 right-4 z-20 hidden">
                     <div className="relative">
                       {/* Ring around image - appears only on hover with smooth animation */}
                       <div className="absolute inset-0 w-6 h-6 rounded-[7px] border border-primary/30 scale-125 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
