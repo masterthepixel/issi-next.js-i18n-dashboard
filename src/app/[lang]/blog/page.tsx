@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import Spinner from "@/components/Spinner";
 import { fetchPosts } from "@/lib/data";
 import { Locale } from "@/lib/definitions";
-import { FeaturedBlogCard, BlogPostCard } from "./components";
+import { BlogPostCard, FeaturedBlogCard } from "./components";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -143,7 +143,7 @@ async function PageContent({ locale, page, search }: PageContentProps) {
 
     // Get all posts and handle missing data gracefully in the UI
     const allPosts = result.docs || [];
-    console.log('🔍 All posts before filtering:', allPosts.map(p => ({ id: p.id, title: p.title, slug: p.slug })));
+    console.log('🔍 All posts before filtering:', allPosts.map((p: any) => ({ id: p.id, title: p.title, slug: p.slug })));
 
     // Show all posts - we'll handle missing data gracefully in the UI with fallbacks
     const posts = allPosts.filter((post: any) => {
@@ -164,7 +164,7 @@ async function PageContent({ locale, page, search }: PageContentProps) {
       return true;
     });
 
-    console.log('✅ Posts after filtering:', posts.map(p => ({ id: p.id, title: p.title, slug: p.slug })));
+    console.log('✅ Posts after filtering:', posts.map((p: any) => ({ id: p.id, title: p.title, slug: p.slug })));
     const totalPages = result.totalPages || 1;
     const hasNextPage = result.hasNextPage || false;
     const hasPrevPage = result.hasPrevPage || false;
