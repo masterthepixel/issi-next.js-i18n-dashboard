@@ -3,7 +3,10 @@ import { Suspense } from "react";
 import AboutAwardsWrapper from "@/components/AboutAwardsWrapper";
 import AboutCertificationsWrapper from "@/components/AboutCertificationsWrapper";
 import AboutPartnerNetworkWrapper from "@/components/AboutPartnerNetworkWrapper";
+import GovernmentClientsWrapper from "@/components/GovernmentClientsWrapper";
+import GovernmentTestimonialsCarouselWrapper from "@/components/GovernmentTestimonialsCarouselWrapper";
 import HeroWrapper from "@/components/HeroWrapper";
+import ISSIAppleCardsCarouselWrapper from "@/components/ISSIAppleCardsCarouselWrapper";
 import ISSIServicesShowcaseWrapper from "@/components/ISSIServicesShowcaseWrapper";
 import Spinner from "@/components/Spinner";
 
@@ -34,16 +37,25 @@ async function PageContent({ locale }: PageContentProps) {
   return (
     <>
       <HeroWrapper locale={locale} messages={messages} />
-      
+
+      {/* Apple Cards Carousel - Service Overview */}
+      <ISSIAppleCardsCarouselWrapper locale={locale} messages={messages} />
+
       {/* Partner Network - Client Logos */}
       <AboutPartnerNetworkWrapper locale={locale} messages={messages} />
-      
+
       {/* Services Showcase - Bento Grid Layout */}
       <ISSIServicesShowcaseWrapper locale={locale} messages={messages} />
-      
+
+      {/* Government Clients & Partners - Show credibility */}
+      <GovernmentClientsWrapper locale={locale} messages={messages} />
+
       {/* Certifications - Show technology expertise */}
       <AboutCertificationsWrapper locale={locale} messages={messages} />
-      
+
+      {/* Government Testimonials - Reinforce trust */}
+      <GovernmentTestimonialsCarouselWrapper locale={locale} messages={messages} />
+
       {/* Awards - Additional credibility and trust */}
       <AboutAwardsWrapper locale={locale} messages={messages} />
     </>

@@ -1,6 +1,13 @@
 "use client";
 
+import {
+  Carousel,
+  CarouselApi,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 
 const partners = [
@@ -32,39 +39,62 @@ const partners = [
 
 export default function AboutPartnerNetwork() {
   const intl = useIntl();
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setTimeout(() => {
+      if (api.selectedScrollSnap() + 1 === api.scrollSnapList().length) {
+        setCurrent(0);
+        api.scrollTo(0);
+      } else {
+        api.scrollNext();
+        setCurrent(current + 1);
+      }
+    }, 3000); // Slower transition for better UX
+  }, [api, current]);
+
   return (
     <section
-      className="py-24 sm:py-32"
+      className="py-8 sm:py-10"
       aria-labelledby="partners-heading"
       role="region"
       aria-label="Strategic technology partnerships"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-x-8 gap-y-16 lg:grid-cols-2">
+        <div className="flex flex-col gap-3">
           <div className="mx-auto w-full max-w-xl lg:mx-0">
-            <h2 id="partners-heading" className="text-pretty text-foreground sm:text-5xl">
+            <h2 id="partners-heading" className="text-xl md:text-3xl lg:text-5xl tracking-tighter lg:max-w-xl font-normal text-left text-foreground">
               {intl.formatMessage({ id: "about.partnerNetwork.title" })}
             </h2>
             <p className="mt-6 text-lg/8 text-muted-foreground">
               {intl.formatMessage({ id: "about.partnerNetwork.description" })}
             </p>
           </div>
-          <div className="mx-auto grid w-full max-w-xl grid-cols-2 items-center gap-y-12 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:pl-8" role="list">
-            {partners.map((partner) => (
-              <div key={partner.id} className="flex justify-center lg:justify-start" role="listitem">
-                <Image
-                  alt={partner.alt}
-                  src={partner.src}
-                  width={200}
-                  height={100}
-                  className="max-h-12 w-full object-contain object-left"
-                  loading="lazy"
-                  sizes="(max-width: 768px) 50vw, 200px"
-                  title={partner.name}
-                />
-              </div>
-            ))}
-          </div>
+          <Carousel setApi={setApi} className="w-full">
+            <CarouselContent>
+              {partners.map((partner) => (
+                <CarouselItem className="basis-1/2 lg:basis-1/4" key={partner.id}>
+                  <div className="flex rounded-md aspect-square bg-card items-center justify-center p-3">
+                    <Image
+                      alt={partner.alt}
+                      src={partner.src}
+                      width={200}
+                      height={100}
+                      className="max-h-16 w-full object-contain"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 50vw, 200px"
+                      title={partner.name}
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </div>
       </div>
     </section>
