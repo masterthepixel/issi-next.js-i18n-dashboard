@@ -25,14 +25,15 @@ interface GlobeHeroProps {
 
 const globeConfig = {
     pointSize: 4,
-    globeColor: "#062056",
+    globeColor: "#2e55f2",
     showAtmosphere: true,
     atmosphereColor: "#FFFFFF",
     atmosphereAltitude: 0.1,
     emissive: "#062056",
     emissiveIntensity: 0.1,
     shininess: 0.9,
-    polygonColor: "rgba(255,255,255,0.7)",
+    polygonColor: "#ffffff",
+    pointColor: "#ffffff",
     ambientLight: "#38bdf8",
     directionalLeftLight: "#ffffff",
     directionalTopLight: "#ffffff",
@@ -43,7 +44,7 @@ const globeConfig = {
     maxRings: 3,
     initialPosition: { lat: 39.0438, lng: -77.4874 }, // us-east-1 AWS (ISSI HQ region)
     autoRotate: true,
-    autoRotateSpeed: 0.5,
+    autoRotateSpeed: 0.6,
 };
 
 const sampleArcs = [
@@ -73,7 +74,7 @@ export default function GlobeHero({ lang: _lang = "en" }: GlobeHeroProps) {
     return (
         <section className="relative isolate overflow-hidden bg-background">
             {/* Background gradient */}
-            <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+            <div className="absolute inset-x-0 -top-10 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-20" aria-hidden="true">
                 <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-primary to-secondary opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" />
             </div>
 
@@ -162,7 +163,7 @@ export default function GlobeHero({ lang: _lang = "en" }: GlobeHeroProps) {
 
                     {/* Action buttons */}
                     <motion.div
-                        className="mt-10 flex items-center gap-x-6"
+                        className="mt-4 flex items-center gap-x-6"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.8 }}
@@ -186,7 +187,7 @@ export default function GlobeHero({ lang: _lang = "en" }: GlobeHeroProps) {
 
                     {/* Stats or additional info */}
                     <motion.div
-                        className="mt-10 flex items-center gap-x-6 text-sm text-muted-foreground"
+                        className="mt-4 flex items-center gap-x-6 text-sm text-muted-foreground"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 1.0 }}
@@ -204,7 +205,7 @@ export default function GlobeHero({ lang: _lang = "en" }: GlobeHeroProps) {
 
                 {/* Globe */}
                 <motion.div
-                    className="mt-16 sm:mt-24 lg:mt-0 lg:flex-shrink-0 lg:flex-grow"
+                    className="mt-8 sm:mt-16 lg:mt-0 lg:flex-shrink-0 lg:flex-grow"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1.0, delay: 0.5 }}

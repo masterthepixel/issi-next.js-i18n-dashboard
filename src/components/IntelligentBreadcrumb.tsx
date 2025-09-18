@@ -152,19 +152,20 @@ export default function IntelligentBreadcrumb({
                         ))}
                     </BreadcrumbList>
                 </Breadcrumb>
-                <div className="absolute z-10" style={{ top: '-32px', left: 'calc(50% + 320px)', width: 400, height: 400 }}>
+                <div className="absolute z-10" style={{ top: '-32px', left: 'calc(50% + 364px)', width: 400, height: 400 }}>
                     {/* Globe matches AWS region arcs */}
                     <World
                         globeConfig={{
                             pointSize: 4,
-                            globeColor: "#062056",
+                            globeColor: "#2e55f2",
                             showAtmosphere: true,
                             atmosphereColor: "#FFFFFF",
                             atmosphereAltitude: 0.1,
                             emissive: "#062056",
                             emissiveIntensity: 0.1,
                             shininess: 0.9,
-                            polygonColor: "rgba(255,255,255,0.7)",
+                            polygonColor: "#806043",
+                            pointColor: "#ffffff",
                             ambientLight: "#38bdf8",
                             directionalLeftLight: "#ffffff",
                             directionalTopLight: "#ffffff",

@@ -37,6 +37,10 @@ interface HoverGradientMenuItem {
   href: string;
   gradient: string;
   iconColor: string;
+  submenu?: Array<{
+    label: string | React.ReactNode;
+    href: string;
+  }>;
 }
 
 interface HoverGradientNavBarProps {
@@ -142,7 +146,25 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
       label: <FormattedMessage id="common.navigation.compliance" defaultMessage="Compliance" />,
       href: `/${locale}/compliance`,
       gradient: "radial-gradient(circle, hsl(var(--chart-4) / 0.15) 0%, hsl(var(--chart-4) / 0.06) 50%, hsl(var(--chart-4) / 0) 100%)",
-      iconColor: "text-primary group-hover:text-primary/80"
+      iconColor: "text-primary group-hover:text-primary/80",
+      submenu: [
+        {
+          label: "ISO 27001",
+          href: `/${locale}/compliance/iso27001`,
+        },
+        {
+          label: "ISO 9001",
+          href: `/${locale}/compliance/iso9001`,
+        },
+        {
+          label: "MDOT",
+          href: `/${locale}/compliance/mdot`,
+        },
+        {
+          label: "CMMI Level 3",
+          href: `/${locale}/compliance/cmmi3`,
+        },
+      ],
     },
     {
       icon: <Briefcase className="h-5 w-5" />,
@@ -165,16 +187,17 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
       gradient: "radial-gradient(circle, hsl(var(--chart-5) / 0.15) 0%, hsl(var(--chart-5) / 0.06) 50%, hsl(var(--chart-5) / 0) 100%)",
       iconColor: "text-primary group-hover:text-primary/80"
     },
+    {
+      icon: <ShieldCheck className="h-5 w-5" />,
+      label: <FormattedMessage id="common.navigation.contact" defaultMessage="Contact" />,
+      href: `/${locale}/contact`,
+      gradient: "radial-gradient(circle, hsl(var(--destructive) / 0.15) 0%, hsl(var(--destructive) / 0.06) 50%, hsl(var(--destructive) / 0) 100%)",
+      iconColor: "text-primary group-hover:text-primary/80"
+    },
   ];
 
   // Additional menu items for the dropdown hamburger menu
-  const additionalMenuItems = [
-    {
-      icon: <ShieldCheck className="h-4 w-4" />,
-      label: <FormattedMessage id="common.navigation.contact" defaultMessage="Contact" />,
-      href: `/${locale}/contact`,
-    },
-  ];
+  const additionalMenuItems = [];
 
   return (
     <div className="fixed top-0 left-0 w-full md:top-4 md:left-1/2 md:-translate-x-1/2 z-50">
@@ -222,19 +245,53 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                       transformOrigin: "center bottom"
                     }}
                   >
-                    <Link
-                      href={item.href}
-                      className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1.5 no-underline"
-                      aria-label={typeof item.label === 'string' ? item.label : `Navigate to ${item.href.split('/').pop()}`}
-                    >
-                      <span className={`transition-colors duration-300 ${item.iconColor} ${isActive ? 'text-foreground' : ''
-                        }`}>
-                        {item.icon}
-                      </span>
-                      {item.href !== `/${locale}/home` && (
-                        <span className="hidden md:inline text-foreground">{item.label}</span>
-                      )}
-                    </Link>
+                    {item.submenu ? (
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <button
+                            className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1.5 no-underline"
+                            aria-label={typeof item.label === 'string' ? item.label : `Navigate to ${item.href.split('/').pop()}`}
+                          >
+                            <span className={`transition-colors duration-300 ${item.iconColor} ${isActive ? 'text-foreground' : ''
+                              }`}>
+                              {item.icon}
+                            </span>
+                            {item.href !== `/${locale}/home` && (
+                              <span className="hidden md:inline text-foreground">{item.label}</span>
+                            )}
+                          </button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="center" className="w-48">
+                          <DropdownMenuItem asChild>
+                            <Link href={item.href} className="w-full">
+                              Overview
+                            </Link>
+                          </DropdownMenuItem>
+                          <DropdownMenuSeparator />
+                          {item.submenu.map((subItem, index) => (
+                            <DropdownMenuItem key={index} asChild>
+                              <Link href={subItem.href} className="w-full">
+                                {subItem.label}
+                              </Link>
+                            </DropdownMenuItem>
+                          ))}
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1.5 no-underline"
+                        aria-label={typeof item.label === 'string' ? item.label : `Navigate to ${item.href.split('/').pop()}`}
+                      >
+                        <span className={`transition-colors duration-300 ${item.iconColor} ${isActive ? 'text-foreground' : ''
+                          }`}>
+                          {item.icon}
+                        </span>
+                        {item.href !== `/${locale}/home` && (
+                          <span className="hidden md:inline text-foreground">{item.label}</span>
+                        )}
+                      </Link>
+                    )}
                   </motion.div>
                   {/* Back-facing */}
                   <motion.div
@@ -251,19 +308,53 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                       transform: "rotateX(90deg)"
                     }}
                   >
-                    <Link
-                      href={item.href}
-                      className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1.5 no-underline"
-                      aria-label={typeof item.label === 'string' ? item.label : `Navigate to ${item.href.split('/').pop()}`}
-                    >
-                      <span className={`transition-colors duration-300 ${item.iconColor} ${isActive ? 'text-foreground' : ''
-                        }`}>
-                        {item.icon}
-                      </span>
-                      {item.href !== `/${locale}/home` && (
-                        <span className="hidden md:inline text-foreground">{item.label}</span>
-                      )}
-                    </Link>
+                    {item.submenu ? (
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <button
+                            className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1.5 no-underline"
+                            aria-label={typeof item.label === 'string' ? item.label : `Navigate to ${item.href.split('/').pop()}`}
+                          >
+                            <span className={`transition-colors duration-300 ${item.iconColor} ${isActive ? 'text-foreground' : ''
+                              }`}>
+                              {item.icon}
+                            </span>
+                            {item.href !== `/${locale}/home` && (
+                              <span className="hidden md:inline text-foreground">{item.label}</span>
+                            )}
+                          </button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="center" className="w-48">
+                          <DropdownMenuItem asChild>
+                            <Link href={item.href} className="w-full">
+                              Overview
+                            </Link>
+                          </DropdownMenuItem>
+                          <DropdownMenuSeparator />
+                          {item.submenu.map((subItem, index) => (
+                            <DropdownMenuItem key={index} asChild>
+                              <Link href={subItem.href} className="w-full">
+                                {subItem.label}
+                              </Link>
+                            </DropdownMenuItem>
+                          ))}
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1.5 no-underline"
+                        aria-label={typeof item.label === 'string' ? item.label : `Navigate to ${item.href.split('/').pop()}`}
+                      >
+                        <span className={`transition-colors duration-300 ${item.iconColor} ${isActive ? 'text-foreground' : ''
+                          }`}>
+                          {item.icon}
+                        </span>
+                        {item.href !== `/${locale}/home` && (
+                          <span className="hidden md:inline text-foreground">{item.label}</span>
+                        )}
+                      </Link>
+                    )}
                   </motion.div>
                 </motion.div>
               </motion.li>
