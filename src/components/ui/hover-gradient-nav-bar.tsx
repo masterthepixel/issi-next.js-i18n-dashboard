@@ -48,6 +48,7 @@ interface HoverGradientMenuItem {
 interface HoverGradientNavBarProps {
   locale: string;
   messages?: Record<string, string>;
+  bannerVisible?: boolean;
 }
 
 // Animation variants
@@ -80,7 +81,7 @@ const sharedTransition = {
   duration: 0.5,
 };
 
-function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.Element {
+function HoverGradientNavBar({ locale, bannerVisible }: HoverGradientNavBarProps): React.JSX.Element {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const router = useRouter();
@@ -202,7 +203,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
   const additionalMenuItems: HoverGradientMenuItem[] = [];
 
   return (
-    <div className="fixed top-0 left-0 w-full md:top-4 md:left-1/2 md:-translate-x-1/2 z-50">
+    <div className={`fixed left-0 w-full md:left-1/2 md:-translate-x-1/2 z-50 ${bannerVisible ? 'top-12 md:top-16' : 'top-0 md:top-4'}`}>
       <motion.nav
         className="w-full md:w-fit mx-auto px-1 md:px-2 py-1 md:py-2 rounded-none md:rounded-3xl
         bg-background/90 backdrop-blur-lg

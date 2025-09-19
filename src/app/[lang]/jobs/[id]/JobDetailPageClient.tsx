@@ -176,20 +176,26 @@ function JobDetailPageClientInternal({ locale, job }: JobDetailPageClientProps) 
   }, [job.company.logo]);
 
   const handleShare = async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
+    const url = typeof window !== 'undefined' ? window.location.href : '';
+    try {
+      const shareFn = (typeof navigator !== 'undefined')
+        ? (navigator as unknown as { share?: (data: { title?: string; text?: string; url?: string }) => Promise<void> }).share
+        : undefined;
+
+      if (typeof shareFn === 'function') {
+        await shareFn({
           title: `${job.jobTitle} at ${job.company.name}`,
           text: `Check out this job opportunity: ${job.jobTitle} at ${job.company.name}`,
-          url: window.location.href,
+          url,
         });
-      } catch {
-        // Fallback to copying to clipboard
-        navigator.clipboard?.writeText(window.location.href);
+        return;
       }
-    } else {
-      // Fallback to copying to clipboard
-      navigator.clipboard?.writeText(window.location.href);
+
+      if (typeof navigator !== 'undefined' && navigator.clipboard) {
+        await navigator.clipboard.writeText(url);
+      }
+    } catch (err) {
+      console.error('Failed to share or copy URL:', err);
     }
   };
 

@@ -47,10 +47,11 @@ interface Service {
  * Example: Type-safe globe configuration
  */
 const createGlobeConfig = (width: number, height: number): GlobeConfig => {
+  const dpr = typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1;
   return {
     width,
     height,
-    devicePixelRatio: window?.devicePixelRatio || 1,
+    devicePixelRatio: dpr,
     enableInteraction: true,
     autoRotate: true,
     rotationSpeed: 0.5

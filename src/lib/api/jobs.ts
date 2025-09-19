@@ -1,6 +1,6 @@
 "use client";
 
-import { JobFormData, Job, JobsResponse, Company, CompaniesResponse } from "@/lib/schemas/job";
+import { CompaniesResponse, Company, Job, JobFormData, JobsResponse } from "@/lib/schemas/job";
 
 // API Base URL
 const API_BASE_URL = "https://issi-dashboard-payloadcms.vercel.app/api";
@@ -25,7 +25,7 @@ export async function handleResponse<T>(response: Response): Promise<T> {
     }
     throw new JobAPIError(errorMessage, response.status);
   }
-  
+
   return response.json();
 }
 
@@ -34,11 +34,11 @@ function getAuthHeaders(token?: string): HeadersInit {
   const headers: HeadersInit = {
     "Content-Type": "application/json",
   };
-  
+
   if (token) {
     headers.Authorization = `Bearer ${token}`;
   }
-  
+
   return headers;
 }
 
@@ -57,7 +57,7 @@ export const jobsAPI = {
     if (params?.limit) searchParams.set("limit", params.limit.toString());
     if (params?.status) searchParams.set("status", params.status);
     if (params?.company) searchParams.set("company", params.company);
-    
+
     const response = await fetch(
       `${API_BASE_URL}/jobposts?${searchParams.toString()}`,
       {
@@ -65,7 +65,7 @@ export const jobsAPI = {
         headers: getAuthHeaders(params?.token),
       }
     );
-    
+
     return handleResponse<JobsResponse>(response);
   },
 
@@ -75,7 +75,7 @@ export const jobsAPI = {
       method: "GET",
       headers: getAuthHeaders(token),
     });
-    
+
     return handleResponse<Job>(response);
   },
 
@@ -86,7 +86,7 @@ export const jobsAPI = {
       headers: getAuthHeaders(token),
       body: JSON.stringify(jobData),
     });
-    
+
     return handleResponse<Job>(response);
   },
 
@@ -97,14 +97,14 @@ export const jobsAPI = {
       headers: getAuthHeaders(token),
       body: JSON.stringify(jobData),
     });
-    
+
     return handleResponse<Job>(response);
   },
 
   // Update job status
   async updateJobStatus(
-    id: string, 
-    status: "DRAFT" | "ACTIVE" | "CLOSED", 
+    id: string,
+    status: "DRAFT" | "ACTIVE" | "CLOSED",
     token: string
   ): Promise<Job> {
     const response = await fetch(`${API_BASE_URL}/jobposts/${id}/status`, {
@@ -112,7 +112,7 @@ export const jobsAPI = {
       headers: getAuthHeaders(token),
       body: JSON.stringify({ status }),
     });
-    
+
     return handleResponse<Job>(response);
   },
 
@@ -122,10 +122,15 @@ export const jobsAPI = {
       method: "DELETE",
       headers: getAuthHeaders(token),
     });
-    
+
     if (!response.ok) {
       throw new JobAPIError(`Failed to delete job: ${response.status}`, response.status);
     }
+  },
+
+  // Get active jobs for marquee banner
+  async getActiveJobs(limit: number = 10): Promise<JobsResponse> {
+    return this.getJobs({ status: "ACTIVE", limit });
   },
 };
 
@@ -140,7 +145,7 @@ export const companiesAPI = {
     const searchParams = new URLSearchParams();
     if (params?.page) searchParams.set("page", params.page.toString());
     if (params?.limit) searchParams.set("limit", params.limit.toString());
-    
+
     const response = await fetch(
       `${API_BASE_URL}/companies?${searchParams.toString()}`,
       {
@@ -148,7 +153,7 @@ export const companiesAPI = {
         headers: getAuthHeaders(params?.token),
       }
     );
-    
+
     return handleResponse<CompaniesResponse>(response);
   },
 
@@ -158,7 +163,7 @@ export const companiesAPI = {
       method: "GET",
       headers: getAuthHeaders(token),
     });
-    
+
     return handleResponse<Company>(response);
   },
 
@@ -169,14 +174,14 @@ export const companiesAPI = {
       headers: getAuthHeaders(token),
       body: JSON.stringify(companyData),
     });
-    
+
     return handleResponse<Company>(response);
   },
 
   // Update existing company
   async updateCompany(
-    id: string, 
-    companyData: Partial<Omit<Company, "id" | "createdAt" | "updatedAt">>, 
+    id: string,
+    companyData: Partial<Omit<Company, "id" | "createdAt" | "updatedAt">>,
     token: string
   ): Promise<Company> {
     const response = await fetch(`${API_BASE_URL}/companies/${id}`, {
@@ -184,7 +189,7 @@ export const companiesAPI = {
       headers: getAuthHeaders(token),
       body: JSON.stringify(companyData),
     });
-    
+
     return handleResponse<Company>(response);
   },
 };
@@ -238,7 +243,7 @@ export const mockCompaniesData: Company[] = [
     location: "San Francisco, CA",
     logo: null,
     website: "https://techstartup.com",
-    xAccount: "@techstartup", 
+    xAccount: "@techstartup",
     about: "We're building the future of technology",
     user: "user-1",
     createdAt: "2024-01-01T00:00:00Z",

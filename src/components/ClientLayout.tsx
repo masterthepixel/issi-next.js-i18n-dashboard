@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatedBackground } from "@/components/AnimatedBackground";
+import { JobBannerWrapper } from "@/components/careers/JobBannerWrapper";
 import ClientNavigation from "@/components/ClientNavigation";
 import ClientOnly from "@/components/ClientOnly";
 import Content from "@/components/Content";
@@ -10,7 +11,7 @@ import IntelligentBreadcrumb from "@/components/IntelligentBreadcrumb";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import { ThemeProviderWrapper } from "@/components/ThemeProviderWrapper";
 import { usePathname } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 import { IntlProvider } from 'react-intl';
 
 import { Locale } from "@/lib/definitions";
@@ -25,6 +26,7 @@ interface Props {
 
 export default function ClientLayout({ lang, messages, intlMessages, children }: Props) {
   const pathname = usePathname();
+  const [isBannerVisible, setIsBannerVisible] = useState(false);
 
   // Check if we're on homepage (including /home routes)
   const homepagePaths = ['/', '/en', '/fr', '/es', '/en/home', '/fr/home', '/es/home', '/home'];
@@ -37,6 +39,7 @@ export default function ClientLayout({ lang, messages, intlMessages, children }:
 
         {/* Provide react-intl IntlProvider at app lang layout so both server and client renders have access */}
         <IntlProvider locale={lang} messages={messages}>
+          <JobBannerWrapper locale={lang} onVisibilityChange={setIsBannerVisible} />
           <Content>
             <div className="mx-auto max-w-7xl px-6 lg:px-8 mt-24">
               {!isHomepage && <IntelligentBreadcrumb className="mb-6" />}
@@ -46,7 +49,7 @@ export default function ClientLayout({ lang, messages, intlMessages, children }:
           <Footer locale={lang} messages={messages} />
         </IntlProvider>
 
-        <ClientNavigation locale={lang} messages={intlMessages} />
+        <ClientNavigation locale={lang} messages={intlMessages} bannerVisible={isBannerVisible} />
         <ClientOnly>
           <ScrollToTopButton />
         </ClientOnly>

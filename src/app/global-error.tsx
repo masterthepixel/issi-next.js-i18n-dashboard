@@ -26,7 +26,9 @@ export default function GlobalError({ error, reset }: { error: Error & { digest?
               </button>
               <button
                 className="px-4 py-2 bg-slate-600 text-white rounded hover:bg-slate-700"
-                onClick={() => window.location.href = '/en/home'}
+                onClick={() => {
+                  if (typeof window !== 'undefined') window.location.href = '/en/home';
+                }}
               >
                 Go Home
               </button>

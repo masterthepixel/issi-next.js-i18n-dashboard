@@ -1,31 +1,30 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { FormattedMessage } from 'react-intl';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import ErrorBoundary from '@/components/ErrorBoundary';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import { type JobPost, jobsUtils } from '@/lib/jobs-api';
+import { cn } from '@/lib/utils';
 import {
   ArrowLeft,
-  MapPin,
-  Calendar,
-  DollarSign,
-  Building,
-  ExternalLink,
-  Share2,
   Bookmark,
   BookmarkCheck,
+  Building,
+  Calendar,
   Clock,
-  Users,
+  DollarSign,
+  ExternalLink,
   Globe,
+  MapPin,
+  Share2
 } from 'lucide-react';
-import { type JobPost, jobsUtils } from '@/lib/jobs-api';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import RichTextRenderer from './RichTextRenderer';
-import ErrorBoundary from '@/components/ErrorBoundary';
-import { cn } from '@/lib/utils';
 
 interface JobDetailPageProps {
   job: JobPost;
@@ -35,12 +34,12 @@ interface JobDetailPageProps {
   className?: string;
 }
 
-export default function JobDetailPage({ 
-  job, 
-  onSave, 
-  onUnsave, 
+export default function JobDetailPage({
+  job,
+  onSave,
+  onUnsave,
   isSaved = false,
-  className 
+  className
 }: JobDetailPageProps) {
   const router = useRouter();
   const [savingJob, setSavingJob] = useState(false);
@@ -48,7 +47,7 @@ export default function JobDetailPage({
 
   const handleSaveJob = async () => {
     if (savingJob) return;
-    
+
     setSavingJob(true);
     try {
       if (isSaved && onUnsave) {
@@ -64,27 +63,25 @@ export default function JobDetailPage({
   };
 
   const handleShare = async () => {
-    const url = window.location.href;
+    const url = typeof window !== 'undefined' ? window.location.href : '';
     const title = `${job.jobTitle} at ${job.company.name}`;
-    
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title,
-          text: jobsUtils.createExcerpt(job.jobDescription, 160),
-          url,
-        });
-      } catch (error) {
-        // User cancelled sharing
+
+    try {
+      const shareFn = (typeof navigator !== 'undefined')
+        ? (navigator as unknown as { share?: (data: { title?: string; text?: string; url?: string }) => Promise<void> }).share
+        : undefined;
+
+      if (typeof shareFn === 'function') {
+        await shareFn({ title, text: jobsUtils.createExcerpt(job.jobDescription, 160), url });
+        return;
       }
-    } else {
-      // Fallback to copying URL
-      try {
+
+      // Fallback to clipboard
+      if (typeof navigator !== 'undefined' && navigator.clipboard) {
         await navigator.clipboard.writeText(url);
-        // Could add toast notification here
-      } catch (error) {
-        console.error('Failed to copy URL:', error);
       }
+    } catch (error) {
+      console.error('Failed to share or copy URL:', error);
     }
   };
 
@@ -121,12 +118,12 @@ export default function JobDetailPage({
                       <h1 className="sm:text-3xl text-foreground mb-3">
                         {job.jobTitle}
                       </h1>
-                      
+
                       {/* Company Info */}
                       <div className="flex items-center gap-3 mb-4">
                         <Avatar className="h-12 w-12">
-                          <AvatarImage 
-                            src={job.company.logo || undefined} 
+                          <AvatarImage
+                            src={job.company.logo || undefined}
                             alt={job.company.name}
                           />
                           <AvatarFallback className="bg-primary/10 text-primary font-medium">
@@ -187,7 +184,7 @@ export default function JobDetailPage({
                           <FormattedMessage id="jobs.detail.share" defaultMessage="Share" />
                         </span>
                       </Button>
-                      
+
                       {(onSave || onUnsave) && (
                         <Button
                           variant={isSaved ? "default" : "outline"}
@@ -223,8 +220,8 @@ export default function JobDetailPage({
                       </h3>
                       <div className="flex flex-wrap gap-2 mb-6">
                         {job.benefits.map((benefit) => (
-                          <Badge 
-                            key={benefit} 
+                          <Badge
+                            key={benefit}
                             variant="outline"
                             className=""
                           >
@@ -260,25 +257,25 @@ export default function JobDetailPage({
                       <FormattedMessage id="jobs.detail.apply.title" defaultMessage="Ready to Apply?" />
                     </h3>
                     <p className="">
-                      <FormattedMessage 
-                        id="jobs.detail.apply.description" 
-                        defaultMessage="Submit your application for this position" 
+                      <FormattedMessage
+                        id="jobs.detail.apply.description"
+                        defaultMessage="Submit your application for this position"
                       />
                     </p>
                   </div>
-                  
-                  <Button 
-                    className="w-full mb-4" 
+
+                  <Button
+                    className="w-full mb-4"
                     size="lg"
-                    // onClick={() => router.push(`/jobs/${job.id}/apply`)}
+                  // onClick={() => router.push(`/jobs/${job.id}/apply`)}
                   >
                     <FormattedMessage id="jobs.detail.apply.button" defaultMessage="Apply Now" />
                   </Button>
-                  
+
                   <div className="text-xs text-muted-foreground text-center">
-                    <FormattedMessage 
-                      id="jobs.detail.apply.note" 
-                      defaultMessage="You'll be able to review your application before submitting" 
+                    <FormattedMessage
+                      id="jobs.detail.apply.note"
+                      defaultMessage="You'll be able to review your application before submitting"
                     />
                   </div>
                 </CardContent>
@@ -294,8 +291,8 @@ export default function JobDetailPage({
                 <CardContent className="space-y-4">
                   <div className="flex items-center gap-3">
                     <Avatar className="h-16 w-16">
-                      <AvatarImage 
-                        src={job.company.logo || undefined} 
+                      <AvatarImage
+                        src={job.company.logo || undefined}
                         alt={job.company.name}
                       />
                       <AvatarFallback className="bg-primary/10 text-primary font-medium text-lg">
@@ -347,21 +344,21 @@ export default function JobDetailPage({
                     </span>
                     <span className="">{formattedDate}</span>
                   </div>
-                  
+
                   <div className="flex justify-between items-center">
                     <span className="">
                       <FormattedMessage id="jobs.detail.info.type" defaultMessage="Employment Type" />
                     </span>
                     <span className="">{formattedType}</span>
                   </div>
-                  
+
                   <div className="flex justify-between items-center">
                     <span className="">
                       <FormattedMessage id="jobs.detail.info.location" defaultMessage="Location" />
                     </span>
                     <span className="">{job.location}</span>
                   </div>
-                  
+
                   {(job.salaryFrom || job.salaryTo) && (
                     <div className="flex justify-between items-center">
                       <span className="">

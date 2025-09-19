@@ -63,10 +63,12 @@ const TypeSafeBreadcrumb: React.FC<UniversalBreadcrumbProps> = (_props) => {
  * Example: Type-safe globe configuration
  */
 const createGlobeConfig = (width: number, height: number): GlobeConfig => {
+  // Don't access `window` at module evaluation time — guard for server
+  const dpr = typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1;
   return {
     width,
     height,
-    devicePixelRatio: window.devicePixelRatio || 1,
+    devicePixelRatio: dpr,
     enableInteraction: true,
     autoRotate: true,
     rotationSpeed: 0.5

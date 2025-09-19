@@ -97,6 +97,8 @@ export const InfiniteMovingCards = ({
             cardStyles += " border-red-600 bg-gradient-to-br from-red-700 via-red-600 to-red-800 text-white";
           } else if (className?.includes("patriotic-cards-white")) {
             cardStyles += " border-gray-300 bg-gradient-to-br from-gray-50 via-white to-gray-100 text-gray-900 dark:border-gray-600 dark:from-gray-800 dark:via-gray-700 dark:to-gray-900 dark:text-white";
+          } else if (className?.includes("job-marquee-cards")) {
+            cardStyles += " border-primary/20 bg-primary/5 text-primary dark:border-primary/30 dark:bg-primary/10 dark:text-primary hover:bg-primary/10 hover:border-primary/30 transition-all duration-200 cursor-pointer whitespace-nowrap mx-1";
           } else if (className?.includes("testimonial-cards")) {
             cardStyles += " border-border bg-card text-card-foreground shadow-md dark:border-border dark:bg-card dark:text-card-foreground";
           } else {
@@ -121,33 +123,49 @@ export const InfiniteMovingCards = ({
                       {item.quote}
                     </span>
                   </div>
+                ) : className?.includes("job-marquee-cards") ? (
+                  <div className="flex flex-col gap-1">
+                    <span className="relative z-20 text-xs font-semibold uppercase tracking-wide opacity-80 whitespace-nowrap">
+                      {item.quote}
+                    </span>
+                    <span className="relative z-20 text-sm font-medium leading-tight whitespace-nowrap">
+                      {item.name}
+                    </span>
+                    <span className="relative z-20 text-xs opacity-60 whitespace-nowrap">
+                      {item.title}
+                    </span>
+                  </div>
                 ) : (
                   <span className="relative z-20 text-base leading-[1.6] font-normal">
                     {item.quote}
                   </span>
                 )}
-                <div className="relative z-20 mt-6 flex flex-row items-center">
-                  {/* Show avatar for testimonial cards */}
-                  {className?.includes("testimonial-cards") && item.avatar && (
-                    <div className="mr-4 relative">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={item.avatar}
-                        alt={`Avatar of ${item.name}`}
-                        className="w-12 h-12 rounded-full object-cover"
-                      />
-                      <div className="absolute inset-0 rounded-full ring-2 ring-gray-300 ring-offset-2 ring-offset-background pointer-events-none"></div>
-                    </div>
-                  )}
-                  <span className="flex flex-col gap-0">
-                    <span className="text-xl leading-[1.4] font-serif font-[400]">
-                      {item.name}
+
+                {/* Only show name/title section for non-job cards */}
+                {!className?.includes("job-marquee-cards") && (
+                  <div className="relative z-20 mt-6 flex flex-row items-center">
+                    {/* Show avatar for testimonial cards */}
+                    {className?.includes("testimonial-cards") && item.avatar && (
+                      <div className="mr-4 relative">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={item.avatar}
+                          alt={`Avatar of ${item.name}`}
+                          className="w-12 h-12 rounded-full object-cover"
+                        />
+                        <div className="absolute inset-0 rounded-full ring-2 ring-gray-300 ring-offset-2 ring-offset-background pointer-events-none"></div>
+                      </div>
+                    )}
+                    <span className="flex flex-col gap-0">
+                      <span className="text-xl leading-[1.4] font-serif font-[400]">
+                        {item.name}
+                      </span>
+                      <span className="text-sm leading-[1.6] font-semibold opacity-80">
+                        {item.title}
+                      </span>
                     </span>
-                    <span className="text-sm leading-[1.6] font-semibold opacity-80">
-                      {item.title}
-                    </span>
-                  </span>
-                </div>
+                  </div>
+                )}
               </blockquote>
             </li>
           );

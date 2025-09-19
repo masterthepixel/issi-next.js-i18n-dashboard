@@ -37,7 +37,8 @@ const config: Config = {
 				'meteor-effect': 'meteor 5s linear infinite',
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'scroll': 'scroll var(--animation-duration, 55s) var(--animation-direction, forwards) linear infinite'
+				'scroll': 'scroll var(--animation-duration, 55s) var(--animation-direction, forwards) linear infinite',
+				'marquee': 'marquee 36s linear infinite'
 			},
 			keyframes: {
 				fadeIn: {
@@ -80,6 +81,14 @@ const config: Config = {
 				scroll: {
 					to: {
 						transform: 'translate(calc(-50% - 0.5rem))'
+					}
+				},
+				marquee: {
+					'0%': {
+						transform: 'translateX(100%)'
+					},
+					'100%': {
+						transform: 'translateX(-100%)'
 					}
 				}
 			},
