@@ -15,7 +15,7 @@ export function JobMarqueeContent({ jobs, locale }: JobMarqueeContentProps) {
     const router = useRouter()
 
     const handleJobClick = (jobId: string) => {
-        router.push(`/${locale}/careers/${jobId}`)
+        router.push(`/${locale}/jobs/${jobId}`)
     }
 
     if (jobs.length === 0) {
