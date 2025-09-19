@@ -47,7 +47,7 @@ export default async function Root({ params, children }: Props) {
         {/* Performance hints */}
         <meta httpEquiv="x-dns-prefetch-control" content="on" />
         <meta name="format-detection" content="telephone=no" />
-        
+
         {/* Reduce layout shift */}
         <style dangerouslySetInnerHTML={{
           __html: `

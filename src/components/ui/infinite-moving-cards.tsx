@@ -31,13 +31,13 @@ export const InfiniteMovingCards = ({
     // Check for reduced motion preference
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setPrefersReducedMotion(mediaQuery.matches);
-    
+
     const handleChange = (e: MediaQueryListEvent) => {
       setPrefersReducedMotion(e.matches);
     };
-    
+
     mediaQuery.addEventListener('change', handleChange);
-    
+
     const getDirection = () => {
       if (containerRef.current) {
         if (direction === "left") {
@@ -53,7 +53,7 @@ export const InfiniteMovingCards = ({
         }
       }
     };
-    
+
     const getSpeed = () => {
       if (containerRef.current) {
         if (speed === "fast") {
@@ -65,7 +65,7 @@ export const InfiniteMovingCards = ({
         }
       }
     };
-    
+
     function addAnimation() {
       if (containerRef.current && scrollerRef.current) {
         const scrollerContent = Array.from(scrollerRef.current.children);
@@ -82,7 +82,7 @@ export const InfiniteMovingCards = ({
         setStart(true);
       }
     }
-    
+
     // Use requestIdleCallback for non-critical animation setup
     if ('requestIdleCallback' in window) {
       window.requestIdleCallback(() => {

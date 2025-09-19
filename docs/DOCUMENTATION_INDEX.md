@@ -17,6 +17,7 @@ This index provides a quick reference to documentation created during and after 
 
 - **[COMPONENT_DEVELOPMENT_GUIDE.md](./COMPONENT_DEVELOPMENT_GUIDE.md)** - Enterprise component development standards, shadcn/ui patterns, anti-patterns to avoid, and testing requirements
 - **[NEXTJS_15_COMPATIBILITY.md](./NEXTJS_15_COMPATIBILITY.md)** - Next.js 15 migration guide, async params patterns, build system changes, and compatibility requirements
+- **[PERFORMANCE_OPTIMIZATION.md](./PERFORMANCE_OPTIMIZATION.md)** - Performance optimization techniques, Core Web Vitals improvements, and bundle splitting strategies
 - **[SHADCN_MIGRATION_LESSONS.md](./SHADCN_MIGRATION_LESSONS.md)** - Lessons learned from migrating 100+ components
 
 ## Key Insights Summary

@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import IntelligentBreadcrumb from "@/components/IntelligentBreadcrumb";
 import { ThemeProviderWrapper } from "@/components/ThemeProviderWrapper";
 import { usePathname } from 'next/navigation';
-import React, { useState, lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 
 // Dynamic imports for non-critical components
