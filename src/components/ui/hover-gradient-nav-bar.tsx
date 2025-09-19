@@ -2,6 +2,7 @@
 import 'flag-icons/css/flag-icons.min.css';
 import { motion, Variants } from 'framer-motion';
 import {
+  Award,
   BookOpen,
   Briefcase,
   Building2,
@@ -20,6 +21,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import { USStateFlags } from 'us-state-flags';
 
 import {
   DropdownMenu,
@@ -197,7 +199,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
   ];
 
   // Additional menu items for the dropdown hamburger menu
-  const additionalMenuItems = [];
+  const additionalMenuItems: HoverGradientMenuItem[] = [];
 
   return (
     <div className="fixed top-0 left-0 w-full md:top-4 md:left-1/2 md:-translate-x-1/2 z-50">
@@ -215,69 +217,137 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
 
             return (
               <motion.li key={item.href} className="relative flex-1 md:flex-none">
-                <motion.div
-                  className={`block rounded-xl md:rounded-2xl overflow-visible group relative ${isActive ? 'bg-muted/50' : ''
-                    }`}
-                  style={{ perspective: "600px" }}
-                  whileHover="hover"
-                  initial="initial"
-                >
-                  {/* Per-item glow */}
+                {item.submenu ? (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <motion.div
+                        className={`block rounded-xl md:rounded-2xl overflow-visible group relative ${isActive ? 'bg-muted/50' : ''
+                          }`}
+                        style={{ perspective: "600px" }}
+                        whileHover="hover"
+                        initial="initial"
+                      >
+                        {/* Per-item glow */}
+                        <motion.div
+                          className="absolute inset-0 z-0 pointer-events-none rounded-xl md:rounded-2xl"
+                          variants={glowVariants}
+                          style={{
+                            background: item.gradient,
+                            opacity: isActive ? 0.3 : 0,
+                          }}
+                        />
+                        {/* Front-facing */}
+                        <motion.div
+                          className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-1.5
+                          px-1.5 py-1 md:px-3 md:py-1.5 relative z-10
+                          bg-transparent text-foreground
+                          group-hover:text-foreground
+                          transition-colors rounded-xl md:rounded-2xl text-xs md:text-sm cursor-pointer"
+                          variants={itemVariants}
+                          transition={sharedTransition}
+                          style={{
+                            transformStyle: "preserve-3d",
+                            transformOrigin: "center bottom"
+                          }}
+                        >
+                          <span className={`transition-colors duration-300 ${item.iconColor} ${isActive ? 'text-foreground' : ''
+                            }`}>
+                            {item.icon}
+                          </span>
+                          {item.href !== `/${locale}/home` && (
+                            <span className="hidden md:inline text-foreground">{item.label}</span>
+                          )}
+                        </motion.div>
+                        {/* Back-facing */}
+                        <motion.div
+                          className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-1.5
+                          px-1.5 py-1 md:px-3 md:py-1.5 absolute inset-0 z-10
+                          bg-transparent text-foreground
+                          group-hover:text-foreground
+                          transition-colors rounded-xl md:rounded-2xl text-xs md:text-sm cursor-pointer"
+                          variants={backVariants}
+                          transition={sharedTransition}
+                          style={{
+                            transformStyle: "preserve-3d",
+                            transformOrigin: "center top",
+                            transform: "rotateX(90deg)"
+                          }}
+                        >
+                          <span className={`transition-colors duration-300 ${item.iconColor} ${isActive ? 'text-foreground' : ''
+                            }`}>
+                            {item.icon}
+                          </span>
+                          {item.href !== `/${locale}/home` && (
+                            <span className="hidden md:inline text-foreground">{item.label}</span>
+                          )}
+                        </motion.div>
+                      </motion.div>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="center" className="w-48 bg-background/90 backdrop-blur-lg border border-border/80 shadow-lg">
+                      <DropdownMenuItem asChild>
+                        <Link href={item.href} className="flex items-center gap-2 no-underline">
+                          <ShieldCheck className="h-4 w-4" />
+                          <span>Overview</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem asChild>
+                        <Link href={`${item.href}/iso27001`} className="flex items-center gap-2 no-underline">
+                          <ShieldCheck className="h-4 w-4" />
+                          <span>ISO 27001</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link href={`${item.href}/iso9001`} className="flex items-center gap-2 no-underline">
+                          <ShieldCheck className="h-4 w-4" />
+                          <span>ISO 9001</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link href={`${item.href}/mdot`} className="flex items-center gap-2 no-underline">
+                          <USStateFlags state="MD" showFlag={true} className="w-4 h-3 rounded-sm" />
+                          <span>MDOT</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link href={`${item.href}/cmmi3`} className="flex items-center gap-2 no-underline">
+                          <Award className="h-4 w-4" />
+                          <span>CMMI Level 3</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
                   <motion.div
-                    className="absolute inset-0 z-0 pointer-events-none rounded-xl md:rounded-2xl"
-                    variants={glowVariants}
-                    style={{
-                      background: item.gradient,
-                      opacity: isActive ? 0.3 : 0,
-                    }}
-                  />
-                  {/* Front-facing */}
-                  <motion.div
-                    className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-1.5
-                    px-1.5 py-1 md:px-3 md:py-1.5 relative z-10
-                    bg-transparent text-foreground
-                    group-hover:text-foreground
-                    transition-colors rounded-xl md:rounded-2xl text-xs md:text-sm"
-                    variants={itemVariants}
-                    transition={sharedTransition}
-                    style={{
-                      transformStyle: "preserve-3d",
-                      transformOrigin: "center bottom"
-                    }}
+                    className={`block rounded-xl md:rounded-2xl overflow-visible group relative ${isActive ? 'bg-muted/50' : ''
+                      }`}
+                    style={{ perspective: "600px" }}
+                    whileHover="hover"
+                    initial="initial"
                   >
-                    {item.submenu ? (
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <button
-                            className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1.5 no-underline"
-                            aria-label={typeof item.label === 'string' ? item.label : `Navigate to ${item.href.split('/').pop()}`}
-                          >
-                            <span className={`transition-colors duration-300 ${item.iconColor} ${isActive ? 'text-foreground' : ''
-                              }`}>
-                              {item.icon}
-                            </span>
-                            {item.href !== `/${locale}/home` && (
-                              <span className="hidden md:inline text-foreground">{item.label}</span>
-                            )}
-                          </button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="center" className="w-48">
-                          <DropdownMenuItem asChild>
-                            <Link href={item.href} className="w-full">
-                              Overview
-                            </Link>
-                          </DropdownMenuItem>
-                          <DropdownMenuSeparator />
-                          {item.submenu.map((subItem, index) => (
-                            <DropdownMenuItem key={index} asChild>
-                              <Link href={subItem.href} className="w-full">
-                                {subItem.label}
-                              </Link>
-                            </DropdownMenuItem>
-                          ))}
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    ) : (
+                    {/* Per-item glow */}
+                    <motion.div
+                      className="absolute inset-0 z-0 pointer-events-none rounded-xl md:rounded-2xl"
+                      variants={glowVariants}
+                      style={{
+                        background: item.gradient,
+                        opacity: isActive ? 0.3 : 0,
+                      }}
+                    />
+                    {/* Front-facing */}
+                    <motion.div
+                      className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-1.5
+                      px-1.5 py-1 md:px-3 md:py-1.5 relative z-10
+                      bg-transparent text-foreground
+                      group-hover:text-foreground
+                      transition-colors rounded-xl md:rounded-2xl text-xs md:text-sm"
+                      variants={itemVariants}
+                      transition={sharedTransition}
+                      style={{
+                        transformStyle: "preserve-3d",
+                        transformOrigin: "center bottom"
+                      }}
+                    >
                       <Link
                         href={item.href}
                         className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1.5 no-underline"
@@ -291,56 +361,22 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                           <span className="hidden md:inline text-foreground">{item.label}</span>
                         )}
                       </Link>
-                    )}
-                  </motion.div>
-                  {/* Back-facing */}
-                  <motion.div
-                    className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-1.5
-                    px-1.5 py-1 md:px-3 md:py-1.5 absolute inset-0 z-10
-                    bg-transparent text-foreground
-                    group-hover:text-foreground
-                    transition-colors rounded-xl md:rounded-2xl text-xs md:text-sm"
-                    variants={backVariants}
-                    transition={sharedTransition}
-                    style={{
-                      transformStyle: "preserve-3d",
-                      transformOrigin: "center top",
-                      transform: "rotateX(90deg)"
-                    }}
-                  >
-                    {item.submenu ? (
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <button
-                            className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1.5 no-underline"
-                            aria-label={typeof item.label === 'string' ? item.label : `Navigate to ${item.href.split('/').pop()}`}
-                          >
-                            <span className={`transition-colors duration-300 ${item.iconColor} ${isActive ? 'text-foreground' : ''
-                              }`}>
-                              {item.icon}
-                            </span>
-                            {item.href !== `/${locale}/home` && (
-                              <span className="hidden md:inline text-foreground">{item.label}</span>
-                            )}
-                          </button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="center" className="w-48">
-                          <DropdownMenuItem asChild>
-                            <Link href={item.href} className="w-full">
-                              Overview
-                            </Link>
-                          </DropdownMenuItem>
-                          <DropdownMenuSeparator />
-                          {item.submenu.map((subItem, index) => (
-                            <DropdownMenuItem key={index} asChild>
-                              <Link href={subItem.href} className="w-full">
-                                {subItem.label}
-                              </Link>
-                            </DropdownMenuItem>
-                          ))}
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    ) : (
+                    </motion.div>
+                    {/* Back-facing */}
+                    <motion.div
+                      className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-1.5
+                      px-1.5 py-1 md:px-3 md:py-1.5 absolute inset-0 z-10
+                      bg-transparent text-foreground
+                      group-hover:text-foreground
+                      transition-colors rounded-xl md:rounded-2xl text-xs md:text-sm"
+                      variants={backVariants}
+                      transition={sharedTransition}
+                      style={{
+                        transformStyle: "preserve-3d",
+                        transformOrigin: "center top",
+                        transform: "rotateX(90deg)"
+                      }}
+                    >
                       <Link
                         href={item.href}
                         className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1.5 no-underline"
@@ -354,9 +390,9 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                           <span className="hidden md:inline text-foreground">{item.label}</span>
                         )}
                       </Link>
-                    )}
+                    </motion.div>
                   </motion.div>
-                </motion.div>
+                )}
               </motion.li>
             );
           })}
@@ -426,7 +462,7 @@ function HoverGradientNavBar({ locale }: HoverGradientNavBarProps): React.JSX.El
                   </motion.div>
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuContent align="end" className="w-48 bg-background/90 backdrop-blur-lg border border-border/80 shadow-lg">
                 {/* Sign In */}
                 <DropdownMenuItem onClick={handleSignIn}>
                   <User className="h-4 w-4" />
