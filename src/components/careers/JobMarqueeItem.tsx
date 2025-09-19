@@ -21,7 +21,7 @@ export function JobMarqueeItem({ job, locale }: JobMarqueeItemProps) {
 
     return (
         <Announcement className="mx-4 flex-shrink-0">
-            <AnnouncementTag variant="default">
+            <AnnouncementTag>
                 <FormattedMessage id="careers.banner.nowHiring" defaultMessage="Now Hiring" />
             </AnnouncementTag>
             <AnnouncementTitle onClick={handleClick}>
