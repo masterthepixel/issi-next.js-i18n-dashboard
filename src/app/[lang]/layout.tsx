@@ -32,15 +32,29 @@ export default async function Root({ params, children }: Props) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <link rel="dns-prefetch" href="https://tailwindcss.com" />
+        <link rel="dns-prefetch" href="https://issi-dashboard-payloadcms.vercel.app" />
 
         {/* Critical CSS inlining hint */}
         <link rel="preload" href="/images/project-app-screenshot.png" as="image" fetchPriority="high" />
+
+        {/* Reduce render blocking */}
+        <link rel="preload" href="/_next/static/css/app/layout.css" as="style" />
+        <link rel="modulepreload" href="/_next/static/chunks/main.js" />
 
         {/* Viewport optimization */}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
         {/* Performance hints */}
         <meta httpEquiv="x-dns-prefetch-control" content="on" />
+        <meta name="format-detection" content="telephone=no" />
+        
+        {/* Reduce layout shift */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            .debug-screens { contain: layout style; }
+            .grid-background-with-fade { contain-intrinsic-size: 100vw 100vh; }
+          `
+        }} />
       </head>
       <body className="relative min-h-screen overflow-y-auto overflow-x-visible grid-background-with-fade flex flex-col debug-screens">
         <ClientLayout

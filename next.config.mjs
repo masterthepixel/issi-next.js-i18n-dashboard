@@ -20,6 +20,10 @@ const nextConfig = {
   // Build optimization
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
+    // Enable React Compiler for better performance
+    reactRemoveProperties: process.env.NODE_ENV === 'production' ? {
+      properties: ['^data-testid$']
+    } : false,
   },
 
   // Image optimization

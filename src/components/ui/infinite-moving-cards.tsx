@@ -24,53 +24,78 @@ export const InfiniteMovingCards = ({
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
+  const [start, setStart] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
-    addAnimation();
-  }, []);
-  const [start, setStart] = useState(false);
-  function addAnimation() {
-    if (containerRef.current && scrollerRef.current) {
-      const scrollerContent = Array.from(scrollerRef.current.children);
-
-      scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true);
-        if (scrollerRef.current) {
-          scrollerRef.current.appendChild(duplicatedItem);
+    // Check for reduced motion preference
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+    
+    const handleChange = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches);
+    };
+    
+    mediaQuery.addEventListener('change', handleChange);
+    
+    const getDirection = () => {
+      if (containerRef.current) {
+        if (direction === "left") {
+          containerRef.current.style.setProperty(
+            "--animation-direction",
+            "forwards",
+          );
+        } else {
+          containerRef.current.style.setProperty(
+            "--animation-direction",
+            "reverse",
+          );
         }
-      });
+      }
+    };
+    
+    const getSpeed = () => {
+      if (containerRef.current) {
+        if (speed === "fast") {
+          containerRef.current.style.setProperty("--animation-duration", "26s"); // 30% slower than 20s
+        } else if (speed === "normal") {
+          containerRef.current.style.setProperty("--animation-duration", "55s"); // 30% slower than 40s  
+        } else {
+          containerRef.current.style.setProperty("--animation-duration", "104s"); // 30% slower than 80s
+        }
+      }
+    };
+    
+    function addAnimation() {
+      if (containerRef.current && scrollerRef.current) {
+        const scrollerContent = Array.from(scrollerRef.current.children);
 
-      getDirection();
-      getSpeed();
-      setStart(true);
-    }
-  }
-  const getDirection = () => {
-    if (containerRef.current) {
-      if (direction === "left") {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "forwards",
-        );
-      } else {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "reverse",
-        );
+        scrollerContent.forEach((item) => {
+          const duplicatedItem = item.cloneNode(true);
+          if (scrollerRef.current) {
+            scrollerRef.current.appendChild(duplicatedItem);
+          }
+        });
+
+        getDirection();
+        getSpeed();
+        setStart(true);
       }
     }
-  };
-  const getSpeed = () => {
-    if (containerRef.current) {
-      if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "26s"); // 30% slower than 20s
-      } else if (speed === "normal") {
-        containerRef.current.style.setProperty("--animation-duration", "55s"); // 30% slower than 40s  
-      } else {
-        containerRef.current.style.setProperty("--animation-duration", "104s"); // 30% slower than 80s
-      }
+    
+    // Use requestIdleCallback for non-critical animation setup
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(() => {
+        addAnimation();
+      });
+    } else {
+      setTimeout(addAnimation, 100);
     }
-  };
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange);
+    };
+  }, [direction, speed]);
   return (
     <div
       ref={containerRef}
@@ -83,8 +108,9 @@ export const InfiniteMovingCards = ({
         ref={scrollerRef}
         className={cn(
           "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
-          start && "animate-scroll",
+          start && !prefersReducedMotion && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]",
+          prefersReducedMotion && "transform-none",
         )}
       >
         {items.map((item, _idx) => {
