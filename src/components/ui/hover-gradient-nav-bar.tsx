@@ -7,6 +7,7 @@ import {
   Briefcase,
   Building2,
   GraduationCap,
+  MapPin,
   Menu,
   Moon,
   Package,
@@ -21,7 +22,6 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { USStateFlags } from 'us-state-flags';
 
 import {
   DropdownMenu,
@@ -306,7 +306,7 @@ function HoverGradientNavBar({ locale, bannerVisible }: HoverGradientNavBarProps
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
                         <Link href={`${item.href}/mdot`} className="flex items-center gap-2 no-underline">
-                          <USStateFlags state="MD" showFlag={true} className="w-4 h-3 rounded-sm" />
+                          <MapPin className="h-4 w-4" />
                           <span>MDOT</span>
                         </Link>
                       </DropdownMenuItem>

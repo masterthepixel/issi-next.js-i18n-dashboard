@@ -16,11 +16,11 @@ export default function ELearningHero() {
         <div className="relative h-80 lg:-ml-8 lg:h-auto lg:w-full lg:grow xl:ml-0">
           <Image
             alt="eLearning Solutions - Students using modern educational technology"
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=800&q=75"
             className="absolute inset-0 size-full bg-muted object-cover"
             fill
             loading="lazy"
-            unoptimized
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
           {/* Dots overlay */}
           <div className="absolute right-0 top-0 w-32 h-32 opacity-30 bg-dots" />

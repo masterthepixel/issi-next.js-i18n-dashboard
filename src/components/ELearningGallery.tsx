@@ -53,11 +53,12 @@ export default function ELearningGallery() {
                         <BentoCell className="bg-card border rounded-lg overflow-hidden shadow-lg">
                             <div className="relative h-full">
                                 <Image
-                                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=75"
                                     alt="Learning Management System Interface"
                                     fill
                                     className="object-cover"
-                                    unoptimized
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
                                 />
                                 <div className="absolute inset-0 bg-black/40" />
                                 <div className="absolute bottom-4 left-4 text-white">
@@ -81,11 +82,12 @@ export default function ELearningGallery() {
                         <BentoCell className="bg-card border rounded-lg overflow-hidden shadow-lg">
                             <div className="relative h-full">
                                 <Image
-                                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=75"
                                     alt="Interactive Course Development"
                                     fill
                                     className="object-cover"
-                                    unoptimized
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 300px"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                                 <div className="absolute bottom-4 left-4 text-white">
@@ -109,11 +111,12 @@ export default function ELearningGallery() {
                         <BentoCell className="bg-card border rounded-lg overflow-hidden shadow-lg">
                             <div className="relative h-full">
                                 <Image
-                                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=75"
                                     alt="Mobile Learning Solutions"
                                     fill
                                     className="object-cover"
-                                    unoptimized
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 300px"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                                 <div className="absolute bottom-4 left-4 text-white">
@@ -137,11 +140,12 @@ export default function ELearningGallery() {
                         <BentoCell className="bg-card border rounded-lg overflow-hidden shadow-lg">
                             <div className="relative h-full">
                                 <Image
-                                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=75"
                                     alt="Learning Analytics Dashboard"
                                     fill
                                     className="object-cover"
-                                    unoptimized
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 300px"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
                                 <div className="absolute bottom-4 left-4 text-white">
@@ -165,11 +169,12 @@ export default function ELearningGallery() {
                         <BentoCell className="bg-card border rounded-lg overflow-hidden shadow-lg">
                             <div className="relative h-full">
                                 <Image
-                                    src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=75"
                                     alt="Virtual Classroom Environment"
                                     fill
                                     className="object-cover"
-                                    unoptimized
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 300px"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                                 <div className="absolute bottom-4 left-4 text-white">

@@ -100,7 +100,7 @@ export const InfiniteMovingBadges = ({
             >
                 {items.map((item, idx) => {
                     // Check if item is a string or an object with name and icon
-                    const isObject = typeof item !== 'string';
+                    const isObject = typeof item === 'object' && item !== null && 'icon' in item;
                     const ItemIcon = isObject ? item.icon : null;
                     const itemText = isObject ? item.name : item;
 
@@ -115,9 +115,10 @@ export const InfiniteMovingBadges = ({
                                     badgeClassName(idx)
                                 )}
                             >
-                                {isObject && ItemIcon && (
-                                    <ItemIcon className="h-5 w-5 mr-2 flex-shrink-0" aria-hidden="true" />
-                                )}
+                                {isObject && ItemIcon && React.createElement(ItemIcon, {
+                                    className: "h-5 w-5 mr-2 flex-shrink-0",
+                                    "aria-hidden": "true"
+                                })}
                                 {itemText}
                             </span>
                         </li>

@@ -20,11 +20,12 @@ export default function ComplianceStats() {
     >
       <Image
         alt=""
-        src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2850&q=80&blend=111827&blend-mode=multiply&sat=-100&exp=15"
-        width={2850}
-        height={1900}
+        src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&h=1280&q=75&blend=111827&blend-mode=multiply&sat=-100&exp=15"
+        width={1920}
+        height={1280}
         className="absolute inset-0 -z-10 size-full object-cover"
         loading="lazy"
+        priority={false}
       />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div

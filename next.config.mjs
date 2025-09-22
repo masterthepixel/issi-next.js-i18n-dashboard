@@ -4,6 +4,11 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// Bundle analyzer configuration
+const withBundleAnalyzer = (await import('@next/bundle-analyzer')).default({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // TypeScript build optimizations
@@ -86,10 +91,10 @@ const nextConfig = {
             priority: 10,
             maxSize: 200000, // Split large vendor bundles
           },
-          // Separate three.js and related 3D libraries
+          // Separate 3D libraries
           three: {
             name: 'three',
-            test: /[\\/]node_modules[\\/](three|@react-three|cobe|react-globe\.gl|three-globe)[\\/]/,
+            test: /[\\/]node_modules[\\/](cobe)[\\/]/,
             chunks: 'all',
             priority: 20,
             maxSize: 150000,
@@ -137,11 +142,8 @@ const nextConfig = {
   // Optimize package imports
   experimental: {
     optimizePackageImports: [
-      '@react-three/fiber',
-      '@react-three/drei',
       'lucide-react',
       '@heroicons/react',
-      'three',
       'react-intl',
       '@formatjs/icu-messageformat-parser',
     ],
@@ -154,4 +156,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);

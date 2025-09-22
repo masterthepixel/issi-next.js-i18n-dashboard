@@ -54,11 +54,12 @@ export default function ComplianceHero() {
           <div className="flex items-start justify-end lg:order-first">
             <Image
               alt="Compliance and security certifications"
-              src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2826&q=80"
-              width={2432}
-              height={1442}
+              src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=800&q=75"
+              width={1200}
+              height={800}
               className="w-[48rem] max-w-none rounded-xl bg-muted shadow-xl ring-1 ring-border sm:w-[57rem]"
               loading="lazy"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 48rem"
             />
           </div>
         </div>

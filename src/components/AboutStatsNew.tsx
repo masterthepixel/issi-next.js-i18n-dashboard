@@ -24,10 +24,11 @@ export default function AboutStatsNew() {
         >
             <Image
                 alt=""
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2850&q=80&blend=111827&blend-mode=multiply&sat=-100&exp=15"
-                width={2850}
-                height={1900}
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1280&q=75&blend=111827&blend-mode=multiply&sat=-100&exp=15"
+                width={1920}
+                height={1280}
                 className="absolute inset-0 -z-10 size-full object-cover"
+                priority={false}
                 loading="lazy"
             />
             <div className="relative mx-auto max-w-7xl px-4">
