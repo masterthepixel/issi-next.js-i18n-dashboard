@@ -1,8 +1,7 @@
 import { cn } from "@/lib/utils";
 import { IconBrandYoutubeFilled } from "@tabler/icons-react";
-import createGlobe from "cobe";
 import { motion } from "motion/react";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
 
 export default function FeaturesSectionDemo() {
@@ -232,49 +231,24 @@ export const SkeletonFour = () => {
 };
 
 export const Globe = ({ className }: { className?: string }) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    let phi = 0;
-
-    if (!canvasRef.current) return;
-
-    const globe = createGlobe(canvasRef.current, {
-      devicePixelRatio: 2,
-      width: 600 * 2,
-      height: 600 * 2,
-      phi: 0,
-      theta: 0,
-      dark: 1,
-      diffuse: 1.2,
-      mapSamples: 16000,
-      mapBrightness: 6,
-      baseColor: [0.3, 0.3, 0.3],
-      markerColor: [0.1, 0.8, 1],
-      glowColor: [1, 1, 1],
-      markers: [
-        // longitude latitude
-        { location: [37.7595, -122.4367], size: 0.03 },
-        { location: [40.7128, -74.006], size: 0.1 },
-      ],
-      onRender: (state) => {
-        // Called on every animation frame.
-        // `state` will be an empty object, return updated params.
-        state.phi = phi;
-        phi += 0.01;
-      },
-    });
-
-    return () => {
-      globe.destroy();
-    };
-  }, []);
-
   return (
-    <canvas
-      ref={canvasRef}
-      style={{ width: 600, height: 600, maxWidth: "100%", aspectRatio: 1 }}
-      className={className}
-    />
+    <div
+      className={cn("rounded-full bg-gradient-to-br from-blue-400 to-blue-600 shadow-lg", className)}
+      style={{
+        width: 600,
+        height: 600,
+        maxWidth: "100%",
+        aspectRatio: 1,
+        background: "radial-gradient(circle at 30% 30%, #60a5fa, #3b82f6, #1d4ed8)"
+      }}
+    >
+      {/* Simple globe-like visual */}
+      <div className="w-full h-full rounded-full relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -rotate-12"></div>
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/80 rounded-full animate-pulse"></div>
+        <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-white/70 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+      </div>
+    </div>
   );
 };

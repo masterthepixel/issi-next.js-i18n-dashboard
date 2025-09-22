@@ -9,8 +9,8 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import { FormattedMessage } from 'react-intl';
 
-// Dynamically import the simple cobe globe component
-const CobeGlobe = dynamic(() => import('./ui/CobeGlobe'), {
+// Dynamically import the globe component to avoid SSR issues
+const World = dynamic(() => import('./ui/globe').then(mod => mod.World), {
     ssr: false,
     loading: () => (
         <div className="flex h-full w-full items-center justify-center">
@@ -22,6 +22,53 @@ const CobeGlobe = dynamic(() => import('./ui/CobeGlobe'), {
 interface GlobeHeroProps {
     lang?: string;
 }
+
+const globeConfig = {
+    pointSize: 4,
+    globeColor: "#2e55f2",
+    showAtmosphere: true,
+    atmosphereColor: "#FFFFFF",
+    atmosphereAltitude: 0.1,
+    emissive: "#062056",
+    emissiveIntensity: 0.1,
+    shininess: 0.9,
+    polygonColor: "#ffffff",
+    pointColor: "#ffffff",
+    ambientLight: "#38bdf8",
+    directionalLeftLight: "#ffffff",
+    directionalTopLight: "#ffffff",
+    pointLight: "#ffffff",
+    arcTime: 1000,
+    arcLength: 0.9,
+    rings: 1,
+    maxRings: 3,
+    initialPosition: { lat: 39.0438, lng: -77.4874 }, // us-east-1 AWS (ISSI HQ region)
+    autoRotate: true,
+    autoRotateSpeed: 0.6,
+};
+
+const sampleArcs = [
+    { order: 1, startLat: -23.5505, startLng: -46.6333, endLat: -23.5505, endLng: -46.6333, arcAlt: 0.1, color: "#f43f5e" },   // sa-east-1 São Paulo
+    { order: 1, startLat: 19.0760, startLng: 72.8777, endLat: 1.2966, endLng: 103.7764, arcAlt: 0.2, color: "#f59e42" },     // ap-south-1 → ap-southeast-1
+    { order: 1, startLat: -23.5505, startLng: -46.6333, endLat: -33.9249, endLng: 18.4241, arcAlt: 0.5, color: "#22d3ee" },   // sa-east-1 → af-south-1
+    { order: 2, startLat: 1.2966, startLng: 103.7764, endLat: 35.6762, endLng: 139.6503, arcAlt: 0.2, color: "#a3e635" },     // ap-southeast-1 → ap-northeast-1
+    { order: 2, startLat: 51.5074, startLng: -0.1278, endLat: 1.2966, endLng: 103.7764, arcAlt: 0.3, color: "#eab308" },     // eu-west-2 → ap-southeast-1
+    { order: 2, startLat: -15.8267, startLng: -47.9218, endLat: 36.7783, endLng: -119.4179, arcAlt: 0.3, color: "#6366f1" },  // sa-east-1 → us-west-1
+    { order: 3, startLat: -33.8688, startLng: 151.2093, endLat: 22.3193, endLng: 114.1694, arcAlt: 0.3, color: "#06b6d4" },   // ap-southeast-2 → ap-east-1
+    { order: 3, startLat: 37.7749, startLng: -122.4194, endLat: 39.0438, endLng: -77.4874, arcAlt: 0.3, color: "#f43f5e" },   // us-west-1 → us-east-1
+    { order: 3, startLat: -6.2088, startLng: 106.8456, endLat: 51.5074, endLng: -0.1278, arcAlt: 0.3, color: "#f59e42" },    // ap-southeast-1 → eu-west-2
+    { order: 4, startLat: -8.4095, startLng: 13.2336, endLat: -23.5505, endLng: -46.6333, arcAlt: 0.5, color: "#22d3ee" },   // af-south-1 → sa-east-1
+    { order: 4, startLat: -34.6037, startLng: -58.3816, endLat: 22.3193, endLng: 114.1694, arcAlt: 0.7, color: "#a3e635" },  // sa-east-1 → ap-east-1
+    { order: 4, startLat: 51.5074, startLng: -0.1278, endLat: 48.8566, endLng: 2.3522, arcAlt: 0.1, color: "#eab308" },    // eu-west-2 → eu-west-3
+    { order: 5, startLat: 14.5995, startLng: 120.9842, endLat: 51.5074, endLng: -0.1278, arcAlt: 0.3, color: "#6366f1" },   // ap-southeast-1 → eu-west-2
+    { order: 5, startLat: 1.2966, startLng: 103.7764, endLat: -33.8688, endLng: 151.2093, arcAlt: 0.2, color: "#06b6d4" },  // ap-southeast-1 → ap-southeast-2
+    { order: 5, startLat: 34.0522, startLng: -118.2437, endLat: 48.8566, endLng: 2.3522, arcAlt: 0.2, color: "#f43f5e" },  // us-west-1 → eu-west-3
+    { order: 6, startLat: -15.4167, startLng: 28.2833, endLat: 6.5244, endLng: 3.3792, arcAlt: 0.7, color: "#f59e42" },     // af-south-1 → af-south-1 (local)
+    { order: 6, startLat: 37.5665, startLng: 126.9780, endLat: 35.6762, endLng: 139.6503, arcAlt: 0.1, color: "#22d3ee" },   // ap-northeast-2 → ap-northeast-1
+    { order: 6, startLat: 22.3193, startLng: 114.1694, endLat: 51.5074, endLng: -0.1278, arcAlt: 0.3, color: "#a3e635" },  // ap-east-1 → eu-west-2
+    { order: 7, startLat: -23.5505, startLng: -46.6333, endLat: -23.5505, endLng: -46.6333, arcAlt: 0.1, color: "#eab308" }, // sa-east-1 → sa-east-1
+    { order: 7, startLat: 48.8566, startLng: 2.3522, endLat: 52.5200, endLng: 13.4050, arcAlt: 0.1, color: "#6366f1" },    // eu-west-3 → eu-central-1
+];
 
 export default function GlobeHero({ lang: _lang = "en" }: GlobeHeroProps) {
     return (
@@ -181,7 +228,7 @@ export default function GlobeHero({ lang: _lang = "en" }: GlobeHeroProps) {
                             </div>
                         }>
                             <div className="w-full h-full">
-                                <CobeGlobe />
+                                <World globeConfig={globeConfig} data={sampleArcs} />
                             </div>
                         </Suspense>
                     </div>

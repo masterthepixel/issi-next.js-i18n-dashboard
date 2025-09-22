@@ -18,8 +18,37 @@ import {
 
 import dynamic from "next/dynamic";
 
-// Dynamically import CobeGlobe for SSR safety
-const CobeGlobe = dynamic(() => import("@/components/ui/CobeGlobe"), { ssr: false });
+// Dynamically import World for SSR safety
+const World = dynamic(() => import("@/components/ui/globe").then(mod => mod.World), { ssr: false });
+
+// Globe configuration for breadcrumb navigation
+const breadcrumbGlobeConfig = {
+    pointSize: 2,
+    globeColor: "#1e40af",
+    showAtmosphere: true,
+    atmosphereColor: "#FFFFFF",
+    atmosphereAltitude: 0.1,
+    emissive: "#1e3a8a",
+    emissiveIntensity: 0.1,
+    shininess: 0.9,
+    polygonColor: "#ffffff",
+    pointColor: "#ffffff",
+    ambientLight: "#3b82f6",
+    directionalLeftLight: "#ffffff",
+    directionalTopLight: "#ffffff",
+    pointLight: "#ffffff",
+    arcTime: 2000,
+    arcLength: 0.8,
+    rings: 1,
+    maxRings: 2,
+    autoRotate: true,
+    autoRotateSpeed: 0.3,
+};
+
+const breadcrumbArcs = [
+    { order: 1, startLat: 39.0438, startLng: -77.4874, endLat: 40.7128, endLng: -74.006, arcAlt: 0.2, color: "#3b82f6" }, // ISSI HQ to NYC
+    { order: 1, startLat: 37.7749, startLng: -122.4194, endLat: 39.0438, endLng: -77.4874, arcAlt: 0.3, color: "#1d4ed8" }, // SF to ISSI HQ
+];
 
 interface IntelligentBreadcrumbProps {
     className?: string;
@@ -154,7 +183,7 @@ export default function IntelligentBreadcrumb({
                 </Breadcrumb>
                 <div className="absolute z-10" style={{ top: '-32px', left: 'calc(50% + 364px)', width: 400, height: 400 }}>
                     {/* Simple globe for navigation context */}
-                    <CobeGlobe className="w-full h-full" />
+                    <World globeConfig={breadcrumbGlobeConfig} data={breadcrumbArcs} />
                 </div>
             </div>
         </div>
