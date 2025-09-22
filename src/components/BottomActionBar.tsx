@@ -1,20 +1,25 @@
 "use client";
 
+import { getMenuItems } from "@/components/ui/hover-gradient-nav-bar";
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import BottomDrawerMenu from "./BottomDrawerMenu";
 
 const BottomActionBar: React.FC = () => {
     const barRef = useRef<HTMLDivElement | null>(null);
     const portalRef = useRef<HTMLDivElement | null>(null);
     const [mounted, setMounted] = useState(false);
+    const [drawerOpen, setDrawerOpen] = React.useState(false);
+    const menuItems = getMenuItems("en");
 
     useEffect(() => {
-        // Create or reuse a dedicated portal root to ensure fixed-to-viewport behavior
+        // Create or reuse a dedicated portal root attached to HTML, not body
         let root = document.getElementById('bottom-action-bar-portal') as HTMLDivElement | null;
         if (!root) {
             root = document.createElement('div');
             root.id = 'bottom-action-bar-portal';
-            document.body.appendChild(root);
+            // Attach to HTML element, not body, to avoid body position: relative issues
+            document.documentElement.appendChild(root);
         }
         portalRef.current = root;
         setMounted(true);
@@ -90,9 +95,28 @@ const BottomActionBar: React.FC = () => {
         };
     }, []);
 
+    const handleDrawerOpen = () => setDrawerOpen(true);
+    const handleDrawerClose = () => setDrawerOpen(false);
+
     const content = (
         <>
             <style jsx global>{`
+                    /* Ensure portal root doesn't interfere */
+                    #bottom-action-bar-portal {
+                        position: static !important;
+                        top: auto !important;
+                        left: auto !important;
+                        width: auto !important;
+                        height: auto !important;
+                        pointer-events: none !important;
+                        z-index: auto !important;
+                    }
+                    
+                    /* Re-enable pointer events for the actual bar */
+                    #bottom-action-bar-portal .ux-action-bar {
+                        pointer-events: auto !important;
+                    }
+                    
                     /* Positioning - namespaced vars to avoid clashes */
                     .ux-ab {
                         --ux-spring-easing: linear(0, 0.0018, 0.0069 1.15%, 0.026 2.3%, 0.0637, 0.1135 5.18%, 0.2229 7.78%, 0.5977 15.84%, 0.7014, 0.7904, 0.8641, 0.9228, 0.9676 28.8%, 1.0032 31.68%, 1.0225, 1.0352 36.29%, 1.0431 38.88%, 1.046 42.05%, 1.0448 44.35%, 1.0407 47.23%, 1.0118 61.63%, 1.0025 69.41%, 0.9981 80.35%, 0.9992 99.94%);
@@ -108,14 +132,15 @@ const BottomActionBar: React.FC = () => {
                         transition: filter 0.1s ease;
                         user-select: none;
                         -webkit-user-select: none;
+                        pointer-events: none;
                     }
 
                     /* Viewport-fixed bar */
                     .ux-ab .ux-action-bar {
-                        position: fixed;
-                        left: 50vw;
-                        bottom: 24px;
-                        transform: translateX(-50%);
+                        position: fixed !important;
+                        left: 50vw !important;
+                        bottom: 24px !important;
+                        transform: translateX(-50%) !important;
                         display: flex;
                         align-items: center;
                         background-color: #fcfcfc;
@@ -124,8 +149,13 @@ const BottomActionBar: React.FC = () => {
                         padding: 0.5rem;
                         gap: 0.25rem;
                         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-                        z-index: 9999;
+                        z-index: 99999 !important;
                         isolation: isolate;
+                        margin: 0 !important;
+                        top: auto !important;
+                        right: auto !important;
+                        width: auto !important;
+                        height: auto !important;
                     }
 
                     .ux-ab .ux-btn {
@@ -139,10 +169,11 @@ const BottomActionBar: React.FC = () => {
                         border: none;
                         background: none;
                         border-radius: 50px;
-                        margin: 0 4px;
+                        margin: 0 6px;
                         cursor: pointer;
                         transition: background-color 0.3s ease, color 0.3s ease;
                         color: #0a0a0a;
+                        z-index: 1;
                     }
 
                     .ux-ab .ux-btn:hover,
@@ -157,11 +188,12 @@ const BottomActionBar: React.FC = () => {
                         font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
                     }
 
-                    /* increase clickable area */
+                    /* increase clickable area but prevent overlap */
                     .ux-ab .ux-btn::before {
                         content: '';
                         position: absolute;
-                        inset: -0.4rem;
+                        inset: -0.2rem;
+                        z-index: -1;
                     }
 
                     /* Anchored pointer lens */
@@ -217,7 +249,7 @@ const BottomActionBar: React.FC = () => {
                     <button className="ux-btn" aria-label="Careers">
                         <span className="ux-icon material-symbols-outlined">person</span>
                     </button>
-                    <button className="ux-btn" aria-label="Menu">
+                    <button className="ux-btn" aria-label="Menu" onClick={handleDrawerOpen}>
                         <span className="ux-icon material-symbols-outlined">menu</span>
                     </button>
                     <a href="#top" className="ux-btn" aria-label="Back to top">
@@ -225,6 +257,8 @@ const BottomActionBar: React.FC = () => {
                     </a>
                 </div>
             </div>
+            {/* Drawer menu */}
+            <BottomDrawerMenu open={drawerOpen} onClose={handleDrawerClose} menuItems={menuItems} />
         </>
     );
 

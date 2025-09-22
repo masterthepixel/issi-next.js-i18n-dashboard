@@ -524,4 +524,97 @@ function HoverGradientNavBar({ locale, bannerVisible }: HoverGradientNavBarProps
   );
 }
 
+export function getMenuItems(locale: string) {
+  return [
+    {
+      icon: <Image src="/images/issi_logo.png" alt="ISSI Logo" width={56} height={56} className="rounded-sm" />,
+      label: <FormattedMessage id="common.navigation.home" defaultMessage="Home" />,
+      href: `/${locale}/home`,
+      gradient: "radial-gradient(circle, hsl(var(--primary) / 0.15) 0%, hsl(var(--primary) / 0.06) 50%, hsl(var(--primary) / 0) 100%)",
+      iconColor: "text-primary group-hover:text-primary/80"
+    },
+    {
+      icon: <Wrench className="h-5 w-5" />,
+      label: <FormattedMessage id="common.navigation.services" defaultMessage="Services" />,
+      href: `/${locale}/services`,
+      gradient: "radial-gradient(circle, hsl(var(--secondary) / 0.15) 0%, hsl(var(--secondary) / 0.06) 50%, hsl(var(--secondary) / 0) 100%)",
+      iconColor: "text-primary group-hover:text-primary/80"
+    },
+    {
+      icon: <Package className="h-5 w-5" />,
+      label: <FormattedMessage id="common.navigation.products" defaultMessage="Products" />,
+      href: `/${locale}/products`,
+      gradient: "radial-gradient(circle, hsl(var(--accent) / 0.15) 0%, hsl(var(--accent) / 0.06) 50%, hsl(var(--accent) / 0) 100%)",
+      iconColor: "text-primary group-hover:text-primary/80"
+    },
+    {
+      icon: <Building2 className="h-5 w-5" />,
+      label: <FormattedMessage id="common.navigation.government" defaultMessage="Government" />,
+      href: `/${locale}/government`,
+      gradient: "radial-gradient(circle, hsl(var(--chart-2) / 0.15) 0%, hsl(var(--chart-2) / 0.06) 50%, hsl(var(--chart-2) / 0) 100%)",
+      iconColor: "text-primary group-hover:text-primary/80"
+    },
+    {
+      icon: <GraduationCap className="h-5 w-5" />,
+      label: <FormattedMessage id="common.navigation.eLearning" defaultMessage="eLearning" />,
+      href: `/${locale}/eLearning`,
+      gradient: "radial-gradient(circle, hsl(var(--chart-3) / 0.15) 0%, hsl(var(--chart-3) / 0.06) 50%, hsl(var(--chart-3) / 0) 100%)",
+      iconColor: "text-primary group-hover:text-primary/80"
+    },
+    {
+      icon: <ShieldCheck className="h-5 w-5" />,
+      label: <FormattedMessage id="common.navigation.compliance" defaultMessage="Compliance" />,
+      href: `/${locale}/compliance`,
+      gradient: "radial-gradient(circle, hsl(var(--chart-4) / 0.15) 0%, hsl(var(--chart-4) / 0.06) 50%, hsl(var(--chart-4) / 0) 100%)",
+      iconColor: "text-primary group-hover:text-primary/80",
+      submenu: [
+        {
+          label: "ISO 27001",
+          href: `/${locale}/compliance/iso27001`,
+        },
+        {
+          label: "ISO 9001",
+          href: `/${locale}/compliance/iso9001`,
+        },
+        {
+          label: "MDOT",
+          href: `/${locale}/compliance/mdot`,
+        },
+        {
+          label: "CMMI Level 3",
+          href: `/${locale}/compliance/cmmi3`,
+        },
+      ],
+    },
+    {
+      icon: <Briefcase className="h-5 w-5" />,
+      label: <FormattedMessage id="common.navigation.careers" defaultMessage="Careers" />,
+      href: `/${locale}/careers`,
+      gradient: "radial-gradient(circle, hsl(var(--chart-1) / 0.15) 0%, hsl(var(--chart-1) / 0.06) 50%, hsl(var(--chart-1) / 0) 100%)",
+      iconColor: "text-primary group-hover:text-primary/80"
+    },
+    {
+      icon: <BookOpen className="h-5 w-5" />,
+      label: <FormattedMessage id="common.navigation.blog" defaultMessage="Blog" />,
+      href: `/${locale}/blog`,
+      gradient: "radial-gradient(circle, hsl(var(--chart-6) / 0.15) 0%, hsl(var(--chart-6) / 0.06) 50%, hsl(var(--chart-6) / 0) 100%)",
+      iconColor: "text-primary group-hover:text-primary/80"
+    },
+    {
+      icon: <User className="h-5 w-5" />,
+      label: <FormattedMessage id="common.navigation.about" defaultMessage="About" />,
+      href: `/${locale}/about`,
+      gradient: "radial-gradient(circle, hsl(var(--chart-5) / 0.15) 0%, hsl(var(--chart-5) / 0.06) 50%, hsl(var(--chart-5) / 0) 100%)",
+      iconColor: "text-primary group-hover:text-primary/80"
+    },
+    {
+      icon: <ShieldCheck className="h-5 w-5" />,
+      label: <FormattedMessage id="common.navigation.contact" defaultMessage="Contact" />,
+      href: `/${locale}/contact`,
+      gradient: "radial-gradient(circle, hsl(var(--destructive) / 0.15) 0%, hsl(var(--destructive) / 0.06) 50%, hsl(var(--destructive) / 0) 100%)",
+      iconColor: "text-primary group-hover:text-primary/80"
+    },
+  ];
+}
+
 export default HoverGradientNavBar;

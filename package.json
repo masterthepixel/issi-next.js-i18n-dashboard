@@ -117,6 +117,7 @@
     "three": "^0.180.0",
     "three-globe": "^2.44.0",
     "uploadthing": "^7.4.4",
+    "vaul": "^1.1.2",
     "web-vitals": "^5.1.0",
     "zod": "^3.24.1"
   },
