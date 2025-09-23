@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-page-custom-font */
-import BottomActionBar from "@/components/BottomActionBar";
 import React from "react";
 
 export default function RootLayout({
@@ -10,18 +9,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Material Symbols Outlined for icon glyphs */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=optional"
-        />
+        <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>ISSI Next.js Dashboard</title>
+        {/* Add your global CSS here */}
+        {/* Global CSS should be imported in _app or via import statement, not via <link> */}
       </head>
       <body>
         {children}
-        <BottomActionBar />
       </body>
     </html>
   );

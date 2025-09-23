@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatedBackground } from "@/components/AnimatedBackground";
+import BottomActionBar from "@/components/BottomActionBar";
 import ClientNavigation from "@/components/ClientNavigation";
 import ClientOnly from "@/components/ClientOnly";
 import Content from "@/components/Content";
@@ -51,6 +52,7 @@ export default function ClientLayout({ lang, messages, intlMessages, children }:
             {children}
           </Content>
           <Footer locale={lang} messages={messages} />
+          <BottomActionBar />
         </IntlProvider>
 
         <ClientNavigation locale={lang} messages={intlMessages} bannerVisible={isBannerVisible} />

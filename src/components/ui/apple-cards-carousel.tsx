@@ -7,9 +7,10 @@ import {
   IconX,
 } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "motion/react";
-import { ImageProps } from "next/image";
+import Image, { ImageProps } from "next/image";
 import React, {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useRef,
@@ -163,7 +164,16 @@ export const Card = ({
 }) => {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const { onCardClose, currentIndex } = useContext(CarouselContext);
+  const { onCardClose, currentIndex: _currentIndex } = useContext(CarouselContext);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = useCallback(() => {
+    setOpen(false);
+    onCardClose(index);
+  }, [onCardClose, index]);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -180,18 +190,9 @@ export const Card = ({
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [open]);
+  }, [open, handleClose]);
 
   useOutsideClick(containerRef, () => handleClose());
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-    onCardClose(index);
-  };
 
   return (
     <>
@@ -259,6 +260,8 @@ export const Card = ({
         <BlurImage
           src={card.src}
           alt={card.title}
+          width={400}
+          height={300}
           className="absolute inset-0 z-10 object-cover"
         />
       </motion.button>
@@ -276,7 +279,7 @@ export const BlurImage = ({
 }: ImageProps) => {
   const [isLoading, setLoading] = useState(true);
   return (
-    <img
+    <Image
       className={cn(
         "h-full w-full transition duration-300",
         isLoading ? "blur-sm" : "blur-0",
@@ -287,7 +290,6 @@ export const BlurImage = ({
       width={width}
       height={height}
       loading="lazy"
-      decoding="async"
       alt={alt ? alt : "Background of a beautiful view"}
       {...rest}
     />

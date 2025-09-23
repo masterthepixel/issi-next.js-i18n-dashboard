@@ -1,102 +1,41 @@
 "use client";
 
 import { getMenuItems } from "@/components/ui/hover-gradient-nav-bar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { ArrowUp, Box, Briefcase, Home, Mail, Menu, User } from "lucide-react";
+import Link from "next/link";
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import BottomDrawerMenu from "./BottomDrawerMenu";
 
 const BottomActionBar: React.FC = () => {
     const barRef = useRef<HTMLDivElement | null>(null);
     const portalRef = useRef<HTMLDivElement | null>(null);
     const [mounted, setMounted] = useState(false);
-    const [drawerOpen, setDrawerOpen] = React.useState(false);
+    const [selectedIndex, setSelectedIndex] = useState(0);
     const menuItems = getMenuItems("en");
 
     useEffect(() => {
-        // Create or reuse a dedicated portal root attached to HTML, not body
+        // Create or reuse a dedicated portal root attached to BODY for correct event bubbling
         let root = document.getElementById('bottom-action-bar-portal') as HTMLDivElement | null;
         if (!root) {
             root = document.createElement('div');
             root.id = 'bottom-action-bar-portal';
-            // Attach to HTML element, not body, to avoid body position: relative issues
-            document.documentElement.appendChild(root);
+            // Attach to BODY to ensure event bubbling for Radix UI popover
+            document.body.appendChild(root);
         }
         portalRef.current = root;
         setMounted(true);
     }, []);
 
-    useEffect(() => {
-        const bar = barRef.current;
-        if (!bar) return;
-        const buttons = bar.querySelectorAll('button.ux-btn');
-        let selectedButton = bar.querySelector('.ux-btn.ux-selected') as HTMLButtonElement | null;
-
-        const setAnchorOnSelected = () => {
-            if (selectedButton) {
-                selectedButton.style.setProperty('anchor-name', '--selected');
-                selectedButton.setAttribute('aria-pressed', 'true');
-            }
-        };
-
-        setAnchorOnSelected();
-
-        const removers: Array<() => void> = [];
-
-        buttons.forEach((buttonEl) => {
-            const button = buttonEl as HTMLButtonElement;
-
-            // Click handler
-            const clickHandler = () => {
-                if (selectedButton) {
-                    selectedButton.classList.remove('ux-selected');
-                    selectedButton.removeAttribute('aria-pressed');
-                    selectedButton.style.removeProperty('anchor-name');
-                }
-                selectedButton = button;
-                selectedButton.classList.add('ux-selected');
-                setAnchorOnSelected();
-            };
-            button.addEventListener('click', clickHandler);
-            removers.push(() => button.removeEventListener('click', clickHandler));
-
-            // Hover and focus start
-            const handleInteractionStart = () => {
-                if (button !== selectedButton) {
-                    if (selectedButton) {
-                        selectedButton.style.removeProperty('anchor-name');
-                    }
-                    button.style.setProperty('anchor-name', '--selected');
-                }
-            };
-            button.addEventListener('mouseenter', handleInteractionStart);
-            button.addEventListener('focus', handleInteractionStart);
-            removers.push(() => button.removeEventListener('mouseenter', handleInteractionStart));
-            removers.push(() => button.removeEventListener('focus', handleInteractionStart));
-
-            // Hover/blur end
-            const handleInteractionEnd = () => {
-                if (button !== selectedButton) {
-                    button.style.removeProperty('anchor-name');
-                    setAnchorOnSelected();
-                }
-            };
-            button.addEventListener('mouseleave', handleInteractionEnd);
-            button.addEventListener('blur', handleInteractionEnd);
-            removers.push(() => button.removeEventListener('mouseleave', handleInteractionEnd));
-            removers.push(() => button.removeEventListener('blur', handleInteractionEnd));
-        });
-
-        return () => {
-            removers.forEach((off) => off());
-            if (selectedButton) {
-                selectedButton.style.removeProperty('anchor-name');
-                selectedButton.removeAttribute('aria-pressed');
-            }
-        };
-    }, []);
-
-    const handleDrawerOpen = () => setDrawerOpen(true);
-    const handleDrawerClose = () => setDrawerOpen(false);
+    // Button data for dock
+    const dockButtons = [
+        { label: "Home", icon: Home, href: "/home" },
+        { label: "Services", icon: Briefcase, href: "/services" },
+        { label: "Products", icon: Box, href: "/products" },
+        { label: "Contact", icon: Mail, href: "/contact" },
+        { label: "Careers", icon: User, href: "/careers" },
+    ];
 
     const content = (
         <>
@@ -132,7 +71,7 @@ const BottomActionBar: React.FC = () => {
                         transition: filter 0.1s ease;
                         user-select: none;
                         -webkit-user-select: none;
-                        pointer-events: none;
+                        /* pointer-events: none; Removed to allow tooltip triggers */
                     }
 
                     /* Viewport-fixed bar */
@@ -149,7 +88,7 @@ const BottomActionBar: React.FC = () => {
                         padding: 0.5rem;
                         gap: 0.25rem;
                         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-                        z-index: 99999 !important;
+                        z-index: 40 !important;
                         isolation: isolate;
                         margin: 0 !important;
                         top: auto !important;
@@ -160,9 +99,9 @@ const BottomActionBar: React.FC = () => {
 
                     .ux-ab .ux-btn {
                         position: relative;
-                        width: 44px;
-                        height: 44px;
-                        padding: 10px 15px;
+                        width: 52px;
+                        height: 52px;
+                        padding: 10px;
                         display: flex;
                         align-items: center;
                         justify-content: center;
@@ -232,38 +171,96 @@ const BottomActionBar: React.FC = () => {
                     }
                 `}</style>
             <div className="ux-ab">
-                <div ref={barRef} className="ux-action-bar" role="toolbar" aria-label="Quick actions">
-                    <div className="ux-anchored-pointer" aria-hidden="true" />
-                    <button className="ux-btn ux-selected" aria-label="Home" aria-pressed="true">
-                        <span className="ux-icon material-symbols-outlined">home</span>
-                    </button>
-                    <button className="ux-btn" aria-label="Services">
-                        <span className="ux-icon material-symbols-outlined">build</span>
-                    </button>
-                    <button className="ux-btn" aria-label="Products">
-                        <span className="ux-icon material-symbols-outlined">inventory_2</span>
-                    </button>
-                    <button className="ux-btn" aria-label="Contact">
-                        <span className="ux-icon material-symbols-outlined">alternate_email</span>
-                    </button>
-                    <button className="ux-btn" aria-label="Careers">
-                        <span className="ux-icon material-symbols-outlined">person</span>
-                    </button>
-                    <button className="ux-btn" aria-label="Menu" onClick={handleDrawerOpen}>
-                        <span className="ux-icon material-symbols-outlined">menu</span>
-                    </button>
-                    <a href="#top" className="ux-btn" aria-label="Back to top">
-                        <span className="ux-icon material-symbols-outlined">arrow_upward</span>
-                    </a>
-                </div>
+                <TooltipProvider delayDuration={100}>
+                    <div ref={barRef} className="ux-action-bar" role="toolbar" aria-label="Quick actions" style={{ position: "relative" }}>
+                        {/* Glass droplet pointer */}
+                        <div
+                            className="ux-anchored-pointer"
+                            aria-hidden="true"
+                            style={{
+                                position: "absolute",
+                                left: `${selectedIndex * 64 + 12}px`,
+                                top: "8px",
+                                width: "40px",
+                                height: "40px",
+                                borderRadius: "50%",
+                                background: "rgba(255,255,255,0.25)",
+                                boxShadow: "0 4px 16px 0 rgba(0,0,0,0.12)",
+                                zIndex: 10,
+                                transition: "left 0.3s cubic-bezier(.5,1.5,.5,1)",
+                                pointerEvents: "none",
+                            }}
+                        />
+                        {dockButtons.map((btn, idx) => {
+                            const Icon = btn.icon;
+                            return (
+                                <Tooltip key={btn.label}>
+                                    <TooltipTrigger asChild>
+                                        <button
+                                            className={`ux-btn group${selectedIndex === idx ? " ux-selected" : ""}`}
+                                            aria-label={btn.label}
+                                            aria-pressed={selectedIndex === idx}
+                                            onClick={() => setSelectedIndex(idx)}
+                                            style={{ zIndex: 2 }}
+                                        >
+                                            <Link href={btn.href} passHref legacyBehavior>
+                                                <span style={{ display: "contents" }}>
+                                                    <Icon className="ux-icon transition-transform group-hover:scale-[1.625] group-focus:scale-[1.625]" strokeWidth={2} size={32} />
+                                                    <span className="sr-only">{btn.label}</span>
+                                                </span>
+                                            </Link>
+                                        </button>
+                                    </TooltipTrigger>
+                                    <TooltipContent side="top" sideOffset={16} className="bg-white dark:bg-gray-900 text-black dark:text-white border">{btn.label}</TooltipContent>
+                                </Tooltip>
+                            );
+                        })}
+                        <Popover>
+                            <PopoverTrigger asChild>
+                                <Tooltip>
+                                    <TooltipTrigger asChild>
+                                        <button
+                                            className="ux-btn ux-menu-btn group"
+                                            aria-label="Menu"
+                                            style={{ zIndex: 2 }}
+                                        >
+                                            <Menu className="ux-icon transition-transform group-hover:scale-[1.625] group-focus:scale-[1.625]" strokeWidth={2} size={32} />
+                                            <span className="sr-only">Menu</span>
+                                        </button>
+                                    </TooltipTrigger>
+                                    <TooltipContent side="top" sideOffset={16} className="bg-white dark:bg-gray-900 text-black dark:text-white border">Menu</TooltipContent>
+                                </Tooltip>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-48 p-2">
+                                {menuItems.map((item, index) => (
+                                    <Link key={index} href={item.href} className="block px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800 rounded">
+                                        {item.label}
+                                    </Link>
+                                ))}
+                            </PopoverContent>
+                        </Popover>
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <a href="#top" className="ux-btn group" aria-label="Back to top" style={{ zIndex: 2 }}>
+                                    <ArrowUp className="ux-icon transition-transform group-hover:scale-[1.625] group-focus:scale-[1.625]" strokeWidth={2} size={32} />
+                                    <span className="sr-only">Back to top</span>
+                                </a>
+                            </TooltipTrigger>
+                            <TooltipContent side="top" sideOffset={16} className="bg-white dark:bg-gray-900 text-black dark:text-white border">Back to top</TooltipContent>
+                        </Tooltip>
+                    </div>
+                </TooltipProvider>
             </div>
-            {/* Drawer menu */}
-            <BottomDrawerMenu open={drawerOpen} onClose={handleDrawerClose} menuItems={menuItems} />
         </>
     );
 
     if (!mounted || !portalRef.current) return null;
-    return createPortal(content, portalRef.current);
+
+    return (
+        <>
+            {createPortal(content, portalRef.current)}
+        </>
+    );
 };
 
 export default BottomActionBar;
