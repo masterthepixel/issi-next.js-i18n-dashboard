@@ -1,5 +1,63 @@
 "use client";
 
+/**
+ * NewBottomActionBar Component
+ *
+ * A modern, animated bottom navigation bar with dock-style interface featuring:
+ * - Route-based active state detection
+ * - Glass morphism design with backdrop blur effects
+ * - Expandable hamburger menu with theme and language switchers
+ * - Motion animations using Framer Motion
+ * - Glow effects using custom motion-primitives
+ *
+ * Sources and Dependencies:
+ * ========================
+ *
+ * Motion-Primitives Components:
+ * - GlowEffect: Custom component from @/components/motion-primitives/glow-effect
+ *   Provides animated glow effects with customizable colors and modes
+ * - useClickOutside: Custom hook from @/components/motion-primitives/useClickOutside
+ *   Handles click outside detection for menu closing
+ *
+ * UI Components:
+ * - Tooltip components: From @/components/ui/tooltip (shadcn/ui)
+ *   Provides accessible tooltip functionality
+ * - getMenuItems: From @/components/ui/hover-gradient-nav-bar
+ *   Utility function for navigation menu items
+ *
+ * Icons:
+ * - Lucide React Icons: https://lucide.dev/
+ *   Modern, consistent icon set used throughout the application
+ * - Flag Icons: https://flagicons.lipis.dev/
+ *   Country flag icons for language switcher (flag-icons/css/flag-icons.min.css)
+ *
+ * Animation Libraries:
+ * - Framer Motion: https://www.framer.com/motion/
+ *   Powerful animation library for React (imported as 'motion/react')
+ *   Used for all motion animations, gestures, and transitions
+ *
+ * Utility Libraries:
+ * - react-use-measure: https://github.com/streamich/react-use-measure
+ *   Hook for measuring DOM elements with ResizeObserver
+ * - react-intl: https://formatjs.io/docs/react-intl/
+ *   Internationalization library for multi-language support
+ * - Next.js Navigation: https://nextjs.org/docs/app/api-reference/functions/use-pathname
+ *   usePathname hook for current route detection
+ *
+ * Design System:
+ * - Tailwind CSS: https://tailwindcss.com/
+ *   Utility-first CSS framework for styling
+ * - shadcn/ui: https://ui.shadcn.com/
+ *   Re-usable component library built on Radix UI and Tailwind CSS
+ *
+ * Architecture Notes:
+ * - Uses React Portals for body-level rendering to avoid z-index issues
+ * - Implements click-outside detection for menu management
+ * - Route-based active state detection for navigation highlighting
+ * - Glass morphism effects with backdrop-blur for modern UI aesthetics
+ * - Responsive design with mobile-first approach
+ */
+
 import { GlowEffect } from '@/components/motion-primitives/glow-effect';
 import useClickOutside from '@/components/motion-primitives/useClickOutside';
 import { getMenuItems } from '@/components/ui/hover-gradient-nav-bar';
@@ -82,7 +140,6 @@ export default function NewBottomActionBar() {
     const [mounted, setMounted] = useState(false);
     const [maxWidth, setMaxWidth] = useState(0);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [selectedIndex, setSelectedIndex] = useState(0);
     const portalRef = useRef<HTMLDivElement | null>(null);
     const ref = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
@@ -140,7 +197,7 @@ export default function NewBottomActionBar() {
     };
 
     // Render icon component
-    const renderIcon = (item: typeof DOCK_ITEMS[0], isActive: boolean) => {
+    const renderIcon = (item: typeof DOCK_ITEMS[0], _isActive: boolean) => {
         if (item.icon === 'issi-logo') {
             return (
                 <Image
@@ -153,7 +210,7 @@ export default function NewBottomActionBar() {
             );
         }
 
-        const Icon = item.icon as any;
+        const Icon = item.icon as React.ComponentType<{ size?: number; strokeWidth?: number }>;
         return <Icon size={20} strokeWidth={2} />;
     };
 
@@ -267,7 +324,7 @@ export default function NewBottomActionBar() {
                             >
                                 <TooltipProvider delayDuration={100}>
                                     {/* Navigation Buttons */}
-                                    {DOCK_ITEMS.map((item, idx) => {
+                                    {DOCK_ITEMS.map((item, _idx) => {
                                         const isActive = isActiveRoute(item.href);
 
                                         return (
@@ -282,7 +339,6 @@ export default function NewBottomActionBar() {
                                                                 "focus:outline-none focus:ring-2 focus:ring-ring",
                                                                 isActive ? "bg-background/90 shadow-md" : ""
                                                             )}
-                                                            onClick={() => setSelectedIndex(idx)}
                                                             whileHover={{ scale: 1.1 }}
                                                             whileTap={{ scale: 0.95 }}
                                                         >
