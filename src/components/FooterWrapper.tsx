@@ -17,7 +17,7 @@ export default async function FooterWrapper({ locale }: FooterWrapperProps) {
 
   return (
     <>
-      <FooterContactCTA />
+      <FooterContactCTA locale={locale} messages={messages} />
       <Footer locale={locale} messages={messages} />
     </>
   );

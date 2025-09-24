@@ -8,8 +8,12 @@ const FooterContactCTAContactForm = dynamic(() => import("./FooterContactCTACont
 
 import Image from "next/image";
 
-export default function FooterContactCTA() {
-    const year = new Date().getFullYear();
+export interface FooterContactCTAProps {
+    locale: string;
+    messages: Record<string, string>;
+}
+
+export default function FooterContactCTA({ locale, messages }: FooterContactCTAProps) {
     return (
         <section className="w-full px-4">
             <div className="max-w-7xl mx-auto relative overflow-hidden rounded-[40px] border border-white/10 bg-neutral-950 text-white shadow-[0_8px_30px_rgba(0,0,0,0.18)] p-6 sm:p-8">
@@ -31,9 +35,17 @@ export default function FooterContactCTA() {
                     <div className="absolute inset-0 bg-[radial-gradient(#ffffff0d_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.15]"></div>
                 </div>
                 <div className="relative rounded-[30px] w-full flex flex-col items-start justify-center">
-                    <h2 className="text-[clamp(2rem,6vw,4.5rem)] lg:text-[clamp(2rem,4vw,4.5rem)] text-left w-full">
-                        {/* Animated headline: Ready to build https://www.aura.build/component/6E7D8 */}
-                        {"Ready to build".split(" ").map((word, idx) => (
+                    <motion.h2
+                        className="text-[clamp(2rem,6vw,4.5rem)] lg:text-[clamp(2rem,4vw,4.5rem)] text-left w-full"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                    >
+                        {/* Animated headline: Ready to build */}
+                        {(
+                            <FormattedMessage id="footer.contactcta.headline1" defaultMessage="Ready to build" />
+                        ).props.defaultMessage.split(" ").map((word, idx) => (
                             <motion.span
                                 key={word + idx}
                                 initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
@@ -41,12 +53,14 @@ export default function FooterContactCTA() {
                                 transition={{ duration: 0.3, delay: idx * 0.1, ease: "easeInOut" }}
                                 className="inline-block mr-2"
                             >
-                                {word}
+                                <FormattedMessage id="footer.contactcta.headline1" defaultMessage="Ready to build" />
                             </motion.span>
                         ))}
                         <br />
                         {/* Animated headline: something extraordinary? */}
-                        {"something extraordinary?".split(" ").map((word, idx) => (
+                        {(
+                            <FormattedMessage id="footer.contactcta.headline2" defaultMessage="something extraordinary?" />
+                        ).props.defaultMessage.split(" ").map((word, idx) => (
                             <motion.span
                                 key={word + idx + "extra"}
                                 initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
@@ -54,14 +68,26 @@ export default function FooterContactCTA() {
                                 transition={{ duration: 0.3, delay: 0.4 + idx * 0.1, ease: "easeInOut" }}
                                 className="inline-block mr-2 text-white/60"
                             >
-                                {word}
+                                <FormattedMessage id="footer.contactcta.headline2" defaultMessage="something extraordinary?" />
                             </motion.span>
                         ))}
-                    </h2>
-                    <div className="mt-12 mb-12 w-full">
+                    </motion.h2>
+                    <motion.div
+                        className="mt-12 mb-12 w-full"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                    >
                         <FooterContactCTAContactForm />
-                    </div>
-                    <div className="mt-8 w-full flex flex-col md:flex-row items-start gap-y-6 md:gap-y-0 md:gap-x-12">
+                    </motion.div>
+                    <motion.div
+                        className="mt-8 w-full flex flex-col md:flex-row items-start gap-y-6 md:gap-y-0 md:gap-x-12"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.8, delay: 0.6 }}
+                    >
                         {/* Call */}
                         <div className="flex flex-col items-start min-h-[64px]">
                             <p className="text-sm text-white/60 font-geist">
@@ -112,21 +138,32 @@ export default function FooterContactCTA() {
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                     <div className="mt-8 border-t border-white/10"></div>
 
                     {/* Our offices block (replaces Explore section) */}
-                    <div className="bg-neutral-950 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.18)] py-16 sm:py-24 rounded-2xl" style={{ backgroundColor: '#18181b' }}>
+                    <motion.div
+                        className="bg-neutral-950 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.18)] py-16 sm:py-24 rounded-2xl"
+                        style={{ backgroundColor: '#18181b' }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.8, delay: 0.8 }}
+                    >
                         <div className="mx-auto max-w-7xl px-6 lg:px-8">
                             <div className="mx-auto max-w-2xl lg:mx-0">
-                                <h2 className="text-pretty text-3xl font-normal tracking-tight text-white sm:text-4xl">Our Offices</h2>
+                                <h2 className="text-pretty text-3xl font-normal tracking-tight text-white sm:text-4xl">
+                                    <FormattedMessage id="footer.contactcta.offices" defaultMessage="Our Offices" />
+                                </h2>
                                 <p className="mt-6 text-base/7 text-gray-400">
-                                    ISSI has a global presence. Contact any of our offices below for business, product, or support inquiries.
+                                    <FormattedMessage id="footer.contactcta.offices.desc" defaultMessage="ISSI has a global presence. Contact any of our offices below for business, product, or support inquiries." />
                                 </p>
                             </div>
                             <div className="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-8 text-base/7 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-4">
                                 <div>
-                                    <h3 className="border-l border-indigo-500 pl-6 font-normal text-white">Dallas</h3>
+                                    <h3 className="border-l border-indigo-500 pl-6 font-normal text-white">
+                                        <FormattedMessage id="footer.contactcta.office.dallas" defaultMessage="Dallas" />
+                                    </h3>
                                     <address className="border-l border-white/10 pl-6 pt-2 not-italic text-gray-400">
                                         <p className="text-white">6565 N MacArthur Blvd Suite 225</p>
                                         <p className="text-white">Irving, TX 75039</p>
@@ -138,7 +175,9 @@ export default function FooterContactCTA() {
                                     </address>
                                 </div>
                                 <div>
-                                    <h3 className="border-l border-indigo-500 pl-6 font-normal text-white">Florida</h3>
+                                    <h3 className="border-l border-indigo-500 pl-6 font-normal text-white">
+                                        <FormattedMessage id="footer.contactcta.office.florida" defaultMessage="Florida" />
+                                    </h3>
                                     <address className="border-l border-white/10 pl-6 pt-2 not-italic text-gray-400">
                                         <p className="text-white">1301 Riverplace Blvd., Suite# 800</p>
                                         <p className="text-white">Jacksonville, FL 32207</p>
@@ -147,7 +186,9 @@ export default function FooterContactCTA() {
                                     </address>
                                 </div>
                                 <div>
-                                    <h3 className="border-l border-indigo-500 pl-6 font-normal text-white">Hyderabad</h3>
+                                    <h3 className="border-l border-indigo-500 pl-6 font-normal text-white">
+                                        <FormattedMessage id="footer.contactcta.office.hyderabad" defaultMessage="Hyderabad" />
+                                    </h3>
                                     <address className="border-l border-white/10 pl-6 pt-2 not-italic text-gray-400">
                                         <p className="text-white">3-6-663/203, L.K.R. Arcade, Street #9</p>
                                         <p className="text-white">Himayathnagar, Hyderabad - 500 029</p>
@@ -156,7 +197,9 @@ export default function FooterContactCTA() {
                                     </address>
                                 </div>
                                 <div>
-                                    <h3 className="border-l border-indigo-500 pl-6 font-normal text-white">Visakhapatnam</h3>
+                                    <h3 className="border-l border-indigo-500 pl-6 font-normal text-white">
+                                        <FormattedMessage id="footer.contactcta.office.visakhapatnam" defaultMessage="Visakhapatnam" />
+                                    </h3>
                                     <address className="border-l border-white/10 pl-6 pt-2 not-italic text-gray-400">
                                         <p className="text-white">SriRama Nilayam, Door No.5-175/1A</p>
                                         <p className="text-white">Opposite to Sanskriti School, Endada</p>
@@ -167,7 +210,7 @@ export default function FooterContactCTA() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                 </div>
             </div>

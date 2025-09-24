@@ -205,17 +205,30 @@ const ISSIServicesShowcaseInternal = () => {
     : services.filter(service => service.categories.includes(selectedCategory));
 
   return (
-    <section className="py-16 px-6 lg:px-8">
+    <motion.section
+      className="py-16 px-6 lg:px-8"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="mx-auto max-w-7xl">
         <div className="text-left mb-16">
-          <h2 className="relative z-10 max-w-4xl text-left text-2xl font-normal text-foreground md:text-4xl lg:text-7xl">
+          <motion.h2
+            className="relative z-10 max-w-4xl text-left text-2xl font-normal text-foreground md:text-4xl lg:text-7xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             {"Our Services"
               .split(" ")
               .map((word, index) => (
                 <motion.span
                   key={index}
                   initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
-                  animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                  whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
                   transition={{
                     duration: 0.3,
                     delay: index * 0.1,
@@ -226,10 +239,16 @@ const ISSIServicesShowcaseInternal = () => {
                   {word}
                 </motion.span>
               ))}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mb-8">
+          </motion.h2>
+          <motion.p
+            className="text-lg text-muted-foreground max-w-3xl mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <FormattedMessage id="services.showcase.subtitle" />
-          </p>          {/* Category Filter */}
+          </motion.p>          {/* Category Filter */}
           <div className="flex flex-wrap justify-start gap-2 mb-8" role="tablist" aria-label="Service category filters">
             {CATEGORIES.map((category) => {
               const isSelected = selectedCategory === category.id;
@@ -255,7 +274,13 @@ const ISSIServicesShowcaseInternal = () => {
           </div>
         </div>        {/* Bento Grid Layout */}
         {isLoaded && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             {filteredServices.map((service, _index) => {
               const IconComponent = service.icon;
               const colors = getCategoryColors(service.categories);
@@ -311,7 +336,7 @@ const ISSIServicesShowcaseInternal = () => {
                 </Card>
               );
             })}
-          </div>
+          </motion.div>
         )}        {/* View All Services Link */}
         <div className="text-left mt-12">
           <a
@@ -324,7 +349,7 @@ const ISSIServicesShowcaseInternal = () => {
           </a>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

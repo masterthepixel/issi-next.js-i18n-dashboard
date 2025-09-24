@@ -1,32 +1,87 @@
 "use client";
 
-import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
+import { InfiniteSlider } from "../../components/motion-primitives/infinite-slider";
+import { motion } from "motion/react";
 import { FormattedMessage } from "react-intl";
+import Image from "next/image";
 
 export default function GovernmentTestimonialsCarousel() {
   return (
-    <section className="py-16 sm:py-24">
+    <motion.section
+      className="py-16 sm:py-24"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="mx-auto max-w-7xl px-4">
         <div className="text-left mb-12">
-          <h2 className="text-foreground sm:text-6xl mb-4 font-serif font-[400] text-4xl tracking-tight">
+          <motion.h2
+            className="text-foreground sm:text-6xl mb-4 font-serif font-[400] text-4xl tracking-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <FormattedMessage id="government.testimonials.carousel.title" defaultMessage="Client Testimonials" />
-          </h2>
-          <p className="text-muted-foreground text-lg">
+          </motion.h2>
+          <motion.p
+            className="text-muted-foreground text-lg"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <FormattedMessage id="government.testimonials.carousel.subtitle" defaultMessage="What our government clients say about working with us" />
-          </p>
+          </motion.p>
         </div>
 
-        <div className="h-[20rem] rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden">
-          <InfiniteMovingCards
-            items={governmentTestimonials}
-            direction="right"
-            speed="slow"
-            pauseOnHover={true}
-            className="testimonial-cards"
-          />
-        </div>
+        <motion.div
+          className="h-[20rem] rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <InfiniteSlider speed={50} speedOnHover={80} gap={24}>
+            {governmentTestimonials.map((testimonial, index) => (
+              <div
+                key={index}
+                className="relative min-w-[350px] max-w-[400px] shrink-0 rounded-2xl border border-border bg-card text-card-foreground shadow-md p-6"
+              >
+                <blockquote>
+                  <span className="relative z-20 text-base leading-[1.6] font-normal">
+                    {testimonial.quote}
+                  </span>
+                  <div className="relative z-20 mt-6 flex flex-row items-center">
+                    {testimonial.avatar && (
+                      <div className="mr-4 relative">
+                        <Image
+                          src={testimonial.avatar}
+                          alt={`Avatar of ${testimonial.name}`}
+                          width={48}
+                          height={48}
+                          className="w-12 h-12 rounded-full object-cover"
+                        />
+                        <div className="absolute inset-0 rounded-full ring-2 ring-gray-300 ring-offset-2 ring-offset-background pointer-events-none"></div>
+                      </div>
+                    )}
+                    <span className="flex flex-col gap-0">
+                      <span className="text-xl leading-[1.4] font-serif font-[400]">
+                        {testimonial.name}
+                      </span>
+                      <span className="text-sm leading-[1.6] font-semibold opacity-80">
+                        {testimonial.title}
+                      </span>
+                    </span>
+                  </div>
+                </blockquote>
+              </div>
+            ))}
+          </InfiniteSlider>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

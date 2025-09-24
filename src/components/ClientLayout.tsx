@@ -53,7 +53,7 @@ export default function ClientLayout({ lang, messages, intlMessages, children }:
             </div>
             {children}
           </Content>
-          <FooterContactCTA />
+          <FooterContactCTA locale={lang} messages={messages} />
           <Footer locale={lang} messages={messages} />
           <BottomActionBar />
         </IntlProvider>
