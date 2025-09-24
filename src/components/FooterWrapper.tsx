@@ -9,8 +9,16 @@ interface FooterWrapperProps {
   locale: Locale;
 }
 
+import dynamic from "next/dynamic";
+const FooterContactCTA = dynamic(() => import("@/components/FooterContactCTA"), { ssr: false });
+
 export default async function FooterWrapper({ locale }: FooterWrapperProps) {
   const messages = await getMessages(locale);
 
-  return <Footer locale={locale} messages={messages} />;
+  return (
+    <>
+      <FooterContactCTA />
+      <Footer locale={locale} messages={messages} />
+    </>
+  );
 }

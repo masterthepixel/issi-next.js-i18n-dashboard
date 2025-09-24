@@ -42,13 +42,13 @@ const BottomActionBar: React.FC = () => {
             <style jsx global>{`
                     /* Ensure portal root doesn't interfere */
                     #bottom-action-bar-portal {
-                        position: static !important;
-                        top: auto !important;
-                        left: auto !important;
-                        width: auto !important;
-                        height: auto !important;
-                        pointer-events: none !important;
-                        z-index: auto !important;
+                        position: fixed;
+                        bottom: 0;
+                        left: 0;
+                        width: 100vw;
+                        height: auto;
+                        pointer-events: none;
+                        z-index: 50;
                     }
                     
                     /* Re-enable pointer events for the actual bar */
@@ -61,25 +61,14 @@ const BottomActionBar: React.FC = () => {
                         --ux-spring-easing: linear(0, 0.0018, 0.0069 1.15%, 0.026 2.3%, 0.0637, 0.1135 5.18%, 0.2229 7.78%, 0.5977 15.84%, 0.7014, 0.7904, 0.8641, 0.9228, 0.9676 28.8%, 1.0032 31.68%, 1.0225, 1.0352 36.29%, 1.0431 38.88%, 1.046 42.05%, 1.0448 44.35%, 1.0407 47.23%, 1.0118 61.63%, 1.0025 69.41%, 0.9981 80.35%, 0.9992 99.94%);
                     }
 
-                    /* Material Symbols tuning within namespace */
-                    .ux-ab .ux-icon.material-symbols-outlined {
-                        font-family: 'Material Symbols Outlined', sans-serif;
-                        font-size: 24px;
-                        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-                        background: none;
-                        line-height: 1;
-                        transition: filter 0.1s ease;
-                        user-select: none;
-                        -webkit-user-select: none;
-                        /* pointer-events: none; Removed to allow tooltip triggers */
-                    }
+
 
                     /* Viewport-fixed bar */
                     .ux-ab .ux-action-bar {
-                        position: fixed !important;
-                        left: 50vw !important;
-                        bottom: 24px !important;
-                        transform: translateX(-50%) !important;
+                        position: fixed;
+                        left: 50vw;
+                        bottom: 24px;
+                        transform: translateX(-50%);
                         display: flex;
                         align-items: center;
                         background-color: #fcfcfc;
@@ -88,13 +77,13 @@ const BottomActionBar: React.FC = () => {
                         padding: 0.5rem;
                         gap: 0.25rem;
                         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-                        z-index: 40 !important;
+                        z-index: 40;
                         isolation: isolate;
-                        margin: 0 !important;
-                        top: auto !important;
-                        right: auto !important;
-                        width: auto !important;
-                        height: auto !important;
+                        margin: 0;
+                        top: auto;
+                        right: auto;
+                        width: auto;
+                        height: auto;
                     }
 
                     .ux-ab .ux-btn {
@@ -122,10 +111,7 @@ const BottomActionBar: React.FC = () => {
                     .ux-ab .ux-btn.ux-selected { background-color: #fcebeb; color: red; }
                     .ux-ab .ux-btn.ux-selected:hover,
                     .ux-ab .ux-btn.ux-selected:focus { background-color: #fcebeb; }
-                    .ux-ab .ux-btn.ux-selected .ux-icon.material-symbols-outlined {
-                        filter: drop-shadow(0 0 4px tomato);
-                        font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-                    }
+
 
                     /* increase clickable area but prevent overlap */
                     .ux-ab .ux-btn::before {
@@ -217,26 +203,65 @@ const BottomActionBar: React.FC = () => {
                         })}
                         <Popover>
                             <PopoverTrigger asChild>
-                                <Tooltip>
-                                    <TooltipTrigger asChild>
-                                        <button
-                                            className="ux-btn ux-menu-btn group"
-                                            aria-label="Menu"
-                                            style={{ zIndex: 2 }}
-                                        >
-                                            <Menu className="ux-icon transition-transform group-hover:scale-[1.625] group-focus:scale-[1.625]" strokeWidth={2} size={32} />
-                                            <span className="sr-only">Menu</span>
-                                        </button>
-                                    </TooltipTrigger>
-                                    <TooltipContent side="top" sideOffset={16} className="bg-white dark:bg-gray-900 text-black dark:text-white border">Menu</TooltipContent>
-                                </Tooltip>
+                                <button
+                                    className="ux-btn ux-menu-btn group"
+                                    aria-label="Menu"
+                                    style={{ zIndex: 2 }}
+                                >
+                                    <Tooltip>
+                                        <TooltipTrigger asChild>
+                                            <span>
+                                                <Menu className="ux-icon transition-transform group-hover:scale-[1.625] group-focus:scale-[1.625]" strokeWidth={2} size={32} />
+                                                <span className="sr-only">Menu</span>
+                                            </span>
+                                        </TooltipTrigger>
+                                        <TooltipContent side="top" sideOffset={16} className="bg-white dark:bg-gray-900 text-black dark:text-white border">Menu</TooltipContent>
+                                    </Tooltip>
+                                </button>
                             </PopoverTrigger>
-                            <PopoverContent className="w-48 p-2">
-                                {menuItems.map((item, index) => (
-                                    <Link key={index} href={item.href} className="block px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800 rounded">
-                                        {item.label}
-                                    </Link>
-                                ))}
+                            <PopoverContent align="center" side="top" sideOffset={0} className="w-72 p-0 rounded-xl shadow-lg border bg-white dark:bg-gray-900 text-black dark:text-white">
+                                <div className="flex flex-col gap-1 py-2">
+                                    {/* Logo and Title */}
+                                    <div className="flex items-center gap-2 px-4 py-2 border-b border-gray-200 dark:border-gray-800">
+                                        <img src="/images/issi_logo.png" alt="ISSI Logo" width={32} height={32} className="rounded-sm" />
+                                        <span className="font-semibold text-lg">Menu</span>
+                                    </div>
+                                    {/* Main Navigation */}
+                                    <div className="flex flex-col gap-1 px-2 py-2">
+                                        {menuItems.map((item, index) => (
+                                            <Link key={index} href={item.href} className="flex items-center gap-3 px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-base font-medium">
+                                                {item.icon && <span className="inline-flex items-center justify-center h-7 w-7 rounded bg-muted/50">{item.icon}</span>}
+                                                <span>{typeof item.label === 'string' ? item.label : item.label}</span>
+                                            </Link>
+                                        ))}
+                                    </div>
+                                    <div className="flex items-center justify-between gap-2 px-4 py-2 border-t border-gray-200 dark:border-gray-800">
+                                        {/* Theme Toggle */}
+                                        <button
+                                            className="flex items-center gap-2 px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800"
+                                            aria-label="Toggle theme"
+                                            onClick={() => {
+                                                if (typeof window !== 'undefined') {
+                                                    const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+                                                    document.documentElement.classList.toggle('dark');
+                                                    localStorage.setItem('theme', theme === 'dark' ? 'light' : 'dark');
+                                                }
+                                            }}
+                                        >
+                                            <span className="inline-flex items-center justify-center h-6 w-6">
+                                                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="dark:hidden"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.07l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.93l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                                                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="hidden dark:inline"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" /></svg>
+                                            </span>
+                                            <span className="text-sm">Theme</span>
+                                        </button>
+                                        {/* Language Switcher (static for demo) */}
+                                        <div className="flex items-center gap-2">
+                                            <button className="fi fi-gb w-5 h-4 rounded-sm" aria-label="Switch to English"></button>
+                                            <button className="fi fi-fr w-5 h-4 rounded-sm" aria-label="Switch to French"></button>
+                                            <button className="fi fi-es w-5 h-4 rounded-sm" aria-label="Switch to Spanish"></button>
+                                        </div>
+                                    </div>
+                                </div>
                             </PopoverContent>
                         </Popover>
                         <Tooltip>
