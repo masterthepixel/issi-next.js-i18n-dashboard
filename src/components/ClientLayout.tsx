@@ -1,13 +1,13 @@
 "use client";
 
 import { AnimatedBackground } from "@/components/AnimatedBackground";
-import BottomActionBar from "@/components/BottomActionBar";
 import ClientNavigation from "@/components/ClientNavigation";
 import ClientOnly from "@/components/ClientOnly";
 import Content from "@/components/Content";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import Footer from "@/components/Footer";
 import IntelligentBreadcrumb from "@/components/IntelligentBreadcrumb";
+import NewBottomActionBar from "@/components/NewBottomActionBar";
 import { ThemeProviderWrapper } from "@/components/ThemeProviderWrapper";
 import dynamic from "next/dynamic";
 import { usePathname } from 'next/navigation';
@@ -55,7 +55,7 @@ export default function ClientLayout({ lang, messages, intlMessages, children }:
           </Content>
           <FooterContactCTA locale={lang} messages={messages} />
           <Footer locale={lang} messages={messages} />
-          <BottomActionBar />
+          <NewBottomActionBar />
         </IntlProvider>
 
         <ClientNavigation locale={lang} messages={intlMessages} bannerVisible={isBannerVisible} />
