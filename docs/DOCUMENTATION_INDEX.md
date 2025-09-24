@@ -32,6 +32,7 @@ This index provides a quick reference to documentation created during and after 
 
 - **[SHADCN_MIGRATION_REPORT.md](./SHADCN_MIGRATION_REPORT.md)** - Original migration planning and phase documentation
 - **[COMPONENT_DEVELOPMENT_GUIDE.md](./COMPONENT_DEVELOPMENT_GUIDE.md)** - Component patterns and templates
+- **[ANIMATION_PACKAGE.md](./ANIMATION_PACKAGE.md)** - Comprehensive animation system with Framer Motion and Motion Primitives
 
 ### Architecture & Testing
 
