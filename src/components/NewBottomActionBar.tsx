@@ -10,7 +10,6 @@ import {
     ArrowUp,
     Box,
     Briefcase,
-    Home,
     Mail,
     Menu,
     Moon,
@@ -20,6 +19,7 @@ import {
 import { AnimatePresence, motion, MotionConfig } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { FormattedMessage } from 'react-intl';
@@ -36,9 +36,10 @@ const DOCK_ITEMS = [
     {
         id: 'home',
         label: 'nav.home',
-        icon: Home,
+        icon: 'issi-logo', // Special identifier for ISSI logo
         href: '/home',
         color: 'text-blue-600 dark:text-blue-400',
+        activeColor: 'text-blue-500 dark:text-blue-300',
     },
     {
         id: 'services',
@@ -46,6 +47,7 @@ const DOCK_ITEMS = [
         icon: Briefcase,
         href: '/services',
         color: 'text-green-600 dark:text-green-400',
+        activeColor: 'text-green-500 dark:text-green-300',
     },
     {
         id: 'products',
@@ -53,6 +55,7 @@ const DOCK_ITEMS = [
         icon: Box,
         href: '/products',
         color: 'text-purple-600 dark:text-purple-400',
+        activeColor: 'text-purple-500 dark:text-purple-300',
     },
     {
         id: 'contact',
@@ -60,6 +63,7 @@ const DOCK_ITEMS = [
         icon: Mail,
         href: '/contact',
         color: 'text-orange-600 dark:text-orange-400',
+        activeColor: 'text-orange-500 dark:text-orange-300',
     },
     {
         id: 'careers',
@@ -67,6 +71,7 @@ const DOCK_ITEMS = [
         icon: User,
         href: '/careers',
         color: 'text-red-600 dark:text-red-400',
+        activeColor: 'text-red-500 dark:text-red-300',
     },
 ];
 
@@ -80,6 +85,7 @@ export default function NewBottomActionBar() {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const portalRef = useRef<HTMLDivElement | null>(null);
     const ref = useRef<HTMLDivElement>(null);
+    const pathname = usePathname();
 
     const menuItems = getMenuItems("en");
 
@@ -108,10 +114,47 @@ export default function NewBottomActionBar() {
     // Theme toggle function
     const toggleTheme = () => {
         if (typeof window !== 'undefined') {
-            const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+            const isDark = document.documentElement.classList.contains('dark');
             document.documentElement.classList.toggle('dark');
-            localStorage.setItem('theme', theme === 'dark' ? 'light' : 'dark');
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
         }
+    };
+
+    // Check if current route matches item href
+    const isActiveRoute = (href: string) => {
+        if (href === '/home') {
+            return pathname === '/' || pathname === '/home' || pathname.startsWith('/home');
+        }
+        return pathname.startsWith(href);
+    };
+
+    // Language switcher function
+    const switchLanguage = (newLocale: string) => {
+        if (typeof window !== 'undefined') {
+            // Get current path and replace locale
+            const currentPath = window.location.pathname;
+            const pathWithoutLocale = currentPath.replace(/^\/(en|fr|es)/, '') || '/';
+            const newPath = `/${newLocale}${pathWithoutLocale}`;
+            window.location.href = newPath;
+        }
+    };
+
+    // Render icon component
+    const renderIcon = (item: typeof DOCK_ITEMS[0], isActive: boolean) => {
+        if (item.icon === 'issi-logo') {
+            return (
+                <Image
+                    src="/images/issi_logo.png"
+                    alt="ISSI"
+                    width={20}
+                    height={20}
+                    className="rounded-sm"
+                />
+            );
+        }
+
+        const Icon = item.icon as any;
+        return <Icon size={20} strokeWidth={2} />;
     };
 
     // Menu content component
@@ -158,9 +201,21 @@ export default function NewBottomActionBar() {
 
                 {/* Language Switcher */}
                 <div className="flex items-center gap-2">
-                    <button className="fi fi-gb w-5 h-4 rounded-sm" aria-label="Switch to English"></button>
-                    <button className="fi fi-fr w-5 h-4 rounded-sm" aria-label="Switch to French"></button>
-                    <button className="fi fi-es w-5 h-4 rounded-sm" aria-label="Switch to Spanish"></button>
+                    <button
+                        className="fi fi-gb w-5 h-4 rounded-sm hover:opacity-80 transition-opacity"
+                        aria-label="Switch to English"
+                        onClick={() => switchLanguage('en')}
+                    ></button>
+                    <button
+                        className="fi fi-fr w-5 h-4 rounded-sm hover:opacity-80 transition-opacity"
+                        aria-label="Switch to French"
+                        onClick={() => switchLanguage('fr')}
+                    ></button>
+                    <button
+                        className="fi fi-es w-5 h-4 rounded-sm hover:opacity-80 transition-opacity"
+                        aria-label="Switch to Spanish"
+                        onClick={() => switchLanguage('es')}
+                    ></button>
                 </div>
             </div>
         </div>
@@ -199,7 +254,7 @@ export default function NewBottomActionBar() {
                             {/* Background with glow effect */}
                             <div className="absolute inset-0 rounded-2xl overflow-hidden">
                                 <GlowEffect
-                                    className="opacity-30"
+                                    className="opacity-60"
                                     colors={['hsl(var(--primary))', 'hsl(var(--secondary))', 'hsl(var(--accent))']}
                                     mode="pulse"
                                     blur="soft"
@@ -213,8 +268,7 @@ export default function NewBottomActionBar() {
                                 <TooltipProvider delayDuration={100}>
                                     {/* Navigation Buttons */}
                                     {DOCK_ITEMS.map((item, idx) => {
-                                        const Icon = item.icon;
-                                        const isSelected = selectedIndex === idx;
+                                        const isActive = isActiveRoute(item.href);
 
                                         return (
                                             <Tooltip key={item.id}>
@@ -223,21 +277,45 @@ export default function NewBottomActionBar() {
                                                         <motion.button
                                                             className={cn(
                                                                 "relative flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-200",
-                                                                "hover:bg-muted focus:bg-muted focus:outline-none focus:ring-2 focus:ring-ring",
-                                                                isSelected ? "bg-muted" : ""
+                                                                "bg-background/60 backdrop-blur-sm border border-border/50",
+                                                                "hover:bg-background/80 hover:border-border hover:shadow-md",
+                                                                "focus:outline-none focus:ring-2 focus:ring-ring",
+                                                                isActive ? "bg-background/90 border-border shadow-md" : ""
                                                             )}
                                                             onClick={() => setSelectedIndex(idx)}
                                                             whileHover={{ scale: 1.1 }}
                                                             whileTap={{ scale: 0.95 }}
                                                         >
                                                             <motion.div
-                                                                className={cn("transition-all duration-200", item.color)}
+                                                                className={cn(
+                                                                    "transition-all duration-200",
+                                                                    isActive ? item.activeColor : item.color
+                                                                )}
                                                                 whileHover={{ scale: 1.625 }}
                                                             >
-                                                                <Icon size={20} strokeWidth={2} />
+                                                                {renderIcon(item, isActive)}
                                                             </motion.div>
 
-                                                            {/* Glow effect on hover */}
+                                                            {/* Active indicator glow */}
+                                                            {isActive && (
+                                                                <motion.div
+                                                                    className="absolute inset-0 rounded-xl pointer-events-none"
+                                                                    initial={{ opacity: 0 }}
+                                                                    animate={{ opacity: 1 }}
+                                                                >
+                                                                    <GlowEffect
+                                                                        colors={[item.color.includes('blue') ? '#3b82f6' :
+                                                                            item.color.includes('green') ? '#10b981' :
+                                                                                item.color.includes('purple') ? '#8b5cf6' :
+                                                                                    item.color.includes('orange') ? '#f59e0b' : '#ef4444']}
+                                                                        mode="pulse"
+                                                                        blur="soft"
+                                                                        className="opacity-60"
+                                                                    />
+                                                                </motion.div>
+                                                            )}
+
+                                                            {/* Hover glow effect */}
                                                             <motion.div
                                                                 className="absolute inset-0 rounded-xl opacity-0 pointer-events-none"
                                                                 whileHover={{ opacity: 1 }}
@@ -267,8 +345,10 @@ export default function NewBottomActionBar() {
                                             <motion.button
                                                 className={cn(
                                                     "relative flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-200",
-                                                    "hover:bg-muted focus:bg-muted focus:outline-none focus:ring-2 focus:ring-ring",
-                                                    isMenuOpen ? "bg-muted" : ""
+                                                    "bg-background/60 backdrop-blur-sm border border-border/50",
+                                                    "hover:bg-background/80 hover:border-border hover:shadow-md",
+                                                    "focus:outline-none focus:ring-2 focus:ring-ring",
+                                                    isMenuOpen ? "bg-background/90 border-border shadow-md" : ""
                                                 )}
                                                 onClick={() => {
                                                     setIsMenuOpen(!isMenuOpen);
@@ -278,11 +358,30 @@ export default function NewBottomActionBar() {
                                                 whileTap={{ scale: 0.95 }}
                                             >
                                                 <motion.div
-                                                    className="text-muted-foreground transition-all duration-200"
+                                                    className={cn(
+                                                        "transition-all duration-200",
+                                                        isMenuOpen ? "text-primary" : "text-muted-foreground"
+                                                    )}
                                                     whileHover={{ scale: 1.625 }}
                                                 >
                                                     <Menu size={20} strokeWidth={2} />
                                                 </motion.div>
+
+                                                {/* Menu open glow */}
+                                                {isMenuOpen && (
+                                                    <motion.div
+                                                        className="absolute inset-0 rounded-xl pointer-events-none"
+                                                        initial={{ opacity: 0 }}
+                                                        animate={{ opacity: 1 }}
+                                                    >
+                                                        <GlowEffect
+                                                            colors={['hsl(var(--primary))']}
+                                                            mode="pulse"
+                                                            blur="soft"
+                                                            className="opacity-60"
+                                                        />
+                                                    </motion.div>
+                                                )}
                                             </motion.button>
                                         </TooltipTrigger>
                                         <TooltipContent side="top" sideOffset={16}>
@@ -295,7 +394,7 @@ export default function NewBottomActionBar() {
                                         <TooltipTrigger asChild>
                                             <motion.a
                                                 href="#top"
-                                                className="relative flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-200 hover:bg-muted focus:bg-muted focus:outline-none focus:ring-2 focus:ring-ring"
+                                                className="relative flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-200 bg-background/60 backdrop-blur-sm border border-border/50 hover:bg-background/80 hover:border-border hover:shadow-md focus:outline-none focus:ring-2 focus:ring-ring"
                                                 whileHover={{ scale: 1.1 }}
                                                 whileTap={{ scale: 0.95 }}
                                             >
