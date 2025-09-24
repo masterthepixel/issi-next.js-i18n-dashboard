@@ -1,9 +1,9 @@
 "use client";
 
+import { InfiniteSlider } from "@/components/motion-primitives/infinite-slider";
+import { ProgressiveBlur } from "@/components/motion-primitives/progressive-blur";
 import { Card } from "@/components/ui/apple-cards-carousel";
 import { useIntl } from "react-intl";
-import { InfiniteSlider } from "../../components/motion-primitives/infinite-slider";
-import { ProgressiveBlur } from "../../components/motion-primitives/progressive-blur";
 
 const ISSIAppleCardsCarousel = () => {
     const intl = useIntl();

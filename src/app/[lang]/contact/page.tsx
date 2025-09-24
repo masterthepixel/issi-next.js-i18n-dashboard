@@ -20,7 +20,7 @@ export const metadata = {
 };
 
 export default async function Page({ params }: { params: { lang: Locale } }) {
-  const { lang: locale } = params;
+  const { lang: locale } = await params;
   return (
     <>
       <Suspense fallback={<Spinner />}>
