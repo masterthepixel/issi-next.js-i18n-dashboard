@@ -69,7 +69,7 @@ export default function TeamGrid() {
                   duration: 0.25,
                 }}
               >
-                <MorphingDialogTrigger asChild>
+                <MorphingDialogTrigger>
                   <li className="cursor-pointer">
                     <MorphingDialogImage
                       src={person.imageUrl}

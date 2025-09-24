@@ -53,8 +53,8 @@ const ISSIAppleCardsCarousel = () => {
         },
     ];
 
-    const items = cards.map((card, index) => (
-        <Card key={card.src} card={card} index={index} />
+    const items = cards.map((card, _index) => (
+        <Card key={card.src} card={card} />
     ));
 
     return (

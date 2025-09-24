@@ -26,7 +26,7 @@ import { FormattedMessage } from 'react-intl';
 import useMeasure from 'react-use-measure';
 
 const transition = {
-    type: 'spring',
+    type: 'spring' as const,
     bounce: 0.1,
     duration: 0.25,
 };

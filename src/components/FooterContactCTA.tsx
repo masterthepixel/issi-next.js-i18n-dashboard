@@ -45,7 +45,7 @@ export default function FooterContactCTA({ locale, messages }: FooterContactCTAP
                         {/* Animated headline: Ready to build */}
                         {(
                             <FormattedMessage id="footer.contactcta.headline1" defaultMessage="Ready to build" />
-                        ).props.defaultMessage.split(" ").map((word, idx) => (
+                        ).props.defaultMessage.split(" ").map((word: string, idx: number) => (
                             <motion.span
                                 key={word + idx}
                                 initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
@@ -60,7 +60,7 @@ export default function FooterContactCTA({ locale, messages }: FooterContactCTAP
                         {/* Animated headline: something extraordinary? */}
                         {(
                             <FormattedMessage id="footer.contactcta.headline2" defaultMessage="something extraordinary?" />
-                        ).props.defaultMessage.split(" ").map((word, idx) => (
+                        ).props.defaultMessage.split(" ").map((word: string, idx: number) => (
                             <motion.span
                                 key={word + idx + "extra"}
                                 initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
