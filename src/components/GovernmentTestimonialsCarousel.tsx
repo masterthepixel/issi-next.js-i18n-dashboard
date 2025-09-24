@@ -1,22 +1,47 @@
 "use client";
 
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
+import { motion } from "motion/react";
 import { FormattedMessage } from "react-intl";
 
 export default function GovernmentTestimonialsCarousel() {
   return (
-    <section className="py-16 sm:py-24">
+    <motion.section
+      className="py-16 sm:py-24"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="mx-auto max-w-7xl px-4">
         <div className="text-left mb-12">
-          <h2 className="text-foreground sm:text-6xl mb-4 font-serif font-[400] text-4xl tracking-tight">
+          <motion.h2
+            className="text-foreground sm:text-6xl mb-4 font-serif font-[400] text-4xl tracking-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <FormattedMessage id="government.testimonials.carousel.title" defaultMessage="Client Testimonials" />
-          </h2>
-          <p className="text-muted-foreground text-lg">
+          </motion.h2>
+          <motion.p
+            className="text-muted-foreground text-lg"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <FormattedMessage id="government.testimonials.carousel.subtitle" defaultMessage="What our government clients say about working with us" />
-          </p>
+          </motion.p>
         </div>
 
-        <div className="h-[20rem] rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden">
+        <motion.div
+          className="h-[20rem] rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
           <InfiniteMovingCards
             items={governmentTestimonials}
             direction="right"
@@ -24,9 +49,9 @@ export default function GovernmentTestimonialsCarousel() {
             pauseOnHover={true}
             className="testimonial-cards"
           />
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

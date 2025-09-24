@@ -14,54 +14,45 @@ export function JobBannerWrapper({ locale, onVisibilityChange }: JobBannerWrappe
     const [jobs, setJobs] = useState<Array<{ id: string; title: string; slug: string }>>([])
     const [isLoading, setIsLoading] = useState(true)
 
+    const DEV_MOCK_JOBS = [
+        { id: '1', title: 'Senior Software Engineer', slug: '1' },
+        { id: '2', title: 'Full Stack Developer', slug: '2' },
+        { id: '3', title: 'DevOps Engineer', slug: '3' },
+        { id: '4', title: 'Product Manager', slug: '4' },
+        { id: '5', title: 'UI/UX Designer', slug: '5' },
+    ];
+
     useEffect(() => {
         const fetchActiveJobs = async () => {
             try {
-                // Use careersAPI to search for jobs with limit of 20 for banner
-                const result = await careersAPI.searchJobs({ limit: 20 })
-
+                const result = await careersAPI.searchJobs({ limit: 20 });
                 const activeJobs = result.jobs.map(job => ({
                     id: job.id,
                     title: job.jobTitle,
-                    slug: job.id, // Use job ID for navigation
-                }))
-
-                // For testing: if no jobs, add mock data only in non-production
+                    slug: job.id,
+                }));
                 if (activeJobs.length === 0) {
-                    if (process.env.NODE_ENV !== 'production') {
-                        setJobs([
-                            { id: '1', title: 'Senior Software Engineer', slug: '1' },
-                            { id: '2', title: 'Full Stack Developer', slug: '2' },
-                            { id: '3', title: 'DevOps Engineer', slug: '3' },
-                            { id: '4', title: 'Product Manager', slug: '4' },
-                            { id: '5', title: 'UI/UX Designer', slug: '5' },
-                        ])
+                    if (process.env.NODE_ENV !== "production") {
+                        setJobs(DEV_MOCK_JOBS);
                     } else {
-                        // In production, don't show mock data — leave empty so banner will not render
-                        setJobs([])
+                        setJobs([]);
                     }
                 } else {
-                    setJobs(activeJobs)
+                    setJobs(activeJobs);
                 }
             } catch (error) {
-                console.error('❌ Error fetching jobs from PayloadCMS:', error)
-                // For testing: add mock data on error only in non-production
-                if (process.env.NODE_ENV !== 'production') {
-                    setJobs([
-                        { id: '1', title: 'Senior Software Engineer', slug: '1' },
-                        { id: '2', title: 'Full Stack Developer', slug: '2' },
-                        { id: '3', title: 'DevOps Engineer', slug: '3' },
-                    ])
+                console.error("❌ Error fetching jobs from PayloadCMS:", error);
+                if (process.env.NODE_ENV !== "production") {
+                    setJobs(DEV_MOCK_JOBS.slice(0, 3));
                 } else {
-                    setJobs([])
+                    setJobs([]);
                 }
             } finally {
-                setIsLoading(false)
+                setIsLoading(false);
             }
-        }
-
-        fetchActiveJobs()
-    }, [])
+        };
+        fetchActiveJobs();
+    }, []);
 
     if (isLoading) {
         return null // Don't show banner while loading

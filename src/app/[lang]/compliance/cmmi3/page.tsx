@@ -18,7 +18,7 @@ interface Props {
 
 export default async function Page({ params }: Props) {
   // Avoid destructuring params in the function signature to satisfy Next.js dynamic API rules
-  const { lang } = params;
+  const { lang } = await params;
   const intl = await getIntl(lang);
 
   const features = [

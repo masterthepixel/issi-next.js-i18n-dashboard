@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import { Locale } from "@/lib/definitions";
 import {
   AcademicCapIcon,
@@ -49,11 +48,11 @@ export default function Footer({ locale, messages }: FooterProps) {
   ]; const currentYear = new Date().getFullYear();
   return (
     <IntlProvider locale={locale} messages={messages}>
-      <footer className="relative z-10 w-full mt-auto border-t border-border/20">
+      <footer className="relative z-10 w-full mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top Section with Brand and Description */}
           <div className="py-12">
-            <Separator className="mb-12" />
+            {/* <Separator className="mb-12" /> */}
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
               {/* Brand Section */}
               <div className="lg:col-span-1">
@@ -277,7 +276,7 @@ export default function Footer({ locale, messages }: FooterProps) {
 
 
         {/* Copyright Section */}
-        <Separator className="my-6" />
+        {/* <Separator className="my-6" /> */}
         <div className="py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-2 md:mb-0">

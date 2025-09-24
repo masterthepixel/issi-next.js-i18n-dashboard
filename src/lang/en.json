@@ -10,6 +10,7 @@
   "breadcrumb.about": "About",
   "breadcrumb.contact": "Contact",
   "breadcrumb.back": "Back",
+  "breadcrumb.careers": "Careers",
   "breadcrumb.seo.description": "Navigate through ISSI's website sections",
   "breadcrumb.seo.keywords": "navigation, breadcrumb, ISSI, software, technology",
   "breadcrumb.actions.contact": "Contact Us",
@@ -2011,5 +2012,19 @@
   "carousel.careers.content": "Innovative career opportunities",
   "carousel.blog.category": "Blog",
   "carousel.blog.title": "Latest Insights",
-  "carousel.blog.content": "Industry news and updates"
+  "carousel.blog.content": "Industry news and updates",
+  "footer.cta.ready": "Ready to build",
+  "footer.cta.extraordinary": "something extraordinary?",
+  "footer.cta.getStarted": "Get Started",
+  "footer.cta.schedule": "Schedule a Call",
+  "footer.cta.bookMeeting": "Book a Meeting",
+  "footer.cta.follow": "Follow Along",
+  "footer.cta.explore": "Explore",
+  "footer.cta.ourWork": "Our Work",
+  "footer.cta.whatWeDo": "What We Do",
+  "footer.cta.investment": "Investment",
+  "footer.cta.insights": "Insights",
+  "footer.cta.finePrint": "Fine Print",
+  "footer.cta.terms": "Terms & Conditions",
+  "footer.cta.privacy": "Privacy Notice"
 }

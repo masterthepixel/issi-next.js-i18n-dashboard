@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import ClientLayout from "@/components/ClientLayout";
 import React from 'react';
 
@@ -27,6 +28,12 @@ export default async function Root({ params, children }: Props) {
   return (
     <html lang={lang} className={`h-full ${fontClassNames}`}>
       <head>
+        {/* Material Symbols Outlined for icon glyphs */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=optional"
+        />
+
         {/* Performance optimizations */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

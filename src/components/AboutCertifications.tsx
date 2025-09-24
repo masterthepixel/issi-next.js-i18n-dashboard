@@ -2,6 +2,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { motion } from "motion/react";
 import Image from "next/image";
 import { FormattedMessage } from "react-intl";
 
@@ -11,62 +12,97 @@ const certifications = [
     src: "/images/certification/1.png",
     width: 120,
     height: 48,
-    description: "ISO 27001 Information Security Management certification demonstrating ISSI's commitment to data security and privacy protection",
-    category: "Security"
+    description:
+      "ISO 27001 Information Security Management certification demonstrating ISSI's commitment to data security and privacy protection",
+    category: "Security",
   },
   {
     name: "CMMI Level 3",
     src: "/images/certification/2.png",
     width: 120,
     height: 48,
-    description: "CMMI Level 3 certification showcasing ISSI's mature software development processes and quality standards",
-    category: "Process"
+    description:
+      "CMMI Level 3 certification showcasing ISSI's mature software development processes and quality standards",
+    category: "Process",
   },
   {
     name: "ISO 9001",
     src: "/images/certification/3.png",
     width: 120,
     height: 48,
-    description: "ISO 9001 Quality Management System certification ensuring consistent delivery of high-quality services and solutions",
-    category: "Quality"
+    description:
+      "ISO 9001 Quality Management System certification ensuring consistent delivery of high-quality services and solutions",
+    category: "Quality",
   },
   {
     name: "MDOT MBE/DBE/SBE Certified",
     src: "/images/certification/4.jpg",
     width: 120,
     height: 48,
-    description: "Maryland Department of Transportation Minority/Disadvantaged/Small Business Enterprise certification",
-    category: "Certification"
+    description:
+      "Maryland Department of Transportation Minority/Disadvantaged/Small Business Enterprise certification",
+    category: "Certification",
   },
 ];
 
 export default function AboutCertifications() {
   return (
-    <section
+    <motion.section
       className="relative isolate overflow-hidden bg-background py-24 sm:py-32"
       aria-labelledby="certifications-heading"
       role="region"
       aria-label="Professional certifications and compliance standards"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-x-8 gap-y-16 lg:grid-cols-2">
           <div className="mx-auto w-full max-w-xl lg:mx-0">
-            <h2 id="certifications-heading" className="text-balance text-foreground sm:text-5xl">
-              <FormattedMessage id="about.certifications.title" defaultMessage="Certified Excellence" />
-            </h2>
-            <p className="mt-6 text-lg/8 text-muted-foreground">
+            <motion.h2
+              id="certifications-heading"
+              className="text-balance text-foreground sm:text-5xl"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <FormattedMessage
+                id="about.certifications.title"
+                defaultMessage="Certified Excellence"
+              />
+            </motion.h2>
+            <motion.p
+              className="mt-6 text-lg/8 text-muted-foreground"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               <FormattedMessage
                 id="about.certifications.description"
                 defaultMessage="ISSI maintains the highest standards of quality, security, and process excellence through our comprehensive certifications. These certifications demonstrate our commitment to delivering reliable, secure, and compliant solutions that meet the most stringent industry requirements."
               />
-            </p>
+            </motion.p>
           </div>
-          <div className="mx-auto grid w-full max-w-xl grid-cols-1 gap-6 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:pl-8">
+          <motion.div
+            className="mx-auto grid w-full max-w-xl grid-cols-1 gap-6 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:pl-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             {certifications.map((cert, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300">
+              <Card
+                key={index}
+                className="group hover:shadow-lg transition-all duration-300"
+              >
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg font-semibold">{cert.name}</CardTitle>
+                    <CardTitle className="text-lg font-semibold">
+                      {cert.name}
+                    </CardTitle>
                     <Badge variant="secondary" className="text-xs">
                       {cert.category}
                     </Badge>
@@ -86,9 +122,9 @@ export default function AboutCertifications() {
                 </CardContent>
               </Card>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

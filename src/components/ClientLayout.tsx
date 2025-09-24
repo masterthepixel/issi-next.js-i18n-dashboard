@@ -7,10 +7,13 @@ import Content from "@/components/Content";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import Footer from "@/components/Footer";
 import IntelligentBreadcrumb from "@/components/IntelligentBreadcrumb";
+import NewBottomActionBar from "@/components/NewBottomActionBar";
 import { ThemeProviderWrapper } from "@/components/ThemeProviderWrapper";
+import dynamic from "next/dynamic";
 import { usePathname } from 'next/navigation';
 import React, { lazy, Suspense, useState } from 'react';
 import { IntlProvider } from 'react-intl';
+const FooterContactCTA = dynamic(() => import("@/components/FooterContactCTA"), { ssr: false });
 
 // Dynamic imports for non-critical components
 const JobBannerWrapper = lazy(() => import("@/components/careers/JobBannerWrapper").then(mod => ({ default: mod.JobBannerWrapper })));
@@ -50,7 +53,9 @@ export default function ClientLayout({ lang, messages, intlMessages, children }:
             </div>
             {children}
           </Content>
+          <FooterContactCTA locale={lang} messages={messages} />
           <Footer locale={lang} messages={messages} />
+          <NewBottomActionBar />
         </IntlProvider>
 
         <ClientNavigation locale={lang} messages={intlMessages} bannerVisible={isBannerVisible} />
