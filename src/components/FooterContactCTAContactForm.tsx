@@ -1,3 +1,4 @@
+
 "use client";
 import { Calendar, Mail, Phone } from "lucide-react";
 import { Input } from "./ui/input";
@@ -28,31 +29,31 @@ export default function FooterContactCTAContactForm() {
                         <ul className="space-y-2 text-sm text-neutral-300">
                             <li className="flex items-start gap-2">
                                 <span className="inline-flex items-center justify-center w-4 h-4 mt-0.5">
-                                    <Calendar className="w-4 h-4 text-green-400" strokeWidth={1.5} />
+                                    <Calendar className="w-4 h-4 text-blue-500" strokeWidth={1.5} />
                                 </span>
                                 <span>Custom Software Solutions</span>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="inline-flex items-center justify-center w-4 h-4 mt-0.5">
-                                    <Calendar className="w-4 h-4 text-green-400" strokeWidth={1.5} />
+                                    <Calendar className="w-4 h-4 text-blue-500" strokeWidth={1.5} />
                                 </span>
                                 <span>eLearning Platforms & Training</span>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="inline-flex items-center justify-center w-4 h-4 mt-0.5">
-                                    <Calendar className="w-4 h-4 text-green-400" strokeWidth={1.5} />
+                                    <Calendar className="w-4 h-4 text-blue-500" strokeWidth={1.5} />
                                 </span>
                                 <span>Compliance & Regulatory Solutions</span>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="inline-flex items-center justify-center w-4 h-4 mt-0.5">
-                                    <Calendar className="w-4 h-4 text-green-400" strokeWidth={1.5} />
+                                    <Calendar className="w-4 h-4 text-blue-500" strokeWidth={1.5} />
                                 </span>
                                 <span>Staff Management Systems</span>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="inline-flex items-center justify-center w-4 h-4 mt-0.5">
-                                    <Calendar className="w-4 h-4 text-green-400" strokeWidth={1.5} />
+                                    <Calendar className="w-4 h-4 text-blue-500" strokeWidth={1.5} />
                                 </span>
                                 <span>Government Contract Solutions</span>
                             </li>
@@ -73,8 +74,8 @@ export default function FooterContactCTAContactForm() {
                                         <Phone className="w-5 h-5 text-gray-400" aria-hidden="true" />
                                     </span>
                                     <span>
-                                        <a href="tel:301-982-9700" className="hover:text-white">301-982-9700</a> <span className="text-xs text-neutral-400">(Main)</span><br />
-                                        <span className="block">Fax: <a href="tel:301-982-0500" className="hover:text-white">301-982-0500</a></span>
+                                        <span className="block">Main: <a href="tel:+1301-982-9700" className="hover:text-white">+1 (301) 982-9700</a></span><br />
+                                        <span className="block">Fax: <a href="tel:+1301-982-0500" className="hover:text-white">+1 (301) 982-0500</a></span>
                                         <span className="block">Toll Free: <a href="tel:1-888-810-3661" className="hover:text-white">1-888-810-3661</a></span>
                                     </span>
                                 </div>

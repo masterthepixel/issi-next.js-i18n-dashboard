@@ -1,4 +1,3 @@
-import ContactFormWrapper from "@/components/ContactFormWrapper";
 import Spinner from "@/components/Spinner";
 import { Locale } from "@/lib/definitions";
 import { Suspense } from "react";
@@ -16,18 +15,12 @@ export const metadata = {
   twitter: {
     card: "summary",
     title: "Contact ISSI",
-    description: "Contact ISSI for software development and IT solutions.",
-  },
+    description: "Contact ISSI for software development and IT solutions."
+  }
 };
 
-interface Props {
-  params: Promise<{
-    lang: Locale;
-  }>;
-}
-
-export default async function Page({ params }: Props) {
-  const { lang: locale } = await params;
+export default async function Page({ params }: { params: { lang: Locale } }) {
+  const { lang: locale } = params;
   return (
     <Suspense fallback={<Spinner />}>
       <script
@@ -135,15 +128,8 @@ export default async function Page({ params }: Props) {
           })
         }}
       />
-      <PageContent locale={locale} />
+      {/* Contact form removed as requested */}
     </Suspense>
   );
 }
 
-interface PageContentProps {
-  locale: Locale;
-}
-
-async function PageContent({ locale }: PageContentProps) {
-  return <ContactFormWrapper locale={locale} />;
-}

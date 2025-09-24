@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Calendar, Dribbble, Globe, Linkedin, Mail, Youtube } from "lucide-react";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { FormattedMessage } from "react-intl";
 const FooterContactCTAContactForm = dynamic(() => import("./FooterContactCTAContactForm"), { ssr: false });
 
@@ -59,7 +58,7 @@ export default function FooterContactCTA() {
                             </motion.span>
                         ))}
                     </h2>
-                    <div className="mt-8 w-full">
+                    <div className="mt-12 mb-12 w-full">
                         <FooterContactCTAContactForm />
                     </div>
                     <div className="mt-8 w-full flex flex-col md:flex-row items-start gap-y-6 md:gap-y-0 md:gap-x-12">
@@ -115,28 +114,59 @@ export default function FooterContactCTA() {
                         </div>
                     </div>
                     <div className="mt-8 border-t border-white/10"></div>
-                    <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {/* Menu */}
-                        <div>
-                            <p className="text-sm text-white/60 font-geist">
-                                <FormattedMessage id="footer.cta.explore" defaultMessage="Explore" />
-                            </p>
-                            <div className="mt-3 grid grid-cols-2 gap-2 text-sm">
-                                <Link href="#work" className="font-medium tracking-tight hover:underline font-geist">
-                                    <FormattedMessage id="footer.cta.ourWork" defaultMessage="Our Work" />
-                                </Link>
-                                <Link href="#services" className="font-medium tracking-tight hover:underline font-geist">
-                                    <FormattedMessage id="footer.cta.whatWeDo" defaultMessage="What We Do" />
-                                </Link>
-                                <Link href="#pricing" className="font-medium tracking-tight hover:underline font-geist">
-                                    <FormattedMessage id="footer.cta.investment" defaultMessage="Investment" />
-                                </Link>
-                                <Link href="#blog" className="font-medium tracking-tight hover:underline font-geist">
-                                    <FormattedMessage id="footer.cta.insights" defaultMessage="Insights" />
-                                </Link>
+
+                    {/* Our offices block (replaces Explore section) */}
+                    <div className="bg-neutral-950 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.18)] py-16 sm:py-24 rounded-2xl" style={{ backgroundColor: '#18181b' }}>
+                        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+                            <div className="mx-auto max-w-2xl lg:mx-0">
+                                <h2 className="text-pretty text-3xl font-normal tracking-tight text-white sm:text-4xl">Our Offices</h2>
+                                <p className="mt-6 text-base/7 text-gray-400">
+                                    ISSI has a global presence. Contact any of our offices below for business, product, or support inquiries.
+                                </p>
+                            </div>
+                            <div className="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-8 text-base/7 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+                                <div>
+                                    <h3 className="border-l border-indigo-500 pl-6 font-normal text-white">Dallas</h3>
+                                    <address className="border-l border-white/10 pl-6 pt-2 not-italic text-gray-400">
+                                        <p className="text-white">6565 N MacArthur Blvd Suite 225</p>
+                                        <p className="text-white">Irving, TX 75039</p>
+                                        <p className="mt-2 text-sm">Business Development: <a href="tel:301-982-9700" className="hover:text-white text-sm">301-982-9700</a></p>
+                                        <p className="text-sm">Products: <a href="tel:301-982-9700" className="hover:text-white text-sm">301-982-9700</a></p>
+                                        <p className="text-sm">Fax: <a href="tel:301-982-0500" className="hover:text-white text-sm">301-982-0500</a></p>
+                                        <p className="text-sm">Toll Free: <a href="tel:1-888-810-3661" className="hover:text-white text-sm">1-888-810-3661</a></p>
+                                        <p className="text-sm">Email: <a href="mailto:info@issi-software.com" className="hover:text-white text-sm">info@issi-software.com</a></p>
+                                    </address>
+                                </div>
+                                <div>
+                                    <h3 className="border-l border-indigo-500 pl-6 font-normal text-white">Florida</h3>
+                                    <address className="border-l border-white/10 pl-6 pt-2 not-italic text-gray-400">
+                                        <p className="text-white">1301 Riverplace Blvd., Suite# 800</p>
+                                        <p className="text-white">Jacksonville, FL 32207</p>
+                                        <p className="mt-2 text-sm">Phone: <a href="tel:904-416-3100" className="hover:text-white text-sm">904-416-3100</a></p>
+                                        <p className="text-sm">Email: <a href="mailto:info@issi-software.com" className="hover:text-white text-sm">info@issi-software.com</a></p>
+                                    </address>
+                                </div>
+                                <div>
+                                    <h3 className="border-l border-indigo-500 pl-6 font-normal text-white">Hyderabad</h3>
+                                    <address className="border-l border-white/10 pl-6 pt-2 not-italic text-gray-400">
+                                        <p className="text-white">3-6-663/203, L.K.R. Arcade, Street #9</p>
+                                        <p className="text-white">Himayathnagar, Hyderabad - 500 029</p>
+                                        <p className="mt-2 text-sm">Phone: <a href="tel:+91-40-2763-2269" className="hover:text-white text-sm">91-40-2763 2269</a> / <a href="tel:+91-9440501439" className="hover:text-white text-sm">+91 9440501439</a></p>
+                                        <p className="text-sm">Email: <a href="mailto:info@issi-software.com" className="hover:text-white text-sm">info@issi-software.com</a></p>
+                                    </address>
+                                </div>
+                                <div>
+                                    <h3 className="border-l border-indigo-500 pl-6 font-normal text-white">Visakhapatnam</h3>
+                                    <address className="border-l border-white/10 pl-6 pt-2 not-italic text-gray-400">
+                                        <p className="text-white">SriRama Nilayam, Door No.5-175/1A</p>
+                                        <p className="text-white">Opposite to Sanskriti School, Endada</p>
+                                        <p className="text-white">Visakhapatnam- 530 045</p>
+                                        <p className="mt-2 text-sm">Phone: <a href="tel:+91-40-2763-2269" className="hover:text-white text-sm">+91-40-2763 2269</a> / <a href="tel:+91-9440501439" className="hover:text-white text-sm">+91 9440501439</a></p>
+                                        <p className="text-sm">Email: <a href="mailto:info@issi-software.com" className="hover:text-white text-sm">info@issi-software.com</a></p>
+                                    </address>
+                                </div>
                             </div>
                         </div>
-
                     </div>
 
                 </div>
