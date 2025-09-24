@@ -146,8 +146,8 @@ export default function NewBottomActionBar() {
                 <Image
                     src="/images/issi_logo.png"
                     alt="ISSI"
-                    width={20}
-                    height={20}
+                    width={40}
+                    height={40}
                     className="rounded-sm"
                 />
             );
@@ -277,10 +277,10 @@ export default function NewBottomActionBar() {
                                                         <motion.button
                                                             className={cn(
                                                                 "relative flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-200",
-                                                                "bg-background/60 backdrop-blur-sm border border-border/50",
-                                                                "hover:bg-background/80 hover:border-border hover:shadow-md",
+                                                                "bg-background/60 backdrop-blur-sm",
+                                                                "hover:bg-background/80 hover:shadow-md",
                                                                 "focus:outline-none focus:ring-2 focus:ring-ring",
-                                                                isActive ? "bg-background/90 border-border shadow-md" : ""
+                                                                isActive ? "bg-background/90 shadow-md" : ""
                                                             )}
                                                             onClick={() => setSelectedIndex(idx)}
                                                             whileHover={{ scale: 1.1 }}
@@ -345,10 +345,10 @@ export default function NewBottomActionBar() {
                                             <motion.button
                                                 className={cn(
                                                     "relative flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-200",
-                                                    "bg-background/60 backdrop-blur-sm border border-border/50",
-                                                    "hover:bg-background/80 hover:border-border hover:shadow-md",
+                                                    "bg-background/60 backdrop-blur-sm",
+                                                    "hover:bg-background/80 hover:shadow-md",
                                                     "focus:outline-none focus:ring-2 focus:ring-ring",
-                                                    isMenuOpen ? "bg-background/90 border-border shadow-md" : ""
+                                                    isMenuOpen ? "bg-background/90 shadow-md" : ""
                                                 )}
                                                 onClick={() => {
                                                     setIsMenuOpen(!isMenuOpen);
@@ -394,7 +394,7 @@ export default function NewBottomActionBar() {
                                         <TooltipTrigger asChild>
                                             <motion.a
                                                 href="#top"
-                                                className="relative flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-200 bg-background/60 backdrop-blur-sm border border-border/50 hover:bg-background/80 hover:border-border hover:shadow-md focus:outline-none focus:ring-2 focus:ring-ring"
+                                                className="relative flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-200 bg-background/60 backdrop-blur-sm hover:bg-background/80 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-ring"
                                                 whileHover={{ scale: 1.1 }}
                                                 whileTap={{ scale: 0.95 }}
                                             >
