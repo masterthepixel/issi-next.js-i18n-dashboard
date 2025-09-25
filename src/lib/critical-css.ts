@@ -1,27 +1,10 @@
-import Beasties from 'beasties';
-
 /**
  * Critical CSS extraction utility for performance optimization
  * Extracts critical CSS for above-the-fold content and defers non-critical CSS
  */
 
 export class CriticalCssOptimizer {
-  private beasties: Beasties;
   private criticalCssCache = new Map<string, string>();
-
-  constructor() {
-    this.beasties = new Beasties({
-      // Extract CSS for above-the-fold content (first 1400px height)
-      inlineFonts: true,
-      preloadFonts: true,
-      // Reduce CSS by removing unused styles
-      pruneSource: true,
-      // Compress the final CSS
-      compress: true,
-      // Log optimization results
-      logLevel: 'info',
-    });
-  }
 
   /**
    * Extract critical CSS for a specific route/component
