@@ -3,6 +3,9 @@
 import { motion } from "motion/react";
 import { FormattedMessage } from "react-intl";
 import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
+import { useState, useEffect } from "react";
+import { SkeletonWrapper } from "./ui/skeleton-wrapper";
+import { GovernmentClientsSkeleton } from "./ui/skeleton-components";
 
 // Updated to include icons - transformed for InfiniteMovingCards format
 const clients = [
@@ -233,78 +236,93 @@ function splitIntoRows(items: typeof clients, rowCount: number) {
 }
 
 export default function GovernmentClients() {
+  const [isLoading, setIsLoading] = useState(true);
   const clientRows = splitIntoRows(clients, 3);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000); // 1 second loading time
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <motion.section
-      className="py-16 sm:py-24"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
+    <SkeletonWrapper
+      isLoading={isLoading}
+      skeleton={<GovernmentClientsSkeleton />}
+      skeletonDelay={100}
     >
-      <div className="mx-auto max-w-7xl px-4">
-        <div className="text-left mb-8">
-          <motion.h2
-            className="text-foreground sm:text-6xl font-serif font-[400] text-4xl tracking-tight"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <FormattedMessage
-              id="government.clients.title"
-              defaultMessage="Our Government Clients & Partners"
-            />
-          </motion.h2>
-          <motion.p
-            className="mt-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <FormattedMessage
-              id="government.clients.subtitle"
-              defaultMessage="Trusted by federal, state, and local government agencies for mission-critical technology solutions."
-            />
-          </motion.p>
-        </div>
-
-        <motion.div
-          className="mx-auto mt-8 max-w-7xl"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <div className="space-y-2 py-2">
-            <InfiniteMovingCards
-              items={clientRows[0]}
-              direction="right"
-              speed="fast"
-              pauseOnHover={true}
-              className="patriotic-cards-blue"
-            />
-
-            <InfiniteMovingCards
-              items={clientRows[1]}
-              direction="left"
-              speed="fast"
-              pauseOnHover={true}
-              className="patriotic-cards-white"
-            />
-
-            <InfiniteMovingCards
-              items={clientRows[2]}
-              direction="right"
-              speed="fast"
-              pauseOnHover={true}
-              className="patriotic-cards-red"
-            />
+      <motion.section
+        className="py-16 sm:py-24"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="text-left mb-8">
+            <motion.h2
+              className="text-foreground sm:text-6xl font-serif font-[400] text-4xl tracking-tight"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <FormattedMessage
+                id="government.clients.title"
+                defaultMessage="Our Government Clients & Partners"
+              />
+            </motion.h2>
+            <motion.p
+              className="mt-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <FormattedMessage
+                id="government.clients.subtitle"
+                defaultMessage="Trusted by federal, state, and local government agencies for mission-critical technology solutions."
+              />
+            </motion.p>
           </div>
-        </motion.div>
-      </div>
-    </motion.section>
+
+          <motion.div
+            className="mx-auto mt-8 max-w-7xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <div className="space-y-2 py-2">
+              <InfiniteMovingCards
+                items={clientRows[0]}
+                direction="right"
+                speed="fast"
+                pauseOnHover={true}
+                className="patriotic-cards-blue"
+              />
+
+              <InfiniteMovingCards
+                items={clientRows[1]}
+                direction="left"
+                speed="fast"
+                pauseOnHover={true}
+                className="patriotic-cards-white"
+              />
+
+              <InfiniteMovingCards
+                items={clientRows[2]}
+                direction="right"
+                speed="fast"  
+                pauseOnHover={true}
+                className="patriotic-cards-red"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </motion.section>
+    </SkeletonWrapper>
   );
 }

@@ -3,10 +3,23 @@
 import { InfiniteSlider } from "@/components/motion-primitives/infinite-slider";
 import { ProgressiveBlur } from "@/components/motion-primitives/progressive-blur";
 import { Card } from "@/components/ui/apple-cards-carousel";
+import { AppleCardsCarouselSkeleton } from "@/components/ui/skeleton-components";
+import { SkeletonWrapper } from "@/components/ui/skeleton-wrapper";
+import { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 
 const ISSIAppleCardsCarousel = () => {
     const intl = useIntl();
+    const [isLoading, setIsLoading] = useState(true);
+
+    // Simulate component initialization and image loading
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 1200); // Adjusted for carousel with multiple images
+
+        return () => clearTimeout(timer);
+    }, []);
 
     const cards = [
         {
@@ -64,31 +77,37 @@ const ISSIAppleCardsCarousel = () => {
     ));
 
     return (
-        <div className="w-full h-full py-8">
-            <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-serif font-normal text-foreground mb-4">
-                {intl.formatMessage({ id: "carousel.title" })}
-            </h2>
-            <div className="relative w-full overflow-hidden">
-                <InfiniteSlider
-                    gap={24}
-                    speed={50}
-                    speedOnHover={10}
-                    className="w-full"
-                >
-                    {items}
-                </InfiniteSlider>
-                <ProgressiveBlur
-                    className="pointer-events-none absolute top-0 left-0 h-full w-[200px]"
-                    direction="left"
-                    blurIntensity={1}
-                />
-                <ProgressiveBlur
-                    className="pointer-events-none absolute top-0 right-0 h-full w-[200px]"
-                    direction="right"
-                    blurIntensity={1}
-                />
+        <SkeletonWrapper
+            isLoading={isLoading}
+            skeleton={<AppleCardsCarouselSkeleton />}
+            loadingDelay={150} // Slightly longer delay for carousel with images
+        >
+            <div className="w-full h-full py-8">
+                <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-serif font-normal text-foreground mb-4">
+                    {intl.formatMessage({ id: "carousel.title" })}
+                </h2>
+                <div className="relative w-full overflow-hidden">
+                    <InfiniteSlider
+                        gap={24}
+                        speed={50}
+                        speedOnHover={10}
+                        className="w-full"
+                    >
+                        {items}
+                    </InfiniteSlider>
+                    <ProgressiveBlur
+                        className="pointer-events-none absolute top-0 left-0 h-full w-[200px]"
+                        direction="left"
+                        blurIntensity={1}
+                    />
+                    <ProgressiveBlur
+                        className="pointer-events-none absolute top-0 right-0 h-full w-[200px]"
+                        direction="right"
+                        blurIntensity={1}
+                    />
+                </div>
             </div>
-        </div>
+        </SkeletonWrapper>
     );
 };
 

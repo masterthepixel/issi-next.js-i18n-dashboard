@@ -200,20 +200,28 @@ export const BlurImage = ({
   ...rest
 }: ImageProps) => {
   const [isLoading, setLoading] = useState(true);
+
   return (
-    <Image
-      className={cn(
-        "h-full w-full transition duration-300",
-        isLoading ? "blur-sm" : "blur-0",
-        className,
+    <>
+      {/* Skeleton background while loading */}
+      {isLoading && (
+        <div className="absolute inset-0 bg-gradient-to-br from-muted-foreground/10 to-muted-foreground/20 animate-pulse z-5" />
       )}
-      onLoad={() => setLoading(false)}
-      src={src as string}
-      width={width}
-      height={height}
-      loading="lazy"
-      alt={alt ? alt : "Background of a beautiful view"}
-      {...rest}
-    />
+
+      <Image
+        className={cn(
+          "h-full w-full transition-all duration-500",
+          isLoading ? "blur-sm opacity-0" : "blur-0 opacity-100",
+          className,
+        )}
+        onLoad={() => setLoading(false)}
+        src={src as string}
+        width={width}
+        height={height}
+        loading="lazy"
+        alt={alt ? alt : "Background of a beautiful view"}
+        {...rest}
+      />
+    </>
   );
 };

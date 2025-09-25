@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
-import { Loader } from './shadcn-io/ai/loader';
 import type { HTMLAttributes } from 'react';
+import { Loader } from './shadcn-io/ai/loader';
 
 export type UniversalLoaderProps = HTMLAttributes<HTMLDivElement> & {
   size?: 'sm' | 'md' | 'lg' | 'xl';
@@ -17,14 +17,14 @@ const sizeConfig = {
   xl: { spinner: 40, container: 'h-64 w-64' },
 };
 
-export const UniversalLoader = ({ 
-  className, 
+export const UniversalLoader = ({
+  className,
   size = 'md',
   variant = 'default',
   message,
   description,
   showSpinner = true,
-  ...props 
+  ...props
 }: UniversalLoaderProps) => {
   const config = sizeConfig[size];
 
@@ -43,27 +43,27 @@ export const UniversalLoader = ({
 
   const getGlobeAnimation = () => {
     if (variant !== 'globe') return null;
-    
+
     return (
       <div className="absolute inset-0 rounded-full">
         {/* Outer ring */}
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 animate-pulse"></div>
-        
+
         {/* Middle ring */}
-        <div 
-          className="absolute inset-2 rounded-full bg-gradient-to-br from-primary/30 to-secondary/30 animate-spin" 
+        <div
+          className="absolute inset-2 rounded-full bg-gradient-to-br from-primary/30 to-secondary/30 animate-spin"
           style={{ animationDuration: '20s' }}
         ></div>
-        
+
         {/* Inner ring */}
-        <div 
-          className="absolute inset-4 rounded-full bg-gradient-to-tr from-primary/40 to-secondary/40 animate-ping" 
+        <div
+          className="absolute inset-4 rounded-full bg-gradient-to-tr from-primary/40 to-secondary/40 animate-ping"
           style={{ animationDuration: '3s' }}
         ></div>
 
         {/* Globe emoji center */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-2xl animate-bounce" style={{ animationDuration: '2s' }}>
+          <div className="text-5xl animate-bounce" style={{ animationDuration: '2s' }}>
             🌍
           </div>
         </div>
@@ -83,10 +83,10 @@ export const UniversalLoader = ({
     >
       <div className="relative flex items-center justify-center">
         {variant === 'globe' && getGlobeAnimation()}
-        
+
         {showSpinner && variant !== 'globe' && (
-          <Loader 
-            size={config.spinner} 
+          <Loader
+            size={config.spinner}
             className="text-primary"
           />
         )}
@@ -110,43 +110,41 @@ export const UniversalLoader = ({
 
 // Preset configurations for common use cases
 export const GlobeLoader = ({ className, ...props }: Omit<UniversalLoaderProps, 'variant'>) => (
-  <UniversalLoader 
-    variant="globe" 
+  <UniversalLoader
+    variant="globe"
     size="lg"
-    message="Loading Globe..."
-    description="Preparing 3D visualization"
     showSpinner={false}
     className={className}
-    {...props} 
+    {...props}
   />
 );
 
 export const ComponentLoader = ({ className, message = "Loading...", ...props }: Omit<UniversalLoaderProps, 'variant'>) => (
-  <UniversalLoader 
-    variant="default" 
+  <UniversalLoader
+    variant="default"
     size="md"
     message={message}
     className={className}
-    {...props} 
+    {...props}
   />
 );
 
 export const CardLoader = ({ className, ...props }: Omit<UniversalLoaderProps, 'variant'>) => (
-  <UniversalLoader 
-    variant="card" 
+  <UniversalLoader
+    variant="card"
     size="sm"
     message="Loading content..."
     className={className}
-    {...props} 
+    {...props}
   />
 );
 
 export const MinimalLoader = ({ className, size = 'sm', ...props }: Omit<UniversalLoaderProps, 'variant'>) => (
-  <UniversalLoader 
-    variant="minimal" 
+  <UniversalLoader
+    variant="minimal"
     size={size}
     showSpinner={true}
     className={className}
-    {...props} 
+    {...props}
   />
 );
