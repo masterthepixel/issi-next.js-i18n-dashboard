@@ -63,13 +63,19 @@ export default function ELearningAceternityHero() {
                     }}
                     className="relative z-10 mt-8 flex flex-wrap items-start justify-start gap-4"
                 >
-                    <button className="w-60 transform rounded-lg bg-blue-600 px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700">
+                    <button 
+                        className="w-60 transform rounded-lg bg-blue-600 px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700"
+                        aria-label="Get started with e-learning solutions"
+                    >
                         <FormattedMessage
                             id="page.eLearning.cta.primary"
                             defaultMessage="Get Started Today"
                         />
                     </button>
-                    <button className="w-60 transform rounded-lg border border-border bg-background px-6 py-2 font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-muted">
+                    <button 
+                        className="w-60 transform rounded-lg border border-border bg-background px-6 py-2 font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-muted"
+                        aria-label="Schedule a consultation for e-learning services"
+                    >
                         <FormattedMessage
                             id="page.eLearning.cta.secondary"
                             defaultMessage="Schedule Consultation"

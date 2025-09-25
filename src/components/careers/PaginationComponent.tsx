@@ -70,7 +70,7 @@ export function PaginationComponent({
   const visiblePages = getVisiblePages();
 
   return (
-    <div className="flex items-center justify-center space-x-2">
+    <nav aria-label="Pagination navigation" className="flex items-center justify-center space-x-2">
       <Button
         variant="outline"
         size="sm"
@@ -92,6 +92,7 @@ export function PaginationComponent({
                 size="sm"
                 disabled
                 className="w-9 h-9"
+                aria-label="More pages"
               >
                 <MoreHorizontal className="h-4 w-4" />
               </Button>
@@ -105,6 +106,8 @@ export function PaginationComponent({
               size="sm"
               onClick={() => handlePageChange(page)}
               className="w-9 h-9"
+              aria-label={currentPage === page ? `Current page ${page}` : `Go to page ${page}`}
+              aria-current={currentPage === page ? "page" : undefined}
             >
               {page}
             </Button>
@@ -122,6 +125,6 @@ export function PaginationComponent({
         {intl.formatMessage({ id: "pagination.next", defaultMessage: "Next" })}
         <ChevronRight className="h-4 w-4" />
       </Button>
-    </div>
+    </nav>
   );
 }

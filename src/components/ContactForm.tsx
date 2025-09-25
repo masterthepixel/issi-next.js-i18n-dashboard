@@ -92,7 +92,7 @@ export default function ContactForm({ locale, messages }: ContactFormProps) {
                                     id="first-name"
                                     {...register("firstName")}
                                     autoComplete="given-name"
-                                    className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-indigo-500"
+                                    className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-600 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-400 dark:focus:outline-indigo-500"
                                     aria-invalid={!!errors.firstName}
                                 />
                                 {errors.firstName && <p className="text-destructive text-sm mt-1">{errors.firstName.message}</p>}
@@ -108,7 +108,7 @@ export default function ContactForm({ locale, messages }: ContactFormProps) {
                                     id="last-name"
                                     {...register("lastName")}
                                     autoComplete="family-name"
-                                    className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-indigo-500"
+                                    className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-600 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-400 dark:focus:outline-indigo-500"
                                     aria-invalid={!!errors.lastName}
                                 />
                                 {errors.lastName && <p className="text-destructive text-sm mt-1">{errors.lastName.message}</p>}
@@ -125,7 +125,7 @@ export default function ContactForm({ locale, messages }: ContactFormProps) {
                                     type="email"
                                     {...register("email")}
                                     autoComplete="email"
-                                    className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-indigo-500"
+                                    className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-600 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-400 dark:focus:outline-indigo-500"
                                     aria-invalid={!!errors.email}
                                 />
                                 {errors.email && <p className="text-destructive text-sm mt-1">{errors.email.message}</p>}
@@ -141,7 +141,7 @@ export default function ContactForm({ locale, messages }: ContactFormProps) {
                                     id="message"
                                     rows={4}
                                     {...register("message")}
-                                    className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-indigo-500"
+                                    className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-600 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-400 dark:focus:outline-indigo-500"
                                     aria-invalid={!!errors.message}
                                 />
                                 {errors.message && <p className="text-destructive text-sm mt-1">{errors.message.message}</p>}
