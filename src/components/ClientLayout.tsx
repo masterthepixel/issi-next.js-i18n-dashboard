@@ -21,6 +21,7 @@ const ScrollToTopButton = lazy(() => import("@/components/ScrollToTopButton"));
 
 import { Locale } from "@/lib/definitions";
 import { swManager } from "@/lib/service-worker";
+import { performanceMonitor } from "@/lib/performance-monitor";
 import { MessageFormatElement } from "react-intl";
 
 interface Props {
@@ -43,7 +44,13 @@ export default function ClientLayout({ lang, messages, intlMessages, children }:
       // Could show a toast notification here
     });
 
-    return unsubscribe;
+    // Performance monitoring is automatically initialized
+    // Track page view
+    performanceMonitor.trackEvent('Page View', 0);
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   // Check if we're on homepage (including /home routes)
