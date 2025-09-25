@@ -1,15 +1,17 @@
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 
-import ContactInfo from "@/components/ContactInfo";
-import ContactSalesForm from "@/components/ContactSalesForm";
 import ErrorBoundary from "@/components/ErrorBoundary";
-import ISSIServicesMapWrapper from "@/components/ISSIServicesMapWrapper";
-import ISSIServicesShowcaseWrapper from "@/components/ISSIServicesShowcaseWrapper";
 import Spinner from "@/components/Spinner";
 
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
 import { metadataBase } from "@/lib/metadata";
+
+// Dynamic imports for heavy components to reduce initial bundle size
+const ContactInfo = lazy(() => import("@/components/ContactInfo"));
+const ContactSalesForm = lazy(() => import("@/components/ContactSalesForm"));
+const ISSIServicesMapWrapper = lazy(() => import("@/components/ISSIServicesMapWrapper"));
+const ISSIServicesShowcaseWrapper = lazy(() => import("@/components/ISSIServicesShowcaseWrapper"));
 
 export const metadata = {
   metadataBase,
@@ -45,15 +47,24 @@ async function PageContent({ locale }: PageContentProps) {
   return (
     <div>
       {/* Services Showcase - Bento Grid Layout */}
-      <ISSIServicesShowcaseWrapper locale={locale} messages={messages} />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+        <ISSIServicesShowcaseWrapper locale={locale} messages={messages} />
+      </Suspense>
 
       {/* Services Map with US coverage */}
-      <ISSIServicesMapWrapper locale={locale} messages={messages} />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+        <ISSIServicesMapWrapper locale={locale} messages={messages} />
+      </Suspense>
+
       {/* Contact Form */}
-      <ContactSalesForm locale={locale} messages={messages} />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+        <ContactSalesForm locale={locale} messages={messages} />
+      </Suspense>
 
       {/* Contact Information */}
-      <ContactInfo locale={locale} messages={messages} />
+      <Suspense fallback={<div className="h-32 flex items-center justify-center"><Spinner /></div>}>
+        <ContactInfo locale={locale} messages={messages} />
+      </Suspense>
     </div>
   );
 }

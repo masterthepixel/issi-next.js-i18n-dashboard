@@ -81,39 +81,62 @@ const nextConfig = {
       config.optimization.splitChunks = {
         ...config.optimization.splitChunks,
         chunks: 'all',
+        maxInitialRequests: 25,
+        maxAsyncRequests: 30,
         cacheGroups: {
           ...config.optimization.splitChunks.cacheGroups,
-          // Separate vendor libraries to reduce main bundle size
+          // Framework chunk - React and Next.js core
+          framework: {
+            name: 'framework',
+            test: /[\\/]node_modules[\\/](react|react-dom|next|@next)[\\/]/,
+            chunks: 'all',
+            priority: 40,
+            enforce: true,
+          },
+          // Large vendor libraries - split aggressively
           vendor: {
             name: 'vendor',
             test: /[\\/]node_modules[\\/]/,
             chunks: 'all',
             priority: 10,
-            maxSize: 200000, // Split large vendor bundles
+            maxSize: 300000, // Increased from 200kB
+            minSize: 100000,
           },
-          // Separate 3D libraries
-          three: {
-            name: 'three',
-            test: /[\\/]node_modules[\\/](cobe)[\\/]/,
-            chunks: 'all',
-            priority: 20,
-            maxSize: 150000,
-          },
-          // Separate UI libraries
+          // UI component libraries
           ui: {
             name: 'ui',
-            test: /[\\/]node_modules[\\/](lucide-react|@heroicons|@headlessui|@radix-ui)[\\/]/,
+            test: /[\\/]node_modules[\\/](lucide-react|@heroicons|@headlessui|@radix-ui|framer-motion|tailwindcss)[\\/]/,
             chunks: 'all',
-            priority: 15,
-            maxSize: 100000,
+            priority: 20,
+            maxSize: 200000, // Increased from 100kB
+            minSize: 50000,
           },
-          // Separate i18n libraries
+          // Internationalization libraries
           i18n: {
             name: 'i18n',
-            test: /[\\/]node_modules[\\/](react-intl|@formatjs)[\\/]/,
+            test: /[\\/]node_modules[\\/](react-intl|@formatjs|next-intl)[\\/]/,
+            chunks: 'all',
+            priority: 15,
+            maxSize: 150000, // Increased from 80kB
+            minSize: 30000,
+          },
+          // Data handling libraries
+          data: {
+            name: 'data',
+            test: /[\\/]node_modules[\\/](@tanstack|@apollo|graphql|axios|swr)[\\/]/,
             chunks: 'all',
             priority: 12,
+            maxSize: 100000,
+            minSize: 20000,
+          },
+          // Utility libraries
+          utils: {
+            name: 'utils',
+            test: /[\\/]node_modules[\\/](lodash|date-fns|clsx|cn|class-variance-authority)[\\/]/,
+            chunks: 'all',
+            priority: 8,
             maxSize: 80000,
+            minSize: 15000,
           },
         },
       };
@@ -121,6 +144,9 @@ const nextConfig = {
       // Additional optimizations to reduce main thread blocking
       config.optimization.minimize = true;
       config.optimization.sideEffects = false;
+      // Enable more aggressive tree shaking
+      config.optimization.usedExports = true;
+      config.optimization.innerGraph = true;
     }
 
     return config;
@@ -147,7 +173,7 @@ const nextConfig = {
       'react-intl',
       '@formatjs/icu-messageformat-parser',
     ],
-    // Enable new optimizations (disabled optimizeCss due to critters dependency)
+    // Enable new optimizations (critical CSS handled manually)
     gzipSize: true,
     // Reduce JavaScript bundle size
     esmExternals: true,

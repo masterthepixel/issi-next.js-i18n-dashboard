@@ -2,6 +2,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "motion/react";
+import Image from "next/image";
 import { FormattedMessage } from "react-intl";
 
 const awards = [
@@ -80,12 +81,14 @@ export default function AboutAwards() {
               role="listitem"
             >
               <CardContent className="flex items-center justify-center p-8">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   alt={award.alt}
                   src={award.imageUrl}
+                  width={200}
+                  height={48}
                   className="max-h-12 w-full object-contain transition-transform duration-300 group-hover:scale-105 dark:brightness-0 dark:invert"
                   loading="lazy"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 200px"
                   title={award.name}
                 />
               </CardContent>

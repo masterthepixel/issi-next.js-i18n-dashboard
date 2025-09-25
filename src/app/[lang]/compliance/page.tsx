@@ -1,15 +1,17 @@
 import { Metadata } from "next";
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 
-import AboutAwardsWrapper from "@/components/AboutAwardsWrapper";
-import AboutPartnerNetworkWrapper from "@/components/AboutPartnerNetworkWrapper";
-import ComplianceCertificationsWrapper from "@/components/ComplianceCertificationsWrapper";
-import ComplianceIndustryCertificationsWrapper from "@/components/ComplianceIndustryCertificationsWrapper";
-import ComplianceStatsWrapper from "@/components/ComplianceStatsWrapper";
 import Spinner from "@/components/Spinner";
 
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
+
+// Dynamic imports for heavy components to reduce initial bundle size
+const AboutAwardsWrapper = lazy(() => import("@/components/AboutAwardsWrapper"));
+const AboutPartnerNetworkWrapper = lazy(() => import("@/components/AboutPartnerNetworkWrapper"));
+const ComplianceCertificationsWrapper = lazy(() => import("@/components/ComplianceCertificationsWrapper"));
+const ComplianceIndustryCertificationsWrapper = lazy(() => import("@/components/ComplianceIndustryCertificationsWrapper"));
+const ComplianceStatsWrapper = lazy(() => import("@/components/ComplianceStatsWrapper"));
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -148,20 +150,32 @@ async function PageContent({ locale }: PageContentProps) {
       />
 
       {/* ComplianceCertifications component - modern bento grid layout */}
-      <ComplianceCertificationsWrapper
-        locale={locale}
-        messages={intl.messages}
-      />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+        <ComplianceCertificationsWrapper
+          locale={locale}
+          messages={intl.messages}
+        />
+      </Suspense>
 
       {/* Stats section */}
-      <ComplianceStatsWrapper locale={locale} messages={messages} />        {/* Partner Network / Logo Clouds section */}
-      <AboutPartnerNetworkWrapper locale={locale} messages={messages} />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+        <ComplianceStatsWrapper locale={locale} messages={messages} />
+      </Suspense>
+
+      {/* Partner Network / Logo Clouds section */}
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+        <AboutPartnerNetworkWrapper locale={locale} messages={messages} />
+      </Suspense>
 
       {/* Industry Certifications section */}
-      <ComplianceIndustryCertificationsWrapper locale={locale} messages={messages} />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+        <ComplianceIndustryCertificationsWrapper locale={locale} messages={messages} />
+      </Suspense>
 
       {/* Awards section - last section before footer */}
-      <AboutAwardsWrapper locale={locale} messages={messages} />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+        <AboutAwardsWrapper locale={locale} messages={messages} />
+      </Suspense>
     </main>
   );
 }

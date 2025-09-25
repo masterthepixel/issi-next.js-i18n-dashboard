@@ -2,6 +2,7 @@
   "name": "nextjs-i18n-dashboard-template",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "node -e \"if (require('fs').existsSync('./scripts/validate-json.js')) { require('./scripts/validate-json.js') } else { console.log('JSON validation skipped - script not found') }\" && next build",
@@ -37,6 +38,7 @@
     "setup:large-collection": "node scripts/largeCollectionProcessor.js",
     "organize:icons": "node scripts/organizeExportedIcons.js",
     "import:local-icons": "npm run process:local-figma && npm run convert:svg-to-react",
+    "convert:images:webp": "node convert-images-to-webp.js",
     "prepare": "node -e \"if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL && !process.env.CI) { try { require('husky').install() } catch (e) { console.log('Husky setup skipped in production/CI environment') } }\""
   },
   "dependencies": {

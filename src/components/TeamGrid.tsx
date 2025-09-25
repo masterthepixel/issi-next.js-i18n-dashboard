@@ -1,4 +1,6 @@
 import { motion } from "motion/react";
+import Image from "next/image";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 import {
@@ -7,11 +9,50 @@ import {
   MorphingDialogContainer,
   MorphingDialogContent,
   MorphingDialogDescription,
-  MorphingDialogImage,
   MorphingDialogSubtitle,
   MorphingDialogTitle,
-  MorphingDialogTrigger,
+  MorphingDialogTrigger
 } from "@/components/motion-primitives/morphing-dialog";
+
+// Fallback image component with error handling
+function TeamMemberImage({ src, alt, className, priority = false }: {
+  src: string;
+  alt: string;
+  className?: string;
+  priority?: boolean;
+}) {
+  const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  if (hasError) {
+    // Fallback to a placeholder or default avatar
+    return (
+      <div className={`${className} bg-muted flex items-center justify-center`}>
+        <div className="text-muted-foreground text-4xl font-semibold">
+          {alt.charAt(0).toUpperCase()}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative">
+      {isLoading && (
+        <div className={`${className} bg-muted animate-pulse`} />
+      )}
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className={`${className} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+        onError={() => setHasError(true)}
+        onLoad={() => setIsLoading(false)}
+        priority={priority}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      />
+    </div>
+  );
+}
 
 const people = [
   { id: 1, imageUrl: "/images/1.jpg" },
@@ -71,11 +112,14 @@ export default function TeamGrid() {
               >
                 <MorphingDialogTrigger>
                   <li className="cursor-pointer">
-                    <MorphingDialogImage
-                      src={person.imageUrl}
-                      alt={`Photo of team member`}
-                      className="aspect-[14/13] w-full rounded-2xl object-cover outline outline-1 -outline-offset-1 outline-border"
-                    />
+                    <div className="aspect-[14/13] w-full rounded-2xl overflow-hidden outline outline-1 -outline-offset-1 outline-border">
+                      <TeamMemberImage
+                        src={person.imageUrl}
+                        alt={`Photo of team member ${person.id}`}
+                        className="object-cover"
+                        priority={person.id <= 2} // Prioritize first 2 images for LCP
+                      />
+                    </div>
                     <MorphingDialogTitle className="mt-6 text-lg/8 font-serif font-normal tracking-tight text-foreground text-[1.4em] text-left">
                       <FormattedMessage id={nameId} />
                     </MorphingDialogTitle>
@@ -91,11 +135,13 @@ export default function TeamGrid() {
                     }}
                     className='pointer-events-auto relative flex h-auto w-full flex-col overflow-hidden border border-border bg-background sm:w-[500px]'
                   >
-                    <MorphingDialogImage
-                      src={person.imageUrl}
-                      alt={`Photo of team member`}
-                      className='h-full w-full'
-                    />
+                    <div className='aspect-[4/3] w-full relative'>
+                      <TeamMemberImage
+                        src={person.imageUrl}
+                        alt={`Photo of team member ${person.id}`}
+                        className="object-cover"
+                      />
+                    </div>
                     <div className='p-6'>
                       <MorphingDialogTitle className="text-2xl font-serif font-normal tracking-tight text-foreground text-[2.5rem]">
                         <FormattedMessage id={nameId} />

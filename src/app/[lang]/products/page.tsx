@@ -1,18 +1,20 @@
 import { Metadata } from "next";
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 
-import ProductsBentoGridWrapper from "@/components/ProductsBentoGridWrapper";
 import Spinner from "@/components/Spinner";
 
 import { Locale } from "@/lib/definitions";
 
+// Dynamic imports for heavy components to reduce initial bundle size
+const ProductsBentoGridWrapper = lazy(() => import("@/components/ProductsBentoGridWrapper"));
+
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params;
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://issi.com';
-  
+
   // Import messages for dynamic metadata
   const messages = (await import(`../../../lang/${lang}.json`)).default;
-  
+
   const seoData = {
     en: {
       title: messages['page.products.meta.title'] || "Products & Software Solutions | Enterprise IT Services | ISSI",
@@ -103,7 +105,7 @@ interface PageContentProps {
 async function PageContent({ locale }: PageContentProps) {
   const messages = (await import(`../../../lang/${locale}.json`)).default;
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://issi.com';
-  
+
   // Structured data for products/services catalog
   const structuredData = {
     "@context": "https://schema.org",
@@ -112,12 +114,12 @@ async function PageContent({ locale }: PageContentProps) {
         "@type": "WebPage",
         "@id": `${baseUrl}/${locale}/products#webpage`,
         "url": `${baseUrl}/${locale}/products`,
-        "name": locale === 'en' ? "Products & Software Solutions | Enterprise IT Services | ISSI" : 
-               locale === 'fr' ? "Produits et Solutions Logicielles | Services IT d'Entreprise | ISSI" :
-               "Productos y Soluciones de Software | Servicios IT Empresariales | ISSI",
+        "name": locale === 'en' ? "Products & Software Solutions | Enterprise IT Services | ISSI" :
+          locale === 'fr' ? "Produits et Solutions Logicielles | Services IT d'Entreprise | ISSI" :
+            "Productos y Soluciones de Software | Servicios IT Empresariales | ISSI",
         "description": locale === 'en' ? "Explore ISSI's comprehensive suite of 40+ enterprise software products including grant management, HR solutions, project management, and government IT systems. 30+ years experience." :
-                      locale === 'fr' ? "Découvrez la suite complète de 40+ produits logiciels d'entreprise d'ISSI incluant gestion de subventions, solutions RH, gestion de projets et systèmes IT gouvernementaux." :
-                      "Explore la suite completa de 40+ productos de software empresarial de ISSI incluyendo gestión de subvenciones, soluciones de RRHH, gestión de proyectos y sistemas IT gubernamentales.",
+          locale === 'fr' ? "Découvrez la suite complète de 40+ produits logiciels d'entreprise d'ISSI incluant gestion de subventions, solutions RH, gestion de projets et systèmes IT gouvernementaux." :
+            "Explore la suite completa de 40+ productos de software empresarial de ISSI incluyendo gestión de subvenciones, soluciones de RRHH, gestión de proyectos y sistemas IT gubernamentales.",
         "isPartOf": {
           "@type": "WebSite",
           "@id": `${baseUrl}#website`
@@ -157,12 +159,12 @@ async function PageContent({ locale }: PageContentProps) {
       {
         "@type": "ItemList",
         "@id": `${baseUrl}/${locale}/products#servicelist`,
-        "name": locale === 'en' ? "ISSI Software Products & Solutions" : 
-               locale === 'fr' ? "Produits et Solutions Logicielles ISSI" :
-               "Productos y Soluciones de Software ISSI",
+        "name": locale === 'en' ? "ISSI Software Products & Solutions" :
+          locale === 'fr' ? "Produits et Solutions Logicielles ISSI" :
+            "Productos y Soluciones de Software ISSI",
         "description": locale === 'en' ? "Comprehensive enterprise software solutions for government and business" :
-                      locale === 'fr' ? "Solutions logicielles d'entreprise complètes pour le gouvernement et les entreprises" :
-                      "Soluciones de software empresarial integrales para gobierno y empresas",
+          locale === 'fr' ? "Solutions logicielles d'entreprise complètes pour le gouvernement et les entreprises" :
+            "Soluciones de software empresarial integrales para gobierno y empresas",
         "itemListElement": [
           {
             "@type": "Service",
@@ -205,33 +207,33 @@ async function PageContent({ locale }: PageContentProps) {
         "mainEntity": [
           {
             "@type": "Question",
-            "name": locale === 'en' ? "How many software products does ISSI offer?" : 
-                   locale === 'fr' ? "Combien de produits logiciels ISSI offre-t-il?" :
-                   "¿Cuántos productos de software ofrece ISSI?",
+            "name": locale === 'en' ? "How many software products does ISSI offer?" :
+              locale === 'fr' ? "Combien de produits logiciels ISSI offre-t-il?" :
+                "¿Cuántos productos de software ofrece ISSI?",
             "acceptedAnswer": {
               "@type": "Answer",
               "text": locale === 'en' ? "ISSI offers over 40 enterprise software products spanning grant management, HR solutions, project management, compliance software, and government IT systems." :
-                     locale === 'fr' ? "ISSI offre plus de 40 produits logiciels d'entreprise couvrant la gestion de subventions, les solutions RH, la gestion de projets, les logiciels de conformité et les systèmes IT gouvernementaux." :
-                     "ISSI ofrece más de 40 productos de software empresarial que abarcan gestión de subvenciones, soluciones de RRHH, gestión de proyectos, software de cumplimiento y sistemas IT gubernamentales."
+                locale === 'fr' ? "ISSI offre plus de 40 produits logiciels d'entreprise couvrant la gestion de subventions, les solutions RH, la gestion de projets, les logiciels de conformité et les systèmes IT gouvernementaux." :
+                  "ISSI ofrece más de 40 productos de software empresarial que abarcan gestión de subvenciones, soluciones de RRHH, gestión de proyectos, software de cumplimiento y sistemas IT gubernamentales."
             }
           },
           {
             "@type": "Question",
-            "name": locale === 'en' ? "Are ISSI's products suitable for government agencies?" : 
-                   locale === 'fr' ? "Les produits d'ISSI conviennent-ils aux agences gouvernementales?" :
-                   "¿Son los productos de ISSI adecuados para agencias gubernamentales?",
+            "name": locale === 'en' ? "Are ISSI's products suitable for government agencies?" :
+              locale === 'fr' ? "Les produits d'ISSI conviennent-ils aux agences gouvernementales?" :
+                "¿Son los productos de ISSI adecuados para agencias gubernamentales?",
             "acceptedAnswer": {
               "@type": "Answer",
               "text": locale === 'en' ? "Yes, ISSI specializes in government and enterprise solutions with 30+ years of experience serving federal, state, and local government agencies with compliant, secure software systems." :
-                     locale === 'fr' ? "Oui, ISSI se spécialise dans les solutions gouvernementales et d'entreprise avec plus de 30 ans d'expérience au service des agences gouvernementales fédérales, étatiques et locales avec des systèmes logiciels conformes et sécurisés." :
-                     "Sí, ISSI se especializa en soluciones gubernamentales y empresariales con más de 30 años de experiencia sirviendo a agencias gubernamentales federales, estatales y locales con sistemas de software conformes y seguros."
+                locale === 'fr' ? "Oui, ISSI se spécialise dans les solutions gouvernementales et d'entreprise avec plus de 30 ans d'expérience au service des agences gouvernementales fédérales, étatiques et locales avec des systèmes logiciels conformes et sécurisés." :
+                  "Sí, ISSI se especializa en soluciones gubernamentales y empresariales con más de 30 años de experiencia sirviendo a agencias gubernamentales federales, estatales y locales con sistemas de software conformes y seguros."
             }
           }
         ]
       }
     ]
   };
-  
+
   return (
     <div>
       {/* Structured Data */}
@@ -239,9 +241,11 @@ async function PageContent({ locale }: PageContentProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      
+
       {/* Products Bento Grid */}
-      <ProductsBentoGridWrapper locale={locale} messages={messages} />
+      <Suspense fallback={<Spinner />}>
+        <ProductsBentoGridWrapper locale={locale} messages={messages} />
+      </Suspense>
     </div>
   );
 }

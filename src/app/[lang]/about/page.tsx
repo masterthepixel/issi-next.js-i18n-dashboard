@@ -1,16 +1,18 @@
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 
-import AboutAwardsWrapper from "@/components/AboutAwardsWrapper";
-import AboutCertificationsWrapper from "@/components/AboutCertificationsWrapper";
-import AboutHeroWrapper from "@/components/AboutHeroWrapper";
-import AboutPartnerNetworkWrapper from "@/components/AboutPartnerNetworkWrapper";
-import AboutStatsWrapper from "@/components/AboutStatsWrapper";
 import Spinner from "@/components/Spinner";
-import TeamGridWrapper from "@/components/TeamGridWrapper";
 
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
 import { Metadata } from "next";
+
+// Dynamic imports for heavy components to reduce initial bundle size
+const AboutAwardsWrapper = lazy(() => import("@/components/AboutAwardsWrapper"));
+const AboutCertificationsWrapper = lazy(() => import("@/components/AboutCertificationsWrapper"));
+const AboutHeroWrapper = lazy(() => import("@/components/AboutHeroWrapper"));
+const AboutPartnerNetworkWrapper = lazy(() => import("@/components/AboutPartnerNetworkWrapper"));
+const AboutStatsWrapper = lazy(() => import("@/components/AboutStatsWrapper"));
+const TeamGridWrapper = lazy(() => import("@/components/TeamGridWrapper"));
 
 // Organization Schema for SEO
 const organizationSchema = {
@@ -156,22 +158,34 @@ async function PageContent({ locale }: PageContentProps) {
     return (
         <main>
             {/* Hero section */}
-            <AboutHeroWrapper locale={locale} messages={messages} />
+            <Suspense fallback={<div className="h-screen flex items-center justify-center"><Spinner /></div>}>
+                <AboutHeroWrapper locale={locale} messages={messages} />
+            </Suspense>
 
             {/* Team section */}
-            <TeamGridWrapper locale={locale} messages={messages} />
+            <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+                <TeamGridWrapper locale={locale} messages={messages} />
+            </Suspense>
 
             {/* Stats section */}
-            <AboutStatsWrapper locale={locale} messages={messages} />
+            <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+                <AboutStatsWrapper locale={locale} messages={messages} />
+            </Suspense>
 
             {/* Certifications section */}
-            <AboutCertificationsWrapper locale={locale} messages={messages} />
+            <Suspense fallback={<div className="h-32 flex items-center justify-center"><Spinner /></div>}>
+                <AboutCertificationsWrapper locale={locale} messages={messages} />
+            </Suspense>
 
             {/* Awards section */}
-            <AboutAwardsWrapper locale={locale} messages={messages} />
+            <Suspense fallback={<div className="h-32 flex items-center justify-center"><Spinner /></div>}>
+                <AboutAwardsWrapper locale={locale} messages={messages} />
+            </Suspense>
 
             {/* Partner Network section */}
-            <AboutPartnerNetworkWrapper locale={locale} messages={messages} />
+            <Suspense fallback={<div className="h-32 flex items-center justify-center"><Spinner /></div>}>
+                <AboutPartnerNetworkWrapper locale={locale} messages={messages} />
+            </Suspense>
         </main>
     );
 }

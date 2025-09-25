@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useIntl } from "react-intl";
@@ -39,10 +40,14 @@ export function ComplianceCertifications() {
         </p>
         <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2">          <div className="flex p-px lg:col-span-4">
           <div className="overflow-hidden rounded-lg bg-card ring-1 ring-border max-lg:rounded-t-4xl lg:rounded-tl-4xl">
-            <img
+            <Image
               alt={intl.formatMessage({ id: "compliance.bento.iso27001.imageAlt" })}
               src="https://tailwindcss.com/plus-assets/img/component-images/dark-bento-01-performance.png"
+              width={800}
+              height={320}
               className="h-80 w-full object-cover object-center"
+              sizes="(max-width: 1024px) 100vw, 66vw"
+              loading="lazy"
             />
             <div className="p-8 lg:p-12">
               <h3 className="text-sm font-semibold text-primary">{intl.formatMessage({ id: "compliance.bento.iso27001.category" })}</h3>
@@ -65,10 +70,14 @@ export function ComplianceCertifications() {
           </div>
         </div>          <div className="flex p-px lg:col-span-2">
             <div className="overflow-hidden rounded-lg bg-card ring-1 ring-border lg:rounded-tr-4xl">
-              <img
+              <Image
                 alt={intl.formatMessage({ id: "compliance.bento.iso9001.imageAlt" })}
                 src="https://tailwindcss.com/plus-assets/img/component-images/dark-bento-01-releases.png"
+                width={400}
+                height={320}
                 className="h-80 w-full object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 33vw"
+                loading="lazy"
               />
               <div className="p-8 lg:p-12">
                 <h3 className="text-sm font-semibold text-primary">{intl.formatMessage({ id: "compliance.bento.iso9001.category" })}</h3>
@@ -91,10 +100,14 @@ export function ComplianceCertifications() {
             </div>
           </div>          <div className="flex p-px lg:col-span-2">
             <div className="overflow-hidden rounded-lg bg-card ring-1 ring-border lg:rounded-bl-4xl">
-              <img
+              <Image
                 alt={intl.formatMessage({ id: "compliance.bento.mdot.imageAlt" })}
                 src="https://tailwindcss.com/plus-assets/img/component-images/dark-bento-01-speed.png"
+                width={400}
+                height={320}
                 className="h-80 w-full object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 33vw"
+                loading="lazy"
               />
               <div className="p-8 lg:p-12">
                 <h3 className="text-sm font-semibold text-primary">{intl.formatMessage({ id: "compliance.bento.mdot.category" })}</h3>
@@ -117,10 +130,14 @@ export function ComplianceCertifications() {
             </div>
           </div>          <div className="flex p-px lg:col-span-4">
             <div className="overflow-hidden rounded-lg bg-card ring-1 ring-border max-lg:rounded-b-4xl lg:rounded-br-4xl">
-              <img
+              <Image
                 alt={intl.formatMessage({ id: "compliance.bento.cmmi3.imageAlt" })}
                 src="https://tailwindcss.com/plus-assets/img/component-images/dark-bento-01-integrations.png"
+                width={800}
+                height={320}
                 className="h-80 w-full object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 66vw"
+                loading="lazy"
               />
               <div className="p-8 lg:p-12">
                 <h3 className="text-sm font-semibold text-primary">{intl.formatMessage({ id: "compliance.bento.cmmi3.category" })}</h3>

@@ -7,6 +7,7 @@ import { getUser } from "@/lib/data";
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
 import { defaultMetadata } from "@/lib/metadata";
+import { criticalCssOptimizer } from "@/lib/critical-css";
 
 import { i18n } from "../../../i18n-config";
 
@@ -25,13 +26,25 @@ export default async function Root({ params, children }: Props) {
   const intl = await getIntl(lang);
   const messages = (await import(`../../lang/${lang}.json`)).default;
 
+  // Generate critical CSS for above-the-fold content
+  const criticalCss = criticalCssOptimizer.getCriticalCssForComponents(['hero', 'navigation', 'buttons']);
+
   return (
     <html lang={lang} className={`h-full ${fontClassNames}`}>
       <head>
-        {/* Material Symbols Outlined for icon glyphs */}
+        {/* Critical CSS - Inline for fastest rendering */}
+        <style dangerouslySetInnerHTML={{ __html: criticalCss }} />
+
+        {/* Font preloading for critical fonts */}
         <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=optional"
+          rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap"
+          as="style"
+        />
+        <link
+          rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&display=swap"
+          as="style"
         />
 
         {/* Performance optimizations */}

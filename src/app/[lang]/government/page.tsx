@@ -1,20 +1,22 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 
-import AboutAwardsWrapper from "@/components/AboutAwardsWrapper";
-import AboutPartnerNetworkWrapper from "@/components/AboutPartnerNetworkWrapper";
-import AboutStatsWrapper from "@/components/AboutStatsWrapper";
-import ComplianceCarouselWrapper from "@/components/ComplianceCarouselWrapper";
-import GovernmentClientsWrapper from "@/components/GovernmentClientsWrapper";
-import GovernmentContactCTAWrapper from "@/components/GovernmentContactCTAWrapper";
-import GovernmentFAQWrapper from "@/components/GovernmentFAQWrapper";
-import GovernmentHeroWrapper from "@/components/GovernmentHeroWrapper";
-import GovernmentNAICSTableWrapper from "@/components/GovernmentNAICSTableWrapper";
-import GovernmentTestimonialsCarouselWrapper from "@/components/GovernmentTestimonialsCarouselWrapper";
 import Spinner from "@/components/Spinner";
 
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
+
+// Dynamic imports for heavy components to reduce initial bundle size
+const AboutAwardsWrapper = lazy(() => import("@/components/AboutAwardsWrapper"));
+const AboutPartnerNetworkWrapper = lazy(() => import("@/components/AboutPartnerNetworkWrapper"));
+const AboutStatsWrapper = lazy(() => import("@/components/AboutStatsWrapper"));
+const ComplianceCarouselWrapper = lazy(() => import("@/components/ComplianceCarouselWrapper"));
+const GovernmentClientsWrapper = lazy(() => import("@/components/GovernmentClientsWrapper"));
+const GovernmentContactCTAWrapper = lazy(() => import("@/components/GovernmentContactCTAWrapper"));
+const GovernmentFAQWrapper = lazy(() => import("@/components/GovernmentFAQWrapper"));
+const GovernmentHeroWrapper = lazy(() => import("@/components/GovernmentHeroWrapper"));
+const GovernmentNAICSTableWrapper = lazy(() => import("@/components/GovernmentNAICSTableWrapper"));
+const GovernmentTestimonialsCarouselWrapper = lazy(() => import("@/components/GovernmentTestimonialsCarouselWrapper"));
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -201,32 +203,54 @@ async function PageContent({ locale }: PageContentProps) {
       {/* Breadcrumbs are handled by the layout */}
 
       {/* Bento Grid Hero Section */}
-      <GovernmentHeroWrapper locale={locale} messages={messages} />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+        <GovernmentHeroWrapper locale={locale} messages={messages} />
+      </Suspense>
 
       {/* NAICS Codes Table */}
-      <GovernmentNAICSTableWrapper locale={locale} messages={messages} />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+        <GovernmentNAICSTableWrapper locale={locale} messages={messages} />
+      </Suspense>
 
       {/* Government Client Testimonials - Government Clients */}
-      <GovernmentClientsWrapper locale={locale} messages={messages} />      {/* Government Testimonials Carousel */}
-      <GovernmentTestimonialsCarouselWrapper locale={locale} messages={messages} />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+        <GovernmentClientsWrapper locale={locale} messages={messages} />
+      </Suspense>
+
+      {/* Government Testimonials Carousel */}
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+        <GovernmentTestimonialsCarouselWrapper locale={locale} messages={messages} />
+      </Suspense>
 
       {/* Government FAQ */}
-      <GovernmentFAQWrapper locale={locale} messages={messages} />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+        <GovernmentFAQWrapper locale={locale} messages={messages} />
+      </Suspense>
 
       {/* Government Contact CTA */}
-      <GovernmentContactCTAWrapper locale={locale} messages={messages} />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+        <GovernmentContactCTAWrapper locale={locale} messages={messages} />
+      </Suspense>
 
       {/* Track Record and Statistics */}
-      <AboutStatsWrapper locale={locale} messages={messages} />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+        <AboutStatsWrapper locale={locale} messages={messages} />
+      </Suspense>
 
       {/* Industry Awards and Recognition */}
-      <AboutAwardsWrapper locale={locale} messages={messages} />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+        <AboutAwardsWrapper locale={locale} messages={messages} />
+      </Suspense>
 
       {/* Partner Network Testimonials */}
-      <AboutPartnerNetworkWrapper locale={locale} messages={messages} />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+        <AboutPartnerNetworkWrapper locale={locale} messages={messages} />
+      </Suspense>
 
       {/* Compliance and Certification Testimonials */}
-      <ComplianceCarouselWrapper locale={locale} messages={messages} />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
+        <ComplianceCarouselWrapper locale={locale} messages={messages} />
+      </Suspense>
     </div>
   );
 }
