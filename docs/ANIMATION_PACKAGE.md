@@ -37,6 +37,7 @@ This document outlines the comprehensive animation package implemented across th
 **Installation**: `pnpm add motion-primitives`
 
 **Specialized Components**:
+
 - `InfiniteSlider`: Smooth infinite horizontal scrolling
 - `ProgressiveBlur`: Edge blur effects for seamless looping
 - `GlowEffect`: Advanced glow and lighting effects
@@ -100,11 +101,13 @@ This document outlines the comprehensive animation package implemented across th
 ### 1. Navigation Components
 
 #### HoverGradientNavBar
+
 **File**: `src/components/ui/hover-gradient-nav-bar.tsx`
 **Status**: ✅ Complex Animation System
 **Animation Elements**: 50+ motion components
 
 **Animations Applied**:
+
 - `motion.nav` container with smooth transitions
 - Individual `motion.li` items with hover states
 - Complex gradient animations on hover/focus
@@ -112,16 +115,19 @@ This document outlines the comprehensive animation package implemented across th
 - Responsive animation states for mobile/desktop
 
 **Special Features**:
+
 - Advanced hover gradient effects with smooth color transitions
 - Complex layered background animations
 - Responsive animation behavior
 - Accessibility-compliant focus animations
 
 #### GlowMenu
+
 **File**: `src/components/ui/glow-menu.tsx`
 **Status**: ✅ Animated
 
 **Animations Applied**:
+
 - `motion.nav` with entrance animations
 - `motion.li` items with staggered reveals
 - Glow effects with dynamic color animations
@@ -130,30 +136,36 @@ This document outlines the comprehensive animation package implemented across th
 ### 2. Hero Components
 
 #### ELearningAceternityHero
+
 **File**: `src/components/ELearningAceternityHero.tsx`
 **Status**: ✅ Advanced Word-by-Word Animations
 
 **Animations Applied**:
+
 - `motion.span` word-by-word text reveals with stagger
 - `motion.p` description fade-ins
 - Multiple `motion.div` containers for complex layouts
 - Coordinated animation sequences
 
 #### GlobeHero
+
 **File**: `src/components/GlobeHero.tsx`
 **Status**: ✅ Interactive Hero Animations
 
 **Animations Applied**:
+
 - `motion.div` containers with scroll-triggered reveals
 - `motion.h1` title animations
 - `motion.p` description staggered animations
 - Button container animations with delay
 
 #### HomePageGlobalHero
+
 **File**: `src/components/HomePageGlobalHero.tsx`
 **Status**: ✅ Two-Panel Layout Animations
 
 **Animations Applied**:
+
 - Left panel `motion.div` with content reveals
 - Right panel `motion.div` with Globe integration
 - Coordinated dual-panel animation timing
@@ -161,29 +173,35 @@ This document outlines the comprehensive animation package implemented across th
 ### 3. Service & Product Components
 
 #### ISSIServicesShowcase
+
 **File**: `src/components/ISSIServicesShowcase.tsx`
 **Status**: ✅ Full Section Animation
 
 **Animations Applied**:
+
 - `motion.section` container with `whileInView`
 - `motion.h2` with word-by-word `motion.span` reveals
 - `motion.p` description with staggered timing
 - `motion.div` filter and content sections
 
 #### ProductsBentoGrid
+
 **File**: `src/components/ProductsBentoGrid.tsx`
 **Status**: ✅ Grid Item Animations
 
 **Animations Applied**:
+
 - `motion.span` title animations
 - `motion.p` description reveals
 - Staggered grid item animations
 
 #### ISSIAppleCardsCarousel
+
 **File**: `src/components/ISSIAppleCardsCarousel.tsx`
 **Status**: ✅ Motion Primitives Integration
 
 **Special Features**:
+
 - `InfiniteSlider` for smooth card scrolling
 - `ProgressiveBlur` edge effects
 - Advanced carousel animation patterns
@@ -191,19 +209,23 @@ This document outlines the comprehensive animation package implemented across th
 ### 4. Contact & Footer Components
 
 #### FooterContactCTA
+
 **File**: `src/components/FooterContactCTA.tsx`
 **Status**: ✅ Multi-Section Animations
 
 **Animations Applied**:
+
 - `motion.h2` with word-by-word `motion.span` reveals
 - Multiple `motion.div` sections with staggered timing
 - Contact information reveal animations
 
 #### FooterContactCTAContactForm
+
 **File**: `src/components/FooterContactCTAContactForm.tsx`
 **Status**: ✅ Form Animations
 
 **Animations Applied**:
+
 - `motion.p` description reveals
 - `motion.form` with validation animations
 - Form field animation integration
@@ -211,20 +233,24 @@ This document outlines the comprehensive animation package implemented across th
 ### 5. Client & Government Components
 
 #### GovernmentClients
+
 **File**: `src/components/GovernmentClients.tsx`
 **Status**: ✅ Full Section Animation
 
 **Animations Applied**:
+
 - `motion.section` with `whileInView` trigger
 - `motion.h2` title animations
 - `motion.p` description reveals
 - `motion.div` client grid animations
 
 #### GovernmentTestimonialsCarousel
+
 **File**: `src/components/GovernmentTestimonialsCarousel.tsx`
 **Status**: ✅ Carousel Animations
 
 **Animations Applied**:
+
 - `motion.section` container animations
 - `motion.h2` and `motion.p` staggered reveals
 - `motion.div` carousel container animations
@@ -232,38 +258,46 @@ This document outlines the comprehensive animation package implemented across th
 ### 6. Feature & Content Components
 
 #### ELearningAceternityFeatures
+
 **File**: `src/components/ELearningAceternityFeatures.tsx`
 **Status**: ✅ Feature Grid Animations
 
 **Animations Applied**:
+
 - `motion.div` feature containers
 - `motion.h2` and `motion.p` content reveals
 - Grid layout animation coordination
 
 #### FeaturesSection
+
 **File**: `src/components/features-section-demo-3.tsx`
 **Status**: ✅ Feature Showcase Animations
 
 **Animations Applied**:
+
 - Multiple `motion.div` feature cards
 - Coordinated reveal animations
 - Interactive hover animations
 
 #### ComplianceCertifications
+
 **File**: `src/components/ComplianceCertifications.tsx`
 **Status**: ✅ Certification Animations
 
 **Animations Applied**:
+
 - `motion.span` text reveal animations
 - Staggered certification badge reveals
 
 ### 7. Additional Animated Components
 
 #### HeroSection
+
 **File**: `src/components/hero-section-demo-1.tsx`
 **Status**: ✅ Hero Content Animations
 
 #### HeroGalleryScrollAnimation
+
 **File**: `src/components/hero-gallery-scroll-animation.tsx`
 **Status**: ✅ Scroll-Based Gallery Animations
 
@@ -274,21 +308,25 @@ This document outlines the comprehensive animation package implemented across th
 **Location**: `src/components/motion-primitives/`
 
 #### InfiniteSlider
+
 **File**: `src/components/motion-primitives/infinite-slider.tsx`
 **Usage**: Smooth infinite horizontal scrolling for carousels
 **Implementation**: Used in `ISSIAppleCardsCarousel` for seamless card scrolling
 
 #### ProgressiveBlur
+
 **File**: `src/components/motion-primitives/progressive-blur.tsx`
 **Usage**: Edge blur effects for seamless looping
 **Implementation**: Applied to carousel edges for smooth visual transitions
 
 #### GlowEffect
+
 **File**: `src/components/motion-primitives/glow-effect.tsx`
 **Usage**: Advanced glow and lighting effects
 **Features**: Customizable glow intensity, color, and blur radius
 
 #### MorphingDialog
+
 **File**: `src/components/motion-primitives/morphing-dialog.tsx`
 **Usage**: Smooth dialog transitions with morphing animations
 **Features**: Full morphing animation system with trigger, content, container, and title components
@@ -428,6 +466,7 @@ This document outlines the comprehensive animation package implemented across th
 ## Animation Statistics
 
 ### Component Coverage
+
 - **Total Animated Components**: 30+ components with motion implementation
 - **Navigation Components**: 2/2 (HoverGradientNavBar, GlowMenu)
 - **Hero Components**: 3/3 (ELearningAceternityHero, GlobeHero, HomePageGlobalHero)
@@ -438,6 +477,7 @@ This document outlines the comprehensive animation package implemented across th
 - **Motion Primitives**: 4 specialized components (InfiniteSlider, ProgressiveBlur, GlowEffect, MorphingDialog)
 
 ### Animation Patterns Used
+
 - **whileInView**: Primary scroll-trigger pattern (used in 20+ components)
 - **Staggered Reveals**: Word-by-word and element-by-element animations
 - **Section Animations**: Full section fade-in + slide-up patterns
@@ -446,6 +486,7 @@ This document outlines the comprehensive animation package implemented across th
 - **Carousel Animations**: Infinite scrolling and carousel transitions
 
 ### Performance Metrics
+
 - **Bundle Size**: ~95KB (Motion/React optimized)
 - **Animation Library**: Modern motion/react (no legacy Framer Motion)
 - **GPU Acceleration**: 100% of animations use transform/opacity

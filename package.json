@@ -90,7 +90,6 @@
     "dotenv": "^17.2.1",
     "embla-carousel-react": "^8.6.0",
     "flag-icons": "^7.5.0",
-    "framer-motion": "^12.23.21",
     "glob": "^11.0.3",
     "gsap": "^3.13.0",
     "inngest": "^3.30.0",
