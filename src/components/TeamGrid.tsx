@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 import {
@@ -65,15 +65,14 @@ function TeamMemberImage({ src, alt, className, priority = false }: {
           </div>
         </div>
       )}
-      
+
       {/* Actual image */}
       <Image
         src={src}
         alt={alt}
         fill
-        className={`${className} transition-all duration-500 ${
-          isLoading ? 'opacity-0 scale-105' : 'opacity-100 scale-100'
-        }`}
+        className={`${className} transition-all duration-500 ${isLoading ? 'opacity-0 scale-105' : 'opacity-100 scale-100'
+          }`}
         onError={() => {
           setHasError(true);
           setIsLoading(false);
