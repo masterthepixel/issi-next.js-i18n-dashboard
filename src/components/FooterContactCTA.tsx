@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Calendar, Dribbble, Globe, Linkedin, Mail, Youtube } from "lucide-react";
+import { motion } from "motion/react";
 import dynamic from "next/dynamic";
 import { FormattedMessage } from "react-intl";
 const FooterContactCTAContactForm = dynamic(() => import("./FooterContactCTAContactForm"), { ssr: false });

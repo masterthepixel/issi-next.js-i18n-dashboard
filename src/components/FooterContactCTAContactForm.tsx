@@ -1,8 +1,8 @@
 
 "use client";
 
-import { motion } from "framer-motion";
 import { Calendar, Mail, Phone } from "lucide-react";
+import { motion } from "motion/react";
 import { FormattedMessage } from "react-intl";
 import { Input } from "./ui/input";
 import { Button as StatefulButton } from "./ui/stateful-button";

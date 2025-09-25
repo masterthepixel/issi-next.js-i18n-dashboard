@@ -1,6 +1,5 @@
 'use client'
 import 'flag-icons/css/flag-icons.min.css';
-import { motion, Variants } from 'framer-motion';
 import {
   Award,
   BookOpen,
@@ -16,6 +15,7 @@ import {
   User,
   Wrench
 } from 'lucide-react';
+import { motion, Variants } from 'motion/react';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link';

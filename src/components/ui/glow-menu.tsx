@@ -1,8 +1,8 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { motion } from "framer-motion"
 import { LucideIcon } from "lucide-react"
+import { motion } from "motion/react"
 import { useTheme } from "next-themes"
 import * as React from "react"
 
