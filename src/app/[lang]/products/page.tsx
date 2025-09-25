@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       siteName: "ISSI - International Software Systems",
       images: [
         {
-          url: `${baseUrl}/images/products-og.jpg`,
+          url: `${baseUrl}/images/issi_logo.webp`,
           width: 1200,
           height: 630,
           alt: currentSeo.title,
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       card: "summary_large_image",
       title: currentSeo.title,
       description: currentSeo.description,
-      images: [`${baseUrl}/images/products-og.jpg`],
+      images: [`${baseUrl}/images/issi_logo.webp`],
     },
     alternates: {
       canonical: `${baseUrl}/${lang}/products`,
@@ -147,7 +147,7 @@ async function PageContent({ locale }: PageContentProps) {
         "@id": `${baseUrl}#organization`,
         "name": "International Software Systems, Inc. (ISSI)",
         "url": baseUrl,
-        "logo": `${baseUrl}/images/issi_logo.png`,
+        "logo": `${baseUrl}/images/issi_logo.webp`,
         "description": "Award-winning software development and IT support services company delivering high-quality, cost-effective solutions for government and enterprise clients since 1995.",
         "foundingDate": "1995",
         "sameAs": [

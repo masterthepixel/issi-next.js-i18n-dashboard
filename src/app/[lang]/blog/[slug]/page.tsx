@@ -1,7 +1,7 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import Image from "next/image";
 
 import Spinner from "@/components/Spinner";
 import { Locale } from "@/lib/definitions";
@@ -43,7 +43,7 @@ export async function generateMetadata({
     const description = post.excerpt || `Read the latest from ${authorName} on the ISSI blog.`;
     const featuredImageUrl = post.featuredImage
       ? `https://issi-dashboard-payloadcms.vercel.app${post.featuredImage.url}`
-      : `${baseUrl}/images/blog-og.jpg`;
+      : `${baseUrl}/images/blog-og.webp`;
 
     return {
       title,

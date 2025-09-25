@@ -33,7 +33,7 @@ export default async function Page({ params }: { params: { lang: Locale } }) {
               "name": "International Software Systems, Inc.",
               "alternateName": "ISSI",
               "url": "https://www.issi-software.com",
-              "logo": "https://www.issi-software.com/external/img/Internationallogo.png",
+              "logo": "https://www.issi-software.com/images/issi_logo.webp",
               "description": "Award-winning software development and IT support services company, CMMI Level 3 appraised, ISO 9001:2015, and ISO 27001 certified.",
               "address": [
                 {

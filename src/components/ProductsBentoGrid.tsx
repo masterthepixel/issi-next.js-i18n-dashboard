@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { Button } from '@/components/ui/button';

@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       siteName: "ISSI - International Software Systems",
       images: [
         {
-          url: `${baseUrl}/images/government-solutions-og.jpg`,
+          url: `${baseUrl}/images/government-solutions-og.webp`,
           width: 1200,
           height: 630,
           alt: currentSeo.title,
@@ -66,7 +66,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       card: 'summary_large_image',
       title: currentSeo.title,
       description: currentSeo.description,
-      images: [`${baseUrl}/images/government-solutions-og.jpg`],
+      images: [`${baseUrl}/images/government-solutions-og.webp`],
     },
     alternates: {
       canonical: `${baseUrl}/${lang}/government`,
@@ -124,7 +124,7 @@ async function PageContent({ locale }: PageContentProps) {
         "@id": `${baseUrl}/#organization`,
         "name": "ISSI - International Software Systems",
         "url": baseUrl,
-        "logo": `${baseUrl}/images/issi_logo.png`,
+        "logo": `${baseUrl}/images/issi_logo.webp`,
         "description": "Leading provider of government IT services, software development, and digital transformation solutions for federal, state, and local agencies.",
         "address": {
           "@type": "PostalAddress",

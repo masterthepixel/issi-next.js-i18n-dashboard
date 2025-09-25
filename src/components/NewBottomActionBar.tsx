@@ -201,7 +201,7 @@ export default function NewBottomActionBar() {
         if (item.icon === 'issi-logo') {
             return (
                 <Image
-                    src="/images/issi_logo.png"
+                    src="/images/issi_logo.webp"
                     alt="ISSI"
                     width={40}
                     height={40}
@@ -219,7 +219,7 @@ export default function NewBottomActionBar() {
         <div className="flex flex-col gap-1 py-2">
             {/* Logo and Title */}
             <div className="flex items-center gap-2 px-4 py-2 border-b border-border">
-                <Image src="/images/issi_logo.png" alt="ISSI Logo" width={32} height={32} className="rounded-sm" />
+                <Image src="/images/issi_logo.webp" alt="ISSI Logo" width={32} height={32} className="rounded-sm" />
                 <span className="font-semibold text-lg text-foreground">Menu</span>
             </div>
 

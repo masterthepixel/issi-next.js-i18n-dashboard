@@ -27,7 +27,7 @@ function TeamMemberImage({ src, alt, className, priority = false }: {
   if (hasError) {
     // Fallback to a placeholder or default avatar
     return (
-      <div className={`${className} bg-muted flex items-center justify-center`}>
+      <div className={`w-full h-full ${className} bg-muted flex items-center justify-center`}>
         <div className="text-muted-foreground text-4xl font-semibold">
           {alt.charAt(0).toUpperCase()}
         </div>
@@ -36,9 +36,9 @@ function TeamMemberImage({ src, alt, className, priority = false }: {
   }
 
   return (
-    <div className="relative">
+    <div className="relative w-full h-full">
       {isLoading && (
-        <div className={`${className} bg-muted animate-pulse`} />
+        <div className={`absolute inset-0 ${className} bg-muted animate-pulse`} />
       )}
       <Image
         src={src}
@@ -55,12 +55,13 @@ function TeamMemberImage({ src, alt, className, priority = false }: {
 }
 
 const people = [
-  { id: 1, imageUrl: "/images/1.jpg" },
-  { id: 2, imageUrl: "/images/2.jpg" },
-  { id: 3, imageUrl: "/images/3.jpg" },
-  { id: 4, imageUrl: "/images/4.jpg" },
-  { id: 5, imageUrl: "/images/5.jpg" },
-  { id: 7, imageUrl: "/images/7.jpg" },
+  { id: 1, imageUrl: "/images/1.webp" },
+  { id: 2, imageUrl: "/images/2.webp" },
+  { id: 3, imageUrl: "/images/3.webp" },
+  { id: 4, imageUrl: "/images/4.webp" },
+  { id: 5, imageUrl: "/images/5.webp" },
+  { id: 6, imageUrl: "/images/6.webp" },
+  { id: 7, imageUrl: "/images/7.webp" },
 ];
 
 export default function TeamGrid() {

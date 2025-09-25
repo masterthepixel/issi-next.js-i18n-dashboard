@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       siteName: "ISSI - International Software Systems",
       images: [
         {
-          url: `${baseUrl}/images/blog-og.jpg`,
+          url: `${baseUrl}/images/blog-og.webp`,
           width: 1200,
           height: 630,
           alt: currentSeo.title,
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       card: "summary_large_image",
       title: currentSeo.title,
       description: currentSeo.description,
-      images: [`${baseUrl}/images/blog-og.jpg`],
+      images: [`${baseUrl}/images/blog-og.webp`],
     },
     alternates: {
       canonical: `${baseUrl}/${lang}/blog`,

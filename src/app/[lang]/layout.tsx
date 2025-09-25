@@ -3,11 +3,11 @@ import ClientLayout from "@/components/ClientLayout";
 import React from 'react';
 
 import { fontClassNames } from "@/app/fonts";
+import { criticalCssOptimizer } from "@/lib/critical-css";
 import { getUser } from "@/lib/data";
 import { Locale } from "@/lib/definitions";
 import { getIntl } from "@/lib/intl";
 import { defaultMetadata } from "@/lib/metadata";
-import { criticalCssOptimizer } from "@/lib/critical-css";
 
 import { i18n } from "../../../i18n-config";
 
@@ -55,7 +55,7 @@ export default async function Root({ params, children }: Props) {
         <link rel="dns-prefetch" href="https://issi-dashboard-payloadcms.vercel.app" />
 
         {/* Critical CSS inlining hint */}
-        <link rel="preload" href="/images/project-app-screenshot.png" as="image" fetchPriority="high" />
+        <link rel="preload" href="/images/project-app-screenshot.webp" as="image" fetchPriority="high" />
 
         {/* Reduce render blocking */}
         <link rel="preload" href="/_next/static/css/app/layout.css" as="style" />

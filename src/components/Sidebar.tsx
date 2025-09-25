@@ -38,7 +38,7 @@ export default async function Sidebar({ locale }: Props) {
         <div className="flex flex-col space-y-2">
           <SidebarLink href={`/${locale}/home`}>
             <Image
-              src="/images/issi_logo.png"
+              src="/images/issi_logo.webp"
               alt="ISSI Logo"
               width={32}
               height={32}

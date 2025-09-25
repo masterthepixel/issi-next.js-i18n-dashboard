@@ -1,59 +1,70 @@
-Image Conversion Log - 2025-09-25T16:15:36.530Z
+Image Conversion Log - 2025-09-25T17:03:24.234Z
 =========================================
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\1.jpg
   Original: 151 KB
   WebP: 27 KB
   Reduction: 82%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\2.jpg
   Original: 111 KB
   WebP: 12 KB
   Reduction: 89%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\3.jpg
   Original: 128 KB
   WebP: 17 KB
   Reduction: 87%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\4.jpg
   Original: 130 KB
   WebP: 17 KB
   Reduction: 87%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\5.jpg
   Original: 116 KB
   WebP: 12 KB
   Reduction: 89%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\6.png
   Original: 552 KB
   WebP: 28 KB
   Reduction: 95%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\7.jpg
   Original: 36 KB
   WebP: 17 KB
   Reduction: 52%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\8.jpg
   Original: 183 KB
   WebP: 38 KB
   Reduction: 79%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\awards\1.png
   Original: 45 KB
   WebP: 12 KB
   Reduction: 73%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\awards\2.png
   Original: 12 KB
   WebP: 3 KB
   Reduction: 73%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\awards\3.png
   Original: 59 KB
   WebP: 16 KB
   Reduction: 73%
+  Original removed: Yes
 ----------------------------------------
 FAILED: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\bento-02-integrations.png
   Error: Conversion failed: Input file contains unsupported image format
@@ -71,321 +82,373 @@ SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public
   Original: 17 KB
   WebP: 4 KB
   Reduction: 78%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\certification\2.png
   Original: 9 KB
   WebP: 3 KB
   Reduction: 62%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\certification\3.png
   Original: 18 KB
   WebP: 4 KB
   Reduction: 80%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\certification\4.jpg
   Original: 38 KB
   WebP: 26 KB
   Reduction: 32%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\compliance\IndustryCertifications\1.png
   Original: 12 KB
   WebP: 6 KB
   Reduction: 54%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\compliance\IndustryCertifications\2.png
   Original: 16 KB
   WebP: 3 KB
   Reduction: 82%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\compliance\IndustryCertifications\3.png
   Original: 4 KB
   WebP: 3 KB
   Reduction: 7%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\compliance\IndustryCertifications\5.png
   Original: 6 KB
   WebP: 2 KB
   Reduction: 65%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\compliance\IndustryCertifications\6.png
   Original: 18 KB
   WebP: 4 KB
   Reduction: 78%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\compliance\IndustryCertifications\Adobe-Logo.png
   Original: 42 KB
   WebP: 72 KB
   Reduction: -73%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\compliance\iso27k.png
   Original: 771 KB
   WebP: 71 KB
   Reduction: 91%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractawards\1.png
   Original: 9 KB
   WebP: 9 KB
   Reduction: -4%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractawards\10.jpg
   Original: 8 KB
   WebP: 3 KB
   Reduction: 62%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractawards\12.jpg
   Original: 6 KB
   WebP: 6 KB
   Reduction: 0%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractawards\2.png
   Original: 18 KB
   WebP: 9 KB
   Reduction: 53%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractawards\3.png
   Original: 14 KB
   WebP: 7 KB
   Reduction: 49%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractawards\5.png
   Original: 36 KB
   WebP: 7 KB
   Reduction: 81%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractawards\6.png
   Original: 7 KB
   WebP: 4 KB
   Reduction: 50%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractawards\7.png
   Original: 13 KB
   WebP: 5 KB
   Reduction: 63%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractawards\8.png
   Original: 45 KB
   WebP: 5 KB
   Reduction: 89%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractawards\9.png
   Original: 127 KB
   WebP: 11 KB
   Reduction: 92%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractawards\cv1.png
   Original: 7 KB
   WebP: 4 KB
   Reduction: 41%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractawards\cv2.png
   Original: 9 KB
   WebP: 2 KB
   Reduction: 72%
+  Original removed: Yes
 ----------------------------------------
-SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractawards\cv4.gif
-  Original: 56 KB
-  WebP: 34 KB
-  Reduction: 39%
+FAILED: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractawards\cv4.gif
+  Error: EBUSY: resource busy or locked, unlink 'C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractawards\cv4.gif'
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractawards\cv5.png
   Original: 14 KB
   WebP: 10 KB
   Reduction: 31%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractvehicles\18.jpg
   Original: 37 KB
   WebP: 6 KB
   Reduction: 84%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractvehicles\19.jpg
   Original: 27 KB
   WebP: 4 KB
   Reduction: 86%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractvehicles\20.jpg
   Original: 9 KB
   WebP: 2 KB
   Reduction: 80%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractvehicles\5.png
   Original: 36 KB
   WebP: 7 KB
   Reduction: 81%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\contractvehicles\cv1_1.jpg
   Original: 11 KB
   WebP: 2 KB
   Reduction: 82%
-----------------------------------------
-SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\dark-project-app-screenshot.png
-  Original: 552 KB
-  WebP: 28 KB
-  Reduction: 95%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\deploy-nextjs-on-vercel.png
   Original: 55 KB
   WebP: 14 KB
   Reduction: 74%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\governmentsolutions\1.png
   Original: 9 KB
   WebP: 9 KB
   Reduction: -4%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\governmentsolutions\10.jpg
   Original: 8 KB
   WebP: 3 KB
   Reduction: 62%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\governmentsolutions\12.jpg
   Original: 6 KB
   WebP: 6 KB
   Reduction: 0%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\governmentsolutions\2.png
   Original: 18 KB
   WebP: 9 KB
   Reduction: 53%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\governmentsolutions\3.png
   Original: 14 KB
   WebP: 7 KB
   Reduction: 49%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\governmentsolutions\5.png
   Original: 36 KB
   WebP: 7 KB
   Reduction: 81%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\governmentsolutions\6.png
   Original: 7 KB
   WebP: 4 KB
   Reduction: 50%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\governmentsolutions\7.png
   Original: 13 KB
   WebP: 5 KB
   Reduction: 63%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\governmentsolutions\8.png
   Original: 45 KB
   WebP: 5 KB
   Reduction: 89%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\governmentsolutions\9.png
   Original: 127 KB
   WebP: 11 KB
   Reduction: 92%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\governmentsolutions\cv1.png
   Original: 7 KB
   WebP: 4 KB
   Reduction: 41%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\governmentsolutions\cv2.png
   Original: 9 KB
   WebP: 2 KB
   Reduction: 72%
+  Original removed: Yes
 ----------------------------------------
-SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\governmentsolutions\cv4.gif
-  Original: 56 KB
-  WebP: 34 KB
-  Reduction: 39%
+FAILED: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\governmentsolutions\cv4.gif
+  Error: EBUSY: resource busy or locked, unlink 'C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\governmentsolutions\cv4.gif'
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\governmentsolutions\cv5.png
   Original: 14 KB
   WebP: 10 KB
   Reduction: 31%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\issi_logo.png
   Original: 17 KB
   WebP: 7 KB
   Reduction: 61%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\partnernetwork\pn1.jpg
   Original: 13 KB
   WebP: 2 KB
   Reduction: 80%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\partnernetwork\pn2.jpg
   Original: 11 KB
   WebP: 2 KB
   Reduction: 85%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\partnernetwork\pn3_1.jpg
   Original: 11 KB
   WebP: 2 KB
   Reduction: 78%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\partnernetwork\pn4_1.jpg
   Original: 15 KB
   WebP: 3 KB
   Reduction: 81%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\Audit Reporting.png
   Original: 103 KB
   WebP: 16 KB
   Reduction: 84%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\Bug Tracking.png
   Original: 173 KB
   WebP: 75 KB
   Reduction: 57%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\Capture Manager.png
   Original: 1620 KB
   WebP: 328 KB
   Reduction: 80%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\CentralData.png
   Original: 248 KB
   WebP: 102 KB
   Reduction: 59%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\Competency Skills Matrix.png
   Original: 761 KB
   WebP: 170 KB
   Reduction: 78%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\ComplaintTracking.png
   Original: 961 KB
   WebP: 136 KB
   Reduction: 86%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\E-Survey.png
   Original: 126 KB
   WebP: 46 KB
   Reduction: 63%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\ectsproduct_1.png
   Original: 74 KB
   WebP: 33 KB
   Reduction: 55%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\Employee Performance.jpg
   Original: 621 KB
   WebP: 56 KB
   Reduction: 91%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\Employee Talent Repository.png
   Original: 104 KB
   WebP: 62 KB
   Reduction: 41%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\etsproduct.png
   Original: 200 KB
   WebP: 51 KB
   Reduction: 74%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\ExpenseTracking.png
   Original: 174 KB
   WebP: 39 KB
   Reduction: 78%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\FormManagement.png
   Original: 516 KB
   WebP: 49 KB
   Reduction: 91%
+  Original removed: Yes
 ----------------------------------------
 FAILED: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\generic-screenshot.png
   Error: Conversion failed: Input file contains unsupported image format
@@ -394,122 +457,138 @@ SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public
   Original: 77 KB
   WebP: 39 KB
   Reduction: 49%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\Human Resource Manager.png
   Original: 853 KB
   WebP: 107 KB
   Reduction: 87%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\I-Code.png
   Original: 109 KB
   WebP: 51 KB
   Reduction: 53%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\I-Learn.png
   Original: 248 KB
   WebP: 102 KB
   Reduction: 59%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\InventoryAssetTracking.png
   Original: 170 KB
   WebP: 82 KB
   Reduction: 52%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\mdspsproduct.png
   Original: 350 KB
   WebP: 120 KB
   Reduction: 66%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\MeetingMinutesManager.png
   Original: 117 KB
   WebP: 61 KB
   Reduction: 48%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\ProfessionalManagement.png
   Original: 567 KB
   WebP: 54 KB
   Reduction: 90%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\Project Management.png
   Original: 355 KB
   WebP: 47 KB
   Reduction: 87%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\Prudent Agile.png
   Original: 355 KB
   WebP: 47 KB
   Reduction: 87%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\RequirementsManagement.png
   Original: 168 KB
   WebP: 98 KB
   Reduction: 42%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\RSVP.png
   Original: 523 KB
   WebP: 57 KB
   Reduction: 89%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\Timesheet Management.png
   Original: 305 KB
   WebP: 84 KB
   Reduction: 72%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\Training Dashboard.png
   Original: 238 KB
   WebP: 68 KB
   Reduction: 71%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\TrainingRecords.png
   Original: 238 KB
   WebP: 68 KB
   Reduction: 71%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products\VisitorLog.png
   Original: 1452 KB
   WebP: 122 KB
   Reduction: 92%
+  Original removed: Yes
 ----------------------------------------
 FAILED: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\products-og.jpg
   Error: Conversion failed: Input file contains unsupported image format
-----------------------------------------
-SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\project-app-screenshot.png
-  Original: 552 KB
-  WebP: 28 KB
-  Reduction: 95%
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\services\elearning_1_11zon.jpg
   Original: 38 KB
   WebP: 77 KB
   Reduction: -104%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\services\products_3_11zon.jpg
   Original: 64 KB
   WebP: 132 KB
   Reduction: -106%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\services\publicsector_5_11zon.jpg
   Original: 94 KB
   WebP: 223 KB
   Reduction: -138%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\services\security_2_11zon.jpg
   Original: 89 KB
   WebP: 121 KB
   Reduction: -35%
+  Original removed: Yes
 ----------------------------------------
 SUCCESS: C:\Users\kfiagbedzi\Documents\GitHub\issi-next.js-i18n-dashboard\public\images\services\teams_4_11zon.jpg
   Original: 96 KB
   WebP: 194 KB
   Reduction: -102%
+  Original removed: Yes
 ----------------------------------------
 
 =========================================
 CONVERSION SUMMARY
 =========================================
-Total files found: 206
-Successful conversions: 97
-Failed conversions: 6
-Completion time: 2025-09-25T16:15:55.788Z
+Total files found: 396
+Successful conversions: 93
+Failed conversions: 8
+Completion time: 2025-09-25T17:03:45.690Z
 Quality setting: 85%
 =========================================

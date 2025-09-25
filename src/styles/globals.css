@@ -36,7 +36,7 @@
     --sidebar-border: oklch(0.92 0.00 286.61);
     --sidebar-ring: oklch(0.71 0.01 286.09);
 
-    --font-sans: "Inter Tight", ui-sans-serif, sans-serif, system-ui;
+    --font-sans: "Inter", ui-sans-serif, sans-serif, system-ui;
     --font-serif: "Instrument Serif", ui-serif, serif;
     --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 

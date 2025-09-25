@@ -30,7 +30,7 @@ export default function NewHomePageHero() {
         <div className="mx-auto max-w-2xl lg:mx-0 lg:shrink-0 lg:pt-8">
           <img
             alt="ISSI Logo"
-            src="/images/issi_logo.png"
+            src="/images/issi_logo.webp"
             className="h-11"
           />
           <div className="mt-24 sm:mt-32 lg:mt-16">            <a href="#news" className="inline-flex space-x-6" title="View latest news and updates">              <span className="rounded-full bg-blue-600/10 px-3 py-1  ">
@@ -72,7 +72,7 @@ export default function NewHomePageHero() {
             <div className="-m-2 rounded-xl bg-slate-900/5 p-2 ring-1 ring-slate-900/10 ring-inset lg:-m-4 lg:rounded-2xl lg:p-4">
               <img
                 alt="ISSI Technology Solutions Dashboard"
-                src="/images/project-app-screenshot.png"
+                src="/images/project-app-screenshot.webp"
                 width={2432}
                 height={1442}
                 className="w-304 rounded-md shadow-2xl ring-1 ring-slate-900/10"

@@ -15,28 +15,28 @@ export default function manifest(): MetadataRoute.Manifest {
     scope: '/',
     icons: [
       {
-        src: '/images/issi_logo.png',
+        src: '/images/issi_logo.webp',
         sizes: '192x192',
-        type: 'image/png',
+        type: 'image/webp',
         purpose: 'maskable'
       },
       {
-        src: '/images/issi_logo.png',
+        src: '/images/issi_logo.webp',
         sizes: '512x512',
-        type: 'image/png',
+        type: 'image/webp',
         purpose: 'any'
       }
     ],
     screenshots: [
       {
-        src: '/images/screenshot-wide.png',
-        sizes: '1280x720',
-        type: 'image/png'
+        src: '/images/project-app-screenshot.webp',
+        sizes: '2432x1442',
+        type: 'image/webp'
       },
       {
-        src: '/images/screenshot-narrow.png',
-        sizes: '750x1334',
-        type: 'image/png'
+        src: '/images/dark-project-app-screenshot.webp',
+        sizes: '2432x1442',
+        type: 'image/webp'
       }
     ]
   }

@@ -189,7 +189,7 @@ export default function DashboardNavbar({
                 <NavigationMenuLink asChild>
                   <Link href={`/${locale}/home`} className="flex items-center space-x-2 mr-6">
                     <Image
-                      src="/images/issi_logo.png"
+                      src="/images/issi_logo.webp"
                       alt="ISSI Logo"
                       width={120}
                       height={40}
@@ -335,7 +335,7 @@ export default function DashboardNavbar({
                   <Link href={`/${locale}/home`} className="flex items-center">
                     <span className="inline-flex items-center">
                       <Image
-                        src="/images/issi_logo.png"
+                        src="/images/issi_logo.webp"
                         alt="ISSI Logo"
                         width={120}
                         height={40}
@@ -352,7 +352,7 @@ export default function DashboardNavbar({
                       className="flex items-center gap-2 px-2 py-1  "
                     >
                       <Image
-                        src="/images/issi_logo.png"
+                        src="/images/issi_logo.webp"
                         alt="ISSI Logo"
                         width={16}
                         height={16}

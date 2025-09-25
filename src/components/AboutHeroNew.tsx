@@ -86,7 +86,7 @@ export default function AboutHeroNew() {
                         <div className="flex items-center justify-center lg:justify-end">
                             <Image
                                 alt="ISSI headquarters in Greenbelt, Maryland showcasing our modern office environment and commitment to technology excellence since 1995"
-                                src="/images/dark-project-app-screenshot.png"
+                                src="/images/dark-project-app-screenshot.webp"
                                 width={2432}
                                 height={1442}
                                 priority

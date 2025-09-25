@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       url: `https://issi-software.com/${lang}/compliance`,
       images: [
         {
-          url: "https://issi-software.com/images/compliance/compliance-og-image.jpg",
+          url: "https://issi-software.com/images/compliance-og.webp",
           width: 1200,
           height: 630,
           alt: "ISSI Compliance Certifications - ISO 27001, SOC 2, GDPR"
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       card: "summary_large_image",
       title: messages["page.compliance.meta.title"] || "Compliance & Certifications - ISSI",
       description: messages["page.compliance.meta.description"] || "ISSI's comprehensive compliance framework includes ISO 27001, ISO 9001, SOC 2 Type II, and GDPR certifications.",
-      images: ["https://issi-software.com/images/compliance/compliance-og-image.jpg"]
+      images: ["https://issi-software.com/images/compliance-og.webp"]
     },
     alternates: {
       canonical: `https://issi-software.com/${lang}/compliance`,

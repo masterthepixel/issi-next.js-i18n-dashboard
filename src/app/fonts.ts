@@ -1,12 +1,12 @@
-import { Inter_Tight, Instrument_Serif } from 'next/font/google'
+import { Instrument_Serif, Inter } from 'next/font/google'
 
-// Inter Tight - Primary sans-serif font
-export const interTight = Inter_Tight({
+// Inter - Primary sans-serif font (variable font for better performance)
+export const inter = Inter({
   subsets: ['latin', 'latin-ext'],
   weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-sans',
   display: 'swap',
-  fallback: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Arial', 'sans-serif']
+  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Arial', 'sans-serif']
 })
 
 // Instrument Serif - Secondary serif font for headings
@@ -20,4 +20,4 @@ export const instrumentSerif = Instrument_Serif({
 })
 
 // Combined font class names for easy application
-export const fontClassNames = `${interTight.variable} ${instrumentSerif.variable}`
+export const fontClassNames = `${inter.variable} ${instrumentSerif.variable}`

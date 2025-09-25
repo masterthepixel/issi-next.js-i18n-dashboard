@@ -107,7 +107,7 @@ export default function Hero({ lang: _lang = "en" }: HeroProps) {
             <div className="-m-2 rounded-xl bg-foreground/5 p-2 ring-1 ring-border ring-inset lg:-m-4 lg:rounded-2xl lg:p-4">
               <Image
                 alt="ISSI technology solutions dashboard and services overview"
-                src="/images/project-app-screenshot.png"
+                src="/images/project-app-screenshot.webp"
                 width={2432}
                 height={1442}
                 className="w-full max-w-[76rem] rounded-md shadow-2xl ring-1 ring-border"

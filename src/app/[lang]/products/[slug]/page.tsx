@@ -84,7 +84,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
       siteName: 'ISSI - International Software Systems',
       images: [
         {
-          url: product.image || `${baseUrl}/images/products-og.jpg`,
+          url: product.image || `${baseUrl}/images/issi_logo.webp`,
           width: 1200,
           height: 630,
           alt: product.name,
@@ -96,7 +96,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
       card: 'summary_large_image',
       title: product.name,
       description: product.description,
-      images: [product.image || `${baseUrl}/images/products-og.jpg`],
+      images: [product.image || `${baseUrl}/images/issi_logo.webp`],
     },
   };
 }

@@ -21,7 +21,7 @@ const organizationSchema = {
     "name": "International Software Systems, Inc.",
     "alternateName": "ISSI",
     "url": "https://issi-software.com",
-    "logo": "https://issi-software.com/images/issi_logo.png",
+    "logo": "https://issi-software.com/images/issi_logo.webp",
     "foundingDate": "1995",
     "address": {
         "@type": "PostalAddress",
@@ -98,7 +98,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
             url: `https://issi-software.com/${lang}/about`,
             images: [
                 {
-                    url: "https://issi-software.com/images/issi_logo.png",
+                    url: "https://issi-software.com/images/issi_logo.webp",
                     width: 800,
                     height: 600,
                     alt: "ISSI - International Software Systems, Inc."

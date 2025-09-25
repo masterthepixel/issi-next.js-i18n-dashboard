@@ -96,6 +96,14 @@ async function processDirectory(dirPath) {
  * Process a single image file
  */
 async function processImage(inputPath, directory, filename) {
+    const ext = path.extname(filename).toLowerCase();
+
+    // Skip if already WebP
+    if (ext === '.webp') {
+        console.log(`  - Skipping: ${filename} (already WebP)`);
+        return;
+    }
+
     const baseName = path.parse(filename).name;
     const outputPath = path.join(directory, `${baseName}.webp`);
 
@@ -109,11 +117,16 @@ async function processImage(inputPath, directory, filename) {
 
         console.log(`  ✓ Success: ${Math.round(result.originalSize / 1024)} KB -> ${Math.round(result.newSize / 1024)} KB (${result.reduction}% reduction)`);
 
+        // Remove original file after successful conversion
+        fs.unlinkSync(inputPath);
+        console.log(`  🗑️  Removed original: ${filename}`);
+
         // Log success
         logContent += `SUCCESS: ${inputPath}\n`;
         logContent += `  Original: ${Math.round(result.originalSize / 1024)} KB\n`;
         logContent += `  WebP: ${Math.round(result.newSize / 1024)} KB\n`;
         logContent += `  Reduction: ${result.reduction}%\n`;
+        logContent += `  Original removed: Yes\n`;
         logContent += `----------------------------------------\n`;
 
         successCount++;
@@ -190,11 +203,6 @@ Quality setting: ${config.quality}%
         fs.writeFileSync(config.logFile, logContent, 'utf8');
         console.log(`📝 Conversion log saved to: ${config.logFile}`);
 
-        // Optional: Remove original files (commented out for safety)
-        // console.log('🗑️  Removing original files...');
-        // await removeOriginalFiles();
-        // console.log('✅ Original files removed');
-
         console.log('🎉 Conversion process completed!');
 
     } catch (error) {
@@ -221,26 +229,6 @@ async function countFiles(dirPath) {
     }
 }
 
-/**
- * Remove original files (optional - use with caution)
- */
-async function removeOriginalFiles() {
-    const files = fs.readdirSync(config.sourceDir, { recursive: true });
-
-    for (const file of files) {
-        const fullPath = path.join(config.sourceDir, file);
-        const stat = fs.statSync(fullPath);
-
-        if (stat.isFile() && isImageFile(file)) {
-            const baseName = path.parse(file).name;
-            const webpFile = path.join(config.sourceDir, file.replace(baseName, `${baseName}.webp`));
-
-            if (fs.existsSync(webpFile)) {
-                fs.unlinkSync(fullPath);
-            }
-        }
-    }
-}
 
 // Run the script
 main().catch(console.error);

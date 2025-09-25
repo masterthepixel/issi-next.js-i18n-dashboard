@@ -20,7 +20,7 @@ export default function FooterContactCTA({ locale, messages }: FooterContactCTAP
                 {/* ISSI Logo in top right */}
                 <div className="absolute top-6 right-6 z-10">
                     <Image
-                        src="/images/issi_logo.png"
+                        src="/images/issi_logo.webp"
                         alt="ISSI Logo"
                         width={112}
                         height={112}

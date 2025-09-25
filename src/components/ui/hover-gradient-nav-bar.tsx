@@ -110,7 +110,7 @@ function HoverGradientNavBar({ locale, bannerVisible }: HoverGradientNavBarProps
 
   const menuItems: HoverGradientMenuItem[] = [
     {
-      icon: <Image src="/images/issi_logo.png" alt="ISSI Logo" width={56} height={56} className="rounded-sm" />,
+      icon: <Image src="/images/issi_logo.webp" alt="ISSI Logo" width={56} height={56} className="rounded-sm" />,
       label: <FormattedMessage id="common.navigation.home" defaultMessage="Home" />,
       href: `/${locale}/home`,
       gradient: "radial-gradient(circle, hsl(var(--primary) / 0.15) 0%, hsl(var(--primary) / 0.06) 50%, hsl(var(--primary) / 0) 100%)",
@@ -527,7 +527,7 @@ function HoverGradientNavBar({ locale, bannerVisible }: HoverGradientNavBarProps
 export function getMenuItems(locale: string) {
   return [
     {
-      icon: <Image src="/images/issi_logo.png" alt="ISSI Logo" width={56} height={56} className="rounded-sm" />,
+      icon: <Image src="/images/issi_logo.webp" alt="ISSI Logo" width={56} height={56} className="rounded-sm" />,
       label: <FormattedMessage id="common.navigation.home" defaultMessage="Home" />,
       href: `/${locale}/home`,
       gradient: "radial-gradient(circle, hsl(var(--primary) / 0.15) 0%, hsl(var(--primary) / 0.06) 50%, hsl(var(--primary) / 0) 100%)",

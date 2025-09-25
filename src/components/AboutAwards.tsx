@@ -8,19 +8,19 @@ import { FormattedMessage } from "react-intl";
 const awards = [
   {
     id: 1,
-    imageUrl: "/images/awards/1.png",
+    imageUrl: "/images/awards/1.webp",
     alt: "ISSI award for excellence in software development and innovation in government technology solutions",
     name: "Excellence in Software Development Award",
   },
   {
     id: 2,
-    imageUrl: "/images/awards/2.png",
+    imageUrl: "/images/awards/2.webp",
     alt: "ISSI recognition for outstanding IT support services and customer satisfaction in federal contracts",
     name: "Outstanding IT Support Services Recognition",
   },
   {
     id: 3,
-    imageUrl: "/images/awards/3.png",
+    imageUrl: "/images/awards/3.webp",
     alt: "ISSI industry leadership award for innovative technology solutions and proven track record since 1995",
     name: "Industry Leadership Award",
   },

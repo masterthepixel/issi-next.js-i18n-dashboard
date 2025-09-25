@@ -223,7 +223,7 @@ const BottomActionBar: React.FC = () => {
                                 <div className="flex flex-col gap-1 py-2">
                                     {/* Logo and Title */}
                                     <div className="flex items-center gap-2 px-4 py-2 border-b border-gray-200 dark:border-gray-800">
-                                        <img src="/images/issi_logo.png" alt="ISSI Logo" width={32} height={32} className="rounded-sm" />
+                                        <img src="/images/issi_logo.webp" alt="ISSI Logo" width={32} height={32} className="rounded-sm" />
                                         <span className="font-semibold text-lg">Menu</span>
                                     </div>
                                     {/* Main Navigation */}

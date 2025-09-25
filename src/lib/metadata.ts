@@ -22,7 +22,7 @@ export const defaultMetadata = {
     siteName: "ISSI",
     images: [
       {
-        url: "/images/issi_logo.png",
+        url: "/images/issi_logo.webp",
         width: 1200,
         height: 630,
         alt: "ISSI Logo",
@@ -35,6 +35,6 @@ export const defaultMetadata = {
     card: "summary_large_image",
     title: "ISSI - International Software Systems International",
     description: "International Software Systems International official website",
-    images: ["/images/issi_logo.png"],
+    images: ["/images/issi_logo.webp"],
   },
 };

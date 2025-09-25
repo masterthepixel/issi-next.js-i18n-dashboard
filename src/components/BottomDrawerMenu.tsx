@@ -43,7 +43,7 @@ export default function BottomDrawerMenu({ open, onClose, menuItems }: BottomDra
                         <div className="flex items-center justify-between w-full">
                             <div className="flex items-center gap-2">
                                 <Image
-                                    src="/images/issi_logo.png"
+                                    src="/images/issi_logo.webp"
                                     alt="ISSI Logo"
                                     width={40}
                                     height={40}
