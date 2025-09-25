@@ -8,13 +8,14 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { GlobeLoader } from './ui/universal-loader';
 
 // Dynamically import the globe component to avoid SSR issues
 const World = dynamic(() => import('./ui/globe').then(mod => mod.World), {
     ssr: false,
     loading: () => (
         <div className="flex h-full w-full items-center justify-center">
-            <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
+            <GlobeLoader />
         </div>
     ),
 });
@@ -213,18 +214,7 @@ export default function GlobeHero({ lang: _lang = "en" }: GlobeHeroProps) {
                     <div className="mx-auto flex h-96 w-96 max-w-full items-center justify-center lg:h-[500px] lg:w-[500px]">
                         <Suspense fallback={
                             <div className="flex h-full w-full items-center justify-center">
-                                <div className="relative h-64 w-64 lg:h-80 lg:w-80">
-                                    {/* Animated globe placeholder */}
-                                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 animate-pulse"></div>
-                                    <div className="absolute inset-4 rounded-full bg-gradient-to-br from-primary/30 to-secondary/30 animate-spin" style={{ animationDuration: '20s' }}></div>
-                                    <div className="absolute inset-8 rounded-full bg-gradient-to-tr from-primary/40 to-secondary/40 animate-ping" style={{ animationDuration: '3s' }}></div>
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <div className="text-center">
-                                            <div className="text-primary font-semibold">🌍</div>
-                                            <div className="text-xs text-muted-foreground mt-2">Loading Globe...</div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <GlobeLoader className="h-64 w-64 lg:h-80 lg:w-80" />
                             </div>
                         }>
                             <div className="w-full h-full">
