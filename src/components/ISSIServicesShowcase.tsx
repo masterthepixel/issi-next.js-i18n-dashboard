@@ -249,7 +249,7 @@ const ISSIServicesShowcaseInternal = () => {
           >
             <FormattedMessage id="services.showcase.subtitle" />
           </motion.p>          {/* Category Filter */}
-          <div className="flex flex-wrap justify-start gap-2 mb-8" role="tablist" aria-label="Service category filters">
+          <div className="flex flex-wrap justify-start gap-2 mb-8" role="tablist" aria-label="Service category filters" id="service-categories">
             {CATEGORIES.map((category) => {
               const isSelected = selectedCategory === category.id;
               return (
@@ -276,6 +276,9 @@ const ISSIServicesShowcaseInternal = () => {
         {isLoaded && (
           <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto"
+            role="tabpanel"
+            id={`services-${selectedCategory}`}
+            aria-labelledby="service-categories"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}

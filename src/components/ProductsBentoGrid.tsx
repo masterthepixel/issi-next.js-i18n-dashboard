@@ -243,7 +243,7 @@ const ProductsBentoGrid = ({ lang }: ProductsBentoGridProps) => {
         </div>
 
         {/* Filter Tabs */}
-        <div className="mt-16 flex flex-wrap justify-start gap-2 mb-12" role="tablist" aria-label="Product category filters">
+        <div className="mt-16 flex flex-wrap justify-start gap-2 mb-12" role="tablist" aria-label="Product category filters" id="product-categories">
           {categories.map((category) => (
             <Button
               key={category}
@@ -265,7 +265,12 @@ const ProductsBentoGrid = ({ lang }: ProductsBentoGridProps) => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-7xl mx-auto auto-rows-min">
+        <div
+          className="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-7xl mx-auto auto-rows-min"
+          role="tabpanel"
+          id={`products-${selectedCategory.toLowerCase()}`}
+          aria-labelledby="product-categories"
+        >
           {filteredProducts.map((product, _index) => {
             const IconComponent = product.icon;
             const colors = getCategoryColors(product.category);

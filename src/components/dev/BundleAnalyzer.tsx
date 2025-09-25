@@ -53,6 +53,7 @@ export function BundleAnalyzer({ showInProduction = false }: BundleAnalyzerProps
                 onClick={() => setIsVisible(!isVisible)}
                 className="fixed bottom-20 right-4 bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-sm font-medium z-50 shadow-lg"
                 title="Toggle Bundle Analyzer"
+                aria-label="Toggle Bundle Analyzer"
             >
                 📊
             </button>
@@ -64,7 +65,8 @@ export function BundleAnalyzer({ showInProduction = false }: BundleAnalyzerProps
                         <h3 className="font-semibold text-green-400">Bundle Analyzer</h3>
                         <button
                             onClick={() => setIsVisible(false)}
-                            className="text-gray-400 hover:text-white"
+                            className="text-gray-300 hover:text-white"
+                            aria-label="Close Bundle Analyzer"
                         >
                             ✕
                         </button>
@@ -73,11 +75,11 @@ export function BundleAnalyzer({ showInProduction = false }: BundleAnalyzerProps
                     <div className="space-y-2">
                         {bundleData.map((item, index) => (
                             <div key={index} className="flex justify-between items-center">
-                                <span className="text-gray-300">{item.name}:</span>
+                                <span className="text-gray-200">{item.name}:</span>
                                 <div className="text-right">
                                     <div className="text-white">{formatBytes(item.size)}</div>
                                     {item.gzipSize && (
-                                        <div className="text-gray-400 text-xs">
+                                        <div className="text-gray-300 text-xs">
                                             gz: {formatBytes(item.gzipSize)}
                                         </div>
                                     )}
@@ -92,7 +94,7 @@ export function BundleAnalyzer({ showInProduction = false }: BundleAnalyzerProps
                             <div className="text-right">
                                 <div className="text-yellow-400">{formatBytes(totalSize)}</div>
                                 {totalGzipSize > 0 && (
-                                    <div className="text-gray-400 text-xs">
+                                    <div className="text-gray-300 text-xs">
                                         gz: {formatBytes(totalGzipSize)}
                                     </div>
                                 )}
@@ -100,7 +102,7 @@ export function BundleAnalyzer({ showInProduction = false }: BundleAnalyzerProps
                         </div>
                     </div>
 
-                    <div className="mt-3 text-xs text-gray-400">
+                    <div className="mt-3 text-xs text-gray-300">
                         💡 Run `pnpm build --analyze` for detailed analysis
                     </div>
                 </div>
