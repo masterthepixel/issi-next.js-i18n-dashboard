@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
-import { useState, useEffect } from "react";
-import { SkeletonWrapper } from "./ui/skeleton-wrapper";
 import { GovernmentClientsSkeleton } from "./ui/skeleton-components";
+import { SkeletonWrapper } from "./ui/skeleton-wrapper";
 
 // Updated to include icons - transformed for InfiniteMovingCards format
 const clients = [
@@ -251,7 +251,7 @@ export default function GovernmentClients() {
     <SkeletonWrapper
       isLoading={isLoading}
       skeleton={<GovernmentClientsSkeleton />}
-      skeletonDelay={100}
+      loadingDelay={100}
     >
       <motion.section
         className="py-16 sm:py-24"
@@ -315,7 +315,7 @@ export default function GovernmentClients() {
               <InfiniteMovingCards
                 items={clientRows[2]}
                 direction="right"
-                speed="fast"  
+                speed="fast"
                 pauseOnHover={true}
                 className="patriotic-cards-red"
               />

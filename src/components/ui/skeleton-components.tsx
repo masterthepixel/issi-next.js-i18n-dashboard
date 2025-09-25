@@ -397,7 +397,7 @@ export const GovernmentClientCardSkeleton = ({ className }: { className?: string
                 <Skeleton className="h-3 w-24" />
             </div>
         </div>
-        
+
         {/* Contract Details */}
         <div className="space-y-3">
             <div className="flex justify-between items-center">
@@ -406,7 +406,7 @@ export const GovernmentClientCardSkeleton = ({ className }: { className?: string
             </div>
             <Skeleton className="h-3 w-full" />
             <Skeleton className="h-3 w-3/4" />
-            
+
             {/* Contract Value */}
             <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
                 <Skeleton className="h-6 w-28" />
@@ -429,7 +429,7 @@ export const GovernmentClientsSkeleton = ({ className }: { className?: string })
             {/* Gradient Masks */}
             <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent dark:from-slate-950 z-10" />
             <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent dark:from-slate-950 z-10" />
-            
+
             {/* Scrolling Cards */}
             <div className="flex gap-6 animate-pulse">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -451,7 +451,7 @@ export const GovernmentTestimonialCardSkeleton = ({ className }: { className?: s
         <div className="mb-4">
             <Skeleton className="h-8 w-8 rounded-full bg-blue-100/50 dark:bg-blue-900/20" />
         </div>
-        
+
         {/* Testimonial Content */}
         <div className="space-y-4 mb-6">
             <Skeleton className="h-4 w-full" />
@@ -459,7 +459,7 @@ export const GovernmentTestimonialCardSkeleton = ({ className }: { className?: s
             <Skeleton className="h-4 w-4/5" />
             <Skeleton className="h-4 w-5/6" />
         </div>
-        
+
         {/* Author Info */}
         <div className="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-700">
             <Skeleton className="h-12 w-12 rounded-full bg-slate-200/50 dark:bg-slate-700/50" />
@@ -469,7 +469,7 @@ export const GovernmentTestimonialCardSkeleton = ({ className }: { className?: s
                 <Skeleton className="h-3 w-28 mt-1" />
             </div>
         </div>
-        
+
         {/* Rating */}
         <div className="flex gap-1 mt-4 justify-center">
             {Array.from({ length: 5 }).map((_, i) => (
@@ -492,7 +492,7 @@ export const GovernmentTestimonialsSkeleton = ({ className }: { className?: stri
             {/* Gradient Masks */}
             <div className="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-white to-transparent dark:from-slate-950 z-10" />
             <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-white to-transparent dark:from-slate-950 z-10" />
-            
+
             {/* Scrolling Testimonials */}
             <div className="flex gap-8 animate-pulse">
                 {Array.from({ length: 4 }).map((_, i) => (

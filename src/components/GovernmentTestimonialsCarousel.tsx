@@ -1,11 +1,11 @@
 "use client";
 
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
-import { motion } from "motion/react";
-import { FormattedMessage } from "react-intl";
-import { useState, useEffect } from "react";
-import { SkeletonWrapper } from "@/components/ui/skeleton-wrapper";
 import { GovernmentTestimonialsSkeleton } from "@/components/ui/skeleton-components";
+import { SkeletonWrapper } from "@/components/ui/skeleton-wrapper";
+import { motion } from "motion/react";
+import { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
 
 export default function GovernmentTestimonialsCarousel() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +22,7 @@ export default function GovernmentTestimonialsCarousel() {
     <SkeletonWrapper
       isLoading={isLoading}
       skeleton={<GovernmentTestimonialsSkeleton />}
-      skeletonDelay={150}
+      loadingDelay={150}
     >
       <motion.section
         className="py-16 sm:py-24"

@@ -397,8 +397,8 @@ The skeleton loading system provides performance-optimized loading states that s
 #### 1. Basic Component Skeleton Loading
 
 ```tsx
-import { SkeletonWrapper } from '@/components/ui/skeleton-wrapper';
-import { ServicesSkeleton } from '@/components/ui/skeleton-components';
+import { SkeletonWrapper } from "@/components/ui/skeleton-wrapper";
+import { ServicesSkeleton } from "@/components/ui/skeleton-components";
 
 export const ServicesComponent = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -419,8 +419,8 @@ export const ServicesComponent = () => {
 
 ```tsx
 // src/components/ISSIAppleCardsCarousel.tsx
-import { AppleCardsCarouselSkeleton } from '@/components/ui/skeleton-components';
-import { SkeletonWrapper } from '@/components/ui/skeleton-wrapper';
+import { AppleCardsCarouselSkeleton } from "@/components/ui/skeleton-components";
+import { SkeletonWrapper } from "@/components/ui/skeleton-wrapper";
 
 const ISSIAppleCardsCarousel = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -451,19 +451,19 @@ const ISSIAppleCardsCarousel = () => {
 // Enhanced BlurImage component with skeleton
 export const BlurImage = ({ src, className, alt, ...rest }) => {
   const [isLoading, setLoading] = useState(true);
-  
+
   return (
     <>
       {/* Skeleton background while loading */}
       {isLoading && (
         <div className="absolute inset-0 bg-gradient-to-br from-muted-foreground/10 to-muted-foreground/20 animate-pulse z-5" />
       )}
-      
+
       <Image
         className={cn(
           "h-full w-full transition-all duration-500",
           isLoading ? "blur-sm opacity-0" : "blur-0 opacity-100",
-          className,
+          className
         )}
         onLoad={() => setLoading(false)}
         src={src}
@@ -491,20 +491,86 @@ const LazySection = ({ children }) => {
           observer.disconnect();
         }
       },
-      { rootMargin: '200px' } // Load 200px before visible
+      { rootMargin: "200px" } // Load 200px before visible
     );
 
     observer.observe(ref);
     return () => observer.disconnect();
   }, [ref]);
 
-  return (
-    <div ref={setRef}>
-      {isVisible ? children : <ServicesSkeleton />}
-    </div>
-  );
+  return <div ref={setRef}>{isVisible ? children : <ServicesSkeleton />}</div>;
 };
 ```
+
+#### 5. Government Components Skeleton Loading
+
+**Government Clients Implementation**:
+
+```tsx
+// src/components/GovernmentClients.tsx
+import { GovernmentClientsSkeleton } from "@/components/ui/skeleton-components";
+import { SkeletonWrapper } from "@/components/ui/skeleton-wrapper";
+
+export default function GovernmentClients() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000); // 1 second loading time for client data
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <SkeletonWrapper isLoading={isLoading} skeleton={<GovernmentClientsSkeleton />} loadingDelay={100}>
+      {/* Government clients InfiniteMovingCards content */}
+    </SkeletonWrapper>
+  );
+}
+```
+
+**Government Testimonials Implementation**:
+
+```tsx
+// src/components/GovernmentTestimonialsCarousel.tsx
+import { GovernmentTestimonialsSkeleton } from "@/components/ui/skeleton-components";
+import { SkeletonWrapper } from "@/components/ui/skeleton-wrapper";
+
+export default function GovernmentTestimonialsCarousel() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1200); // 1.2 second loading time for testimonials
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <SkeletonWrapper isLoading={isLoading} skeleton={<GovernmentTestimonialsSkeleton />} loadingDelay={150}>
+      {/* Government testimonials InfiniteMovingCards content */}
+    </SkeletonWrapper>
+  );
+}
+```
+
+**Specialized Government Skeletons**:
+
+The government components use specialized skeleton designs that match their specific layouts:
+
+- **GovernmentClientCardSkeleton**: Government logo placeholder, contract details, and value information
+- **GovernmentClientsSkeleton**: Three-row infinite scrolling layout with gradient masks
+- **GovernmentTestimonialCardSkeleton**: Testimonial with quote icon, content, author info, and rating
+- **GovernmentTestimonialsSkeleton**: Testimonial carousel with proper card spacing
+
+These skeletons feature:
+
+- **Patriotic Theme**: Blue, white, and red color schemes for government context
+- **Content-Aware Layout**: Matches exact positioning of real content
+- **Infinite Scroll Simulation**: Moving animation patterns that match InfiniteMovingCards
+- **Proper Gradient Masks**: Left/right fade effects for seamless scrolling appearance
 
 ### Performance Configuration
 
@@ -544,6 +610,8 @@ const LazySection = ({ children }) => {
 - ✅ **ISSIAppleCardsCarousel**: Full skeleton loading with image transitions
 - ✅ **BlurImage Component**: Enhanced image loading with skeleton placeholders
 - ✅ **Universal Loader System**: 4 variants with skeleton integration
+- ✅ **GovernmentClients**: Government client/partner cards with patriotic-themed skeleton
+- ✅ **GovernmentTestimonialsCarousel**: Testimonial cards with content-aware skeleton layout
 - 🔄 **ISSIServicesShowcase**: Ready for skeleton implementation
 - 🔄 **ProductsBentoGrid**: Ready for skeleton implementation
 - 🔄 **Globe Component**: Ready for enhanced loading states
@@ -551,9 +619,10 @@ const LazySection = ({ children }) => {
 #### Implementation Roadmap
 
 1. **Phase 1 Complete**: AppleCardsCarousel with full skeleton loading
-2. **Phase 2**: Services showcase and product grid skeletons
-3. **Phase 3**: Navigation and form skeleton integration
-4. **Phase 4**: Full-page skeleton loading patterns
+2. **Phase 2 Complete**: Government components with specialized skeleton layouts
+3. **Phase 3**: Services showcase and product grid skeletons
+4. **Phase 4**: Navigation and form skeleton integration
+5. **Phase 5**: Full-page skeleton loading patterns
 
 ## Animation Configuration Standards
 
@@ -716,11 +785,13 @@ const LazySection = ({ children }) => {
 
 ### Skeleton Loading Integration
 
-- **Implementation Status**: Phase 1 Complete (AppleCardsCarousel)
+- **Implementation Status**: Phase 2 Complete (AppleCardsCarousel + Government Components)
 - **Available Skeletons**: 20+ content-aware skeleton components
+- **Government Implementations**: GovernmentClients and GovernmentTestimonialsCarousel with specialized skeletons
 - **Performance Integration**: Seamless integration with motion/react animations
 - **Loading Strategies**: Basic, progressive, and intersection observer patterns
 - **Timing Optimization**: Smart delays (100-150ms) prevent loading flashes
+- **Specialized Layouts**: Content-aware skeletons for government client cards and testimonials
 
 ---
 
