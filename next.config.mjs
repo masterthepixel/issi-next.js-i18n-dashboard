@@ -61,6 +61,70 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
 
+  // HTTP caching headers for better performance
+  async headers() {
+    return [
+      {
+        // Cache static assets for 1 year
+        source: '/_next/static/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        // Cache images for 1 month
+        source: '/images/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=2592000, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        // Cache fonts for 1 year
+        source: '/fonts/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        // Cache API responses for 5 minutes with stale-while-revalidate
+        source: '/api/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=300, stale-while-revalidate=300',
+          },
+        ],
+      },
+      {
+        // Security headers
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+        ],
+      },
+    ];
+  },
+
   // Build optimizations
   webpack: (config, { dev, isServer, webpack }) => {
     // React Three Fiber compatibility fix for React 18.3+

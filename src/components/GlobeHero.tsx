@@ -155,7 +155,7 @@ export default function GlobeHero({ lang: _lang = "en" }: GlobeHeroProps) {
                     <div className="mx-auto flex h-96 w-96 max-w-full items-center justify-center lg:h-[500px] lg:w-[500px]">
                         <div className="relative w-full h-full">
                             <Image
-                                src="/images/issi_logo.png"
+                                src="/images/issi_logo.webp"
                                 alt="ISSI Global Network"
                                 fill
                                 className="object-contain opacity-80"

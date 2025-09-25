@@ -11,7 +11,7 @@ import NewBottomActionBar from "@/components/NewBottomActionBar";
 import { ThemeProviderWrapper } from "@/components/ThemeProviderWrapper";
 import dynamic from "next/dynamic";
 import { usePathname } from 'next/navigation';
-import React, { lazy, Suspense, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 const FooterContactCTA = dynamic(() => import("@/components/FooterContactCTA"), { ssr: false });
 
@@ -20,6 +20,7 @@ const JobBannerWrapper = lazy(() => import("@/components/careers/JobBannerWrappe
 const ScrollToTopButton = lazy(() => import("@/components/ScrollToTopButton"));
 
 import { Locale } from "@/lib/definitions";
+import { swManager } from "@/lib/service-worker";
 import { MessageFormatElement } from "react-intl";
 
 interface Props {
@@ -32,6 +33,18 @@ interface Props {
 export default function ClientLayout({ lang, messages, intlMessages, children }: Props) {
   const pathname = usePathname();
   const [isBannerVisible, setIsBannerVisible] = useState(false);
+
+  // Register service worker for caching
+  useEffect(() => {
+    // Service worker is automatically registered by swManager on import
+    // Listen for updates if needed in the future
+    const unsubscribe = swManager.onUpdate((_registration) => {
+      console.log('[SW] Update available');
+      // Could show a toast notification here
+    });
+
+    return unsubscribe;
+  }, []);
 
   // Check if we're on homepage (including /home routes)
   const homepagePaths = ['/', '/en', '/fr', '/es', '/en/home', '/fr/home', '/es/home', '/home'];
