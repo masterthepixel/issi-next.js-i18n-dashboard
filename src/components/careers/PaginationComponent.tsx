@@ -11,10 +11,10 @@ interface PaginationComponentProps {
   locale?: string;
 }
 
-export function PaginationComponent({ 
-  totalPages, 
-  currentPage, 
-  locale = "en" 
+export function PaginationComponent({
+  totalPages,
+  currentPage,
+  locale = "en"
 }: PaginationComponentProps) {
   const intl = useIntl();
   const router = useRouter();
@@ -38,9 +38,9 @@ export function PaginationComponent({
     const range = [];
     const rangeWithDots = [];
 
-    for (let i = Math.max(2, currentPage - delta); 
-         i <= Math.min(totalPages - 1, currentPage + delta); 
-         i++) {
+    for (let i = Math.max(2, currentPage - delta);
+      i <= Math.min(totalPages - 1, currentPage + delta);
+      i++) {
       range.push(i);
     }
 

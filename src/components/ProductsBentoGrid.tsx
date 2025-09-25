@@ -265,7 +265,7 @@ const ProductsBentoGrid = ({ lang }: ProductsBentoGridProps) => {
         </div>
 
         {/* Products Grid */}
-        <div 
+        <div
           className="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-7xl mx-auto auto-rows-min"
           role="tabpanel"
           id={`products-${selectedCategory.toLowerCase()}`}
