@@ -199,7 +199,7 @@ const ProductsBentoGrid = ({ lang }: ProductsBentoGridProps) => {
   };
 
   return (
-    <div className="py-2">
+    <div className="py-2" style={{ contain: 'layout style paint' }}>
       <div className="mx-auto max-w-7xl px-2">
         {/* Header Section */}
         <div className="max-w-2xl text-left">
@@ -209,12 +209,12 @@ const ProductsBentoGrid = ({ lang }: ProductsBentoGridProps) => {
               .map((word, index) => (
                 <motion.span
                   key={index}
-                  initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
-                  animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{
-                    duration: 0.3,
+                    duration: 0.4,
                     delay: index * 0.1,
-                    ease: "easeInOut",
+                    ease: "easeOut",
                   }}
                   className="mr-2 inline-block"
                 >

@@ -207,10 +207,11 @@ const ISSIServicesShowcaseInternal = () => {
   return (
     <motion.section
       className="py-16 px-6 lg:px-8"
+      style={{ contain: 'layout style paint' }}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.4 }}
     >
       <div className="mx-auto max-w-7xl">
         <div className="text-left mb-16">
@@ -219,20 +220,20 @@ const ISSIServicesShowcaseInternal = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
           >
             {"Our Services"
               .split(" ")
               .map((word, index) => (
                 <motion.span
                   key={index}
-                  initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
-                  whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{
-                    duration: 0.3,
+                    duration: 0.4,
                     delay: index * 0.1,
-                    ease: "easeInOut",
+                    ease: "easeOut",
                   }}
                   className="mr-2 inline-block"
                 >
@@ -245,7 +246,7 @@ const ISSIServicesShowcaseInternal = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
           >
             <FormattedMessage id="services.showcase.subtitle" />
           </motion.p>          {/* Category Filter */}
@@ -282,7 +283,7 @@ const ISSIServicesShowcaseInternal = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
           >
             {filteredServices.map((service, _index) => {
               const IconComponent = service.icon;

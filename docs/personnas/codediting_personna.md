@@ -434,6 +434,9 @@ export default function ClientComponentWrapper({ locale, messages }: Props) {
 - **Wrapper Pattern**: Use wrapper components for client-side integration
 - **Globe Integration**: SSR-safe with dynamic imports (`ssr: false`)
 - **BentoGrid**: Responsive grid layouts with i18n support
+- **shadcn/ui Components**: Use pre-built, accessible UI components from shadcn/ui
+- **CVA Variants**: Implement component variants using Class Variance Authority
+- **Framer Motion**: Add smooth animations and transitions with performance optimization
 
 ### **🚨 Next.js 15 Server/Client Separation Rules** (Stories 1.1 & 1.2 Lessons)
 
@@ -1075,7 +1078,854 @@ import { Button } from "@/components/ui/button";
 
 **See detailed resolution guide**: `docs/shadcn-migration/REACT_CHILDREN_ONLY_ERROR_RESOLUTION.md`
 
-### 🔍 **Job Portal & Search Implementation Patterns** (Story 3.1 Lessons Learned)
+## 🎨 **shadcn/ui Component System & Architecture**
+
+### **Core shadcn/ui Implementation Philosophy**
+
+**shadcn/ui** is the foundational component library for all UI elements in this project. It provides:
+
+- **Primitive Components**: Headless UI primitives built on Radix UI
+- **Consistent Theming**: CSS custom properties for design tokens
+- **Accessibility First**: WCAG compliant with proper ARIA support
+- **TypeScript Native**: Full TypeScript support with proper type definitions
+- **Tailwind Integration**: Seamless integration with Tailwind CSS utilities
+
+### **Component Installation & Configuration**
+
+**Installation Command**:
+
+```bash
+npx shadcn-ui@latest add [component-name]
+```
+
+**Configuration File** (`components.json`):
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.ts",
+    "css": "src/app/globals.css",
+    "baseColor": "slate",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui"
+  }
+}
+```
+
+### **Essential shadcn/ui Components**
+
+#### **Form Components**
+
+- **Button**: Enhanced button with variants (`default`, `destructive`, `outline`, `secondary`, `ghost`, `link`)
+- **Input**: Text input with proper focus states and validation styling
+- **Textarea**: Multi-line text input with auto-resize capabilities
+- **Select**: Dropdown selection with search and keyboard navigation
+- **Checkbox**: Boolean input with indeterminate state support
+- **RadioGroup**: Single selection from multiple options
+- **Switch**: Toggle component for boolean values
+- **Slider**: Range input with customizable min/max/step values
+
+#### **Layout Components**
+
+- **Card**: Container component with header, content, footer sections
+- **Dialog**: Modal overlay with proper focus management
+- **Sheet**: Slide-out panel (left, right, top, bottom)
+- **Popover**: Floating content with trigger element
+- **Tooltip**: Contextual information on hover/focus
+- **Accordion**: Collapsible content sections
+- **Tabs**: Tabbed interface for organizing content
+- **Separator**: Visual divider between sections
+
+#### **Data Display**
+
+- **Table**: Data table with sorting, pagination support
+- **Badge**: Status indicators and labels
+- **Avatar**: User profile images with fallbacks
+- **Skeleton**: Loading state placeholders
+- **Progress**: Progress bars and indicators
+
+#### **Navigation**
+
+- **NavigationMenu**: Complex navigation with dropdowns
+- **Breadcrumb**: Navigation hierarchy display
+- **Pagination**: Page navigation controls
+
+### **shadcn/ui Usage Patterns**
+
+#### **Component Import Pattern**
+
+```typescript
+// ✅ Correct: Import from ui directory
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+```
+
+#### **Component Composition Pattern**
+
+```typescript
+// ✅ Correct: Use compound components
+<Card>
+  <CardHeader>
+    <CardTitle>Job Application</CardTitle>
+  </CardHeader>
+  <CardContent className="space-y-4">
+    <div className="space-y-2">
+      <Label htmlFor="name">Full Name</Label>
+      <Input id="name" placeholder="Enter your full name" />
+    </div>
+    <Button className="w-full">Submit Application</Button>
+  </CardContent>
+</Card>
+```
+
+#### **Variant Usage Pattern**
+
+```typescript
+// ✅ Correct: Use semantic variants
+<Button variant="default">Primary Action</Button>
+<Button variant="destructive">Delete</Button>
+<Button variant="outline">Secondary</Button>
+<Button variant="ghost">Tertiary</Button>
+<Button variant="link">Text Link</Button>
+
+// Size variants
+<Button size="sm">Small</Button>
+<Button size="default">Default</Button>
+<Button size="lg">Large</Button>
+```
+
+### **shadcn/ui Theming System**
+
+#### **CSS Custom Properties**
+
+```css
+/* src/app/globals.css */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    /* ... dark mode variables */
+  }
+}
+```
+
+#### **Theme Integration**
+
+```typescript
+// ✅ Correct: Use theme variables in components
+<div className="bg-background text-foreground border border-border rounded-md">
+  <h3 className="text-lg font-semibold text-foreground">Title</h3>
+  <p className="text-muted-foreground">Description text</p>
+</div>
+```
+
+### **shadcn/ui Best Practices**
+
+#### **Accessibility Standards**
+
+- All components include proper ARIA attributes
+- Keyboard navigation support built-in
+- Screen reader compatibility
+- Focus management handled automatically
+- Color contrast meets WCAG standards
+
+#### **Performance Considerations**
+
+- Tree-shakable imports
+- Minimal bundle size impact
+- CSS-in-JS with efficient styling
+- Optimized re-renders with proper memoization
+
+#### **Customization Guidelines**
+
+- Extend components using `className` prop
+- Create custom variants using CVA patterns
+- Override styles using Tailwind utilities
+- Maintain design system consistency
+
+## 🎯 **CVA (Class Variance Authority) - Component Variants System**
+
+### **CVA Philosophy & Benefits**
+
+**Class Variance Authority (CVA)** is the modern approach to component variants in this project, replacing traditional TailwindCSS variant patterns. CVA provides:
+
+- **Type-Safe Variants**: Full TypeScript support with autocomplete
+- **Composition**: Combine multiple variants seamlessly
+- **Performance**: Optimized class generation and deduplication
+- **Maintainability**: Centralized variant definitions
+- **Consistency**: Standardized variant patterns across components
+
+### **CVA vs Traditional TailwindCSS Variants**
+
+```typescript
+// ❌ OLD: Traditional TailwindCSS variants (NOT RECOMMENDED)
+interface ButtonProps {
+  variant?: "primary" | "secondary" | "destructive";
+  size?: "sm" | "md" | "lg";
+}
+
+const Button = ({ variant = "primary", size = "md", className, ...props }) => {
+  const baseClasses =
+    "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
+
+  const variantClasses = {
+    primary: "bg-primary text-primary-foreground hover:bg-primary/90",
+    secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+    destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+  };
+
+  const sizeClasses = {
+    sm: "h-9 px-3 text-sm",
+    md: "h-10 px-4 py-2",
+    lg: "h-11 px-8",
+  };
+
+  return <button className={cn(baseClasses, variantClasses[variant], sizeClasses[size], className)} {...props} />;
+};
+```
+
+```typescript
+// ✅ NEW: CVA-based variants (RECOMMENDED)
+import { cva, type VariantProps } from "class-variance-authority";
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline: "border border-input hover:bg-accent hover:text-accent-foreground",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "underline-offset-4 hover:underline text-primary",
+      },
+      size: {
+        default: "h-10 py-2 px-4",
+        sm: "h-9 px-3 rounded-md",
+        lg: "h-11 px-8 rounded-md",
+        icon: "h-10 w-10",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+);
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, variant, size, ...props }, ref) => {
+  return <button className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
+});
+Button.displayName = "Button";
+```
+
+### **CVA API Reference**
+
+#### **Basic CVA Function**
+
+```typescript
+import { cva } from "class-variance-authority";
+
+const componentVariants = cva("base-classes", {
+  variants: {
+    variantName: {
+      variantValue: "classes-for-this-variant",
+    },
+  },
+  defaultVariants: {
+    variantName: "defaultValue",
+  },
+});
+```
+
+#### **Advanced CVA Patterns**
+
+**Compound Variants**:
+
+```typescript
+const buttonVariants = cva("base-classes", {
+  variants: {
+    variant: {
+      primary: "bg-blue-500 text-white",
+      secondary: "bg-gray-500 text-white",
+    },
+    size: {
+      small: "px-2 py-1 text-sm",
+      large: "px-4 py-2 text-lg",
+    },
+  },
+  compoundVariants: [
+    {
+      variant: "primary",
+      size: "large",
+      class: "font-bold", // Additional classes when both conditions are met
+    },
+  ],
+  defaultVariants: {
+    variant: "primary",
+    size: "small",
+  },
+});
+```
+
+**Boolean Variants**:
+
+```typescript
+const cardVariants = cva("rounded-lg border bg-card text-card-foreground shadow-sm", {
+  variants: {
+    hoverable: {
+      true: "hover:shadow-md transition-shadow",
+    },
+    padding: {
+      true: "p-6",
+      false: "p-0",
+    },
+  },
+  defaultVariants: {
+    hoverable: false,
+    padding: true,
+  },
+});
+```
+
+### **CVA Integration with shadcn/ui**
+
+#### **Standard shadcn/ui Component Pattern**
+
+```typescript
+// src/components/ui/button.tsx
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-md px-3",
+        lg: "h-11 rounded-md px-8",
+        icon: "h-10 w-10",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+);
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
+    return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
+  }
+);
+Button.displayName = "Button";
+
+export { Button, buttonVariants };
+```
+
+#### **Custom Component with CVA**
+
+```typescript
+// src/components/ui/status-badge.tsx
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+
+const statusBadgeVariants = cva("inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium", {
+  variants: {
+    status: {
+      active: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300",
+      inactive: "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300",
+      pending: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300",
+      error: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300",
+    },
+    size: {
+      sm: "px-2 py-0.5 text-xs",
+      md: "px-2.5 py-0.5 text-xs",
+      lg: "px-3 py-1 text-sm",
+    },
+  },
+  defaultVariants: {
+    status: "active",
+    size: "md",
+  },
+});
+
+export interface StatusBadgeProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof statusBadgeVariants> {}
+
+const StatusBadge = React.forwardRef<HTMLDivElement, StatusBadgeProps>(({ className, status, size, ...props }, ref) => {
+  return <div className={cn(statusBadgeVariants({ status, size, className }))} ref={ref} {...props} />;
+});
+StatusBadge.displayName = "StatusBadge";
+
+export { StatusBadge, statusBadgeVariants };
+```
+
+### **CVA Best Practices**
+
+#### **Variant Naming Conventions**
+
+- Use semantic names: `primary`, `secondary`, `destructive`
+- Boolean variants: `disabled`, `loading`, `selected`
+- Size variants: `sm`, `md`, `lg`, `xl`
+- State variants: `active`, `inactive`, `pending`, `error`
+
+#### **Composition Patterns**
+
+```typescript
+// ✅ Good: Compose variants logically
+const cardVariants = cva("rounded-lg border bg-card text-card-foreground shadow-sm", {
+  variants: {
+    variant: {
+      default: "",
+      elevated: "shadow-lg",
+      outlined: "border-2",
+    },
+    padding: {
+      none: "p-0",
+      sm: "p-4",
+      md: "p-6",
+      lg: "p-8",
+    },
+  },
+});
+
+// Usage
+<Card variant="elevated" padding="md">
+  Content
+</Card>;
+```
+
+#### **TypeScript Integration**
+
+```typescript
+// ✅ Correct: Proper TypeScript usage
+import { type VariantProps } from "class-variance-authority";
+
+interface ComponentProps extends VariantProps<typeof componentVariants> {
+  // Additional props
+}
+
+// ✅ IntelliSense support
+<Button variant="destructive" size="lg" />; // Full autocomplete
+```
+
+### **CVA Migration Guide**
+
+#### **Converting from Traditional Variants**
+
+1. **Identify variant logic** in existing components
+2. **Extract to CVA function** with proper typing
+3. **Update component interface** to extend `VariantProps`
+4. **Replace manual class logic** with CVA function call
+5. **Test all variant combinations**
+
+#### **Common Migration Patterns**
+
+```typescript
+// Before
+const getButtonClasses = (variant, size) => {
+  return cn("base-classes", variant === "primary" && "bg-blue-500", size === "large" && "px-8 py-4");
+};
+
+// After
+const buttonVariants = cva("base-classes", {
+  variants: {
+    variant: { primary: "bg-blue-500" },
+    size: { large: "px-8 py-4" },
+  },
+});
+
+// Usage: cn(buttonVariants({ variant, size }))
+```
+
+## 🎬 **Animation Package - Framer Motion Integration**
+
+### **Animation Philosophy & Benefits**
+
+**Framer Motion** is the project's animation library of choice, providing production-ready motion design with excellent performance and developer experience. Key benefits:
+
+- **Performance**: Hardware-accelerated animations with optimized re-renders
+- **Developer Experience**: Declarative API with TypeScript support
+- **Accessibility**: Respects user's `prefers-reduced-motion` settings
+- **Flexibility**: Supports complex animations, gestures, and layout animations
+- **Integration**: Seamless integration with React and TailwindCSS
+
+### **Core Animation Concepts**
+
+#### **Motion Components**
+
+```typescript
+import { motion } from "framer-motion";
+
+// Basic motion component
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+>
+  Content
+</motion.div>
+
+// All HTML elements have motion equivalents
+<motion.button>Animated Button</motion.button>
+<motion.h1>Animated Heading</motion.h1>
+```
+
+#### **Animation Properties**
+
+```typescript
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -20 },
+  transition: { duration: 0.6, ease: "easeOut" },
+};
+
+// Usage
+<motion.div {...fadeInUp}>Content</motion.div>;
+```
+
+### **Scroll-Triggered Animations**
+
+#### **Scroll-Based Animations**
+
+```typescript
+import { useScroll, useTransform, motion } from "framer-motion";
+
+function ScrollAnimation() {
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
+  return <motion.div style={{ y }}>Content that moves with scroll</motion.div>;
+}
+```
+
+#### **Intersection Observer Animations**
+
+```typescript
+import { useInView, motion } from "framer-motion";
+
+function InViewAnimation({ children }) {
+  const [ref, inView] = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+  });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+```
+
+### **Advanced Animation Patterns**
+
+#### **Staggered Animations**
+
+```typescript
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1, // Stagger by 100ms
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.5 },
+  },
+};
+
+function StaggeredList({ items }) {
+  return (
+    <motion.ul variants={containerVariants} initial="hidden" animate="visible">
+      {items.map((item, index) => (
+        <motion.li key={index} variants={itemVariants}>
+          {item}
+        </motion.li>
+      ))}
+    </motion.ul>
+  );
+}
+```
+
+#### **Layout Animations**
+
+```typescript
+// Automatic layout animations when children change
+<motion.div layout>
+  <motion.div layout>Item 1</motion.div>
+  <motion.div layout>Item 2</motion.div>
+</motion.div>
+
+// Shared layout animations between routes
+<motion.div layoutId="card" />
+```
+
+#### **Gesture Animations**
+
+```typescript
+<motion.div
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  drag
+  dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+>
+  Draggable card
+</motion.div>
+```
+
+### **Performance Optimization**
+
+#### **Reduced Motion Support**
+
+```typescript
+import { useReducedMotion } from "framer-motion";
+
+function AnimatedComponent() {
+  const shouldReduceMotion = useReducedMotion();
+
+  return <motion.div animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}>Content</motion.div>;
+}
+```
+
+#### **Animation Presets**
+
+```typescript
+// Predefined easing curves
+const easing = [0.6, -0.05, 0.01, 0.99]; // Custom bezier
+
+<motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{
+    duration: 0.6,
+    ease: easing,
+  }}
+>
+  Content
+</motion.div>;
+```
+
+### **Integration with TailwindCSS**
+
+#### **Animated Tailwind Classes**
+
+```typescript
+// Combine Framer Motion with Tailwind transitions
+<motion.button
+  className="bg-blue-500 hover:bg-blue-600 transition-colors"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+>
+  Button
+</motion.button>
+```
+
+#### **Dynamic Variants with Tailwind**
+
+```typescript
+const buttonVariants = {
+  idle: "bg-gray-200 text-gray-800",
+  hover: "bg-blue-500 text-white shadow-lg",
+  tap: "bg-blue-600 text-white scale-95",
+};
+
+<motion.button
+  className={cn(buttonVariants.idle)}
+  whileHover={{ className: buttonVariants.hover }}
+  whileTap={{ className: buttonVariants.tap }}
+>
+  Dynamic Button
+</motion.button>;
+```
+
+### **Common Animation Patterns**
+
+#### **Page Transitions**
+
+```typescript
+// src/components/PageTransition.tsx
+import { motion } from "framer-motion";
+
+const pageVariants = {
+  initial: { opacity: 0, y: 20 },
+  in: { opacity: 1, y: 0 },
+  out: { opacity: 0, y: -20 },
+};
+
+const pageTransition = {
+  type: "tween",
+  ease: "anticipate",
+  duration: 0.4,
+};
+
+export function PageTransition({ children }) {
+  return (
+    <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
+      {children}
+    </motion.div>
+  );
+}
+```
+
+#### **Loading States**
+
+```typescript
+// src/components/LoadingSpinner.tsx
+import { motion } from "framer-motion";
+
+export function LoadingSpinner() {
+  return (
+    <motion.div
+      className="w-6 h-6 border-2 border-gray-300 border-t-blue-500 rounded-full"
+      animate={{ rotate: 360 }}
+      transition={{
+        duration: 1,
+        repeat: Infinity,
+        ease: "linear",
+      }}
+    />
+  );
+}
+```
+
+#### **Hover Effects**
+
+```typescript
+// src/components/HoverCard.tsx
+import { motion } from "framer-motion";
+
+export function HoverCard({ children }) {
+  return (
+    <motion.div
+      className="rounded-lg border bg-card p-6 shadow-sm"
+      whileHover={{
+        y: -5,
+        boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
+      }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+```
+
+### **Animation Best Practices**
+
+#### **Performance Guidelines**
+
+- Use `transform` and `opacity` for best performance
+- Avoid animating layout properties when possible
+- Use `will-change` sparingly and remove after animation
+- Prefer CSS transforms over position changes
+- Use `layout` prop judiciously for layout animations
+
+#### **Accessibility Considerations**
+
+- Always respect `prefers-reduced-motion`
+- Provide meaningful animation durations (200-500ms)
+- Don't rely on animation for critical information
+- Test animations with screen readers
+
+#### **Code Organization**
+
+```typescript
+// src/lib/animations.ts - Centralized animation definitions
+export const fadeIn = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  transition: { duration: 0.3 },
+};
+
+export const slideInFromLeft = {
+  initial: { x: -100, opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+  transition: { type: "spring", stiffness: 100 },
+};
+
+// src/components/animations/ - Component-specific animations
+export const cardAnimations = {
+  hover: { scale: 1.02, y: -2 },
+  tap: { scale: 0.98 },
+};
+```
+
+### **🔍 **Job Portal & Search Implementation Patterns\*\* (Story 3.1 Lessons Learned)
 
 Key patterns and architecture from implementing "Job Search and Discovery":
 

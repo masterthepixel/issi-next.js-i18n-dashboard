@@ -3,12 +3,14 @@
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { GovernmentTestimonialsSkeleton } from "@/components/ui/skeleton-components";
 import { SkeletonWrapper } from "@/components/ui/skeleton-wrapper";
+import { useScrollDebounce } from "@/hooks/useScrollDebounce";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 export default function GovernmentTestimonialsCarousel() {
   const [isLoading, setIsLoading] = useState(true);
+  const { isInView, ref } = useScrollDebounce(0.1);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -24,30 +26,26 @@ export default function GovernmentTestimonialsCarousel() {
       skeleton={<GovernmentTestimonialsSkeleton />}
       loadingDelay={150}
     >
-      <motion.section
+      <section
+        ref={ref}
         className="py-16 sm:py-24"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
+        style={{ contain: 'layout style paint' }}
       >
         <div className="mx-auto max-w-7xl px-4">
           <div className="text-left mb-12">
             <motion.h2
               className="text-foreground sm:text-6xl mb-4 font-serif font-[400] text-4xl tracking-tight"
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.4 }}
             >
               <FormattedMessage id="government.testimonials.carousel.title" defaultMessage="Client Testimonials" />
             </motion.h2>
             <motion.p
               className="text-muted-foreground text-lg"
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
             >
               <FormattedMessage id="government.testimonials.carousel.subtitle" defaultMessage="What our government clients say about working with us" />
             </motion.p>
@@ -56,9 +54,8 @@ export default function GovernmentTestimonialsCarousel() {
           <motion.div
             className="h-[20rem] rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
           >
             <InfiniteMovingCards
               items={governmentTestimonials}
@@ -69,7 +66,7 @@ export default function GovernmentTestimonialsCarousel() {
             />
           </motion.div>
         </div>
-      </motion.section>
+      </section>
     </SkeletonWrapper>
   );
 }

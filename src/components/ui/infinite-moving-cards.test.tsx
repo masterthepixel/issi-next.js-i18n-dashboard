@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
 import { InfiniteMovingCards } from "./infinite-moving-cards";
 
 const mockItems = [
@@ -17,15 +16,30 @@ const mockItems = [
 ];
 
 describe("InfiniteMovingCards", () => {
+    beforeEach(() => {
+        // Mock requestIdleCallback to run synchronously
+        vi.stubGlobal('requestIdleCallback', (callback: () => void) => callback());
+        // Mock matchMedia for prefers-reduced-motion
+        vi.stubGlobal('matchMedia', vi.fn(() => ({
+            matches: false,
+            addEventListener: vi.fn(),
+            removeEventListener: vi.fn(),
+        })));
+    });
+
+    afterEach(() => {
+        vi.restoreAllMocks();
+    });
+
     it("renders the correct number of items", () => {
         render(<InfiniteMovingCards items={mockItems} />);
+        // Component duplicates items for infinite scroll effect
         const quotes = screen.getAllByText(/quote/);
-        // The component duplicates items for the infinite scroll effect
         expect(quotes.length).toBe(mockItems.length * 2);
     });
 
     it("renders item content correctly", () => {
-        render(<InfiniteMovingCards items={mockItems} />);
+        render(<InfiniteMovingCards items={mockItems} className="testimonial-cards" />);
         expect(screen.getAllByText("This is a test quote.")).toHaveLength(2);
         expect(screen.getAllByText("John Doe")).toHaveLength(2);
         expect(screen.getAllByText("Tester")).toHaveLength(2);
@@ -40,7 +54,6 @@ describe("InfiniteMovingCards", () => {
         const { container } = render(
             <InfiniteMovingCards items={mockItems} speed="slow" direction="right" />
         );
-        // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
         const scroller = container.querySelector(".scroller");
         expect(scroller).toHaveClass("scroller");
     });
@@ -49,7 +62,6 @@ describe("InfiniteMovingCards", () => {
         const { container } = render(
             <InfiniteMovingCards items={mockItems} pauseOnHover={true} />
         );
-        // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
         const list = container.querySelector("ul");
         expect(list).toHaveClass("hover:[animation-play-state:paused]");
     });
@@ -58,7 +70,6 @@ describe("InfiniteMovingCards", () => {
         const { container } = render(
             <InfiniteMovingCards items={mockItems} pauseOnHover={false} />
         );
-        // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
         const list = container.querySelector("ul");
         expect(list).not.toHaveClass("hover:[animation-play-state:paused]");
     });

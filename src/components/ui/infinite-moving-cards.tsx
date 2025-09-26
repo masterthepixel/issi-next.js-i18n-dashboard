@@ -178,6 +178,9 @@ export const InfiniteMovingCards = ({
                           src={item.avatar}
                           alt={`Avatar of ${item.name}`}
                           className="w-12 h-12 rounded-full object-cover"
+                          loading={_idx < 2 ? "eager" : "lazy"}
+                          decoding="async"
+                          fetchPriority={_idx === 0 ? "high" : "auto"}
                         />
                         <div className="absolute inset-0 rounded-full ring-2 ring-gray-300 ring-offset-2 ring-offset-background pointer-events-none"></div>
                       </div>

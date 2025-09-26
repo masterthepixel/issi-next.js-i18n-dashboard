@@ -102,10 +102,11 @@ export default function TeamGrid() {
   return (
     <motion.section
       className="py-24 sm:py-32"
+      style={{ contain: 'layout style paint' }}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.4 }}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
@@ -113,7 +114,7 @@ export default function TeamGrid() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
         >
           <h2 className="text-pretty text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
             <FormattedMessage id="team.section.title" />
@@ -129,7 +130,7 @@ export default function TeamGrid() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
         >
           {people.map((person) => {
             const nameId = `team.member.${person.id}.name`;

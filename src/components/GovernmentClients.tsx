@@ -255,10 +255,11 @@ export default function GovernmentClients() {
     >
       <motion.section
         className="py-16 sm:py-24"
+        style={{ contain: 'layout style paint' }}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.4 }}
       >
         <div className="mx-auto max-w-7xl px-4">
           <div className="text-left mb-8">
@@ -267,7 +268,7 @@ export default function GovernmentClients() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
             >
               <FormattedMessage
                 id="government.clients.title"
@@ -279,7 +280,7 @@ export default function GovernmentClients() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
             >
               <FormattedMessage
                 id="government.clients.subtitle"
@@ -293,7 +294,7 @@ export default function GovernmentClients() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
           >
             <div className="space-y-2 py-2">
               <InfiniteMovingCards

@@ -9,6 +9,13 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: './src/setupTests.ts',
+    exclude: [
+      '**/node_modules/**',
+      '**/dist/**',
+      'test-blog-api.spec.js',
+      'test-payloadcms-api.spec.js',
+      'e2e/**',
+    ],
     typecheck: {
       ignoreSourceErrors: false,
       include: ['**/*.test.tsx', '**/*.test.ts'],
