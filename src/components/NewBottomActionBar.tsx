@@ -280,7 +280,7 @@ export default function NewBottomActionBar() {
 
     const content = (
         <MotionConfig transition={transition}>
-            <div className="fixed bottom-0 left-0 w-full pointer-events-none z-50" ref={ref}>
+            <div className="fixed bottom-0 left-0 w-full pointer-events-none z-50 md:hidden" ref={ref}>
                 <div className="flex justify-center items-end pb-6">
                     <div className="relative pointer-events-auto">
                         {/* Expandable Menu Container */}
