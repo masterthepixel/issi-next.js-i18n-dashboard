@@ -20,8 +20,8 @@ const JobBannerWrapper = lazy(() => import("@/components/careers/JobBannerWrappe
 const ScrollToTopButton = lazy(() => import("@/components/ScrollToTopButton"));
 
 import { Locale } from "@/lib/definitions";
-import { swManager } from "@/lib/service-worker";
 import { performanceMonitor } from "@/lib/performance-monitor";
+import { swManager } from "@/lib/service-worker";
 import { MessageFormatElement } from "react-intl";
 
 interface Props {
@@ -62,13 +62,13 @@ export default function ClientLayout({ lang, messages, intlMessages, children }:
       <ThemeProviderWrapper>
         <AnimatedBackground />
 
-        <ClientNavigation locale={lang} messages={intlMessages} bannerVisible={isBannerVisible} />
-
         {/* Provide react-intl IntlProvider at app lang layout so both server and client renders have access */}
         <IntlProvider locale={lang} messages={messages}>
           <Suspense fallback={<div style={{ height: '60px' }} />}>
             <JobBannerWrapper locale={lang} onVisibilityChange={setIsBannerVisible} />
           </Suspense>
+
+          <ClientNavigation locale={lang} messages={intlMessages} bannerVisible={isBannerVisible} />
           <Content>
             <div className="mx-auto max-w-7xl px-6 lg:px-8 mt-24">
               {!isHomepage && <IntelligentBreadcrumb className="mb-6" />}

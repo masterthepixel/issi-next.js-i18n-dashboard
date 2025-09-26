@@ -203,11 +203,11 @@ function HoverGradientNavBar({ locale, bannerVisible }: HoverGradientNavBarProps
   const additionalMenuItems: HoverGradientMenuItem[] = [];
 
   return (
-    <div className={`sticky top-0 left-0 w-full md:left-1/2 md:-translate-x-1/2 z-50 ${bannerVisible ? 'top-12 md:top-16' : 'top-0 md:top-4'}`}>
+    <div className={`hidden md:block fixed top-0 left-1/2 -translate-x-1/2 w-fit z-50 ${bannerVisible ? 'top-12 md:top-16' : 'top-0 md:top-4'}`}>
       <motion.nav
-        className="w-full md:w-fit mx-auto px-1 md:px-2 py-1 md:py-2 rounded-none md:rounded-3xl
+        className="w-fit mx-auto px-2 py-2 rounded-3xl
         bg-background/90 backdrop-blur-lg
-        border-b md:border border-border/80
+        border border-border/80
         shadow-lg md:shadow-xl relative"
         initial="initial"
         whileHover="hover"
