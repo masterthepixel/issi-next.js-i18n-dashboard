@@ -1,5 +1,6 @@
 import { Suspense, lazy } from "react";
 
+import HeroWrapper from "@/components/HeroWrapper";
 import Spinner from "@/components/Spinner";
 
 import { Locale } from "@/lib/definitions";
@@ -10,7 +11,6 @@ const AboutCertificationsWrapper = lazy(() => import("@/components/AboutCertific
 const AboutPartnerNetworkWrapper = lazy(() => import("@/components/AboutPartnerNetworkWrapper"));
 const GovernmentClientsWrapper = lazy(() => import("@/components/GovernmentClientsWrapper"));
 const GovernmentTestimonialsCarouselWrapper = lazy(() => import("@/components/GovernmentTestimonialsCarouselWrapper"));
-const HeroWrapper = lazy(() => import("@/components/HeroWrapper"));
 const ISSIAppleCardsCarouselWrapper = lazy(() => import("@/components/ISSIAppleCardsCarouselWrapper"));
 const ISSIServicesShowcaseWrapper = lazy(() => import("@/components/ISSIServicesShowcaseWrapper"));
 
@@ -39,9 +39,7 @@ async function PageContent({ locale }: PageContentProps) {
   return (
     <>
       {/* Hero Section - Above the fold, load immediately */}
-      <Suspense fallback={<div className="h-screen flex items-center justify-center"><Spinner /></div>}>
-        <HeroWrapper locale={locale} messages={messages} />
-      </Suspense>
+      <HeroWrapper locale={locale} messages={messages} />
 
       {/* Apple Cards Carousel - Service Overview */}
       <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
