@@ -2108,5 +2108,17 @@
   "carousel.careers.content": "Opportunités de carrière innovantes",
   "carousel.blog.category": "Blog",
   "carousel.blog.title": "Dernières Actualités",
-  "carousel.blog.content": "Actualités et mises à jour sectorielles"
+  "carousel.blog.content": "Actualités et mises à jour sectorielles",
+  "about.scrollstack.title": "Nos Valeurs Fondamentales",
+  "about.scrollstack.subtitle": "Faites défiler vers le bas pour explorer les principes qui guident notre mission et stimulent notre succès",
+  "about.scrollstack.part1.title": "Présentation de l'Entreprise",
+  "about.scrollstack.part1.description": "Fondée en 1995 et basée à Greenbelt, dans le Maryland, International Software Systems, Inc. (ISSI) est titulaire du contrat GSA IT MAS Schedule et fournit diverses solutions et services informatiques.",
+  "about.scrollstack.part2.title": "Méthodologie et Qualité",
+  "about.scrollstack.part2.description": "ISSI applique des méthodologies administratives, de programme et de gestion de projet éprouvées et conformes aux normes de l'industrie, régulièrement revues et mises en œuvre sur l'ensemble des projets afin d'assurer l'amélioration continue, l'assurance qualité et l'exécution réussie.",
+  "about.scrollstack.part3.title": "Déclaration de Mission",
+  "about.scrollstack.part3.description": "Notre mission est d'aider les clients à atteindre leurs objectifs commerciaux grâce à des services et solutions de conseil exceptionnels et centrés sur le client, en favorisant une culture d'intégrité et d'équité tout en établissant ISSI comme un partenaire de confiance.",
+  "about.scrollstack.part4.title": "Déclaration de Vision",
+  "about.scrollstack.part4.description": "Notre vision est de devenir un leader informatique mondialement reconnu pour ses solutions innovantes, son service client exceptionnel et sa capacité éprouvée à dépasser les attentes des clients.",
+  "about.scrollstack.part5.title": "Objectifs de Partenariat Client",
+  "about.scrollstack.part5.description": "Nous visons à renforcer les clients en exploitant une technologie de pointe pour fournir des solutions économiques, fiables et sécurisées, en bâtissant des partenariats à long terme qui les préparent à prospérer dans un monde numérique en constante évolution."
 }

@@ -1643,5 +1643,17 @@
   "carousel.careers.content": "Oportunidades de carrera innovadoras",
   "carousel.blog.category": "Blog",
   "carousel.blog.title": "Últimas Noticias",
-  "carousel.blog.content": "Noticias y actualizaciones del sector"
+  "carousel.blog.content": "Noticias y actualizaciones del sector",
+  "about.scrollstack.title": "Nuestros Valores Fundamentales",
+  "about.scrollstack.subtitle": "Desplázate hacia abajo para explorar los principios que guían nuestra misión e impulsan nuestro éxito",
+  "about.scrollstack.part1.title": "Resumen de la Empresa",
+  "about.scrollstack.part1.description": "Fundada en 1995 y con sede en Greenbelt, Maryland, International Software Systems, Inc. (ISSI) es titular del contrato GSA IT MAS Schedule y ofrece diversas soluciones y servicios de TI.",
+  "about.scrollstack.part2.title": "Metodología y Calidad",
+  "about.scrollstack.part2.description": "ISSI aplica metodologías administrativas, de programas y de gestión de proyectos comprobadas y reconocidas en la industria, revisadas e implementadas constantemente en todos los proyectos para garantizar la mejora continua, el aseguramiento de la calidad y la ejecución exitosa.",
+  "about.scrollstack.part3.title": "Declaración de Misión",
+  "about.scrollstack.part3.description": "Nuestra misión es ayudar a los clientes a alcanzar sus objetivos comerciales mediante servicios y soluciones de consultoría excepcionales y centradas en el cliente, fomentando una cultura de integridad y equidad mientras establecemos a ISSI como un socio de confianza.",
+  "about.scrollstack.part4.title": "Declaración de Visión",
+  "about.scrollstack.part4.description": "Nuestra visión es convertirnos en un líder de TI reconocido a nivel mundial por soluciones innovadoras, un servicio al cliente destacado y una capacidad comprobada de superar las expectativas de los clientes.",
+  "about.scrollstack.part5.title": "Objetivos de Asociación con los Clientes",
+  "about.scrollstack.part5.description": "Buscamos empoderar a los clientes aprovechando tecnología de vanguardia para ofrecer soluciones rentables, confiables y seguras, construyendo asociaciones a largo plazo que los preparen para prosperar en un mundo digital en constante evolución."
 }

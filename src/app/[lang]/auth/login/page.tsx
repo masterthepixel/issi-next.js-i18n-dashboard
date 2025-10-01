@@ -3,12 +3,13 @@ import { Locale } from "@/lib/definitions";
 import { Suspense } from "react";
 
 interface LoginPageProps {
-    params: {
+    params: Promise<{
         lang: Locale;
-    };
+    }>;
 }
 
-export default function LoginPage({ params: { lang } }: LoginPageProps) {
+export default async function LoginPage({ params }: LoginPageProps) {
+    const { lang } = await params;
     return (
         <Suspense fallback={<div>Loading...</div>}>
             <LoginForm lang={lang} />

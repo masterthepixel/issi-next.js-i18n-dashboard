@@ -4,15 +4,11 @@ import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 import {
-  MorphingDialog,
-  MorphingDialogClose,
-  MorphingDialogContainer,
-  MorphingDialogContent,
-  MorphingDialogDescription,
-  MorphingDialogSubtitle,
-  MorphingDialogTitle,
-  MorphingDialogTrigger
-} from "@/components/motion-primitives/morphing-dialog";
+  SimpleDialog,
+  SimpleDialogClose,
+  SimpleDialogContent,
+  SimpleDialogTrigger,
+} from "@/components/SimpleDialog";
 import { Skeleton } from "@/components/ui/skeleton";
 
 // Enhanced team member image component with professional loading states
@@ -41,7 +37,7 @@ function TeamMemberImage({ src, alt, className, priority = false }: {
     // Professional fallback with initials
     return (
       <div className={`w-full h-full ${className} bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center`}>
-        <div className="text-slate-600 dark:text-slate-300 text-4xl font-serif font-light">
+        <div className="text-slate-600 dark:text-slate-300 text-4xl font-serif font-normal">
           {alt.split(' ').map(word => word.charAt(0).toUpperCase()).join('').slice(0, 2)}
         </div>
       </div>
@@ -116,7 +112,7 @@ export default function TeamGrid() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.4, delay: 0.1 }}
         >
-          <h2 className="text-pretty text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+          <h2 className="text-pretty text-4xl font-serif font-normal tracking-tight text-foreground sm:text-5xl">
             <FormattedMessage id="team.section.title" />
           </h2>
           <p className="mt-6 text-lg/8 text-muted-foreground">
@@ -138,16 +134,9 @@ export default function TeamGrid() {
             const bioId = `team.member.${person.id}.bio`;
 
             return (
-              <MorphingDialog
-                key={person.id}
-                transition={{
-                  type: 'spring',
-                  bounce: 0.05,
-                  duration: 0.25,
-                }}
-              >
-                <MorphingDialogTrigger>
-                  <li className="cursor-pointer">
+              <SimpleDialog key={person.id}>
+                <SimpleDialogTrigger>
+                  <li className="cursor-pointer text-left">
                     <div className="aspect-[14/13] w-full rounded-2xl overflow-hidden outline outline-1 -outline-offset-1 outline-border">
                       <TeamMemberImage
                         src={person.imageUrl}
@@ -156,52 +145,36 @@ export default function TeamGrid() {
                         priority={person.id <= 2} // Prioritize first 2 images for LCP
                       />
                     </div>
-                    <MorphingDialogTitle className="mt-6 text-lg/8 font-serif font-normal tracking-tight text-foreground text-[1.4em] text-left">
+                    <h3 className="mt-6 text-lg/8 font-serif font-normal tracking-tight text-foreground text-[1.4em]">
                       <FormattedMessage id={nameId} />
-                    </MorphingDialogTitle>
-                    <MorphingDialogSubtitle className="text-base/7 text-muted-foreground text-left">
+                    </h3>
+                    <p className="text-base/7 text-muted-foreground">
                       <FormattedMessage id={roleId} />
-                    </MorphingDialogSubtitle>
+                    </p>
                   </li>
-                </MorphingDialogTrigger>
-                <MorphingDialogContainer>
-                  <MorphingDialogContent
-                    style={{
-                      borderRadius: '24px',
-                    }}
-                    className='pointer-events-auto relative flex h-auto w-full flex-col overflow-hidden border border-border bg-background sm:w-[500px]'
-                  >
-                    <div className='aspect-[4/3] w-full relative'>
-                      <TeamMemberImage
-                        src={person.imageUrl}
-                        alt={`Photo of team member ${person.id}`}
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className='p-6'>
-                      <MorphingDialogTitle className="text-2xl font-serif font-normal tracking-tight text-foreground text-[2.5rem]">
-                        <FormattedMessage id={nameId} />
-                      </MorphingDialogTitle>
-                      <MorphingDialogSubtitle className='text-xl text-muted-foreground'>
-                        <FormattedMessage id={roleId} />
-                      </MorphingDialogSubtitle>
-                      <MorphingDialogDescription
-                        disableLayoutAnimation
-                        variants={{
-                          initial: { opacity: 0, scale: 0.8, y: 100 },
-                          animate: { opacity: 1, scale: 1, y: 0 },
-                          exit: { opacity: 0, scale: 0.8, y: 100 },
-                        }}
-                      >
-                        <p className='mt-4 text-muted-foreground'>
-                          <FormattedMessage id={bioId} />
-                        </p>
-                      </MorphingDialogDescription>
-                    </div>
-                    <MorphingDialogClose />
-                  </MorphingDialogContent>
-                </MorphingDialogContainer>
-              </MorphingDialog>
+                </SimpleDialogTrigger>
+                <SimpleDialogContent className="p-0">
+                  <div className='aspect-[4/3] w-full relative'>
+                    <TeamMemberImage
+                      src={person.imageUrl}
+                      alt={`Photo of team member ${person.id}`}
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className='p-6'>
+                    <h2 className="text-2xl font-serif font-normal tracking-tight text-foreground">
+                      <FormattedMessage id={nameId} />
+                    </h2>
+                    <p className='text-xl text-muted-foreground mt-1'>
+                      <FormattedMessage id={roleId} />
+                    </p>
+                    <p className='mt-4 text-muted-foreground'>
+                      <FormattedMessage id={bioId} />
+                    </p>
+                  </div>
+                  <SimpleDialogClose />
+                </SimpleDialogContent>
+              </SimpleDialog>
             );
           })}
         </motion.ul>
