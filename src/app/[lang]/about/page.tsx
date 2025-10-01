@@ -13,6 +13,7 @@ const AboutHeroWrapper = lazy(() => import("@/components/AboutHeroWrapper"));
 const AboutPartnerNetworkWrapper = lazy(() => import("@/components/AboutPartnerNetworkWrapper"));
 const AboutStatsWrapper = lazy(() => import("@/components/AboutStatsWrapper"));
 const TeamGridWrapper = lazy(() => import("@/components/TeamGridWrapper"));
+const AboutScrollStackWrapper = lazy(() => import("@/components/AboutScrollStackWrapper"));
 
 // Organization Schema for SEO
 const organizationSchema = {
@@ -160,6 +161,11 @@ async function PageContent({ locale }: PageContentProps) {
             {/* Hero section */}
             <Suspense fallback={<div className="h-screen flex items-center justify-center"><Spinner /></div>}>
                 <AboutHeroWrapper locale={locale} messages={messages} />
+            </Suspense>
+
+            {/* ScrollStack highlights (reuses hero content) */}
+            <Suspense fallback={<div className="h-64 flex items-center justify-center"><Spinner /></div>}>
+                <AboutScrollStackWrapper locale={locale} messages={messages} />
             </Suspense>
 
             {/* Team section */}
