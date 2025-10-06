@@ -79,8 +79,8 @@ export function FeaturedBlogCard({ post, locale }: BlogCardProps) {
     : locale === 'en'
       ? 'Read this article to discover insights and updates from our team.'
       : locale === 'fr'
-      ? 'Lisez cet article pour découvrir les perspectives et mises à jour de notre équipe.'
-      : 'Lea este artículo para descubrir perspectivas y actualizaciones de nuestro equipo.';
+        ? 'Lisez cet article pour découvrir les perspectives et mises à jour de notre équipe.'
+        : 'Lea este artículo para descubrir perspectivas y actualizaciones de nuestro equipo.';
 
   // Generate fallback slug from title if slug is missing, or use post ID as last resort
   const displaySlug = post.slug && post.slug.trim() !== ''
@@ -213,17 +213,8 @@ export function FeaturedBlogCard({ post, locale }: BlogCardProps) {
   );
 }
 
-// Regular Blog Post Card Component (GitHub-inspired)
+// Regular Blog Post Card Component (Aceternity-inspired)
 export function BlogPostCard({ post, locale }: BlogCardProps) {
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat(locale, {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    }).format(date);
-  };
-
   const authorName = post.populatedAuthors && post.populatedAuthors.length > 0
     ? post.populatedAuthors[0].name
     : 'ISSI Team';
@@ -244,8 +235,8 @@ export function BlogPostCard({ post, locale }: BlogCardProps) {
     : locale === 'en'
       ? 'Read this article to discover insights and updates from our team.'
       : locale === 'fr'
-      ? 'Lisez cet article pour découvrir les perspectives et mises à jour de notre équipe.'
-      : 'Lea este artículo para descubrir perspectivas y actualizaciones de nuestro equipo.';
+        ? 'Lisez cet article pour découvrir les perspectives et mises à jour de notre équipe.'
+        : 'Lea este artículo para descubrir perspectivas y actualizaciones de nuestro equipo.';
 
   // Generate fallback slug from title if slug is missing, or use post ID as last resort
   const displaySlug = post.slug && post.slug.trim() !== ''
@@ -254,81 +245,49 @@ export function BlogPostCard({ post, locale }: BlogCardProps) {
       ? post.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
       : `post-${post.id}`;
 
-  return (
-    <article className="group relative bg-card rounded-xl border border-border/50 overflow-hidden hover:border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-      {/* Featured Image */}
-      <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-        {post.featuredImage ? (
-          <Image
-            src={`https://issi-dashboard-payloadcms.vercel.app${post.featuredImage.sizes?.card?.url || post.featuredImage.url}`}
-            alt={post.featuredImage.alt || displayTitle}
-            className="object-cover group-hover:scale-110 transition-transform duration-500"
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 flex items-center justify-center">
-            <div className="text-center space-y-2">
-              <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto">
-                <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      </div>
+  // Get the background image URL
+  const backgroundImageUrl = post.featuredImage
+    ? `https://issi-dashboard-payloadcms.vercel.app${post.featuredImage.sizes?.card?.url || post.featuredImage.url}`
+    : 'https://images.unsplash.com/photo-1544077960-604201fe74bc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1651&q=80';
 
-      {/* Content */}
-      <div className="p-6 space-y-4">
-        {/* Categories */}
-        {post.category && (
-          <div className="flex flex-wrap gap-2">
-            <span
-              className="inline-flex items-center px-3 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full border border-primary/20"
-            >
-              {post.category.title}
+  return (
+    <div className="max-w-xs w-full group/card">
+      <div
+        className="cursor-pointer overflow-hidden relative card h-96 rounded-md shadow-xl max-w-sm mx-auto backgroundImage flex flex-col justify-between p-4"
+        style={{
+          backgroundImage: `url(${backgroundImageUrl})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        <div className="absolute w-full h-full top-0 left-0 transition duration-300 group-hover/card:bg-black opacity-60"></div>
+        <div className="flex flex-row items-center space-x-4 z-10">
+          <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 flex items-center justify-center">
+            <span className="text-white font-semibold text-sm">
+              {authorName.charAt(0)}
             </span>
           </div>
-        )}
-
-        {/* Title */}
-        <h3 className="text-xl font-bold leading-tight group-hover:text-primary transition-colors duration-200 line-clamp-2">
-          <a
-            href={`/${locale}/blog/${displaySlug}`}
-            className="block after:absolute after:inset-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg no-underline"
-          >
-            {displayTitle}
-          </a>
-        </h3>
-
-        {/* Excerpt */}
-        <p className="text-muted-foreground leading-relaxed line-clamp-3 text-sm">
-          {displayExcerpt}
-        </p>
-
-        {/* Meta Information */}
-        <div className="flex items-center gap-3 text-xs text-muted-foreground pt-2 border-t border-border/50">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
-              <span className="text-primary font-semibold text-xs">
-                {authorName.charAt(0)}
-              </span>
-            </div>
-            <span className="font-medium">{authorName}</span>
+          <div className="flex flex-col">
+            <p className="font-normal text-base text-white relative z-10">
+              {authorName}
+            </p>
+            <p className="text-sm text-gray-300">{readingTime}</p>
           </div>
-          <span className="text-muted-foreground/50">•</span>
-          <time dateTime={post.publishedAt} className="font-medium">
-            {formatDate(post.publishedAt)}
-          </time>
-          <span className="text-muted-foreground/50">•</span>
-          <span className="bg-muted px-2 py-1 rounded-md font-medium">{readingTime}</span>
+        </div>
+        <div className="text content">
+          <h1 className="font-bold text-xl md:text-2xl text-white relative z-10 line-clamp-2">
+            <a
+              href={`/${locale}/blog/${displaySlug}`}
+              className="no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black/50 rounded-lg block"
+            >
+              {displayTitle}
+            </a>
+          </h1>
+          <p className="font-normal text-sm text-gray-200 relative z-10 my-4 line-clamp-3">
+            {displayExcerpt}
+          </p>
         </div>
       </div>
-
-      {/* Hover effect overlay */}
-      <div className="absolute inset-0 rounded-xl ring-2 ring-transparent group-hover:ring-primary/20 transition-all duration-300 pointer-events-none" />
-    </article>
+    </div>
   );
 }
