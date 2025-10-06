@@ -1,7 +1,15 @@
 "use client";
 
+import {
+  Expandable,
+  ExpandableCard,
+  ExpandableCardContent,
+  ExpandableContent,
+  ExpandableTrigger,
+} from "@/components/ui/expandable";
 import { cn } from "@/lib/utils";
 import 'flag-icons/css/flag-icons.min.css';
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 export const InfiniteMovingCards = ({
@@ -22,51 +30,22 @@ export const InfiniteMovingCards = ({
   pauseOnHover?: boolean;
   className?: string;
 }) => {
-  const containerRef = React.useRef<HTMLDivElement>(null);
-  const scrollerRef = React.useRef<HTMLUListElement>(null);
   const [start, setStart] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const scrollerRef = React.useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    // Check for reduced motion preference
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     setPrefersReducedMotion(mediaQuery.matches);
 
-    const handleChange = (e: MediaQueryListEvent) => {
-      setPrefersReducedMotion(e.matches);
+    const handleChange = () => {
+      setPrefersReducedMotion(mediaQuery.matches);
     };
 
     mediaQuery.addEventListener('change', handleChange);
 
-    const getDirection = () => {
-      if (containerRef.current) {
-        if (direction === "left") {
-          containerRef.current.style.setProperty(
-            "--animation-direction",
-            "forwards",
-          );
-        } else {
-          containerRef.current.style.setProperty(
-            "--animation-direction",
-            "reverse",
-          );
-        }
-      }
-    };
-
-    const getSpeed = () => {
-      if (containerRef.current) {
-        if (speed === "fast") {
-          containerRef.current.style.setProperty("--animation-duration", "26s"); // 30% slower than 20s
-        } else if (speed === "normal") {
-          containerRef.current.style.setProperty("--animation-duration", "55s"); // 30% slower than 40s  
-        } else {
-          containerRef.current.style.setProperty("--animation-duration", "104s"); // 30% slower than 80s
-        }
-      }
-    };
-
-    function addAnimation() {
+    const addAnimation = () => {
       if (containerRef.current && scrollerRef.current) {
         const scrollerContent = Array.from(scrollerRef.current.children);
 
@@ -81,21 +60,45 @@ export const InfiniteMovingCards = ({
         getSpeed();
         setStart(true);
       }
-    }
+    };
 
-    // Use requestIdleCallback for non-critical animation setup
-    if ('requestIdleCallback' in window) {
-      window.requestIdleCallback(() => {
-        addAnimation();
-      });
-    } else {
-      setTimeout(addAnimation, 100);
+    const getDirection = () => {
+      if (containerRef.current) {
+        if (direction === "left") {
+          containerRef.current.style.setProperty(
+            "--animation-direction",
+            "forwards"
+          );
+        } else {
+          containerRef.current.style.setProperty(
+            "--animation-direction",
+            "reverse"
+          );
+        }
+      }
+    };
+
+    const getSpeed = () => {
+      if (containerRef.current) {
+        if (speed === "fast") {
+          containerRef.current.style.setProperty("--animation-duration", "20s");
+        } else if (speed === "normal") {
+          containerRef.current.style.setProperty("--animation-duration", "40s");
+        } else {
+          containerRef.current.style.setProperty("--animation-duration", "80s");
+        }
+      }
+    };
+
+    if (!prefersReducedMotion) {
+      addAnimation();
     }
 
     return () => {
       mediaQuery.removeEventListener('change', handleChange);
     };
-  }, [direction, speed]);
+  }, [direction, speed, prefersReducedMotion]);
+
   return (
     <div
       ref={containerRef}
@@ -115,7 +118,8 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, _idx) => {
           // Determine patriotic colors based on container class
-          let cardStyles = "relative min-w-[200px] max-w-[400px] shrink-0 rounded-2xl border border-b-0 px-6 py-4 w-fit";
+          let cardStyles = "relative min-w-[200px] max-w-[400px] shrink-0 rounded-3xl border border-b-0 px-6 pt-8 pb-12 w-fit";
+          let cardInlineStyle: React.CSSProperties | undefined = undefined;
 
           if (className?.includes("patriotic-cards-blue")) {
             cardStyles += " border-blue-600 bg-gradient-to-br from-blue-700 via-blue-600 to-blue-800 text-white";
@@ -126,7 +130,16 @@ export const InfiniteMovingCards = ({
           } else if (className?.includes("job-marquee-cards")) {
             cardStyles += " border-primary/20 bg-primary/5 text-primary dark:border-primary/30 dark:bg-primary/10 dark:text-primary hover:bg-primary/10 hover:border-primary/30 transition-all duration-200 cursor-pointer whitespace-nowrap mx-1";
           } else if (className?.includes("testimonial-cards")) {
-            cardStyles += " border-border bg-card text-card-foreground shadow-md dark:border-border dark:bg-card dark:text-card-foreground";
+            // Apply card design tokens: subtle border, elevated shadow, and smooth hover/focus states
+            cardStyles +=
+              " border-border bg-card text-card-foreground shadow-lg md:shadow-xl overflow-hidden rounded-3xl transition-shadow duration-200 hover:shadow-xl focus-within:ring-2 focus-within:ring-emerald-500 focus-within:outline-none dark:border-border dark:bg-card dark:text-card-foreground";
+
+            // Move decorative rim/shadow into the card's own boxShadow to avoid overflow clipping
+            // Use inset bottom shadow so the shadow is rendered inside the card and not clipped by ancestor overflow
+            cardInlineStyle = {
+              boxShadow:
+                'inset 0 0 0 1px rgba(255,255,255,0.85), inset 0 -18px 40px rgba(2,6,23,0.08)'
+            };
           } else {
             cardStyles += " border-zinc-200 bg-[linear-gradient(180deg,#fafafa,#f5f5f5)] dark:border-zinc-700 dark:bg-[linear-gradient(180deg,#27272a,#18181b)]";
           }
@@ -135,67 +148,121 @@ export const InfiniteMovingCards = ({
             <li
               className={cardStyles}
               key={item.name}
+              style={cardInlineStyle}
             >
-              <blockquote>
-                <div
-                  aria-hidden="true"
-                  className="user-select-none pointer-events-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-                ></div>
-                {/* Conditionally show US flag only for patriotic cards */}
-                {className?.includes("patriotic-cards") ? (
-                  <div className="flex items-start gap-3">
-                    <span className="fi fi-us w-6 h-4 rounded-sm mt-1 flex-shrink-0"></span>
-                    <span className="relative z-20 text-base leading-[1.6] font-serif font-normal">
-                      {item.quote}
-                    </span>
-                  </div>
-                ) : className?.includes("job-marquee-cards") ? (
-                  <div className="flex flex-col gap-1">
-                    <span className="relative z-20 text-xs font-semibold uppercase tracking-wide opacity-80 whitespace-nowrap">
-                      {item.quote}
-                    </span>
-                    <span className="relative z-20 text-sm font-medium leading-tight whitespace-nowrap">
-                      {item.name}
-                    </span>
-                    <span className="relative z-20 text-xs opacity-60 whitespace-nowrap">
-                      {item.title}
-                    </span>
-                  </div>
-                ) : (
-                  <span className="relative z-20 text-base leading-[1.6] font-normal">
-                    {item.quote}
-                  </span>
-                )}
-
-                {/* Only show name/title section for non-job cards */}
-                {!className?.includes("job-marquee-cards") && (
-                  <div className="relative z-20 mt-6 flex flex-row items-center">
-                    {/* Show avatar for testimonial cards */}
-                    {className?.includes("testimonial-cards") && item.avatar && (
-                      <div className="mr-4 relative">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={item.avatar}
-                          alt={`Avatar of ${item.name}`}
-                          className="w-12 h-12 rounded-full object-cover"
-                          loading={_idx < 2 ? "eager" : "lazy"}
-                          decoding="async"
-                          fetchPriority={_idx === 0 ? "high" : "auto"}
-                        />
-                        <div className="absolute inset-0 rounded-full ring-2 ring-gray-300 ring-offset-2 ring-offset-background pointer-events-none"></div>
-                      </div>
-                    )}
-                    <span className="flex flex-col gap-0">
-                      <span className="text-xl leading-[1.4] font-serif font-[400]">
+              {className?.includes("testimonial-cards") ? (
+                <Expandable
+                  expandDirection="both"
+                  expandBehavior="replace"
+                  onExpandStart={() => {
+                    if (containerRef.current) containerRef.current.style.animationPlayState = "paused";
+                  }}
+                  onCollapseEnd={() => {
+                    if (containerRef.current) containerRef.current.style.animationPlayState = "running";
+                  }}
+                >
+                  <ExpandableTrigger>
+                    <ExpandableCard collapsedSize={{ width: 320, height: 220 }} expandedSize={{ width: 520, height: 320 }} hoverToExpand={false}>
+                      <ExpandableCardContent>
+                        <blockquote>
+                          <span className="relative z-20 block text-base leading-[1.6] font-normal line-clamp-3">
+                            {item.quote}
+                          </span>
+                          <div className="relative z-20 mt-6 flex flex-row items-center">
+                            {item.avatar && (
+                              <div className="mr-4 relative">
+                                <Image
+                                  src={item.avatar}
+                                  alt={`Avatar of ${item.name}`}
+                                  width={48}
+                                  height={48}
+                                  className="w-12 h-12 rounded-full object-cover"
+                                />
+                                <div className="absolute inset-0 rounded-full ring-2 ring-white/75 dark:ring-black/25 ring-offset-2 ring-offset-background shadow-sm pointer-events-none"></div>
+                              </div>
+                            )}
+                            <span className="flex flex-col gap-0">
+                              <span className="text-xl leading-[1.4] font-serif font-[400]">{item.name}</span>
+                              <span className="text-sm leading-[1.6] font-semibold opacity-80">{item.title}</span>
+                            </span>
+                          </div>
+                        </blockquote>
+                      </ExpandableCardContent>
+                      <ExpandableContent>
+                        <div className="p-4">
+                          <p className="text-sm text-muted-foreground">{item.quote}</p>
+                        </div>
+                      </ExpandableContent>
+                    </ExpandableCard>
+                  </ExpandableTrigger>
+                </Expandable>
+              ) : (
+                <blockquote>
+                  {/* Shadows & rim are applied directly on the card element to avoid clipping by the scroller */}
+                  {/* Conditionally show US flag only for patriotic cards */}
+                  {className?.includes("patriotic-cards") ? (
+                    <div className="flex items-start gap-3">
+                      <span className="fi fi-us w-6 h-4 rounded-sm mt-1 flex-shrink-0"></span>
+                      <span className="relative z-20 text-base leading-[1.6] font-serif font-normal">
+                        {item.quote}
+                      </span>
+                    </div>
+                  ) : className?.includes("job-marquee-cards") ? (
+                    <div className="flex flex-col gap-1">
+                      <span className="relative z-20 text-xs font-semibold uppercase tracking-wide opacity-80 whitespace-nowrap">
+                        {item.quote}
+                      </span>
+                      <span className="relative z-20 text-sm font-medium leading-tight whitespace-nowrap">
                         {item.name}
                       </span>
-                      <span className="text-sm leading-[1.6] font-semibold opacity-80">
+                      <span className="relative z-20 text-xs opacity-60 whitespace-nowrap">
                         {item.title}
                       </span>
+                    </div>
+                  ) : (
+                    <span className="relative z-20 text-base leading-[1.6] font-normal">
+                      {item.quote}
                     </span>
-                  </div>
-                )}
-              </blockquote>
+                  )}
+
+                  {/* Only show name/title section for non-job cards */}
+                  {!className?.includes("job-marquee-cards") && (
+                    <div className="relative z-20 mt-6 flex flex-row items-center">
+                      {/* Show avatar for testimonial cards */}
+                      {className?.includes("testimonial-cards") && item.avatar && (
+                        <div className="mr-4 relative">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={item.avatar}
+                            alt={`Avatar of ${item.name}`}
+                            className="w-12 h-12 rounded-full object-cover"
+                            loading={_idx < 2 ? "eager" : "lazy"}
+                            decoding="async"
+                            fetchPriority={_idx === 0 ? "high" : "auto"}
+                          />
+                          <div className="absolute inset-0 rounded-full ring-2 ring-white/75 dark:ring-black/25 ring-offset-2 ring-offset-background shadow-sm pointer-events-none"></div>
+                        </div>
+                      )}
+                      <span className="flex flex-col gap-0">
+                        <span className="text-xl leading-[1.4] font-serif font-[400]">
+                          {item.name}
+                        </span>
+                        <span className="text-sm leading-[1.6] font-semibold opacity-80">
+                          {item.title}
+                        </span>
+                      </span>
+                    </div>
+                  )}
+                </blockquote>
+              )}
+              {/* Internal floor shadow placed inside the li so it won't be clipped by ancestor overflow */}
+              {className?.includes("testimonial-cards") && (
+                <div
+                  aria-hidden="true"
+                  className="absolute left-1/2 bottom-3 -translate-x-1/2 w-[70%] h-6 rounded-full blur-xl opacity-40 pointer-events-none"
+                  style={{ background: 'radial-gradient(ellipse at center, rgba(2,6,23,0.12), transparent)' }}
+                />
+              )}
             </li>
           );
         })}
