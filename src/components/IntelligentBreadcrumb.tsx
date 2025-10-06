@@ -83,21 +83,28 @@ export default function IntelligentBreadcrumb({
         // Skip empty segments
         if (!segment) return '';
 
-        // Try to get translation first
-        const translationKey = `breadcrumb.${segment}`;
-        try {
-            const translated = intl.formatMessage({
-                id: translationKey,
-                defaultMessage: ''
-            });
-            if (translated && translated !== translationKey) {
-                return translated;
+        // Skip translation for dynamic content (blog posts, long slugs, etc.)
+        // Only try to translate known static segments
+        const staticSegments = ['blog', 'about', 'contact', 'services', 'products', 'careers', 'news', 'home'];
+        const shouldTranslate = staticSegments.includes(segment) || segment.length < 20;
+
+        if (shouldTranslate) {
+            // Try to get translation first
+            const translationKey = `breadcrumb.${segment}`;
+            try {
+                const translated = intl.formatMessage({
+                    id: translationKey,
+                    defaultMessage: ''
+                });
+                if (translated && translated !== translationKey) {
+                    return translated;
+                }
+            } catch {
+                // Translation failed, continue to formatting
             }
-        } catch {
-            // Translation failed, continue to formatting
         }
 
-        // Format the segment name
+        // Format the segment name (for dynamic content or untranslated static segments)
         return segment
             .replace(/-/g, ' ')
             .replace(/([a-z])([A-Z])/g, '$1 $2')

@@ -71,7 +71,7 @@ export default function ClientLayout({ lang, messages, intlMessages, children }:
           <ClientNavigation locale={lang} messages={intlMessages} bannerVisible={isBannerVisible} />
           <Content>
             <div className="mx-auto max-w-7xl px-6 lg:px-8 mt-24">
-              {!isHomepage && <IntelligentBreadcrumb className="mb-6" />}
+              {!isHomepage && <IntelligentBreadcrumb className="mb-3" />}
             </div>
             {children}
           </Content>

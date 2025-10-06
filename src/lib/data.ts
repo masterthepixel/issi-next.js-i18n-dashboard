@@ -126,10 +126,15 @@ export async function fetchPosts(params: {
   limit?: number;
   locale?: string;
   where?: Record<string, unknown>;
+  select?: string;
 } = {}) {
-  const { page = 1, limit = 10, locale, where } = params;
+  const { page = 1, limit = 10, locale, where, select } = params;
 
   let url = `${API_BASE_URL}/api/posts?page=${page}&limit=${limit}&locale=${locale || 'en'}&depth=2`;
+
+  if (select) {
+    url += `&select=${select}`;
+  }
 
   if (where) {
     url += `&where=${encodeURIComponent(JSON.stringify(where))}`;
@@ -151,6 +156,7 @@ export async function fetchPosts(params: {
     const data = await response.json();
     console.log('✅ API Response data:', { docsCount: data.docs?.length, totalDocs: data.totalDocs, hasNextPage: data.hasNextPage });
     console.log('📝 Sample post data:', data.docs?.[0]);
+    console.log('🔍 Full post data keys:', data.docs?.[0] ? Object.keys(data.docs[0]) : 'No data');
 
     return data;
   } catch (error) {
@@ -168,6 +174,10 @@ export async function fetchPostBySlug(slug: string, locale: string = 'en') {
     _status: { equals: 'published' }
   };
 
-  const result = await fetchPosts({ where, locale, limit: 1 });
+  const result = await fetchPosts({
+    where,
+    locale,
+    limit: 1
+  });
   return result.docs?.[0] || null;
 }

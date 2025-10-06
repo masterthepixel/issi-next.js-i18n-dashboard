@@ -6,6 +6,52 @@ import { fetchPosts } from "@/lib/data";
 import { Locale } from "@/lib/definitions";
 import { BlogPostCard, FeaturedBlogCard } from "./components";
 
+interface Author {
+  id: number;
+  name: string;
+  firstName?: string;
+  lastName?: string;
+}
+
+interface FeaturedImage {
+  id: number;
+  url: string;
+  alt?: string;
+  sizes?: {
+    card?: {
+      url: string;
+    };
+  };
+}
+
+interface Category {
+  id: number;
+  title: string;
+  name: string;
+  slug: string;
+}
+
+interface ApiBlogPost {
+  id: number;
+  title?: string;
+  excerpt?: string;
+  slug: string;
+  publishedAt: string;
+  updatedAt?: string;
+  readingTime?: number;
+  featuredImage?: FeaturedImage;
+  populatedAuthors?: Author[];
+  category?: Category;
+  tags?: string[];
+  content?: {
+    root?: {
+      children?: unknown[];
+    };
+  };
+  _status?: string;
+  author?: Author;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params;
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://issi.com';
@@ -16,17 +62,17 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   const seoData = {
     en: {
       title: messages['page.blog.meta.title'] || "Blog | Latest News & Insights | ISSI",
-      description: messages['page.blog.meta.description'] || "Stay updated with the latest insights, news, and thought leadership from ISSI's team of technology experts. Explore our blog for industry trends and innovation.",
+      description: messages['page.blog.meta.description'] || "Explore our blog for industry trends and innovation from ISSI's team of technology experts.",
       keywords: messages['page.blog.meta.keywords'] || "ISSI blog, technology insights, software development news, government IT, enterprise solutions, tech thought leadership"
     },
     fr: {
       title: messages['page.blog.meta.title'] || "Blog | Actualités et Insights | ISSI",
-      description: messages['page.blog.meta.description'] || "Restez à jour avec les dernières informations, nouvelles et leadership d'opinion de l'équipe d'experts technologiques d'ISSI. Explorez notre blog pour les tendances de l'industrie.",
+      description: messages['page.blog.meta.description'] || "Explorez notre blog pour les tendances de l'industrie et l'innovation de l'équipe d'experts technologiques d'ISSI.",
       keywords: messages['page.blog.meta.keywords'] || "blog ISSI, insights technologiques, nouvelles développement logiciel, IT gouvernementale, solutions d'entreprise"
     },
     es: {
       title: messages['page.blog.meta.title'] || "Blog | Noticias e Insights | ISSI",
-      description: messages['page.blog.meta.description'] || "Manténgase actualizado con las últimas perspectivas, noticias y liderazgo intelectual del equipo de expertos tecnológicos de ISSI.",
+      description: messages['page.blog.meta.description'] || "Explore nuestro blog para tendencias de la industria e innovación del equipo de expertos tecnológicos de ISSI.",
       keywords: messages['page.blog.meta.keywords'] || "blog ISSI, perspectivas tecnológicas, noticias desarrollo software, TI gubernamental, soluciones empresariales"
     }
   };
@@ -118,7 +164,6 @@ interface PageContentProps {
 }
 
 async function PageContent({ locale, page, search }: PageContentProps) {
-  const messages = (await import(`../../../lang/${locale}.json`)).default;
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://issi.com';
 
   // Fetch blog posts from external PayloadCMS
@@ -143,10 +188,10 @@ async function PageContent({ locale, page, search }: PageContentProps) {
 
     // Get all posts and handle missing data gracefully in the UI
     const allPosts = result.docs || [];
-    console.log('🔍 All posts before filtering:', allPosts.map((p: any) => ({ id: p.id, title: p.title, slug: p.slug })));
+    console.log('🔍 All posts before filtering:', allPosts.map((p: ApiBlogPost) => ({ id: p.id, title: p.title, slug: p.slug })));
 
     // Show all posts - we'll handle missing data gracefully in the UI with fallbacks
-    const posts = allPosts.filter((post: any) => {
+    const posts = allPosts.filter((post: ApiBlogPost) => {
       // Only exclude posts that have no id or are completely broken
       if (!post.id) {
         console.log(`❌ Filtering out post with no ID:`, post);
@@ -164,7 +209,7 @@ async function PageContent({ locale, page, search }: PageContentProps) {
       return true;
     });
 
-    console.log('✅ Posts after filtering:', posts.map((p: any) => ({ id: p.id, title: p.title, slug: p.slug })));
+    console.log('✅ Posts after filtering:', posts.map((p: ApiBlogPost) => ({ id: p.id, title: p.title, slug: p.slug })));
     const totalPages = result.totalPages || 1;
     const hasNextPage = result.hasNextPage || false;
     const hasPrevPage = result.hasPrevPage || false;
@@ -180,8 +225,8 @@ async function PageContent({ locale, page, search }: PageContentProps) {
           "name": locale === 'en' ? "Blog | Latest News & Insights | ISSI" :
             locale === 'fr' ? "Blog | Actualités et Insights | ISSI" :
               "Blog | Noticias e Insights | ISSI",
-          "description": locale === 'en' ? "Stay updated with the latest insights, news, and thought leadership from ISSI's team of technology experts." :
-            locale === 'fr' ? "Restez à jour avec les dernières informations et leadership d'opinion de l'équipe d'experts d'ISSI." :
+          "description": locale === 'en' ? "Explore our blog for industry trends and innovation from ISSI's team of technology experts." :
+            locale === 'fr' ? "Explorez notre blog pour les tendances de l'industrie et l'innovation de l'équipe d'experts technologiques d'ISSI." :
               "Manténgase actualizado con las últimas perspectivas del equipo de expertos tecnológicos de ISSI.",
           "isPartOf": {
             "@type": "WebSite",
@@ -220,7 +265,7 @@ async function PageContent({ locale, page, search }: PageContentProps) {
             "@id": `${baseUrl}#organization`,
             "name": "International Software Systems, Inc. (ISSI)"
           },
-          "blogPost": posts.map((post: any, index: number) => ({
+          "blogPost": posts.map((post: ApiBlogPost, index: number) => ({
             "@type": "BlogPosting",
             "position": index + 1,
             "headline": post.title,
@@ -258,63 +303,7 @@ async function PageContent({ locale, page, search }: PageContentProps) {
                   locale === 'fr' ? 'Blog' :
                     'Blog'}
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-                {locale === 'en' ? 'Stay updated with the latest insights, news, and thought leadership from our team of technology experts.' :
-                  locale === 'fr' ? 'Restez à jour avec les dernières informations, nouvelles et leadership éclairé de notre équipe d\'experts technologiques.' :
-                    'Manténgase actualizado con las últimas perspectivas, noticias y liderazgo intelectual de nuestro equipo de expertos tecnológicos.'}
-              </p>
             </div>
-          </div>
-        </div>
-
-        {/* Search Bar */}
-        <div className="container mx-auto px-4 py-8">
-          <div className="max-w-2xl mx-auto">
-            <form method="GET" className="flex gap-2">
-              <div className="flex-1">
-                <label htmlFor="search" className="sr-only">
-                  {locale === 'en' ? 'Search blog posts' :
-                    locale === 'fr' ? 'Rechercher dans le blog' :
-                      'Buscar en el blog'}
-                </label>
-                <input
-                  type="text"
-                  id="search"
-                  name="search"
-                  defaultValue={search}
-                  placeholder={locale === 'en' ? 'Search blog posts...' :
-                    locale === 'fr' ? 'Rechercher dans le blog...' :
-                      'Buscar en el blog...'}
-                  className="w-full px-4 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary bg-background text-foreground"
-                />
-              </div>
-              <button
-                type="submit"
-                className="px-6 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
-              >
-                {locale === 'en' ? 'Search' :
-                  locale === 'fr' ? 'Rechercher' :
-                    'Buscar'}
-              </button>
-            </form>
-            {search && (
-              <div className="mt-2">
-                <p className="text-sm text-muted-foreground">
-                  {locale === 'en' ? `Showing results for "${search}"` :
-                    locale === 'fr' ? `Résultats pour "${search}"` :
-                      `Resultados para "${search}"`}
-                  {' • '}
-                  <a
-                    href={`/${locale}/blog`}
-                    className="text-primary hover:underline"
-                  >
-                    {locale === 'en' ? 'Clear search' :
-                      locale === 'fr' ? 'Effacer la recherche' :
-                        'Limpiar búsqueda'}
-                  </a>
-                </p>
-              </div>
-            )}
           </div>
         </div>
 
@@ -338,35 +327,21 @@ async function PageContent({ locale, page, search }: PageContentProps) {
               {/* Featured Post */}
               {posts.length > 0 && (
                 <div className="mb-16">
-                  <div className="mb-8">
-                    <h2 className="text-2xl font-bold text-foreground mb-2">
-                      {locale === 'en' ? 'Featured Article' :
-                        locale === 'fr' ? 'Article en Vedette' :
-                          'Artículo Destacado'}
-                    </h2>
-                    <div className="w-16 h-1 bg-primary rounded-full"></div>
+                  <div className="max-w-7xl mx-auto">
+                    <FeaturedBlogCard
+                      post={posts[0]}
+                      locale={locale}
+                      baseUrl={baseUrl}
+                    />
                   </div>
-                  <FeaturedBlogCard
-                    post={posts[0]}
-                    locale={locale}
-                    baseUrl={baseUrl}
-                  />
                 </div>
               )}
 
               {/* Recent Posts */}
               {posts.length > 1 && (
                 <div className="mb-16">
-                  <div className="mb-8">
-                    <h2 className="text-2xl font-bold text-foreground mb-2">
-                      {locale === 'en' ? 'Latest Articles' :
-                        locale === 'fr' ? 'Derniers Articles' :
-                          'Últimos Artículos'}
-                    </h2>
-                    <div className="w-16 h-1 bg-primary rounded-full"></div>
-                  </div>
-                  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
-                    {posts.slice(1).map((post: any) => (
+                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+                    {posts.slice(1).map((post: ApiBlogPost) => (
                       <BlogPostCard
                         key={post.id}
                         post={post}
