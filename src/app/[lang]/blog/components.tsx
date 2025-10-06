@@ -253,7 +253,7 @@ export function BlogPostCard({ post, locale }: BlogCardProps) {
   return (
     <div className="max-w-xs w-full group/card">
       <div
-        className="cursor-pointer overflow-hidden relative card h-96 rounded-md shadow-xl max-w-sm mx-auto backgroundImage flex flex-col justify-between p-4"
+        className="cursor-pointer overflow-hidden relative card h-96 rounded-md shadow-xl hover:shadow-2xl transition-shadow duration-300 max-w-sm mx-auto backgroundImage flex flex-col justify-between p-4"
         style={{
           backgroundImage: `url(${backgroundImageUrl})`,
           backgroundSize: 'cover',
