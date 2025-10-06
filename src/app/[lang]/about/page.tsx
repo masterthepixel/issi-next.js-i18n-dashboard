@@ -12,7 +12,7 @@ const AboutCertificationsWrapper = lazy(() => import("@/components/AboutCertific
 const AboutHeroWrapper = lazy(() => import("@/components/AboutHeroWrapper"));
 const AboutPartnerNetworkWrapper = lazy(() => import("@/components/AboutPartnerNetworkWrapper"));
 const AboutStatsWrapper = lazy(() => import("@/components/AboutStatsWrapper"));
-const TeamBentoGridWrapper = lazy(() => import("@/components/TeamBentoGridWrapper"));
+const TeamGridWrapper = lazy(() => import("@/components/TeamGridWrapper"));
 const AboutScrollStackWrapper = lazy(() => import("@/components/AboutScrollStackWrapper"));
 
 // Organization Schema for SEO
@@ -170,7 +170,7 @@ async function PageContent({ locale }: PageContentProps) {
 
             {/* Team section */}
             <Suspense fallback={<div className="h-96 flex items-center justify-center"><Spinner /></div>}>
-                <TeamBentoGridWrapper locale={locale} messages={messages} />
+                <TeamGridWrapper locale={locale} messages={messages} />
             </Suspense>
 
             {/* Stats section */}

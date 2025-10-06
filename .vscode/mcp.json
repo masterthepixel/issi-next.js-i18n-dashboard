@@ -13,13 +13,6 @@
         "WORKSPACE_DIR": "c:\\Users\\kfiagbedzi\\Documents\\GitHub\\issi-next.js-i18n-dashboard",
         "STYLE": "new-york"
       }
-    },
-    "chrome-devtools": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "chrome-devtools-mcp@latest"
-      ]
     }
   }
 }
