@@ -2,8 +2,8 @@
 
 import { Locale } from "@/lib/definitions";
 import { IntlProvider, MessageFormatElement } from "react-intl";
-import { ResponsiveNavigation } from "./ui/responsive-navigation";
 import Logo from "./ui/logo";
+import { ResponsiveNavigation } from "./ui/responsive-navigation";
 
 interface ClientNavigationProps {
   locale: Locale;

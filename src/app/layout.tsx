@@ -6,18 +6,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>ISSI Next.js Dashboard</title>
-        {/* Add your global CSS here */}
-        {/* Global CSS should be imported in _app or via import statement, not via <link> */}
-      </head>
-      <body>
-        {children}
-      </body>
-    </html>
-  );
+  // This is the root layout - it should only pass through children
+  // The actual <html> and <body> tags are in the [lang]/layout.tsx
+  return children;
 }
