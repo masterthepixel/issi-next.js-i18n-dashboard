@@ -2,7 +2,7 @@
 
 import { Locale } from "@/lib/definitions";
 import { IntlProvider, MessageFormatElement } from "react-intl";
-import HoverGradientNavBar from "./ui/hover-gradient-nav-bar";
+import { ResponsiveNavigation } from "./ui/responsive-navigation";
 import Logo from "./ui/logo";
 
 interface ClientNavigationProps {
@@ -15,7 +15,7 @@ export default function ClientNavigation({ locale, messages, bannerVisible }: Cl
   return (
     <IntlProvider locale={locale} messages={messages}>
       <Logo locale={locale} />
-      <HoverGradientNavBar locale={locale} bannerVisible={bannerVisible} />
+      <ResponsiveNavigation locale={locale} bannerVisible={bannerVisible} />
     </IntlProvider>
   );
 }
